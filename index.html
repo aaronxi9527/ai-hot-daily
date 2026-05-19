@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI HOT 日报 · 2026-05-19</title>
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #F7931E;
+            --accent: #FF4444;
+            --bg-gradient-start: #FF8C42;
+            --bg-gradient-end: #FF6B35;
+            --text-dark: #2D3436;
+            --text-light: #636E72;
+            --card-bg: #FFFFFF;
+            --card-shadow: rgba(255, 107, 53, 0.15);
+            --chip-bg: #FFF3E6;
+            --chip-text: #E65100;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 50%, #FF4444 100%);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-date {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px 24px;
+            color: white;
+            min-width: 140px;
+        }
+
+        .stat-count {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+            white-space: nowrap;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            scrollbar-width: none;
+        }
+
+        .nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            background: #FFF5F0;
+            color: var(--primary);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+        .section:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .section-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--card-shadow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .card-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .card-source {
+            background: var(--chip-bg);
+            color: var(--chip-text);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-summary {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-time {
+            font-size: 12px;
+            color: #B2BEC3;
+        }
+
+        .card-link {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+        }
+
+        .footer-stats {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .hero {
+                padding: 24px;
+                border-radius: 20px;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .stat-card {
+                padding: 12px 16px;
+                min-width: 100px;
+            }
+
+            .stat-count {
+                font-size: 22px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                padding: 12px 16px;
+                gap: 8px;
+            }
+
+            .nav-link {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+        }
+
+        /* Scroll animation on scroll */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-date">北京时间 2026年5月19日 星期二</div>
+            <h1 class="hero-title">AI HOT 日报</h1>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-count">11</div>
+                    <div class="stat-label">总条数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-count">4</div>
+                    <div class="stat-label">模型发布/更新</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-count">3</div>
+                    <div class="stat-label">产品发布/更新</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-count">1</div>
+                    <div class="stat-label">行业动态</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-count">1</div>
+                    <div class="stat-label">论文研究</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-count">2</div>
+                    <div class="stat-label">技巧与观点</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="#models" class="nav-link">🚀 模型发布/更新 (4)</a>
+            <a href="#products" class="nav-link">📦 产品发布/更新 (3)</a>
+            <a href="#industry" class="nav-link">📰 行业动态 (1)</a>
+            <a href="#papers" class="nav-link">📚 论文研究 (1)</a>
+            <a href="#tips" class="nav-link">💡 技巧与观点 (2)</a>
+        </nav>
+
+        <!-- Section 1: 模型发布/更新 -->
+        <section id="models" class="section">
+            <h2 class="section-title">
+                <span class="icon">🚀</span>
+                模型发布/更新
+                <span class="section-badge">4 条</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">1</span>
+                        <span class="card-source">X：阿里云</span>
+                    </div>
+                    <h3 class="card-title">Qwen3.7预览版登陆竞技场，阿里视觉排名升至第五</h3>
+                    <p class="card-summary">🚀🚀Qwen3.7预览版登陆竞技场！⚡️⚡️Qwen3.7-Plus-Preview来了。阿里巴巴现在在视觉领域排名第五。🎨 迫不及待要发布Qwen3.7系列模型了！</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 11:01</span>
+                        <a href="https://x.com/alibaba_cloud/status/2056570869548478592" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">2</span>
+                        <span class="card-source">X：Berry Xia</span>
+                    </div>
+                    <h3 class="card-title">首个实时多agent世界模型发布，人类可与AI同屏互动</h3>
+                    <p class="card-summary">奥德赛实验室推出Agora-1，全球首个实时多agent世界模型，允许多人与AI同时在同一个模拟世界中实时互动。该模型以经典游戏GoldenEye死亡竞赛为演示场景。</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 09:32</span>
+                        <a href="https://x.com/berryxia/status/2056548546544124240" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">3</span>
+                        <span class="card-source">Hacker News</span>
+                    </div>
+                    <h3 class="card-title">Qwen 3.7 预览版</h3>
+                    <p class="card-summary">Qwen 3.7 预览版正式发布，更多详细信息敬请期待阿里云官方公告。</p>
+                    <div class="card-footer">
+                        <span class="card-time">昨天 03:02</span>
+                        <a href="https://twitter.com/Alibaba_Qwen/status/2056403591464984753" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">4</span>
+                        <span class="card-source">X：宝玉</span>
+                    </div>
+                    <h3 class="card-title">Cursor 发布 Composer 2.5 编程模型</h3>
+                    <p class="card-summary">Cursor 发布迄今最强编程模型 Composer 2.5，在长任务处理和复杂指令跟随方面更加稳定高效，官方称效率最高可提升十倍。模型底座仍基于 Moonshot 的 Kimi K2.5。</p>
+                    <div class="card-footer">
+                        <span class="card-time">昨天 01:50</span>
+                        <a href="https://x.com/dotey/status/2056432162635731438" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Section 2: 产品发布/更新 -->
+        <section id="products" class="section">
+            <h2 class="section-title">
+                <span class="icon">📦</span>
+                产品发布/更新
+                <span class="section-badge">3 条</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">5</span>
+                        <span class="card-source">X：阿里云</span>
+                    </div>
+                    <h3 class="card-title">阿里云推出HappyHorse视频生成模型</h3>
+                    <p class="card-summary">电影级AI现已到来。🐎💨 HappyHorse现已登陆Model Studio。从原始提示词到1080p多镜头现实感画面——在统一工作流中体验视频生成的未来。</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 11:03</span>
+                        <a href="https://x.com/alibaba_cloud/status/2056182152681644176" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">6</span>
+                        <span class="card-source">IT之家</span>
+                    </div>
+                    <h3 class="card-title">腾讯 AI 设计智能体 Ardot 公测</h3>
+                    <p class="card-summary">腾讯云正式公测自研AI设计智能体平台Ardot，支持一句话生成App页面、官网、海报等可编辑设计稿，可直接导入Figma文件保留原有设计，并具备设计稿一键转换为代码的能力。</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 11:03</span>
+                        <a href="https://www.ithome.com/0/951/677.htm" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">7</span>
+                        <span class="card-source">X：PixVerse</span>
+                    </div>
+                    <h3 class="card-title">一键生成韩国棒球AI视频模板爆火</h3>
+                    <p class="card-summary">这可能是最简单的病毒式AI编辑。PixVerse → 上传自拍 → 即时生成韩国棒球镜头视频，无需指令，无需编辑，只需一键点击。</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 11:03</span>
+                        <a href="https://x.com/PixVerse_/status/2056198882321904098" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Section 3: 行业动态 -->
+        <section id="industry" class="section">
+            <h2 class="section-title">
+                <span class="icon">📰</span>
+                行业动态
+                <span class="section-badge">1 条</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">8</span>
+                        <span class="card-source">X：小互</span>
+                    </div>
+                    <h3 class="card-title">人机快递分拣对决直播</h3>
+                    <p class="card-summary">Figure 直播机器人 VS 人类 挑战 快递分拣任务，目前人类稍稍领先…😌</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 11:03</span>
+                        <a href="https://x.com/xiaohu/status/2056172740873511139" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Section 4: 论文研究 -->
+        <section id="papers" class="section">
+            <h2 class="section-title">
+                <span class="icon">📚</span>
+                论文研究
+                <span class="section-badge">1 条</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">9</span>
+                        <span class="card-source">X：腾讯混元</span>
+                    </div>
+                    <h3 class="card-title">开源古代汉字视觉感知评估基准Chronicles-OCR</h3>
+                    <p class="card-summary">开源了评估视觉大语言模型对古代汉字视觉感知能力的基准测试Chronicles-OCR，覆盖从甲骨文到草书的3000年演变历程，包含7种历史书体与2800张均衡图像。</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 10:46</span>
+                        <a href="https://x.com/TencentHunyuan/status/2056567125205270882" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Section 5: 技巧与观点 -->
+        <section id="tips" class="section">
+            <h2 class="section-title">
+                <span class="icon">💡</span>
+                技巧与观点
+                <span class="section-badge">2 条</span>
+            </h2>
+            <div class="cards-grid">
+                
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">10</span>
+                        <span class="card-source">X：Berry Xia</span>
+                    </div>
+                    <h3 class="card-title">开源工具揭露AI API中转站安全风险与检测差异</h3>
+                    <p class="card-summary">开源项目api-relay-audit通过双论文锚定路线，对AC-1工具调用改写、AC-2错误响应泄漏、上下文截断等常见攻击进行可验证的三态判定。</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 11:03</span>
+                        <a href="https://x.com/berryxia/status/2056173473588994392" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+                <article class="card scroll-animate">
+                    <div class="card-header">
+                        <span class="card-number">11</span>
+                        <span class="card-source">X：Vista</span>
+                    </div>
+                    <h3 class="card-title">Hermes 可配置的国内外 AI 模型及使用方法</h3>
+                    <p class="card-summary">Hermes 支持配置多种国内外主流AI模型，包括OpenAI GPT-5.5、xAI Grok-4.3、谷歌Gemini系列、DeepSeek V4系列、智谱GLM-5系列、Kimi K2.6等。</p>
+                    <div class="card-footer">
+                        <span class="card-time">今天上午 11:03</span>
+                        <a href="https://x.com/vista8/status/2056170241147977741" target="_blank" rel="noopener noreferrer" class="card-link">原文 →</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-stats">
+                共 11 条资讯 · 数据来源：AI HOT (aihot.virxact.com)
+            </div>
+            <p>生成时间：2026-05-19 14:47 北京时间</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
