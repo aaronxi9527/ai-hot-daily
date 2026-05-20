@@ -376,6 +376,111 @@ body {
 .task-item.progress .status { background: #5B6CF7; }
 .task-item.pending .status { background: #f59e0b; }
 
+/* AI News */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+.news-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.3s;
+}
+.news-card:hover {
+  border-color: rgba(91,108,247,0.4);
+}
+.news-card .cat {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--gradient-subtle);
+  color: #8B5CF6;
+  margin-bottom: 10px;
+}
+.news-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.news-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.news-card .src {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* Weekly */
+.weekly-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.weekly-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.weekly-num {
+  font-size: 14px;
+  font-weight: 700;
+  color: #5B6CF7;
+  white-space: nowrap;
+  min-width: 60px;
+}
+.weekly-item .info {
+  flex: 1;
+}
+.weekly-item .info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.weekly-item .info p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.weekly-item .info .src {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+.weekly-item a {
+  color: #5B6CF7;
+  text-decoration: none;
+}
+.weekly-item a:hover {
+  text-decoration: underline;
+}
+
+/* Privacy */
+.privacy-notice {
+  background: rgba(236,72,153,0.1);
+  border: 1px solid rgba(236,72,153,0.3);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 40px 0;
+  text-align: center;
+  font-size: 13px;
+  color: #EC4899;
+  line-height: 1.6;
+}
+
 /* Footer */
 .footer {
   text-align: center;
@@ -434,7 +539,7 @@ body {
       </div>
       <div class="metric-card">
         <div class="icon">🤖</div>
-        <div class="value">182</div>
+        <div class="value">212</div>
         <div class="label">AI 回复数</div>
       </div>
       <div class="metric-card">
@@ -559,6 +664,91 @@ body {
   </div>
 </section>
 
+<!-- AI Period News -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">周期 AI 大事</h2>
+    <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">本周期内 AI 领域最具影响力的进展与发布</p>
+    <div class="news-grid"><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>I/O 2026: 欢迎来到自主的 Gemini 时代</h4>
+          <p>Google 在 I/O 2026 大会上宣布 Gemini 进入自主代理时代，新功能使其能够自动执行复杂任务，显著提升用户工作效率。大会展示了 Gemini 如何通过代理操作简化工作流程，实现自动化处理，例如自动管理邮件、安排日程或生成报</p>
+          <div class="src">来源: Google Blog：AI（RSS）</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>谷歌发布Gemini Omni多模态生成模型</h4>
+          <p>介绍Gemini Omni，我们的新模型，可以从任何输入创建任何内容，首先从视频开始。 借助Gemini Omni，您可以将图像、视频和文本作为输入组合，并生成基于Gemini现实世界知识的高质量视频。#GoogleIO</p>
+          <div class="src">来源: X：Gemini (@GeminiApp)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>Gemini Omni：迈向AGI的世界模型</h4>
+          <p>真正的“哇”时刻是 Gemini Omni。一个迈向 AGI 的世界模型。 它可以从任何输入创建任何内容。这太疯狂了。</p>
+          <div class="src">来源: X：Kim (@kimmonismus)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>Gemini Omni发布：物理推理与多模态生成新突破</h4>
+          <p>Gemini Omni不仅能构建逼真的场景，还能推理接下来应该发生什么。它结合了对物理的直观理解与Gemini在历史、科学和文化背景方面的知识。 今日起，通过@Geminiapp + Google Flow和@YouTube Shorts，</p>
+          <div class="src">来源: X：Sundar Pichai (@sundarpichai)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>Gemini Omni发布：多模态生成新突破</h4>
+          <p>我们推出Gemini Omni：这是迈向一个能从任何内容生成任何内容的模型的第一步——从视频开始。 它结合了Gemini的智能与我们的生成式媒体系统——代表了在世界理解、多模态和编辑方面的飞跃🧵</p>
+          <div class="src">来源: X：Google DeepMind (@GoogleDeepMind)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>谷歌 Gemini Omni 全能模型发布：可从任意输入生成任意输出，一句话让 AI 修改视频</h4>
+          <p>在2026年谷歌I/O开发者大会上，谷歌正式推出Gemini Omni模型。该模型代表了Gemini家族迄今最全面的能力，“Omni”意为全能，能够无缝处理文本、图像、音频和视频等多种信息模态，实现“从任何输入生成任何输出”。其核心亮点在于</p>
+          <div class="src">来源: IT之家（RSS）</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>Gemini Omni发布，迈向AGI新进展</h4>
+          <p>„迈向AGI的进展“：Gemini Omni - 世界模型 -Gemini Omni官方发布！！ 它可以从任何输入创建任何内容！！！</p>
+          <div class="src">来源: X：Kim (@kimmonismus)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>首个实时多agent世界模型发布，人类可与AI同屏互动</h4>
+          <p>奥德赛实验室推出Agora-1，这是全球首个实时多agent世界模型，允许多人与AI同时在同一个模拟世界中实时互动并相互影响。该模型以经典游戏GoldenEye死亡竞赛为演示场景，提供可玩研究预览，用户现在即可体验与AI共同参与动态生成的模</p>
+          <div class="src">来源: X：Berry Xia (@berryxia)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>谷歌推出全新AI智能搜索框，支持多模态交互</h4>
+          <p>谷歌宣布推出基于Gemini 3.5模型的全新智能搜索框。该更新将AI Overviews与AI Mode整合为统一的AI搜索体验，支持对文本、图像、文件及视频进行跨模态推理查询。用户可进行多轮对话，搜索将结合上下文提供更个性化、定制化的回</p>
+          <div class="src">来源: X：Google AI (@GoogleAI)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>Claude智能体托管平台新增自托管沙箱与MCP隧道功能</h4>
+          <p>Anthropic为其Claude智能体托管平台推出两项更新：自托管沙箱允许用户在自有基础设施或合作云平台上运行工具，确保敏感数据与服务保留在用户控制范围内；MCP隧道则通过轻量网关，使智能体能安全连接企业私有网络内的数据库与API，无需暴</p>
+          <div class="src">来源: Claude：Blog（网页）</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>Gemini Spark：全天候个人AI代理</h4>
+          <p>Gemini Spark 是您的全天候个人AI代理，帮助您驾驭数字生活。 它将 Gemini 从一个回答您问题的助手，转变为一个在您的指导下、代表您完成工作的助手。#GoogleIO</p>
+          <div class="src">来源: X：Gemini (@GeminiApp)</div>
+        </div><div class="news-card">
+          <span class="cat">通用</span>
+          <h4>Google Workspace 推出全新创建方式与高效工作功能</h4>
+          <p>Google 在最新更新中为 Gmail、Docs 和 Keep 增添了新的语音功能，并推出了一款名为 Google Pics 的全新设计工具。同时，其 AI Inbox 功能也得到了升级与优化。这些更新旨在进一步提升用户在工作场景中的协作</p>
+          <div class="src">来源: Google Blog：AI（RSS）</div>
+        </div></div>
+  </div>
+</section>
+
+<!-- Weekly Summary -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">科技爱好者周刊摘要</h2>
+    <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">本周期已推送的阮一峰科技爱好者周刊回顾</p>
+    <div class="weekly-list"><div class="weekly-item">
+          <span class="weekly-num">第396期</span>
+          <div class="info">
+            <h4>阮一峰科技爱好者周刊</h4>
+            <p>这里记录每周值得分享的科技内容，周五发布。</p>
+            <div class="src">2026-05-15 · <a href="https://github.com/ruanyf/weekly/blob/master/docs/issue-396.md" target="_blank">阅读全文 →</a></div>
+          </div>
+        </div></div>
+  </div>
+</section>
+
 <!-- Tasks -->
 <section class="section">
   <div class="container">
@@ -583,9 +773,18 @@ body {
   </div>
 </section>
 
+<!-- Privacy Notice -->
+<div class="container">
+  <div class="privacy-notice">
+    🔒 本报告包含个人沟通记录，仅限本人查看。<br>
+    报告已发布到公网，查看后请及时删除。<br>
+    默认推送后一天自动删除。
+  </div>
+</div>
+
 <!-- Footer -->
 <div class="footer">
-  由 <span class="ai-tag">WorkBuddy AI</span> 生成 · 2026-05-20 09:56
+  由 <span class="ai-tag">WorkBuddy AI</span> 生成 · 2026-05-20 11:08
 </div>
 
 <script>
