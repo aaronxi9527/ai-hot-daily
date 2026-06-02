@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-02</title>
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;
+  --border:#222222;--text:#e5e5e5;--text2:#999999;
+  --c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  min-height:100vh;
+}
+.nav{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,10,10,0.85);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:56px;display:flex;align-items:center;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.nav-brand span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{margin-left:auto;font-size:13px;color:var(--text2)}
+.hero{
+  padding:64px 24px 48px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(91,108,247,0.12),transparent 70%);
+}
+.hero-icon{font-size:48px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{color:var(--text2);font-size:14px;margin-top:8px}
+.hero-badge{
+  display:inline-block;margin-top:16px;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;font-size:13px;font-weight:600;
+  padding:6px 18px;border-radius:20px;
+}
+.ai-summary{
+  max-width:720px;margin:-20px auto 40px;padding:0 24px;
+}
+.ai-summary-inner{
+  background:linear-gradient(135deg,rgba(91,108,247,0.08),rgba(139,92,246,0.08));
+  border:1px solid rgba(91,108,247,0.2);
+  border-radius:16px;padding:24px 28px;
+}
+.ai-summary-label{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+}
+.ai-summary p{font-size:14.5px;line-height:1.75;color:#d4d4d4}
+.grid{
+  max-width:1200px;margin:0 auto;padding:0 24px 80px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:15px;
+}
+.news-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:22px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;
+  opacity:0;transform:translateY(24px);
+  animation:fadeUp 0.5s ease forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.news-card:hover{
+  border-color:rgba(139,92,246,0.4);
+  box-shadow:0 4px 24px rgba(91,108,247,0.1);
+  transform:translateY(-2px);
+}
+.card-header{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag-vendor,.tag-type{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px}
+.card-title{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:10px;color:#f0f0f0}
+.card-summary{font-size:13px;line-height:1.7;color:var(--text2);margin-bottom:14px}
+.card-link{font-size:12px;color:var(--c2);text-decoration:none;font-weight:600}
+.card-link:hover{text-decoration:underline}
+.footer{
+  text-align:center;padding:32px 24px;color:var(--text2);font-size:12px;
+  border-top:1px solid var(--border);
+}
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:40px 16px 32px}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>🛡️ 防火墙厂商日报</span></div>
+  <div class="nav-date">2026-06-02 周二</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1><span>中国防火墙厂商日报</span></h1>
+  <div class="hero-meta">2026-06-02 周二 · 精选 10 条动态</div>
+  <div class="hero-badge">俊 实时聚合 · AI 解读 · 去重合并</div>
+</div>
+
+<div class="ai-summary">
+  <div class="ai-summary-inner">
+    <div class="ai-summary-label">🧠 AI 今日看点</div>
+    <p>今天最重磅：中国移动放出5939台防火墙大单，总限价4.1亿元——这是2026年规模最大的防火墙采购，各大厂商的年度业绩格局可能因此改写。新华三M9000-X AI防火墙16Tbps的极致性能则直接对标了AI算力中心这一增量市场。安全方面需要高度警惕：Cisco FMC满分漏洞（CVSS 10.0）和Palo Alto PAN-OS野外利用漏洞同时爆发，国内采用这两家方案的政企客户应紧急排查。趋势上，深信服25.3%市占率持续扩大，但山石网科自研ASIC芯片量产带来的差异化竞争正在改写中高端市场规则。</p>
+  </div>
+</div>
+
+<div class="grid">
+<article class="news-card" style="animation-delay:0.0s"><div class="card-header"><span class="tag-vendor" style="background:#6366F120;color:#6366F1;border:1px solid #6366F160">行业动态</span><span class="tag-type" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">中标项目</span></div><h3 class="card-title">中国移动发布5939台硬件防火墙大单招标：总限价4.1亿元（合并4源）</h3><p class="card-summary">5月19日，中国移动发布2026-2028年（二年期）硬件防火墙产品集中采购招标公告，预估采购规模5939台。分两个标包：高端防火墙限价3.38亿元，中低端防火墙限价0.73亿元，各标包2-3家中标人。这是2026年规模最大的防火墙采购项目，华为、新华三、深信服、山石网科等主流厂商均有望参与角逐。</p><a href="https://www.c114.com.cn/news/118/a1310704.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.08s"><div class="card-header"><span class="tag-vendor" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">新华三</span><span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span></div><h3 class="card-title">新华三 NAVIGATE 2026 发布 M9000-X AI 防火墙：16Tbps吞吐、95%告警降噪（合并5源）</h3><p class="card-summary">NAVIGATE 2026领航者峰会上，新华三正式发布M9000-X AI防火墙，搭载分布式架构与专用硬件加速引擎，实现16Tbps业内最高吞吐，时延<5us，适配AI算力集群等超高流量场景。同时发布智能体安全防护体系，围绕算力、模型、应用三大维度实现95%告警降噪，构建AI原生安全防护框架。</p><a href="https://www.h3c.com/cn/d_202605/2837365_30008_0.htm" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.16s"><div class="card-header"><span class="tag-vendor" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">山石网科</span><span class="tag-type" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">技术突破</span></div><h3 class="card-title">山石网科“双A”破局：自研ASIC芯片量产落地，AI+证券/能源头部客户中标超预期（合并3源）</h3><p class="card-summary">山石网科五年磨一剑——2021年启动自研ASIC安全芯片，2025年量产流片成功，2026年上半年规模化供货。搭载ASIC芯片的新一代安全产品已中标证券、能源等行业头部客户，中标情况超出预期。公司确立“双A”战略——ASIC+AI化，同步推进软件化、服务化、海外化四大方向，力图在网络安全新一轮洗牌中扭转亏损局面。</p><a href="https://caifuhao.eastmoney.com/news/20260528140258043413590" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.24s"><div class="card-header"><span class="tag-vendor" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">深信服</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">深信服防火墙2026上半年市占率25.3%登顶中国第一（合并2源）</h3><p class="card-summary">根据IDC最新数据报告，深信服防火墙从2016年至今已连续9年在中国市场排名前二，2024年以21.5%市占率首次登顶，2026年上半年以25.3%市占率持续领跑。下一代防火墙AF融合AI+SASE新能力，通过云威胁情报网关和多重智能模型持续对抗新型威胁。</p><a href="https://www.ithome.com/0/911/931.htm" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.32s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">Cisco Firewall Management Center 曝 CVSS 10.0 满分漏洞 CVE-2026-20131（合并2源）</h3><p class="card-summary">2026年5月，Cisco Secure Firewall Management Center（FMC）被曝出CVSS 10.0满分的未认证远程代码执行漏洞CVE-2026-20131。攻击者无需任何凭证，仅需发送单个HTTP请求即可获取FMC完全控制权。该漏洞影响全球大量企业级防火墙部署，国内采用Cisco方案的政企客户需紧急修复。</p><a href="https://cloud.tencent.com.cn/developer/article/2673613" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.4s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">Palo Alto PAN-OS 严重漏洞 CVE-2026-0300 遭野外主动利用</h3><p class="card-summary">Palo Alto Networks披露PAN-OS软件中存在关键缓冲区溢出漏洞CVE-2026-0300，CVSS 4.0评分9.3（严重级别），允许未经认证的攻击者通过User-ID认证门户发起攻击获取root权限。该漏洞已在野外遭主动利用，全球Palo Alto防火墙用户需立即升级。</p><a href="https://www.freebuf.com/articles/network/479886.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.48s"><div class="card-header"><span class="tag-vendor" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">天融信</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">天融信连续26年防火墙市占率第一，出席2026等保大会推等保+关保协同方案（合并3源）</h3><p class="card-summary">天融信防火墙以23.88%市场份额连续26年占据国内市场第一。公司出席在成都举办的2026年网络安全等级保护技术大会，发表“等保2.0与关基保护协同主动防御”主题演讲，通过AI大模型构建智能安全运营体系，实现钓鱼邮件、漏洞攻击精准识别。同时透露2026年将持续夯实网络安全+智算云双业务战略。</p><a href="https://cloud.tencent.com.cn/developer/news/3549071" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.56s"><div class="card-header"><span class="tag-vendor" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">深信服</span><span class="tag-type" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">功能更新</span></div><h3 class="card-title">深信服 AI+SASE 赋能下一代防火墙：云威胁情报网关升级</h3><p class="card-summary">深信服下一代防火墙AF新增AI+SASE赋能能力，支持云威胁情报网关实时联动，通过AI模型检测加密流量中的隐藏威胁。客户升级版本后安全检测率和自动化处置效率实现百倍提升，尤其针对HTTPS加密流量攻击的检出率大幅优化。</p><a href="https://www.sohu.com/a/932099770_122166777" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.64s"><div class="card-header"><span class="tag-vendor" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">绿盟科技</span><span class="tag-type" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">行业动态</span></div><h3 class="card-title">绿盟科技威胁情报（NTI）与Palo Alto防火墙实现强强联动</h3><p class="card-summary">绿盟威胁情报中心（NTI）与国际知名Palo Alto防火墙实现深度联动，从测试数据看，得益于绿盟威胁情报的实时赋能，Palo Alto防火墙对最新威胁的覆盖率和检测准确率显著提升。这标志着国产威胁情报在国际主流安全产品生态中的话语权持续增强。</p><a href="https://nti.nsfocus.com/" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.72s"><div class="card-header"><span class="tag-vendor" style="background:#F9731620;color:#F97316;border:1px solid #F9731660">启明星辰</span><span class="tag-type" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">行业动态</span></div><h3 class="card-title">启明星辰深化中移动协同，推进AI安全技术升级与股东回报</h3><p class="card-summary">启明星辰披露“质量回报双提升”行动方案最新进展，面对2025年复杂市场需求，公司通过与中国移动深度协同，在AI安全领域持续布局，同时推进股东回报优化。作为中国移动控股的安全子公司，启明星辰在运营商市场的防火墙及安全服务份额持续扩大。</p><a href="https://www.sohu.com/a/1008678966_121850794" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+</div>
+
+<div class="footer">
+  数据来源：WebSearch 实时聚合 · 生成时间：2026-06-02 08:50 (GMT+8) · 由 WorkBuddy 自动化生成
+</div>
+
+</body>
+</html>
