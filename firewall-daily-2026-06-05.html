@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 — 2026年06月05日</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #161616;
+  --bg-card-hover: #1c1c1c;
+  --border: #262626;
+  --text-primary: #f1f1f1;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #6b6b6b;
+  --accent-1: #5B6CF7;
+  --accent-2: #8B5CF6;
+  --accent-3: #EC4899;
+  --gradient-hero: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+  --radius: 12px;
+  --radius-lg: 16px;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 24px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-primary); }
+.nav-date { font-size: 13px; color: var(--text-tertiary); }
+
+/* Hero */
+.hero {
+  padding: 120px 24px 60px; text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(91,108,247,0.08) 0%, rgba(139,92,246,0.04) 40%, transparent 70%);
+  pointer-events: none;
+}
+.hero-icon { font-size: 56px; margin-bottom: 16px; }
+.hero h1 {
+  font-size: 36px; font-weight: 700; letter-spacing: -0.03em;
+  background: var(--gradient-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 8px;
+}
+.hero-date { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; }
+.hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.hero-stat {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 16px 28px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.hero-stat-num { font-size: 28px; font-weight: 700; color: var(--accent-1); }
+.hero-stat-label { font-size: 13px; color: var(--text-tertiary); margin-top: 4px; }
+
+/* AI Summary */
+.ai-summary {
+  max-width: 800px; margin: 0 auto 48px; padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(91,108,247,0.06) 0%, rgba(236,72,153,0.04) 100%);
+  border: 1px solid rgba(91,108,247,0.15); border-radius: var(--radius-lg);
+  position: relative;
+}
+.ai-summary::before {
+  content: '🤖 AI 解读'; position: absolute; top: -12px; left: 24px;
+  background: var(--bg-primary); padding: 2px 12px;
+  font-size: 12px; font-weight: 600; color: var(--accent-1);
+}
+.ai-summary p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+
+/* News Grid */
+.news-grid {
+  max-width: 1120px; margin: 0 auto; padding: 0 24px 80px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.news-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+  transition: all 0.25s ease;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  position: relative; overflow: hidden;
+}
+.news-card::after {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--gradient-hero); opacity: 0; transition: opacity 0.3s;
+}
+.news-card:hover {
+  background: var(--bg-card-hover); border-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+.news-card:hover::after { opacity: 1; }
+.news-card.visible { opacity: 1; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-rank { font-size: 11px; color: var(--text-tertiary); margin-bottom: 10px; letter-spacing: 0.1em; }
+.card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+
+.vendor-tag {
+  display: inline-flex; align-items: center; padding: 3px 10px;
+  border-radius: 6px; font-size: 12px; font-weight: 600;
+  border: 1px solid; letter-spacing: 0.01em;
+}
+
+.merged-badge {
+  font-size: 11px; color: var(--text-tertiary);
+  background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px;
+}
+
+.card-title {
+  font-size: 15px; font-weight: 600; line-height: 1.5; margin-bottom: 10px;
+  color: var(--text-primary); letter-spacing: -0.01em;
+}
+
+.card-summary {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;
+}
+
+.card-sources {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.source-link {
+  font-size: 11px; color: var(--text-tertiary);
+  background: rgba(255,255,255,0.03); padding: 2px 8px; border-radius: 4px;
+}
+
+/* Footer */
+.footer {
+  text-align: center; padding: 40px 24px; border-top: 1px solid var(--border);
+  color: var(--text-tertiary); font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .hero-stats { gap: 16px; }
+  .hero-stat { padding: 12px 20px; }
+  .hero-stat-num { font-size: 22px; }
+  .news-grid { grid-template-columns: 1fr; padding: 0 16px 60px; }
+  .ai-summary { margin: 0 16px 40px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="nav-logo">🛡️ 中国防火墙厂商日报</span>
+  <span class="nav-date">2026年06月05日</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1>中国防火墙厂商日报</h1>
+  <p class="hero-date">2026年06月05日 · 数据驱动边界安全洞察</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">10</span>
+      <span class="hero-stat-label">今日条目</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">20+</span>
+      <span class="hero-stat-label">原始信源</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">8</span>
+      <span class="hero-stat-label">覆盖厂商</span>
+    </div>
+  </div>
+</section>
+
+<section class="ai-summary">
+  <p>
+    <strong>今日核心看点：</strong>Palo Alto CVE-2026-0257 成为本周最大变量——CVSS 9.1 的 GlobalProtect 认证绕过漏洞让全球 47 万台设备暴露，这一「核弹级」事件正在加速国内政企客户的国产防火墙替代决策，深信服、新华三、华为等国内头部厂商有望直接受益。<br><br>
+    <strong>厂商动态方面：</strong>深信服「加量不加价」策略（6月3日）以提升50%-100%全威胁吞吐量的技术红利对抗成本压力，策略上非常精准；新华三 M9000-X AI 防火墙 16Tbps 的吞吐量指标创下新纪录，AI 算力场景成为防火墙增量主战场。<br><br>
+    <strong>合规驱动：</strong>等保数据安全新规（GA/T 2380-2026）6月1日正式生效，数据安全合规从"可选项"变为"必选项"，启明星辰 DSFM 一体机正是瞄准这一窗口。今天的日报关键词：<em>漏洞催化替代、性能军备竞赛、合规强制落地</em>。
+  </p>
+</section>
+
+<main class="news-grid" id="newsGrid">
+
+        <article class="news-card" style="animation-delay: 0.0s">
+            <div class="card-rank">★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(249,115,22,0.15);color:#FDBA74;border-color:#F97316">
+                    行业安全
+                </span>
+                <span class="merged-badge">合并 2 源</span>
+            </div>
+            <h3 class="card-title">Palo Alto CVE-2026-0257「核弹级」漏洞：全球47万台防火墙仍暴露，国产替代窗口加速打开</h3>
+            <p class="card-summary">CVSS 9.1 严重级：GlobalProtect 门户 ECB 加密算法缺陷导致无需认证即可绕过。CISA 6/1 加入 KEV 目录，限 6/19 前修复。全球超 120 万设备受影响，能源（32%）、制造（27%）最受攻击。腾讯云已发布 PAN-OS 四层联动防御方案，实测新型攻击拦截率提升 52.3%。业内普遍认为此漏洞将加速国内政企客户向国产防火墙迁移。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 CSDN</span> <span class="source-link">📎 腾讯云开发者社区</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.08s">
+            <div class="card-rank">★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(91,108,247,0.15);color:#8FA3FF;border-color:#5B6CF7">
+                    深信服
+                </span>
+                <span class="merged-badge">合并 2 源</span>
+            </div>
+            <h3 class="card-title">深信服发布「加量不加价」方案：全威胁吞吐量提升 50%-100%，正面应对硬件涨价潮</h3>
+            <p class="card-summary">在 GPU/CPU 等核心元器件成本上涨的背景下，深信服宣布防火墙全系性能免费升级。依托自研 Platos 信创中台与麒麟 OS 源码级协同优化，文件系统性能提升 20%。通过 CPU 缓存调度调优、精简指令集优化、轻量化 DPDK 高速转发实现全链路性能跃升。新用户直接选购高性能设备，使用满 3 年老用户支持硬件焕新（置换最高可抵）。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 新浪财经</span> <span class="source-link">📎 同花顺</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.16s">
+            <div class="card-rank">★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(52,168,83,0.15);color:#81C995;border-color:#34A853">
+                    H3C
+                </span>
+                <span class="merged-badge">合并 3 源</span>
+            </div>
+            <h3 class="card-title">新华三 M9000-X AI 防火墙：16Tbps 业界最高吞吐量，重新定义 AI 时代边界安全</h3>
+            <p class="card-summary">NAVIGATE 2026 领航者峰会重磅发布。M9000-X 专为 AI 算力集群打造：16Tbps 吞吐量、<5μs 时延、识别 10000+ 种 AI 应用指纹，从传统流量防护跨越到指令集防护。同步发布 AI 安全网关（对接 20+ 大模型，原生支持 MCP 协议）和 Agentic SOC 平台（告警降噪率 95%，MTTR 降低 90%）。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 新华三官网</span> <span class="source-link">📎 智慧城市网</span> <span class="source-link">📎 365Master</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.24s">
+            <div class="card-rank">★★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(6,182,212,0.15);color:#67E8F9;border-color:#06B6D4">
+                    启明星辰
+                </span>
+                
+            </div>
+            <h3 class="card-title">等保数据安全新规 6/1 正式实施，启明星辰 DSFM 一体机对标新规开箱即用</h3>
+            <p class="card-summary">GA/T 2380-2026《等保数据安全基本要求》6 月 1 日生效，要求等保二级及以上系统同步完成网络与数据安全双重合规。启明星辰顺势推出 DSFM 软硬一体机：旁路部署、10 分钟上线，内置 200+ 协议解析引擎（含达梦、人大金仓等国产数据库），支持动态资产地图、全路径可视化和泄露追溯定责，精准对标新规三大核心要求。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 新浪财经</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.32s">
+            <div class="card-rank">★★★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(6,182,212,0.15);color:#67E8F9;border-color:#06B6D4">
+                    启明星辰
+                </span>
+                
+            </div>
+            <h3 class="card-title">启明星辰 2026 Q1 净利暴增 2950%，中国移动「网安国家队」进入业绩兑现期</h3>
+            <p class="card-summary">Q1 营收 6.67 亿（+4.15%），归母净利润 4871 万（+2950%），毛利率稳定在 59%。增长驱动力来自中国移动入主后的精细化管理和规模效应，三费大幅压降，协同销售在云安全、零信任领域落地。公司已纳入移动 BASIC6 科创体系，在大模型应用防火墙（MAF）、AI 智能体安全等前沿领域布局。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 网易</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.4s">
+            <div class="card-rank">★★★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(236,72,153,0.15);color:#F472B6;border-color:#EC4899">
+                    奇安信
+                </span>
+                
+            </div>
+            <h3 class="card-title">BCS 2026：奇安信联合云迹科技发布高安全机器人，服务机器人进入政务/能源等高安全场景</h3>
+            <p class="card-summary">6 月 2 日北京网络安全大会上，奇安信与云迹科技联合发布高安全机器人产品体系，将服务机器人从酒店、工厂等场景推向政务、能源、金融、城市安防等复杂高安全业务现场。齐向东此前在 BCS 2026 开幕式表示 AI 引爆网络安全千亿增量市场。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 新浪财经</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.48s">
+            <div class="card-rank">★★★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(234,67,53,0.15);color:#F28B82;border-color:#EA4335">
+                    华为
+                </span>
+                
+            </div>
+            <h3 class="card-title">华为 USG6525F AI 防火墙渠道促销，面向中小企业 AI 全域防护</h3>
+            <p class="card-summary">HiSecEngine USG6525F 为华为新一代 AI 防火墙，面向小型企业、行业分支和连锁商业机构，在 NGFW 能力基础上联动其他安全设备，提供 AI 全域防护。近日在渠道端开展特价促销活动。此前 MWC 2026 发布的 USG6000G 旗舰系列持续收获市场关注。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 中关村在线</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.56s">
+            <div class="card-rank">★★★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(139,92,246,0.15);color:#B794F4;border-color:#8B5CF6">
+                    天融信
+                </span>
+                <span class="merged-badge">合并 2 源</span>
+            </div>
+            <h3 class="card-title">天融信连续 26 年防火墙市占率第一，入选 Gartner 八大领域代表厂商</h3>
+            <p class="card-summary">作为中国第一台商用防火墙的缔造者，天融信已连续 26 年位居国内防火墙市场占有率第一。近期入选 Gartner 8 大领域代表厂商，覆盖网络安全、云安全、数据安全等核心赛道，标志着国产厂商从单品竞争转向平台化全栈能力。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 天融信官网</span> <span class="source-link">📎 百度百科</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.64s">
+            <div class="card-rank">★★★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(251,188,4,0.15);color:#FDD663;border-color:#FBBC04">
+                    山石网科
+                </span>
+                <span class="merged-badge">合并 2 源</span>
+            </div>
+            <h3 class="card-title">山石网科 ASIC 芯防火墙连下金融/广电两城，信创中标持续落子</h3>
+            <p class="card-summary">山石网科自研 ASIC 安全芯片防火墙接连中标某头部券商（4 月）和某省级广播电视台（2 月/3 月央采），标志着芯片自研进入利润兑现期。ASIC 方案在性能功耗比和信创适配方面形成差异化竞争壁垒，全系切换计划稳步推进。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 新浪财经</span> <span class="source-link">📎 东方财富</span>
+            </div>
+        </article>
+    
+        <article class="news-card" style="animation-delay: 0.72s">
+            <div class="card-rank">★★★★★</div>
+            <div class="card-header">
+                <span class="vendor-tag" style="background:rgba(148,163,184,0.12);color:#CBD5E1;border-color:#94A3B8">
+                    其他
+                </span>
+                
+            </div>
+            <h3 class="card-title">交大捷普六大类 58 标段入围央采，国产网络安全「第二梯队」集体上量</h3>
+            <p class="card-summary">中央国家机关 2026 年度网络安全产品框架协议联合征集结果公布，交大捷普一次性入围 WAF、IPS、IDS、网络防火墙、网闸、运维安全六大类共 58 个标段，创公司历史最高单次入围纪录。反映央采对国产安全产品的采购力度持续加大，第二梯队厂商加速上量。</p>
+            <div class="card-sources">
+                <span class="source-link">📎 百度百家</span>
+            </div>
+        </article>
+    
+</main>
+
+<footer class="footer">
+  <p>中国防火墙厂商日报 · 2026年06月05日 · AI 自动生成</p>
+  <p style="margin-top:4px;">数据来源：公开网络信息 · 仅供参考，不构成投资建议</p>
+</footer>
+
+<script>
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.news-card').forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
