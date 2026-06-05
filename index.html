@@ -5,576 +5,725 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI HOT 日报 · 2026-06-05</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0a0a;--bg-card:#111114;--bg-card-hover:#16161b;
-  --text:#e4e4e7;--text-secondary:#a1a1aa;--text-tertiary:#71717a;
-  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.1);
-  --accent-1:#5B6CF7;--accent-2:#8B5CF6;--accent-3:#EC4899;
-  --gradient:linear-gradient(135deg,var(--accent-1),var(--accent-2),var(--accent-3));
-  --radius:12px;--radius-sm:8px;--radius-xs:4px;
-  --font-mono:'SF Mono','Fira Code','Cascadia Code',monospace;
-}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-  line-height:1.6;-webkit-font-smoothing:antialiased;
-}
-/* Nav */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(10,10,10,0.82);backdrop-filter:blur(20px) saturate(180%);
-  border-bottom:1px solid var(--border);
-  padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;
-}
-.nav-brand{font-weight:700;font-size:15px;letter-spacing:-0.3px;
-  background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.nav-date{font-size:13px;color:var(--text-tertiary)}
-
-/* Hero */
-.hero{
-  padding:100px 24px 60px;text-align:center;position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;
-  background:radial-gradient(ellipse at 40% 50%,rgba(91,108,247,0.08) 0%,transparent 60%),
-             radial-gradient(ellipse at 70% 30%,rgba(236,72,153,0.06) 0%,transparent 50%);
-  pointer-events:none;
-}
-.hero-title{
-  font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:-1.5px;line-height:1.15;
-  background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  position:relative;z-index:1;margin-bottom:16px;
-}
-.hero-subtitle{
-  font-size:15px;color:var(--text-secondary);position:relative;z-index:1;
-  max-width:500px;margin:0 auto 36px;
-}
-.hero-stats{
-  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
-  position:relative;z-index:1;
-}
-.stat-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:16px 28px;
-  text-align:center;min-width:120px;
-  transition:border-color .2s;
-}
-.stat-card:hover{border-color:var(--accent-2)}
-.stat-num{font-size:28px;font-weight:700;color:var(--text);font-family:var(--font-mono)}
-.stat-label{font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
-
-/* Floating ornaments */
-.ornament{
-  position:absolute;border-radius:50%;opacity:0.15;pointer-events:none;z-index:0;
-}
-.ornament-1{width:200px;height:200px;background:var(--accent-1);filter:blur(80px);top:10%;left:5%}
-.ornament-2{width:160px;height:160px;background:var(--accent-3);filter:blur(60px);top:30%;right:8%}
-.ornament-3{width:120px;height:120px;background:var(--accent-2);filter:blur(50px);bottom:5%;left:30%}
-
-/* Section */
-.section-container{
-  max-width:1100px;margin:0 auto;padding:0 24px;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;overflow-x:hidden;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(10,10,10,0.85);border-bottom:1px solid rgba(255,255,255,0.06);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-weight:700;font-size:15px;background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-date{color:#64748b;font-size:13px;}
+.hero{padding:80px 24px 32px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(91,108,247,0.08) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(139,92,246,0.06) 0%,transparent 50%),radial-gradient(circle at 50% 80%,rgba(236,72,153,0.05) 0%,transparent 50%);animation:heroFloat 20s ease-in-out infinite;}
+@keyframes heroFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-10px,10px)}}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:800;background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;position:relative;}
+.hero p{color:#64748b;font-size:15px;position:relative;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px;max-width:800px;margin:24px auto 0;position:relative;}
+.stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px 12px;text-align:center;transition:all 0.3s;}
+.stat-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(91,108,247,0.3);transform:translateY(-2px);}
+.stat-icon{font-size:20px;margin-bottom:4px;}
+.stat-number{font-size:24px;font-weight:700;background:linear-gradient(135deg,#5B6CF7,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-label{color:#64748b;font-size:11px;margin-top:2px;}
+.container{max-width:900px;margin:0 auto;padding:0 20px 60px;}
 /* AI Summary */
-.ai-summary{
-  margin:0 auto 48px;max-width:900px;
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:28px 32px;
-  position:relative;overflow:hidden;
-}
-.ai-summary::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:var(--gradient);border-radius:0 3px 3px 0;
-}
-.ai-summary-label{
-  font-size:12px;text-transform:uppercase;letter-spacing:1.5px;
-  color:var(--accent-2);margin-bottom:12px;font-weight:600;
-}
-.ai-summary p{
-  font-size:15px;color:var(--text-secondary);line-height:1.75;
-}
-
+.ai-summary{background:linear-gradient(135deg,rgba(91,108,247,0.1),rgba(139,92,246,0.08),rgba(236,72,153,0.06));border:1px solid rgba(91,108,247,0.15);border-radius:16px;padding:24px;margin-bottom:32px;position:relative;overflow:hidden;}
+.ai-summary::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);}
+.ai-summary-title{font-size:14px;font-weight:700;color:#8B5CF6;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.ai-summary-text{color:#cbd5e1;font-size:14px;line-height:1.8;}
 /* HN SOTA */
-.hn-sota{
-  margin:0 auto 48px;max-width:900px;
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:28px 32px;
-}
-.hn-sota h2{
-  font-size:18px;font-weight:700;margin-bottom:6px;
-  background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hn-sota .hn-date{font-size:12px;color:var(--text-tertiary);margin-bottom:20px}
-.hn-tables{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(max-width:700px){.hn-tables{grid-template-columns:1fr}}
-.hn-table-wrap h3{font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
-.hn-table{
-  width:100%;border-collapse:collapse;font-size:13px;
-}
-.hn-table th{
-  text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);
-  color:var(--text-tertiary);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;
-}
-.hn-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.03);color:var(--text-secondary)}
-.hn-table tr:hover td{background:rgba(255,255,255,0.02)}
-.hn-rank{color:var(--text-tertiary);font-family:var(--font-mono);font-size:11px;width:30px}
-.hn-model{font-weight:600;color:var(--text)}
-.hn-count{font-family:var(--font-mono);font-size:13px;text-align:center;font-weight:600}
-.hn-sentiment{text-align:center;font-size:12px}
-.sent-good{color:#4ade80}.sent-mid{color:#fbbf24}.sent-bad{color:#f87171}
-
-/* Section Header */
-.section-header{
-  margin:48px auto 20px;max-width:900px;text-align:center;
-}
-.section-header h2{
-  font-size:20px;font-weight:700;color:var(--text);
-}
-.section-header .section-count{
-  font-size:12px;color:var(--text-tertiary);margin-top:4px;
-}
-
-/* Cards Grid */
-.cards-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-  gap:16px;max-width:1100px;margin:0 auto 32px;padding:0 24px;
-}
-.card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:20px 24px;
-  transition:all .25s ease;position:relative;overflow:hidden;
-  opacity:0;transform:translateY(20px);
-}
-.card.visible{opacity:1;transform:translateY(0)}
-.card:hover{
-  border-color:var(--accent-2);background:var(--bg-card-hover);
-  transform:translateY(-2px);
-}
-.card:hover::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--gradient);
-}
-.card-idx{
-  font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);
-  position:absolute;top:16px;right:20px;
-}
-.card-title{
-  font-size:15px;font-weight:600;color:var(--text);line-height:1.5;
-  margin-bottom:10px;padding-right:30px;
-}
-.card-summary{
-  font-size:13px;color:var(--text-secondary);line-height:1.6;
-  margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
-}
-.card-meta{
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-}
-.source-chip{
-  display:inline-flex;align-items:center;padding:3px 10px;
-  border-radius:20px;font-size:11px;font-weight:500;
-  background:rgba(139,92,246,0.12);color:#a78bfa;
-  max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-}
-.card-link{
-  font-size:12px;color:var(--text-tertiary);text-decoration:none;
-  transition:color .2s;white-space:nowrap;
-}
-.card-link:hover{color:var(--accent-2)}
-
-/* Merge badge */
-.merge-badge{
-  display:inline-flex;align-items:center;gap:4px;
-  font-size:10px;color:var(--accent-3);background:rgba(236,72,153,0.1);
-  padding:2px 8px;border-radius:10px;margin-left:6px;
-  border:1px solid rgba(236,72,153,0.2);
-}
-
+.sota-section{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px;margin-bottom:32px;}
+.sota-title{font-size:16px;font-weight:700;background:linear-gradient(135deg,#5B6CF7,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.sota-subtitle{font-size:12px;color:#64748b;margin-bottom:16px;}
+.sota-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+.sota-table-wrap{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:16px;}
+.sota-table-title{font-size:13px;font-weight:600;color:#94a3b8;margin-bottom:12px;}
+.sota-table-wrap table{width:100%;border-collapse:collapse;}
+.sota-table-wrap thead th{text-align:left;padding:6px 0;color:#64748b;font-size:10px;font-weight:600;text-transform:uppercase;border-bottom:1px solid #1e293b;}
+.sota-table-wrap tbody td{padding:7px 4px;border-bottom:1px solid rgba(30,41,59,0.5);font-size:12px;}
+.sota-rank{color:#64748b;font-weight:500;width:30px;}
+.sota-model{color:#e2e8f0;font-weight:500;}
+.sota-meta{text-align:right;}
+.sota-count{color:#94a3b8;font-size:11px;margin-right:4px;}
+.sota-bar{display:inline-block;width:50px;height:5px;background:#1e293b;border-radius:3px;overflow:hidden;vertical-align:middle;}
+.sota-bar-fill{height:100%;background:linear-gradient(90deg,#5B6CF7,#8B5CF6);border-radius:3px;}
+.sota-sentiment{text-align:center;font-size:11px;}
+.license-chip{background:rgba(91,108,247,0.15);color:#5B6CF7;padding:2px 6px;border-radius:4px;font-size:10px;}
+/* Section */
+.section-header{margin:28px 0 12px;padding-left:2px;}
+.section-tag{font-size:13px;font-weight:700;color:#5B6CF7;background:rgba(91,108,247,0.1);padding:4px 12px;border-radius:6px;border:1px solid rgba(91,108,247,0.2);}
+/* Cards */
+.card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px;margin-bottom:10px;transition:all 0.25s;}
+.card:hover{background:rgba(255,255,255,0.04);border-color:rgba(91,108,247,0.2);transform:translateX(4px);}
+.card-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.card-idx{color:#64748b;font-size:11px;font-weight:600;min-width:24px;}
+.card-sources{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.source-chip{display:inline-block;background:rgba(139,92,246,0.1);color:#8B5CF6;padding:2px 10px;border-radius:12px;font-size:11px;text-decoration:none;transition:all 0.2s;border:1px solid rgba(139,92,246,0.15);}
+.source-chip:hover{background:rgba(139,92,246,0.2);border-color:rgba(139,92,246,0.3);}
+.merge-badge{display:inline-block;background:linear-gradient(135deg,rgba(91,108,247,0.2),rgba(236,72,153,0.2));color:#EC4899;padding:1px 8px;border-radius:10px;font-size:10px;font-weight:600;}
+.card-title{font-size:15px;font-weight:600;color:#f1f5f9;margin-bottom:6px;line-height:1.5;}
+.card-summary{font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:10px;}
+.card-footer{display:flex;justify-content:space-between;align-items:center;}
+.card-time{color:#475569;font-size:11px;}
+.card-link{color:#5B6CF7;font-size:12px;text-decoration:none;transition:color 0.2s;}
+.card-link:hover{color:#8B5CF6;}
 /* Footer */
-.footer{
-  text-align:center;padding:48px 24px 32px;
-  color:var(--text-tertiary);font-size:12px;
+.footer{text-align:center;padding:40px 20px;color:#334155;font-size:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:20px;}
+.footer a{color:#5B6CF7;text-decoration:none;}
+/* Animation */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+/* Responsive */
+@media (max-width:640px){
+  .hero h1{font-size:24px;}
+  .sota-grid{grid-template-columns:1fr;}
+  .card-sources{gap:4px;}
 }
-.footer a{color:var(--text-secondary);text-decoration:none}
-.footer a:hover{color:var(--accent-2)}
-
-/* Animations */
-@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.hero-title,.hero-subtitle,.hero-stats,.ai-summary,.hn-sota,.section-header{animation:fadeInUp .6s ease forwards}
-.hero-subtitle{animation-delay:.1s}.hero-stats{animation-delay:.2s}
-.ai-summary{animation-delay:.3s}.hn-sota{animation-delay:.4s}
-
-/* Gradient link */
-.gradient-link{
-  color:var(--accent-2);text-decoration:none;font-weight:500;
-  transition:opacity .2s;
-}
-.gradient-link:hover{opacity:.8}
 </style>
 </head>
 <body>
-
-<!-- Nav -->
 <nav class="nav">
-  <span class="nav-brand">AI HOT · 日报</span>
+  <span class="nav-logo">AI HOT 日报</span>
   <span class="nav-date">2026-06-05</span>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="ornament ornament-1"></div>
-  <div class="ornament ornament-2"></div>
-  <div class="ornament ornament-3"></div>
-  <h1 class="hero-title">AI 圈今日速览</h1>
-  <p class="hero-subtitle">NVIDIA 全线出击 · OpenAI 承认递归自我改进 · Replit 联手 Shopify 开商店</p>
-  <div class="hero-stats">
-    <div class="stat-card"><div class="stat-num">29</div><div class="stat-label">新闻条目</div></div>
-    <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">版块</div></div>
-    <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">人气模型</div></div>
-    <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">开源模型</div></div>
-  </div>
-</section>
-
-<div class="section-container">
-
-<!-- AI Summary -->
-<div class="ai-summary">
-  <div class="ai-summary-label">AI 解读 · 今日看点</div>
-  <p>今天 AI 圈的关键词是「Nemotron 全家桶」——NVIDIA 一口气发了 Content Safety、3 Ultra、ASR 三款模型，从安全护栏到语音识别全线出击，配合台积电产能告急的新闻，算力战争的烈度可见一斑。另一个值得盯的信号是 OpenAI 公开承认「递归自我改进（RSI）已现早期迹象」，这比任何模型发布都更意味深长——AI 正在加速自身的研发，这可能是 2026 年最重要的一句话。</p>
-</div>
-
-<!-- HN SOTA -->
-<div class="hn-sota">
-  <h2>HN SOTA · 编程模型排行</h2>
-  <div class="hn-date">滚动聚合窗口：2026/5/26 - 2026/5/27（数据来源：hnup.date/hn-sota）</div>
-  <div class="hn-tables">
-    <div class="hn-table-wrap">
-      <h3>Top 10 人气排行</h3>
-      <table class="hn-table">
-        <thead><tr><th>#</th><th>模型</th><th>提及</th><th>情感</th></tr></thead>
-        <tbody>
-<tr><td class="hn-rank">1</td><td class="hn-model">Claude Opus 4.7</td><td class="hn-count">15</td><td class="hn-sentiment sent-mid">● 20%</td></tr>
-<tr><td class="hn-rank">2</td><td class="hn-model">GPT-5.5</td><td class="hn-count">10</td><td class="hn-sentiment sent-good">▲ 50%</td></tr>
-<tr><td class="hn-rank">3</td><td class="hn-model">Claude Opus Latest</td><td class="hn-count">9</td><td class="hn-sentiment sent-good">▲ 67%</td></tr>
-<tr><td class="hn-rank">4</td><td class="hn-model">GPT Chat Latest</td><td class="hn-count">8</td><td class="hn-sentiment sent-mid">● 0%</td></tr>
-<tr><td class="hn-rank">5</td><td class="hn-model">Claude Opus 4.6</td><td class="hn-count">6</td><td class="hn-sentiment sent-mid">● 17%</td></tr>
-<tr><td class="hn-rank">6</td><td class="hn-model">DeepSeek V4 Pro</td><td class="hn-count">6</td><td class="hn-sentiment sent-good">▲ 67%</td></tr>
-<tr><td class="hn-rank">7</td><td class="hn-model">GLM 5.1</td><td class="hn-count">6</td><td class="hn-sentiment sent-mid">● 33%</td></tr>
-<tr><td class="hn-rank">8</td><td class="hn-model">Claude Sonnet Latest</td><td class="hn-count">5</td><td class="hn-sentiment sent-bad">▼ 0%</td></tr>
-<tr><td class="hn-rank">9</td><td class="hn-model">GPT-4o</td><td class="hn-count">3</td><td class="hn-sentiment sent-mid">● 0%</td></tr>
-<tr><td class="hn-rank">10</td><td class="hn-model">Claude Sonnet 4.6</td><td class="hn-count">2</td><td class="hn-sentiment sent-mid">● 0%</td></tr>
-</tbody></table></div>
-    <div class="hn-table-wrap">
-      <h3>Top 5 开源模型</h3>
-      <table class="hn-table">
-        <thead><tr><th>#</th><th>模型</th><th>许可</th><th>提及</th><th>情感</th></tr></thead>
-        <tbody>
-<tr><td class="hn-rank">1</td><td class="hn-model">DeepSeek V4 Pro</td><td class="hn-count">MIT</td><td class="hn-count">6</td><td class="hn-sentiment sent-good">▲ 67%</td></tr>
-<tr><td class="hn-rank">2</td><td class="hn-model">GLM 5.1</td><td class="hn-count">MIT</td><td class="hn-count">6</td><td class="hn-sentiment sent-mid">● 33%</td></tr>
-<tr><td class="hn-rank">3</td><td class="hn-model">DeepSeek V4 Flash</td><td class="hn-count">MIT</td><td class="hn-count">2</td><td class="hn-sentiment sent-good">▲ 50%</td></tr>
-<tr><td class="hn-rank">4</td><td class="hn-model">Qwen3.6 35B A3B</td><td class="hn-count">Apache-2.0</td><td class="hn-count">2</td><td class="hn-sentiment sent-mid">● 0%</td></tr>
-<tr><td class="hn-rank">5</td><td class="hn-model">DeepSeek V3</td><td class="hn-count">MIT</td><td class="hn-count">1</td><td class="hn-sentiment sent-mid">● 0%</td></tr>
-</tbody></table></div>
+<div class="hero">
+  <h1>AI HOT 日报</h1>
+  <p>AI 行业 24 小时动态速览</p>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📡</div>
+      <div class="stat-number">28</div>
+      <div class="stat-label">今日条目</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🚀</div>
+      <div class="stat-number">4</div>
+      <div class="stat-label">模型发布</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📦</div>
+      <div class="stat-number">8</div>
+      <div class="stat-label">产品更新</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div class="stat-number">6</div>
+      <div class="stat-label">行业动态</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📄</div>
+      <div class="stat-number">3</div>
+      <div class="stat-label">论文研究</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💡</div>
+      <div class="stat-number">7</div>
+      <div class="stat-label">观点技巧</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-number">10</div>
+      <div class="stat-label">HN SOTA</div>
+    </div>
   </div>
 </div>
-<div class="section-header"><h2>模型发布/更新</h2><div class="section-count">4 条</div></div>
-<div class="cards-grid">
-    <div class="card" data-animate>
-      <span class="card-idx">#01</span>
+
+<div class="container">
+  <div class="ai-summary">
+    <div class="ai-summary-title">🧠 AI 解读</div>
+    <div class="ai-summary-text">
+      今天AI圈最值得关注的有三件事：<br>
+      1. <strong>NVIDIA 全线开花</strong> — Nemotron 3.5 安全版、Nemotron 3 Ultra 智能体推理、ASR 语音模型、合成数据生成，一天之内发布/更新了5+个模型和工具，火力全开。<br>
+      2. <strong>OpenAI 多线出击</strong> — Dreaming 记忆系统、API 审核评分、Codex iOS 插件、递归自我改进预警、生物防御计划，产品+安全+战略全面铺开。特别值得关注的是 OpenAI 首次公开承认看到 RSI（递归自我改进）的早期迹象。<br>
+      3. <strong>互联网流量结构质变</strong> — Cloudflare 数据显示机器人流量首次超过人类（57.5%），AI 爬虫、自动化脚本正在重塑互联网的基础流量形态。这不是未来，是已经发生的事。
+    </div>
+  </div>
+
+  <div class="sota-section">
+    <div class="sota-title">🏆 HN SOTA · 编程模型排行</div>
+    <div class="sota-subtitle">数据来源：Hacker News 社区讨论 · 10天滚动聚合 (05/27 – 06/05)</div>
+    <div class="sota-grid">
+      <div class="sota-table-wrap">
+        <div class="sota-table-title">📊 Top 10 人气模型</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:30px;">#</th>
+              <th>模型</th>
+              <th style="text-align:right;">提及</th>
+              <th style="text-align:center;">好评</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="sota-rank">#1</td>
+          <td class="sota-model">Anthropic: Claude Opus 4.7</td>
+          <td class="sota-meta">
+            <span class="sota-count">20次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:100%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">30% 👍</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#2</td>
+          <td class="sota-model">OpenAI: GPT Chat Latest</td>
+          <td class="sota-meta">
+            <span class="sota-count">16次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:80%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#94a3b8">0% 👎</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#3</td>
+          <td class="sota-model">OpenAI: GPT-5.5</td>
+          <td class="sota-meta">
+            <span class="sota-count">15次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:75%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">33% 👍</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#4</td>
+          <td class="sota-model">Anthropic: Claude Opus Latest</td>
+          <td class="sota-meta">
+            <span class="sota-count">10次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:50%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">60% 👍</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#5</td>
+          <td class="sota-model">Anthropic: Claude Opus 4.6</td>
+          <td class="sota-meta">
+            <span class="sota-count">9次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:45%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">22% 👍</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#6</td>
+          <td class="sota-model">DeepSeek: DeepSeek V4 Pro</td>
+          <td class="sota-meta">
+            <span class="sota-count">9次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:45%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">67% 👍</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#7</td>
+          <td class="sota-model">Z.ai: GLM 5.1</td>
+          <td class="sota-meta">
+            <span class="sota-count">7次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:35%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">29% 👍</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#8</td>
+          <td class="sota-model">Qwen: Qwen3.7 Max</td>
+          <td class="sota-meta">
+            <span class="sota-count">6次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:30%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#94a3b8">0% 👎</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#9</td>
+          <td class="sota-model">Anthropic: Claude Sonnet Latest</td>
+          <td class="sota-meta">
+            <span class="sota-count">5次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:25%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#94a3b8">0% 👎</td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#10</td>
+          <td class="sota-model">Inflection: Inflection 3 Pi</td>
+          <td class="sota-meta">
+            <span class="sota-count">4次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:20%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">75% 👍</td>
+        </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="sota-table-wrap">
+        <div class="sota-table-title">🔓 Top 10 开源模型</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:30px;">#</th>
+              <th>模型</th>
+              <th style="text-align:right;">提及</th>
+              <th style="text-align:center;">好评</th>
+              <th style="text-align:center;">许可证</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="sota-rank">#1</td>
+          <td class="sota-model">DeepSeek: DeepSeek V4 Pro</td>
+          <td class="sota-meta">
+            <span class="sota-count">9次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:45%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">67% 👍</td>
+          <td><span class="license-chip">MIT</span></td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#2</td>
+          <td class="sota-model">Z.ai: GLM 5.1</td>
+          <td class="sota-meta">
+            <span class="sota-count">7次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:35%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">29% 👍</td>
+          <td><span class="license-chip">MIT</span></td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#3</td>
+          <td class="sota-model">DeepSeek: DeepSeek V4 Flash</td>
+          <td class="sota-meta">
+            <span class="sota-count">2次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:10%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#4ade80">50% 👍</td>
+          <td><span class="license-chip">MIT</span></td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#4</td>
+          <td class="sota-model">Qwen: Qwen3.6 35B A3B</td>
+          <td class="sota-meta">
+            <span class="sota-count">2次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:10%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#94a3b8">0% 👎</td>
+          <td><span class="license-chip">Apache-2.0</span></td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#5</td>
+          <td class="sota-model">DeepSeek: DeepSeek V3</td>
+          <td class="sota-meta">
+            <span class="sota-count">1次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:5%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#94a3b8">0% 👎</td>
+          <td><span class="license-chip">MIT</span></td>
+        </tr>
+        <tr>
+          <td class="sota-rank">#6</td>
+          <td class="sota-model">MoonshotAI: Kimi K2.6</td>
+          <td class="sota-meta">
+            <span class="sota-count">1次</span>
+            <div class="sota-bar"><div class="sota-bar-fill" style="width:5%;"></div></div>
+          </td>
+          <td class="sota-sentiment" style="color:#94a3b8">0% 👎</td>
+          <td><span class="license-chip">Modified MIT</span></td>
+        </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span class="section-tag">📡 全部动态</span></div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">1</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety" target="_blank">Hugging Face：Blog（RSS）</a>
+            
+        </div>
+      </div>
       <div class="card-title">Nemotron 3.5 Content Safety：面向全球企业AI的可定制多模态安全</div>
-      <div class="card-summary">Nemotron 3.5 Content Safety基于Gemma 3 4B IT，提供128K上下文窗口，支持用户提示、可选图像与助手响应的统一多模态安全评</div>
-      <div class="card-meta">
-        <span class="source-chip">Hugging Face：Blog（RSS）</span>
-        <a href="https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Nemotron 3.5 Content Safety基于Gemma 3 4B IT，提供128K上下文窗口，支持用户提示、可选图像与助手响应的统一多模态安全评...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#02</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">2</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/SiliconFlowAI/status/2062549952266723493" target="_blank">X：硅基流动 SiliconFlow</a>
+            
+        </div>
+      </div>
       <div class="card-title">Nex-N2-Pro 发布：基于 Qwen3.5 的 397B MoE 推理模型，性能达 GPT-5.5 水平</div>
-      <div class="card-summary">neolab 推出 Nex-N2-Pro，基于 Qwen3.5-397B-A17B，总参数 397B 的 MoE 推理模型，支持 262K 上下文与多模态（VL</div>
-      <div class="card-meta">
-        <span class="source-chip">X：硅基流动 SiliconFlow (@SiliconFlowAI)</span>
-        <a href="https://x.com/SiliconFlowAI/status/2062549952266723493" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">neolab 推出 Nex-N2-Pro，基于 Qwen3.5-397B-A17B，总参数 397B 的 MoE 推理模型，支持 262K 上下文与多模态（VL...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#03</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">3</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents" target="_blank">NVIDIA Technical Blog</a>
+            
+        </div>
+      </div>
       <div class="card-title">NVIDIA Nemotron 3 Ultra 为长时间运行的智能体带来更快、更高效的推理能力</div>
-      <div class="card-summary">NVIDIA 发布 Nemotron 3 Ultra 模型，专为长时间运行的 AI 智能体设计。该模型能够在多轮对话中保持上下文、调用工具、调用子智能体，并高效</div>
-      <div class="card-meta">
-        <span class="source-chip">NVIDIA Technical Blog（开发者技术博客 · RSS）</span>
-        <a href="https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">NVIDIA 发布 Nemotron 3 Ultra 模型，专为长时间运行的 AI 智能体设计。该模型能够在多轮对话中保持上下文、调用工具、调用子智能体，并高效...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#04</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">4</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/googleaidevs/status/2062603374789263646" target="_blank">X：Google AI for Developers</a>
+            
+        </div>
+      </div>
       <div class="card-title">Google Magenta RealTime 2 (MRT2) 实时音乐模型发布</div>
-      <div class="card-summary">Google AI for Developers 宣布推出开放权重的实时音乐模型 Magenta RealTime 2 (MRT2)。该模型可通过 MIDI 键</div>
-      <div class="card-meta">
-        <span class="source-chip">X：Google AI for Developers (@googleaidev</span>
-        <a href="https://x.com/googleaidevs/status/2062603374789263646" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Google AI for Developers 宣布推出开放权重的实时音乐模型 Magenta RealTime 2 (MRT2)。该模型可通过 MIDI 键...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-</div>
-<div class="section-header"><h2>产品发布/更新</h2><div class="section-count">8 条</div></div>
-<div class="cards-grid">
-    <div class="card" data-animate>
-      <span class="card-idx">#05</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">5</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/Replit/status/2062594881625940379" target="_blank">X：Replit</a>
+            
+        </div>
+      </div>
       <div class="card-title">Replit Agent 联手 Shopify 快速建店</div>
-      <div class="card-summary">我们与 Shopify 合作，让你从想法到上线商店只需几分钟 只需告诉 Replit Agent 你想卖什么。它会： - 构建自定义店铺页面 - 创建你的 Sh</div>
-      <div class="card-meta">
-        <span class="source-chip">X：Replit (@Replit)</span>
-        <a href="https://x.com/Replit/status/2062594881625940379" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Replit与Shopify合作，让你从想法到上线商店只需几分钟。只需告诉Replit Agent你想卖什么，它会构建自定义店铺页面、创建Shopify商店、帮...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#06</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">6</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://openai.com/index/chatgpt-memory-dreaming" target="_blank">OpenAI：官网动态</a>
+            <a class="source-chip" href="https://x.com/kimmonismus/status/2062517474277675102" target="_blank">X：Kim</a>
+            <span class="merge-badge">合并2源</span>
+        </div>
+      </div>
       <div class="card-title">Dreaming: ChatGPT 推出更强的记忆系统，更好记住用户偏好</div>
       <div class="card-summary">ChatGPT 推出名为 Dreaming 的新记忆系统，能够更有效地记住用户偏好，并在跨对话场景中保持上下文的新鲜感和相关性，从而提升助手的个性化体验。</div>
-      <div class="card-meta">
-        <span class="source-chip">OpenAI：官网动态（RSS · 排除企业/客户案例）</span>
-        <a href="https://openai.com/index/chatgpt-memory-dreaming" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#07</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">7</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/GeminiApp/status/2062652523945836770" target="_blank">X：Gemini</a>
+            
+        </div>
+      </div>
       <div class="card-title">Gemini macOS 双击 Command 附加活动窗口</div>
-      <div class="card-summary">使用适用于 macOS 的 Gemini 应用，获取针对屏幕内容的定制帮助。💻 只需同时按下两个 Command ⌘ 键，即可将当前活动窗口无缝附加到聊天中，无</div>
-      <div class="card-meta">
-        <span class="source-chip">X：Gemini (@GeminiApp)</span>
-        <a href="https://x.com/GeminiApp/status/2062652523945836770" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">使用适用于 macOS 的 Gemini 应用，获取针对屏幕内容的定制帮助。只需同时按下两个 Command 键，即可将当前活动窗口无缝附加到聊天中，无需手动截...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#08</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">8</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://developers.openai.com/api/docs/guides/moderation" target="_blank">OpenAI Developers</a>
+            
+        </div>
+      </div>
       <div class="card-title">OpenAI API 新增内容审核评分</div>
-      <div class="card-summary">Moderation scores 现已在 Responses API 和 Completions API 中可用。 在与生成相同的请求流程中返回审核信号，然后</div>
-      <div class="card-meta">
-        <span class="source-chip">X：OpenAI Developers (@OpenAIDevs)</span>
-        <a href="https://x.com/OpenAIDevs/status/2062619558440267801" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Moderation scores 现已在 Responses API 和 Completions API 中可用。在与生成相同的请求流程中返回审核信号，然后由...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#09</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">9</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://www.marktechpost.com/2026/06/03/meet-openjarvis-a-local-first-framework-for-on-device-personal-ai-agents-with-tools-memory-and-learning" target="_blank">MarkTechPost（RSS）</a>
+            
+        </div>
+      </div>
       <div class="card-title">Meet OpenJarvis：一个本地优先的设备端个人AI智能体框架，支持工具、记忆与学习</div>
-      <div class="card-summary">Stanford 研究人员发布 OpenJarvis，一个完全在设备端运行推理、智能体、记忆与学习的开源框架。它将个人 AI 系统分解为五个可组合原语：Inte</div>
-      <div class="card-meta">
-        <span class="source-chip">MarkTechPost（RSS）</span>
-        <a href="https://www.marktechpost.com/2026/06/03/meet-openjarvis-a-local-first-framework-for-on-device-personal-ai-agents-with-tools-memory-and-learning" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Stanford 研究人员发布 OpenJarvis，一个完全在设备端运行推理、智能体、记忆与学习的开源框架。与最佳云端模型的性能差距在 3.2 points ...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#10</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">10</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://github.com/anthropics/defending-code-reference-harness" target="_blank">Hacker News 热门</a>
+            
+        </div>
+      </div>
       <div class="card-title">Anthropic 开源 AI 驱动漏洞发现框架</div>
       <div class="card-summary">Anthropic 将其用于 AI 驱动漏洞发现的开源框架代码托管在 GitHub 上。该框架借助 AI 技术进行漏洞发现，旨在帮助识别软件中的安全缺陷。</div>
-      <div class="card-meta">
-        <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
-        <a href="https://github.com/anthropics/defending-code-reference-harness" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#11</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">11</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/NotebookLM/status/2062653124326863077" target="_blank">X：NotebookLM</a>
+            
+        </div>
+      </div>
       <div class="card-title">NotebookLM 来源归属功能上线</div>
-      <div class="card-summary">今天，我们推出又一项呼声很高的功能：来源归属！🥳 无需再猜测。现在你可以看到每个创作物背后所用的确切公式（提示词 + 来源）。想要调整？只需轻点“迭代”，随心定</div>
-      <div class="card-meta">
-        <span class="source-chip">X：NotebookLM (@NotebookLM)</span>
-        <a href="https://x.com/NotebookLM/status/2062653124326863077" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">NotebookLM推出又一项呼声很高的功能：来源归属！现在你可以看到每个创作物背后所用的确切公式（提示词+来源）。想要调整？只需轻点迭代，随心定制。</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#12</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">12</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/OpenAIDevs/status/2062599291479478275" target="_blank">X：OpenAI Developers</a>
+            
+        </div>
+      </div>
       <div class="card-title">Codex 推出 iOS 应用构建插件</div>
-      <div class="card-summary">更多 iOS 应用循环，现已集成至 Codex。 Build iOS Apps 插件让 Codex 可在应用内浏览器查看和测试你的 iOS 应用，打开 Swif</div>
-      <div class="card-meta">
-        <span class="source-chip">X：OpenAI Developers (@OpenAIDevs)</span>
-        <a href="https://x.com/OpenAIDevs/status/2062599291479478275" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Build iOS Apps 插件让 Codex 可在应用内浏览器查看和测试你的 iOS 应用，打开 SwiftUI 预览，并无需离开 Codex 即可热重载编...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-</div>
-<div class="section-header"><h2>行业动态</h2><div class="section-count">7 条</div></div>
-<div class="cards-grid">
-    <div class="card" data-animate>
-      <span class="card-idx">#13</span>
-      <div class="card-title">台积电难以跟上AI需求：“我们只能支持这么多”</div>
-      <div class="card-summary">全球最大芯片制造商台积电表示，通过美国本土生产满足客户需求可能需要“非常长的时间”，凸显AI需求带来的产能压力。</div>
-      <div class="card-meta">
-        <span class="source-chip">The Verge：订阅版科技（RSS）</span>
-        <a href="https://www.theverge.com/tech/943066/tsmc-ai-demand-struggles" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">13</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://www.theverge.com/tech/943066/tsmc-ai-demand-struggles" target="_blank">The Verge</a>
+            
+        </div>
+      </div>
+      <div class="card-title">台积电难以跟上AI需求：我们只能支持这么多</div>
+      <div class="card-summary">全球最大芯片制造商台积电表示，通过美国本土生产满足客户需求可能需要非常长的时间，凸显AI需求带来的产能压力。</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#14</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">14</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/xiaohu/status/2062367357868355622" target="_blank">X：小互</a>
+            
+        </div>
+      </div>
       <div class="card-title">Cloudflare Radar：机器人流量首次超过人类占比57.5%</div>
-      <div class="card-summary">Cloudflare Radar 实时统计显示，过去一周（5月28日至6月4日）全球所有 HTML 网页请求流量中，57.5% 来自机器人（爬虫、AI 抓取、自</div>
-      <div class="card-meta">
-        <span class="source-chip">X：小互 (@xiaohu)</span>
-        <a href="https://x.com/xiaohu/status/2062367357868355622" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Cloudflare Radar 实时统计显示，过去一周全球所有 HTML 网页请求流量中，57.5% 来自机器人（爬虫、AI抓取、自动化脚本），仅42.5%来...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#15</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">15</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://www.ithome.com/0/959/607.htm" target="_blank">IT之家（RSS）</a>
+            
+        </div>
+      </div>
       <div class="card-title">联合国报告：2030年AI数据中心水电消耗将翻倍</div>
-      <div class="card-summary">联合国大学水、环境与健康研究所报告指出，受AI需求驱动，去年全球数据中心耗电448太瓦时（AI占五分之一），耗水4.5万亿升，碳排放1.89亿吨。预计到2030</div>
-      <div class="card-meta">
-        <span class="source-chip">IT之家（RSS）</span>
-        <a href="https://www.ithome.com/0/959/607.htm" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">联合国大学报告指出，受AI需求驱动，去年全球数据中心耗电448太瓦时（AI占五分之一），耗水4.5万亿升。预计到2030年，年耗电量将翻倍至945太瓦时（AI占...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#16</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">16</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://www.bloomberg.com/news/newsletters/2026-06-04/microsoft-says-anthropic-models-are-too-expensive" target="_blank">Bloomberg：Technology</a>
+            
+        </div>
+      </div>
       <div class="card-title">微软AI负责人：Anthropic模型太贵，正自研更便宜的替代模型</div>
       <div class="card-summary">微软AI部门负责人表示，Anthropic推出的模型成本过高，公司目前正在内部研发更廉价的替代模型，以降低成本。</div>
-      <div class="card-meta">
-        <span class="source-chip">Bloomberg：Technology（RSS）</span>
-        <a href="https://www.bloomberg.com/news/newsletters/2026-06-04/microsoft-says-anthropic-models-are-too-expensive" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#17</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">17</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/OpenRouter/status/2062538625225548118" target="_blank">X：OpenRouter</a>
+            
+        </div>
+      </div>
       <div class="card-title">DeepSeek连续四周登顶Token份额榜</div>
-      <div class="card-summary">DeepSeek 现已连续四周在我们平台的 token 份额排行榜上位居第一: https://openrouter.ai/rankings</div>
-      <div class="card-meta">
-        <span class="source-chip">X：OpenRouter (@OpenRouter)</span>
-        <a href="https://x.com/OpenRouter/status/2062538625225548118" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">DeepSeek 现已连续四周在OpenRouter平台的 token 份额排行榜上位居第一。</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#18</span>
-      <div class="card-title">Nemotron Parakeet ASR 印尼语准确率达 97.7%</div>
-      <div class="card-summary">当法律和监督依赖于转录内容时，70-80% 是不够的。 http://Rafiqspace.ai 通过微调 Nemotron Parakeet ASR 达到了 </div>
-      <div class="card-meta">
-        <span class="source-chip">X：NVIDIA (@nvidia)</span>
-        <a href="https://x.com/nvidia/status/2062647600424128773" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">18</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://github.blog/news-insights/company-news/github-universe-is-back-all-together-now-in-the-agentic-era" target="_blank">GitHub Blog</a>
+            
+        </div>
       </div>
-    </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#19</span>
       <div class="card-title">GitHub Universe 回归：齐聚智能体时代</div>
-      <div class="card-summary">GitHub Universe 2026 将于 10 月 28–29 日重返旧金山 Fort Mason Center，主题聚焦智能体（agentic）时代。</div>
-      <div class="card-meta">
-        <span class="source-chip">GitHub Blog</span>
-        <a href="https://github.blog/news-insights/company-news/github-universe-is-back-all-together-now-in-the-agentic-era" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">GitHub Universe 2026 将于 10 月 28-29 日重返旧金山 Fort Mason Center，主题聚焦智能体（agentic）时代。</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-</div>
-<div class="section-header"><h2>技巧与观点</h2><div class="section-count">7 条</div></div>
-<div class="cards-grid">
-    <div class="card" data-animate>
-      <span class="card-idx">#20</span>
-      <div class="card-title">OpenAI称AI递归自我改进迹象初现</div>
-      <div class="card-summary">OpenAI刚刚写道：“我们也看到了当今系统中递归自我改进（RSI）的早期迹象：AI开发本身正被AI加速。 我们预计这将加剧开发者与国家之间的竞争压力，并带来现</div>
-      <div class="card-meta">
-        <span class="source-chip">X：Kim (@kimmonismus)</span>
-        <a href="https://x.com/kimmonismus/status/2062517474277675102" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">19</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera" target="_blank">Google Research：Blog</a>
+            
+        </div>
       </div>
-    </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#21</span>
-      <div class="card-title">Boson AI 与 LMSYS 发布基于 SGLang-Omni 的 Higgs Audio v3 TTS 端到端服务</div>
-      <div class="card-summary">Boson AI 与 LMSYS 联合推出基于 SGLang-Omni 推理框架的 Higgs Audio v3 TTS 端到端服务。该模型约 4B 参数，基于</div>
-      <div class="card-meta">
-        <span class="source-chip">LMSYS：Blog（Chatbot Arena 团队）</span>
-        <a href="https://www.lmsys.org/blog/2026-06-04-higgs-audio-v3-tts" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
-      </div>
-    </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#22</span>
-      <div class="card-title">Nemotron 3.5 ASR：为你的语言、领域或口音进行微调</div>
-      <div class="card-summary">Nemotron 3.5 ASR 是一个 600M 参数的多语言流式语音识别模型，单个检查点覆盖 40 种语言-地区（含英、西、德、法、意、日、韩、中、阿拉伯等</div>
-      <div class="card-meta">
-        <span class="source-chip">Hugging Face：Blog（RSS）</span>
-        <a href="https://huggingface.co/blog/nvidia/fine-tuning-nemotron-35-asr" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
-      </div>
-    </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#23</span>
-      <div class="card-title">共存与协同智能的终结</div>
-      <div class="card-summary">Ethan Mollick 在 One Useful Thing 博客中，以“共存与协同智能的终结”为题，并附带介绍了如何向 AI 推销一本书。</div>
-      <div class="card-meta">
-        <span class="source-chip">Ethan Mollick：One Useful Thing（RSS）</span>
-        <a href="https://www.oneusefulthing.org/p/co-existence-and-the-end-of-co-intelligence" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
-      </div>
-    </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#24</span>
-      <div class="card-title">OpenRouter 翻遍 11 款 LLM 找最快的决策模型：Claude vs. Grok 领衔</div>
-      <div class="card-summary">OpenRouter 用总价 482 美元的推理花费，让 11 款大语言模型在 30 轮实时决策的“大逃杀”挑战中正面竞争。实验结果表明，传统的静态 bench</div>
-      <div class="card-meta">
-        <span class="source-chip">OpenRouter：Announcements（RSS）</span>
-        <a href="https://openrouter.ai/announcements/royale-last-agent-standing" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
-      </div>
-    </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#25</span>
-      <div class="card-title">Alex Imas 和 Phil Trammell：AGI 后什么仍然稀缺？</div>
-      <div class="card-summary">经济学家 Alex Imas 和 Phil Trammell 指出，AGI 时代机器人数量可以快速复制增长，但人类独特技能（以芭蕾舞演员为例）的数量保持不变，揭</div>
-      <div class="card-meta">
-        <span class="source-chip">Dwarkesh Patel：Podcast & Blog（RSS）</span>
-        <a href="https://www.dwarkesh.com/p/alex-imas-phil-trammell" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
-      </div>
-    </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#26</span>
-      <div class="card-title">OpenAI 发布《智能时代的生物防御》行动计划，以 AI 驱动生物韧性</div>
-      <div class="card-summary">OpenAI 提出一项名为“Biodefense in the Intelligence Age”的行动计划，旨在利用 AI 增强生物防御与韧性。该计划聚焦于构</div>
-      <div class="card-meta">
-        <span class="source-chip">OpenAI：官网动态（RSS · 排除企业/客户案例）</span>
-        <a href="https://openai.com/index/biodefense-in-the-intelligence-age" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
-      </div>
-    </div>
-</div>
-<div class="section-header"><h2>论文研究</h2><div class="section-count">3 条</div></div>
-<div class="cards-grid">
-    <div class="card" data-animate>
-      <span class="card-idx">#27</span>
       <div class="card-title">Google Research 发布被动心率监测系统 PHRM</div>
-      <div class="card-summary">Google Research 开发了一种被动心率监测系统（PHRM），利用智能手机前置摄像头在日常使用中（人脸解锁后数秒内）捕捉面部视频，通过深度学习估算心率</div>
-      <div class="card-meta">
-        <span class="source-chip">Google Research：Blog（网页）</span>
-        <a href="https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">Google Research开发了被动心率监测系统（PHRM），利用智能手机前置摄像头在日常使用中捕捉面部视频，通过深度学习估算心率，MAPE低于10%（对比...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#28</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">20</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://huggingface.co/blog/nvidia/task-seeded-sdg" target="_blank">Hugging Face：Blog（RSS）</a>
+            
+        </div>
+      </div>
       <div class="card-title">Nemotron 预训练的任务种子合成问答生成</div>
-      <div class="card-summary">在 Nemotron-3 Nano 模型的 100B token 续训练实验中，任务种子合成数据生成（Task-Seeded SDG）使 MMLU-Pro 提升</div>
-      <div class="card-meta">
-        <span class="source-chip">Hugging Face：Blog（RSS）</span>
-        <a href="https://huggingface.co/blog/nvidia/task-seeded-sdg" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">在 Nemotron-3 Nano 模型的 100B token 续训练实验中，任务种子合成数据生成使 MMLU-Pro 提升 1.8 分，平均代码提升 1.9...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
-    <div class="card" data-animate>
-      <span class="card-idx">#29</span>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">21</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://x.com/NVIDIAAI/status/2358080222876041" target="_blank">X：NVIDIA AI</a>
+            
+        </div>
+      </div>
       <div class="card-title">NVIDIA PPISP：补偿光度变化提升3D重建</div>
-      <div class="card-summary">辐射场的质量取决于其背后的图像。 PPISP 可帮助补偿不同拍摄之间的光度变化，使 3D 重建在光照和相机设置不完全一致时更加鲁棒。 🔗 项目：https://</div>
-      <div class="card-meta">
-        <span class="source-chip">X：NVIDIA AI (@NVIDIAAI)</span>
-        <a href="https://x.com/NVIDIAAI/status/2062358080222876041" class="card-link" target="_blank" rel="noopener">查看原文 &#8599;</a>
+      <div class="card-summary">PPISP 可帮助补偿不同拍摄之间的光度变化，使 3D 重建在光照和相机设置不完全一致时更加鲁棒。</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
       </div>
     </div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">22</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://www.lmsys.org/blog/2026-06-04-higgs-audio-v3-tts" target="_blank">LMSYS：Blog</a>
+            
+        </div>
+      </div>
+      <div class="card-title">Boson AI 与 LMSYS 发布基于 SGLang-Omni 的 Higgs Audio v3 TTS</div>
+      <div class="card-summary">Boson AI & LMSYS联合推出基于SGLang-Omni推理框架的Higgs Audio v3 TTS。约4B参数，基于Qwen3-4B骨干，支持10...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">23</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://huggingface.co/blog/nvidia/fine-tuning-nemotron-35-asr" target="_blank">Hugging Face：Blog（RSS）</a>
+            
+        </div>
+      </div>
+      <div class="card-title">Nemotron 3.5 ASR：为你的语言、领域或口音进行微调</div>
+      <div class="card-summary">Nemotron 3.5 ASR 是一个 600M 参数的多语言流式语音识别模型，单个检查点覆盖 40 种语言-地区。支持指定语言或自动语言检测，可在推理时直接...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">24</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://www.oneusefulthing.org/p/co-existence-and-the-end-of-co-intelligence" target="_blank">Ethan Mollick：One Useful Thing</a>
+            
+        </div>
+      </div>
+      <div class="card-title">共存与协同智能的终结</div>
+      <div class="card-summary">Ethan Mollick 以共存与协同智能的终结为题，探讨AI时代人类与AI关系的变化，并附带介绍了如何向 AI 推销一本书。</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">25</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://openrouter.ai/announcements/royale-last-agent-standing" target="_blank">OpenRouter：Announcements</a>
+            
+        </div>
+      </div>
+      <div class="card-title">OpenRouter 翻遍 11 款 LLM 找最快的决策模型：Claude vs. Grok 领衔</div>
+      <div class="card-summary">OpenRouter 用总价 482 美元的推理花费，让 11 款大语言模型在30轮实时决策的大逃杀挑战中正面竞争。Claude和Grok系列在决策速度与任务成...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">26</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://www.dwarkesh.com/p/alex-imas-phil-trammell" target="_blank">Dwarkesh Patel：Podcast & Blog</a>
+            
+        </div>
+      </div>
+      <div class="card-title">Alex Imas 和 Phil Trammell：AGI 后什么仍然稀缺？</div>
+      <div class="card-summary">经济学家指出，AGI时代机器人数量可以快速复制增长，但人类独特技能（以芭蕾舞演员为例）的数量保持不变，揭示了即使技术大幅进步，某些稀缺资源仍不可替代。</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <span class="card-idx">27</span>
+        <div class="card-sources">
+            <a class="source-chip" href="https://openai.com/index/biodefense-in-the-intelligence-age" target="_blank">OpenAI：官网动态</a>
+            
+        </div>
+      </div>
+      <div class="card-title">OpenAI 发布《智能时代的生物防御》行动计划</div>
+      <div class="card-summary">OpenAI 提出Biodefense in the Intelligence Age行动计划，旨在利用 AI 增强生物防御与韧性，聚焦于构建 AI 驱动的生物...</div>
+      <div class="card-footer">
+        <span class="card-time">06-05</span>
+      </div>
+    </div>
+
+
 </div>
 
-</div><!-- section-container -->
-
-<footer class="footer">
-  <p>AI HOT 日报 · 2026-06-05 · 由 <a href="https://aihot.virxact.com" target="_blank">aihot.virxact.com</a> 提供数据</p>
-  <p style="margin-top:4px">HN SOTA 数据来源：<a href="https://hnup.date/hn-sota" target="_blank">hnup.date/hn-sota</a></p>
-</footer>
+<div class="footer">
+  <p>AI HOT 日报 · 2026-06-05 · 自动化生成</p>
+  <p>数据来源：<a href="https://aihot.virxact.com" target="_blank">AI HOT</a> · <a href="https://hnup.date/hn-sota" target="_blank">HN SOTA</a></p>
+</div>
 
 <script>
-// IntersectionObserver for card animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el);});
+})();
 </script>
-
 </body>
 </html>
