@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 | 2026年6月7日</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #0a0a0a;
+  color: #e5e5e5;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #8B9CF7; text-decoration: none; }
+a:hover { color: #A5B4FC; }
+
+/* Nav */
+.nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(10,10,10,0.72);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 24px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { font-size:15px; font-weight:600; color:#e5e5e5; letter-spacing:-0.2px; }
+.nav-date { font-size:13px; color:#6B7280; }
+
+/* Container */
+.container { max-width: 860px; margin:0 auto; padding: 88px 24px 64px; }
+
+/* Hero */
+.hero {
+  text-align: center; padding: 48px 0 40px;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(91,108,247,0.08) 0%, transparent 70%);
+  border-radius: 16px; margin-bottom: 32px;
+}
+.hero-title {
+  font-size: 32px; font-weight:700; letter-spacing:-0.5px;
+  background: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero-date { font-size:15px; color:#6B7280; margin-bottom:4px; }
+.hero-count {
+  font-size:14px; color:#8B5CF6;
+  display: inline-flex; align-items:center; gap:6px;
+}
+.hero-count .num { font-size:28px; font-weight:700; color:#5B6CF7; }
+
+/* AI Summary */
+.ai-summary {
+  background: linear-gradient(135deg, rgba(91,108,247,0.06) 0%, rgba(139,92,246,0.06) 50%, rgba(236,72,153,0.06) 100%);
+  border: 1px solid rgba(139,92,246,0.12); border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 36px;
+}
+.ai-summary-label {
+  font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+  color: #8B5CF6; margin-bottom: 10px;
+  display: flex; align-items:center; gap:6px;
+}
+.ai-summary-label::before { content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:#8B5CF6; }
+.ai-summary p {
+  font-size:14.5px; color:#c5c5d2; line-height:1.8;
+}
+
+/* Cards */
+.grid { display:flex; flex-direction:column; gap:14px; }
+.card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 22px 24px;
+  transition: border-color 0.2s, transform 0.2s, opacity 0.6s, translate 0.6s;
+  opacity: 0; translate: 0 20px;
+}
+.card.visible { opacity:1; translate:0 0; }
+.card:hover { border-color: rgba(139,92,246,0.25); transform: translateY(-1px); }
+.card-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.tag {
+  font-size:11px; font-weight:600; padding:2px 10px; border-radius:20px;
+  letter-spacing:0.3px;
+}
+.card-title {
+  font-size:16px; font-weight:600; color:#f0f0f0;
+  margin-bottom:8px; letter-spacing:-0.2px;
+}
+.card-summary {
+  font-size:13.5px; color:#9ca3af; line-height:1.7;
+}
+.sources { margin-top:12px; display:flex; gap:10px; }
+.sources a {
+  font-size:12px; color:#5B6CF7; background:rgba(91,108,247,0.08);
+  padding:2px 10px; border-radius:14px; transition:background 0.2s;
+}
+.sources a:hover { background:rgba(91,108,247,0.18); }
+
+/* Footer */
+.footer {
+  text-align:center; padding:40px 0 20px;
+  font-size:12px; color:#4B5563;
+}
+.footer .gradient-bar {
+  width:60px; height:3px; border-radius:2px;
+  background: linear-gradient(90deg, #5B6CF7, #8B5CF6, #EC4899);
+  margin:0 auto 16px;
+}
+
+@media (max-width:640px) {
+  .container { padding:80px 16px 40px; }
+  .hero-title { font-size:24px; }
+  .card { padding:16px 18px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand">🛡️ 中国防火墙厂商日报</span>
+  <span class="nav-date">2026年6月7日</span>
+</nav>
+
+<main class="container">
+
+  <section class="hero">
+    <h1 class="hero-title">🛡️ 中国防火墙厂商日报</h1>
+    <div class="hero-date">2026年6月7日</div>
+    <div class="hero-count"><span class="num">10</span> 条要闻（去重合并后）</div>
+  </section>
+
+  <section class="ai-summary">
+    <div class="ai-summary-label">🤖 AI 今日解读</div>
+    <p>本周防火墙领域的关键词是「AI 攻防重塑格局」——BCS 2026 上奇安信把攻击突破时间压低到了 27 秒，倒逼整个行业从单点防御转向「三位一体」体系化作战；Palo Alto CVE-2026-0257 持续发酵，CISA 罕见限时 19 天修复，客观上加速了政企客户的国产替代决策。深信服「加量不加价」的策略在硬件涨价潮中用技术换市场，对中小政企是实打实的利好。天融信在 Gartner 报告和国标参编上双线出击，显示老牌厂商正在从单品竞争升级为「标准+平台」的全栈能力比拼。</p>
+  </section>
+
+  <section class="grid">
+    
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">奇安信</span><span class="tag" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">行业风向</span></div>
+      <h3 class="card-title">BCS 2026 开幕：齐向东称 AI 引爆千亿增量市场，提出「三位一体」安全架构</h3>
+      <p class="card-summary">6月2日，第八届北京网络安全大会（BCS 2026）开幕，主题「AI时代，攻防先行」。奇安信董事长齐向东指出Mythos大模型使攻击突破时间压缩至27秒，提出攻击侧高效化/防护侧静态化的「三个攻防失衡」，并发布「三位一体」安全体系：低位全栈AI化安全产品（含防火墙/EDR）、中位AI智能体运营调度、高位大模型底座决策。大会持续引发行业热议。（合并3源）</p>
+      <div class="sources"><a href="https://www.secrss.com/articles/90928" target="_blank" rel="noopener">源1</a><a href="https://news.qq.com/rain/a/20260602A09OAD00" target="_blank" rel="noopener">源2</a><a href="https://bcs.qianxin.com/2026/index/index" target="_blank" rel="noopener">源3</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#EF444420;color:#EF4444;border:1px solid #EF444440">安全漏洞</span><span class="tag" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F640">行业趋势</span></div>
+      <h3 class="card-title">Palo Alto CVE-2026-0257 核弹级漏洞持续发酵：CISA 加入 KEV，全球 47 万台仍暴露</h3>
+      <p class="card-summary">6月1日CISA紧急将CVE-2026-0257加入已知被利用漏洞目录，CVSS 9.1，要求联邦机构6月19日前修复。该漏洞为PAN-OS GlobalProtect认证绕过，攻击者可伪造任意身份绕过安全策略。6月5-6日国内安全社区持续发布深度解析，全球约47万台PAN-OS设备仍暴露于公网，加速政企客户国产防火墙替代决策。（合并2源）</p>
+      <div class="sources"><a href="http://www.jsqmd.com/news/946659/" target="_blank" rel="noopener">源1</a><a href="https://blog.csdn.net/weixin_42376192/article/details/161643536" target="_blank" rel="noopener">源2</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#6366F120;color:#6366F1;border:1px solid #6366F140">行业标准</span><span class="tag" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">合规</span></div>
+      <h3 class="card-title">等保数据安全新规 GA/T 2380-2026 正式生效，企业合规迎来硬性管控</h3>
+      <p class="card-summary">6月1日起，公安部发布的GA/T 2380-2026《网络安全等级保护数据安全基本要求》及三项配套标准正式施行，首次系统性将数据安全纳入等保体系。新规覆盖数据分类分级、安全审计、加密存储等全生命周期，对防火墙等安全产品提出更高数据安全能力要求。6月5日多源解读文章集中发布，标志合规从「建议」走向「强制」。（合并2源）</p>
+      <div class="sources"><a href="https://finance.sina.com.cn/wm/2026-06-05/doc-iniakfhp1616432.shtml" target="_blank" rel="noopener">源1</a><a href="https://www.sohu.com/a/1028666993_122255602" target="_blank" rel="noopener">源2</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#5B6CF720;color:#5B6CF7;border:1px solid #5B6CF740">深信服</span></div>
+      <h3 class="card-title">深信服「加量不加价」：全栈软件调优使全威胁吞吐量提升 50%-100%</h3>
+      <p class="card-summary">面对全球硬件供应链涨价潮，深信服发布「加量不加价」防火墙方案——依托全栈软件调优技术，在相同硬件配置下实现全威胁吞吐量提升50%-100%，不加价。业界分析认为这是以技术红利对抗成本压力、以性价比抢占市场份额的主动策略，对中小政企客户吸引力显著。（合并2源）</p>
+      <div class="sources"><a href="https://finance.sina.com.cn/wm/2026-06-03/doc-iniaarqx1103281.shtml" target="_blank" rel="noopener">源1</a><a href="https://www.sangfor.com.cn/news" target="_blank" rel="noopener">源2</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">天融信</span></div>
+      <h3 class="card-title">天融信入选 Gartner 2026 中国网络安全技术成熟度曲线 8 大领域代表厂商</h3>
+      <p class="card-summary">Gartner发布《Hype Cycle for Cybersecurity in China, 2026》，天融信凭借前沿布局与研发实战，被列入AI安全测试、数据安全态势管理、AI网关、对抗性暴露验证、数据安全平台、智能体AI安全、暴露面评估平台、安全AI助手共8大技术领域代表厂商，是入选领域最多的国产网安厂商之一。（合并3源）</p>
+      <div class="sources"><a href="http://www.topsec.com.cn/newsx/6637" target="_blank" rel="noopener">源1</a><a href="https://finance.sina.com.cn/wm/2026-06-02/doc-inhzysxv1765334.shtml" target="_blank" rel="noopener">源2</a><a href="http://news.10jqka.com.cn/20260602/c677145013.shtml" target="_blank" rel="noopener">源3</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">天融信</span></div>
+      <h3 class="card-title">天融信参编 6 项网络安全国家标准正式发布</h3>
+      <p class="card-summary">6月5日，国家市场监督管理总局、国家标准化管理委员会发布2026年第23号国家标准公告，天融信参编的6项网络安全推荐性国家标准正式发布，涵盖数据安全、安全评估、安全能力等方向，持续强化其在行业标准制定中的话语权。</p>
+      <div class="sources"><a href="https://news.10jqka.com.cn/20260605/c677246161.shtml" target="_blank" rel="noopener">源</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">山石网科</span></div>
+      <h3 class="card-title">山石网科 Q1 2026：营收增 14.44%，亏损大幅收窄 53.65%，ASIC 芯片量产推进中</h3>
+      <p class="card-summary">山石网科2026年一季报显示营收1.81亿元同比增14.44%，归母净利润亏损3448.63万元大幅收窄53.65%，毛利率69.65%。公司自研ASIC安全专用芯片已于2026年Q1量产回片测试成功，搭载ASIC的新一代安全产品正在推进，CPU占用率降至个位数。股价近期在16-17元区间波动。（合并2源）</p>
+      <div class="sources"><a href="https://www.sohu.com/a/1030694493_121319643" target="_blank" rel="noopener">源1</a><a href="https://quote.eastmoney.com/sh688030.html" target="_blank" rel="noopener">源2</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#5B6CF720;color:#5B6CF7;border:1px solid #5B6CF740">深信服</span></div>
+      <h3 class="card-title">深信服召开 2025 年度股东会，完成职工代表董事换届选举</h3>
+      <p class="card-summary">6月3日，深信服召开2025年年度股东大会，审议通过多项议案，并完成职工代表董事换届选举。公司治理层面的平稳过渡，为AI First战略持续推进提供组织保障。深信服股价近期出现超30%回撤后企稳，市场关注其AI安全产品商业化进展。</p>
+      <div class="sources"><a href="https://www.dayfund.com.cn/stock/300454.html" target="_blank" rel="noopener">源1</a><a href="https://stockpage.10jqka.com.cn/300454/news/" target="_blank" rel="noopener">源2</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#10B98120;color:#10B981;border:1px solid #10B98140">H3C/新华三</span></div>
+      <h3 class="card-title">新华三智能体安全防护体系及 M9000-X AI 防火墙持续引发行业关注</h3>
+      <p class="card-summary">自5月NAVIGATE 2026峰会发布以来，新华三「智能体安全防护体系」及业界最高性能AI防火墙M9000-X持续在安全社区引发讨论。该体系以AI技术为核心实现95%告警降噪，盒式F1000-AI-25-G等型号在政企边缘场景满足等保2.0二级要求，成为中小政企AI防火墙入门选择。</p>
+      <div class="sources"><a href="https://www.h3c.com/cn/d_202605/2837365_30008_0.htm" target="_blank" rel="noopener">源1</a><a href="https://bk.taobao.com/k/fanghuoqiang_16737/1df38308e9f594371c8c5bc589f29774.html" target="_blank" rel="noopener">源2</a></div>
+    </article>
+    <article class="card">
+      <div class="card-tags"><span class="tag" style="background:#EF444420;color:#EF4444;border:1px solid #EF444440">安全漏洞</span><span class="tag" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">国际参照</span></div>
+      <h3 class="card-title">Fortinet FortiWeb 缓冲区溢出漏洞（CNVD-2026-21559）警示 WAF 安全</h3>
+      <p class="card-summary">国家信息安全漏洞共享平台（CNVD）5月收录Fortinet FortiWeb Web应用防火墙缓冲区溢出漏洞，可导致拒绝服务或远程代码执行。作为国际防火墙巨头，Fortinet近年来漏洞频发（含CVE-2025-64155、CVE-2026-35616等），进一步引发了全球对防火墙供应链安全的关注，也为国产WAF替代提供窗口。</p>
+      <div class="sources"><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2026-21559" target="_blank" rel="noopener">源1</a><a href="https://zone.ci/secarticles/wx/502525.html" target="_blank" rel="noopener">源2</a></div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="gradient-bar"></div>
+    数据来源：公开网络 · 自动化生成 · AI 去重合并<br>
+    生成时间：2026年6月7日 北京时间
+  </footer>
+
+</main>
+
+<script>
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.card').forEach(card => observer.observe(card));
+})();
+</script>
+</body>
+</html>
