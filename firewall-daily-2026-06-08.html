@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-08</title>
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;
+  --border:#222222;--text:#e5e5e5;--text2:#999999;
+  --c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  min-height:100vh;
+}
+.nav{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,10,10,0.85);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:56px;display:flex;align-items:center;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.nav-brand span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{margin-left:auto;font-size:13px;color:var(--text2)}
+.hero{
+  padding:64px 24px 48px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(91,108,247,0.12),transparent 70%);
+}
+.hero-icon{font-size:48px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{color:var(--text2);font-size:14px;margin-top:8px}
+.hero-badge{
+  display:inline-block;margin-top:16px;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;font-size:13px;font-weight:600;
+  padding:6px 18px;border-radius:20px;
+}
+.ai-summary{
+  max-width:720px;margin:-20px auto 40px;padding:0 24px;
+}
+.ai-summary-inner{
+  background:linear-gradient(135deg,rgba(91,108,247,0.08),rgba(139,92,246,0.08));
+  border:1px solid rgba(91,108,247,0.2);
+  border-radius:16px;padding:24px 28px;
+}
+.ai-summary-label{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+}
+.ai-summary p{font-size:14.5px;line-height:1.75;color:#d4d4d4}
+.grid{
+  max-width:1200px;margin:0 auto;padding:0 24px 80px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:15px;
+}
+.news-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:22px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;
+  opacity:0;transform:translateY(24px);
+  animation:fadeUp 0.5s ease forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.news-card:hover{
+  border-color:rgba(139,92,246,0.4);
+  box-shadow:0 4px 24px rgba(91,108,247,0.1);
+  transform:translateY(-2px);
+}
+.card-header{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag-vendor,.tag-type{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px}
+.card-title{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:10px;color:#f0f0f0}
+.card-summary{font-size:13px;line-height:1.7;color:var(--text2);margin-bottom:14px}
+.card-link{font-size:12px;color:var(--c2);text-decoration:none;font-weight:600}
+.card-link:hover{text-decoration:underline}
+.footer{
+  text-align:center;padding:32px 24px;color:var(--text2);font-size:12px;
+  border-top:1px solid var(--border);
+}
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:40px 16px 32px}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>🛡️ 防火墙厂商日报</span></div>
+  <div class="nav-date">2026-06-08 周一</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1><span>中国防火墙厂商日报</span></h1>
+  <div class="hero-meta">2026-06-08 周一 · 精选 10 条动态</div>
+  <div class="hero-badge">实时聚合 · AI 解读 · 去重合并</div>
+</div>
+
+<div class="ai-summary">
+  <div class="ai-summary-inner">
+    <div class="ai-summary-label">🧠 AI 今日看点</div>
+    <p>本周BCS 2026的余波仍在扩散——齐向东提出的「三位一体」安全架构，本质上是在说AI让攻击从单点突破升级为全域碾压，防守方不能再按功能模块各自为战了。山石网科信用评级被下调至A-、展望负面，跟之前ASIC芯片量产的利好形成鲜明反差——芯片故事讲得再好，利润兑现才是硬道理。Fortinet的全球威胁报告数据相当炸裂：勒索受害者年增389%、CVE增速263%，这直接解释了为什么等保数据安全新规6月1日落地不是巧合。建议重点关注深信服8008万回购接近下限后的下一步动作，以及Palo Alto VPN漏洞持续发酵对国产替代节奏的加速效应。</p>
+  </div>
+</div>
+
+<div class="grid">
+<article class="news-card" style="animation-delay:0.0s"><div class="card-header"><span class="tag-vendor" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">奇安信</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">AI安全</span></div><h3 class="card-title">BCS 2026 持续发酵：齐向东提出「三位一体」安全架构，AI攻防失衡成行业共识（合并7源）</h3><p class="card-summary">第八届北京网络安全大会（BCS 2026）6月2日开幕后持续引发行业讨论。奇安信董事长齐向东指出AI使攻击突破时间压至27秒，提出「网络+信息+认知三位一体」协同防御体系。数据显示中美网安产业差距达12倍（美国超1万亿 vs 中国约800亿），AI时代三类安全需求集中爆发：AI漏洞攻击、AI武器化攻击、AI合规需求。世界经济论坛2026年报告显示94%受访者认为AI将是未来一年网安最重要变化驱动力。云迹科技联合奇安信发布高安全机器人产品，标志安全能力从虚拟走向物理场景。</p><a href="https://bcs.qianxin.com/2026/index/index" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.08s"><div class="card-header"><span class="tag-vendor" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">深信服</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">深信服完成第四届董事会换届，累计回购8008万元接近计划下限（合并5源）</h3><p class="card-summary">6月3日，深信服召开2025年年度股东大会完成董事会换届，冯毅得票率最高、何朝曦紧随其后，蒋文光当选职工代表董事。同日公告显示，截至5月31日公司累计回购74万股、总金额8008.09万元，接近此前回购计划下限。此外，深信服参与设立的投资基金完成变更有限合伙人及工商变更登记。2026年一季度公司实现收入16.27亿元，归母净利润-6450万元。</p><a href="https://baijiahao.baidu.com/s?id=1866973924810266587" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.16s"><div class="card-header"><span class="tag-vendor" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">山石网科</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">山石网科信用评级被下调至A-，展望「负面」：亏损扩大+经营性现金流持续净流出（合并4源）</h3><p class="card-summary">联合资信评估5月28日下调山石网科主体信用等级由A至A-，「山石转债」信用等级同步下调至A-，评级展望「负面」。评级下调主因：2025年营收下降、亏损规模扩大、应收账款规模较大、债务增速较快、经营性现金流持续净流出、偿债能力指标下降。同时募投项目延期，投资回报存在不确定性。截至2026年3月末「山石转债」余额2.67亿元。</p><a href="https://data.eastmoney.com/notices/detail/688030/AN202605281822948885,%E5%B1%B1%E7%9F%B3%E7%BD%91%E7%A7%91.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.24s"><div class="card-header"><span class="tag-vendor" style="background:#6366F120;color:#6366F1;border:1px solid #6366F160">行业动态</span><span class="tag-type" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">行业动态</span></div><h3 class="card-title">「磐石行动」2026上海网络安全攻防落幕：7部门联合实战10天（合并4源）</h3><p class="card-summary">5月25日至6月3日，上海市通信管理局联合市委网信办、市经信委、市公安局、市教委、普陀区政府及长兴岛管委会共同主办「磐石行动」2026攻防活动。这是上海年度最大规模网络安全实战演练，覆盖工业和信息化全领域。市通信管理局表示下一步将以磐石行动为抓手，全力营造规范有序、公平公正的行业发展生态，打造高水平网络安全防线。</p><a href="https://www.secrss.com/articles/91008" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.32s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">Fortinet 2026全球威胁态势报告：AI驱动网络犯罪量飙升，勒索受害者年增389%（合并4源）</h3><p class="card-summary">Fortinet旗下FortiGuard Labs发布《2026年全球威胁态势研究报告》，核心结论：网络犯罪已全面进入产业化、机器速度自动化时代。AI使漏洞利用时间从数天缩短到数小时，勒索软件受害者年增389%。防御核心从「封堵漏洞」转向「速度对抗」。2020-2025年CVE提交数量增长263%，2026年前3月提交数比去年同期高近1/3。传统补丁更新无法跟上威胁速度，仅约54%边缘设备漏洞全年完全修复。</p><a href="https://www.fortinet.com/cn/resources/reports/threat-landscape-report" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.4s"><div class="card-header"><span class="tag-vendor" style="background:#6366F120;color:#6366F1;border:1px solid #6366F160">行业动态</span><span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">行业标准</span></div><h3 class="card-title">等保数据安全新规GA/T 2380-2026正式实施，企业合规进入「数据强制」时代（合并3源）</h3><p class="card-summary">6月1日，GA/T 2380-2026《网络安全等级保护数据安全基本要求》和GA/T 2381-2026《测评机构能力要求》正式实施。新规在等保2.0基础上针对AI、新技术场景、数据安全做了重大升级，企业合规从「纸面达标」进入数据强制阶段。信安世纪等厂商宣布已完成与新规要求的深度匹配，无需客户重复投入即可快速完成合规适配。</p><a href="https://www.toutiao.com/article/7646242683400258100/" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.48s"><div class="card-header"><span class="tag-vendor" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">绿盟科技</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">绿盟科技ESG评级维持A级，从B到A五年持续跃升</h3><p class="card-summary">秩鼎发布最新ESG评级结果，绿盟科技获得A级。从近五年趋势看，绿盟科技ESG评级持续提升：2022年B→2023年BB→2024年BBB→2025年A→2026年维持A。不过二级市场表现承压，6月4日报收6.23元下跌2.66%，主力资金净流出1401.57万元，散户资金净流入1550.47万元，显示机构与散户分歧明显。</p><a href="https://www.163.com/dy/article/KUKRJ6TA05568W0A.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.56s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">Palo Alto VPN重大漏洞仍在被疯狂利用，企业内网或已暴露</h3><p class="card-summary">Palo Alto Networks此前披露的VPN重大漏洞仍在被攻击者大规模利用，安全社区持续发出警告。受影响企业内网可能已经处于暴露状态，全球仍有大量设备未完成修补。该漏洞也是此前CISA加入已知被利用漏洞目录（KEV）的重点项目，客观上持续加速国产防火墙替代进程。</p><a href="https://wy876.github.io/SecAlerts/" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.64s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">Operation Dragon Weave网络间谍活动曝光：鱼叉钓鱼部署AZUREVEIL后门</h3><p class="card-summary">安全研究人员发现代号为「Operation Dragon Weave」的网络间谍活动，攻击者通过鱼叉式钓鱼邮件部署AZUREVEIL后门。该后门基于定制化恶意框架，具备持久化驻留和数据窃取能力，主要针对特定行业高价值目标。攻击链展示出高度组织化的APT特征，提醒政企机构加强邮件安全网关和终端检测。</p><a href="https://blog.csdn.net/weixin_45635831/article/details/161643238" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.72s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">技术突破</span></div><h3 class="card-title">Cato Networks创CVE缓解新纪录：防护时间缩短至45分钟</h3><p class="card-summary">Cato Networks宣布创下CVE缓解新世界纪录，将新披露漏洞的防护时间从传统数周缩短至45分钟。这一突破基于SASE架构的云端统一策略推送，无需终端补丁。Verizon 2025年报告显示全年仅约54%边缘设备漏洞完全修复，修复时间中位数3个月。Cato的模式对国内防火墙厂商的云化安全服务有重要借鉴意义。</p><a href="https://finance.sina.com.cn/stock/usstock/summary/2026-06-01/doc-inhzxewp2365272.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+</div>
+
+<div class="footer">
+  数据来源：WebSearch 实时聚合 · 生成时间：2026-06-08 08:50 (GMT+8) · 由 WorkBuddy 自动化生成
+</div>
+
+</body>
+</html>
