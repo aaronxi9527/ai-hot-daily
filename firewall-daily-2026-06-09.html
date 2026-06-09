@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 | 2026年06月09日</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card-hover: #1a1a1a;
+  --border: #1e1e1e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #888;
+  --text-tertiary: #555;
+  --gradient-start: #5B6CF7;
+  --gradient-mid: #8B5CF6;
+  --gradient-end: #EC4899;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+/* Navbar */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(10,10,10,0.75);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.navbar-logo {
+  font-size: 16px; font-weight: 700; letter-spacing: -0.3px;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.navbar-date { font-size: 13px; color: var(--text-secondary); }
+/* Hero */
+.hero {
+  padding: 120px 24px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse at center, rgba(91,108,247,0.08), transparent 70%);
+  pointer-events: none;
+}
+.hero-icon { font-size: 56px; margin-bottom: 16px; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.hero h1 {
+  font-size: 40px; font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero-date { font-size: 15px; color: var(--text-secondary); margin-bottom: 4px; }
+.hero-count {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 16px; border-radius: 20px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  font-size: 13px; color: var(--text-secondary); margin-top: 12px;
+}
+.hero-count strong { color: var(--text-primary); }
+/* AI Summary */
+.ai-summary {
+  max-width: 800px; margin: 0 auto 60px; padding: 0 24px;
+}
+.ai-summary-inner {
+  background: linear-gradient(135deg, rgba(91,108,247,0.06), rgba(236,72,153,0.04));
+  border: 1px solid rgba(91,108,247,0.15);
+  border-radius: 16px; padding: 28px 32px; position: relative;
+}
+.ai-summary-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--gradient-start); margin-bottom: 16px;
+}
+.ai-summary-label::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gradient-start); animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.ai-summary p {
+  font-size: 15px; line-height: 1.8; color: #c0c0c0;
+  margin-bottom: 10px;
+}
+.ai-summary p:last-child { margin-bottom: 0; }
+/* Grid */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  opacity: 0; transform: translateY(20px);
+  cursor: default;
+}
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(91,108,247,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.card.visible:hover { transform: translateY(-2px); }
+.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.card-title {
+  font-size: 16px; font-weight: 700; letter-spacing: -0.2px;
+  color: var(--text-primary); flex: 1; line-height: 1.5;
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 6px;
+  font-size: 11px; font-weight: 600; white-space: nowrap; letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+.tag-sangfor { background: rgba(91,108,247,0.15); color: #7B8CF8; }
+.tag-qianxin { background: rgba(139,92,246,0.15); color: #9B6CF6; }
+.tag-huawei { background: rgba(236,72,153,0.15); color: #F06CA9; }
+.tag-h3c { background: rgba(34,197,94,0.15); color: #4ADE80; }
+.tag-hillstone { background: rgba(249,115,22,0.15); color: #FB923C; }
+.tag-topsec { background: rgba(59,130,246,0.15); color: #60A5FA; }
+.tag-nsfocus { background: rgba(168,85,247,0.15); color: #C084FC; }
+.tag-venus { background: rgba(236,72,153,0.15); color: #F472B6; }
+.tag-standard { background: rgba(250,204,21,0.12); color: #FACC15; }
+.tag-other { background: rgba(255,255,255,0.06); color: #999; }
+.card-summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+.card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.card-source {
+  font-size: 11px; color: var(--text-tertiary);
+  padding: 2px 8px; border-radius: 4px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+}
+.card-merged {
+  font-size: 11px; color: var(--gradient-start); font-weight: 500;
+}
+/* Footer */
+.footer {
+  text-align: center; padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-tertiary); font-size: 12px;
+}
+.footer-gradient {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 28px; }
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 100px 20px 40px; }
+  .ai-summary-inner { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="navbar-logo">🛡️ 防火墙厂商日报</span>
+  <span class="navbar-date">2026年06月09日 周二</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1>中国防火墙厂商日报</h1>
+  <p class="hero-date">2026年06月09日 周二</p>
+  <div class="hero-count">
+    📰 今日收录 <strong>10 条</strong> 重要动态
+  </div>
+</section>
+
+<section class="ai-summary">
+  <div class="ai-summary-inner">
+    <div class="ai-summary-label">🤖 AI 今日解读</div>
+    <p><strong>今天的主角是H3C（新华三）和深信服。</strong>HPE彻底退出新华三是一个历史性节点——这场历时十年的中美科技资产交割终于画上句号，新华三正式成为100%中资企业。股权彻底厘清后，长期战略定力将得到根本性保障，这家ICT巨头接下来如何在防火墙+AI+网络全栈发力，值得长期关注。</p>
+    <p><strong>深信服的跨界动作值得多想一步。</strong>与吉翼具身智能共建「安全+具身智能」实验中心，是网络安全厂商首次与具身智能产业化龙头深度绑定。这不仅是品牌合作，更意味着安全能力开始从数字世界向物理世界延伸——当机器人走进工厂、家庭、城市，安全就不再只是防火墙的事，而是物理空间的事。</p>
+    <p>另外，ESG评级季释放了不少信号：天融信AA级领跑行业，启明星辰回升，绿盟科技承压，山石网科信用评级下调叠加人员缩减——分化正在加剧。等保数据安全新规6/1正式落地后，合规压力会成为未来几个月所有厂商绕不开的考题。</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="grid" id="grid">
+
+    <div class="card" style="transition-delay: 0ms;">
+      <div class="card-header">
+        <span class="card-title">历时十年收官：HPE彻底退出新华三，H3C正式进入中方完全持有阶段</span>
+        <span class="tag tag-h3c">H3C</span>
+      </div>
+      <p class="card-summary">美国慧与科技（HPE）于2026财年Q2财报中正式披露，其所持新华三剩余19%股份的出售交易已于5月28日全部完成，获得约13.57亿美元现金。至此，HPE因出售新华三49%股份累计获得约35亿美元税前对价。这家曾四度易主的中国ICT龙头企业正式进入中方完全持有阶段，股权结构稳定将为长期战略定力提供保障。</p>
+      <div class="card-meta">
+        <span class="card-source">TechWeb, 百家号/腾讯云</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 80ms;">
+      <div class="card-header">
+        <span class="card-title">深信服与吉翼具身智能签署战略合作，共建「安全+具身智能」融合创新实验中心</span>
+        <span class="tag tag-sangfor">深信服</span>
+      </div>
+      <p class="card-summary">深信服与吉林省吉翼具身智能机器人有限公司于6月8日签署战略合作协议，双方将共建「安全+具身智能」融合创新实验中心。吉翼具身智能是吉林「一号工程」主体，注册资本16.3亿元，省长年内两次调研。这是网络安全厂商首次与具身智能产业化龙头深度绑定，标志着安全能力开始向物理世界延伸。</p>
+      <div class="card-meta">
+        <span class="card-source">深信服官网, 新华网</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 160ms;">
+      <div class="card-header">
+        <span class="card-title">深信服「加量不加价」方案持续发酵：全威胁吞吐量提升50%-100%，以技术红利对抗成本压力</span>
+        <span class="tag tag-sangfor">深信服</span>
+      </div>
+      <p class="card-summary">面对硬件涨价与AI攻击升级双重夹击，深信服依托全栈软件调优技术推出「加量不加价」方案：相同硬件配置下全威胁吞吐量提升50%-100%，新用户可直接选购新一代设备，老用户支持软件升级或硬件焕新置换（最高可置换）。该方案在行业内引发持续讨论，被视为以技术红利对抗硬件成本压力的标杆案例。</p>
+      <div class="card-meta">
+        <span class="card-source">同花顺, 新浪财经</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 240ms;">
+      <div class="card-header">
+        <span class="card-title">等保数据安全新规（GA/T 2380-2026）6月1日正式生效，合规升级成政企刚需</span>
+        <span class="tag tag-standard">行业标准</span>
+      </div>
+      <p class="card-summary">公安部发布的GA/T 2380-2026《信息安全技术 网络安全等级保护数据安全基本要求》6月1日起正式实施。新规将数据安全要求整合为独立体系化标准，等保测评需同步完成网络安全与数据安全双重合规验证。启明星辰DSFM软硬一体机等产品已率先适配新规要求，多家厂商加速推出数据安全合规解决方案。</p>
+      <div class="card-meta">
+        <span class="card-source">沃通WoSign, 新浪财经启明星辰</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 320ms;">
+      <div class="card-header">
+        <span class="card-title">奇安信连续两年入选标普全球《可持续发展年鉴（中国版）2026》</span>
+        <span class="tag tag-qianxin">奇安信</span>
+      </div>
+      <p class="card-summary">标普全球于4月14日发布《可持续发展年鉴（中国版）2026》，奇安信再度入选，成为网络安全行业代表企业。该年鉴基于企业可持续发展评估（CSA），覆盖超1,600家中国企业，从环境、社会、治理三大维度进行全面评分，奇安信在信息披露质量和可持续发展实践方面持续获得国际认可。</p>
+      <div class="card-meta">
+        <span class="card-source">同花顺财经, 标普全球</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 400ms;">
+      <div class="card-header">
+        <span class="card-title">ESG评级季：天融信AA领先，启明星辰回升，绿盟科技承压，山石网科信用评级下调</span>
+        <span class="tag tag-other">其他</span>
+      </div>
+      <p class="card-summary">本周多家网安厂商ESG/信用评级更新：天融信获秩鼎ESG评级AA，位居A股同行业200家公司第3名，较上年A级提升；启明星辰伦交所ESG评级从C升至C+；绿盟科技伦交所ESG评级维持C-，居同行业第17名。山石网科主体信用等级被联合资信下调至A-，「山石转债」信用等级同步下调至A-，评级展望负面。</p>
+      <div class="card-meta">
+        <span class="card-source">新浪财经, 上交所公告</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 480ms;">
+      <div class="card-header">
+        <span class="card-title">新华三发布全球首款企业级Wi-Fi 8 AP WA8648，5频段旗舰级设备</span>
+        <span class="tag tag-h3c">H3C</span>
+      </div>
+      <p class="card-summary">新华三于6月初发布全球首款企业级Wi-Fi 8接入点WA8648，宣称通过毫秒级多AP协同实现30%频谱效率提升，边缘覆盖能力增强超25%，延迟降低25%，漫游切换丢包率降低25%。此外新华三表示已在Wi-Fi 7+产品中预置关键Wi-Fi 8功能，提供兼顾当前性能与未来升级的过渡方案。</p>
+      <div class="card-meta">
+        <span class="card-source">IT之家, 腾讯新闻</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 560ms;">
+      <div class="card-header">
+        <span class="card-title">山石网科2025年参保人数降至779人，同比减少14.3%，人员结构持续优化</span>
+        <span class="tag tag-hillstone">山石网科</span>
+      </div>
+      <p class="card-summary">据天眼查数据，山石网科2025年参保人数为779人，较2024年的909人减少130人，同比下降14.3%。公司用工规模有所收缩，官方称「人员结构持续优化」。结合此前山石转债评级下调至A-及负面展望，市场关注公司盈利改善进度和ASIC芯片量产对利润的实际贡献。</p>
+      <div class="card-meta">
+        <span class="card-source">新浪财经, 天眼查</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 640ms;">
+      <div class="card-header">
+        <span class="card-title">天融信Q1财报发布：营收承压但ESG评级向好，OpenClaw安全评估服务上线</span>
+        <span class="tag tag-topsec">天融信</span>
+      </div>
+      <p class="card-summary">天融信2026年Q1报告显示营收仍承压（今年截至6月2日累计跌幅超25%），但公司在ESG领域表现亮眼——秩鼎ESG评级升至AA，同时2026年推出OpenClaw安全评估服务，持续拓展网络安全与智算云双板块业务布局。</p>
+      <div class="card-meta">
+        <span class="card-source">百度百科天融信, 新浪财经</span>
+        <span class="card-merged">(合并2源)</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay: 720ms;">
+      <div class="card-header">
+        <span class="card-title">华为USG6520E-K防火墙特征库及维保服务项目中标</span>
+        <span class="tag tag-huawei">华为</span>
+      </div>
+      <p class="card-summary">据招标采购导航网，华为USG6520E-K防火墙特征库及维保服务项目于6月8日公示中标结果。该项目为华为防火墙在政企市场的持续性维保服务采购，反映出华为防火墙产品在政府及国企单位中的存量部署规模和持续服务需求。</p>
+      <div class="card-meta">
+        <span class="card-source">招标采购导航网</span>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>🛡️ <span class="footer-gradient">AI 防火墙厂商日报</span> · 数据来源：公开网络搜索 · 自动生成仅供参考</p>
+  <p style="margin-top: 4px;">深信服 · 奇安信 · 华为 · H3C · 山石网科 · 天融信 · 绿盟科技 · 启明星辰</p>
+</footer>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  cards.forEach(card => observer.observe(card));
+})();
+</script>
+
+</body>
+</html>
