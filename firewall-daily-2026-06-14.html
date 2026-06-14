@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-14</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0a0a;--card:#141414;--card-hover:#1a1a1a;--text:#e4e4e7;--muted:#71717a;--accent:#8B5CF6;--grad1:#5B6CF7;--grad2:#8B5CF6;--grad3:#EC4899;--border:rgba(255,255,255,0.06)}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;line-height:1.7;overflow-x:hidden}
+  ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(139,92,246,.3);border-radius:3px}
+
+  .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 24px;background:rgba(10,10,10,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .navbar-brand{font-weight:700;font-size:15px;background:linear-gradient(135deg,var(--grad1),var(--grad2),var(--grad3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .navbar-date{color:var(--muted);font-size:13px}
+
+  .hero{padding:100px 24px 40px;text-align:center;position:relative}
+  .hero::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--grad2),transparent)}
+  .hero-icon{font-size:48px;margin-bottom:12px}
+  .hero h1{font-size:clamp(22px,5vw,32px);font-weight:800;background:linear-gradient(135deg,var(--grad1),var(--grad2),var(--grad3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+  .hero-meta{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .hero-count{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(139,92,246,.15);color:var(--accent)}
+
+  .ai-box{max-width:800px;margin:0 auto 48px;padding:20px 24px;background:linear-gradient(135deg,rgba(91,108,247,.08),rgba(139,92,246,.08),rgba(236,72,153,.08));border:1px solid rgba(139,92,246,.2);border-radius:14px;font-size:15px;line-height:1.8;color:#c4b5fd}
+  .ai-box .label{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+
+  .container{max-width:900px;margin:0 auto;padding:0 20px 60px}
+  .section-title{font-size:18px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .section-title .emoji{font-size:22px}
+
+  .grid{display:grid;gap:16px;margin-bottom:48px}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .25s ease;opacity:0;transform:translateY(18px)}
+  .card.visible{opacity:1;transform:translateY(0)}
+  .card:hover{background:var(--card-hover);border-color:rgba(139,92,246,.25);transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.08)}
+  .card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+  .tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.3px}
+  .tag-vendor{background:rgba(91,108,247,.15);color:#818cf8}
+  .tag-industry{background:rgba(236,72,153,.15);color:#f472b6}
+  .card h3{font-size:15px;font-weight:600;margin-bottom:8px;line-height:1.5}
+  .card p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:10px}
+  .card a{color:var(--accent);text-decoration:none;font-size:13px;transition:color .2s,border-bottom .2s;border-bottom:1px solid transparent}
+  .card a:hover{color:#a78bfa;border-bottom-color:#a78bfa}
+
+  .footer{text-align:center;padding:32px 0;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+  .footer span{background:linear-gradient(135deg,var(--grad1),var(--grad3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:600}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">🛡️ 防火墙厂商日报</div>
+  <div class="navbar-date">2026-06-14</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1>中国防火墙厂商日报</h1>
+  <div class="hero-meta">2026-06-14 · 周六</div>
+  <div class="hero-count">📊 今日 14 条动态</div>
+</section>
+
+<div class="container">
+  <div class="ai-box">
+    <div class="label">🤖 AI 解读</div>
+    今天最该关注的是金融行业——六部门联合出台数据分类分级指南，再加上GA/T 2380新规落地两周的合规加速效应，金融和政企都在抢档期做等保测评，防火墙和合规产品需求持续放量。山石网科港澳大会和深信服Gartner入选，说明头部厂商在"出海"和"国际认证"两条线上同步发力。联通国际防火墙集采启动，加上信创防火墙招标密集，下周可以关注中标结果。
+  </div>
+
+  <div class="section-title"><span class="emoji">🏢</span> 厂商动态</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">深信服</span></div>
+      <h3>深信服中标深圳市赛易特网络安全专项防护项目</h3>
+      <p>根据《网络安全专项防护项目中标结果公示》，深信服中标深圳市赛易特信息技术有限公司采购项目，中标金额120万元。深信服2025年营收80.43亿元（+6.96%），归母净利润3.93亿元。</p>
+      <a href="https://finance.sina.com.cn/stock/relnews/cn/2026-06-12/doc-iniccnft3576056.shtml" target="_blank" rel="noopener">📎 新浪财经 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">深信服</span></div>
+      <h3>深信服入选Gartner《私有云市场指南》代表厂商</h3>
+      <p>Gartner发布最新私有云市场指南，深信服作为代表厂商入选，进一步巩固其在云安全与私有云市场的行业地位，云地协同战略获国际认可。</p>
+      <a href="https://www.sangfor.com.cn/" target="_blank" rel="noopener">📎 深信服官网 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">山石网科</span></div>
+      <h3>山石网科2026港澳合作伙伴大会在香港圆满举行</h3>
+      <p>6月10日，2026山石网科港澳合作伙伴大会在香港举行，香港特区政府代表、网安行业协会领袖、港澳及大湾区核心合作伙伴齐聚，锚定战略高地，深拓港澳市场布局。</p>
+      <a href="https://baijiahao.baidu.com/s?id=1867680356055571507&wfr=spider&for=pc" target="_blank" rel="noopener">📎 百家号 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">奇安信</span></div>
+      <h3>奇安信万兆防火墙采购中标结果公示</h3>
+      <p>2026年6月9日发布中标公告，奇安信万兆防火墙采购项目（2026-JXIOZA-W9001）采购结果公示，项目地址位于北京石景山区，体现奇安信在高端防火墙市场的持续拓展。</p>
+      <a href="https://www.rccchina.com/services/bid_project_list/bTh2gxJ0eeBb2Eigs0ErnA==" target="_blank" rel="noopener">📎 RCC瑞达恒 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">奇安信</span></div>
+      <h3>网神SecGate 3600防火墙产品版本升级发布</h3>
+      <p>奇安信正式发布网神SecGate 3600防火墙系统新版本(6/8.1.16.177158)，提升产品用户体验和可靠性，持续迭代下一代防火墙能力。</p>
+      <a href="https://static01-www.qianxin.com/qaxweb/d8807b3f0f220722deebc7d99590153b.pdf" target="_blank" rel="noopener">📎 奇安信官网 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">华为</span></div>
+      <h3>华为联合行业机构发布OpenClaw安全解决方案技术白皮书</h3>
+      <p>华为数据通信创新峰会2026期间，联合行业机构发布《OpenClaw安全解决方案技术白皮书》，以三层围栏安全架构为核心，重新定义企业安全防护体系，为AI时代安全治理提供新范式。</p>
+      <a href="https://e.huawei.com/cn/news/2026/solutions/enterprise-network/released-openclaw-security-solution-white-paper" target="_blank" rel="noopener">📎 华为官网 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">绿盟科技</span></div>
+      <h3>绿盟科技358万中标击败山石网科、天融信</h3>
+      <p>2026年3月30日中标候选人公示，北京神州绿盟科技有限公司以357.6万元中标，击败山石网科（387.5万元）和天融信，展现绿盟科技在政企防火墙市场的竞争力。此项目为较早招标结果，近期公示后引发关注。</p>
+      <a href="https://baijiahao.baidu.com/s?id=1861098798472696328&wfr=spider&for=pc" target="_blank" rel="noopener">📎 百家号 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-vendor">新华三</span></div>
+      <h3>新华三M9000-X AI防火墙：16Tbps业界最高吞吐重新定义边界安全</h3>
+      <p>H3C SecPath M9000-X AI防火墙搭载分布式架构与专用硬件加速引擎，实现16Tbps业内最高吞吐，时延小于5μs，适配大型数据中心、AI算力集群等超高流量场景，支持10000+AI应用指纹识别。</p>
+      <a href="http://www.china-nengyuan.com/news/248513.html" target="_blank" rel="noopener">📎 中国能源网 →</a>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="emoji">🏭</span> 行业动态</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-top"><span class="tag tag-industry">金融</span></div>
+      <h3>六部门联合发布《金融信息服务数据分类分级指南》</h3>
+      <p>国家网信办、中国人民银行、金融监管总局、中国证监会、国家统计局、国家外汇局联合发布《金融信息服务数据分类分级指南》，为金融行业数据安全治理提供分类分级标准，推动金融数据合规治理体系化建设。</p>
+      <a href="https://www.cac.gov.cn/2026-06/13/c_1783104512415861.htm" target="_blank" rel="noopener">📎 中国网信网 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-industry">合规</span></div>
+      <h3>GA/T 2380等保数据安全新规落地两周：合规从"要不要做"转向"多久做完"</h3>
+      <p>GA/T 2380-2026作为等保2.0体系下首个数据安全专项标准，将数据安全从"安全计算环境"的附属要求升级为独立安全控制域，新增"安全数据处理"大类。落地两周以来，企业合规节奏明显加速，测评档期抢订现象持续。</p>
+      <a href="https://ftrans.cn/2026/06/12/new-standard-2/" target="_blank" rel="noopener">📎 飞驰传输 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-industry">运营商</span></div>
+      <h3>中国联通国际防火墙集中采购项目启动标前技术商务交流</h3>
+      <p>"2026-2028年中国联通国际防火墙集中采购项目"公开征集技术规范书和设备参数模型意见建议，标志着运营商级防火墙年度大单正式进入招标准备阶段。</p>
+      <a href="https://www.chinabidding.cn/zbgg/U-vzarFQC.html" target="_blank" rel="noopener">📎 中国招标网 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-industry">信创</span></div>
+      <h3>2026年度信创防火墙设备采购项目公开招标</h3>
+      <p>北京发布2026年度信创防火墙设备采购项目公开招标公告，信创替代持续驱动防火墙采购需求，国产化防火墙在政企市场渗透率进一步提升。</p>
+      <a href="https://m.bidcenter.com.cn/news-1-422866165.html" target="_blank" rel="noopener">📎 采招网 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-industry">运营商</span></div>
+      <h3>新媒股份2026年防火墙维保及IPS授权采购中标候选人公示</h3>
+      <p>广东南方新媒体股份2026年防火墙统一维保及IPS授权采购项目评标结果公布，两家公司入围候选，媒体行业防火墙维保需求持续释放。</p>
+      <a href="https://baijiahao.baidu.com/s?id=1867206030994069287&wfr=spider&for=pc" target="_blank" rel="noopener">📎 百家号 →</a>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="tag tag-industry">运营商</span></div>
+      <h3>中国移动中标2026年网络安全实战攻防能力建设项目</h3>
+      <p>2026年网络安全实战攻防能力建设项目结果公告，中国移动通信集团广东有限公司中标合同包1（实战信息汇聚），金额154万元，运营商安全攻防能力建设投入加速。</p>
+      <a href="http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202606/t20260609_26712626.htm" target="_blank" rel="noopener">📎 中国政府采购网 →</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">由 <span>WorkBuddy AI</span> 自动生成 · 数据来源 WebSearch · 2026-06-14</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.card').forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
