@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 2026年06月15日</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
+    background: #0a0a0a;
+    color: #e5e7eb;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  .container { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 40px 0 32px;
+    border-bottom: 1px solid #1f2937;
+    margin-bottom: 36px;
+  }
+  .hero-date {
+    font-size: 14px;
+    color: #6b7280;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: #9ca3af;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 20px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #5B6CF7, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat-label { font-size: 12px; color: #6b7280; margin-top: 2px; }
+
+  /* AI Summary */
+  .ai-summary {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+  .ai-summary-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #8B5CF6;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ai-summary-text {
+    font-size: 14px;
+    color: #d1d5db;
+    line-height: 1.8;
+  }
+
+  /* News */
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #d1d5db;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .news-item {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+    animation: fadeIn 0.4s ease-out both;
+  }
+  .news-item:hover { border-color: #374151; background: #161e2e; }
+  .news-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .vendor-tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .imp-star { font-size: 12px; margin-left: auto; }
+  .news-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f3f4f6;
+    margin-bottom: 8px;
+  }
+  .news-summary {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .news-sources {
+    font-size: 12px;
+    color: #4b5563;
+  }
+  .news-sources a {
+    color: #8B5CF6;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.15s;
+  }
+  .news-sources a:hover {
+    color: #A78BFA;
+    border-bottom-color: #A78BFA;
+  }
+
+  /* Trend */
+  .trend-section {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 36px 0;
+  }
+  .trend-section .section-title { margin-bottom: 14px; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    border-top: 1px solid #1f2937;
+    margin-top: 32px;
+  }
+  .footer-text {
+    font-size: 12px;
+    color: #4b5563;
+  }
+  .footer-text a { color: #8B5CF6; text-decoration: none; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-date">2026年06月15日</div>
+    <h1>🤖 AI 安全日报</h1>
+    <div class="hero-sub">覆盖 Anthropic · OpenAI · Google · Cloudflare · Wiz · NetFoundry · Cisco · 腾讯云 · 奇安信 · 绿盟科技 · 深信服 · OWASP · Gartner · NIST</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">20</div><div class="stat-label">精选资讯</div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">国际动态</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">国内动态</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">行业趋势</div></div>
+    </div>
+  </div>
+
+  <!-- AI 总览 -->
+  <div class="ai-summary">
+    <div class="ai-summary-title">🤖 AI 总览</div>
+    <div class="ai-summary-text">今天的 AI 安全圈被两个重磅炸弹震动——美国政府下令 Anthropic 关停最强模型 Claude Fable 5 和 Mythos 5，AI 模型安全治理进入“先审后发”时代；BCS 2026 刚闭幕两周，奇安信齐向东提出的“三位一体”AI 安全协同体系正在行业发酵。产品侧，Cloudflare 与 Wiz 的 AI 安全整合已落地，提示词注入检测能力被集成到 Security Graph；NetFoundry 发布零信任 LLM Gateway，企业级 AI 网关赛道持续升温。国内方面，腾讯云率先推出 LLM-WAF+AI-SPM 全生命周期方案，绿盟科技 AI 安全围栏与大模型评估系统进入落地期。OWASP 6月发布的 Agentic AI 安全治理报告预示着智能体安全将成为下半年主战场。</div>
+  </div>
+
+  <!-- 国际友商产品动态 -->
+  
+  <div class="section-title" style="margin-top: 28px;">🏢 国际友商产品动态</div>
+
+    <div class="news-item" style="animation-delay: 0.00s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#F472B620;color:#F472B6;border:1px solid #F472B640">Anthropic</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">模型安全</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">美国政府下令 Anthropic 关停 Claude Fable 5 和 Mythos 5，国家安全审查首次叫停商业 AI 模型</div>
+      <div class="news-summary">6月13日，美国政府以国家安全为由，命令 Anthropic 立即关闭其最强大的两个模型 Claude Fable 5 和 Claude Mythos 5 的访问权限。这是美国政府首次动用行政权力直接干预商业 AI 模型运营，AI 安全治理从行业自律进入强制审查时代。</div>
+      <div class="news-sources">📎 来源: <a href="https://techcrunch.com/2026/06/12/anthropics-safety-warnings-may-have-just-backfired-the-government-has-pulled-the-plug-on-its-most-powerful-ai/" target="_blank" rel="noopener">TechCrunch</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.06s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#FBBF2420;color:#FBBF24;border:1px solid #FBBF2440">美国政府</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">政策合规</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">美国推 AI 模型发布前审查制度：OpenAI、Google、Anthropic 联合支持，30天安全评估窗口</div>
+      <div class="news-summary">6月3日，美国政府机构获得对新 AI 模型 30 天的安全评估权，重点审查网络安全风险与漏洞。OpenAI、Google、Anthropic 三家 AI 巨头共同支持，标志着 AI 安全“先审后发”机制的正式确立。</div>
+      <div class="news-sources">📎 来源: <a href="https://cybernews.com/ai-news/trump-pre-check-openai-google-anthropic-models/" target="_blank" rel="noopener">Cybernews</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.12s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#22D3EE20;color:#22D3EE;border:1px solid #22D3EE40">Cloudflare × Wiz</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">AI安全网关 / AI-SPM</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">Cloudflare 与 Wiz 深度整合 AI 安全能力：提示词注入检测 + PII 暴露防护内嵌 Security Graph</div>
+      <div class="news-summary">Cloudflare AI Security for Apps 被整合到 Wiz Security Graph 中，安全团队可直接在统一视图中检测提示词注入、PII 暴露和不安全内容。Google/Wiz 32B美元收购后首次重大安全整合落地。</div>
+      <div class="news-sources">📎 来源: <a href="https://secure.businesswire.com/news/home/20260414296894/en/Cloudflare-Partners-with-Wiz-to-Secure-the-Global-AI-Attack-Surface-Eliminating-Blind-Spots-Caused-by-Shadow-AI" target="_blank" rel="noopener">BusinessWire</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.18s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#5B6CF720;color:#5B6CF7;border:1px solid #5B6CF740">NetFoundry</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">LLM安全网关</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">NetFoundry 发布企业级零信任 MCP 和 LLM Gateway，将零信任体系延伸至 AI 部署</div>
+      <div class="news-summary">6月3日，NetFoundry 在 AI Enclave 方案中新增零信任 MCP 和 LLM 网关，实现 AI 部署的可编程零信任安全。企业可通过网关层统一管控所有 LLM 和 MCP 连接，动态实施策略。</div>
+      <div class="news-sources">📎 来源: <a href="https://www.prnewswire.com/news-releases/netfoundry-launches-enterprise-class-mcp-and-llm-gateways-bringing-zero-trust-to-ai-deployments-302789053.html" target="_blank" rel="noopener">PRNewswire</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.24s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#A78BFA20;color:#A78BFA;border:1px solid #A78BFA40">OpenAI/Anthropic/Google</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">模型安全研究</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">OpenAI、Anthropic、Google 三巨头联合上书国会：AI 已超越博士级病毒学家，要求强制 DNA 合成筛查</div>
+      <div class="news-summary">6月4日，Altman、Amodei、Hassabis 联名致信美国国会，警告 AI 在生物实验室问题上的能力已超越 PhD 病毒学家，呼吁建立强制合成 DNA 筛查制度以防范 AI 辅助生物武器风险。</div>
+      <div class="news-sources">📎 来源: <a href="https://www.abhs.in/blog/openai-anthropic-google-ai-bioweapons-congress-dna-screening-letter-june-2026" target="_blank" rel="noopener">ABHS</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.30s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#EF444420;color:#EF4444;border:1px solid #EF444440">AI 供应链攻击</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">模型供应链安全</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">50天内 OpenAI、Anthropic、Meta 连遭 4 起 AI 供应链攻击，供应链安全成头号威胁</div>
+      <div class="news-summary">VentureBeat 报道，50天内发生4起供应链事件：3起为对手驱动攻击、1起为自身打包失败。三家公司联合发布供应商安全评估问卷矩阵，推动行业建立统一的 AI 供应链安全标准。</div>
+      <div class="news-sources">📎 来源: <a href="https://venturebeat.com/security/supply-chain-incidents-openai-anthropic-meta-release-surface-vendor-questionnaire-matrix" target="_blank" rel="noopener">VentureBeat</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.36s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#34D39920;color:#34D399;border:1px solid #34D39940">Maxim AI</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">提示词注入防护</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">Maxim AI 发布 Bifrost：2026 生产级 AI Agent 提示词注入防护完整指南</div>
+      <div class="news-summary">Bifrost 在网关层跨所有 LLM 提供商和 MCP 工具实施双阶段输入/输出护栏，支持基于 CEL 的规则定位，覆盖直接注入与间接注入攻击，已应用于生产环境 AI Agent。</div>
+      <div class="news-sources">📎 来源: <a href="https://www.getmaxim.ai/articles/prompt-injection-defense-for-production-ai-agents-a-complete-2026-guide" target="_blank" rel="noopener">Maxim AI</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.42s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#10B98120;color:#10B981;border:1px solid #10B98140">Cisco</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">AI安全态势</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">Cisco 发布《2026 AI 安全态势报告》：AI 供应链漏洞与影子 AI 为最大风险</div>
+      <div class="news-summary">Cisco 报告指出 AI 供应链脆弱性已成为最关键的 AI 安全挑战，同时影子 AI（未经授权的 AI 使用）在 67% 的企业中普遍存在。</div>
+      <div class="news-sources">📎 来源: <a href="https://blogs.cisco.com/ai/cisco-state-of-ai-security-2026-report" target="_blank" rel="noopener">Cisco Blog</a></div>
+    </div>
+
+  <!-- 国内友商产品动态 -->
+  
+  <div class="section-title" style="margin-top: 28px;">🇨🇳 国内友商产品动态</div>
+
+    <div class="news-item" style="animation-delay: 0.48s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#5B6CF720;color:#5B6CF7;border:1px solid #5B6CF740">腾讯云</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">LLM-WAF / AI-SPM</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">腾讯云大模型安全解决方案发布：LLM-WAF 智能防护网关 + AI-SPM 态势感知，实战零失分</div>
+      <div class="news-summary">5月31日，腾讯云发布覆盖全生命周期的大模型安全方案，包含 LLM-WAF 智能防护网关和 AI-SPM 态势感知系统，覆盖开发、部署到应用全流程，在实战演练中实现零失分。</div>
+      <div class="news-sources">📎 来源: <a href="https://cloud.tencent.com.cn/developer/article/2679587" target="_blank" rel="noopener">腾讯云开发者社区</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.54s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#F9731620;color:#F97316;border:1px solid #F9731640">奇安信 / BCS 2026</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">大模型安全体系</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">BCS 2026 闭幕：齐向东提出“三位一体”AI 安全协同联动体系，“AI时代，攻防先行”成行业共识</div>
+      <div class="news-summary">6月2日，第八届北京网络安全大会（BCS 2026）在京开幕，齐向东提出以“安全能力+安全数据+安全运营”三位一体协同联动应对 AI 时代网络攻击工业化挑战。中央网信办明确 AI 安全需系统变革升级。</div>
+      <div class="news-sources">📎 来源: <a href="https://finance.sina.com.cn/roll/2026-06-02/doc-inhzzumi1420342.shtml" target="_blank" rel="noopener">新浪财经</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.60s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#34D39920;color:#34D399;border:1px solid #34D39940">绿盟科技</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">AI安全围栏 / 大模型安全评估</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">绿盟科技 AI 安全产品矩阵即将落地：AI安全一体机 + AI安全围栏 + 大模型安全评估系统</div>
+      <div class="news-summary">绿盟科技副总裁透露将发布面向大模型安全的系列产品，包括 AI 安全一体机、AI 安全围栏（Guardrails）、大模型安全评估系统及配套服务方案，覆盖模型自身安全与数据安全防护。</div>
+      <div class="news-sources">📎 来源: <a href="https://finance.eastmoney.com/a/202509243521613954.html" target="_blank" rel="noopener">东方财富</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.66s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#22D3EE20;color:#22D3EE;border:1px solid #22D3EE40">深信服</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">AI安全运营</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">深信服 AI-NDR 入选 IDC MarketScape “领导者”类别，安全GPT持续迭代</div>
+      <div class="news-summary">深信服在 AI 网络安全检测领域入选 IDC MarketScape 领导者象限，安全GPT 4.0 在流量检测、威胁狩猎等场景持续拓展能力边界。</div>
+      <div class="news-sources">📎 来源: <a href="https://finance.sina.com.cn/roll/2026-01-06/doc-inhfiqwx5920045.shtml" target="_blank" rel="noopener">新浪财经</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.72s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#A78BFA20;color:#A78BFA;border:1px solid #A78BFA40">国内安全社区</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">AI Agent安全</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">AI Agent 安全最佳实践 2026 发布：从 Prompt Guardrail 到多智能体协同防御</div>
+      <div class="news-summary">国内安全社区发布 AI Agent 安全最佳实践，指出 2026 年 Agent 安全已不能仅靠 Prompt Guardrail，需覆盖工具调用、MCP 协议、记忆机制和工作流编排的全链路防护。</div>
+      <div class="news-sources">📎 来源: <a href="https://www.apframework.com/blog/essay/2026-05-23-agent-security-2026" target="_blank" rel="noopener">APFramework</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.78s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">AI-SPM 社区</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">AI安全态势管理</span>
+        <span class="imp-star">🔥</span>
+      </div>
+      <div class="news-title">AI-SPM 是否会成为大语言模型落地的标准防护？国内安全社区深度探讨</div>
+      <div class="news-summary">国内安全社区热烈讨论 AI-SPM 作为大模型安全标准防护的可行性，认为 AI-SPM 将 AI 从“未知风险”转化为“可控资产”，有望成为 SASE 等融合平台的核心安全层。</div>
+      <div class="news-sources">📎 来源: <a href="https://www.dwcon.cn/post/4541" target="_blank" rel="noopener">DWCON</a></div>
+    </div>
+
+  <!-- 行业动态与趋势 -->
+  
+  <div class="section-title" style="margin-top: 28px;">📊 行业动态与趋势</div>
+
+    <div class="news-item" style="animation-delay: 0.84s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#FBBF2420;color:#FBBF24;border:1px solid #FBBF2440">OWASP</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">智能体安全标准</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">OWASP 发布《Agentic AI 安全与治理态势报告 2.01》：自主 AI 系统安全全景框架</div>
+      <div class="news-summary">6月1日，OWASP GenAI 安全项目发布 Agentic AI 安全与治理报告 2.01 版，全面梳理自主 AI 系统安全治理框架、工具集和最佳实践，为 Agent 安全提供首个完整的行业参考基准。</div>
+      <div class="news-sources">📎 来源: <a href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/" target="_blank" rel="noopener">OWASP</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.90s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#F9731620;color:#F97316;border:1px solid #F9731640">Gartner</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">市场预测</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">Gartner 预测：2026年 AI 治理平台支出达 4.92 亿美元，2030 年突破 10 亿</div>
+      <div class="news-summary">Gartner 报告显示，全球 AI 法规正推动 AI 治理平台市场爆发增长。2026 年 AI 治理支出预计达 4.92 亿美元，2030 年将突破 10 亿美元，AI 安全合规成为企业刚性支出。</div>
+      <div class="news-sources">📎 来源: <a href="https://www.gartner.com/en/newsroom/press-releases/2026-02-17-gartner-global-ai-regulations-fuel-billion-dollar-market-for-ai-governance-platforms" target="_blank" rel="noopener">Gartner</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 0.96s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">RSAC 2026</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">大会趋势</span>
+        <span class="imp-star">🔥🔥🔥</span>
+      </div>
+      <div class="news-title">RSAC 2026 深度解析：AI 对抗 AI 成主流，“以模制模”从概念走向实战</div>
+      <div class="news-summary">4月 RSAC 2026 在旧金山举办，核心主题为 AI 驱动的安全新时代。“AI 对抗 AI”成为行业主旋律，影子 Agent 检测、非人类身份管理、浏览器安全等九大安全能力全面升级。行业从被动防御加速迈向自主化、智能化的运行时治理。</div>
+      <div class="news-sources">📎 来源: <a href="https://jishuzhan.net/article/2042815130786922498" target="_blank" rel="noopener">技术栈</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 1.02s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#F472B620;color:#F472B6;border:1px solid #F472B640">NIST/OWASP</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">供应链安全标准</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">NIST 与 OWASP 达成共识：模型来源验证与签名是 AI 供应链安全的基线要求</div>
+      <div class="news-summary">NIST 与 OWASP 联合平台运营商和学术界达成共识：组织必须能够证明模型制品的来源、变更记录和行为基线，否则将无法通过安全审计。模型签名和来源验证将成为采购准入门槛。</div>
+      <div class="news-sources">📎 来源: <a href="https://techbytes.app/posts/supply-chain-poisoning-in-ai-models-deep-dive-2026/" target="_blank" rel="noopener">TechBytes</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 1.08s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#EF444420;color:#EF4444;border:1px solid #EF444440">越狱攻击</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">对抗性攻击技术</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">新型“sockpuppeting”越狱技术曝光：一行代码突破 11 款 AI 模型安全护栏</div>
+      <div class="news-summary">安全研究人员披露名为“sockpuppeting”的新型越狱攻击技术，通过单行代码即可绕过包括 GPT、Claude、Gemini 在内的 11 款主流 AI 模型的安全护栏。事件再次凸显提示词注入防御的重要性。</div>
+      <div class="news-sources">📎 来源: <a href="https://cybersecuritynews.com/single-line-of-code-can-jailbreak-11-ai-models/" target="_blank" rel="noopener">CyberSecurityNews</a></div>
+    </div>
+    <div class="news-item" style="animation-delay: 1.14s">
+      <div class="news-header">
+        <span class="vendor-tag" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B40">AI 安全事件</span>
+        <span class="vendor-tag" style="background:#37415180;color:#9ca3af;border:1px solid #37415140">攻击趋势追踪</span>
+        <span class="imp-star">🔥🔥</span>
+      </div>
+      <div class="news-title">Rafter 发布 2025-2026 AI Agent 安全事件时间线：覆盖编码工具、AI Agent 与 MCP 协议攻击</div>
+      <div class="news-summary">Rafter 追踪了所有公开披露的 AI Agent 安全事件，涵盖 AI 编码工具、AI Agent 和 MCP 协议的各类攻击。Marimo 平台 RCE 漏洞 (CVE-2026-39987) 等事件显示 AI 开发工具自身安全已成为新的攻击面。</div>
+      <div class="news-sources">📎 来源: <a href="https://rafter.so/blog/incidents/ai-agent-security-timeline-2025-2026" target="_blank" rel="noopener">Rafter</a></div>
+    </div>
+
+  <!-- 趋势判断 -->
+  <div class="trend-section">
+    <div class="section-title">📈 趋势判断</div>
+    <div class="ai-summary-text">
+<b>1. AI 安全治理进入"强制审查"时代</b> — 美国政府叫停 Anthropic 最强模型 + 30 天发布前审查制度，标志着 AI 安全从行业自律走向政府强制审查。这会加速 AI 安全评估、红蓝对抗和合规产品的需求。
+<br><br>
+<b>2. AI Agent 安全成下半年主战场</b> — OWASP Agentic AI 安全报告 + BCS 三位一体体系 + 社区最佳实践，三股力量同时指向 AI Agent 安全。Agent 的工具调用、MCP 协议、记忆机制成为新的攻击面。
+<br><br>
+<b>3. LLM 网关/防火墙赛道持续升温</b> — Cloudflare+Wiz 整合、NetFoundry 零信任网关、腾讯 LLM-WAF、绿盟 AI 安全围栏，无论国际还是国内，LLM 安全网关正从概念验证走向生产部署。
+<br><br>
+<b>4. 模型供应链安全从边缘进入核心</b> — 50 天内 4 起供应链攻击 + NIST/OWASP 基线共识 + Cisco 报告将供应链列为首要风险，模型来源验证和签名将很快成为采购硬性要求。
+</div>
+  </div>
+
+  <!-- 摘要 -->
+  <div style="font-size:13px;color:#6b7280;margin-top:12px;line-height:1.8;">
+    <b>本期头条：</b> 美国政府叫停 Anthropic 最强模型 | Cloudflare×Wiz AI安全整合 | 腾讯云 LLM-WAF 发布 | OWASP Agentic AI 安全报告 | Gartner AI治理市场预测
+    <br>
+    <b>数据来源：</b> WebSearch × 20 信源 | 国际8条 + 国内6条 + 行业6条 | 生成时间 2026-06-15 14:32
+    <br>
+    <b>推送渠道：</b> 飞书私聊 + 企业微信
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-text">
+      由 WorkBuddy AI 自动生成 · 仅供信息参考<br>
+      HTML 托管: <a href="https://aaronxi9527.github.io/ai-hot-daily/ai-security-daily-2026-06-15.html?lk_jump_to_browser=true" target="_blank">GitHub Pages</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// IntersectionObserver for scroll-triggered fade-in
+const items = document.querySelectorAll('.news-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+items.forEach(item => {
+  item.style.animationPlayState = 'paused';
+  observer.observe(item);
+});
+</script>
+</body>
+</html>
