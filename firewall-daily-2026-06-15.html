@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-15</title>
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;
+  --border:#222222;--text:#e5e5e5;--text2:#999999;
+  --c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  min-height:100vh;
+}
+.nav{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,10,10,0.85);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:56px;display:flex;align-items:center;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.nav-brand span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{margin-left:auto;font-size:13px;color:var(--text2)}
+.hero{
+  padding:64px 24px 48px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(91,108,247,0.12),transparent 70%);
+}
+.hero-icon{font-size:48px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{color:var(--text2);font-size:14px;margin-top:8px}
+.hero-badge{
+  display:inline-block;margin-top:16px;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;font-size:13px;font-weight:600;
+  padding:6px 18px;border-radius:20px;
+}
+.ai-summary{
+  max-width:720px;margin:-20px auto 40px;padding:0 24px;
+}
+.ai-summary-inner{
+  background:linear-gradient(135deg,rgba(91,108,247,0.08),rgba(139,92,246,0.08));
+  border:1px solid rgba(91,108,247,0.2);
+  border-radius:16px;padding:24px 28px;
+}
+.ai-summary-label{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+}
+.ai-summary p{font-size:14.5px;line-height:1.75;color:#d4d4d4}
+.section-title{
+  max-width:1200px;margin:0 auto 20px;padding:0 24px;
+  font-size:20px;font-weight:700;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title .icon{font-size:24px}
+.section-title .label{
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.section-title .count{
+  font-size:12px;color:var(--text2);font-weight:500;
+  background:var(--surface2);padding:2px 10px;border-radius:10px;
+  margin-left:8px;
+}
+.grid{
+  max-width:1200px;margin:0 auto;padding:0 24px 40px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:15px;
+}
+.news-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:22px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;
+  opacity:0;transform:translateY(24px);
+  animation:fadeUp 0.5s ease forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.news-card:hover{
+  border-color:rgba(139,92,246,0.4);
+  box-shadow:0 4px 24px rgba(91,108,247,0.1);
+  transform:translateY(-2px);
+}
+.card-header{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag-vendor,.tag-type,.tag-industry{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px}
+.card-title{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:10px;color:#f0f0f0}
+.card-summary{font-size:13px;line-height:1.7;color:var(--text2);margin-bottom:14px}
+.card-link{font-size:12px;color:var(--c2);text-decoration:none;font-weight:600}
+.card-link:hover{text-decoration:underline}
+.footer{
+  text-align:center;padding:32px 24px;color:var(--text2);font-size:12px;
+  border-top:1px solid var(--border);
+}
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:40px 16px 32px}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>🛡️ 防火墙厂商日报</span></div>
+  <div class="nav-date">2026-06-15 周一</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1><span>中国防火墙厂商日报</span></h1>
+  <div class="hero-meta">2026-06-15 周一 · 精选 14 条动态</div>
+  <div class="hero-badge">厂商 8 条 · 行业 6 条 · AI 解读 · 去重合并</div>
+</div>
+
+<div class="ai-summary">
+  <div class="ai-summary-inner">
+    <div class="ai-summary-label">🧠 AI 今日看点</div>
+    <p>今天天融信是绝对主角：6月12日涨停背后是AI安全首证+智算云58%增长+国产操作系统三重概念共振，再加上6月10日成都研讨会和6月11日「数智化防御」体系发布，一周动作密集度碾压同行。安全漏洞侧Fortinet和Palo Alto持续「出圈」——FortiClient EMS新零日+PAN-OS再曝root权限漏洞，两条国际厂商的坏消息客观上都在加速国产替代。行业层面最该关注的是六部门联合发布的《金融信息服务数据分类分级指南》，配合6月1日生效的等保新规和6月30日央行数据安全管理办法，三条合规线齐头并进，防火墙和数据安全产品的增量窗口正在全面打开。</p>
+  </div>
+</div>
+
+<div class="section-title">
+  <span class="icon">🏢</span>
+  <span class="label">厂商头条</span>
+  <span class="count">8 条</span>
+</div>
+<div class="grid">
+<article class="news-card" style="animation-delay:0.0s"><div class="card-header"><span class="tag-vendor" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">天融信</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">天融信6月12日涨停：AI安全+智算云+国产操作系统三重概念叠加（合并4源）</h3><p class="card-summary">6月12日天融信（002212）触及涨停，涨幅7.46%，总市值76.43亿元。涨停核心驱动：①AI安全拿到首张行业权威认证，技术先发优势突出；②智算云2025年营收同比增长近58%，增长亮眼；③6月8日新增「国产操作系统」概念——车载防火墙支持国产芯片、搭载自研安全操作系统。公司同时举办「AI时代下的机遇与挑战」成都研讨会，携手政产学研共议网安新发展。</p><a href="https://finance.sina.com.cn/stock/aiassist/ydfx/2026-06-12/doc-iniccfxs5125563.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.08s"><div class="card-header"><span class="tag-vendor" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">天融信</span><span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">战略规划</span></div><h3 class="card-title">天融信提出「数智化防御」新体系：AI时代攻防逻辑需三大转变（合并2源）</h3><p class="card-summary">6月11日天融信发文提出，面对AI驱动的网络攻击全面升级，防守方必须重构逻辑实现三大关键转变：从「识别已知威胁」转向「识别异常行为」、从「人工响应」转向「自动化闭环」、从「单点防御」转向「协同联防」。以新型数智化防御体系应对AI时代网络攻防挑战，强调AI安全首证+智算云双轮驱动。</p><a href="https://stock.10jqka.com.cn/20260611/c677386486.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.16s"><div class="card-header"><span class="tag-vendor" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">深信服</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">深信服8008万回购收官+6月16日股权登记日派息（合并3源）</h3><p class="card-summary">截至5月31日深信服累计回购74万股（占总股本0.17%），回购金额8008万元，接近8000-9000万回购计划下限。同时发布2025年年度权益分派：每10股派1.10元，6月16日股权登记日，6月17日除权除息。Q1收入16.27亿元，归母净利润-6450万元，亏损仍在但回购+派息显示对中长期信心。</p><a href="https://finance.sina.com.cn/stock/aigc/zjchg/2026-06-02/doc-inhzzqcq1534744.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.24s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">Fortinet FortiClient EMS 零日漏洞 CVE-2026-35616（CVSS 9.1）已被野外利用（合并2源）</h3><p class="card-summary">Fortinet紧急修复FortiClient EMS关键漏洞CVE-2026-35616，CVSS 9.1。该漏洞为访问控制不当，允许未经认证的攻击者通过精心请求执行任意代码。影响7.4.5-7.4.6版本，3月31日起已有蜜罐记录到利用尝试。这是近几周Fortinet第二个被野外利用的关键漏洞（此前CVE-2026-21643同样为未认证RCE），FortiGate防火墙管理接口攻击持续升级。</p><a href="https://blog.csdn.net/zhidingkeji/article/details/159927205" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.32s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">Palo Alto PAN-OS 6月再曝新漏洞，允许root权限执行任意命令</h3><p class="card-summary">6月11日Palo Alto披露PAN-OS防火墙新漏洞，攻击者可利用该漏洞以root权限执行任意命令。此前5月曝出的CVE-2026-0300（CVSS 9.3）已被国家级APT组织利用4周，全球5800+台设备暴露。本次新漏洞披露显示PAN-OS安全态势持续恶化，国产替代逻辑进一步强化。</p><a href="https://blog.csdn.net/qq_29607687/article/details/161971290" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.4s"><div class="card-header"><span class="tag-vendor" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">山石网科</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">山石网科参保人数降14.3%至779人，股价周跌3.6%（合并3源）</h3><p class="card-summary">截至6月12日山石网科（688030）报收15.81元，周跌3.6%，总市值28.5亿元。2025年参保人数779人，较2024年909人减少130人，同比下降14.3%，公司用工规模收缩。6月12日主力资金净卖出433万元。此前信用评级下调至A-展望负面的阴影仍在，ASIC量产利好与财务压力形成反差。</p><a href="https://finance.sina.com.cn/stock/aigc/cbrs/2026-06-08/doc-iniarzha4083794.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.48s"><div class="card-header"><span class="tag-vendor" style="background:#F9731620;color:#F97316;border:1px solid #F9731660">启明星辰</span><span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span></div><h3 class="card-title">启明星辰×移动云推出大模型应用防火墙，语义级AI安全防护</h3><p class="card-summary">移动云联合启明星辰推出大模型应用安全产品——大模型应用防火墙，能读懂「语义」、识别「意图」，实现AI应用层精准防护。这是启明星辰「AI应用安全新三件套」的核心产品，新订单金额已超千万。传统「封堵式」安全面对大模型场景力不从心，语义级防护成为AI安全新范式。</p><a href="https://zone.ci/secarticles/wx/538106.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card" style="animation-delay:0.56s"><div class="card-header"><span class="tag-vendor" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">深信服</span><span class="tag-type" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">功能更新</span></div><h3 class="card-title">深信服防火墙「加量不加价」持续推进：全威胁吞吐量提升50%-100%（合并2源）</h3><p class="card-summary">面对全球硬件供应链承压、元器件成本上涨导致网安设备普遍提价的背景，深信服通过技术创新实现「加量不加价」：多个型号版本迭代后全威胁吞吐量提升50%-100%。依托云网一体双引擎检测架构+云端AI情报联动，在硬件涨价潮中维持价格不变而性能跃升，以技术红利对抗成本压力。</p><a href="https://finance.sina.com.cn/wm/2026-06-03/doc-iniaarqx1103281.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+</div>
+
+<div class="section-title">
+  <span class="icon">🏭</span>
+  <span class="label">行业动态</span>
+  <span class="count">6 条</span>
+</div>
+<div class="grid">
+<article class="news-card industry-card" style="animation-delay:0.64s"><div class="card-header"><span class="tag-industry" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">金融</span><span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">合规</span></div><h3 class="card-title">六部门联合发布《金融信息服务数据分类分级指南》</h3><p class="card-summary">6月13日，国家网信办、中国人民银行、金融监管总局、中国证监会、国家统计局、国家外汇局联合发布《金融信息服务数据分类分级指南》，为金融机构数据治理提供权威标准。该指南与6月1日生效的GA/T 2380-2026等保新规形成政策组合拳，金融数据合规进入精细化阶段。</p><a href="https://www.cac.gov.cn/2026-06/13/c_1783104512415861.htm" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card industry-card" style="animation-delay:0.72s"><div class="card-header"><span class="tag-industry" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">运营商</span><span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">招标</span></div><h3 class="card-title">中国联通国际启动2026-2028年防火墙集中采购标前交流</h3><p class="card-summary">6月5日，「2026-2028年中国联通国际防火墙集中采购项目」启动标前技术商务交流，公开征集技术规范书和设备参数模型意见建议。这是继中国移动4.1亿5939台防火墙大单后，又一运营商级防火墙集采项目，厂商竞争格局或将进一步重塑。</p><a href="https://www.chinabidding.cn/zbgg/U-vzarFQC.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card industry-card" style="animation-delay:0.8s"><div class="card-header"><span class="tag-industry" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">金融</span><span class="tag-type" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">采购</span></div><h3 class="card-title">广州农商银行发布2026年度数据中心信创防火墙采购招标</h3><p class="card-summary">6月2日，广州农村商业银行发布2026年度数据中心信创防火墙采购项目招标公告，旨在降低老旧设备故障风险，加速IT基础设备自主可控进程。此外，该行2026-2028年网络安全运营服务项目6月3日开标，6月11日起公示。金融机构信创改造进入密集采购期。</p><a href="https://www.chinabidding.cn/mfgg/U-vzV8jVa.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card industry-card" style="animation-delay:0.88s"><div class="card-header"><span class="tag-industry" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">政府</span><span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">招标</span></div><h3 class="card-title">北京发布2026年度信创防火墙设备公开招标公告</h3><p class="card-summary">6月3日，2026年度信创防火墙设备采购项目公开招标公告发布，属于政务信创改造项目。信创替代持续成为各级政府防火墙采购的核心关键词，国产防火墙厂商迎来政策红利窗口期。</p><a href="https://www.bidcenter.com.cn/news-422866165-1.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card industry-card" style="animation-delay:0.96s"><div class="card-header"><span class="tag-industry" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">中标</span></div><h3 class="card-title">新媒股份2026年防火墙维保及IPS授权采购项目中标公示</h3><p class="card-summary">6月5日，广东南方新媒体股份有限公司发布2026年防火墙统一维保及IPS授权采购项目中标候选人公示。广州鼎诚科技有限公司中标，金额70.32万元。媒体行业网络安全投入持续稳定。</p><a href="https://baijiahao.baidu.com/s?id=1867206030994069287" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card industry-card" style="animation-delay:1.04s"><div class="card-header"><span class="tag-industry" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">合规</span><span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">合规</span></div><h3 class="card-title">GA/T 2380-2026等保数据安全新规落地两周：企业合规节奏全面加速</h3><p class="card-summary">GA/T 2380-2026《网络安全等级保护数据安全基本要求》6月1日正式生效已满两周。企业数据合规从「要不要做」转变为「多久做完」，测评档期抢订成为普遍现象。叠加6月30日央行数据安全管理办法实施在即，合规驱动成为防火墙及数据安全产品的核心增量动力。</p><a href="https://finance.sina.com.cn/wm/2026-06-05/doc-iniakfhp1616432.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+</div>
+
+<div class="footer">
+  数据来源：WebSearch 实时聚合 · 生成时间：2026-06-15 08:50 (GMT+8) · 由 WorkBuddy 自动化生成
+</div>
+
+</body>
+</html>
