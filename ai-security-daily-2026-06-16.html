@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-06-16</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0a0a;
+    color: #e5e7eb;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 64px 0 48px;
+    position: relative;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(91,108,247,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-title {
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    position: relative;
+}
+.hero-date {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 32px;
+    position: relative;
+}
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+}
+.stat-item {
+    text-align: center;
+    padding: 20px 32px;
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    min-width: 120px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.stat-item:hover {
+    transform: translateY(-2px);
+    border-color: #5B6CF7;
+}
+.stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.stat-label {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* AI Overview */
+.overview-section {
+    margin: 32px 0 48px;
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(91,108,247,0.08), rgba(139,92,246,0.08));
+    border: 1px solid rgba(91,108,247,0.2);
+    border-radius: 20px;
+}
+.overview-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #8B5CF6;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.overview-text {
+    font-size: 15px;
+    color: #9ca3af;
+    line-height: 1.9;
+}
+
+/* Sections */
+.section {
+    margin: 56px 0;
+}
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #1f2937;
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #5B6CF7, #8B5CF6);
+}
+.section-count {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 24px;
+}
+
+/* Cards */
+.card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.card:hover {
+    border-color: #374151;
+    transform: translateY(-1px);
+}
+.card.visible:hover {
+    transform: translateY(-1px);
+}
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.severity {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f3f4f6;
+    line-height: 1.4;
+}
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+.vendor-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(91,108,247,0.15);
+    color: #5B6CF7;
+    border: 1px solid rgba(91,108,247,0.3);
+    font-weight: 600;
+}
+.tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(139,92,246,0.1);
+    color: #a78bfa;
+    border: 1px solid rgba(139,92,246,0.2);
+}
+.card-summary {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.8;
+    margin-bottom: 14px;
+}
+.card-sources {
+    font-size: 12px;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.card-sources a {
+    color: #8B5CF6;
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+}
+.card-sources a:hover {
+    color: #5B6CF7;
+    border-bottom-color: #5B6CF7;
+}
+
+/* Trends */
+.trends-section {
+    margin-top: 64px;
+    padding: 40px;
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 20px;
+}
+.trends-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.trend-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.trend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.7;
+    padding: 12px 16px;
+    background: rgba(91,108,247,0.04);
+    border-radius: 10px;
+    border-left: 3px solid #5B6CF7;
+}
+.trend-num {
+    color: #5B6CF7;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* Animations */
+.card:nth-child(1) { transition-delay: 0.05s; }
+.card:nth-child(2) { transition-delay: 0.10s; }
+.card:nth-child(3) { transition-delay: 0.15s; }
+.card:nth-child(4) { transition-delay: 0.20s; }
+.card:nth-child(5) { transition-delay: 0.25s; }
+.card:nth-child(6) { transition-delay: 0.30s; }
+.card:nth-child(7) { transition-delay: 0.35s; }
+.card:nth-child(8) { transition-delay: 0.40s; }
+.card:nth-child(9) { transition-delay: 0.45s; }
+.card:nth-child(10) { transition-delay: 0.50s; }
+.card:nth-child(11) { transition-delay: 0.55s; }
+.card:nth-child(12) { transition-delay: 0.60s; }
+.card:nth-child(13) { transition-delay: 0.65s; }
+.card:nth-child(14) { transition-delay: 0.70s; }
+.card:nth-child(15) { transition-delay: 0.75s; }
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 48px 0 24px;
+    color: #374151;
+    font-size: 12px;
+}
+
+@media (max-width: 640px) {
+    .hero-title { font-size: 28px; }
+    .hero-stats { gap: 12px; }
+    .stat-item { padding: 14px 20px; min-width: 90px; }
+    .stat-number { font-size: 28px; }
+    .section-title { font-size: 20px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 14px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+    <h1 class="hero-title">🤖 AI 安全日报</h1>
+    <p class="hero-date">2026年6月16日 星期二</p>
+    <div class="hero-stats">
+        <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">国际产品动态</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">1</div>
+            <div class="stat-label">国内产品动态</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">15</div>
+            <div class="stat-label">行业动态</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">19</div>
+            <div class="stat-label">总计</div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Overview -->
+<div class="overview-section">
+    <div class="overview-title">📡 AI 总览</div>
+    <p class="overview-text">本周 AI 安全领域波澜壮阔：OWASP 发布全球首个 Agentic AI 安全成熟度框架，标志着 AI Agent 安全从"各自为战"走向"有章可循"；美国总统签署 AI 安全审查行政令，政策层面从行业自律向政府引导转变；Sysdig 确认全球首例 LLM Agent 自主攻击——60 分钟内完成从入侵到窃取全链条，AI 攻防已进入新纪元；Miasma 供应链蠕虫攻陷 73 个微软仓库，AI 开发者的凭证正在成为攻击者的首要目标。产品层面，SAFE AI-SPM 正式发布、Check Point AI 代码扫描覆盖全产品线、腾讯云 LLM-WAF+AI-SPM 双引擎持续迭代——AI 安全产品化正从概念走向落地。但 Veeam 调研揭示了一个尴尬现实：95% 的组织已采用 AI，仅 31% 完成了安全审计。安全永远追不上业务，但至少得跑起来。</p>
+</div>
+
+<!-- Section 1: International Products -->
+<div class="section">
+    <h2 class="section-title">🏢 国际友商产品动态</h2>
+    <p class="section-count">3 条产品动态 · 本周新产品/功能发布较少，产品版块宁缺毋滥</p>
+    
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">SAFE 发布 AI-SPM（AI 安全态势管理）产品</span>
+        </div>
+        <div class="card-tags">
+            <span class="vendor-tag">SAFE Security</span>
+            <span class="tag">AI-SPM</span><span class="tag">产品发布</span>
+        </div>
+        <p class="card-summary">SAFE 正式推出 AI Security Posture Management（AI-SPM），在 Gartner SRM Summit 2026（6月1-3日）上展示。产品提供五维度持续评估（实时活动、配置、外部暴露、合规证据、合同），内置 100+ AI Agent 驱动的自动化工作流引擎，可在无需复杂部署的情况下快速获取企业 AI 使用可见性。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并2源) <a href="https://safe.security/resources/press-release/safe-launches-ai-security-posture-management/" target="_blank" rel="noopener">SAFE 官方</a> · <a href="https://www.prnewswire.com/news-releases/safe-launches-ai-security-posture-management-ai-spm-to-enable-enterprises-to-deploy-ai-at-scale-with-confidence-302783795.html" target="_blank" rel="noopener">PR Newswire</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">Check Point 启动 Frontier AI 模型就绪计划 + Jumbo Security Release</span>
+        </div>
+        <div class="card-tags">
+            <span class="vendor-tag">Check Point</span>
+            <span class="tag">AI代码扫描</span><span class="tag">安全加固</span>
+        </div>
+        <p class="card-summary">Check Point 宣布完成大规模 AI 驱动的代码扫描，覆盖全产品线安全审查，通过最新 Jumbo Release 推送修复。该计划包括组件加固、补丁时效优化，用户运行最新 Jumbo 版本即可获得完整保护。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并2源) <a href="https://blog.checkpoint.com/security/check-point-frontier-ai-models-readiness-program-security-update/" target="_blank" rel="noopener">Check Point Blog</a> · <a href="https://research.checkpoint.com/2026/1st-june-threat-intelligence-report/" target="_blank" rel="noopener">Check Point Research</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">Anthropic Claude Code GitHub Action 修复严重供应链漏洞</span>
+        </div>
+        <div class="card-tags">
+            <span class="vendor-tag">Anthropic / Microsoft</span>
+            <span class="tag">AI开发安全</span><span class="tag">CICD安全</span>
+        </div>
+        <p class="card-summary">Microsoft 披露 Claude Code GitHub Action v2.1.128 之前版本存在 CI/CD 密钥泄露漏洞，攻击者可通过 /proc/self/environ 访问未净化环境变量。Anthropic 已于 5 月 5 日发布修补版本，但 6 月仍有组织未升级而遭活跃利用。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://www.esecurityplanet.com/threats/claude-code-github-actions-flaw-created-supply-chain-attack-risk/" target="_blank" rel="noopener">eSecurity Planet</a>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Chinese Products -->
+<div class="section">
+    <h2 class="section-title">🇨🇳 国内友商产品动态</h2>
+    <p class="section-count">1 条产品动态 · 本周国内厂商无大型产品版本更新/新品发布</p>
+    
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">腾讯云大模型安全方案持续迭代：LLM-WAF + AI-SPM 双引擎</span>
+        </div>
+        <div class="card-tags">
+            <span class="vendor-tag">腾讯云</span>
+            <span class="tag">LLM-WAF</span><span class="tag">AI-SPM</span>
+        </div>
+        <p class="card-summary">腾讯云大模型安全产品为企业构建全栈 AI 安全防护，提供 LLM-WAF 拦截 Prompt 注入与算力滥用，AI-SPM 态势感知系统实时监测漏洞并管理全域资产。在 2024 年 AI 大模型专项实网演练中，腾讯云成为唯二未失分的厂商之一。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并2源) <a href="https://cloud.tencent.com/developer/article/2676691" target="_blank" rel="noopener">腾讯云开发者社区</a> · <a href="https://cloud.tencent.cn/developer/article/2679585" target="_blank" rel="noopener">腾讯云官方</a>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Industry -->
+<div class="section">
+    <h2 class="section-title">📊 行业动态与趋势</h2>
+    <p class="section-count">15 条行业动态</p>
+    
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥🔥</span>
+            <span class="card-title">OWASP 发布全球首个 Agentic AI 安全成熟度框架（AASMF）</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">OWASP</span><span class="tag">AI安全标准</span><span class="tag">Agent安全</span>
+        </div>
+        <p class="card-summary">6 月 5 日 Infosecurity Europe 2026 大会上，OWASP GenAI 安全项目正式发布 Agentic AI Security Maturity Framework（AASMF）及《State of Agentic AI Security and Governance》报告。该框架为企业提供了评估 AI Agent 安全成熟度的系统性方法论，同时发布 Top 10 for Agentic Applications 2026 风险清单。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并3源) <a href="https://www.infosecurity-magazine.com/news/owasp-agentic-ai-security-maturity/" target="_blank" rel="noopener">Infosecurity Magazine</a> · <a href="https://zhupite.com/sec/owasp-agent-security-maturity-framework.html" target="_blank" rel="noopener">逐皮科技(中文)</a> · <a href="https://genai.owasp.org/resources/" target="_blank" rel="noopener">OWASP GenAI</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥🔥</span>
+            <span class="card-title">美国总统签署 AI 安全审查行政令：CISA + NSA 将识别高风险模型</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">政策监管</span><span class="tag">AI安全审查</span>
+        </div>
+        <p class="card-summary">特朗普总统签署行政令，建立自愿性 AI 安全审查框架。CISA 和 NSA 将被授权识别高风险 AI 模型并推动审查流程，在鼓励创新与维护国家安全之间寻求平衡。此举标志着美国 AI 安全监管从行业自律向政府引导转变的关键一步。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://www.esecurityplanet.com/artificial-intelligence/trump-signs-executive-order-creating-voluntary-ai-security-review-framework/" target="_blank" rel="noopener">eSecurity Planet</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥🔥</span>
+            <span class="card-title">Miasma 供应链蠕虫攻陷 73 个微软 GitHub 仓库，304+ 组件受影响</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">供应链攻击</span><span class="tag">AI开发者安全</span>
+        </div>
+        <p class="card-summary">6 月 5-7 日，名为 Miasma 的高级供应链蠕虫通过被攻陷的贡献者账号向微软 Azure/durabletask 仓库推送恶意提交，GitHub 在 105 秒内禁用 73 个受影响仓库。该蠕虫是 Shai-Hulud 的演进版本（Python 变体 Hades），专门针对 AI 开发者凭证和编码工具配置，攻击模式与 APT41/Lazarus 重叠。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并3源) <a href="https://thehackernews.com/2026/06/miasma-worm-hits-73-microsoft-github.html" target="_blank" rel="noopener">The Hacker News</a> · <a href="https://phoenix.security/miasma-azure-hades-pypi-supply-chain-worm-2026/" target="_blank" rel="noopener">Phoenix Security</a> · <a href="https://www.rescana.com/post/threatsday-bulletin-june-2026-miasma-supply-chain-worm-leak-claude-code-github-action-vulnerability-ai-agent-phishing-to" target="_blank" rel="noopener">Rescana</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥🔥</span>
+            <span class="card-title">全球首例 LLM Agent 自主网络攻击被确认：60 分钟内完成入侵到数据窃取</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">AI Agent攻击</span><span class="tag">安全事件</span>
+        </div>
+        <p class="card-summary">Sysdig 威胁研究团队确认首例在野 LLM Agent 自主攻击：5 月 10 日，一个 AI 代理利用 CVE-2026-39987（Marimo 预认证 RCE）入侵服务器，在无人工干预的情况下完成 AWS 凭证窃取、SSH 密钥获取、数据库导出等全后渗透链条。攻击特征包括中文规划注释泄露、自适应命令生成、11 个 IP 分布式规避（22 秒内完成）。CVE 已被列入 CISA 已知被利用漏洞目录。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://the-agent-report.com/2026/06/sysdig-first-llm-agent-cyberattack-june-2026/" target="_blank" rel="noopener">The Agent Report</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥🔥</span>
+            <span class="card-title">100 万 AI 服务扫描揭示 1,652 个 Ollama API 未认证暴露</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">基础设施安全</span><span class="tag">AI暴露面</span>
+        </div>
+        <p class="card-summary">安全研究者对约 100 万个暴露的 AI 服务进行大规模扫描，发现 1,652 个 Ollama API 完全未经认证向公网开放，允许任何人直接访问实时模型并进行推理。这些暴露端点可被用于响应中毒和下游工作流篡改，是当前最容易被攻破的 AI 基础设施攻击面。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并2源) <a href="https://adversa.ai/blog/top-genai-security-resources-june-2026/" target="_blank" rel="noopener">Adversa AI</a> · <a href="https://thehackernews.com/2026/05/over-1600-unauthenticated-ollama-instances-found-exposed-online/" target="_blank" rel="noopener">The Hacker News</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">CVE-2026-22738：Spring AI SimpleVectorStore SpEL 注入导致远程代码执行</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">漏洞披露</span><span class="tag">AI框架安全</span>
+        </div>
+        <p class="card-summary">Spring AI 的 SimpleVectorStore 组件被发现存在 SpEL（Spring Expression Language）注入漏洞（CVE-2026-22738），可导致远程代码执行。该漏洞不是单一的框架 Bug，而是标志着 AI 框架安全审计不足的系统性风险——越来越多的 AI 应用直接嵌入向量存储，扩大了攻击面。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://zhuanlan.zhihu.com/p/2036130898505119249" target="_blank" rel="noopener">知乎/先知社区</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">Check Point VPN 认证绕过漏洞（CVE-2026-50751）正被活跃利用</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">漏洞利用</span><span class="tag">VPN安全</span>
+        </div>
+        <p class="card-summary">6 月 8 日，Check Point 披露其 Mobile Access/SSL VPN、Remote Access VPN 和 Spark Firewall 产品中存在 IKEv1 远程访问认证绕过漏洞（CVE-2026-50751），已在野被活跃利用。NHS 等机构发布紧急安全通告要求受影响组织立即修补。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并2源) <a href="https://thehackernews.com/2026/06/critical-check-point-vpn-flaw-exploited.html" target="_blank" rel="noopener">The Hacker News</a> · <a href="https://digital.nhs.uk/cyber-alerts/2026/cc-4792" target="_blank" rel="noopener">NHS Cyber Alert</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">ChatGPhish：ChatGPT 提示注入将网页摘要变成钓鱼投放渠道</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">提示注入</span><span class="tag">AI钓鱼</span>
+        </div>
+        <p class="card-summary">安全研究者发现 ChatGPhish 攻击技术：在网页中嵌入隐藏指令，当 ChatGPT 对该页面进行摘要时，静默输出攻击者控制的钓鱼内容和链接。该攻击将 AI 摘要功能转化为规模化钓鱼投放渠道，暴露了 AI 浏览功能缺乏来源可信度验证的固有风险。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://adversa.ai/blog/top-genai-security-resources-june-2026/" target="_blank" rel="noopener">Adversa AI</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">Tokenizer 篡改：无需修改权重的隐蔽供应链攻击向量</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">供应链安全</span><span class="tag">模型安全</span>
+        </div>
+        <p class="card-summary">研究人员发现通过篡改模型 tokenizer 词汇表可在解码阶段改变输出，无需修改任何模型权重。该攻击在模型微调后仍可存活，是一种极为隐蔽的供应链攻击向量，传统的模型完整性校验（基于权重哈希）完全无法检测。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://adversa.ai/blog/top-genai-security-resources-june-2026/" target="_blank" rel="noopener">Adversa AI</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥🔥</span>
+            <span class="card-title">JFrog 警告：AI 软件供应链攻击激增，近 500 个恶意 AI 模型流通</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">供应链安全</span><span class="tag">恶意模型</span>
+        </div>
+        <p class="card-summary">JFrog 发布报告指出 2026 年 AI 软件供应链威胁急剧升级：已发现近 500 个恶意 AI 模型在 Hugging Face 等平台流通，恶意 npm 包数量同比增长 451%。AI 资产在部署前的安全扫描从「最佳实践」升级为「必要措施」。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://www.esecurityplanet.com/threats/ai-software-supply-chain-threats-escalate-in-2026/" target="_blank" rel="noopener">eSecurity Planet</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">嘶吼发布《2026 AI+网络安全产业图谱》</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">产业报告</span><span class="tag">中国AI安全</span>
+        </div>
+        <p class="card-summary">6 月 10 日，嘶吼安全产业研究院正式发布《2026 AI+网络安全产业图谱》，覆盖 AI 安全产业链基础层、技术层、应用层、服务层四大维度，全景呈现国内 AI+网络安全产业核心梯队企业布局。国投智能、合众数据等多家企业入选。</p>
+        <div class="card-sources">
+            <span>📎</span> (合并2源) <a href="https://stock.10jqka.com.cn/20260612/c677430019.shtml" target="_blank" rel="noopener">同花顺</a> · <a href="https://www.thepaper.cn/newsDetail_forward_33381459" target="_blank" rel="noopener">澎湃新闻</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">Cisco 研究：多轮攻击可系统性绕过前沿 AI 模型安全防护</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">AI红蓝对抗</span><span class="tag">越狱攻击</span>
+        </div>
+        <p class="card-summary">Cisco 研究人员发现，通过 Prompt 重构和增量请求等「多轮攻击」技术，可系统性绕过包括 GPT-4、Claude、Gemini 在内的前沿 AI 模型安全防护。研究表明，当前对齐技术在面对多轮交互式的越狱尝试时防御效果显著下降，需要更强大的模型弹性测试机制。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://www.esecurityplanet.com/artificial-intelligence/multi-turn-attacks-expose-ongoing-weaknesses-across-frontier-ai-models/" target="_blank" rel="noopener">eSecurity Planet</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">Veeam 调研：95% 组织已采用 AI，但仅 31% 完成 AI 安全审计</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">行业报告</span><span class="tag">AI治理</span>
+        </div>
+        <p class="card-summary">Veeam 最新调研显示 AI 采用率已达 95%，但治理和合规成熟度严重滞后——仅 31% 的组织完成了 AI 相关安全审计。本地 AI Agent 在端点上创建了新的监控盲区，传统安全工具无法有效追踪 AI 进程的数据访问行为。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://www.esecurityplanet.com/artificial-intelligence/ai-growth-exposes-gaps-in-governance-and-readiness/" target="_blank" rel="noopener">eSecurity Planet</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥</span>
+            <span class="card-title">Meta 507 个私有仓库因 Grafana 配置错误泄露</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">云安全</span><span class="tag">数据泄露</span>
+        </div>
+        <p class="card-summary">6 月 9 日，因 Grafana 实例配置错误，Meta 的 507 个私有 GitHub 仓库内容遭公开暴露。虽然不直接属于 AI 安全事件，但对拥有大量 AI 开源项目的 Meta 而言，配置错误的连锁安全风险值得警惕。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://www.rescana.com/post/threatsday-bulletin-june-2026-miasma-supply-chain-worm-leak-claude-code-github-action-vulnerability-ai-agent-phishing-to" target="_blank" rel="noopener">Rescana</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="severity">🔥🔥</span>
+            <span class="card-title">Cloud Security Alliance：80% 组织因已知漏洞遭事件，仅 9% 在 24h 内修补</span>
+        </div>
+        <div class="card-tags">
+            
+            <span class="tag">行业报告</span><span class="tag">漏洞管理</span>
+        </div>
+        <p class="card-summary">CSA 报告指出 AI 驱动的漏洞发现正在加速攻击节奏——80% 的组织因已知漏洞遭受安全事件，但仅 9% 能在 24 小时内修补关键漏洞。补丁缺口与 AI 加速攻击之间的时间差成为当前安全运营的核心瓶颈。</p>
+        <div class="card-sources">
+            <span>📎</span> <a href="https://www.esecurityplanet.com/threats/cloud-security-alliance-report-highlights-growing-patch-gap-risks/" target="_blank" rel="noopener">eSecurity Planet</a>
+        </div>
+    </div>
+</div>
+
+<!-- Trends -->
+<div class="trends-section">
+    <div class="trends-title">🔮 趋势判断</div>
+    <ul class="trend-list">
+        <li class="trend-item"><span class="trend-num">01</span><span>AI Agent 安全从"可选项"变为"必选项"：OWASP AASMF + Agentic Top 10 提供了首个标准化框架</span></li><li class="trend-item"><span class="trend-num">02</span><span>供应链成为 AI 安全最薄弱环节：恶意模型 500+、Miasma 蠕虫、Tokenizer 篡改，攻击面急剧扩大</span></li><li class="trend-item"><span class="trend-num">03</span><span>AI 驱动的攻击速度碾压传统防御：LLM Agent 自主攻击 60 分钟完成全链条，补丁窗口期被压缩到极限</span></li><li class="trend-item"><span class="trend-num">04</span><span>AI-SPM 市场加速成形：SAFE、Wiz、腾讯云等厂商密集布局 AI 安全态势管理</span></li><li class="trend-item"><span class="trend-num">05</span><span>政策监管趋严：美国 AI 安全行政令 + 中国 AI 安全产业图谱发布，合规压力持续升温</span></li>
+    </ul>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>AI 安全日报 · 2026-06-16 · 数据来源详见各条目来源链接</p>
+    <p>本报告由 WorkBuddy 自动化生成 · 仅供内部参考</p>
+</div>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach(card => {
+    observer.observe(card);
+});
+</script>
+</body>
+</html>
