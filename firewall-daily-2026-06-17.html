@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-17</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #0a0a0a;
+  color: #e5e5e5;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.bg-gradient {
+  position: fixed; top: 0; left: 0; right: 0; height: 600px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(91,108,247,0.18) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 0%, rgba(236,72,153,0.12) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+nav.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 16px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.brand {
+  font-size: 16px; font-weight: 600;
+  background: linear-gradient(90deg, #5B6CF7, #8B5CF6, #EC4899);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.nav-meta { color: #888; font-size: 13px; }
+.container {
+  max-width: 1200px; margin: 0 auto; padding: 60px 32px;
+  position: relative; z-index: 1;
+}
+.hero {
+  text-align: center; margin-bottom: 56px;
+  animation: fadeUp 0.8s ease-out;
+}
+.hero h1 {
+  font-size: 56px; font-weight: 700; letter-spacing: -0.03em;
+  background: linear-gradient(90deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 12px;
+}
+.hero .date {
+  color: #a0a0a0; font-size: 18px; margin-bottom: 24px;
+}
+.hero .stats {
+  display: inline-flex; gap: 40px; padding: 20px 36px;
+  background: rgba(255,255,255,0.03); border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-size: 32px; font-weight: 700; color: #fff;
+  background: linear-gradient(90deg, #5B6CF7, #EC4899);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+.ai-summary {
+  background: linear-gradient(135deg, rgba(91,108,247,0.08), rgba(236,72,153,0.06));
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 20px; padding: 28px 32px; margin-bottom: 56px;
+  position: relative; overflow: hidden;
+  animation: fadeUp 0.8s ease-out 0.2s backwards;
+}
+.ai-summary::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: linear-gradient(180deg, #5B6CF7, #EC4899);
+}
+.ai-summary h2 {
+  font-size: 20px; margin-bottom: 12px; color: #fff;
+  display: flex; align-items: center; gap: 10px;
+}
+.ai-summary h2 .icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, #5B6CF7, #EC4899);
+  font-size: 16px;
+}
+.ai-summary p { color: #d4d4d4; font-size: 15px; line-height: 1.8; }
+.section-title {
+  font-size: 28px; font-weight: 700; color: #fff;
+  margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+}
+.section-title .emoji { font-size: 32px; }
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px; margin-bottom: 60px;
+}
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0; transform: translateY(20px);
+}
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover {
+  border-color: rgba(139,92,246,0.3);
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+.card-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px;
+}
+.tag {
+  display: inline-block; padding: 4px 10px; border-radius: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+}
+.tag-vendor {
+  background: rgba(91,108,247,0.15); color: #8B9AFF;
+  border: 1px solid rgba(91,108,247,0.3);
+}
+.tag-industry {
+  background: rgba(236,72,153,0.15); color: #F472B6;
+  border: 1px solid rgba(236,72,153,0.3);
+}
+.card-source { color: #666; font-size: 11px; }
+.card-title {
+  font-size: 16px; font-weight: 600; color: #fff;
+  margin-bottom: 10px; line-height: 1.4;
+}
+.card-summary {
+  font-size: 13px; color: #b0b0b0; line-height: 1.7;
+  margin-bottom: 16px;
+}
+.card-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #8B5CF6; text-decoration: none; font-size: 13px;
+  font-weight: 500; transition: all 0.2s;
+}
+.card-link:hover {
+  color: #C4B5FD; text-decoration: underline;
+  filter: brightness(1.3);
+}
+footer {
+  text-align: center; padding: 40px 32px; color: #666;
+  font-size: 13px; border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 40px;
+}
+footer a { color: #8B5CF6; text-decoration: none; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; }
+  .hero .stats { flex-direction: column; gap: 16px; padding: 16px 24px; }
+  .container { padding: 32px 16px; }
+  nav.topbar { padding: 12px 16px; }
+  .brand { font-size: 14px; }
+  .nav-meta { font-size: 11px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="bg-gradient"></div>
+<nav class="topbar">
+  <div class="brand">🛡️ Firewall Daily</div>
+  <div class="nav-meta">2026-06-17 · WorkBuddy 自动化生成</div>
+</nav>
+<div class="container">
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="date">2026-06-17 · Wednesday</div>
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-num">15</div>
+        <div class="stat-label">总动态</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label">厂商动态</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7</div>
+        <div class="stat-label">行业动态</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-summary">
+    <h2><span class="icon">🤖</span> AI 解读 · 今日看点</h2>
+    <p>今天最值得划重点的三件事：山石网科再入 Forrester《企业级防火墙市场格局 Q2 2026》报告——国际权威机构连续认证背景下，山石 ASIC 全产品线导入的故事越来越有说服力；微软 6 月补丁日 (6/9) 一次性修 204 个漏洞、其中 2 个 0Day 已被在野利用，国内所有对接微软生态的防火墙/WAF/IPS 厂商本周必须更新规则库；福建中邮物流 6/22 截止的防火墙+虚拟化平台改造项目显示邮政系统国产化替代进入落地深水区。整体看，AI 原生防火墙已经过了 PPT 阶段（深信服/H3C/华为/天融信/奇安信五家产品全部升级完成），接下来拼的是运营商集采中标率（联通国际+邮政系+广电规划院）和合规验收效率（GA/T 2380 数据安全测评档期抢订）。</p>
+  </section>
+
+  <h2 class="section-title"><span class="emoji">🏢</span> 厂商动态</h2>
+  <div class="grid">
+
+    <article class="card" data-idx="0">
+      <div class="card-meta">
+        <span class="tag tag-vendor">山石网科</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">山石网科再次入选 Forrester《企业级防火墙市场格局 Q2 2026》报告</h3>
+      <p class="card-summary">全球领先研究咨询机构 Forrester 发布《企业级防火墙市场格局（2026Q2）》，山石网科成功入选。报告聚焦"AI 重塑防火墙价值边界"主题，山石在帮助现代企业应对分布式混合网络安全挑战方面的能力获权威背书。</p>
+      <a class="card-link" href="https://baijiahao.baidu.com/s?id=1868153600066439899&wfr=spider&for=pc" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="1">
+      <div class="card-meta">
+        <span class="tag tag-vendor">深信服</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">深信服大模型赋能下一代 AI 防火墙：安全 GPT 覆盖流量/邮件/告警/数据全场景</h3>
+      <p class="card-summary">深信服将安全 GPT 全面赋能下一代 AI 防火墙，覆盖流量未知威胁检测、钓鱼邮件检测、智能告警降噪、事件自动化研判闭环、数据分类分级与风险监测等全场景；通过"本地+云端"云网架构打破本地硬件性能上限，让算力与防护能力云端延伸。</p>
+      <a class="card-link" href="https://www.softxiaoer.com/dev-news/shenxinfufabu-2/" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="2">
+      <div class="card-meta">
+        <span class="tag tag-vendor">H3C</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">新华三 F1000-AI-25-G 政企边缘防火墙受关注，认证型号在采购清单脱颖而出</h3>
+      <p class="card-summary">新华三 F1000-AI-25-G 防火墙在 2026 政企边缘采购中受关注，业界讨论聚焦"真 AI 防火墙"与营销话术区分：通过《计算机信息系统安全专用产品许可证》认证的型号成为采购优选，强调标称 AI 防火墙应具备规则库之外的智能分析能力。</p>
+      <a class="card-link" href="https://bk.taobao.com/k/fanghuoqiang_16737/1df38308e9f594371c8c5bc589f29774.html" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="3">
+      <div class="card-meta">
+        <span class="tag tag-vendor">华为</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">华为 2025 H1 中国区网络安全防火墙市场份额第一持续领跑</h3>
+      <p class="card-summary">华为防火墙凭借内嵌 Emulator 微内核脱壳引擎 + AI 安全检测算法（未知威胁检测率 95%）+ 2025 Q1/Q2 中国市场份额第一的成绩持续领跑，AI 防御能力构筑政企牢固防病毒入侵基线。</p>
+      <a class="card-link" href="https://tech.huanqiu.com/article/4OKr2xUTOJa" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="4">
+      <div class="card-meta">
+        <span class="tag tag-vendor">启明星辰</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">启明星辰中标南方电网应用防火墙 WAF6000-A-YN 3 套系统软件升级服务</h3>
+      <p class="card-summary">中国南方电网公示：采购 1 套天镜脆弱性扫描与管理系统启明星辰 V6.0（TJCS-NS-L）1 年特征库、漏洞规则库、指纹库、产品本体升级授权 + 3 套应用防火墙启明星辰（WAF6000-A-YN）1 年系统软件升级服务，央国企运维续约市场持续放量。</p>
+      <a class="card-link" href="https://www.bidding.csg.cn/zbhxrgs/1200432803.jhtml" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="5">
+      <div class="card-meta">
+        <span class="tag tag-vendor">奇安信</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">奇安信 AI 智能体赋能安全新范式，连续两年入选标普全球《可持续发展年鉴（中国版）2026》</h3>
+      <p class="card-summary">奇安信 6 月连续第二年入选标普全球《可持续发展年鉴（中国版）2026》，AI 智能体赋能安全新范式成为产品主线；公司在万兆防火墙等核心产品线持续加码，政企/金融/能源行业渗透率稳步提升。</p>
+      <a class="card-link" href="https://stockpage.10jqka.com.cn/002439/news/" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="6">
+      <div class="card-meta">
+        <span class="tag tag-vendor">天融信</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">天融信 TopNGFW 持续升级，AI 驱动一体化智能检测引擎覆盖 IPS/WAF/DDoS/僵木蠕</h3>
+      <p class="card-summary">天融信下一代防火墙 TopNGFW 融入 AI 驱动一体化智能检测引擎，集入侵防御、WAF、僵木蠕、URL 过滤、DDoS 防护于一体；天融信已连续入选 Gartner 8 大领域代表厂商，从单品竞争转向"标准+平台"全栈能力。</p>
+      <a class="card-link" href="http://www.topsec.com.cn/products/TopNGFW" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="7">
+      <div class="card-meta">
+        <span class="tag tag-vendor">绿盟科技</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">绿盟科技 WAF/IDPS/ADS 三款产品持续获国际权威认可</h3>
+      <p class="card-summary">绿盟科技在下一代防火墙、合规及安全管理等领域持续深耕，ADS（抗拒绝服务）、IDPS（入侵防护）、WAF（Web 应用防火墙）多款产品获国际权威咨询机构认可，AI 安全运营能力持续提升。</p>
+      <a class="card-link" href="https://www.nsfocus.com.cn/html/6/62/74/index.html" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+  </div>
+
+  <h2 class="section-title"><span class="emoji">🏭</span> 行业动态</h2>
+  <div class="grid">
+
+    <article class="card" data-idx="100">
+      <div class="card-meta">
+        <span class="tag tag-industry">政府</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">山石网科深度解读微软 6 月补丁日：累计修复 204 个漏洞，含 2 个 0Day</h3>
+      <p class="card-summary">2026 年 6 月 9 日微软发布年度第六次安全更新，累计修复 204 个漏洞（33 个严重 + 171 个重要），含 2 个被在野利用的 0Day；权限提升 65 个、远程代码执行 55 个；CVE-2026-42985/44803/44812/47291 等 4 个 RCE 漏洞为本周防御重点，国内政企需紧急更新 WAF/IPS 规则库。</p>
+      <a class="card-link" href="https://www.163.com/dy/article/KV2MJ94R0538ER6X.html" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="101">
+      <div class="card-meta">
+        <span class="tag tag-industry">政府</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">国家广播电视总局规划院发布网络防火墙反拍采购需求，预算 48 万元</h3>
+      <p class="card-summary">2026 年 6 月 12 日国家广播电视总局广播电视规划院发布网络防火墙反拍采购需求公告，预算总金额 48 万元，政企事业单位防火墙换装需求持续释放，国产化品牌为主要受益方。</p>
+      <a class="card-link" href="http://www.caizhaowang.com/news-1-53e5aeb26f3b5cd95aff8cb821dd8d5713289eb4bb682def.html" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="102">
+      <div class="card-meta">
+        <span class="tag tag-industry">运营商</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">广东南方新媒体 2026 防火墙维保及 IPS 授权采购项目公布中标候选人</h3>
+      <p class="card-summary">2026 年 6 月 5 日广东南方新媒体股份有限公司发布 2026 年防火墙统一维保及 IPS 授权采购项目（XYL2026GZ065C08）中标候选人公示，运营商系媒体行业防火墙续约+维保需求保持稳定，2 家公司入围候选。</p>
+      <a class="card-link" href="https://baijiahao.baidu.com/s?id=1867206030994069287&wfr=spider&for=pc" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="103">
+      <div class="card-meta">
+        <span class="tag tag-industry">运营商</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">中国移动 2026-2028 硬件防火墙集采启动：5939 台/4.1 亿（高端 3.38 亿）</h3>
+      <p class="card-summary">2026 年 5 月 19 日中国移动发布《中国移动 2026 年至 2028 年（二年期）硬件防火墙产品集中采购项目》招标公告，5939 台防火墙，划分为 2 个标包，标包 1（高端）最高限价 33797.44 万元（不含税），标包 2（中低端）跟进；移动系集采进入双年度大单阶段。</p>
+      <a class="card-link" href="https://finance.sina.cn/2026-05-20/detail-inhyqiyi8631858.d.html" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="104">
+      <div class="card-meta">
+        <span class="tag tag-industry">运营商</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">2026-2028 中国联通国际防火墙集中采购项目启动标前技术商务交流</h3>
+      <p class="card-summary">中国联通为高质量推进"2026-2028 年中国联通国际防火墙集中采购项目"，2026 年 6 月 5 日启动标前技术商务交流，向社会广泛征集对项目技术规范书和设备参数模型的意见建议，国际出口防火墙集采进入招标周期。</p>
+      <a class="card-link" href="https://www.chinabidding.cn/zbgg/U-vzarFQC.html" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="105">
+      <div class="card-meta">
+        <span class="tag tag-industry">政府</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">福建中邮物流 2026 防火墙+虚拟化平台改造采购项目公开询比（6/22 截止）</h3>
+      <p class="card-summary">福建中邮物流 2026 年防火墙和虚拟化平台改造采购项目公开询比公告，6 月 22 日 14:00 截止响应，邮政系统国产化替代+虚拟化改造需求进入落地深水区，国内防火墙/超融合厂商重点跟进项目。</p>
+      <a class="card-link" href="https://www.chinapost.com.cn/cn/report/2606/4603-1.htm" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+
+    <article class="card" data-idx="106">
+      <div class="card-meta">
+        <span class="tag tag-industry">其他</span>
+        <span class="card-source">📌 来源 · 可点击</span>
+      </div>
+      <h3 class="card-title">中国互联网安全防火墙 2026 市场规模预计 31.56 亿美元，同比 +4.5%</h3>
+      <p class="card-summary">智研咨询报告：2026 年中国互联网安全防火墙市场规模预计扩大至 31.56 亿美元，同比增长 4.5%；智能化、服务化、云原生方向结构性增长贡献率将超 76%；《网络安全产业高质量发展三年行动计划》深入实施 + AI 大模型在安全策略生成、异常流量识别等环节规模化嵌入为主要驱动。</p>
+      <a class="card-link" href="https://www.docin.com/p-4977986558.html" target="_blank" rel="noopener">🔗 查看原文 →</a>
+    </article>
+
+  </div>
+</div>
+
+<footer>
+  <p>本日报由 WorkBuddy 自动化生成 · 数据来源 WebSearch · 报告日期 2026-06-17</p>
+  <p style="margin-top: 8px;">GitHub Pages: <a href="https://aaronxi9527.github.io/ai-hot-daily/firewall-daily-2026-06-17.html" target="_blank" rel="noopener">aaronxi9527.github.io/ai-hot-daily</a></p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.card').forEach((card, idx) => {
+  card.style.transition = `opacity 0.6s ease ${idx * 0.05}s, transform 0.6s ease ${idx * 0.05}s`;
+  observer.observe(card);
+});
+</script>
+</body>
+</html>
