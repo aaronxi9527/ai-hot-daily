@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🤖 AI 安全日报 · 2026-06-18</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0a0a0a;
+    color: #e5e7eb;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, rgba(91, 108, 247, 0.15), rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15));
+    border: 1px solid #1f2937;
+    border-radius: 20px;
+    padding: 48px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -50%; left: -10%;
+    width: 120%; height: 200%;
+    background: radial-gradient(circle, rgba(91,108,247,0.18), transparent 60%);
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .hero .date { color: #9ca3af; font-size: 16px; margin-bottom: 28px; }
+  .hero .stats { display: flex; gap: 16px; flex-wrap: wrap; }
+  .stat-card {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 16px 22px;
+    flex: 1;
+    min-width: 140px;
+    backdrop-filter: blur(10px);
+  }
+  .stat-card .num {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card .label { color: #9ca3af; font-size: 13px; margin-top: 4px; }
+
+  /* AI Overview */
+  .overview {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .overview h2 {
+    font-size: 20px;
+    color: #5B6CF7;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .overview p { color: #d1d5db; font-size: 15px; line-height: 1.8; }
+
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1f2937;
+  }
+  .section-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #f3f4f6;
+  }
+  .section-header .count {
+    color: #9ca3af;
+    font-size: 14px;
+    background: #1f2937;
+    padding: 4px 12px;
+    border-radius: 12px;
+  }
+
+  /* News Card */
+  .news-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .news-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .news-card:hover {
+    border-color: #5B6CF7;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(91, 108, 247, 0.15);
+  }
+  .card-header { margin-bottom: 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .vendor-tag, .category-tag, .importance-tag {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .vendor-tag {
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+    color: white;
+  }
+  .category-tag {
+    background: #1f2937;
+    color: #d1d5db;
+    border: 1px solid #374151;
+  }
+  .news-title {
+    font-size: 17px;
+    color: #f3f4f6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .news-desc {
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .news-sources { font-size: 12px; color: #6b7280; }
+  .source-link {
+    color: #5B6CF7;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .source-link:hover { color: #EC4899; text-decoration: underline; }
+
+  /* Trend */
+  .trend {
+    background: linear-gradient(135deg, rgba(91, 108, 247, 0.08), rgba(236, 72, 153, 0.08));
+    border: 1px solid #1f2937;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-top: 32px;
+  }
+  .trend h3 {
+    font-size: 18px;
+    color: #EC4899;
+    margin-bottom: 12px;
+  }
+  .trend p { color: #d1d5db; font-size: 14px; line-height: 1.8; }
+
+  .footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #1f2937;
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 30px; }
+    .stat-card { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <h1>🤖 AI 安全日报</h1>
+        <div class="date">2026-06-18 · 星期四</div>
+        <div class="stats">
+          <div class="stat-card">
+            <div class="num">2</div>
+            <div class="label">🏢 国际产品动态</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">2</div>
+            <div class="label">🇨🇳 国内产品动态</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">12</div>
+            <div class="label">📊 行业动态</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">16</div>
+            <div class="label">📌 今日总动态</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Overview -->
+    <div class="overview">
+      <h2>🧠 AI 总览</h2>
+      <p>今天 AI 安全圈的重头戏是<strong>「标准 + 供应链」</strong>：OWASP Agentic AI Top 10 2026 正式落地，给了 AI Agent 时代第一份全球通用语；同一周 Miasma 蠕虫攻陷 73 个 Microsoft GitHub 仓库、Hugging Face Transformers 曝出 RCE 漏洞，让「AI 编程 = 新型攻击面」从概念变成实打实的安全事件。国内方面，奇安信 6月22-26日「AI 安全系列新品发布周」是下周最值得盯的产品节点，腾讯云 LLM-WAF 持续补齐全生命周期防护能力。监管侧，2026 年是中国 AI 合规强执行元年，《网安法》修正案正式生效，企业级 AI 安全采购将进入"必须做"清单。</p>
+    </div>
+
+    <!-- Section 1: International Products -->
+    <div class="section">
+      <div class="section-header">
+        <h2>🏢 国际友商产品动态</h2>
+        <span class="count">2 条</span>
+      </div>
+      
+    <div class="news-card" data-idx="0">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Snyk</span>
+          <span class="category-tag">AI 代码安全</span>
+          <span class="importance-tag" style="background: #8B5CF61a; color: #8B5CF6; border: 1px solid #8B5CF640;">🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Snyk 推出 AI Code Checker：免费 AI 代码安全扫描工具上线</h3>
+      <p class="news-desc">Snyk 推出免费的 AI Code Checker，基于 Snyk Code 引擎提供 AI 驱动的代码安全检测，开发者可直接在网页端获得漏洞识别与修复建议，覆盖 OWASP Top 10 与 LLM Top 10 风险场景。</p>
+      <div class="news-sources">来源：<a href="https://snyk.io/code-checker/" target="_blank" rel="noopener" class="source-link">Snyk AI Code Checker</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="1">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Cloudflare / Wiz</span>
+          <span class="category-tag">AI-SPM / AI 安全</span>
+          <span class="importance-tag" style="background: #EC48991a; color: #EC4899; border: 1px solid #EC489940;">🔥🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Cloudflare 与 Wiz 整合 AI Security for Apps：消除 Shadow AI 防护盲点</h3>
+      <p class="news-desc">Cloudflare 与 Wiz（已被 Google Cloud 收购）达成战略合作，将 Cloudflare AI Security for Apps 深度集成进 Wiz Security Graph，为企业提供从代码到边缘的 AI 资产完整可见性，防护 prompt injection、敏感话题等 AI 端点风险。</p>
+      <div class="news-sources">来源：<a href="https://cloudflare2019ipo.q4web.com/news/news-details/2026/Cloudflare-Partners-with-Wiz-to-Secure-the-Global-AI-Attack-Surface-Eliminating-Blind-Spots-Caused-by-Shadow-AI/default.aspx" target="_blank" rel="noopener" class="source-link">Cloudflare 官方公告</a> · <a href="https://secure.businesswire.com/news/home/20260414296894/en/Cloudflare-Partners-with-Wiz-to-Secure-the-Global-AI-Attack-Surface-Eliminating-Blind-Spots-Caused-by-Shadow-AI" target="_blank" rel="noopener" class="source-link">BusinessWire</a></div>
+    </div>
+    
+    </div>
+
+    <!-- Section 2: Domestic Products -->
+    <div class="section">
+      <div class="section-header">
+        <h2>🇨🇳 国内友商产品动态</h2>
+        <span class="count">2 条</span>
+      </div>
+      
+    <div class="news-card" data-idx="100">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">奇安信</span>
+          <span class="category-tag">AI 安全产品矩阵</span>
+          <span class="importance-tag" style="background: #EC48991a; color: #EC4899; border: 1px solid #EC489940;">🔥🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">奇安信 6月22-26日「AI安全系列新品发布周」：五大新品连发，覆盖两大核心赛道</h3>
+      <p class="news-desc">奇安信人工智能公司将于 6月22日至26日 启动「AI安全系列新品发布周」，五款新品聚焦「安全智能」与「智能安全」两大核心赛道，对防御体系进行全面能力升级，进一步完善 QAX-GPT 与大模型卫士等产品矩阵。</p>
+      <div class="news-sources">来源：<a href="https://finance.sina.com.cn/stock/relnews/cn/2026-06-17/doc-inictnum6965423.shtml" target="_blank" rel="noopener" class="source-link">新浪财经</a> · <a href="https://news.10jqka.com.cn/20260617/c677538756.shtml" target="_blank" rel="noopener" class="source-link">同花顺财经</a> · <a href="https://xueqiu.com/S/SH688561/395320075" target="_blank" rel="noopener" class="source-link">雪球</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="101">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">腾讯云</span>
+          <span class="category-tag">LLM 防火墙 / LLM-WAF</span>
+          <span class="importance-tag" style="background: #8B5CF61a; color: #8B5CF6; border: 1px solid #8B5CF640;">🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">腾讯云 LLM-WAF 发布大模型全生命周期安全防护体系</h3>
+      <p class="news-desc">腾讯云基于混元内容安全大模型与科恩实验室技术，构建从宿主层、Runtime 层到网络层的纵深防御体系。LLM-WAF 网关支持多模型接入与自定义敏感词库，覆盖 OWASP LLM Top 10 全部风险，已获国家级安全认证。</p>
+      <div class="news-sources">来源：<a href="https://cloud.tencent.com/developer/article/2663478" target="_blank" rel="noopener" class="source-link">腾讯云开发者社区</a> · <a href="https://cloud.tencent.cn/developer/article/2679585" target="_blank" rel="noopener" class="source-link">腾讯云 LLM 安全解决方案</a></div>
+    </div>
+    
+    </div>
+
+    <!-- Section 3: Industry News -->
+    <div class="section">
+      <div class="section-header">
+        <h2>📊 行业动态与趋势</h2>
+        <span class="count">12 条</span>
+      </div>
+      
+    <div class="news-card" data-idx="200">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">OWASP</span>
+          <span class="category-tag">行业标准</span>
+          <span class="importance-tag" style="background: #EC48991a; color: #EC4899; border: 1px solid #EC489940;">🔥🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">OWASP Agentic AI Top 10 2026 正式发布：全球首个 AI Agent 安全风险框架</h3>
+      <p class="news-desc">OWASP 于 6月6日发布 Agentic AI Top 10 2026，是全球首个针对自主 AI Agent 的安全风险框架，覆盖目标劫持、记忆投毒、工具滥用、权限提升等 10 大类风险，并提供 Go/Python 实战防御方案。</p>
+      <div class="news-sources">来源：<a href="https://friday-go.icu/security/offensive/owasp-agentic-ai-top10-2026" target="_blank" rel="noopener" class="source-link">OWASP Agentic AI Top 10 解读</a> · <a href="https://genai.owasp.org/initiative/owasp-top-10-for-llm-and-genai/" target="_blank" rel="noopener" class="source-link">OWASP Gen AI Security</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="201">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">OWASP</span>
+          <span class="category-tag">行业标准</span>
+          <span class="importance-tag" style="background: #8B5CF61a; color: #8B5CF6; border: 1px solid #8B5CF640;">🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">OWASP Top 10 for LLM 2026 修订征集启动：风险项或大幅调整</h3>
+      <p class="news-desc">OWASP Top 10 for LLM 2026 版本修订工作已开启，新版风险列表可能发生较大变化，重点关注 Agent 安全、模型供应链、提示词注入 2.0 等新兴风险。</p>
+      <div class="news-sources">来源：<a href="https://cn-sec.com/archives/5107674.html" target="_blank" rel="noopener" class="source-link">OWASP 修订征集解读</a> · <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener" class="source-link">OWASP 官方项目</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="202">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Microsoft / GitHub</span>
+          <span class="category-tag">供应链攻击 / AI Agent 风险</span>
+          <span class="importance-tag" style="background: #EC48991a; color: #EC4899; border: 1px solid #EC489940;">🔥🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Miasma 蠕虫供应链攻击：73 个 Microsoft GitHub 仓库遭入侵</h3>
+      <p class="news-desc">6月5日，自复制型供应链蠕虫 Miasma 通过 AI 编程工具攻陷 73 个 Microsoft GitHub 仓库，6月10日凭证窃取框架源码被泄露。攻击链展示了 AI 辅助开发场景下供应链风险的新形态。</p>
+      <div class="news-sources">来源：<a href="https://www.rescana.com/post/miasma-worm-supply-chain-attack-73-microsoft-github-repositories-compromised-via-ai-coding-tools" target="_blank" rel="noopener" class="source-link">Rescana 威胁分析</a> · <a href="https://www.rescana.com/post/threatsday-bulletin-june-2026-miasma-supply-chain-worm-leak-claude-code-github-action-vulnerability-ai-agent-phishing-to" target="_blank" rel="noopener" class="source-link">ThreatsDay Bulletin</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="203">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Microsoft</span>
+          <span class="category-tag">漏洞披露</span>
+          <span class="importance-tag" style="background: #EC48991a; color: #EC4899; border: 1px solid #EC489940;">🔥🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Microsoft Semantic Kernel RCE 漏洞：提示词注入可升级为远程代码执行</h3>
+      <p class="news-desc">微软安全团队披露 Semantic Kernel 中的高危路径，攻击者通过精心构造的 prompt injection 可触发宿主级 RCE，直接控制 LLM 应用底层主机，影响所有基于 Semantic Kernel 构建的 AI Agent 系统。</p>
+      <div class="news-sources">来源：<a href="https://www.microsoft.com/en-us/security/blog/2026/05/07/prompts-become-shells-rce-vulnerabilities-ai-agent-frameworks/" target="_blank" rel="noopener" class="source-link">Microsoft Security Blog</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="204">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Hugging Face</span>
+          <span class="category-tag">模型供应链漏洞</span>
+          <span class="importance-tag" style="background: #8B5CF61a; color: #8B5CF6; border: 1px solid #8B5CF640;">🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Hugging Face Transformers CVE-2026-4372：恶意模型可触发远程代码执行</h3>
+      <p class="news-desc">研究员披露 Hugging Face Transformers 库关键漏洞（CVE-2026-4372），攻击者通过植入恶意模型权重即可实现远程代码执行，再次警示 AI 模型供应链安全已是必选项。</p>
+      <div class="news-sources">来源：<a href="https://www.linkedin.com/pulse/ai-supply-chain-attacks-poisoning-models-before-you-deploy-vummaneni-rsmoc" target="_blank" rel="noopener" class="source-link">LinkedIn 漏洞分析</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="205">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">BCS / 中央网信办</span>
+          <span class="category-tag">行业大会 / 政策方向</span>
+          <span class="importance-tag" style="background: #8B5CF61a; color: #8B5CF6; border: 1px solid #8B5CF640;">🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">BCS 2026 北京网络安全大会开幕：主题「AI 时代，攻防先行」</h3>
+      <p class="news-desc">第八届北京网络安全大会（BCS 2026）于6月2日召开，主题聚焦「AI 时代，攻防先行」。中央网信办指出 AI 时代网络攻击呈现智能化升维、效率突破性增强、范围集聚拓展三大特征，呼吁构建 AI 原生防御体系。</p>
+      <div class="news-sources">来源：<a href="https://news.qq.com/rain/a/20260602A09OAD00" target="_blank" rel="noopener" class="source-link">腾讯网 BCS 报道</a> · <a href="http://www.ce.cn/xwzx/gnsz/gdxw/202606/t20260603_3008059.shtml" target="_blank" rel="noopener" class="source-link">中国经济网</a> · <a href="https://bcs.qianxin.com/2026/news/index" target="_blank" rel="noopener" class="source-link">BCS 官方新闻</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="206">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">国家立法机关</span>
+          <span class="category-tag">政策法规</span>
+          <span class="importance-tag" style="background: #8B5CF61a; color: #8B5CF6; border: 1px solid #8B5CF640;">🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">《网络安全法》（2025年修正）2026年1月1日生效：AI 安全首次入法</h3>
+      <p class="news-desc">《中华人民共和国网络安全法》（2025年修正）正式实施，首次以法律形式将国家层面的人工智能发展战略写入法律，明确 AI 安全监管制度，企业合规成本进一步提升。</p>
+      <div class="news-sources">来源：<a href="https://zhuanlan.zhihu.com/p/2043006437278872840" target="_blank" rel="noopener" class="source-link">知乎法规清单</a> · <a href="https://www.sohu.com/a/1022880731_122705007" target="_blank" rel="noopener" class="source-link">搜狐 2026 监管展望</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="207">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Black Hat / RSAC</span>
+          <span class="category-tag">行业大会 / 趋势预判</span>
+          <span class="importance-tag" style="background: #5B6CF71a; color: #5B6CF7; border: 1px solid #5B6CF740;">🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Black Hat Asia 2026 AI 安全热点：RSAC 2026 主题「社区的力量始于你」</h3>
+      <p class="news-desc">RSAC 2026 与 Black Hat Asia 2026 重点聚焦 AI Agent 端点安全、社区协同防御等议题。Black Hat 6月23日专题《When AI Agents Own the Endpoint: The Security Gap No One's Watching》直面 Agent 端点失控风险。</p>
+      <div class="news-sources">来源：<a href="http://www.blackhat.com/" target="_blank" rel="noopener" class="source-link">Black Hat 官网</a> · <a href="http://www.darkreading.com/events/black-hat-asia" target="_blank" rel="noopener" class="source-link">Dark Reading 大会报道</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="208">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Mercor / LiteLLM</span>
+          <span class="category-tag">AI 供应链安全事件</span>
+          <span class="importance-tag" style="background: #8B5CF61a; color: #8B5CF6; border: 1px solid #8B5CF640;">🔥🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Mercor 遭 LiteLLM 供应链攻击：4TB 数据泄露（9500 万次下载的网关库）</h3>
+      <p class="news-desc">3月31日，AI 人才平台 Mercor 确认遭 LiteLLM 开源 AI 网关库供应链攻击影响，导致 4TB 数据泄露。事件揭示开源 AI 中间件已成为攻击者的重点突破目标。</p>
+      <div class="news-sources">来源：<a href="https://tech-insider.org/mercor-litellm-supply-chain-attack-2026/" target="_blank" rel="noopener" class="source-link">Tech Insider 攻击复盘</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="209">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">行业研究</span>
+          <span class="category-tag">市场趋势 / 国产替代</span>
+          <span class="importance-tag" style="background: #5B6CF71a; color: #5B6CF7; border: 1px solid #5B6CF740;">🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">CSDN 报告：2026 年网络安全行业进入「AI 重构」与「信创替代」双轨期</h3>
+      <p class="news-desc">行业研究指出，依赖英伟达 GPU 的 AI 安全产品面临算力供给不确定性，华为昇腾、寒武纪国产替代加速；外资安全厂商的中国客户因合规与数据主权要求，加速切换至国产方案，启明星辰、奇安信、深信服等厂商受益。</p>
+      <div class="news-sources">来源：<a href="https://faxiangongchang.com/reports/china-cybersecurity-2026" target="_blank" rel="noopener" class="source-link">发想工厂行业报告</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="210">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">IEEE-USA</span>
+          <span class="category-tag">行业标准 / 治理框架</span>
+          <span class="importance-tag" style="background: #5B6CF71a; color: #5B6CF7; border: 1px solid #5B6CF740;">🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">IEEE-USA 发布 AI 治理成熟度模型：基于 NIST AI RMF 框架</h3>
+      <p class="news-desc">IEEE-USA AI Policy Committee 推出灵活的 AI 治理成熟度模型，将 NIST AI Risk Management Framework（AI RMF）落地为企业可执行的成熟度评估工具，覆盖 AI 设计、部署、使用、评估全生命周期。</p>
+      <div class="news-sources">来源：<a href="https://ieeeusa.org/committees/aipc/" target="_blank" rel="noopener" class="source-link">IEEE-USA AIPC</a></div>
+    </div>
+    
+    <div class="news-card" data-idx="211">
+      <div class="card-header">
+        <div class="tags">
+          <span class="vendor-tag">Anthropic</span>
+          <span class="category-tag">AI 安全研究 / 红蓝对抗</span>
+          <span class="importance-tag" style="background: #5B6CF71a; color: #5B6CF7; border: 1px solid #5B6CF740;">🔥</span>
+        </div>
+      </div>
+      <h3 class="news-title">Anthropic Claude Mythos Preview：聚焦 AI 安全研究的大模型预览</h3>
+      <p class="news-desc">Anthropic 发布 Claude Mythos Preview，定位为计算机安全任务专用大模型，为安全研究者和红队从业者提供新的能力底座。</p>
+      <div class="news-sources">来源：<a href="https://red.anthropic.com/" target="_blank" rel="noopener" class="source-link">Anthropic Red Team</a></div>
+    </div>
+    
+    </div>
+
+    <!-- Trend Summary -->
+    <div class="trend">
+      <h3>🎯 趋势判断</h3>
+      <p>「产品动态：少而精；行业动态：标准 + 漏洞 + 监管三件套齐发」。短期内 AI Agent 端点安全、AI 模型供应链、提示词注入→RCE 这三条攻击链会持续是热点，建议企业重点审视 LLM 中间件（LiteLLM、Semantic Kernel、Hugging Face）的供应链风险。</p>
+    </div>
+
+    <div class="footer">
+      <p>AI 安全日报 · 自动生成于 2026-06-18 · 数据来源：公开网络搜索</p>
+      <p style="margin-top: 8px;">Powered by WorkBuddy Automation</p>
+    </div>
+  </div>
+
+  <script>
+    // IntersectionObserver 滑动渐入动画
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, idx) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.news-card').forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
