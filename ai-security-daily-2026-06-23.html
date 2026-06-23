@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-06-23</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --card: #111827;
+  --card-hover: #1a2332;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent-1: #5B6CF7;
+  --accent-2: #8B5CF6;
+  --accent-3: #EC4899;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 0 56px;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(91,108,247,0.15), rgba(236,72,153,0.15));
+  border: 1px solid rgba(139,92,246,0.3);
+  font-size: 13px;
+  color: var(--accent-2);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.hero-date {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+.stats-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 130px;
+}
+.stat-num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent-1);
+  letter-spacing: -0.5px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* AI Overview */
+.overview {
+  background: linear-gradient(135deg, rgba(91,108,247,0.08), rgba(236,72,153,0.05));
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+}
+.overview h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 12px;
+}
+.overview p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Section */
+.section { margin-bottom: 48px; }
+.section-header { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.section-header h2 { font-size: 22px; font-weight: 700; }
+.section-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 20px;
+  font-size: 14px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+/* News Card */
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.news-card:hover {
+  border-color: rgba(139,92,246,0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.news-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.importance-badge {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.news-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f3f4f6;
+  line-height: 1.5;
+}
+.news-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.tag-vendor { background: rgba(91,108,247,0.15); color: var(--accent-1); border: 1px solid rgba(91,108,247,0.25); }
+.tag-category { background: rgba(139,92,246,0.12); color: var(--accent-2); border: 1px solid rgba(139,92,246,0.2); }
+.tag-merge {
+  background: rgba(16,185,129,0.1);
+  color: var(--success);
+  border: 1px solid rgba(16,185,129,0.2);
+  font-size: 10px;
+}
+.news-summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.news-sources { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.news-sources span { font-size: 11px; color: var(--text-muted); }
+.news-sources a {
+  font-size: 12px;
+  color: var(--accent-2);
+  text-decoration: none;
+  padding: 3px 10px;
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.news-sources a:hover { background: rgba(139,92,246,0.1); border-color: var(--accent-2); }
+
+/* Footer / Trend */
+.trend {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 60px;
+}
+.trend h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+}
+.trend-item {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.trend-item:last-child { border-bottom: none; }
+.trend-item strong { color: var(--accent-1); }
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 32px; }
+  .hero h1 { font-size: 32px; }
+  .stats-row { gap: 16px; }
+  .stat-card { min-width: 90px; padding: 16px 18px; }
+  .stat-num { font-size: 26px; }
+  .overview, .trend { padding: 20px 20px; }
+  .news-card { padding: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero fade-in">
+  <div class="hero-badge">每日 AI 安全态势感知</div>
+  <h1>🤖 AI 安全日报</h1>
+  <div class="hero-date">2026年6月23日 · 周二</div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">0</div>
+      <div class="stat-label">🏢 国际产品</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1</div>
+      <div class="stat-label">🇨🇳 国内产品</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10</div>
+      <div class="stat-label">📊 行业动态</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--accent-3)">11</div>
+      <div class="stat-label">📋 合计</div>
+    </div>
+  </div>
+</div>
+
+<div class="overview fade-in">
+  <h2>📋 AI 总览</h2>
+  <p>今天AI安全圈注定被<b>Anthropic Mythos攻破NSA</b>的震撼消息所占据——这个几小时内从零到攻破所有机密系统的故事，直接把AI军事化从假设拉进了现实。奇安信掐准时机启动AI安全新品发布周，第一天就拿出了威胁分析数字专家这样的实用型产品。同时，ClawHub插件供应链漏洞和Mastra AI被朝鲜归因，都在提醒我们：AI安全不是概念，是眼下正在发生的攻防。</p>
+</div>
+
+<!-- 国际产品 -->
+<div class="section fade-in">
+  <div class="section-header">
+    <h2>🏢 国际友商产品动态</h2>
+  </div>
+  <div class="section-empty">
+    今日未监测到国际AI安全产品的重大版本更新或新品发布。<br>上一波产品发布高峰集中于 RSAC 2026（3-4月），近期国际厂商处于迭代周期中的静默期。
+  </div>
+</div>
+
+<!-- 国内产品 -->
+<div class="section fade-in">
+  <div class="section-header">
+    <h2>🇨🇳 国内友商产品动态</h2>
+  </div>
+
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">奇安信威胁分析数字专家正式发布，免费公测开启</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">奇安信</span><span class="tag tag-category">安全智能体</span><span class="tag tag-category">威胁分析</span><span class="tag tag-merge">合并3源</span></div>
+    <div class="news-summary">6月22日，奇安信人工智能公司启动为期5天的AI安全新品发布周，首发产品为<b>威胁分析数字专家</b>。该产品基于自研安全垂类大模型QGPT与高性能驾驭引擎，深度整合十余年安全数据与工具矩阵，覆盖IOC研判、文件分析、漏洞研判、APT流量分析等<b>32个高频分析场景</b>，以「对话即研判」为核心理念。面向全行业开放免费公测，注册即获1000积分。后续4天还将发布智能运营、AI安全治理、智能体安全、安全研发等4款新品。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://tech.ifeng.com/c/8uAitdyvon9" target="_blank" rel="noopener">凤凰科技</a><a href="https://finance.sina.com.cn/wm/2026-06-22/doc-iniehwmp6938232.shtml" target="_blank" rel="noopener">新浪财经</a><a href="http://www.jjckb.cn/20260622/b8897d13563c4eb689143ec94c7c569e/c.html" target="_blank" rel="noopener">经济参考报</a>
+    </div>
+  </div>
+</div>
+
+<!-- 行业动态 -->
+<div class="section fade-in">
+  <div class="section-header">
+    <h2>📊 行业动态与趋势</h2>
+  </div>
+
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">参议院听证会披露：Anthropic Mythos AI在数小时内攻破NSA几乎所有机密系统</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Anthropic</span><span class="tag tag-category">安全事件</span><span class="tag tag-category">AI军事化</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">6月22日，美国参议院情报委员会副主席Mark Warner在听证会上披露，NSA局长兼网络司令部司令Joshua Rudd证实，Anthropic的Mythos模型<b>在数小时内而非数周内，攻破了NSA几乎所有机密系统</b>。Mythos此前已发现包括OpenBSD 27年漏洞在内的数千个安全缺陷。此事件引发全球对前沿AI模型军事化能力和治理管控的激烈讨论。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://securityaffairs.com/194016/ai/anthropics-mythos-ai-broke-into-almost-all-nsa-classified-systems-in-hours.html" target="_blank" rel="noopener">SecurityAffairs</a><a href="https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic" target="_blank" rel="noopener">The Economist</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">23个ClawHub插件冒用官方Scope，暴露AI Agent供应链安全漏洞</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">ClawHub/OpenClaw</span><span class="tag tag-category">供应链安全</span><span class="tag tag-category">AI Agent</span><span class="tag tag-merge">合并3源</span></div>
+    <div class="news-summary">6月22日，Manifold Security披露：ClawHub插件注册表（服务于Claude Code、Cursor、Codex等AI编码代理）中，<b>23个第三方插件冒用@openclaw和@clawhub官方命名空间</b>发布，包括执行自主支付、运行git命令、导出代理配置等高权限操作。其中6个被平台扫描标记为可疑，17个通过审计。ClawHub已于6月19日下架全部涉事插件并新增命名空间争议处理流程。此事件为AI Agent生态的供应链安全敲响警钟。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://cybersecuritynews.com/23-clawhub-plugins-abuse-official-org-scopes/" target="_blank" rel="noopener">Cyber Security News</a><a href="https://www.helpnetsecurity.com/2026/06/22/clawhub-code-executing-plugins-video/" target="_blank" rel="noopener">Help Net Security</a><a href="https://www.esecurityplanet.com/threats/scope-squatting-on-clawhub-exposes-ai-supply-chain-risks/" target="_blank" rel="noopener">eSecurityPlanet</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">Microsoft将Mastra AI供应链攻击归因于朝鲜黑客组织</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Microsoft</span><span class="tag tag-category">APT/供应链攻击</span><span class="tag tag-category">归因分析</span></div>
+    <div class="news-summary">6月22日，Microsoft威胁情报团队公布：近期活跃的Mastra AI框架供应链攻击由朝鲜支持的黑客组织实施。攻击者通过在AI开发框架中植入恶意代码，向企业开发环境渗透，是AI供应链安全威胁升级的最新案例。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://www.infosecurity-magazine.com/artificial-intelligence/" target="_blank" rel="noopener">Infosecurity Magazine</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">Sysdig发布首例真实LLM Agent自主攻击完整实录</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Sysdig</span><span class="tag tag-category">安全事件</span><span class="tag tag-category">LLM Agent攻击</span></div>
+    <div class="news-summary">Sysdig安全研究团队发布首例经证实的野外LLM Agent自主攻击详细报告：2026年5月10日，一个运行在开源Python笔记本平台Marimo上的AI Agent，被攻击者利用实现完全自主入侵——包括信息收集、权限提升、横向移动和数据外传，全过程无需人类干预。该报告为AI Agent安全防护提供了重要参考基线。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://the-agent-report.com/2026/06/sysdig-first-llm-agent-cyberattack-june-2026/" target="_blank" rel="noopener">The Agent Report</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">CISA预测：AI推动2026年CVE漏洞数量激增至6.6万个</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">CISA</span><span class="tag tag-category">行业数据</span><span class="tag tag-category">漏洞趋势</span></div>
+    <div class="news-summary">CISA最新漏洞趋势报告指出，AI工具和AI驱动软件扩张正推动CVE数量快速增长，2026年预计达到6.6万个。但需注意仅约6.5%构成真正高危威胁。AI自动化漏洞发现能力显著提升了发现效率，但风险总量的变化并未等比放大。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://www.freebuf.com/news/486744.html" target="_blank" rel="noopener">FreeBuf</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">美国关停Anthropic Fable 5/Mythos 5引发全球AI治理大讨论</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">美国政府</span><span class="tag tag-category">政策监管</span><span class="tag tag-category">AI治理</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">6月12日，美国政府以国家安全为由要求Anthropic限制Fable 5和Mythos 5访问权限（仅限美国公民），导致两款模型全球停服，包括五眼联盟盟友在内均无法访问。此举引发欧洲对依赖美国AI云基础设施的「分析主权」担忧，AI治理已从技术问题升级为地缘战略问题。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://securityaffairs.com/194016/ai/anthropics-mythos-ai-broke-into-almost-all-nsa-classified-systems-in-hours.html" target="_blank" rel="noopener">SecurityAffairs</a><a href="https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic" target="_blank" rel="noopener">The Economist</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">安全牛发布《2026年AI大模型安全评估及防护技术应用指南》</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">安全牛</span><span class="tag tag-category">行业报告</span><span class="tag tag-category">大模型安全评估</span></div>
+    <div class="news-summary">安全牛发布年度AI大模型安全专题报告，系统性梳理了2026年大模型规模化落地背景下的安全风险、治理架构、技术体系与主流厂商方案，涵盖数据安全、内容安全、智能体安全、供应链安全、身份权限等维度。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://www.sohu.com/a/1037917799_121752158" target="_blank" rel="noopener">安全牛/搜狐</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">嘶吼发布《2026 AI+网络安全产业图谱》</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">嘶吼</span><span class="tag tag-category">产业图谱</span><span class="tag tag-category">市场格局</span></div>
+    <div class="news-summary">嘶吼安全产业研究院6月10日发布年度AI+网络安全产业图谱，覆盖AI安全各细分赛道，多家国内安全厂商入选各赛道代表，展现AI安全产业全景格局。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://stock.10jqka.com.cn/20260612/c677430019.shtml" target="_blank" rel="noopener">同花顺</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">欧盟AI Act高风险AI系统监管条款全面生效</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">欧盟</span><span class="tag tag-category">政策法规</span><span class="tag tag-category">AI Act</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">2026年6月起，欧盟《人工智能法案》对高风险AI系统的监管条款全面生效，违规罚款最高可达全球年营收的7%。同期，中国《网络安全法》修正案也已于1月1日生效，首次写入AI相关内容。全球AI监管进入实质性执行阶段。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://www.flowpixai.com/ai-news/ai-regulation-2026-global.html" target="_blank" rel="noopener">FlowPixAI</a><a href="https://www.36kr.com/p/3678814524338697" target="_blank" rel="noopener">36氪</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">OpenAI推出Record & Replay与企业信用管控功能</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">OpenAI</span><span class="tag tag-category">Anthropic</span><span class="tag tag-category">AI治理</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">6月18日，OpenAI发布Record & Replay工作流录制回放功能（因隐私合规限制不在EU/UK/瑞士上线），同时上线企业版信用额度管控、使用量分析仪表盘、数据导出管控等治理功能。Anthropic也在6月2日上线Enterprise计划自定义管理员角色，支持账单与隐私管理权限分离。AI平台的安全治理能力正在快速完善。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span>
+      <a href="https://releasebot.io/updates/openai" target="_blank" rel="noopener">Releasebot</a><a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener">Anthropic</a>
+    </div>
+  </div>
+</div>
+
+<!-- 趋势判断 -->
+<div class="trend fade-in">
+  <h2>🔮 趋势判断</h2>
+  <div class="trend-item"><strong>1. AI军事化已不是假设：</strong>Mythos攻破NSA的听证会披露，将AI从"防御工具"推到了"进攻性武器"的讨论中心。AI安全治理的紧迫性从企业级上升到国家级。</div>
+  <div class="trend-item"><strong>2. AI Agent供应链安全成新战场：</strong>ClawHub的scope squatting事件和Mastra AI遭APT归因，表明攻击者正从模型本身转向生态基础设施（插件注册表、开发框架）。</div>
+  <div class="trend-item"><strong>3. 国内AI安全产品进入密集落地期：</strong>奇安信一周期五款新品的节奏，标志着国内安全厂商从"概念验证"转向"规模化产品交付"。6月底到Q3预计还有更多密集发布。</div>
+  <div class="trend-item"><strong>4. 全球AI监管从框架走向执法：</strong>欧盟AI Act高风险条款全面生效，违规罚款最高7%全球营收。中国《网安法》修正案已生效。2026年下半年将是AI合规元年。</div>
+  <div class="trend-item"><strong>5. LLM Agent攻击从理论走向实战：</strong>Sysdig首次记录的真实Agent自主攻击，与ClawHub插件风险相结合，表明Agent安全不再是"未雨绸缪"，而是"实时威胁"。</div>
+</div>
+
+<div class="footer">
+  <p>AI 安全日报 · {TODAY} · 由 WorkBuddy 自动生成</p>
+  <p style="margin-top:4px">数据来源：SecurityAffairs · Infosecurity Magazine · FreeBuf · 安全牛 · 嘶吼 · 凤凰科技 · eSecurityPlanet 等</p>
+</div>
+
+</div>
+
+<script>
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, Array.from(entry.target.parentNode?.children || []).indexOf(entry.target) * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Trigger hero immediately
+  document.querySelector('.hero').classList.add('visible');
+})();
+</script>
+</body>
+</html>
