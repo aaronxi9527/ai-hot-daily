@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-06-24</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --card: #111827;
+  --card-hover: #1a2332;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent-1: #5B6CF7;
+  --accent-2: #8B5CF6;
+  --accent-3: #EC4899;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 0 56px;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(91,108,247,0.15), rgba(236,72,153,0.15));
+  border: 1px solid rgba(139,92,246,0.3);
+  font-size: 13px;
+  color: var(--accent-2);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.hero-date {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+.stats-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 130px;
+}
+.stat-num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent-1);
+  letter-spacing: -0.5px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* AI Overview */
+.overview {
+  background: linear-gradient(135deg, rgba(91,108,247,0.08), rgba(236,72,153,0.05));
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+}
+.overview h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 12px;
+}
+.overview p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Section */
+.section { margin-bottom: 48px; }
+.section-header { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.section-header h2 { font-size: 22px; font-weight: 700; }
+.section-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 20px;
+  font-size: 14px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+/* News Card */
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.news-card:hover {
+  border-color: rgba(139,92,246,0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.news-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.importance-badge {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.news-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f3f4f6;
+  line-height: 1.5;
+}
+.news-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.tag-vendor { background: rgba(91,108,247,0.15); color: var(--accent-1); border: 1px solid rgba(91,108,247,0.25); }
+.tag-category { background: rgba(139,92,246,0.12); color: var(--accent-2); border: 1px solid rgba(139,92,246,0.2); }
+.tag-merge {
+  background: rgba(16,185,129,0.1);
+  color: var(--success);
+  border: 1px solid rgba(16,185,129,0.2);
+  font-size: 10px;
+}
+.news-summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.news-sources { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.news-sources span { font-size: 11px; color: var(--text-muted); }
+.news-sources a {
+  font-size: 12px;
+  color: var(--accent-2);
+  text-decoration: none;
+  padding: 3px 10px;
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.news-sources a:hover { background: rgba(139,92,246,0.1); border-color: var(--accent-2); }
+
+/* Footer / Trend */
+.trend {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 60px;
+}
+.trend h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+}
+.trend-item {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.trend-item:last-child { border-bottom: none; }
+.trend-item strong { color: var(--accent-1); }
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 32px; }
+  .hero h1 { font-size: 32px; }
+  .stats-row { gap: 16px; }
+  .stat-card { min-width: 90px; padding: 16px 18px; }
+  .stat-num { font-size: 26px; }
+  .overview, .trend { padding: 20px 20px; }
+  .news-card { padding: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero fade-in">
+  <div class="hero-badge">每日 AI 安全态势感知</div>
+  <h1>🤖 AI 安全日报</h1>
+  <div class="hero-date">2026年6月24日 · 周三</div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">4</div>
+      <div class="stat-label">🏢 国际产品</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">4</div>
+      <div class="stat-label">🇨🇳 国内产品</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">9</div>
+      <div class="stat-label">📊 行业动态</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--accent-3)">17</div>
+      <div class="stat-label">📋 合计</div>
+    </div>
+  </div>
+</div>
+
+<div class="overview fade-in">
+  <h2>📋 AI 总览</h2>
+  <p>今天是<strong>奇安信AI安全新品发布周</strong>的第三天——昨晚6/23刚发布「<strong>安全运营数字员工</strong>」，把「对话即研判」升级为「7×24自动化研判与响应」，国内安全厂商的产品化进度明显在加速。国际厂商这边，PANW Prisma AIRS 3.0已经上线NVIDIA FortiAIGate集成、Cloudflare×Wiz把影子AI的可见性问题打通到边缘，OWASP刚释出的Agentic AI Top 10 2026成为本周最值得收藏的安全框架。攻防两侧都进入了实弹阶段。</p>
+</div>
+
+<div class="section fade-in">
+  <div class="section-header">
+    <h2>🏢 国际友商产品动态</h2>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">Palo Alto Networks Prisma AIRS 3.0 接入 NVIDIA FortiAIGate，实现零信任 GPU 加速 AI 防护</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Palo Alto Networks / Fortinet</span><span class="tag tag-category">Prisma AIRS</span><span class="tag tag-category">AI 运行时防护</span><span class="tag tag-category">GPU 安全</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">Palo Alto Networks 与 NVIDIA 合作的 FortiAIGate 集成方案正式发布。<strong>Prisma AIRS 3.0</strong>在 NVIDIA GPU 加速下，可对 LLM API 流量进行实时威胁检测与提示词注入拦截，支持企业级零信任 AI 部署。该方案覆盖从 prompt 输入到模型输出的全链路防护，并能与 NVIDIA NeMo Guardrails 协同进行内容合规过滤。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.fortinet.com/" target="_blank" rel="noopener">Fortinet</a><a href="https://docs.paloaltonetworks.com/ai-runtime-security/release-notes" target="_blank" rel="noopener">PANW Prisma AIRS Release Notes</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">Cloudflare 与 Wiz 整合 Shadow AI 防御，把 AI 资产可见性从云端推到边缘</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Cloudflare / Wiz</span><span class="tag tag-category">Shadow AI 治理</span><span class="tag tag-category">AI-SPM</span><span class="tag tag-category">边缘安全</span><span class="tag tag-merge">合并3源</span></div>
+    <div class="news-summary">Cloudflare AI Security for Apps（原 Firewall for AI）与 Wiz AI-SPM 正式打通数据通道，实现 <strong>Shadow AI 资产发现 + 边缘防护</strong>闭环。Wiz 负责在云端发现影子 AI 模型、未授权的 API 和训练数据，Cloudflare 负责在边缘阻断提示词注入与不安全主题输出。这一整合解决了企业最头疼的「看不见的 AI 资产」盲区。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.cloudflare-cn.com/application-services/products/ai-security-for-apps/" target="_blank" rel="noopener">Cloudflare 官方</a><a href="https://www.wiz.io/solutions/ai-spm" target="_blank" rel="noopener">Wiz AI-SPM</a><a href="https://secure.businesswire.com/news/home/20260414296894/en/Cloudflare-Partners-with-Wiz-to-Secure-the-Global-AI-Attack-Surface-Eliminating-Blind-Spots-Caused-by-Shadow-AI" target="_blank" rel="noopener">BusinessWire 公告</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">OpenAI 上线 ChatGPT Record & Replay 工作流录制回放与企业信用管控</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">OpenAI</span><span class="tag tag-category">AI 治理</span><span class="tag tag-category">企业安全</span><span class="tag tag-category">审计合规</span></div>
+    <div class="news-summary">OpenAI 本周发布 <strong>Record & Replay</strong> 工作流录制回放能力，支持企业管理员对所有 AI 任务链进行端到端审计（因隐私合规原因 EU/UK/瑞士暂不开放）。同步上线企业版信用额度管控、使用量分析仪表盘、训练数据导出管控等治理功能，企业级 AI 治理能力进入可用阶段。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://releasebot.io/updates/openai" target="_blank" rel="noopener">OpenAI Release Notes</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">CrowdStrike Charlotte AI AgentWorks 生态正式对外开放，接入 Accenture、AWS 等合作方</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">CrowdStrike</span><span class="tag tag-category">Charlotte AI</span><span class="tag tag-category">安全智能体生态</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">RSAC 2026 上首次披露的 <strong>Charlotte AI AgentWorks</strong> 生态正式向合作伙伴开放，首批接入 Accenture、Amazon Web Services 等核心合作方。客户可在该生态中部署可审计的 Secure Agents 来执行终端检测、威胁狩猎和事件响应任务，每个 Agent 操作均通过 ISO 42001 认证的治理框架进行权限校验。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-launches-the-charlotte-ai-agentworks-ecosystem-for-building-secure-agents/" target="_blank" rel="noopener">CrowdStrike 官方</a><a href="https://www.businesswire.com/news/home/20260325196103/en/CrowdStrike-Launches-the-Charlotte-AI-AgentWorks-Ecosystem-for-Building-Secure-Agents" target="_blank" rel="noopener">BusinessWire</a>
+    </div>
+  </div>
+</div>
+
+<div class="section fade-in">
+  <div class="section-header">
+    <h2>🇨🇳 国内友商产品动态</h2>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">奇安信发布「安全运营数字员工」：7×24 小时自动化完成告警研判与响应处置</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">奇安信</span><span class="tag tag-category">安全智能体</span><span class="tag tag-category">智能运营</span><span class="tag tag-category">数字员工</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">6月23日，<strong>奇安信</strong>「AI安全系列新品发布周」第二天正式发布 <strong>安全运营数字员工</strong>。该产品基于自研安全垂类大模型 QGPT，7×24 小时自动化完成告警研判、事件定级、响应处置全流程，让每一家企业都拥有全天候在线的安全运营团队。与6/22首发的「威胁分析数字专家」形成「研判+运营」全场景闭环，后续还将发布 AI 安全治理、智能体安全、安全研发三款新品。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://stock.10jqka.com.cn/20260623/c677655746.shtml" target="_blank" rel="noopener">同花顺财经</a><a href="https://www.qianxin.com/" target="_blank" rel="noopener">奇安信官网</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">奇安信「威胁分析数字专家」上线 expert.qianxin.com，免费公测开放</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">奇安信</span><span class="tag tag-category">安全智能体</span><span class="tag tag-category">威胁分析</span><span class="tag tag-category">QGPT</span><span class="tag tag-merge">合并4源</span></div>
+    <div class="news-summary">6月22日，<strong>威胁分析数字专家</strong>作为发布周首款新品正式发布，以「对话即研判」为核心理念，整合自研安全垂类大模型 QGPT 与十余年安全数据/工具矩阵，覆盖 IOC 研判、文件分析、漏洞研判、APT 流量分析等 <strong>32 个高频分析场景</strong>。面向全行业免费公测，注册即获 1000 积分。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://tech.ifeng.com/c/8uAitdyvon9" target="_blank" rel="noopener">凤凰科技</a><a href="https://finance.sina.com.cn/wm/2026-06-22/doc-iniehwmp6938232.shtml" target="_blank" rel="noopener">新浪财经</a><a href="http://www.jjckb.cn/20260622/b8897d13563c4eb689143ec94c7c569e/c.html" target="_blank" rel="noopener">经济参考报</a><a href="https://www.gm7.org/archives/115610" target="_blank" rel="noopener">GM7 信息安全知识库</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">绿盟科技 AI 安全围栏 NSFOCUS AI-Guardrails 通过国家政务大模型安全测试</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">绿盟科技 / NSFOCUS</span><span class="tag tag-category">AI 安全围栏</span><span class="tag tag-category">国产化算力</span><span class="tag tag-category">政务合规</span></div>
+    <div class="news-summary">绿盟科技 <strong>AI-Guardrails（AI 安全围栏）</strong>产品正式发布，严格对标国家相关安全规范并已通过权威政务大模型安全测试。深度适配华为昇腾、海光 K100 等国产化算力芯片，为政府、金融、能源等行业客户提供安全、合规、可靠的 AI 应用防护。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.nsfocus.com.cn/html/2026/651_0202/281.html" target="_blank" rel="noopener">绿盟科技官方</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">天融信「AI 安全防护体系」扩展：新增 OpenClaw 智能体五层闭环安全方案</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">天融信</span><span class="tag tag-category">智能体安全</span><span class="tag tag-category">AI 防火墙</span><span class="tag tag-category">OpenClaw 防护</span><span class="tag tag-merge">合并2源</span></div>
+    <div class="news-summary">天融信本周正式推出 <strong>OpenClaw 安全上岗</strong>五层闭环安全方案，围绕智能体全生命周期构建「平台—主机—模型—数据—应用」五层防护，助力企业安全可控地部署 OpenClaw 系列 AI 智能体。天融信防火墙已连续 26 年稳居国内市场榜首，AI 安全为其核心增长曲线之一。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.topsec.com.cn/Artificial-Intelligence" target="_blank" rel="noopener">天融信 AI 安全</a><a href="https://www.topsec.com.cn/index.html" target="_blank" rel="noopener">天融信大模型多模态网关</a>
+    </div>
+  </div>
+</div>
+
+<div class="section fade-in">
+  <div class="section-header">
+    <h2>📊 行业动态与趋势</h2>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">OWASP 正式发布《Agentic AI Top 10 2026》：全球首个智能体 AI 安全风险框架</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">OWASP</span><span class="tag tag-category">行业标准</span><span class="tag tag-category">Agentic AI</span><span class="tag tag-category">安全框架</span><span class="tag tag-merge">合并3源</span></div>
+    <div class="news-summary">OWASP Gen AI 安全项目本周正式发布 <strong>Agentic AI Top 10 2026</strong>，由 100+ 行业专家、研究者和实践者共同编制，是全球首个针对自主 AI 智能体的安全风险框架。覆盖身份伪造、权限失控、工具调用滥用、记忆污染等 10 大核心风险，为企业构建可审计、可治理的 AI Agent 系统提供行动指南。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener">OWASP 官方</a><a href="https://friday-go.icu/security/offensive/owasp-agentic-ai-top10-2026" target="_blank" rel="noopener">深度解读</a><a href="https://www.secrss.com/articles/86149" target="_blank" rel="noopener">安全内参</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥🔥</span>
+      <div class="news-title">Brinztech 披露：OpenClaw 智能体遭 Agentic Prompt Injection 与 WebSocket Token 劫持双重攻击</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Brinztech / OpenClaw</span><span class="tag tag-category">AI Agent 攻击</span><span class="tag tag-category">提示词注入</span><span class="tag tag-category">Token 劫持</span></div>
+    <div class="news-summary">6月10日，Brinztech AI Security Advisory 披露一起针对<strong>专业服务行业</strong>的高危事件：OpenClaw 自动化平台遭 <strong>Agentic Prompt Injection</strong> 配合 <strong>WebSocket Token 劫持</strong>双重攻击，导致企业数据自动外泄。事件展示出 AI 智能体在生产环境中面临的真实链式攻击路径，为行业敲响多向量防御的警钟。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.brinztech.com/breach-alerts/brinztech-ai-security-advisory-agentic-prompt-injection-and-websocket-token-hijacking-the-openclaw-automation-compromise/" target="_blank" rel="noopener">Brinztech Advisory</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">CISA 最新漏洞报告：AI 推动 2026 年全球 CVE 数量预计激增至 6.6 万个</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">CISA</span><span class="tag tag-category">漏洞数据</span><span class="tag tag-category">AI 自动化</span><span class="tag tag-category">安全态势</span></div>
+    <div class="news-summary">美国 CISA 发布最新漏洞趋势报告，指出 <strong>AI 工具和 AI 驱动软件扩张</strong>正推动 CVE 数量快速增长，2026 年预计达到 6.6 万个。但仅有约 6.5% 构成真正高危威胁，AI 自动化漏洞发现显著提升了发现效率，但风险总量未等比放大。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.freebuf.com/news/486744.html" target="_blank" rel="noopener">FreeBuf</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">DeepKeep 发布 Vibe AI Red Teaming：人工引导 + Agent 自动执行的混合红队工具</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">DeepKeep</span><span class="tag tag-category">AI 红队</span><span class="tag tag-category">漏洞挖掘</span><span class="tag tag-category">安全测试</span></div>
+    <div class="news-summary">DeepKeep 推出 <strong>Vibe AI Red Teaming</strong>，将自动化 Agent 执行与人工引导指令相结合，用于 AI 应用和智能体的安全测试。该工具弥补了纯自动化红队难以发现复杂业务逻辑漏洞的不足，为人机协同的 AI 安全测试提供新范式。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.datagrom.com/ai-news/deepkeep-launches-human-guided-ai-red-teaming-tool-70be85f3" target="_blank" rel="noopener">DataGrom 报道</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥🔥</span>
+      <div class="news-title">Concentrate AI 走出隐身模式，发布企业级 LLM Gateway 应对 AI 算力失控</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Concentrate AI</span><span class="tag tag-category">LLM 网关</span><span class="tag tag-category">AI 算力治理</span><span class="tag tag-category">成本控制</span></div>
+    <div class="news-summary">Concentrate AI 本周正式走出隐身模式，推出专为生产环境 AI 部署设计的 <strong>LLM Gateway</strong>。提供统一的 LLM API 入口、Token 消耗可视化、跨模型路由选择与成本归因，解决企业 AI 算力失控、Token 滥用、跨部门费用分摊等痛点。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://fortune.com/press-releases/concentrate-ai-free-llm-gateway-ai-spend-2026-06-10/" target="_blank" rel="noopener">Fortune 官宣</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">Levo.ai Launch Week 2026：AI Firewall + AI Gateway + MCP Discovery 全面发布</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">Levo.ai</span><span class="tag tag-category">AI 防火墙</span><span class="tag tag-category">MCP 安全</span><span class="tag tag-category">API 安全</span></div>
+    <div class="news-summary">Levo.ai 本周举办年度 Launch Week，集中发布：<strong>AI Firewall</strong>、<strong>AI Gateway</strong>、<strong>MCP Discovery</strong>、<strong>MCP Security Testing</strong>、Postman 集成、Checkmarx 集成和无 Agent API 发现工具。为 AI 应用构建从发现、测试到防护的完整 API 安全闭环。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.levo.ai/resources/product-release/launch-week-2026-recap" target="_blank" rel="noopener">Levo.ai 官方</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">北京市 6 月 18 日公告：累计 242 款生成式 AI 服务完成备案</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">北京市网信办</span><span class="tag tag-category">AI 监管</span><span class="tag tag-category">备案</span><span class="tag tag-category">生成式 AI</span></div>
+    <div class="news-summary">根据《生成式人工智能服务管理暂行办法》，截至 6 月 18 日，北京市新增 1 款已完成备案的生成式 AI 服务，<strong>累计已完成 242 款生成式 AI 服务备案</strong>。已上线应用须在显著位置或详情页公示所使用已备案服务情况，并按《人工智能生成合成内容标识办法》添加标识。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://finance.sina.com.cn/tech/roll/2026-06-18/doc-inicvmmr3258048.shtml" target="_blank" rel="noopener">新浪财经</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">国家人工智能安全漏洞库 AIVD 持续收录 AI 智能体漏洞，本周新增数十个高危条目</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">国家信息安全漏洞库 / CNNVD</span><span class="tag tag-category">漏洞库</span><span class="tag tag-category">AI 智能体</span><span class="tag tag-category">高危漏洞</span></div>
+    <div class="news-summary">CNNVD 旗下<strong>国家人工智能安全漏洞库 AIVD</strong>持续更新，本周新增数十个 AI 智能体相关高危漏洞，涉及 OpenClaw、Hugging Face Transformers 等主流框架。漏洞类型集中在身份伪造、权限失控、远程代码执行、提示词注入等，建议企业开发团队订阅 AIVD 实时关注。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.cnnvd.org.cn/aivd/" target="_blank" rel="noopener">CNNVD AIVD</a>
+    </div>
+  </div>
+  <div class="news-card fade-in">
+    <div class="news-card-header">
+      <span class="importance-badge">🔥</span>
+      <div class="news-title">2026 年 AI 监管进入强执行期：欧盟 AI Act 高风险条款落地，违规罚款最高 7% 全球营收</div>
+    </div>
+    <div class="news-tags"><span class="tag tag-vendor">欧盟 / 政策监管</span><span class="tag tag-category">政策法规</span><span class="tag tag-category">AI Act</span><span class="tag tag-category">合规</span><span class="tag tag-merge">合并3源</span></div>
+    <div class="news-summary">2026 年 6 月，<strong>欧盟 AI Act</strong> 对高风险 AI 系统的监管条款全面生效，违规企业最高面临全球年营收 7% 的处罚。中国《网络安全法》修正案已于 1 月 1 日生效，首次写入 AI 相关内容。全球 AI 监管已从「立法阶段」全面进入「执行阶段」。</div>
+    <div class="news-sources">
+      <span>📎 来源：</span><a href="https://www.flowpixai.com/ai-news/ai-regulation-2026-global.html" target="_blank" rel="noopener">FlowPixAI 盘点</a><a href="https://www.36kr.com/p/3678814524338697" target="_blank" rel="noopener">36 氪</a><a href="https://m.huxiu.com/article/4833768.html" target="_blank" rel="noopener">虎嗅</a>
+    </div>
+  </div>
+</div>
+
+<div class="trend fade-in">
+  <h2>🔮 趋势判断</h2>
+  <div class="trend-item"><strong>1. AI Agent 安全成新主战场：</strong>OWASP Agentic AI Top 10 2026 发布 + Brinztech 披露 OpenClaw 双重攻击实战，标志 AI Agent 安全从理论走向实弹防御阶段。</div>
+  <div class="trend-item"><strong>2. 国内 AI 安全厂商进入「周更」节奏：</strong>奇安信发布周第二天再放「安全运营数字员工」，国内厂商从「概念验证」切换为「密集产品交付」模式。</div>
+  <div class="trend-item"><strong>3. 影子 AI 治理成为企业刚需：</strong>Cloudflare×Wiz 整合把 AI 资产可见性从云端推到边缘，Shadow AI 治理工具开始形成完整生态。</div>
+  <div class="trend-item"><strong>4. 全球 AI 监管进入强执行期：</strong>欧盟 AI Act 高风险条款全面生效，违规罚款最高 7% 全球营收，2026 下半年是 AI 合规元年。</div>
+  <div class="trend-item"><strong>5. AI 红队工具从「纯自动化」走向「人机协同」：</strong>DeepKeep Vibe 等新工具引入人工引导，弥补纯 Agent 自动化的盲区。</div>
+</div>
+
+<div class="footer">
+  <p>AI 安全日报 · 2026-06-24 · 由 WorkBuddy 自动生成</p>
+  <p style="margin-top:4px">数据来源：OWASP · Brinztech · Palo Alto Networks · Cloudflare · CrowdStrike · 奇安信 · 绿盟科技 · 天融信 · 安全内参 · FreeBuf 等</p>
+</div>
+
+</div>
+
+<script>
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, Array.from(entry.target.parentNode?.children || []).indexOf(entry.target) * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Trigger hero immediately
+  document.querySelector('.hero').classList.add('visible');
+})();
+</script>
+</body>
+</html>
