@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-24</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 导航栏 */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 0;
+}
+
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+.nav-date { font-size: 13px; color: #888; }
+
+/* 主内容区 */
+.main { max-width: 1200px; margin: 0 auto; padding: 88px 24px 60px; }
+
+/* Hero */
+.hero {
+  text-align: center; padding: 48px 0 36px;
+  position: relative;
+}
+
+.hero::before {
+  content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+  width: 400px; height: 200px;
+  background: radial-gradient(ellipse at center, rgba(91,108,247,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 36px; font-weight: 800; letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 40%, #EC4899 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+
+.hero .date { font-size: 15px; color: #888; margin-bottom: 8px; }
+.hero .stats {
+  display: inline-flex; gap: 20px; margin-top: 16px;
+  font-size: 14px; color: #aaa;
+}
+
+.hero .stats span { padding: 4px 14px; background: rgba(255,255,255,0.04); border-radius: 20px; }
+.hero .stats strong { color: #8B5CF6; }
+
+/* AI 解读 */
+.ai-insight {
+  background: linear-gradient(135deg, rgba(91,108,247,0.08) 0%, rgba(139,92,246,0.06) 50%, rgba(236,72,153,0.04) 100%);
+  border: 1px solid rgba(91,108,247,0.15);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.ai-insight::before {
+  content: '🤖 AI 今日看点';
+  display: block; font-size: 12px; font-weight: 600; color: #8B5CF6;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+}
+
+.ai-insight p { font-size: 15px; color: #ccc; line-height: 1.8; }
+
+/* Section */
+.section { margin-bottom: 40px; }
+
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.section-header h2 {
+  font-size: 20px; font-weight: 700; letter-spacing: -0.3px;
+}
+
+.section-header .count {
+  font-size: 13px; color: #888;
+  padding: 2px 10px; background: rgba(255,255,255,0.04); border-radius: 12px;
+}
+
+/* 卡片网格 */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.25s ease;
+  opacity: 0; transform: translateY(20px);
+}
+
+.card.visible { opacity: 1; transform: translateY(0); }
+
+.card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(139,92,246,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(91,108,247,0.08);
+}
+
+.card-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+
+.card-header .importance { font-size: 16px; flex-shrink: 0; }
+
+.card-title {
+  font-size: 16px; font-weight: 700; line-height: 1.5;
+  color: #f0f0f0; letter-spacing: -0.2px;
+}
+
+.card-summary {
+  font-size: 14px; color: #999; line-height: 1.7; margin-bottom: 16px;
+}
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+
+.tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+  padding: 3px 10px; border-radius: 6px;
+}
+
+.tag-vendor { background: rgba(91,108,247,0.15); color: #7B8CF8; }
+.tag-industry { background: rgba(236,72,153,0.12); color: #EC4899; }
+.tag-conference { background: rgba(139,92,246,0.12); color: #A78BFA; }
+
+.tag.industry { background: rgba(236,72,153,0.12); color: #EC4899; }
+
+/* Sources */
+.card-sources { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.source-link {
+  font-size: 12px; color: #8B5CF6; text-decoration: none;
+  padding: 3px 10px; background: rgba(139,92,246,0.08);
+  border-radius: 6px; transition: all 0.2s;
+  display: inline-block;
+}
+
+.source-link:hover {
+  color: #A78BFA; background: rgba(139,92,246,0.15);
+  text-decoration: underline;
+}
+
+.source-merge {
+  font-size: 11px; color: #666; padding: 3px 8px;
+  background: rgba(255,255,255,0.03); border-radius: 6px;
+}
+
+.card-date {
+  font-size: 11px; color: #666; margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+  text-align: center; padding: 40px 0 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 48px;
+}
+
+.footer p { font-size: 12px; color: #555; }
+.footer a { color: #8B5CF6; text-decoration: none; }
+
+/* 空状态 */
+.empty-state {
+  text-align: center; padding: 48px 24px;
+  color: #666; font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .hero .stats { flex-direction: column; gap: 8px; }
+  .main { padding: 80px 16px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">🛡️ 防火墙日报</div>
+    <div class="nav-date">2026-06-24</div>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="date">2026-06-24 · 北京时间</div>
+    <div class="stats">
+      <span>🏢 厂商 <strong>3</strong> 条</span>
+      <span>🏭 行业 <strong>2</strong> 条</span>
+      <span>📊 共 <strong>5</strong> 条动态</span>
+    </div>
+  </section>
+
+  <!-- AI 解读 -->
+  <div class="ai-insight">
+    <p>今日ISC.AI 2026在北京正式开幕，这是6月安全圈最重要的行业事件——大会将「人对人」到「AI对AI」的范式转变定为今年的核心议题，意味着AI安全已从概念走向实战，各家厂商在大会上的新品发布值得持续关注。同时，金融行业防火墙采购在6月中旬出现「扎堆落地」——银联、金融监管总局、成方金融等几乎同步推进采购，显示金融信创替代正在从试点加速进入全面铺开阶段，这对深信服、华为等头部厂商是明确的增量信号。</p>
+  </div>
+
+  <!-- 厂商动态 -->
+  <section class="section">
+    <div class="section-header">
+      <h2>🏢 厂商动态</h2>
+      <span class="count">3 条</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" style="transition-delay:0ms">
+        <div class="card-date">2026-06-24</div>
+        <div class="card-header">
+          <span class="importance">🔥</span>
+          <div class="card-title">ISC.AI 2026 今日在北京国家会议中心开幕，聚焦「人对人」向「AI对AI」安全范式变革</div>
+        </div>
+        <div class="tags"><span class="tag tag-conference">行业大会</span><span class="tag tag-conference">多厂商</span></div>
+        <div class="card-summary">第十四届互联网安全大会（ISC.AI 2026）今日正式开幕。大会围绕AI应用、AI安全、AI人才三大核心板块，深入探讨大模型安全防护、AI智能体安全治理、AI红蓝对抗等前沿议题。各家厂商预计将在大会期间密集发布最新AI安全产品和解决方案，标志着安全对抗正式从「人对人」迈入「AI对AI」的新纪元。</div>
+        <div class="card-sources"><a href="https://look.huanqiu.com/article/4RofYYHvDyy" target="_blank" rel="noopener" class="source-link">环球网</a><a href="https://www.toutiao.com/article/7646745298231919140/" target="_blank" rel="noopener" class="source-link">今日头条</a><a href="https://baike.baidu.com/item/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E4%BA%92%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BC%9A/67917746" target="_blank" rel="noopener" class="source-link">百度百科</a> <span class="source-merge">合并3源</span></div>
+      </div>
+      <div class="card" style="transition-delay:100ms">
+        <div class="card-date">2026-06-18</div>
+        <div class="card-header">
+          
+          <div class="card-title">深信服6月多地中标：重庆防火墙升级服务+深圳大学维保+新疆电子政务采购成交</div>
+        </div>
+        <div class="tags"><span class="tag tag-vendor">深信服</span></div>
+        <div class="card-summary">深信服近期在全国多地连续中标/成交：①重庆地区防火墙升级服务项目于6月18日发布中标公告；②深圳大学采购深信服AF-9080下一代防火墙+SIP态势感知平台维保服务（9.9万元/年，含原厂特征库升级）；③新疆地区电子政务防火墙采购竞价成交（5月25日）。显示深信服在政企和教育行业防火墙维保与采购市场的持续渗透力。</div>
+        <div class="card-sources"><a href="https://chongqing.zhaobiao.cn/succeed_v_d5f4d2f71c15a715c5a6c17cf9d491f1.html" target="_blank" rel="noopener" class="source-link">环球网</a><a href="https://bidding.szu.edu.cn/info/1023/355999.htm" target="_blank" rel="noopener" class="source-link">今日头条</a><a href="http://www.ccgp-xinjiang.gov.cn/site/detail?parentId=3661&articleId=oX9BeL80UcFuQ4o44D6XNw==" target="_blank" rel="noopener" class="source-link">百度百科</a> <span class="source-merge">合并3源</span></div>
+      </div>
+      <div class="card" style="transition-delay:200ms">
+        <div class="card-date">2026-06-15</div>
+        <div class="card-header">
+          
+          <div class="card-title">华为防火墙近期多地中标：覆盖教育、烟草、环保等多个行业</div>
+        </div>
+        <div class="tags"><span class="tag tag-vendor">华为</span></div>
+        <div class="card-summary">华为防火墙在6月中旬连续中标多个行业项目，包括鄂尔多斯职业学院、宁夏回族自治区烟草公司中卫市公司、黔南布依族苗族自治州都匀第一中学、生态环境部华南督察局等。覆盖教育、烟草、环保等多个垂直行业，显示华为防火墙在政企市场的广覆盖能力和品牌认可度。</div>
+        <div class="card-sources"><a href="https://www.bidcenter.com.cn/zhaobiao/zbkeyw-8718-0-4.html" target="_blank" rel="noopener" class="source-link">环球网</a> </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 行业动态 -->
+  <section class="section">
+    <div class="section-header">
+      <h2>🏭 行业动态</h2>
+      <span class="count">2 条</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" style="transition-delay:0ms">
+        <div class="card-date">2026-06-22</div>
+        <div class="card-header">
+          
+          <div class="card-title">金融行业防火墙采购6月中旬密集落地：银联双标+金融监管总局+成方金融+互金维保齐头并进</div>
+        </div>
+        <div class="tags"><span class="tag tag-industry">🏭 金融</span></div>
+        <div class="card-summary">6月中旬金融行业防火墙相关采购呈现密集态势：①中国银联防火墙设备采购（5台，51.97万元）6月12日中标，上海捷鑫中标；②中国银联WAF采购822.36万元6月16日中标，上海合胜中标；③国家金融监督管理总局服务器及网络安全设备采购6月22日发布中标公告；④成方金融信息技术服务有限公司交换机、防火墙及线缆采购项目6月16日截标；⑤互联网金融事业部生产防火墙原厂维保服务采购6月18日成交公示。金融行业防火墙采购需求持续旺盛，信创替代和维保升级双轮驱动。</div>
+        <div class="card-sources"><a href="https://supplier.unionpay.com/jcepp-esp/notice/toNoticeDetails?newsId=98247d03f8264ccbbd9f410e88d4e3c5" target="_blank" rel="noopener" class="source-link">中国银联供应商平台</a><a href="https://supplier.unionpay.com/jcepp-esp/notice/toNoticeDetails?newsId=971c64e3570249e4ba0d26b66b38db31" target="_blank" rel="noopener" class="source-link">中国银联供应商平台</a><a href="http://www.ccgp.gov.cn/cggg/zygg/zbgg/202606/t20260622_26785375.htm" target="_blank" rel="noopener" class="source-link">中国政府采购网</a><a href="http://www.ccgp.gov.cn/cggg/zygg/qtgg/202605/t20260522_26615600.htm" target="_blank" rel="noopener" class="source-link">中国政府采购网</a><a href="https://www.chinabidding.cn/zbgs/U-vzJTjqQ.html" target="_blank" rel="noopener" class="source-link">中国招标网</a> <span class="source-merge">合并5源</span></div>
+      </div>
+      <div class="card" style="transition-delay:100ms">
+        <div class="card-date">2026-06-17</div>
+        <div class="card-header">
+          
+          <div class="card-title">运营商防火墙项目持续活跃：电信玉溪通海县+兰溪电信设备合作</div>
+        </div>
+        <div class="tags"><span class="tag tag-industry">🏭 运营商</span></div>
+        <div class="card-summary">运营商层面防火墙需求保持活跃：①中国电信玉溪分公司2026年通海县防火墙服务项目采购防火墙及配套服务，核心应用于数据网络边界防护、威胁拦截、账号安全管理（6月17日前后）；②兰溪电信2026年防火墙设备合作项目招募方案发布，6月15日响应截止。运营商作为防火墙最大采购方之一，持续释放地市级安全建设需求。</div>
+        <div class="card-sources"><a href="https://www.chinabidding.cn/zbgg/U-vzJBidZ.html" target="_blank" rel="noopener" class="source-link">中国银联供应商平台</a><a href="https://m.bidcenter.com.cn/news-1-423833211.html" target="_blank" rel="noopener" class="source-link">中国银联供应商平台</a> <span class="source-merge">合并2源</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>数据来源：公开搜索聚合 · 仅供参考 | 推送时间：每日 09:00 北京时间</p>
+    <p><a href="https://aaronxi9527.github.io/ai-hot-daily/" target="_blank">日报归档</a></p>
+  </footer>
+
+</main>
+
+<script>
+// IntersectionObserver 滚动渐入动画
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+// 页面加载后立即触发可见卡片
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card').forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      card.classList.add('visible');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
