@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-06-25</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card: #111827;
+    --border: #1f2937;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --text-faint: #6b7280;
+    --grad-1: #5B6CF7;
+    --grad-2: #8B5CF6;
+    --grad-3: #EC4899;
+    --grad: linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 50%, var(--grad-3) 100%);
+    --tag-bg: rgba(91, 108, 247, 0.12);
+    --tag-border: rgba(139, 92, 246, 0.35);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; padding-bottom: 60px; background: radial-gradient(circle at 20% 0%, rgba(91,108,247,0.08), transparent 50%), radial-gradient(circle at 80% 80%, rgba(236,72,153,0.06), transparent 50%), var(--bg); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    padding: 64px 0 36px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+  .hero-date {
+    font-size: 16px;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 12px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); border-color: rgba(139, 92, 246, 0.5); }
+  .stat-num {
+    font-size: 30px;
+    font-weight: 800;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.1;
+  }
+  .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 6px; letter-spacing: 0.5px; }
+
+  /* Overview */
+  .overview {
+    margin: 36px 0 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid;
+    border-image: var(--grad) 1;
+    border-radius: 12px;
+    padding: 22px 26px;
+    box-shadow: var(--shadow);
+  }
+  .overview-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grad-2);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .overview-body {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* Section */
+  .section { margin-top: 36px; }
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+  }
+  .section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-icon {
+    font-size: 26px;
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.4));
+  }
+  .section-count {
+    font-size: 13px;
+    color: var(--text-dim);
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  /* Cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 720px) {
+    .cards { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .hero-title { font-size: 32px; }
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(139, 92, 246, 0.55);
+    box-shadow: 0 8px 32px rgba(91, 108, 247, 0.18);
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--text);
+    letter-spacing: 0.2px;
+    font-weight: 500;
+  }
+  .tag-vendor { color: #c4b5fd; }
+  .tag-cat { color: #f0abfc; }
+  .importance {
+    font-size: 13px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.45;
+  }
+  .card-summary {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .card-foot { padding-top: 8px; border-top: 1px dashed rgba(31, 41, 55, 0.7); }
+  .source {
+    font-size: 12px;
+    color: var(--grad-2);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .source:hover { color: var(--grad-3); text-decoration: underline; }
+
+  /* Trend */
+  .trend {
+    margin-top: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    box-shadow: var(--shadow);
+  }
+  .trend-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grad-3);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .trend-body { font-size: 14px; color: var(--text-dim); line-height: 1.85; }
+
+  .footer {
+    text-align: center;
+    padding: 32px 0 0;
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+  .footer a { color: var(--text-dim); text-decoration: none; }
+  .footer a:hover { color: var(--grad-2); }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="hero-eyebrow">AI SECURITY DAILY · DASHBOARD</div>
+      <h1 class="hero-title">🤖 AI 安全日报</h1>
+      <div class="hero-date">2026-06-25 · 北京时间 · 自动化生成</div>
+      <div class="hero-stats">
+        <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">国际产品</div></div>
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">国内产品</div></div>
+        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">行业动态</div></div>
+        <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">合计条目</div></div>
+      </div>
+    </header>
+
+    <section class="overview">
+      <div class="overview-title">🧠 AI 总览 · 今日看点</div>
+      <div class="overview-body">今天 AI 安全圈最值得关注的关键词是「智能体自治 + 国产化合规」。国际侧，SentinelOne 把 Purple AI Agentic Investigation 全面开放给客户、Check Point 成为首批把 OpenAI 前沿模型嵌入客户级防御的厂商、OpenAI 自家 GPT-5.5-Cyber 完整版定向发布；但 Cloudflare 推出 Temporary Accounts、FortiOS 7.6 AI 加持，说明「AI 智能体作为新型操作主体」正倒逼平台层重塑鉴权与策略体系。国内侧，奇安信发布周 Day2「安全运营数字员工」接续 Day1「威胁分析数字专家」、天融信推出 AI 编程研发专用的「大模型安全网关 TopLMG」、绿盟 AI-Guardrails 通过国家政务大模型安全测试；国内厂商明显进入「场景化智能体 + 国产化合规」双轮驱动的密集发布期。行业侧，OWASP State of Agentic AI Security 2.01 与 NIST RFI 并行推进，五眼联盟罕见联合警告前沿 AI 模型数月内可颠覆关键基础设施，Varonis 演示 OpenClaw AI Agent 被钓鱼社工、OpenAI Codex 同期爆 bug——前沿 AI 的攻防天平正在以「周」为单位快速移动。</div>
+    </section>
+
+    
+      <section class="section">
+        <div class="section-head">
+          <h2><span class="section-icon">🏢</span>国际友商产品动态</h2>
+          <span class="section-count">6 条</span>
+        </div>
+        <div class="cards">
+          
+        <article class="card" style="--delay: 0ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">Palo Alto Networks</span>
+              <span class="tag tag-cat">AI-SPM / AI Red Teaming</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">Palo Alto Networks Prisma AIRS 6月新增可配置 AI Red Teaming 目标画像</h3>
+          <p class="card-summary">Prisma AIRS AI Red Teaming 新增可配置目标画像（configurable target profiling），让用户可自主控制自动化目标画像对 AI 端点的运行时机与策略；这是 AIRS 在 3.0 智能体防护基础上的重要能力补强。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://origin-docs.paloaltonetworks.com/ai-runtime-security/new-features/by-date/prisma-airs/june-2026" target="_blank" rel="noopener">来源：PANW Docs (New Features June 2026) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 60ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">SentinelOne</span>
+              <span class="tag tag-cat">Security Agent / Copilot</span>
+            </div>
+            <span class="importance">🔥🔥🔥</span>
+          </header>
+          <h3 class="card-title">SentinelOne 向全体客户开放 Purple AI Agentic Investigation 自治调查</h3>
+          <p class="card-summary">Purple AI Agentic Investigation 零配置、自主发起的调查能力在 Singularity Platform 内运行，可自动执行威胁溯源与研判，号称「把前沿 AI 直接带入 SOC」；本周起客户可申请免费试用。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://investors.sentinelone.com/press-releases/news-details/2026/SentinelOne-Opens-Purple-AI-Agentic-Investigation-to-All-Customers-Bringing-Frontier-AI-Directly-Into-the-SOC/default.aspx" target="_blank" rel="noopener">来源：SentinelOne Investor Relations (2026-06-17) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 120ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">Check Point</span>
+              <span class="tag tag-cat">AI-Security Copilot</span>
+            </div>
+            <span class="importance">🔥🔥🔥</span>
+          </header>
+          <h3 class="card-title">Check Point 成为首批把 OpenAI 前沿模型嵌入客户级防御的安全厂商</h3>
+          <p class="card-summary">作为 OpenAI Daybreak Cyber Partner Program 首批入选厂商，Check Point 6/22 宣布把 OpenAI 前沿模型嵌入其 Infinity / AI Assist（原 Infinity AI）安全产品中，AI 从后台模式识别/异常检测走向主动攻防能力。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://go.investorwire.com/article/Check-Point-to-Embed-OpenAI-Frontier-Cyber-Capabilities-into-Check-Point-Security-Products/6a396d42564d536c69a52f7a" target="_blank" rel="noopener">来源：Check Point InvestorWire (2026-06-22) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 180ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">Cloudflare</span>
+              <span class="tag tag-cat">AI Agent 平台</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">Cloudflare 推出 Temporary Accounts for AI Agents（面向 AI 编程智能体）</h3>
+          <p class="card-summary">6/19 Cloudflare 上线 Temporary Accounts for AI Agents 能力，AI 编程智能体可直接在 Wrangler 平台部署 Workers / API / 网站，绕过人类鉴权墙；解决 AI 智能体规模化部署的鉴权瓶颈。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://www.explainx.ai/blog/cloudflare-temporary-accounts-ai-agents-wrangler-2026" target="_blank" rel="noopener">来源：ExplainX Blog (2026-06-19) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 240ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">OpenAI</span>
+              <span class="tag tag-cat">网络安全专用模型</span>
+            </div>
+            <span class="importance">🔥🔥🔥</span>
+          </header>
+          <h3 class="card-title">OpenAI GPT-5.5-Cyber 完整版正式发布（CyberGym 85.6% 超越 Anthropic Mythos 5）</h3>
+          <p class="card-summary">GPT-5.5-Cyber 完整版通过「网络安全可信访问计划 TAC」定向开放给可信防守方，附带面向 Codex 平台的 Security 插件，在 CyberGym 基准上以 85.6% 得分刷新 SOTA。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://www.freebuf.com/articles/ai-security/480404.html" target="_blank" rel="noopener">来源：FreeBuf (2026-06-23) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 300ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">Fortinet</span>
+              <span class="tag tag-cat">NGFW / FortiAI</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">Fortinet FortiOS 7.6 正式发布：AI 驱动的零信任与下一代防火墙升级</h3>
+          <p class="card-summary">FortiOS 7.6 在 FortiGate 旗舰 NGFW 上带来 AI 驱动的安全能力升级与零信任增强，覆盖威胁检测、策略自动化与 SD-WAN 整合。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://pjnetworks.com/fortinet-fortios-7-6-released-ai-powered-security-and-zero-trust-enhancements/" target="_blank" rel="noopener">来源：PJ Networks (2026-06-04) ↗</a>
+          </footer>
+        </article>
+        </div>
+      </section>
+    
+      <section class="section">
+        <div class="section-head">
+          <h2><span class="section-icon">🇨🇳</span>国内友商产品动态</h2>
+          <span class="section-count">4 条</span>
+        </div>
+        <div class="cards">
+          
+        <article class="card" style="--delay: 0ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">奇安信</span>
+              <span class="tag tag-cat">Security Agent / 数字员工</span>
+            </div>
+            <span class="importance">🔥🔥🔥</span>
+          </header>
+          <h3 class="card-title">奇安信发布周 Day 2「安全运营数字员工」：7×24 自动化研判与响应</h3>
+          <p class="card-summary">6/23 奇安信人工智能公司发布第二款新品「安全运营数字员工」，与 Day1「威胁分析数字专家」形成协同，实现 7×24 自动化研判与响应，覆盖八大能力模块、十大安全要素，是发布周核心组合。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://stock.10jqka.com.cn/20260623/c677655746.shtml" target="_blank" rel="noopener">来源：同花顺财经 (2026-06-23) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 60ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">天融信</span>
+              <span class="tag tag-cat">LLM Firewall / AI 编程安全</span>
+            </div>
+            <span class="importance">🔥🔥🔥</span>
+          </header>
+          <h3 class="card-title">天融信发布「大模型安全网关 TopLMG」：聚焦 AI 编程研发全链路防护</h3>
+          <p class="card-summary">天融信推出大模型安全网关 TopLMG，整合代码安全防护、数据防泄漏、全域防御三大核心能力，构建覆盖 AI 编程研发全流程的纵深防御体系；与 3 月发布的「大模型多模态安全防护网关」形成产品矩阵。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://stock.10jqka.com.cn/20260624/c677665468.shtml" target="_blank" rel="noopener">来源：同花顺财经 (2026-06-24) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 120ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">绿盟科技</span>
+              <span class="tag tag-cat">AI Guardrails / 大模型安全围栏</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">绿盟科技 AI-Guardrails（AI 安全围栏）通过国家政务大模型安全测试</h3>
+          <p class="card-summary">绿盟 AI-Guardrails 严格对标国家相关安全规范，已通过权威政务大模型安全测试，并深度适配华为昇腾、海光 K100 等国产化算力芯片，定位政府/金融/能源等高合规行业。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://www.nsfocus.com.cn/html/2026/651_0202/281.html" target="_blank" rel="noopener">来源：绿盟科技产品中心 (2026-06-15) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 180ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">360</span>
+              <span class="tag tag-cat">Security LLM / 数字专家</span>
+            </div>
+            <span class="importance">🔥</span>
+          </header>
+          <h3 class="card-title">360 安全大模型平台升级：数字专家能力开放与场景化能力扩展</h3>
+          <p class="card-summary">360 安全大模型平台近期升级，更快捷、灵活地创建适用于不同网络安全场景的数字专家；为公司「360 智脑 + 360 安全大模型」双核布局提供底层底座。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://360.net/product-center/security-intelligence-brain/360secllm" target="_blank" rel="noopener">来源：360 安全大模型产品页 (2026-06-08) ↗</a>
+          </footer>
+        </article>
+        </div>
+      </section>
+    
+      <section class="section">
+        <div class="section-head">
+          <h2><span class="section-icon">📊</span>行业动态与趋势</h2>
+          <span class="section-count">10 条</span>
+        </div>
+        <div class="cards">
+          
+        <article class="card" style="--delay: 0ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">OWASP / 行业标准</span>
+              <span class="tag tag-cat">OWASP / 行业标准</span>
+            </div>
+            <span class="importance">🔥🔥🔥</span>
+          </header>
+          <h3 class="card-title">OWASP 发布「State of Agentic AI Security and Governance 2.01」</h3>
+          <p class="card-summary">OWASP GenAI Security Project 发布 2.01 版智能体安全治理报告，系统梳理自主 AI 系统的安全框架与治理路径，并行提供 OWASP AI Exchange 300+ 页实战指南；是当前最权威的智能体安全公开共识。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/" target="_blank" rel="noopener">来源：OWASP GenAI (2026-06-01) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 60ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">OWASP / 行业标准</span>
+              <span class="tag tag-cat">OWASP / 行业标准</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">OWASP AI Exchange 文档（300+ 页）持续演进，全球最大 AI 安全免费指南</h3>
+          <p class="card-summary">OWASP AI Exchange 当前已达 300+ 页，涵盖 AI 系统安全的基础理论与全球专家共识，持续更新。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://owaspai.org/OWASP-AI-Exchange.pdf" target="_blank" rel="noopener">来源：OWASP AI Exchange PDF ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 120ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">AI Red Teaming / 工具</span>
+              <span class="tag tag-cat">AI Red Teaming / 工具</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">Microsoft PyRIT AI Red Teaming 框架 2026 版（覆盖多轮编排器）</h3>
+          <p class="card-summary">PyRIT 2026 版重点强化多轮对话编排器（orchestrator），自动化接管 AI 红队的重复工作，让安全工程师聚焦在创造性攻击策略上；属微软 Security Copilot 生态关键开源组件。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://appsecsanta.com/pyrit" target="_blank" rel="noopener">来源：AppSecSanta (2026-06-18) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 180ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">政策法规 / 国际治理</span>
+              <span class="tag tag-cat">政策法规 / 国际治理</span>
+            </div>
+            <span class="importance">🔥🔥🔥</span>
+          </header>
+          <h3 class="card-title">「五眼联盟」罕见联合警告：前沿 AI 模型「数月而非数年」内可颠覆关键基础设施</h3>
+          <p class="card-summary">美/英/加/澳/新西兰联合发布警告，Mythos 5「修复此代码」漏洞已证明前沿模型现实风险，5 月自主 AI 指南识别系统性风险；OpenAI Daybreak 进一步加剧竞争与安全治理压力。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://www.studioglobal.ai/zh-cn/discover/answers/search-6a397feb43640d07f1b22702" target="_blank" rel="noopener">来源：StudioGlobal (中文) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 240ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">研究报告 / 行业分析</span>
+              <span class="tag tag-cat">研究报告 / 行业分析</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">360 AI 安全研究院报告：AI 漏洞挖掘迈入智能体工程实战新阶段</h3>
+          <p class="card-summary">360 AI 安全研究院最新报告显示，AI 驱动的漏洞挖掘技术正从实验室演示迈向真实场景应用，标志网络安全进入智能体化新阶段；与 91% 生产级 AI Agent 存在致命漏洞研究相互印证。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://www.itbear.com.cn/html/2026-06/1409144.html" target="_blank" rel="noopener">来源：ITBear (2026-06-24) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 300ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">NIST / 标准制定</span>
+              <span class="tag tag-cat">NIST / 标准制定</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">NIST 启动「Securing AI Agent Systems」RFI 公开征询</h3>
+          <p class="card-summary">NIST-2025-0035 RFI 围绕对抗性推理时间攻击、间接提示注入、数据投毒等机器学习驱动的新型风险征询意见，全球厂商、研究机构大量提交；标志美国 AI Agent 安全标准化进程进入关键期。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://techpolicyinstitute.org/wp-content/uploads/2026/06/Securing-AI-Agents-NIST-RFI-Filings-March-2026.pdf" target="_blank" rel="noopener">来源：Tech Policy Institute (2026-06-02) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 360ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">研究报告 / 行业白皮书</span>
+              <span class="tag tag-cat">研究报告 / 行业白皮书</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">安全牛《AI 大模型安全评估及防护技术应用指南》发布：企业需重点管控六大核心风险</h3>
+          <p class="card-summary">安全牛发布 AI 大模型安全评估及防护技术应用指南，报告指出当前 AI 系统攻击面持续快速扩张，企业需重点管控六大核心风险；绿盟科技入选「网络安全厂商」和「攻防渗透能力厂商」双类别。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://stock.10jqka.com.cn/20260624/c677682460.shtml" target="_blank" rel="noopener">来源：同花顺财经 (2026-06-24) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 420ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">安全事件 / 漏洞披露</span>
+              <span class="tag tag-cat">安全事件 / 漏洞披露</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">OpenClaw 自动化数据泄露事件：Varonis 实验证明 AI Agent 可被定向社工</h3>
+          <p class="card-summary">2026 年 6 月，Varonis 安全研究人员通过将 OpenClaw AI Agent 接入受控钓鱼页面，演示其被诱导并泄露企业敏感数据；与 6/10 Brinztech 披露的 Agentic Prompt Injection + WebSocket Token 劫持事件形成系列风险。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://aviatrix.ai/threat-research-center/threatsday-bulletin-worm-code-leaked-ai-agent-phished-claude-action-patch-2026/" target="_blank" rel="noopener">来源：Aviatrix Threat Bulletin (2026-06-11) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 480ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">漏洞披露 / 模型生态</span>
+              <span class="tag tag-cat">漏洞披露 / 模型生态</span>
+            </div>
+            <span class="importance">🔥🔥</span>
+          </header>
+          <h3 class="card-title">OpenAI Codex 平台爆出致命 bug，与 GPT-5.5-Cyber 同期发布引发关注</h3>
+          <p class="card-summary">OpenAI 刚发布满血版 GPT-5.5-Cyber 用于「修补地球」，其自家 Codex 平台却爆出致命 bug；反映前沿 AI 安全模型与开发平台之间的安全保障尚不对称。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://tech.ifeng.com/c/8uBfLEP6DCp" target="_blank" rel="noopener">来源：凤凰科技 (2026-06-24) ↗</a>
+          </footer>
+        </article>
+
+        <article class="card" style="--delay: 540ms">
+          <header class="card-head">
+            <div class="card-tags">
+              <span class="tag tag-vendor">行业方案 / 行业实践</span>
+              <span class="tag tag-cat">行业方案 / 行业实践</span>
+            </div>
+            <span class="importance">🔥</span>
+          </header>
+          <h3 class="card-title">腾讯云 LLM-WAF 与 AI-SPM 组合：覆盖 API 安全、算力滥用控制、内容过滤</h3>
+          <p class="card-summary">腾讯云大模型安全解决方案整合 LLM-WAF 与安全中心，覆盖 80+ 大模型组件；WAF+大模型安全引擎双擎驱动，拦截提示词攻击与算力滥用，提供 12 项开箱即用安全产品。</p>
+          <footer class="card-foot">
+            <a class="source" href="https://cloud.tencent.com/developer/article/2672023" target="_blank" rel="noopener">来源：腾讯云开发者 (2026-05-21) ↗</a>
+          </footer>
+        </article>
+        </div>
+      </section>
+
+    <section class="trend">
+      <div class="trend-title">🚀 趋势判断 · 精简版</div>
+      <div class="trend-body">1) 智能体自治进入主流：SentinelOne / Check Point / 奇安信不约而同把「可自主调查的 AI」作为新版本核心；2) 国产化合规成硬通货：政务大模型安全测试、护栏类产品的国产化适配（昇腾/海光）成为国内厂商竞争焦点；3) 标准/治理节奏加快：OWASP / NIST 同步推进智能体安全标准化，五眼联盟罕见联合预警，国际监管正从「研究报告」走向「联合执法」；4) 攻击工具化加速：Varonis + Brinztech + Sysdig 系列事件证明 AI Agent 已成为新型高价值攻击面，安全厂商必须从「识别 LLM 风险」升级到「管控智能体行为」。</div>
+    </section>
+
+    <footer class="footer">
+      <p>数据来源：WebSearch 公开渠道 · 链接均为真实可点击 URL · 仅供安全研究参考</p>
+      <p style="margin-top:6px;">自动化任务 ID: automation-1781505294934 · 生成时间 2026-06-25 09:50 CST</p>
+    </footer>
+  </div>
+</body>
+</html>
