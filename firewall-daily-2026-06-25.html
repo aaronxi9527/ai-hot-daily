@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-25</title>
+<style>
+*{
+  margin:0; padding:0; box-sizing:border-box;
+}
+:root{
+  --bg: #0a0a0a;
+  --card-bg: #141414;
+  --card-border: #1e1e2e;
+  --text: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --accent-start: #5B6CF7;
+  --accent-mid: #8B5CF6;
+  --accent-end: #EC4899;
+  --link: #8B5CF6;
+  --tag-vendor-bg: rgba(91,108,247,0.15);
+  --tag-vendor-text: #5B6CF7;
+  --tag-industry-bg: rgba(236,72,153,0.15);
+  --tag-industry-text: #EC4899;
+  --tag-alert-bg: rgba(236,72,153,0.15);
+}
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.nav{
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(10,10,10,0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 24px;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo{
+  font-weight: 600; font-size: 15px;
+  color: var(--text);
+}
+.nav-date{
+  font-size: 13px; color: var(--text-secondary);
+}
+.container{
+  max-width: 720px; margin: 0 auto; padding: 80px 20px 40px;
+}
+.hero{
+  text-align: center; padding: 48px 0 32px;
+}
+.hero-title{
+  font-size: 28px; font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-meta{
+  margin-top: 12px; font-size: 14px; color: var(--text-secondary);
+}
+.hero-count{
+  display: inline-block; margin-top: 16px;
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-mid));
+  color: #fff; font-size: 13px; font-weight: 600;
+  padding: 6px 16px; border-radius: 20px;
+}
+.ai-section{
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.ai-label{
+  font-size: 12px; font-weight: 600;
+  color: var(--accent-mid);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.ai-text{
+  font-size: 14px; color: var(--text);
+  line-height: 1.8;
+}
+.section-title{
+  font-size: 18px; font-weight: 700;
+  margin: 36px 0 16px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent-mid);
+}
+.card{
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.card.visible{
+  opacity: 1; transform: translateY(0);
+}
+.card-header{
+  display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.card-title{
+  font-size: 15px; font-weight: 600; color: var(--text);
+  flex: 1;
+}
+.tag{
+  display: inline-block; font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 6px;
+  white-space: nowrap;
+}
+.tag-vendor{
+  background: var(--tag-vendor-bg); color: var(--tag-vendor-text);
+}
+.tag-industry{
+  background: var(--tag-industry-bg); color: var(--tag-industry-text);
+}
+.tag-alert{
+  background: var(--tag-alert-bg); color: #EC4899;
+}
+.card-summary{
+  font-size: 13px; color: var(--text-secondary); line-height: 1.7;
+  margin-bottom: 10px;
+}
+.card-links{
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.card-links a{
+  font-size: 12px; color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.card-links a:hover{
+  color: #a78bfa;
+  border-bottom-color: #a78bfa;
+}
+.footer{
+  text-align: center; padding: 32px 0;
+  font-size: 12px; color: var(--text-secondary);
+  border-top: 1px solid var(--card-border);
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">🛡️ 防火墙厂商日报</div>
+  <div class="nav-date">2026-06-25</div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <div class="hero-title">🛡️ 中国防火墙厂商日报</div>
+    <div class="hero-meta">2026-06-25 · 周三</div>
+    <div class="hero-count">厂商 6 条 · 行业 4 条 · 共 10 条动态</div>
+  </div>
+
+  <div class="ai-section">
+    <div class="ai-label">🤖 AI 解读</div>
+    <div class="ai-text">今天是ISC.AI 2026大会第二天，360周鸿祎重磅发布「倚天屠龙」AI安全两大核心——漏洞挖掘智能体「图龙锋」和自动化防御「仪天阵」，对标Anthropic Mythos，中国AI安全赛道迎来重量级玩家。奇安信AI安全发布周进入第4天，「5天5款」组合拳持续输出。Splunk CVE-2026-20253（CVSS 9.8）确认野外利用，深信服/阿里云已出防护方案——企业SIEM基础设施安全不可忽视。行业端：中科院NGFW采购+深圳报业信创防火墙招标，科研和政府双线推量。</div>
+  </div>
+
+  <div class="section-title">🏢 厂商动态</div>
+
+  <div class="card" data-idx="0">
+    <div class="card-header">
+      <div class="card-title">ISC.AI 2026 第二天：周鸿祎发布「倚天屠龙」AI 安全两大核心——漏洞挖掘智能体「图龙锋」+自动化防御系统「仪天阵」</div>
+      <span class="tag tag-vendor">360</span>
+    </div>
+    <div class="card-summary">6月24日ISC.AI 2026开幕，周鸿祎发布360 AI安全「倚天屠龙」两大核心能力：漏洞自动化挖掘智能体「图龙锋」对标Anthropic Mythos，网络安全自动化防御系统「仪天阵」，并联合飞腾、麒麟等发起「磐石之盾」安全协作计划。周鸿祎称智能体时代安全面临第二次「单向透明」，中国必须拥有自己的AI安全大杀器。</div>
+    <div class="card-links"><a href="https://www.ithome.com/0/968/197.htm" target="_blank" rel="noopener">www.ithome.com/0/968/197.htm</a><a href="https://www.itbear.com.cn/html/2026-06/1409791.html" target="_blank" rel="noopener">www.itbear.com.cn/html/2026-06/1409791.html</a><a href="https://news.qq.com/rain/a/20260624A05LEP00" target="_blank" rel="noopener">news.qq.com/rain/a/20260624A05LEP00</a><a href="https://stock.10jqka.com.cn/20260624/c677682036.shtml" target="_blank" rel="noopener">stock.10jqka.com.cn/20260624/c677682036.shtml</a><a href="https://www.sohu.com/a/1041094166_514126" target="_blank" rel="noopener">www.sohu.com/a/1041094166_514126</a></div>
+  </div>
+
+  <div class="card" data-idx="1">
+    <div class="card-header">
+      <div class="card-title">ISC.AI 2026开幕：智能体颠覆安全，安全治理从共识走向行动</div>
+      <span class="tag tag-vendor">360</span>
+    </div>
+    <div class="card-summary">第十四届互联网安全大会ISC.AI 2026在北京国家会议中心开幕，主题「智能体颠覆安全」。来自政府、学术界、国际组织及产业界的嘉宾围绕安全范式转变、企业级智能体落地、AI安全治理与人才培养等议题展开讨论。ISC.AI学苑「红衣课堂」同步举办，360 ADE认证纳入工信部紧缺人才培养工程。</div>
+    <div class="card-links"><a href="https://www.sohu.com/a/1041007461_120599253" target="_blank" rel="noopener">www.sohu.com/a/1041007461_120599253</a><a href="https://www.iheima.com/article-398855.html" target="_blank" rel="noopener">www.iheima.com/article-398855.html</a><a href="https://finance.sina.cn/2026-06-24/detail-inientua3098588.d.html" target="_blank" rel="noopener">finance.sina.cn/2026-06-24/detail-inient…</a></div>
+  </div>
+
+  <div class="card" data-idx="2">
+    <div class="card-header">
+      <div class="card-title">奇安信AI安全系列新品发布周持续：5天5款「安全智能+智能安全」双赛道新品</div>
+      <span class="tag tag-vendor">奇安信</span>
+    </div>
+    <div class="card-summary">6月22日奇安信启动为期5天的AI安全系列新品发布周，首发威胁分析数字专家（威胁分析智能体），以「对话即研判」为核心理念。齐向东指出Anthropic新模型72小时即被黑客突破，印证AI武器化风险。后续四天将依次发布更多聚焦「安全智能」与「智能安全」的新品，构筑AI时代防御体系。</div>
+    <div class="card-links"><a href="https://finance.sina.com.cn/wm/2026-06-22/doc-iniehwmp6938232.shtml" target="_blank" rel="noopener">finance.sina.com.cn/wm/2026-06-22/doc-in…</a><a href="https://tech.ifeng.com/c/8uAitdyvon9" target="_blank" rel="noopener">tech.ifeng.com/c/8uAitdyvon9</a><a href="https://stock.10jqka.com.cn/20260622/c677622929.shtml" target="_blank" rel="noopener">stock.10jqka.com.cn/20260622/c677622929.shtml</a><a href="http://www.jjckb.cn/20260622/b8897d13563c4eb689143ec94c7c569e/c.html" target="_blank" rel="noopener">www.jjckb.cn/20260622/b8897d13563c4eb689…</a></div>
+  </div>
+
+  <div class="card" data-idx="3">
+    <div class="card-header">
+      <div class="card-title">山石网科聘任王冰峰为非独立董事，原赛门铁克/VMware中国区总经理加盟</div>
+      <span class="tag tag-vendor">山石网科</span>
+    </div>
+    <div class="card-summary">6月23日山石网科公告聘任王冰峰为非独立董事。王冰峰曾任赛门铁克大中国区总经理、VMware中国区总经理，2021年加入神州数码。同时6月22日第二次临时股东会审议通过董事薪酬修订议案及选举王冰峰、李京为第三届董事会非独立董事。6月23日主力资金净流入424.86万元。</div>
+    <div class="card-links"><a href="https://finance.sina.com.cn/stock/aiassist/ggbd/2026-06-23/doc-inieiatp9177875.shtml" target="_blank" rel="noopener">finance.sina.com.cn/stock/aiassist/ggbd/…</a><a href="https://wap.stockstar.com/detail/AN2026062200035744" target="_blank" rel="noopener">wap.stockstar.com/detail/AN2026062200035744</a></div>
+  </div>
+
+  <div class="card" data-idx="4">
+    <div class="card-header">
+      <div class="card-title">深信服千里目发布 Splunk Enterprise CVE-2026-20253 预认证远程代码执行漏洞通告</div>
+      <span class="tag tag-vendor">深信服</span>
+    </div>
+    <div class="card-summary">深信服千里目安全技术中心6月17日发布漏洞通告：Splunk Enterprise存在预认证远程代码执行漏洞CVE-2026-20253（CVSS 9.8），影响10.0.0-10.0.6和10.2.0-10.2.3版本。攻击者可通过PostgreSQL Sidecar Service端点操控备份恢复接口参数实现路径遍历和凭据窃取，最终远程代码执行。Splunk官方已确认有限野外利用。</div>
+    <div class="card-links"><a href="https://zone.ci/secarticles/wx/543662.html" target="_blank" rel="noopener">zone.ci/secarticles/wx/543662.html</a><a href="https://security.zone.ci/secarticles/wx/543664.html" target="_blank" rel="noopener">security.zone.ci/secarticles/wx/543664.html</a></div>
+  </div>
+
+  <div class="card" data-idx="5">
+    <div class="card-header">
+      <div class="card-title">Splunk Enterprise CVE-2026-20253 高危漏洞（CVSS 9.8）：PostgreSQL边车服务未授权RCE，已确认野外利用</div>
+      <span class="tag tag-alert">⚠️ 安全公告</span>
+    </div>
+    <div class="card-summary">6月10日Splunk官方披露CVE-2026-20253高危漏洞，CVSS 9.8。漏洞存在于Splunk Enterprise 10.x系列PostgreSQL Sidecar Service，文件操作endpoint缺少认证检查，网络可达用户可直接创建/截断任意文件实现远程代码执行。Splunk PSIRT确认存在有限野外利用，强烈建议立即升级至10.0.7/10.2.4以上版本。深信服/阿里云已发布防护方案。</div>
+    <div class="card-links"><a href="https://advisory.splunk.com/advisories/SVD-2026-0603" target="_blank" rel="noopener">advisory.splunk.com/advisories/SVD-2026-0603</a><a href="https://avd.aliyun.com/detail?id=AVD-2026-20253" target="_blank" rel="noopener">avd.aliyun.com/detail?id=AVD-2026-20253</a><a href="https://blog.csdn.net/weixin_42376192/article/details/161994755" target="_blank" rel="noopener">blog.csdn.net/weixin_42376192/article/de…</a><a href="https://cn-sec.com/archives/5276220.html" target="_blank" rel="noopener">cn-sec.com/archives/5276220.html</a><a href="https://www.gm7.org/archives/113935" target="_blank" rel="noopener">www.gm7.org/archives/113935</a></div>
+  </div>
+
+  <div class="section-title">🏭 行业动态</div>
+
+  <div class="card" data-idx="6">
+    <div class="card-header">
+      <div class="card-title">中国科学院人机物融合信息基础设施防火墙设备采购项目公开招标：含100G NGFW+重要业务系统防火墙</div>
+      <span class="tag tag-industry">科研</span>
+    </div>
+    <div class="card-summary">6月18日中国科学院计算机网络信息中心发布人机物融合信息基础设施创新与试验平台项目防火墙设备采购公开招标公告，采购内容包含防火墙A、防火墙B、100G下一代防火墙（NGFW）和重要业务系统防火墙，择优选择1家供应商供货。</div>
+    <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/zygg/gkzb/202606/t20260618_26778698.htm" target="_blank" rel="noopener">www.ccgp.gov.cn/cggg/zygg/gkzb/202606/t2…</a></div>
+  </div>
+
+  <div class="card" data-idx="7">
+    <div class="card-header">
+      <div class="card-title">温州市中心医院双屿院区改扩建工程信息化建设防火墙中标结果公告</div>
+      <span class="tag tag-industry">医疗</span>
+    </div>
+    <div class="card-summary">6月16日温州历程招标有限公司发布温州市中心医院双屿院区改扩建工程信息化建设防火墙中标(成交)结果公告，项目编号330300261320080000014。</div>
+    <div class="card-links"><a href="http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202606/t20260617_26768289.htm" target="_blank" rel="noopener">www.ccgp.gov.cn/cggg/dfgg/zbgg/202606/t2…</a><a href="https://ggzy.zj.gov.cn/jyxxgk/002002/002002002/20260616/782eeabd-7f91-476d-9daf-987f39b801c0.html" target="_blank" rel="noopener">ggzy.zj.gov.cn/jyxxgk/002002/002002002/2…</a></div>
+  </div>
+
+  <div class="card" data-idx="8">
+    <div class="card-header">
+      <div class="card-title">陕西省标准化研究院防火墙网上竞价采购合同公示</div>
+      <span class="tag tag-industry">政府</span>
+    </div>
+    <div class="card-summary">6月22日陕西省标准化研究院防火墙网上竞价采购合同公示，项目编号SHAXCG-JJ-2026114987，采购人陕西省标准化研究院。</div>
+    <div class="card-links"><a href="https://ya.sxggzyjy.cn/jydt/001001/001001004/001001004007/20260622/8a69c2929ec65c59019eed3034ff6da4.html" target="_blank" rel="noopener">ya.sxggzyjy.cn/jydt/001001/001001004/001…</a></div>
+  </div>
+
+  <div class="card" data-idx="9">
+    <div class="card-header">
+      <div class="card-title">启明星辰768台ARM架构服务器集采长江计算独家中标1.75亿元</div>
+      <span class="tag tag-industry">运营商</span>
+    </div>
+    <div class="card-summary">6月8日中国移动采购与招标网发布2026-2027年PC服务器产品（启明星辰）集中采购项目中标候选人公示，长江计算独家中标，投标报价1.75亿元，768台ARM架构服务器。</div>
+    <div class="card-links"><a href="https://finance.sina.com.cn/tech/roll/2026-06-08/doc-iniaswmk8664166.shtml" target="_blank" rel="noopener">finance.sina.com.cn/tech/roll/2026-06-08…</a></div>
+  </div>
+
+  <div class="footer">
+    数据来源：WebSearch 多轮搜索 · 去重库自动过滤 · 时效30天窗口<br>
+    Powered by WorkBuddy Automation
+  </div>
+</div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+cards.forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
