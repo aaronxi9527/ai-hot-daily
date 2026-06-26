@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026年6月26日</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --card: #111827;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --gradient-1: #5B6CF7;
+  --gradient-2: #8B5CF6;
+  --gradient-3: #EC4899;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: 60px 0 48px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(91,108,247,0.12) 0%, transparent 70%);
+  transform: translate(-50%, -40%);
+  pointer-events: none;
+}
+.hero-title {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero-date {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 32px;
+  min-width: 140px;
+}
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+/* AI Overview */
+.overview {
+  margin: 40px 0 48px;
+  padding: 28px 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  border-left: 3px solid var(--gradient-1);
+}
+.overview h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.overview p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.overview .highlight {
+  color: var(--gradient-2);
+  font-weight: 600;
+}
+
+/* Section */
+.section { margin-bottom: 48px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.section-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+.section-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2px 12px;
+}
+
+/* News Grid */
+.news-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.2s;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+.news-item:hover { border-color: var(--gradient-2); }
+.news-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.tag.vendor {
+  background: rgba(91,108,247,0.15);
+  color: #8fa2ff;
+  border: 1px solid rgba(91,108,247,0.3);
+}
+.tag.cat {
+  background: rgba(139,92,246,0.12);
+  color: #b794f4;
+  border: 1px solid rgba(139,92,246,0.25);
+}
+.imp { font-size: 12px; }
+.merged {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.news-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.news-summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.news-source a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.news-source a:hover { color: var(--gradient-1); }
+
+/* Trend Summary */
+.trend-section {
+  margin: 48px 0 60px;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(91,108,247,0.06), rgba(236,72,153,0.06));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.trend-section h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.trend-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.trend-card .trend-icon { font-size: 20px; margin-bottom: 8px; }
+.trend-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.trend-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .hero-title { font-size: 28px; }
+  .hero-stats { gap: 16px; }
+  .stat-card { padding: 14px 20px; min-width: 100px; }
+  .stat-number { font-size: 24px; }
+  .container { padding: 0 16px; }
+  .overview { padding: 20px; }
+  .news-item { padding: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+    <h1 class="hero-title">🤖 AI 安全日报</h1>
+    <div class="hero-date">2026年6月26日 · 星期五</div>
+    <div class="hero-stats">
+        <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">🏢 国际产品动态</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">🇨🇳 国内产品动态</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">10</div>
+            <div class="stat-label">📊 行业动态</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">16</div>
+            <div class="stat-label">📋 总计动态</div>
+        </div>
+    </div>
+</header>
+
+<!-- AI 总览 -->
+<section class="overview">
+    <h2>🧠 AI 总览</h2>
+    <p>
+        今日 AI 安全日报有三条主线格外突出：<span class="highlight">漏洞密度创历史新高</span>——FFmpeg CVE-2026-8461 无需用户交互即可 RCE、LiteLLM AI 网关 CVSS 9.9 漏洞链已被 CISA 确认在野利用、微软 6 月补丁更是暴修 200 个漏洞（含可蠕虫内核漏洞），AI 驱动的漏洞发现正以碾压式速度将更多问题推到安全团队面前。
+    </p>
+    <p style="margin-top:12px;">
+        政策端同样动作频频：<span class="highlight">CISA BOD 26-04 将补丁时限压到 3 天</span>，直言驱动力是「AI 加速利用」；国内《网络数据安全风险评估办法》定档 8 月 20 日施行，数据安全治理进入评估驱动时代。
+    </p>
+    <p style="margin-top:12px;">
+        产品侧最大看点是 <span class="highlight">奇安信 AI 安全发布周今日收官</span>——五天五连发打出「智能体安全组合拳」，而 CrowdStrike 的 Continuous Identity for AI Agents 和 Fortinet FortiSOC 则从身份管理和 SOC 运营两个维度推进了 AI 安全的产品化落地。不过整体来看，6 月下旬产品发布节奏明显放缓，行业焦点正在从「能力展示」转向「安全兜底」。
+    </p>
+</section>
+
+<!-- 国际友商产品动态 -->
+
+        <section class="section">
+            <div class="section-header">
+                <h2>🏢 国际友商产品动态</h2>
+                <span class="section-count">4 条动态</span>
+            </div>
+            <div class="news-grid">
+                
+            <div class="news-item" style="animation-delay: 0.0s">
+                <div class="news-header">
+                    <span class="tag vendor">CrowdStrike</span>
+                    <span class="tag cat">AI Agent 安全网关</span>
+                    <span class="imp mid">🔥🔥</span>
+                    
+                </div>
+                <h3 class="news-title">CrowdStrike 发布 Continuous Identity for AI Agents，为 AI 智能体提供持续风险授权</h3>
+                <p class="news-summary">CrowdStrike 在 Identiverse 2026 上推出 Falcon Next-Gen Identity Security 新能力——Continuous Identity for AI Agents，基于对 SGNL 的收购技术，可对 AI 智能体从初始访问到权限提升全程进行动态风险评估，按需授予、拒绝和撤销访问权限。此能力将身份安全边界从人类/非人类身份扩展到 AI 智能体。</p>
+                <div class="news-source">
+                    <a href="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-unveils-continuous-identity-ai-agents" target="_blank" rel="noopener">📎 CrowdStrike IR</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.08s">
+                <div class="news-header">
+                    <span class="tag vendor">Fortinet</span>
+                    <span class="tag cat">安全智能体/SOC 平台</span>
+                    <span class="imp mid">🔥🔥</span>
+                    
+                </div>
+                <h3 class="news-title">Fortinet 正式发布 FortiSOC 平台：Agentic AI 驱动的统一安全运营中心</h3>
+                <p class="news-summary">Fortinet 推出云端交付的统一 SOC 平台 FortiSOC，整合 SIEM、SOAR、威胁情报三大模块，通过 Agentic AI 实现自动化威胁调查与响应。该平台沿袭 Fortinet Accelerate 2026 的 SecOps 创新路线，基于 FortiGuard Labs 威胁情报，为安全运营团队提供从检测到闭环的 AI 自动化工作流。</p>
+                <div class="news-source">
+                    <a href="https://www.fortinet.com/corporate/about-us/newsroom/press-releases/2026/fortinet-launches-fortisoc-unified-soc-platform-powered-by-agentic-ai" target="_blank" rel="noopener">📎 Fortinet Press</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.16s">
+                <div class="news-header">
+                    <span class="tag vendor">Check Point / Lakera</span>
+                    <span class="tag cat">LLM 安全防火墙</span>
+                    <span class="imp low">🔥</span>
+                    
+                </div>
+                <h3 class="news-title">Lakera Guard 整合进 Check Point AI 安全平台，强化 LLM 提示注入实时防护</h3>
+                <p class="news-summary">Check Point 将 Lakera Guard 的提示注入检测、越狱防御和红队测试能力整合进其 AI Security 产品线。Lakera Guard 以亚毫秒级实时拦截直接注入、间接注入和系统提示提取攻击，与 Check Point Infinity AI 平台形成多层 AI 安全防护体系。</p>
+                <div class="news-source">
+                    <a href="https://appsecsanta.com/lakera" target="_blank" rel="noopener">📎 AppSecSanta</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.24s">
+                <div class="news-header">
+                    <span class="tag vendor">Cloudflare</span>
+                    <span class="tag cat">AI 安全基础设施</span>
+                    <span class="imp low">🔥</span>
+                    
+                </div>
+                <h3 class="news-title">Cloudflare AI Search 新增缓存新鲜度控制：降低 AI 返回过时信息风险</h3>
+                <p class="news-summary">Cloudflare 为 AI Search 产品新增缓存 TTL 精确控制功能：默认缓存时长从 30 天降至 48 小时，支持 10 分钟至 6 天的自定义 TTL 范围，并提供 API/Dashboard 按需清除缓存能力。此举增强了对 AI 响应内容的可控性，降低模型返回过时或不准确信息的安全风险。</p>
+                <div class="news-source">
+                    <a href="https://releases.sh/cloudflare/releases" target="_blank" rel="noopener">📎 Cloudflare Releases</a>
+                </div>
+            </div>
+            </div>
+        </section>
+
+<!-- 国内友商产品动态 -->
+
+        <section class="section">
+            <div class="section-header">
+                <h2>🇨🇳 国内友商产品动态</h2>
+                <span class="section-count">2 条动态</span>
+            </div>
+            <div class="news-grid">
+                
+            <div class="news-item" style="animation-delay: 0.32s">
+                <div class="news-header">
+                    <span class="tag vendor">奇安信</span>
+                    <span class="tag cat">安全智能体 / 大模型安全评估</span>
+                    <span class="imp high">🔥🔥🔥</span>
+                    <span class="merged">(合并 3 源)</span>
+                </div>
+                <h3 class="news-title">奇安信 AI 安全系列新品发布周收官：五天五连发，构筑「智能体安全组合拳」</h3>
+                <p class="news-summary">奇安信 6/22-26 为期五天的 AI 安全新品发布周今日收官，五大聚焦「安全智能」与「智能安全」两大赛道的重磅新品依次亮相：包括威胁分析数字专家（对话即研判，覆盖十类安全要素八大能力模块）、安全运营数字员工（7×24 自动化研判与响应）等，系统性展示了从 AI 漏洞发现到安全运营的闭环能力。董事长齐向东指出，发布周回应了 Anthropic 新模型 72 小时被突破的行业现实，标志着网络安全正式进入「AI 智能体对抗」时代。</p>
+                <div class="news-source">
+                    <a href="https://tech.ifeng.com/c/8uAitdyvon9" target="_blank" rel="noopener">📎 凤凰科技</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.4s">
+                <div class="news-header">
+                    <span class="tag vendor">Fortinet / 华为生态</span>
+                    <span class="tag cat">安全智能体 / AI 防火墙</span>
+                    <span class="imp low">🔥</span>
+                    
+                </div>
+                <h3 class="news-title">华为 × Fortinet 上海站巡展：FortiAI 2.0 自主推理与行动能力首次国内亮相</h3>
+                <p class="news-summary">Fortinet Accelerate 2026 亚太区巡展上海站，Fortinet 系统展示了「AI 双轮驱动」安全布局：FortiAI 已进化至 2.0，具备自主推理与行动能力（AI for Security）；同步展示了 FortiOS 8.0 的企业级 AI 安全控制与 Fabric-Based AI Agents（Security for AI），为国内企业提供 AI 安全部署参考架构。</p>
+                <div class="news-source">
+                    <a href="https://net.zhiding.cn/network_security_zone/2026/0601/3188855.shtml" target="_blank" rel="noopener">📎 至顶网</a>
+                </div>
+            </div>
+            </div>
+        </section>
+
+<!-- 行业动态 -->
+
+        <section class="section">
+            <div class="section-header">
+                <h2>📊 行业动态与趋势</h2>
+                <span class="section-count">10 条动态</span>
+            </div>
+            <div class="news-grid">
+                
+            <div class="news-item" style="animation-delay: 0.48s">
+                <div class="news-header">
+                    <span class="tag vendor">漏洞披露</span>
+                    
+                    <span class="imp high">🔥🔥🔥</span>
+                    <span class="merged">(合并 1 源)</span>
+                </div>
+                <h3 class="news-title">FFmpeg 曝高危漏洞 CVE-2026-8461（CVSS 8.8）：播放恶意视频即可被远程控制</h3>
+                <p class="news-summary">6 月 23 日公开的 FFmpeg 漏洞利用 MagicYUV 编解码器堆缓冲区越界写入，攻击者无需用户主动打开视频文件即可远程代码执行——NAS 系统、下载软件等在自动扫描或生成预览图时可被静默触发。影响 Kodi、OBS Studio、Jellyfin、mpv、PhotoPrism 等主流软件及安防摄像头、智能电视等嵌入式设备。FFmpeg 已发布紧急修复 8.1.2 版本。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 IT之家</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.56s">
+                <div class="news-header">
+                    <span class="tag vendor">漏洞披露 / AI 基础设施</span>
+                    
+                    <span class="imp high">🔥🔥🔥</span>
+                    
+                </div>
+                <h3 class="news-title">LiteLLM AI 网关漏洞链（CVSS 9.9）被 CISA 确认在野利用，列入 KEV 目录</h3>
+                <p class="news-summary">LiteLLM API 管理代理曝出严重漏洞链：攻击者可篡改 Host 头绕过身份验证，窃取所有 AI 模型 API 密钥、截获模型间通信数据、在服务器植入后门。完整攻击链 CVSS 9.9。CISA 已将其列入「已知被利用漏洞目录」，要求联邦机构在 6 月 22 日前完成修复，所有使用 LiteLLM 管理 AI 模型 API 的组织需立即升级至 1.84.0 以上版本。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 今日头条</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.64s">
+                <div class="news-header">
+                    <span class="tag vendor">漏洞披露</span>
+                    
+                    <span class="imp high">🔥🔥🔥</span>
+                    <span class="merged">(合并 1 源)</span>
+                </div>
+                <h3 class="news-title">微软 6 月补丁星期二：200 个漏洞修复，CVE-2026-45657（CVSS 9.8）可蠕虫内核漏洞震撼业界</h3>
+                <p class="news-summary">微软 6 月补丁修复创纪录的 200 个漏洞（33 个严重级）。CVE-2026-45657（Windows 内核 TCP/IP UAF，CVSS 9.8）具备可蠕虫化远程代码执行能力，影响所有 Windows 10/11 及 Server 系统，被安全界评价为「堪比 EternalBlue」。另有 CVE-2026-47291（HTTP.sys RCE）、CVE-2026-49160（HTTP/2 Bomb DoS）及 5 个零日漏洞。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 BleepingComputer</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.72s">
+                <div class="news-header">
+                    <span class="tag vendor">政策监管</span>
+                    
+                    <span class="imp mid">🔥🔥</span>
+                    <span class="merged">(合并 1 源)</span>
+                </div>
+                <h3 class="news-title">CISA 发布 BOD 26-04：AI 驱动三天关键补丁强制令，史上最激进修复时限</h3>
+                <p class="news-summary">CISA 发布里程碑式约束性操作指令 BOD 26-04，要求联邦民事行政机构对满足四项高风险标准的漏洞在 3 个日历日内完成修补。指令用四变量风险矩阵（资产暴露面、利用可能性、影响范围、修复复杂度）替代传统 CVSS 评分驱动的修复时限，明确将「AI 加速利用」作为核心驱动力，彻底取代 BOD 19-02 和 BOD 22-01。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 CSA Research / FreeBuf</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.8s">
+                <div class="news-header">
+                    <span class="tag vendor">行业报告</span>
+                    
+                    <span class="imp mid">🔥🔥</span>
+                    
+                </div>
+                <h3 class="news-title">Gartner 预测：70% SOC 将试点 AI Agent，但仅 15% 能见到成效</h3>
+                <p class="news-summary">Gartner 发布预测指出，到 2028 年 70% 的安全运营中心将试点 AI Agent，但仅有 15% 能实现可衡量的安全效果提升。差距源于组织缺乏 AI Agent 部署的明确评估框架和运维成熟度，建议先建立清晰的评估指标和压力测试机制，避免「为 AI 而 AI」的盲目投入。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 The Hacker News</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.88s">
+                <div class="news-header">
+                    <span class="tag vendor">行业报告</span>
+                    
+                    <span class="imp low">🔥</span>
+                    
+                </div>
+                <h3 class="news-title">Gartner 发布 2026 年四大网络安全关键威胁：提示注入首度上榜</h3>
+                <p class="news-summary">Gartner 6 月报告将 Deepfakes、软件供应链风险、提示注入（Prompt Injection）和 AI 应用攻击列为 2026 年攻击者占据优势的四大关键威胁。提示注入首次被纳入 Gartner 顶层威胁框架，标志着 AI 原生攻击向量正式进入企业安全决策议程。报告强调企业需在 AI 应用全生命周期嵌入安全控制。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 Aviatrix Threat Research</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 0.96s">
+                <div class="news-header">
+                    <span class="tag vendor">政策法规</span>
+                    
+                    <span class="imp mid">🔥🔥</span>
+                    <span class="merged">(合并 2 源)</span>
+                </div>
+                <h3 class="news-title">《网络数据安全风险评估办法》正式公布，8 月 20 日施行</h3>
+                <p class="news-summary">国家互联网信息办公室、工业和信息化部、公安部联合公布《网络数据安全风险评估办法》，共二十五条，自 2026 年 8 月 20 日起施行。办法建立以风险为导向的数据安全治理闭环，将《数据安全法》原则性要求转为可操作的具体规范，明确了对处理重要数据的网络数据处理者开展风险评估的检查机制，标志着我国数据安全治理进入「评估驱动」的精细化管理阶段。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 新华社 / 人民日报</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 1.04s">
+                <div class="news-header">
+                    <span class="tag vendor">安全事件</span>
+                    
+                    <span class="imp mid">🔥🔥</span>
+                    <span class="merged">(合并 1 源)</span>
+                </div>
+                <h3 class="news-title">诺和诺德 1.3TB AI 研发数据被窃持续发酵：全球 Top 20 药企启动 AI 资产安全排查</h3>
+                <p class="news-summary">丹麦制药巨头诺和诺德遭 FulcrumSec 勒索组织定向攻击，1.3TB「蜻蜓」多模态 AI 模型全栈权重与 11500 名受试者临床数据失窃。攻击利用 MOVEit Transfer 零日漏洞（CVE-2026-42198），经 2 个月低速横向渗透未被发现，企业直接+间接损失超 20 亿美元。此事件标志 AI 研发资产首次成为制药行业核心攻击目标。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 FreeBuf / CSDN</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 1.12s">
+                <div class="news-header">
+                    <span class="tag vendor">安全事件</span>
+                    
+                    <span class="imp mid">🔥🔥</span>
+                    
+                </div>
+                <h3 class="news-title">Nightmare Eclipse 持续释放 Windows 零日：GreatXML 可绕过 BitLocker 加密</h3>
+                <p class="news-summary">安全研究员 Nightmare Eclipse 持续公开放出 Windows 零日漏洞利用代码，最新披露的 GreatXML 可绕过 BitLocker 加密获取完全磁盘访问权限。因对微软漏洞赏金计划不满，目前已累计释放 8 个零日，其中 2 个尚未修复，对企业终端安全构成持续威胁。</p>
+                <div class="news-source">
+                    <a href="https://www.gm7.org/archives/116200" target="_blank" rel="noopener">📎 BleepingComputer</a>
+                </div>
+            </div>
+
+            <div class="news-item" style="animation-delay: 1.2s">
+                <div class="news-header">
+                    <span class="tag vendor">行业报告</span>
+                    
+                    <span class="imp low">🔥</span>
+                    
+                </div>
+                <h3 class="news-title">清华大学发布《智能体安全研究报告 2026》：智能体安全已从边缘议题走向核心基础设施</h3>
+                <p class="news-summary">清华大学清新研究团队 6 月发布行动型 AI 智能体安全研究报告，结合多国权威机构指导意见，系统剖析智能体安全风险、架构、评测、治理与落地路径。报告核心指出智能体安全已从「附加功能」升级为「核心基础设施」，需建立从权限管控到行为监控的全链路防护。</p>
+                <div class="news-source">
+                    <a href="https://www.sohu.com/a/1034036233_468661" target="_blank" rel="noopener">📎 搜狐</a>
+                </div>
+            </div>
+            </div>
+        </section>
+
+<!-- 趋势判断精简版 -->
+<section class="trend-section">
+    <h2>📈 趋势判断精简版</h2>
+    <div class="trend-grid">
+        <div class="trend-card">
+            <div class="trend-icon">⚡</div>
+            <h4>AI 漏洞发现已超人力极限</h4>
+            <p>FFmpeg 21 零日、Chrome 429 Bug、微软 200 漏洞——AI 驱动漏洞挖掘规模化后，CISA 被迫将补丁时限压至 3 天。安全行业「找漏洞」到「修漏洞」的瓶颈正在急剧转移。</p>
+        </div>
+        <div class="trend-card">
+            <div class="trend-icon">🛡️</div>
+            <h4>AI 智能体身份安全成新前沿</h4>
+            <p>CrowdStrike 将身份管控边界扩展到 AI Agent，Fortinet FortiSOC 用 Agentic AI 做安全运营，奇安信五天五新品——「谁在控制 AI Agent」正在取代「谁在攻击 AI」成为核心威胁模型。</p>
+        </div>
+        <div class="trend-card">
+            <div class="trend-icon">📋</div>
+            <h4>合规驱动进入快车道</h4>
+            <p>CISA BOD 26-04 + 国内《网络数据安全风险评估办法》+ EU AI Act 全面生效——三大法规体系在 2026 年夏季形成全球 AI 安全合规「三极共振」，企业 AI 安全治理窗口正在关闭。</p>
+        </div>
+        <div class="trend-card">
+            <div class="trend-icon">🔗</div>
+            <h4>AI 供应链攻击常态化</h4>
+            <p>诺和诺德 AI 模型权重失窃 + LiteLLM 网关在野利用 + 塔塔电子 630GB 泄露——AI 研发资产和基础设施已取代传统数据成为定向攻击的核心目标。</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>🤖 AI 安全日报 · 由 AI 自动生成并推送 · 2026年6月26日</p>
+    <p style="margin-top:4px;">数据来源：厂商官网、FreeBuf、The Hacker News、BleepingComputer、IT之家、安全牛等公开信息源</p>
+</footer>
+
+</div>
+
+<script>
+// IntersectionObserver 滑动渐入动画
+(function() {
+    var items = document.querySelectorAll('.news-item');
+    if (!('IntersectionObserver' in window)) {
+        items.forEach(function(el) { el.style.opacity = '1'; });
+        return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    items.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+</body>
+</html>
