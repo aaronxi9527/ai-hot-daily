@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-26</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #141417;
+  --bg-card-hover: #1a1a1f;
+  --border: #2a2a32;
+  --text: #e8e8ec;
+  --text-dim: #9b9ba3;
+  --text-faint: #6b6b73;
+  --accent: #5B6CF7;
+  --accent2: #8B5CF6;
+  --accent3: #EC4899;
+  --green: #10b981;
+  --red: #ef4444;
+  --orange: #f59e0b;
+  --blue: #3b82f6;
+  --gradient: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(91, 108, 247, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+}
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 16px;
+}
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--gradient);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.brand-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.nav-meta strong { color: var(--text); }
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  animation: fadeInUp 0.8s ease;
+}
+.hero-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  display: inline-block;
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.hero .date {
+  color: var(--text-dim);
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+.hero-stats {
+  display: inline-flex;
+  gap: 32px;
+  padding: 16px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  font-size: 14px;
+}
+.hero-stats .stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.hero-stats .stat-num { font-size: 28px; font-weight: 800; color: var(--accent2); }
+.hero-stats .stat-label { color: var(--text-dim); font-size: 12px; }
+.ai-brief {
+  margin: 40px auto;
+  max-width: 900px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(91, 108, 247, 0.08) 0%, rgba(236, 72, 153, 0.05) 100%);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent2);
+  border-radius: 12px;
+  animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+.ai-brief-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--accent2);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.ai-brief p {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 48px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.section-title-icon { font-size: 24px; }
+.section-title-text { background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.section-subtitle { color: var(--text-faint); font-size: 13px; margin-left: auto; font-weight: 400; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.15);
+}
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--accent2);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+.tag-vendor { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3); }
+.tag-industry { background: rgba(236, 72, 153, 0.15); color: #f472b6; border-color: rgba(236, 72, 153, 0.3); }
+.tag-fire { background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3); }
+.tag-hot { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3); }
+.card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.card .summary {
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.card-source a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.card-source a:hover { color: var(--accent3); text-decoration: underline; }
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-faint);
+  font-size: 15px;
+}
+footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  color: var(--text-faint);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  .grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+  .nav-meta { display: none; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-text">防火墙日报</div>
+    </div>
+    <div class="nav-meta">
+      <span>📅 <strong>2026-06-26</strong></span>
+      <span>🤖 AI 自动化生成</span>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="hero">
+    <div class="hero-icon">🛡️</div>
+    <h1>中国防火墙厂商日报</h1>
+    <div class="date">2026 年 6 月 26 日 · 星期四</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">厂商动态</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">行业动态</div></div>
+      <div class="stat"><div class="stat-num">10</div><div class="stat-label">总条数</div></div>
+    </div>
+  </section>
+
+  <section class="ai-brief">
+    <div class="ai-brief-header">
+      <span>🤖</span>
+      <span>AI 看点解读</span>
+    </div>
+    <p>今天的关键词是<strong>「集采落槌 + ISC.AI 2026 持续发酵」</strong>。重磅消息是中国移动高端防火墙集采 3.2 亿元结果出炉——华为（1.54 亿）、新华三（8960 万）、迪普（7668 万）三家瓜分，运营商高端市场格局进一步集中。ISC.AI 2026 大会进入第二天，邬贺铨院士提出安全企业必须从「卖产品」转向「卖能力」，这一观点对所有防火墙厂商是灵魂拷问——传统盒子销售模式在 AI 智能体时代还能持续多久？厂商侧，华为发布 AIDC 三层安全围栏（HiSec AI 防火墙 + AI Guard + AI EDR）抢占 Token 生产安全新场景；山石网科董事长叶海强深度解读双 A 战略，明确「ASIC+AI」是贴合技术基因的长期路线；启明星辰继续在政企询价赛道高频露脸。行业侧，金融、政府（信创）、运营商三条线齐头并进——成方金融 239.9 万防火墙采购、惠州市国产化防火墙自主采购、前海管理局续保、恒丰银行 POC 测试同步启动，6 月底前订单密度可见一斑。</p>
+  </section>
+
+  <div class="section-title">
+    <span class="section-title-icon">🏢</span>
+    <span class="section-title-text">厂商动态</span>
+    <span class="section-subtitle">覆盖：华为 / 深信服 / 奇安信 / 山石 / 启明星辰</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-vendor">华为</span>
+        <span class="tag tag-fire">🔥 AIDC 新场景</span>
+      </div>
+      <h3>华为MWCSH 2026发布AIDC三层安全围栏方案：HiSec AI防火墙+AI Guard+AI EDR三位一体守护Token生产</h3>
+      <div class="summary">华为在MWCSH 2026面向运营商Token经营场景重磅推出三层安全围栏方案：网络层部署HiSecEngine AI防火墙（恶意挖矿流量检出率95%）、Agent层部署HiSec AI Guard大模型内容安全产品（恶意指令识别准确率95%，单条提示词检测时延<200ms）、主机层部署轻量化HiSec Endpoint AI EDR（CPU占用<1%）。方案剑指运营商Token生产安全新蓝海。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-24</span>
+        <span class="card-source"><a href="https://m.10jqka.com.cn/20260624/c677691999.shtml" target="_blank" rel="noopener">同花顺财经 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-vendor">中国移动</span>
+        <span class="tag tag-fire">🔥 3.2亿大单</span>
+        <span class="tag tag-vendor">华为</span>
+        <span class="tag tag-vendor">新华三</span>
+        <span class="tag tag-vendor">迪普</span>
+      </div>
+      <h3>中国移动高端防火墙集采3.2亿结果出炉：华为1.54亿+新华三8960万+迪普7668万</h3>
+      <div class="summary">中国移动 2026-2028 年（二年期）硬件防火墙产品集中采购项目高端标段中标结果公布，总金额 3.2 亿元。华为 1.54 亿、新华三 8960 万、迪普科技 7668 万三家瓜分。这是中国移动单次防火墙集采金额最大的高端标段，三家头部厂商垄断格局进一步强化。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-24</span>
+        <span class="card-source"><a href="https://www.c114.com.cn/4app/3542/a1312666.html" target="_blank" rel="noopener">C114通信网 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-vendor">奇安信</span>
+        <span class="tag tag-fire">🔥 AI安全</span>
+      </div>
+      <h3>奇安信AI安全发布周第二天：威胁分析数字专家首发，5天5款新品加速AI攻防实战</h3>
+      <div class="summary">奇安信人工智能公司6月22日启动「AI时代，攻防先行」AI安全系列新品发布周，5天5款新品聚焦「安全智能」与「智能安全」双赛道。当日首发威胁分析数字专家，瞄准安全分析师70%时间被机械环节消耗的痛点。董事长齐向东指出，Anthropic新模型72小时即被突破，AI武器化风险持续扩散。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-22~26</span>
+        <span class="card-source"><a href="https://finance.sina.com.cn/wm/2026-06-22/doc-iniehwmp6938232.shtml" target="_blank" rel="noopener">新浪财经 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-vendor">山石网科</span>
+        <span class="tag tag-hot">💎 双A战略</span>
+      </div>
+      <h3>山石网科双A战略ISC.AI 2026专访：叶海强指大模型正在重构网安，实战型人才将成关键</h3>
+      <div class="summary">ISC.AI 2026期间，山石网科董事长兼CEO叶海强、CTO兼CAIO蒋东毅深度解读双A战略（ASIC自研芯片+AI智能安全）。叶海强强调传统安全边界正在被AI打破，山石双A战略是贴合技术基因与行业趋势的长期规划。CTO蒋东毅详解ASIC在防火墙全产品线导入进度及AI智能体布局。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-25</span>
+        <span class="card-source"><a href="https://finance.sina.com.cn/tob/2026-06-25/doc-inierpqp7742879.shtml" target="_blank" rel="noopener">新浪科技 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-vendor">启明星辰</span>
+      </div>
+      <h3>启明星辰防火墙询价公告：河北航天信息技术有限公司发布公开询价（询价单号HBHX20260623006-1561）</h3>
+      <div class="summary">河北航天信息技术有限公司2026年6月23日发布启明星辰防火墙公开询价公告，询价单编号HBHX20260623006-1561，项目地址位于河北省秦皇岛市。启明星辰继续在政企询价赛道高频露脸，渠道动销节奏稳定。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-23</span>
+        <span class="card-source"><a href="https://www.rccchina.com/services/bid_project_list/cRvx5cJlfCMMD5-t1cR7qw==" target="_blank" rel="noopener">RCC瑞达恒 →</a></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-title">
+    <span class="section-title-icon">🏭</span>
+    <span class="section-title-text">行业动态</span>
+    <span class="section-subtitle">覆盖：金融 / 政府 / 政企 / 行业大咖观点</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-industry">金融</span>
+        <span class="tag tag-fire">🔥 239.9万</span>
+      </div>
+      <h3>成方金融2026年交换机、防火墙及线缆采购项目中标结果：北京可利邦239.9万中标</h3>
+      <div class="summary">成方金融信息技术服务有限公司2026年交换机、防火墙及线缆采购项目中标结果公布，北京可利邦信息技术股份有限公司以239.9万元中标，评审总得分96.30。金融行业防火墙采购6月下旬持续落地，继银联双标+金融监管总局+互金维保后再添一笔。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-24</span>
+        <span class="card-source"><a href="http://www.ccgp.gov.cn/cggg/zygg/qtgg/202606/t20260624_26804982.htm" target="_blank" rel="noopener">中央政府采购网 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-industry">行业大咖</span>
+        <span class="tag tag-hot">💡 灵魂拷问</span>
+      </div>
+      <h3>邬贺铨ISC.AI 2026：智能体时代安全企业必须从「卖产品」转向「卖能力」</h3>
+      <div class="summary">中国工程院院士邬贺铨在ISC.AI 2026指出，智能体技术加速渗透到金融、制造、医疗、政务等垂直行业，但传统安全厂商仍习惯售卖防火墙、检测工具及合规报告等标准化产品，供需错位明显。智能体时代数字安全企业必须实现从「卖产品」向「卖能力」转型，这对所有防火墙厂商是灵魂拷问。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-24</span>
+        <span class="card-source"><a href="https://www.chinanews.com.cn/cj/shipin/cns-d/2026/06-25/news1059270.shtml" target="_blank" rel="noopener">中国新闻网 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-industry">政府</span>
+        <span class="tag tag-hot">🇨🇳 信创替代</span>
+      </div>
+      <h3>惠州市公共资源交易中心发布国产化防火墙自主采购公告（6/23-6/30）</h3>
+      <div class="summary">惠州市公共资源交易中心2026年6月23日至6月30日发布国产化防火墙自主采购公告，候选供应商按「价低者得」方式确定，要求报价供应商≥3家。地市级信创替代持续推进，国产化防火墙在政务市场加速渗透。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-23</span>
+        <span class="card-source"><a href="http://www.huizhou.gov.cn/hzzyjy/gkmlpt/content/5/5796/post_5796105.html" target="_blank" rel="noopener">惠州市公共资源交易中心 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-industry">政府</span>
+        <span class="tag tag-vendor">深信服</span>
+        <span class="tag tag-vendor">奇安信</span>
+      </div>
+      <h3>深圳前海管理局2026年网络安全设备续保招标公告启动</h3>
+      <div class="summary">深圳前海管理局2026年6月22日发布网络安全设备续保招标公告，对供应商资质、股权关系、社保缴纳等设置严格要求。粤港澳大湾区核心商务区网安采购延续高规格，防火墙+续保服务组合订单。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-22</span>
+        <span class="card-source"><a href="http://qh.sz.gov.cn/gkmlpt/content/12/12855/post_12855549.html" target="_blank" rel="noopener">前海管理局 →</a></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag tag-industry">金融</span>
+      </div>
+      <h3>恒丰银行2026年度低端防火墙及IPS入围项目POC测试供应商征集启动</h3>
+      <div class="summary">恒丰银行2026年度低端防火墙及IPS入围项目POC测试供应商征集公告6月22日发布，地点山东济南。股份制银行持续完善网安供应商池，POC测试是入围关键环节，对中小防火墙厂商是重要机会窗口。</div>
+      <div class="card-footer">
+        <span>📅 2026-06-22</span>
+        <span class="card-source"><a href="https://www.gxxszb.com/Html/2228905.html" target="_blank" rel="noopener">广西旭日盛招标 →</a></span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>🛡️ 中国防火墙厂商日报 · 由 AI 自动化生成 · 数据来源：WebSearch</p>
+    <p style="margin-top:8px;">📊 统计周期：2026-06-26 · 30 天时效过滤 · 194 条历史去重库</p>
+  </footer>
+</main>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
