@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-06-27</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a0a;
+  color: #e5e7eb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 0 40px;
+  border-bottom: 1px solid #1f2937;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-size: 2.4em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #5B6CF7, #8B5CF6, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero .date { color: #6b7280; font-size: 0.95em; margin-bottom: 24px; }
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 120px;
+}
+.stat-card .num {
+  font-size: 2em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #5B6CF7, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-card .label { color: #9ca3af; font-size: 0.8em; margin-top: 4px; }
+
+/* Overview */
+.overview-section {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+}
+.overview-section h2 {
+  font-size: 1.1em;
+  color: #8B5CF6;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.overview-section p {
+  color: #d1d5db;
+  font-size: 0.92em;
+  line-height: 1.8;
+}
+
+/* Section */
+.section {
+  margin-bottom: 40px;
+}
+.section-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #f3f4f6;
+}
+.section-subtitle { color: #6b7280; font-size: 0.85em; margin-bottom: 20px; }
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #5B6CF7, #8B5CF6, #EC4899);
+  border: none;
+  border-radius: 1px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+/* News Card */
+.news-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.news-card:hover { border-color: #374151; }
+.news-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.importance {
+  font-size: 0.75em;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.importance.critical { background: rgba(236,72,153,0.15); color: #EC4899; }
+.importance.high { background: rgba(139,92,246,0.15); color: #8B5CF6; }
+.importance.medium { background: rgba(91,108,247,0.15); color: #5B6CF7; }
+.tags-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  background: rgba(91,108,247,0.1);
+  color: #818cf8;
+  font-size: 0.72em;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(91,108,247,0.2);
+}
+.news-title {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: #f3f4f6;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.news-summary {
+  color: #9ca3af;
+  font-size: 0.88em;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.news-sources {
+  font-size: 0.78em;
+  color: #6b7280;
+}
+.news-sources a {
+  color: #818cf8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.news-sources a:hover { color: #a5b4fc; text-decoration: underline; }
+.merge-badge {
+  font-size: 0.85em;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+.empty-state .icon { font-size: 2em; margin-bottom: 12px; }
+.empty-state p { font-size: 0.9em; }
+
+/* Trends */
+.trends-section {
+  background: linear-gradient(135deg, rgba(91,108,247,0.05), rgba(236,72,153,0.05));
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 40px;
+}
+.trends-section h2 {
+  font-size: 1.1em;
+  color: #8B5CF6;
+  margin-bottom: 20px;
+}
+.trend-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+}
+.trend-num {
+  background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+  color: #fff;
+  font-size: 0.7em;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.trend-item p { color: #d1d5db; font-size: 0.88em; line-height: 1.65; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  color: #374151;
+  font-size: 0.78em;
+  border-top: 1px solid #1f2937;
+  margin-top: 40px;
+}
+
+/* Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>🤖 AI 安全日报</h1>
+    <div class="date">2026-06-27 · 星期六</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="num">0</div>
+        <div class="label">🏢 国际产品动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">1</div>
+        <div class="label">🇨🇳 国内产品动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">7</div>
+        <div class="label">📊 行业动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">8</div>
+        <div class="label">📋 今日总计</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Overview -->
+  <div class="overview-section fade-in">
+    <h2>🧠 AI 总览</h2>
+    <p>今日 AI 安全领域呈现明显的「攻强守静」格局——攻击侧研究异常活跃，产品侧则进入 6 月下旬的发布静默期。国际厂商方面，CrowdStrike、PANW、Check Point 等头部玩家在经历 6 月上中旬的新品发布潮后暂无明显动作；国内方面，360 在 ISC.AI 2026 大会上发布的「图龙锋」和「仪天阵」两大能力成为本周最重磅的本土产品动态。行业层面，三项安全研究尤其值得关注：LayerX 发现的 BioShocking 攻击可诱导 AI 浏览器泄露凭证，SentinelLabs 捕获的 GasLight 后门开创性地用提示注入对抗 AI 安全分析，Cobalt 报告则揭示业界对 AI 自动化漏洞扫描的信任度已骤降至 9%。此外，美国政府要求 OpenAI 对 GPT-5.6 实行逐客户审批，标志着前沿 AI 模型正在进入「事实许可」时代。</p>
+  </div>
+
+  <!-- Section 1: International Products -->
+  <div class="section">
+    <h2 class="section-title">🏢 国际友商产品动态</h2>
+    <p class="section-subtitle">全球主流安全厂商 AI 安全产品的最新发布与功能更新</p>
+    <hr class="section-divider">
+    <div class="empty-state">
+      <div class="icon">🌙</div>
+      <p>今日暂无国际厂商 AI 安全新产品发布</p>
+      <p style="margin-top:8px;font-size:0.82em;">6 月下旬国际厂商进入产品发布静默期，上一波新品集中在 6 月上中旬（CrowdStrike 身份管理、Fortinet FortiSOC、Check Point Lakera整合、Cloudflare AI Search 等）。预计 7 月随 Q3 规划启动将迎来新一轮产品更新。</p>
+    </div>
+  </div>
+
+  <!-- Section 2: Domestic Products -->
+  <div class="section">
+    <h2 class="section-title">🇨🇳 国内友商产品动态</h2>
+    <p class="section-subtitle">中国主流安全厂商 AI 安全产品的最新发布与功能更新</p>
+    <hr class="section-divider">
+    
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance critical">🔥🔥🔥</span>
+        <div class="tags-row"><span class="tag">360</span><span class="tag">安全智能体</span><span class="tag">漏洞挖掘</span></div>
+      </div>
+      <h3 class="news-title">360 正式发布 AI 安全「倚天屠龙」双核心：图龙锋 + 仪天阵</h3>
+      <p class="news-summary">在 ISC.AI 2026 大会上，360 创始人周鸿祎正式发布两大 AI 安全核心能力：「图龙锋」——漏洞自动化挖掘智能体，对标 Anthropic Mythos 的自主漏洞发现与分析能力；「仪天阵」——网络安全自动化防御系统。360 同步发起「磐石之盾」安全协作计划，将两大能力率先开放给信创企业和关键基础设施单位，飞腾、麒麟、统信、山石网科、海光等首批加入。周鸿祎称"漏洞发现能力正成为新的战略威慑力量"。</p>
+      <div class="news-sources">📎 <a href="https://www.ithome.com/0/968/197.htm" target="_blank" rel="noopener">IT之家</a> · <a href="https://news.qq.com/rain/a/20260624A07JFV00" target="_blank" rel="noopener">腾讯新闻</a> · <a href="https://stock.10jqka.com.cn/20260624/c677675395.shtml" target="_blank" rel="noopener">同花顺</a> <span class="merge-badge">(合并3源)</span></div>
+    </div>
+  </div>
+
+  <!-- Section 3: Industry -->
+  <div class="section">
+    <h2 class="section-title">📊 行业动态与趋势</h2>
+    <p class="section-subtitle">AI 安全领域的政策法规、研究报告、安全事件与标准动态</p>
+    <hr class="section-divider">
+    
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance critical">🔥🔥🔥</span>
+        <div class="tags-row"><span class="tag">LayerX</span><span class="tag">AI浏览器安全</span><span class="tag">提示注入</span></div>
+      </div>
+      <h3 class="news-title">LayerX BioShocking 攻击：AI 浏览器被诱导泄露用户凭证</h3>
+      <p class="news-summary">LayerX 安全团队演示了一种名为 BioShocking 的新型攻击技术：通过构造恶意网页，让 AI 浏览器（ChatGPT Atlas、Perplexity Comet、Anthropic Claude 扩展等）误以为自己正在参与游戏，从而绕过安全护栏、主动复制用户 SSH 凭证并发送给攻击者。六款被测 AI 浏览器全部沦陷。OpenAI 已修复 Atlas 中的漏洞，Anthropic 尝试修复但被发现绕过，Perplexity 关闭报告未修复，三家小型厂商未回应。LayerX 建议 AI 浏览器厂商在读取登录态页面时强制用户二次确认。</p>
+      <div class="news-sources">📎 <a href="https://www.infosecurity-magazine.com/news/bioshocking-ai-browser-prompt/" target="_blank" rel="noopener">Infosecurity Magazine</a></div>
+    </div>
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance high">🔥🔥</span>
+        <div class="tags-row"><span class="tag">SentinelOne</span><span class="tag">恶意软件</span><span class="tag">提示注入对抗</span></div>
+      </div>
+      <h3 class="news-title">macOS.GasLight 后门首创：用提示注入对抗 AI 安全分析</h3>
+      <p class="news-summary">SentinelOne 旗下 SentinelLabs 披露了一款由朝鲜关联组织开发的 Rust macOS 后门 macOS.GasLight。该恶意软件携带 38 层伪造系统消息，伪装成 AI 分析工具的内部指令，诱导 AI 辅助分析系统报错或中止分析——将提示注入的靶心从沙箱环境转向安全研究员的 AI 工具。后门本身具备完整的窃密功能（浏览器数据/终端历史/钥匙串），通过 Telegram Bot API 进行加密 C2 通信，并能动态拉取 Python 解释器以规避检测。SentinelLabs 警告：AI 辅助分析工具应把样本内容视为对抗性输入。</p>
+      <div class="news-sources">📎 <a href="https://www.infosecurity-magazine.com/news/macos-gaslight-rust-backdoor/" target="_blank" rel="noopener">Infosecurity Magazine</a> · <a href="https://www.sentinelone.com/labs/macos-gaslight-rust-backdoor-turns-prompt-injection-on-the-analyst-not-the-sandbox/" target="_blank" rel="noopener">SentinelLabs</a> <span class="merge-badge">(合并2源)</span></div>
+    </div>
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance high">🔥🔥</span>
+        <div class="tags-row"><span class="tag">Cobalt</span><span class="tag">行业报告</span><span class="tag">AI安全评估</span></div>
+      </div>
+      <h3 class="news-title">Cobalt 报告：AI 漏洞扫描信任度从 29% 骤降至 9%</h3>
+      <p class="news-summary">Cobalt 发布的《2026 年渗透测试现状报告》基于 450 名安全专业人员的调查显示：完全依赖 AI 自动化进行漏洞测试的组织比例从 2025 年的 29% 暴跌至 9%，78% 的受访者表示全自动扫描工具遗漏了关键漏洞。AI/LLM 漏洞平均修复时间从 19 天拉长至 36 天，62% 的 LLM 漏洞仍未修复——是所有资产类别中修复率最低的。报告指出，AI 渗透测试中近三分之一（32%）的发现被评为高风险，是传统软件的 2.7 倍。Cobalt CISO 强调"应把自动化部署在它擅长的领域，顶级人类专业能力仍是发现和修复最复杂业务逻辑风险的基础"。</p>
+      <div class="news-sources">📎 <a href="https://www.infosecurity-magazine.com/news/trust-ai-vulnerability-scanning/" target="_blank" rel="noopener">Infosecurity Magazine</a> · <a href="https://resource.cobalt.io/state-of-pentesting-2026" target="_blank" rel="noopener">Cobalt</a> <span class="merge-badge">(合并2源)</span></div>
+    </div>
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance high">🔥🔥</span>
+        <div class="tags-row"><span class="tag">ReliaQuest</span><span class="tag">威胁情报</span><span class="tag">AI攻击</span></div>
+      </div>
+      <h3 class="news-title">ReliaQuest 发布《威胁行为体如何利用 AI》报告：六大攻击手法</h3>
+      <p class="news-summary">ReliaQuest 两年跟踪研究发现，AI 已从辅助工具发展为攻击者运营基础设施的核心组件。报告揭示六大 AI 攻击方式：① 工业化规模钓鱼——AI 批量生成钓鱼页面和诱饵；② 恶意工具加速生产——自动生成 Web Shell 和凭证窃取器并用填充代码绕过静态分析；③ 社会工程润色——消除拼写语法错误等传统钓鱼破绽；④ 身份伪造——利用 Deepfake 规模化进行朝鲜 IT 工人欺诈；⑤ 初始访问加速——ClickFix 攻击和 AI 辅助设备代码钓鱼；⑥ AI 品牌工具作为诱饵——伪装成 Claude 等品牌下载的恶意安装命令。报告强调防御方需要在端点/身份/网络/云端部署行为检测并实现自动化遏制。</p>
+      <div class="news-sources">📎 <a href="https://www.infosecurity-magazine.com/news/ai-attacks-cheaper-faster-covert/" target="_blank" rel="noopener">Infosecurity Magazine</a> · <a href="https://reliaquest.com/campaigns/how-threat-actors-use-ai/executive-summary" target="_blank" rel="noopener">ReliaQuest</a> <span class="merge-badge">(合并2源)</span></div>
+    </div>
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance high">🔥🔥</span>
+        <div class="tags-row"><span class="tag">MCP安全</span><span class="tag">供应链安全</span><span class="tag">行业统计</span></div>
+      </div>
+      <h3 class="news-title">MCP 生态安全统计 2026：82% 的 MCP 包存在路径遍历漏洞</h3>
+      <p class="news-summary">Practical DevSecOps 发布的最新 MCP（模型上下文协议）安全统计报告显示：MCP 生态月下载量超 9700 万次，但 82% 的包存在路径遍历漏洞，仅 8.5% 使用 OAuth 认证。报告指出随着 AI Agent 广泛采用 MCP 连接外部工具和数据源，MCP 供应链安全已成为 AI 安全领域最突出的盲区之一。此前 Tenet Security 披露的 Agentjacking 攻击正是利用 MCP 注入劫持 AI 编程代理。</p>
+      <div class="news-sources">📎 <a href="https://www.practical-devsecops.com/mcp-security-statistics-2026-report/" target="_blank" rel="noopener">Practical DevSecOps</a></div>
+    </div>
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance medium">🔥</span>
+        <div class="tags-row"><span class="tag">Linux Foundation</span><span class="tag">开源安全</span><span class="tag">行业标准</span></div>
+      </div>
+      <h3 class="news-title">Linux 基金会推出 Akrites 开源安全框架，应对 AI 驱动的网络威胁</h3>
+      <p class="news-summary">Linux 基金会于 6 月 26 日正式推出 Akrites 框架，联合多家科技巨头为关键开源项目建立统一的安全防护体系，核心能力包括协同漏洞响应与披露机制。该框架专门针对 AI 驱动的网络威胁设计，旨在保护支撑全球数字基础设施的关键开源软件。此举呼应了近期多起针对开源 AI 供应链的攻击事件。</p>
+      <div class="news-sources">📎 <a href="https://www.helpnetsecurity.com/2026/06/26/akrites-open-source-security-framework/" target="_blank" rel="noopener">Help Net Security</a> · <a href="https://www.opensourceforu.com/2026/06/linux-foundation-launches-akrites-to-secure-critical-open-source/" target="_blank" rel="noopener">Open Source For U</a> <span class="merge-badge">(合并2源)</span></div>
+    </div>
+    <div class="news-card fade-in">
+      <div class="news-header">
+        <span class="importance high">🔥🔥</span>
+        <div class="tags-row"><span class="tag">OpenAI</span><span class="tag">AI监管</span><span class="tag">GPT-5.6</span></div>
+      </div>
+      <h3 class="news-title">OpenAI GPT-5.6 面临美国政府逐客户审批：前沿 AI 进入「事实许可」时代</h3>
+      <p class="news-summary">OpenAI 确认其最新模型 GPT-5.6 系列的首轮发布将限制在少数经政府审查的可信合作伙伴范围内，美国商务部将对每个客户进行逐一审批。商务部长 Lutnick 警告 Altman 不得在未经其他机构批准的情况下上线模型。这一决定叠加此前 Anthropic Mythos 被限制开放的事件，标志美国对前沿 AI 模型的监管正式从事后监管转向事前准入。AI 界观点两极分化：支持者认为这是必要的国家安全措施，批评者担忧过度管控将使美国在全球竞争中落后。</p>
+      <div class="news-sources">📎 <a href="https://www.explainx.ai/blog/gpt-5-6-government-approval-lutnick-altman-june-2026" target="_blank" rel="noopener">ExplainX</a> · <a href="https://aitoolly.com/zh/ai-news/article/2026-06-27-us-government-to-vet-users-for-openais-latest-gpt-56-model-release" target="_blank" rel="noopener">AI Toolly</a> · <a href="https://www.yingzheng.com/article/openai-gpt-5-6-preview-government-review-debate" target="_blank" rel="noopener">赢政</a> <span class="merge-badge">(合并3源)</span></div>
+    </div>
+  </div>
+
+  <!-- Trends -->
+  <div class="trends-section fade-in">
+    <h2>📈 趋势判断精简版</h2>
+    <div class="trend-item"><span class="trend-num">1</span><p>AI 浏览器安全成为新兴攻击面：BioShocking 攻击揭示，一旦 AI Agent 具备浏览器操作能力并信任其上下文，传统安全护栏将失效，厂商需引入「人机协作确认」机制</p></div><div class="trend-item"><span class="trend-num">2</span><p>恶意软件开始主动对抗 AI 分析：GasLight 后门开创性地将提示注入作为反分析手段，安全工具构建者必须把样本内容视为对抗性输入</p></div><div class="trend-item"><span class="trend-num">3</span><p>AI 漏洞自动化扫描面临信任危机：78% 的安全团队遭遇关键漏报，业界正从「AI 替代人类」向「AI+人类协同」的混合模式回归</p></div><div class="trend-item"><span class="trend-num">4</span><p>前沿 AI 模型监管全面升级：GPT-5.6 逐客户审批标志着美国政府已将 AI 安全上升到国家安全高度，审查机制正从事后转向事前</p></div><div class="trend-item"><span class="trend-num">5</span><p>MCP 安全成为 Agentic AI 时代的关键基础设施问题：82% 的 MCP 包存在路径遍历漏洞，供应链安全亟需标准化治理</p></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    AI 安全日报 · 2026-06-27 · 数据来源：公开安全媒体与厂商官方渠道<br>
+    自动生成于 WorkBuddy · aaronxi9527.github.io/ai-hot-daily
+  </div>
+</div>
+
+<script>
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.08) + 's';
+    observer.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
