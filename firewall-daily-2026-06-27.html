@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-27</title>
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;
+  --border:#222222;--text:#e5e5e5;--text2:#999999;
+  --c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  min-height:100vh;
+}
+.nav{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,10,10,0.85);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:56px;display:flex;align-items:center;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.nav-brand span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{margin-left:auto;font-size:13px;color:var(--text2)}
+.hero{
+  padding:64px 24px 48px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(91,108,247,0.12),transparent 70%);
+}
+.hero-icon{font-size:48px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{color:var(--text2);font-size:14px;margin-top:8px}
+.hero-badge{
+  display:inline-block;margin-top:16px;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;font-size:13px;font-weight:600;
+  padding:6px 18px;border-radius:20px;
+}
+.ai-summary{
+  max-width:720px;margin:-20px auto 40px;padding:0 24px;
+}
+.ai-summary-inner{
+  background:linear-gradient(135deg,rgba(91,108,247,0.08),rgba(139,92,246,0.08));
+  border:1px solid rgba(91,108,247,0.2);
+  border-radius:16px;padding:24px 28px;
+}
+.ai-summary-label{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+}
+.ai-summary p{font-size:14.5px;line-height:1.75;color:#d4d4d4}
+.section-title{
+  max-width:1200px;margin:0 auto;padding:40px 24px 16px;
+  font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;
+}
+.section-title span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.grid{
+  max-width:1200px;margin:0 auto;padding:0 24px 40px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:15px;
+}
+.news-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:22px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s,opacity 0.5s,transform 0.5s;
+  opacity:0;transform:translateY(24px);
+}
+.news-card.visible{
+  opacity:1;transform:translateY(0);
+}
+.news-card:hover{
+  border-color:rgba(139,92,246,0.4);
+  box-shadow:0 4px 24px rgba(91,108,247,0.1);
+  transform:translateY(-2px);
+}
+.card-header{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag-vendor,.tag-type{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px}
+.card-title{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:10px;color:#f0f0f0}
+.card-summary{font-size:13px;line-height:1.7;color:var(--text2);margin-bottom:14px}
+.card-link{font-size:12px;color:var(--c2);text-decoration:none;font-weight:600}
+.card-link:hover{text-decoration:underline}
+.footer{
+  text-align:center;padding:32px 24px;color:var(--text2);font-size:12px;
+  border-top:1px solid var(--border);
+}
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:40px 16px 32px}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>🛡️ 防火墙厂商日报</span></div>
+  <div class="nav-date">2026-06-27 周六</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1><span>中国防火墙厂商日报</span></h1>
+  <div class="hero-meta">2026-06-27 周六 · 精选 11 条动态</div>
+  <div class="hero-badge">实时聚合 · AI 解读 · 去重合并</div>
+</div>
+
+<div class="ai-summary">
+  <div class="ai-summary-inner">
+    <div class="ai-summary-label">🧠 AI 今日看点</div>
+    <p>今天最值得关注的是奇安信AI安全发布周第四款新品——智能体安全平台落地，标志着国内厂商从“单点防御”转向“运行时安全”；山石网科在ISC.AI 2026期间把“双A战略”讲透，CEO叶海强提出以毛利考核替代收入考核，释放盈利优先信号。启明星辰入选Gartner六大领域、华为AntiDDoS三连冠、新华三云边协同AI安全战略等头部厂商动作密集，同时FortiBleed大规模凭证泄露警示防火墙等边界设备仍需严防死守。</p>
+  </div>
+</div>
+
+<div class="section-title"><span>🏢 厂商头条</span></div>
+<div class="grid">
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">奇安信</span><span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span></div><h3 class="card-title">奇安信发布智能体安全平台，守护每一位“数字员工”</h3><p class="card-summary">6月25日，奇安信人工智能公司发布智能体安全平台，定位为“企业智能体运行时安全一体化平台”，以“看得见、管得住、防得住、说得清”四大核心价值，覆盖主流大模型与Agent资产发现、策略管控、威胁检测和溯源审计，全面信创适配。</p><a href="https://field.10jqka.com.cn/20260625/c677716720.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">山石网科</span><span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">战略规划</span></div><h3 class="card-title">山石网科“双A战略”全面落地，以ASIC+AI构筑新一代安全防线</h3><p class="card-summary">6月24日ISC.AI 2026期间，山石网科董事长兼CEO叶海强、CTO蒋东毅接受媒体专访，详解“双A战略”布局：ASIC自研芯片固化防火墙高频算力，CPU+ASIC路线匹配400G/800G AI算力中心需求；AI智能体全面嵌入全线产品，同时由收入考核转向毛利考核，一季度海外营收增长58%。</p><a href="https://stock.10jqka.com.cn/20260625/c677724078.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#F9731620;color:#F97316;border:1px solid #F9731660">启明星辰</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">启明星辰入选Gartner 2026中国网络安全技术成熟度曲线六大领域代表厂商</h3><p class="card-summary">Gartner发布《2026中国网络安全技术成熟度曲线》报告，启明星辰入选AI网络安全测试、数据安全态势管理（DSPM）、中国AI网关、数据安全平台（DSP）、网络安全AI助手及软件成分分析（SCA）六大领域代表厂商，展现其在AI安全、数据安全与软件供应链安全领域的综合实力。</p><a href="https://stock.10jqka.com.cn/20260626/c677748245.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">华为</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">华为星河AI网络安全AntiDDoS稳居中国区市场份额第一</h3><p class="card-summary">IDC报告显示，华为凭借AntiDDoS产品技术领先性与市场认可度，再次斩获2025年中国区抗DDoS硬件产品市场份额榜首，实现三连冠。AntiDDoS系统深度融合AI与硬件加速，单机最高2.4Tbps防御能力，并通过设备侧轻量级AI引擎实现微秒级推理。</p><a href="https://city.sina.cn/news/2026-06-26/detail-inieszry5227692.d.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">新华三</span><span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">战略规划</span></div><h3 class="card-title">新华三AI安全战略的未来：云边协同</h3><p class="card-summary">在NAVIGATE 2026领航者峰会上，新华三集团高级副总裁孙松儿指出AI安全将走向“云边协同”，通过端点内置AI与云端大模型协同，让安全体系具备全局感知与实时响应能力。峰会发布AI防火墙、AI安全网关、Agentic SOC三大标杆产品，其中H3C SecPath M9000-X AI防火墙具备16T吞吐与10000+ AI应用指纹识别。</p><a href="https://www.h3c.com/cn/d_202606/2870222_30008_0.htm" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">天融信</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">天融信融信天下合作伙伴大会2026上海站：AI安全+智算云双轮驱动</h3><p class="card-summary">6月16日，天融信在上海举办融信天下合作伙伴大会2026，提出“AI安全+智算云”双轮驱动战略，发布“1中心+6大能力”智能体安全防护架构、多模态AI全场景安全防护体系及“智驱MSS”安全运营托管服务新模式，覆盖政务、制造、金融、医疗等行业智能化转型安全需求。</p><a href="https://www.topsec.com.cn/newsx/6706" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">深信服</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">深信服长沙网络安全与云计算研发基地建设项目延至2027年4月</h3><p class="card-summary">6月26日，深信服发布公告，将“长沙网络安全与云计算研发基地建设项目”达到预定可使用状态日期由原计划2026年6月延长至2027年4月，未投入募集资金将主要用于精装修采购及设备安装，公司称是根据项目实际情况作出的审慎决定。</p><a href="https://finance.eastmoney.com/a/202606263784883839.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">绿盟科技</span><span class="tag-type" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">功能更新</span></div><h3 class="card-title">绿盟科技新注册《绿盟AI安全围栏系统—主机版软件V3.0》软件著作权</h3><p class="card-summary">近日，绿盟科技新注册《绿盟AI安全围栏系统—主机版软件V3.0》项目软件著作权，今年以来已累计新注册软件著作权11项，持续在AI安全围栏方向进行产品化投入。</p><a href="https://stock.stockstar.com/RB2026062500001542.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">安全漏洞</span></div><h3 class="card-title">FortiBleed大规模凭证泄露：约8.6万台FortiGate防火墙和FortiProxy VPN网关受影响</h3><p class="card-summary">2026年6月，安全研究员Bob Diachenko发现暴露在公网上的数据库，包含来自194个国家约8.6万台FortiGate防火墙和FortiProxy VPN网关的有效管理员凭证。攻击者利用八年来未修补的FortiOS漏洞、旧版salted SHA-256哈希弱点及GPU暴力破解持续收割，创建虚假管理员账户并部署嗅探器，提示政企需立即检查设备、启用MFA、限制管理面暴露。</p><a href="https://www.secrss.com/articles/91577" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+</div>
+
+<div class="section-title"><span>🏭 行业动态</span></div>
+<div class="grid">
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#6366F120;color:#6366F1;border:1px solid #6366F160">行业动态</span><span class="tag-type" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">政府</span></div><h3 class="card-title">全国海关信息中心2026年总署重要防火墙等设备维保服务采购项目</h3><p class="card-summary">海关总署物资装备采购中心6月24日发布竞争性磋商公告，全国海关信息中心就2026年总署重要防火墙等设备维保服务进行采购，预算金额115万元，服务地点覆盖北京、上海、秦皇岛、宁夏中卫，项目专门面向中小企业。</p><a href="https://www.diuta.com/gov_254700.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+<article class="news-card"><div class="card-header"><span class="tag-vendor" style="background:#6366F120;color:#6366F1;border:1px solid #6366F160">行业动态</span><span class="tag-type" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span></div><h3 class="card-title">广州市花都区人民医院2026年互联网出口及数据中心防火墙采购项目</h3><p class="card-summary">广州市花都区人民医院6月26日发布院内竞标邀请，拟采购2026年医院互联网出口及数据中心防火墙，项目预算32万元，专门面向中小企业，并要求与现有深信服态势感知平台兼容。</p><a href="https://www.hdhosp.com/info/1016/8935.htm" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></article>
+</div>
+
+<div class="footer">
+  数据来源：WebSearch 实时聚合 · 生成时间：2026-06-27 08:50 (GMT+8) · 由 WorkBuddy 自动化生成
+</div>
+
+
+<script>
+(function(){
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  },{threshold:0.1});
+  document.querySelectorAll('.news-card').forEach(card=>observer.observe(card));
+})();
+</script>
+
+</body>
+</html>
