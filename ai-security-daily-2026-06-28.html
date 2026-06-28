@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-06-28</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a0a;
+  color: #e5e7eb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 0 40px;
+  border-bottom: 1px solid #1f2937;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-size: 2.4em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #5B6CF7, #8B5CF6, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero .date { color: #6b7280; font-size: 0.95em; margin-bottom: 24px; }
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 120px;
+}
+.stat-card .num {
+  font-size: 2em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #5B6CF7, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-card .label { color: #9ca3af; font-size: 0.8em; margin-top: 4px; }
+
+/* Overview */
+.overview-section {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.6s ease-out;
+}
+.overview-section h2 {
+  font-size: 1.1em;
+  color: #8B5CF6;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.overview-section p {
+  color: #d1d5db;
+  font-size: 0.92em;
+  line-height: 1.8;
+}
+.overview-section b { color: #f3f4f6; font-weight: 600; }
+
+/* Section */
+.section { margin-bottom: 40px; }
+.section-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #f3f4f6;
+}
+.section-subtitle { color: #6b7280; font-size: 0.85em; margin-bottom: 20px; }
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #5B6CF7, #8B5CF6, #EC4899);
+  border: none;
+  border-radius: 1px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+/* News Card */
+.news-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 14px;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  transition: border-color 0.2s;
+}
+.news-card:hover { border-color: #5B6CF7; }
+.news-header { margin-bottom: 10px; }
+.news-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72em;
+  font-weight: 500;
+}
+.vendor-tag {
+  background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+  color: #ffffff;
+}
+.category-tag {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+.type-tag {
+  background: rgba(91, 108, 247, 0.12);
+  color: #93a3fd;
+  border: 1px solid rgba(91, 108, 247, 0.25);
+}
+.importance {
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-left: auto;
+}
+.news-title {
+  color: #f3f4f6;
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.news-summary {
+  color: #d1d5db;
+  font-size: 0.9em;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.news-source {
+  font-size: 0.8em;
+  color: #6b7280;
+}
+.source-label { color: #6b7280; }
+.news-source a {
+  color: #8B5CF6;
+  text-decoration: none;
+  margin-left: 4px;
+  border-bottom: 1px dashed rgba(139, 92, 246, 0.4);
+}
+.news-source a:hover { color: #EC4899; border-bottom-color: #EC4899; }
+
+/* Empty state */
+.empty-state {
+  background: #111827;
+  border: 1px dashed #1f2937;
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+.empty-icon {
+  font-size: 2.4em;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+.empty-title {
+  color: #d1d5db;
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.empty-desc {
+  color: #6b7280;
+  font-size: 0.85em;
+  line-height: 1.7;
+}
+
+/* Trend Box */
+.trend-box {
+  background: linear-gradient(135deg, rgba(91, 108, 247, 0.08), rgba(236, 72, 153, 0.08));
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-top: 40px;
+  animation: fadeInUp 0.6s ease-out;
+}
+.trend-box h2 {
+  font-size: 1.1em;
+  color: #EC4899;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.trend-box ul {
+  list-style: none;
+  padding: 0;
+}
+.trend-box li {
+  color: #d1d5db;
+  font-size: 0.9em;
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 6px;
+}
+.trend-box li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #8B5CF6;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #4b5563;
+  font-size: 0.78em;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #1f2937;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <h1>🤖 AI 安全日报</h1>
+    <div class="date">2026-06-28 · 周日 · 第 26 期</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="num">0</div>
+        <div class="label">国际产品动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">1</div>
+        <div class="label">国内产品动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">8</div>
+        <div class="label">行业动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">9</div>
+        <div class="label">总计</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overview-section">
+    <h2>🧠 AI 总览</h2>
+    <p>今日 AI 安全圈延续 Q2 末静默+监管发力的双重特征：<b>国际厂商产品版块完全归零</b>（连续 2 天），<b>国内仅奇安信 AI 安全发布周收官的 QAgent Fabric</b> 这一款可识别产品；行业版块则被 <b>GPT-5.6 美国政府审批</b> 占据头条——OpenAI 首次全系旗舰模型（含 Terra/Luna 轻量款）被标记为"高风险能力"，Sol 在内部网络安全挑战集拿到 96.7%，并被红队发现多个高危零日漏洞，这一事件正式标志<b>全球 AI 监管从"事后审查"转向"事前许可"</b>。与此同时，OWASP 6/11 报告持续将<b>提示词注入</b>定位为头号风险（2026 攻击激增 340%），清华 6/9《智能体安全研究报告》与微软/CSA 的"prompt-as-shell"研究将 AI Agent 框架的 RCE 武器化与 CI/CD 供应链注入问题推上风口浪尖。<b>建议关注：</b>1）6/28-30 周末期间是否有新国际产品/漏洞披露；2）7 月初 Q3 季度规划窗口，国内外厂商或将集中放出新版本。</p>
+  </div>
+
+  <!-- 版块一：国际友商产品动态 -->
+  <div class="section">
+    <div class="section-title">🏢 国际友商产品动态</div>
+    <div class="section-subtitle">Palo Alto Networks · CrowdStrike · Microsoft · Google · Cloudflare · Zscaler · Check Point · Fortinet · SentinelOne 等</div>
+    <hr class="section-divider">
+    
+    <div class="empty-state" style="animation-delay: 100ms">
+      <div class="empty-icon">🌙</div>
+      <div class="empty-title">今日国际厂商进入 Q2 末静默期</div>
+      <div class="empty-desc">Palo Alto Networks、CrowdStrike、Microsoft、Google、Cloudflare、Zscaler 等头部厂商本周均无新 AI 安全产品/版本发布。<br>这是 RSAC 2026 集中发布后、Q3 季度规划前的正常产品静默窗口，<br>预计 7 月初将迎来新一轮产品迭代浪潮。</div>
+    </div>
+
+  </div>
+
+  <!-- 版块二：国内友商产品动态 -->
+  <div class="section">
+    <div class="section-title">🇨🇳 国内友商产品动态</div>
+    <div class="section-subtitle">奇安信 · 深信服 · 绿盟 · 天融信 · 安恒 · 360 · 启明星辰 · 华为 · H3C · 腾讯云 · 阿里云等</div>
+    <hr class="section-divider">
+    
+    <div class="news-card" style="animation-delay: 100ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag vendor-tag">奇安信</span>
+          <span class="tag category-tag">QAgent Fabric 安全智能体研发框架</span>
+          <span class="tag type-tag">AI研发平台</span>
+          <span class="importance">🔥🔥🔥</span>
+        </div>
+      </div>
+      <div class="news-summary">AI 安全发布周收官之作，定位为'AI 时代研发新基础设施'，覆盖需求分析、智能体开发、测试评估、部署运维和生态扩展全生命周期；通过'研发智能体'+'安全研发体系'双轮驱动，将安全能力内置于研发全流程（统一权限管理、敏感数据保护、全过程审计、开源组件风险管控）；即日起面向重点行业客户开放 POC 联合验证。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://field.10jqka.com.cn/20260626/c677750408.shtml" target="_blank" rel="noopener">同花顺财经</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 版块三：行业动态与趋势 -->
+  <div class="section">
+    <div class="section-title">📊 行业动态与趋势</div>
+    <div class="section-subtitle">政策法规 · 政府监管 · 研究报告 · 行业标准 · 大会观点 · 漏洞披露 · 市场数据</div>
+    <hr class="section-divider">
+    
+    <div class="news-card" style="animation-delay: 100ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">政策法规/政府监管</span>
+          <span class="importance">🔥🔥🔥</span>
+        </div>
+      </div>
+      <div class="news-title">OpenAI 应美国政府要求限制 GPT-5.6 部署，'受信合作伙伴限量预览'启动</div>
+      <div class="news-summary">美国政府首次公开介入 OpenAI 旗舰模型发布节奏，6/27 GPT-5.6 Sol/Terra/Luna 三款全系首次被标记为'高风险能力'（含网络安全与生物/化学），Sol 在 OpenAI 内部网络安全挑战集得分 96.7%，外部红队发现多个高危零日；OpenAI 强调此类政府审批'不应成为长期默认'，标志全球 AI 监管从'事后审查'转向'事前许可'。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://www.winzheng.com/article/openai-limits-gpt5-6-government-request" target="_blank" rel="noopener">赢政天下（编译自 TechCrunch）</a>
+      </div>
+    </div>
+    <div class="news-card" style="animation-delay: 180ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">研究报告/安全标准</span>
+          <span class="importance">🔥🔥</span>
+        </div>
+      </div>
+      <div class="news-title">OWASP 2026 报告：提示词注入仍是 AI Agent 安全失败首要原因</div>
+      <div class="news-summary">OWASP 6/11 发布的 2026 Agentic AI 安全报告将提示词注入定位为'头号风险'，并附 CVEs、供应链攻击与更严格的合规约束；prompt injection 攻击在 2026 年激增 340%，多数已部署自主 AI Agent 的组织并不知道自身暴露面。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://www.helpnetsecurity.com/2026/06/11/owasp-prompt-injection-ai-security-failures/" target="_blank" rel="noopener">Help Net Security</a>
+      </div>
+    </div>
+    <div class="news-card" style="animation-delay: 260ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">研究报告/学术</span>
+          <span class="importance">🔥🔥</span>
+        </div>
+      </div>
+      <div class="news-title">清华大学《智能体安全研究报告 2026》发布，行动型 Agent 安全进入治理深水区</div>
+      <div class="news-summary">清华清新研究团队 6/9 发布报告，结合多国权威机构指导意见，剖析行动型 AI Agent 的风险、架构、评测、治理与落地路径，核心指出智能体安全已从'概念炒作'进入'治理落地'阶段。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://www.sohu.com/a/1034036233_468661" target="_blank" rel="noopener">搜狐（清华大学报告转载）</a>
+      </div>
+    </div>
+    <div class="news-card" style="animation-delay: 340ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">漏洞研究/攻击技术</span>
+          <span class="importance">🔥🔥</span>
+        </div>
+      </div>
+      <div class="news-title">Microsoft Security：AI Agent 框架提示注入可被武器化为 RCE 攻击链</div>
+      <div class="news-summary">微软 5/7 发布的最新研究表明，AI Agent 框架中的提示注入可演化为远程代码执行（RCE）漏洞；这类'prompt-as-shell'攻击标志着 AI Agent 框架从'可滥用'升级为'可被武器化'的关键拐点。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://www.microsoft.com/en-us/security/blog/2026/05/07/prompts-become-shells-rce-vulnerabilities-ai-agent-frameworks/" target="_blank" rel="noopener">Microsoft Security Blog</a>
+      </div>
+    </div>
+    <div class="news-card" style="animation-delay: 420ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">供应链/Agent 攻击</span>
+          <span class="importance">🔥🔥</span>
+        </div>
+      </div>
+      <div class="news-title">Cloud Security Alliance 报告：AI Agent 提示注入已成 CI/CD 供应链新威胁</div>
+      <div class="news-summary">CSA 研究显示 6/1 公开披露的 Claude Code GitHub Action 提示注入漏洞与同类结构性缺陷广泛存在于多款 AI 编码工具中，提示注入正式从'模型行为问题'升级为'软件供应链问题'。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-claude-code-github-action-prompt-injection/" target="_blank" rel="noopener">Cloud Security Alliance Labs</a>
+      </div>
+    </div>
+    <div class="news-card" style="animation-delay: 500ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">漏洞预测/数据</span>
+          <span class="importance">🔥</span>
+        </div>
+      </div>
+      <div class="news-title">FreeBuf：CISA 预测 2026 年 CVE 数量将激增至 6.6 万</div>
+      <div class="news-summary">6/18 FreeBuf 援引 FIRST 与 CISA 报告，AI 驱动下 2026 年漏洞披露数量将增长至 6.6 万；尽管数量激增，真实可被利用的'真实威胁'未同比上升，但'漏洞洪水'本身会大幅推高防御侧噪声负担。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://www.freebuf.com/articles/ai-security/486620.html" target="_blank" rel="noopener">FreeBuf</a>
+      </div>
+    </div>
+    <div class="news-card" style="animation-delay: 580ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">监管/政策延续</span>
+          <span class="importance">🔥</span>
+        </div>
+      </div>
+      <div class="news-title">White House《推进先进 AI 创新与安全》行政令 6/5 正式发布</div>
+      <div class="news-summary">特朗普政府 6/2 签署、6/5 Federal Register 公示的 AI 行政令，将 AI 定位为'国家力量的关键驱动'，延续'America First'网络安全与全球 AI 主导权并行路线；这是 GPT-5.6 限制事件的直接政策背景。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://www.federalregister.gov/documents/2026/06/05/2026-11415/promoting-advanced-artificial-intelligence-innovation-and-security" target="_blank" rel="noopener">Federal Register</a>
+      </div>
+    </div>
+    <div class="news-card" style="animation-delay: 660ms">
+      <div class="news-header">
+        <div class="news-tags">
+          <span class="tag category-tag">行业标准/白皮书</span>
+          <span class="importance">🔥</span>
+        </div>
+      </div>
+      <div class="news-title">OWASP《State of Agentic AI Security and Governance 2.01》持续更新</div>
+      <div class="news-summary">OWASP GenAI Security Project 持续迭代的智能体安全治理框架 2.01 版本，提供完整的框架、参考架构与最佳实践；该指南已被全球项目负责人与监管机构广泛引用。</div>
+      <div class="news-source">
+        <span class="source-label">来源：</span>
+        <a href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/" target="_blank" rel="noopener">OWASP Gen AI Security Project</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 趋势判断 -->
+  <div class="trend-box">
+    <h2>📈 趋势判断</h2>
+    <ul>
+      <li><b>监管拐点：</b>GPT-5.6 美国政府审批标志全球 AI 监管从"事后审查"正式转向"事前许可"——OpenAI Sol/Terra/Luna 三款全系首次被标"高风险"，未来前沿模型发布节奏将与政府深度绑定。</li>
+      <li><b>提示词注入成为头号风险：</b>OWASP 6/11 报告 + 微软/CSA 研究共同将"prompt-as-shell"提升为 CI/CD 供应链级威胁——2026 攻击激增 340%，已部署自主 AI Agent 的组织普遍低估暴露面。</li>
+      <li><b>智能体治理进入深水区：</b>清华 6/9 报告 + 微软 RCE 研究 + NIST 持续征询共同指向"AI Agent 安全框架"——Q3 国内外厂商或集中发布智能体安全新品以填补治理空白。</li>
+      <li><b>国内产品节奏：</b>奇安信 AI 安全发布周 6/22-26 五天五连发收官，QAgent Fabric 标志"AI 重塑研发"赛道补齐；6/28 周日厂商进入静默期，7 月初或迎来新一轮产品迭代。</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    🤖 AI 安全日报 · 自动生成 · 数据来源：WebSearch 多轮检索<br>
+    推送时间：2026-06-28 09:50 CST · GitHub Pages 托管
+  </div>
+
+</div>
+</body>
+</html>
