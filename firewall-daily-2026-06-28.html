@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-06-28</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;
+  --border:#222222;--text:#e5e5e5;--text2:#999999;
+  --c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  min-height:100vh;
+}
+.nav{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,10,10,0.85);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:56px;display:flex;align-items:center;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.nav-brand span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{margin-left:auto;font-size:13px;color:var(--text2)}
+.hero{
+  padding:64px 24px 48px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(91,108,247,0.12),transparent 70%);
+}
+.hero-icon{font-size:48px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{color:var(--text2);font-size:14px;margin-top:8px}
+.hero-badge{
+  display:inline-block;margin-top:16px;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;font-size:13px;font-weight:600;
+  padding:6px 18px;border-radius:20px;
+}
+.ai-summary{
+  max-width:880px;margin:-20px auto 40px;padding:0 24px;
+}
+.ai-summary-inner{
+  background:linear-gradient(135deg,rgba(91,108,247,0.08),rgba(139,92,246,0.08));
+  border:1px solid rgba(91,108,247,0.2);
+  border-radius:16px;padding:24px 28px;
+}
+.ai-summary-label{
+  display:inline-block;
+  font-size:12px;font-weight:700;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:8px;letter-spacing:0.5px;
+}
+.ai-summary p{color:var(--text);font-size:15px;line-height:1.75}
+.top-headlines{
+  max-width:880px;margin:0 auto 32px;padding:0 24px;
+}
+.top-headlines-inner{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:12px;padding:18px 24px;
+}
+.top-headlines-label{
+  font-size:12px;font-weight:700;color:var(--c3);
+  margin-bottom:8px;letter-spacing:0.5px;
+}
+.top-headlines-text{
+  font-size:14px;color:var(--text);line-height:1.7;
+}
+.section{
+  max-width:1200px;margin:0 auto;padding:0 24px 40px;
+}
+.section-title{
+  display:flex;align-items:center;gap:10px;
+  font-size:20px;font-weight:700;margin:32px 0 20px;
+  padding-bottom:12px;border-bottom:1px solid var(--border);
+}
+.section-title-icon{font-size:24px}
+.section-title-count{
+  margin-left:auto;font-size:13px;font-weight:500;color:var(--text2);
+}
+.news-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));
+  gap:18px;
+}
+.news-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+  transition:all 0.3s ease;
+  opacity:0;transform:translateY(20px);
+}
+.news-card.visible{opacity:1;transform:translateY(0)}
+.news-card:hover{
+  border-color:rgba(139,92,246,0.4);
+  background:var(--surface2);
+  transform:translateY(-2px);
+}
+.card-header{
+  display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;
+}
+.tag-vendor,.tag-type{
+  font-size:11px;font-weight:600;
+  padding:3px 10px;border-radius:6px;
+  letter-spacing:0.3px;
+}
+.card-title{
+  font-size:15px;font-weight:700;line-height:1.5;
+  color:var(--text);margin-bottom:10px;
+}
+.card-summary{
+  font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:14px;
+}
+.card-sources{
+  display:flex;gap:8px;flex-wrap:wrap;
+}
+.card-link{
+  display:inline-block;
+  font-size:12px;font-weight:500;
+  color:var(--c2);text-decoration:none;
+  padding:4px 10px;border-radius:6px;
+  background:rgba(139,92,246,0.08);
+  border:1px solid rgba(139,92,246,0.2);
+  transition:all 0.2s;
+}
+.card-link:hover{
+  color:#fff;background:var(--c2);
+  border-color:var(--c2);
+  text-decoration:underline;
+}
+.footer{
+  max-width:1200px;margin:32px auto 0;padding:24px;
+  border-top:1px solid var(--border);
+  text-align:center;color:var(--text2);font-size:12px;
+}
+@media(max-width:640px){
+  .hero{padding:48px 20px 32px}
+  .news-grid{grid-template-columns:1fr}
+  .nav-date{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-brand">🛡️ <span>Firewall Daily</span></div>
+  <div class="nav-date">2026-06-28 · 周日</div>
+</nav>
+<section class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1>中国防火墙厂商日报 · <span>2026-06-28</span></h1>
+  <p class="hero-meta">聚焦中国主流网络安全厂商最新动态 · 周日</p>
+  <div class="hero-badge">共 9 条动态 · 厂商 7 + 行业 2</div>
+</section>
+<section class="ai-summary">
+  <div class="ai-summary-inner">
+    <div class="ai-summary-label">🧠 AI 今日看点</div>
+    <p>今天最值得关注的是奇安信AI安全发布周正式启幕——5天5款高阶智能体组合拳&quot;威胁分析数字专家+安全运营数字员工+智能体安全平台&quot;密集落地，标志国内网安龙头正式从&quot;单点防御&quot;全面转向&quot;运行时安全&quot;新范式；华为在MWCSH 2026连发两弹：星河AI网络安全AIDC三层安全围栏方案精准卡位Token生产新蓝海，叠加与苏州移动联合发布业内首个&quot;企安宝&quot;安全资源池，SMB与大客户市场双线并进；中国移动高端防火墙集采3.2亿三强分食进一步固化&quot;赢家通吃&quot;格局，运营商+智能体安全+ASIC自研芯片三条主线在6月最后一周全面开花。用户最该关注：奇安信AI安全周剩余三天（6/25-6/26）将陆续发布剩余重磅新品，叠加等保2.0数据安全新规7月1日全面落地，Q3安全合规需求侧将集中释放。</p>
+  </div>
+</section>
+<section class="top-headlines">
+  <div class="top-headlines-inner">
+    <div class="top-headlines-label">🔥 今日头条</div>
+    <div class="top-headlines-text">奇安信AI安全发布周启幕：5天5连发&quot;高阶智能体组合拳&quot;打响AI安全防御战 · MWCSH 2026华为星河AI网络安全AIDC三层安全围栏方案守护Token生产 · 中国移动高端防火墙集采3.2亿：华为+新华三+迪普三强分食</div>
+  </div>
+</section>
+<section class="section">
+  <h2 class="section-title">
+    <span class="section-title-icon">🏢</span>
+    厂商动态
+    <span class="section-title-count">7 条</span>
+  </h2>
+  <div class="news-grid">
+    <article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">奇安信</span>
+<span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span>
+</div>
+<h3 class="card-title">奇安信AI安全发布周启幕：5天5连发，&quot;高阶智能体组合拳&quot;打响AI安全防御战</h3>
+<p class="card-summary">6月22日，奇安信人工智能公司正式启动为期5天的&quot;AI时代，攻防先行——奇安信AI安全系列新品发布周&quot;。奇安信集团董事长齐向东在开幕致辞中指出，近期美国AI公司Anthropic两款新模型发布仅72小时即被黑客突破，AI武器化风险持续扩散。当日首款新品——威胁分析数字专家（expert.qianxin.com）亮相，五款新品将系统展示奇安信在&quot;安全智能&quot;与&quot;智能安全&quot;两大核心赛道的最新成果。</p>
+<div class="card-sources"><a href="http://www.jjckb.cn/20260622/b8897d13563c4eb689143ec94c7c569e/c.html" target="_blank" rel="noopener" class="card-link">经济参考报 &rarr;</a><a href="https://tech.ifeng.com/c/8uAitdyvon9" target="_blank" rel="noopener" class="card-link">凤凰网科技 &rarr;</a><a href="https://stock.10jqka.com.cn/20260622/c677626153.shtml" target="_blank" rel="noopener" class="card-link">同花顺 &rarr;</a></div>
+</article>
+<article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">奇安信</span>
+<span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span>
+</div>
+<h3 class="card-title">奇安信发布安全运营数字员工：7×24小时自动化完成研判与响应全流程</h3>
+<p class="card-summary">6月23日，奇安信AI安全系列新品发布周第二天，主打新品&quot;安全运营数字员工&quot;发布。该产品作为继威胁分析数字专家后的第二款重磅产品，定位为智能体时代的7×24小时安全运营自动化助手，能自动完成安全事件的研判、响应与处置全流程，标志奇安信从单点防御向&quot;运行时安全&quot;延伸。</p>
+<div class="card-sources"><a href="https://k.sina.cn/article_5952915720_162d24908067047zpk.html" target="_blank" rel="noopener" class="card-link">新浪 &rarr;</a></div>
+</article>
+<article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#F9731620;color:#F97316;border:1px solid #F9731660">奇安信/华为</span>
+<span class="tag-type" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">厂商合作</span>
+</div>
+<h3 class="card-title">华为开发者大会HDC 2026：奇安信获评华为终端安全2025年度突出贡献奖</h3>
+<p class="card-summary">6月14日，华为开发者大会（HDC 2026）期间，奇安信集团凭借在鸿蒙生态终端安全领域的持续深耕与卓越贡献，荣获华为终端安全2025年度突出贡献奖。大会期间奇安信深度参与多个核心论坛，围绕鸿蒙安全治理、商用办公终端安全及星盾架构等维度，全面展示了与华为在鸿蒙生态安全方向的合作成果。</p>
+<div class="card-sources"><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-06-15/doc-inicnuhr8264778.shtml" target="_blank" rel="noopener" class="card-link">新浪财经 &rarr;</a><a href="https://field.10jqka.com.cn/20260615/c677473888.shtml" target="_blank" rel="noopener" class="card-link">同花顺 &rarr;</a></div>
+</article>
+<article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">华为</span>
+<span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span>
+</div>
+<h3 class="card-title">MWCSH 2026华为星河AI网络安全重磅推出AIDC三层安全围栏方案，守护Token生产</h3>
+<p class="card-summary">6月24日，2026MWC上海期间，AI WAN中国行首站暨智能IP广域网产业论坛召开，华为面向运营商Token经营场景重磅推出三层安全围栏解决方案，从网络、Agent、主机三大维度构建纵深防御围栏，实现Token生产全流程实时安全管控，有效抵御AI算力劫持、提示词注入攻击、模型数据窃取等新型威胁。</p>
+<div class="card-sources"><a href="https://field.10jqka.com.cn/20260624/c677691999.shtml" target="_blank" rel="noopener" class="card-link">同花顺 &rarr;</a><a href="https://www.c114.com.cn/news/126/a1312848.html" target="_blank" rel="noopener" class="card-link">C114通信网 &rarr;</a></div>
+</article>
+<article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">华为</span>
+<span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span>
+</div>
+<h3 class="card-title">MWCSH 2026华为联合苏州移动发布业内首个&quot;企安宝&quot;安全资源池解决方案</h3>
+<p class="card-summary">6月25日，2026MWC上海期间，华为联合中国移动通信集团苏州分公司正式发布业内首个&quot;企安宝&quot;安全资源池解决方案。方案深度融合运营商宽带网络资源与AI安全技术优势，为中小企业提供轻量化、订阅式的一站式安全服务，是华为在SMB安全市场的全新卡位。</p>
+<div class="card-sources"><a href="https://www.sohu.com/a/1041639424_121119001" target="_blank" rel="noopener" class="card-link">搜狐 &rarr;</a></div>
+</article>
+<article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">华为/新华三/迪普</span>
+<span class="tag-type" style="background:#F9731620;color:#F97316;border:1px solid #F9731660">中标项目</span>
+</div>
+<h3 class="card-title">中国移动高端防火墙集采3.2亿：华为1.54亿+新华三8960万+迪普7668万三强分食</h3>
+<p class="card-summary">6月24日，中国移动采购与招标网发布2026年至2028年（两年期）硬件防火墙产品集中采购项目标包1的中标候选人公示。华为以3.07亿元投标报价拟获50%份额，新华三、迪普科技紧随其后，三家头部厂商分食3.2亿元高端防火墙大单。运营商集采再次证明高端防火墙市场&quot;赢家通吃&quot;格局进一步固化。</p>
+<div class="card-sources"><a href="https://www.c114.com.cn/4app/3542/a1312666.html" target="_blank" rel="noopener" class="card-link">C114通信网 &rarr;</a><a href="https://www.10100.com/article/146128852" target="_blank" rel="noopener" class="card-link">10100网 &rarr;</a><a href="https://www.163.com/dy/article/L081HV5J0511D6RL.html" target="_blank" rel="noopener" class="card-link">网易 &rarr;</a></div>
+</article>
+<article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">山石网科</span>
+<span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">战略规划</span>
+</div>
+<h3 class="card-title">ISC.AI 2026山石网科双A战略全面落地，ASIC+AI构筑新一代安全防线</h3>
+<p class="card-summary">6月24日ISC.AI 2026期间，山石网科董事长兼CEO叶海强、CTO蒋东毅受邀接受媒体专访，深度解读双A战略（ASIC+AI）布局逻辑与落地成果。ASIC自研芯片固化防火墙高频算力，CPU+ASIC路线匹配400G/800G AI算力中心需求；AI智能体全面嵌入全线产品，一季度海外营收增长58%，由收入考核转向毛利考核释放盈利优先信号。</p>
+<div class="card-sources"><a href="https://baijiahao.baidu.com/s?id=1868950286536163897" target="_blank" rel="noopener" class="card-link">百度百家号 &rarr;</a><a href="https://www.163.com/dy/article/L09AHCC90538ER6X.html" target="_blank" rel="noopener" class="card-link">网易 &rarr;</a></div>
+</article>
+  </div>
+</section>
+<section class="section">
+  <h2 class="section-title">
+    <span class="section-title-icon">🏭</span>
+    行业动态
+    <span class="section-title-count">2 条</span>
+  </h2>
+  <div class="news-grid">
+    <article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#6366F120;color:#6366F1;border:1px solid #6366F160">行业大会</span>
+<span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">行业活动</span>
+</div>
+<h3 class="card-title">ISC.AI 2026在京开幕：&quot;智能体时代安全治理&quot;从共识走向行动</h3>
+<p class="card-summary">6月24日，第十四届互联网安全大会（ISC.AI 2026）在北京国家会议中心开幕，大会以&quot;智能体颠覆安全&quot;为年度主题。大会聚焦安全对抗从&quot;人对人&quot;向&quot;AI对AI&quot;的范式变革，围绕AI应用、AI安全、AI人才三大核心板块展开，标志中国网安行业正式进入智能体防御新纪元。</p>
+<div class="card-sources"><a href="https://www.sohu.com/a/1041007461_120599253" target="_blank" rel="noopener" class="card-link">搜狐 &rarr;</a><a href="https://xueqiu.com/8448834584/396956452" target="_blank" rel="noopener" class="card-link">雪球 &rarr;</a></div>
+</article>
+<article class="news-card">
+<div class="card-header">
+<span class="tag-vendor" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">运营商/广电</span>
+<span class="tag-type" style="background:#F9731620;color:#F97316;border:1px solid #F9731660">中标项目</span>
+</div>
+<h3 class="card-title">新媒股份2026年网络安全态势感知系统扩容项目中标公示（6/24）</h3>
+<p class="card-summary">广东南方新媒体股份有限公司2026年网络安全态势感知系统扩容项目（招标编号：XYL2026GZ043A11）评标结果6月24日公示，中标候选人已确定。新媒股份作为IPTV与广电新媒体龙头，本次扩容标志着广电行业在AI驱动威胁新形势下的安全防御持续加码。</p>
+<div class="card-sources"><a href="https://finance.sina.cn/2026-06-24/detail-inienieh3085832.d.html?vt=4" target="_blank" rel="noopener" class="card-link">新浪财经 &rarr;</a></div>
+</article>
+  </div>
+</section>
+<footer class="footer">
+  数据来源：WebSearch 公开网络 · 推送时间：2026-06-28 09:00 GMT+8<br>
+  由 WorkBuddy 自动化生成 · 中国防火墙厂商日报
+</footer>
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.news-card').forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
