@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-06-29</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    background: #0a0a0a;
+    color: #e5e7eb;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
+
+.hero {
+    background: linear-gradient(135deg, #111827 0%, #1a1a2e 50%, #0f0f23 100%);
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 48px 32px;
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(91,108,247,0.06) 0%, transparent 70%);
+    animation: heroGlow 8s ease-in-out infinite;
+}
+@keyframes heroGlow {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(5%,-5%); }
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+.hero .date {
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+.hero .stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.hero .stat {
+    text-align: center;
+    min-width: 100px;
+}
+.hero .stat .num {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero .stat .label {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.overview {
+    background: linear-gradient(135deg, #111827, #1a1f2e);
+    border: 1px solid #1f2937;
+    border-left: 3px solid #5B6CF7;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+}
+.overview h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #5B6CF7;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.overview p {
+    font-size: 15px;
+    color: #d1d5db;
+    line-height: 1.75;
+}
+
+.section { margin-bottom: 32px; }
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1f2937;
+}
+.section-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f3f4f6;
+}
+.section-header .count {
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+}
+.empty-note {
+    background: #111827;
+    border: 1px dashed #374151;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.news-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    transition: border-color 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.news-card:hover {
+    border-color: #374151;
+    transform: translateY(-2px);
+}
+.news-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.news-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.news-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(91,108,247,0.12);
+    color: #a5b4fc;
+    border: 1px solid rgba(91,108,247,0.2);
+    letter-spacing: 0.01em;
+}
+.importance { font-size: 14px; white-space: nowrap; }
+.news-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.news-summary {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+.news-sources {
+    font-size: 12px;
+    color: #6b7280;
+    padding-top: 10px;
+    border-top: 1px solid #1f2937;
+}
+.news-sources a {
+    color: #8B5CF6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.news-sources a:hover { color: #a78bfa; text-decoration: underline; }
+.source-label { color: #4b5563; }
+
+.trend {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 32px;
+}
+.trend h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.trend p {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.7;
+}
+.trend .highlight { color: #5B6CF7; font-weight: 600; }
+
+.footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    color: #374151;
+    font-size: 12px;
+}
+.footer a { color: #4b5563; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>🤖 AI 安全日报</h1>
+        <div class="date">2026-06-29 · 星期一</div>
+        <div class="stats">
+            <div class="stat">
+                <div class="num">1</div>
+                <div class="label">🌍 国际产品</div>
+            </div>
+            <div class="stat">
+                <div class="num">0</div>
+                <div class="label">🇨🇳 国内产品</div>
+            </div>
+            <div class="stat">
+                <div class="num">6</div>
+                <div class="label">📊 行业动态</div>
+            </div>
+            <div class="stat">
+                <div class="num">7</div>
+                <div class="label">📋 总计</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Overview -->
+<div class="overview">
+    <h2>💡 AI 总览</h2>
+    <p>
+        今天是周一，周末两天（6/28-29）AI 安全领域虽然产品侧沉寂——国际仅 Upwind 一个端侧 AI 监控新品、国内归零——但行业层面爆出多条重磅：<strong>Anthropic 正式指控阿里巴巴非法蒸馏 Claude AI</strong>（2.5 万假账号、2880 万次交互），这不仅是技术争端，更已上升为中美 AI 安全立法博弈；与此同时，<strong>智谱 GLM 5.2 在 Semgrep 安全基准上首次击败 Claude</strong>，标志着国产开源模型在安全能力上实现了对闭源前沿的正面突破。另一个值得深挖的趋势线是<strong>递归自我改进（RSI）</strong>——NVIDIA+剑桥的“红皇后哥德尔机”与 Jack Clark 的“2028 年 60% 概率”同日曝光，AI 安全社区需要重新审视：当 AI 能自我进化时，我们已有的安全框架够不够用。
+    </p>
+</div>
+
+<!-- International Products -->
+<div class="section">
+    <div class="section-header">
+        <h2>🏢 国际友商产品动态</h2>
+        <span class="count">1 条</span>
+    </div>
+    
+            <div class="news-card" style="animation-delay:0.0s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Upwind Security</span><span class="tag">AI Endpoint Security</span><span class="tag">MCP Security</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">Upwind Security 推出 AI Sensor for Endpoints，实时监控端点 AI 活动与 MCP 连接</h3>
+                <p class="news-summary">云安全厂商 Upwind 发布 AI Sensor for Endpoints，将 AI 安全可见性从云端扩展至开发者端点。该传感器可实时监控从开发者工作站发起的 MCP 连接、AI Agent 行为、身份认证与开发者风险，并将端点活动与云端运行时上下文相关联，帮助安全团队快速调查 AI 相关事件。这是 MCP 生态攻击面持续扩张背景下，首个专门针对端侧 AI 交互的安全监控产品。</p>
+                <div class="news-sources"><span class="source-label">来源（合并3源）：</span><a href="https://www.upwind.io/feed/upwind-ai-sensor-for-endpoint" target="_blank" rel="noopener">Upwind 官方</a> · <a href="https://lawire.com/upwind-expands-beyond-cloud-security-with-ai-sensor-for-endpoints/" target="_blank" rel="noopener">LA Wire</a> · <a href="https://techannouncer.com/upwind-extends-ai-security-to-developer-endpoints-as-mcp-connections-expand-the-attack-surface/" target="_blank" rel="noopener">TechAnnouncer</a></div>
+            </div>
+</div>
+
+<!-- Domestic Products -->
+<div class="section">
+    <div class="section-header">
+        <h2>🇨🇳 国内友商产品动态</h2>
+        <span class="count">0 条</span>
+    </div>
+    <div class="empty-note">周末（6/28-29）国内安全厂商无产品层面新动态发布。此前奇安信五天五连发已收官，Q3 季度规划窗口（7月初）预计将迎来新一波产品迭代。</div>
+</div>
+
+<!-- Industry -->
+<div class="section">
+    <div class="section-header">
+        <h2>📊 行业动态与趋势</h2>
+        <span class="count">6 条</span>
+    </div>
+    
+            <div class="news-card" style="animation-delay:0.0s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Anthropic</span><span class="tag">阿里巴巴</span><span class="tag">模型蒸馏攻击</span><span class="tag">供应链安全</span></div>
+                    <span class="importance">🔥🔥🔥</span>
+                </div>
+                <h3 class="news-title">Anthropic 正式指控阿里巴巴非法蒸馏 Claude AI：2.5 万虚假账号、2880 万次交互</h3>
+                <p class="news-summary">Anthropic 于 6 月 10 日向美国参议院银行委员会致信，指控阿里巴巴通义千问团队在 4 月 22 日至 6 月 5 日期间，使用约 25,000 个虚假账号与 Claude 进行了约 2,880 万次交互，实施“对抗性蒸馏攻击”。Anthropic 称这是史上最大规模的未授权 AI 提取行动，目标直指 Claude 最先进的软件工程与智能体推理能力。该指控已引发美国国会行动——参议员 Bill Hagerty 和 Andy Kim 正推动《国防授权法案》修正案，拟制裁非法获取美国 AI 模型输出的中国公司。此事件标志着中美 AI 安全博弈从技术层面全面升级至立法与地缘政治层面。</p>
+                <div class="news-sources"><span class="source-label">来源（合并4源）：</span><a href="https://www.36kr.com/p/3871394526155777" target="_blank" rel="noopener">36氪</a> · <a href="https://cyberpress.org/anthropic-claude-ai-distillation-attack-alibaba/" target="_blank" rel="noopener">CyberPress</a> · <a href="https://www.freebuf.com/articles/ai-security/487573.html" target="_blank" rel="noopener">FreeBuf</a> · <a href="https://www.eeo.com.cn/2026/0626/930921.shtml" target="_blank" rel="noopener">经济观察报</a></div>
+            </div>
+            <div class="news-card" style="animation-delay:0.08s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">智谱 AI</span><span class="tag">GLM 5.2</span><span class="tag">安全基准测试</span><span class="tag">开源模型安全</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">Semgrep 基准测试：智谱 GLM 5.2 在 IDOR 安全检测任务上击败 Claude</h3>
+                <p class="news-summary">代码安全公司 Semgrep 于 6 月 28 日发布详细基准测试报告，在自研 IDOR（不安全直接对象引用）检测基准上对 GLM 5.2（智谱 AI 开源权重模型）与 Claude 进行同条件对比。结果显示 GLM 5.2 的 F1 得分达 39%，在 IDOR 检测任务上击败 Claude。Semgrep 以“We have Mythos at home”为标题，暗指此前被视为“网络空间之王”的 Anthropic Mythos 系列。这是国产开源权重模型首次在严肃网络安全基准上对闭源前沿模型形成明确领先。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://semgrep.dev/blog/2026/we-have-mythos-at-home-glm-52-beats-claude-in-our-cyber-benchmarks/" target="_blank" rel="noopener">Semgrep Blog</a> · <a href="https://www.qbitai.com/2026/06/439603.html" target="_blank" rel="noopener">量子位</a></div>
+            </div>
+            <div class="news-card" style="animation-delay:0.16s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">NVIDIA</span><span class="tag">剑桥大学</span><span class="tag">递归自我改进</span><span class="tag">AI 进化安全</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">NVIDIA+剑桥“红皇后哥德尔机”：AI 实现自我繁衍代码、无限进化</h3>
+                <p class="news-summary">剑桥大学与 NVIDIA 等机构于 6 月 28 日联合发布论文《Red Queen Gödel Machine》，提出在博弈式训练环境中让 AI 自发生成“考官”，用更强的新任务淘汰上一代模型，实现“无休止的自我进化”。论文被作者群称为“年度最危险论文”，颠覆了过去 20 年依赖人类标注作为外部驱动力的范式。该研究与同日 Anthropic 联合创始人 Jack Clark 关于 2028 年递归自我改进（RSI）的预测形成互文，将 RSI 从概念讨论推进到可工程化的训练算法层面。</p>
+                <div class="news-sources"><span class="source-label">来源：</span><a href="https://www.36kr.com/p/3872518454776841" target="_blank" rel="noopener">36氪</a></div>
+            </div>
+            <div class="news-card" style="animation-delay:0.24s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Anthropic</span><span class="tag">递归自我改进</span><span class="tag">AI 安全预测</span><span class="tag">前沿模型</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">Anthropic Jack Clark：2028 年底递归自我改进 60% 概率成真，Claude 10 将无人参与建造</h3>
+                <p class="news-summary">Anthropic 联合创始人 Jack Clark 在 Aspen Institute 活动上给出具体时间表：到 2028 年底前，递归自我改进（RSI）有 60% 概率成真，届时 AI 将自主发明并构建出比自己更强的下一代模型，全程无人类研究员参与。Clark 指出 Claude 10 将是这一节点的产物，将 RSI 从概念讨论推进到具体路线图。此预测为 AI 安全社区带来深远含义——如果 AI 能自我改进，当前所有安全防护框架都需重新设计。</p>
+                <div class="news-sources"><span class="source-label">来源：</span><a href="https://www.36kr.com/p/3872524038362121" target="_blank" rel="noopener">36氪</a></div>
+            </div>
+            <div class="news-card" style="animation-delay:0.32s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">G7</span><span class="tag">出口管制</span><span class="tag">AI 治理</span><span class="tag">Mythos</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">G7 辩论前沿 AI 访问权归属 + Anthropic Mythos 5 对国外用户下线</h3>
+                <p class="news-summary">随美国 AI 行政令持续落地，G7 国家正激烈辩论前沿 AI 模型应被视为共享民主资源还是单边国家安全资产。此辩论背景下，Anthropic 旗下 Fable 5 和 Mythos 5 已对非美国用户（包括 Anthropic 自身非公民员工）部分下线，遵循美国出口管制指令。此举标志着前沿 AI 模型正式进入“战略性基础设施”监管时代。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://aiflashreport.com/archive/2026-06-28.html" target="_blank" rel="noopener">AI Flash Report</a> · <a href="https://etcjournal.com/2026/06/23/ai-in-june-2026-three-critical-global-decisions-who-who-who/" target="_blank" rel="noopener">ETC Journal</a></div>
+            </div>
+            <div class="news-card" style="animation-delay:0.4s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">OpenClaw</span><span class="tag">AI Agent 供应链</span><span class="tag">恶意技能</span><span class="tag">供应链安全</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">恶意 OpenClaw Skills 通过安全检查触达 2.6 万用户，AI Agent 供应链安全持续恶化</h3>
+                <p class="news-summary">OpenClaw Skill 市场持续涌现恶意技能包，部分恶意 Skills 成功绕过安全检查机制并触达约 26,000 名用户，涉及数据窃取与金融欺诈。安全研究人员披露，恶意技能包可劫持 AI Agent 执行未授权操作，暴露了当前 AI Agent 生态在技能分发与审核方面的系统性漏洞。此前 OpenClaw 已被多次曝出供应链攻击面问题（CVE-2026-25253），但攻击者手段仍在快速迭代。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.freebuf.com/articles/ai-security/487624.html" target="_blank" rel="noopener">FreeBuf</a> · <a href="https://www.darkreading.com/cyber-risk/more-malicious-openclaw-skills-threaten-ai-supply-chain" target="_blank" rel="noopener">Dark Reading</a></div>
+            </div>
+</div>
+
+<!-- Trend Insight -->
+<div class="trend">
+    <h3>🔮 今日趋势判断</h3>
+    <p>
+        <span class="highlight">1. 模型蒸馏攻防战正式进入立法层面：</span>Anthropic vs 阿里巴巴事件已超出技术争议范畴，美国参议院正推动将“AI 模型输出非法获取”纳入国防授权法案制裁范围。这意味着模型供应链安全的定义正在从“技术防护”向“法律武器化”演进。<br><br>
+        <span class="highlight">2. 国产开源模型安全能力首次对标突破：</span>GLM 5.2 在 Semgrep IDOR 基准上击败 Claude 不是偶然——它标志着中国开源模型在安全赛道上的竞争力已从“性价比”切换到“能力对等”。安全厂商需关注这一趋势对国内 AI 安全产品生态的连锁影响。<br><br>
+        <span class="highlight">3. RSI 安全框架真空：</span>“红皇后哥德尔机”与 Jack Clark 的 60% RSI 预测同日曝光并非巧合。当前 OWASP/NIST 的 AI 安全框架均假设模型由人类开发和控制——如果 AI 能自我改进，所有这些框架都需要重新设计。这是一个尚未被充分定价的安全风险。<br><br>
+        <span class="highlight">4. Q2 末静默期接近尾声：</span>国际与国内安全厂商产品发布已连续 3-4 天归零或极低，这是典型的 Q2 末发布枯竭期。7 月初（下周）大概率会迎来 Q3 季度的第一波产品迭代潮，重点关注 PANW Prisma AIRS、CrowdStrike Charlotte AI、国内奇安信/深信服的 Q3 路线图发布。
+    </p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>AI 安全日报 · 每日自动生成 · <a href="https://github.com/aaronxi9527/ai-hot-daily" target="_blank">GitHub</a></p>
+    <p style="margin-top:4px;">数据来源：公开安全媒体、厂商官网、行业报告 | 仅供参考，不构成投资建议</p>
+</div>
+
+</div>
+
+<script>
+(function() {
+    var cards = document.querySelectorAll('.news-card');
+    if (!cards.length) return;
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    cards.forEach(function(card) { observer.observe(card); });
+})();
+</script>
+
+</body>
+</html>
