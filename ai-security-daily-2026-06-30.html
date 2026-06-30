@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-06-30</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    background: #0a0a0a;
+    color: #e5e7eb;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
+
+.hero {
+    background: linear-gradient(135deg, #111827 0%, #1a1a2e 50%, #0f0f23 100%);
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 48px 32px;
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(91,108,247,0.06) 0%, transparent 70%);
+    animation: heroGlow 8s ease-in-out infinite;
+}
+@keyframes heroGlow {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(5%,-5%); }
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+.hero .date {
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+.hero .stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.hero .stat {
+    text-align: center;
+    min-width: 100px;
+}
+.hero .stat .num {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero .stat .label {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.overview {
+    background: linear-gradient(135deg, #111827, #1a1f2e);
+    border: 1px solid #1f2937;
+    border-left: 3px solid #5B6CF7;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+}
+.overview h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #5B6CF7;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.overview p {
+    font-size: 15px;
+    color: #d1d5db;
+    line-height: 1.75;
+}
+
+.section { margin-bottom: 32px; }
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1f2937;
+}
+.section-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f3f4f6;
+}
+.section-header .count {
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+}
+.empty-note {
+    background: #111827;
+    border: 1px dashed #374151;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.news-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    transition: border-color 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.news-card:hover {
+    border-color: #374151;
+    transform: translateY(-2px);
+}
+.news-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.news-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.news-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(91,108,247,0.12);
+    color: #a5b4fc;
+    border: 1px solid rgba(91,108,247,0.2);
+    letter-spacing: 0.01em;
+}
+.importance { font-size: 14px; white-space: nowrap; }
+.news-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.news-summary {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+.news-sources {
+    font-size: 12px;
+    color: #6b7280;
+    padding-top: 10px;
+    border-top: 1px solid #1f2937;
+}
+.news-sources a {
+    color: #8B5CF6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.news-sources a:hover { color: #a78bfa; text-decoration: underline; }
+.source-label { color: #4b5563; }
+
+.trend {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 32px;
+}
+.trend h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.trend p {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.7;
+}
+.trend .highlight { color: #5B6CF7; font-weight: 600; }
+
+.footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    color: #374151;
+    font-size: 12px;
+}
+.footer a { color: #4b5563; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>🤖 AI 安全日报</h1>
+        <div class="date">2026-06-30 · 星期二</div>
+        <div class="stats">
+            <div class="stat">
+                <div class="num">5</div>
+                <div class="label">🌍 国际产品</div>
+            </div>
+            <div class="stat">
+                <div class="num">4</div>
+                <div class="label">🇨🇳 国内产品</div>
+            </div>
+            <div class="stat">
+                <div class="num">9</div>
+                <div class="label">📊 行业动态</div>
+            </div>
+            <div class="stat">
+                <div class="num">18</div>
+                <div class="label">📋 总计</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Overview -->
+<div class="overview">
+    <h2>💡 AI 总览</h2>
+    <p>今天是 6 月 30 日（周二），也是 6 月最后一天——这个月 AI 安全领域发生了太多事：国际厂商 Q2 末发布静默期仍未完全结束，但本周仍有值得关注的 AI Agent 治理与身份安全产品（<strong>Zscaler Zero Trust for Agentic AI、Cisco Live 2026 Splunk 平台更新</strong>）；国内方面，<strong>华为联合行业机构重磅发布 OpenClaw 安全解决方案技术白皮书</strong>，提出三层围栏安全架构，系统性解决 AI Agent 智能体安全治理难题，成为继 360「倚天屠龙」、奇安信 QAgent Fabric 之后又一份重磅 AI Agent 治理蓝图；行业层面，<strong>Anthropic vs 阿里蒸馏事件从技术争端升级为立法博弈</strong>，美参议院推动国防授权法案修正案制裁，与此同时 NVIDIA+剑桥「红皇后哥德尔机」论文让 RSI 概念从设想走向工程化训练算法——可以说，2026 年 6 月的最后一天，AI 安全正处于<strong>「从框架建设走向攻防实战」</strong>的临界点。</p>
+</div>
+
+<!-- International Products -->
+
+<div class="section">
+    <div class="section-header">
+        <h2>🏢 国际友商产品动态</h2>
+        <span class="count">5 条</span>
+    </div>
+
+            <div class="news-card" style="animation-delay:0.0s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Zscaler</span><span class="tag">Zero Trust</span><span class="tag">AI Agent 安全</span></div>
+                    <span class="importance">🔥🔥🔥</span>
+                </div>
+                <h3 class="news-title">Zscaler 发布业内首个 Agentic AI 零信任安全平台：覆盖数据访问、Agent 互信与跨域操作</h3>
+                <p class="news-summary">Zscaler 于 6 月 9 日推出 Zero Trust Exchange 的下一代 Agentic AI 安全解决方案，成为业内首个完整的 Agentic AI 零信任平台。该方案覆盖 Agent 如何访问数据、与系统交互以及跨环境操作的全链路，新增针对 AI Agent 的细粒度身份治理、最小权限执行、运行时行为监控与跨域联邦身份。6 月份持续在《Cybersecurity Insiders》等媒体被分析解读，定位是「企业大规模部署 AI Agent 时唯一可投产的零信任基座」。</p>
+                <div class="news-sources"><span class="source-label">来源（合并3源）：</span><a href="https://ir.zscaler.com/news-releases/news-release-details/zscaler-unveils-new-product-innovations-secure-agentic-ai" target="_blank" rel="noopener">Zscaler IR</a> · <a href="https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai" target="_blank" rel="noopener">Zscaler Press</a> · <a href="https://www.cybersecurity-insiders.com/zscaler-unveils-new-product-innovations-to-secure-agentic-ai/" target="_blank" rel="noopener">Cybersecurity Insiders</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.08s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Cisco</span><span class="tag">Splunk</span><span class="tag">Agentic SOC</span><span class="tag">Cisco Live 2026</span></div>
+                    <span class="importance">🔥🔥🔥</span>
+                </div>
+                <h3 class="news-title">Cisco Live 2026：Splunk 平台发布 Agentic Enterprise 新版本，AI SOC 能力全面升级</h3>
+                <p class="news-summary">Cisco 在 6 月 3 日 Las Vegas 举办的 Cisco Live 2026 大会上揭幕 Splunk 平台新一轮创新，围绕「Agentic Enterprise」愿景推出 AI SOC 新能力。核心包括 Splunk Enterprise Security 基础版全球上市、高阶版开放早期试用、Splunk 安全 AI 助手面向全球开放、Cisco 集成方案及自主智能分类功能增强。这是 RSAC 2026 之后 Cisco 首次大规模 Splunk+AI 更新，标志着 Splunk 在 AI SOC 领域正式进入规模化交付阶段。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.splunk.com/en_us/blog/platform/new-splunk-platform-innovations-cisco-live-2026.html" target="_blank" rel="noopener">Splunk Blog</a> · <a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m02/splunk-report-agentic-ai-takes-center-stage-in-cisos-path-to-digital-resilience.html" target="_blank" rel="noopener">Cisco IR</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.16s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Check Point</span><span class="tag">AI Security Bundles</span><span class="tag">MSP 平台</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">Check Point 推出 AI 安全统一套件 + MSP 平台重大升级，应对企业 AI 转型</h3>
+                <p class="news-summary">Check Point 于 6 月 16 日发布全新 AI 安全能力与统一安全套件，MSP 平台同步重大升级，专为企业 AI 新浪潮构建。同日 Check Point 发布 Jumbo Security Release，公开了 Frontier AI Models Readiness Program（前沿 AI 模型准备计划）启动以来的首批安全成果。Pax8 在 Beyond 2026 大会上将 Check Point 命名为「官方 AI 赞助商」，反映了 MSP 生态对 AI 驱动安全的强劲需求。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.prnewswire.com/news-releases/check-point-advances-secure-ai-transformation-for-msps-with-new-platform-ai-security-capabilities-and-unified-security-bundles-302796129.html" target="_blank" rel="noopener">PR Newswire</a> · <a href="https://field.10jqka.com.cn/20260617/c677522881.shtml" target="_blank" rel="noopener">10jqka</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.24s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">AppViewX</span><span class="tag">AI Agent 身份</span><span class="tag">非治理 AI 治理</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">AppViewX 推出 AI Agent 身份安全产品，瞄准「企业安全最快增长盲点」</h3>
+                <p class="news-summary">AppViewX 于 6 月 16 日发布针对「无治理 AI Agent」的身份安全新产品。AppViewX 将该问题定位为「企业安全增长最快的盲点」：AI Agent 以广泛权限和最小监督自主行动。该产品提供 AI Agent 身份识别、最小权限下发、跨系统身份联邦与生命周期管理，是继 CrowdStrike Continuous Identity for AI Agents（基于 SGNL 收购）之后又一款专门针对 AI Agent 身份治理的细分产品。</p>
+                <div class="news-sources"><span class="source-label">来源：</span><a href="https://siliconangle.com/2026/06/16/appviewx-targets-ungoverned-ai-agents-new-identity-security-product/" target="_blank" rel="noopener">SiliconAngle</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.32s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Microsoft</span><span class="tag">Agent 365</span><span class="tag">Shadow AI</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">Microsoft Agent 365 正式 GA：扩展 AI Agent 治理能力，新增 Shadow AI 智能体发现预览</h3>
+                <p class="news-summary">微软于 5 月 1 日宣布 Agent 365 正式 GA（已上线 6 月生产环境），同时发布多项新功能预览：能够发现和管理组织内「Shadow AI 智能体」（即影子 AI Agent）。Agent 365 是微软面向企业 AI Agent 安全运营的统一治理平台，覆盖 AI Agent 身份、最小权限、运行时监控、行为审计与合规报告，是微软在 AI Agent 治理领域的关键产品落地。</p>
+                <div class="news-sources"><span class="source-label">来源：</span><a href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/" target="_blank" rel="noopener">Microsoft Security Blog</a></div>
+            </div>
+</div>
+
+<!-- Domestic Products -->
+
+<div class="section">
+    <div class="section-header">
+        <h2>🇨🇳 国内友商产品动态</h2>
+        <span class="count">4 条</span>
+    </div>
+
+            <div class="news-card" style="animation-delay:0.0s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">华为</span><span class="tag">OpenClaw</span><span class="tag">智能体安全</span><span class="tag">三层围栏</span></div>
+                    <span class="importance">🔥🔥🔥</span>
+                </div>
+                <h3 class="news-title">华为联合行业机构重磅发布 OpenClaw 安全解决方案技术白皮书：三层围栏架构守护 AI Agent</h3>
+                <p class="news-summary">华为在 5 月 28 日「数据通信创新峰会 2026·中国」期间，联合国家级安全实验室与顶尖高校正式发布《华为 OpenClaw 安全解决方案技术白皮书》。该白皮书提出三层围栏安全架构，系统性解决 AI Agent 智能体安全治理难题，覆盖身份层、行为层、内容层的全链路防护。这是继 360「倚天屠龙」、奇安信 QAgent Fabric 之后，国内厂商针对 OpenClaw / AI Agent 生态的第三份重磅治理方案。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.c114.net.cn/industry/85587.html" target="_blank" rel="noopener">C114 通信网</a> · <a href="https://www.163.com/news/article/KUB9USDG00019UD6.html" target="_blank" rel="noopener">网易科技</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.08s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">华为</span><span class="tag">MWC 上海</span><span class="tag">AIDC 三层围栏</span><span class="tag">Token 安全</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">华为星河 AI 网络安全在 MWC 上海推出 AIDC 三层安全围栏方案，守护运营商 Token 生产</h3>
+                <p class="news-summary">华为在 6 月 24 日 MWC 上海期间 AI WAN 中国行首站暨智能 IP 广域网产业论坛上，面向运营商 Token 经营场景重磅推出三层安全围栏解决方案，从网络层到应用层构建端到端 AI 安全防护体系。这与同期发布的 OpenClaw 安全白皮书形成「消费级 + 运营级」AI 安全双轨布局，是华为「以围栏为主线」的 AI Agent 安全产品矩阵的关键拼图。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.c114.com.cn/news/126/a1312848.html" target="_blank" rel="noopener">C114 通信网</a> · <a href="https://field.10jqka.com.cn/20260624/c677691999.shtml" target="_blank" rel="noopener">10jqka</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.16s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">天融信</span><span class="tag">TopLMG</span><span class="tag">大模型安全网关</span><span class="tag">AI 编程防护</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">天融信推出大模型安全网关 TopLMG：聚焦 AI 编程研发全链路安全防护</h3>
+                <p class="news-summary">天融信 6 月 24 日推出大模型安全网关（TopLMG）重大升级版本，整合代码安全防护、数据防泄漏和全域防御三大核心能力，构建覆盖 AI 编程研发全流程的安全防护体系。该产品针对大模型在 AI 编程场景下的代码泄露、提示词攻击、敏感数据外泄等新型风险，是 RSAC 2026 之后国内最具代表性的 LLM 防火墙/网关产品。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://stock.10jqka.com.cn/20260624/c677665468.shtml" target="_blank" rel="noopener">10jqka</a> · <a href="https://www.topsec.com.cn/products/TopLMG" target="_blank" rel="noopener">天融信官网</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.24s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">恒脑</span><span class="tag">西湖论剑</span><span class="tag">恒脑 3.0</span><span class="tag">安全 AI 智能体</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">安恒信息在西湖论剑发布恒脑 3.0：业内首个落地百余个安全智能体的产品</h3>
+                <p class="news-summary">安恒信息 6 月 10 日在西湖论剑网络安全大会发布恒脑 3.0，定位为「业内首个落地百余个安全智能体的产品」。该产品依托安全垂域大模型与智能体技术，已应用于国际赛事安保、部委级攻防演练等场景，可实现百万级告警研判、数据分类分级效率提升 30 倍。恒脑 3.0 标志着国内安全 AI 智能体从「演示验证」走向「百智能体规模落地」。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.dbappsecurity.com.cn/content/details4756_33341.html" target="_blank" rel="noopener">安恒官网</a> · <a href="https://www.dbappsecurity.com.cn/product/cloud4662.html" target="_blank" rel="noopener">安恒产品页</a></div>
+            </div>
+</div>
+
+<!-- Industry -->
+
+<div class="section">
+    <div class="section-header">
+        <h2>📊 行业动态与趋势</h2>
+        <span class="count">9 条</span>
+    </div>
+
+            <div class="news-card" style="animation-delay:0.0s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Anthropic</span><span class="tag">阿里巴巴</span><span class="tag">模型蒸馏</span><span class="tag">立法博弈</span></div>
+                    <span class="importance">🔥🔥🔥</span>
+                </div>
+                <h3 class="news-title">Anthropic 正式指控阿里蒸馏 Claude 2880 万次：美参议院推动国防授权法案制裁</h3>
+                <p class="news-summary">Anthropic 于 6 月 10 日向美国参议院银行委员会致信，6 月 24 日由路透社/CNBC 独家披露：指控阿里巴巴通义千问团队在 4 月 22 日至 6 月 5 日期间，使用约 25,000 个虚假账号与 Claude 进行了约 2,880 万次交互，实施「对抗性蒸馏攻击」，目标直指 Claude 最先进的软件工程与智能体推理能力。Anthropic 称这是史上最大规模的未授权 AI 提取行动。事件已引发美国国会行动——参议员 Bill Hagerty 和 Andy Kim 正推动《国防授权法案》修正案，拟制裁非法获取美国 AI 模型输出的中国公司。这标志着中美 AI 安全博弈从技术层面全面升级至立法与地缘政治层面。</p>
+                <div class="news-sources"><span class="source-label">来源（合并3源）：</span><a href="https://www.cnbc.com/2026/06/24/anthropic-alibaba-distillation-campaign.html" target="_blank" rel="noopener">CNBC</a> · <a href="https://www.techtimes.com/articles/319105/20260625/alibaba-ran-largest-known-ai-theft-campaign-against-claude-anthropic-tells-senate.htm" target="_blank" rel="noopener">TechTimes</a> · <a href="https://www.freebuf.com/articles/ai-security/487573.html" target="_blank" rel="noopener">FreeBuf</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.08s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">NVIDIA</span><span class="tag">剑桥大学</span><span class="tag">红皇后哥德尔机</span><span class="tag">递归自我改进</span></div>
+                    <span class="importance">🔥🔥🔥</span>
+                </div>
+                <h3 class="news-title">NVIDIA+剑桥「红皇后哥德尔机」论文：AI 自生成考官、无限自我进化</h3>
+                <p class="news-summary">剑桥大学与 NVIDIA 等机构于 6 月 28 日联合发布论文《Red Queen Gödel Machine》（arxiv 2606.26294），提出博弈式训练框架，让 AI 自发生成「考官」、持续生成新任务淘汰上一代模型，实现「无休止的自我进化」。该研究被业内称为「年度最危险论文」，颠覆了过去 20 年依赖人类标注作为外部驱动力的训练范式。论文作者群 13 人，6 月 24 日 arxiv 预印本公开，被指与 Anthropic 联合创始人 Jack Clark 关于「2028 年递归自我改进（RSI）60% 概率」的预测形成互文，将 RSI 从概念讨论推进到可工程化的训练算法层面。</p>
+                <div class="news-sources"><span class="source-label">来源（合并4源）：</span><a href="https://arxiv.org/abs/2606.26294" target="_blank" rel="noopener">arxiv</a> · <a href="https://www.emergentmind.com/papers/2606.26294" target="_blank" rel="noopener">Emergent Mind</a> · <a href="https://www.techtimes.com/articles/319230/20260628/recursive-self-improvement-now-has-co-evolving-evaluator-cambridge-nvidia-paper-raises-stakes.htm" target="_blank" rel="noopener">TechTimes</a> · <a href="https://www.heibaos.com/post/372619164844038/red-queen-godel-machine-cambridge-nvidia-june-2026" target="_blank" rel="noopener">黑豹说</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.16s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">OpenAI</span><span class="tag">GPT-5.6</span><span class="tag">白宫安全锁</span><span class="tag">出口管制</span></div>
+                    <span class="importance">🔥🔥🔥</span>
+                </div>
+                <h3 class="news-title">OpenAI 发布 GPT-5.6 三件套（Sol/Terra/Luna）：受美政府要求限量开放给可信合作伙伴</h3>
+                <p class="news-summary">OpenAI 于 6 月 26 日正式发布 GPT-5.6 系列限量预览版（Sol 旗舰、Terra 均衡、Luna 轻量），但未立即全面开放，而是按美国政府要求仅向约 20 家「可信合作伙伴」提供预览权限。整个系列配备 OpenAI 迄今最强大分层安全防护（70 万 A100 等效 GPU 小时做自动化红队测试），OpenAI 特别强调 Sol 更擅长帮助防御者发现和修复漏洞而非自主执行完整攻击链。同日 Anthropic Claude Mythos 5 也在美政府审批下获准向部分企业和联邦机构发布。两大前沿 AI 模型同日进入「白宫安全锁」模式，标志着 AI 从「技术创新」进入「战略管控」新阶段。</p>
+                <div class="news-sources"><span class="source-label">来源（合并4源）：</span><a href="https://news.qq.com/rain/a/20260627A013Z800" target="_blank" rel="noopener">腾讯新闻</a> · <a href="https://news.qq.com/rain/a/20260627A01ZYJ00" target="_blank" rel="noopener">腾讯新闻</a> · <a href="https://news.qq.com/rain/a/20260627A02LJZ00" target="_blank" rel="noopener">智东西</a> · <a href="https://www.cnbc.com/2026/06/26/us-government-anthropic-claude-mythos5-ai.html" target="_blank" rel="noopener">CNBC</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.24s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">Semgrep</span><span class="tag">智谱 GLM 5.2</span><span class="tag">Claude</span><span class="tag">IDOR 安全基准</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">Semgrep 基准测试：智谱 GLM 5.2 在 IDOR 安全检测任务上首次击败 Claude</h3>
+                <p class="news-summary">代码安全公司 Semgrep 于 6 月 28 日发布详细基准测试报告，在自研 IDOR（不安全直接对象引用）检测基准上对 GLM 5.2（智谱 AI 开源权重模型）与 Claude 进行同条件对比。结果显示 GLM 5.2 的 F1 得分达 39%，在 IDOR 检测任务上击败 Claude Code 的 32%。Semgrep 内部以「We have Mythos at home」为标题描述这一发现，暗示此前被视为「网络空间之王」的 Anthropic Mythos 系列在严肃网络安全基准上遭遇国产开源模型阻击。这是国产开源权重模型首次在严肃网络安全基准上对闭源前沿模型形成明确领先。</p>
+                <div class="news-sources"><span class="source-label">来源（合并4源）：</span><a href="https://aitoolly.com/zh/ai-news/article/2026-06-29-glm-52-outperforms-claude-opus-48-in-semgrep-cyber-benchmarks-for-open-weight-ai-models" target="_blank" rel="noopener">AIToolly</a> · <a href="https://www.21cto.com/article/3049510133603763" target="_blank" rel="noopener">21CTO</a> · <a href="https://blog.csdn.net/liuzhupeng/article/details/162404889" target="_blank" rel="noopener">CSDN</a> · <a href="https://blog.ccino.org/p/glm52-semgrep-cyber-benchmark-2026/" target="_blank" rel="noopener">Blog.ccino</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.32s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">OpenClaw</span><span class="tag">MCP 供应链</span><span class="tag">恶意技能</span><span class="tag">AI Agent 安全</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">OpenClaw Skills 供应链持续恶化：恶意技能触达 2.6 万用户，企业 AI Agent 风险敞口扩大</h3>
+                <p class="news-summary">OpenClaw Skill 市场持续涌现恶意技能包，部分恶意 Skills 成功绕过 VirusTotal 引擎检查并触达约 26,000 名用户，涉及数据窃取、金融欺诈与系统接管。安全研究人员披露，恶意技能包可劫持 AI Agent 执行未授权操作，暴露了当前 AI Agent 生态在技能分发与审核方面的系统性漏洞。此前 OpenClaw 已被多次曝出供应链攻击面问题（CVE-2026-25253）但攻击者手段仍在快速迭代；华为、360、奇安信本周相继发布 AI Agent 治理方案，正是为应对此类风险。</p>
+                <div class="news-sources"><span class="source-label">来源（合并3源）：</span><a href="https://www.freebuf.com/articles/ai-security/487624.html" target="_blank" rel="noopener">FreeBuf</a> · <a href="https://www.darkreading.com/cyber-risk/more-malicious-openclaw-skills-threaten-ai-supply-chain" target="_blank" rel="noopener">Dark Reading</a> · <a href="https://antiy.cn/research/notice&report/research_report/OpenClaw_AI_Poisoning_Attack_Analysis.html" target="_blank" rel="noopener">安天 CERT</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.4s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">白宫</span><span class="tag">行政令</span><span class="tag">AI 国家安全</span><span class="tag">关键基础设施</span></div>
+                    <span class="importance">🔥🔥</span>
+                </div>
+                <h3 class="news-title">特朗普签署 AI 国家安全企业历史性指令：6 月起 AI 创新与关键基础设施保护进入新阶段</h3>
+                <p class="news-summary">美国总统特朗普 6 月 5 日签署关于「国家安全企业中 AI 应用」的历史性行政令，要求联邦机构在保护关键基础设施、加强网络安全的同时推进 AI 创新。该行政令被视为「美国 AI 行政令 2.0」，与 5/7 国防授权法案相关 AI 条款、6/26 GPT-5.6 白宫审批形成体系化「AI 出口 + 治理 + 国家安全」监管框架，深度影响美国 AI 厂商对内、对外合作模式。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.whitehouse.gov/fact-sheets/2026/06/fact-sheet-president-donald-j-trump-signs-historic-directive-on-ai-in-the-national-security-enterprise/" target="_blank" rel="noopener">白宫官网</a> · <a href="https://www.explainx.ai/blog/gpt-5-6-government-approval-lutnick-altman-june-2026" target="_blank" rel="noopener">ExplainX</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.48s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">G7</span><span class="tag">出口管制</span><span class="tag">AI 治理</span><span class="tag">前沿模型</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">G7 激烈辩论前沿 AI 访问权归属：Mythos 5/Fable 5 对非美用户下线</h3>
+                <p class="news-summary">随美国 AI 行政令持续落地，G7 国家正激烈辩论前沿 AI 模型应被视为「共享民主资源」还是「单边国家安全资产」。在此背景下，Anthropic 旗下 Claude Fable 5 和 Mythos 5 已对非美国用户（包括 Anthropic 自身非公民员工）部分下线，遵循美国出口管制指令。这标志着前沿 AI 模型正式进入「战略性基础设施」监管时代，与 GPT-5.6 白宫审批共同构成「美方主导的 AI 出口管制新秩序」。</p>
+                <div class="news-sources"><span class="source-label">来源（合并2源）：</span><a href="https://www.36kr.com/p/3855560387450113" target="_blank" rel="noopener">36氪</a> · <a href="https://www.anthropic.com/claude/mythos" target="_blank" rel="noopener">Anthropic Mythos</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.56s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">安全牛</span><span class="tag">AI 大模型安全评估</span><span class="tag">白皮书</span><span class="tag">行业报告</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">安全牛发布《2026 年 AI 大模型安全评估及防护技术应用指南》：数据/内容/智能体/供应链四维风险</h3>
+                <p class="news-summary">安全牛 6 月 17 日发布《2026 年 AI 大模型安全评估及防护技术应用指南报告》。报告聚焦 2026 年 AI 大模型规模化落地背景下的安全风险、治理架构、技术体系与主流厂商方案，指出 AI 产业高速发展同步催生全新安全窗口期，覆盖数据安全、内容安全、智能体安全、供应链安全、身份权限五大方向，并梳理了国内主流厂商（含奇安信、深信服、绿盟、天融信、安恒、360、启明星辰、华为、腾讯云、阿里云）的防护方案。</p>
+                <div class="news-sources"><span class="source-label">来源：</span><a href="https://www.sohu.com/a/1037917799_121752158" target="_blank" rel="noopener">搜狐-安全牛</a></div>
+            </div>
+
+            <div class="news-card" style="animation-delay:0.64s">
+                <div class="news-header">
+                    <div class="news-tags"><span class="tag">CISA</span><span class="tag">FIRST</span><span class="tag">CVE 预测</span><span class="tag">AI 漏洞</span></div>
+                    <span class="importance">🔥</span>
+                </div>
+                <h3 class="news-title">CISA 预测 2026 年 CVE 数量将达 6.6 万：AI 驱动漏洞发现加速但真实威胁未变</h3>
+                <p class="news-summary">安全事件响应与安全团队论坛（FIRST）发布的 2026 年漏洞预测显示，今年公开的 CVE 数量可能达到约 6.6 万个，其中 AI 驱动的漏洞自动发现工具（如 Snyk DeepCode AI、GitHub Copilot Security、Sysdig Agent）贡献了显著的「发现侧增量」。报告同时指出「真实威胁未变」——可被利用的漏洞比例保持稳定，但攻击面已从传统应用扩展到 LLM 智能体、AI 编码助手、模型供应链。</p>
+                <div class="news-sources"><span class="source-label">来源：</span><a href="https://www.freebuf.com/articles/ai-security/486620.html" target="_blank" rel="noopener">FreeBuf</a></div>
+            </div>
+</div>
+
+<!-- Trend Insight -->
+<div class="trend">
+    <h3>🔮 今日趋势判断</h3>
+    <p>1. <span class='highlight'>模型蒸馏攻防战正式进入立法层面：</span>Anthropic vs 阿里 2880 万次交互事件已超出技术争议范畴，美国参议院正推动将「AI 模型输出非法获取」纳入国防授权法案制裁范围。这意味着模型供应链安全的定义正在从「技术防护」向「法律武器化」演进，AI 模型输出本身正在成为战略管制品。<br><br>2. <span class='highlight'>前沿 AI 模型「白宫安全锁」模式：</span>6 月 26 日 OpenAI GPT-5.6 与 Anthropic Mythos 5 同日进入「美政府审批 + 可信合作伙伴限量」模式，是 AI 从「技术创新」进入「战略管控」新阶段的关键标志。配合 6/5 特朗普 AI 国家安全行政令、G7 出口管制辩论，前沿 AI 模型的「类核武」监管逻辑已成型。<br><br>3. <span class='highlight'>国产开源模型安全能力首次对标突破：</span>GLM 5.2 在 Semgrep IDOR 基准上击败 Claude 不是偶然——它标志着中国开源模型在安全赛道上的竞争力已从「性价比」切换到「能力对等」。安全厂商需关注这一趋势对国内 AI 安全产品生态的连锁影响，国内厂商应加快基于国产基础模型的 AI 安全产品适配。<br><br>4. <span class='highlight'>RSI 安全框架真空亟待填补：</span>NVIDIA+剑桥「红皇后哥德尔机」论文让 RSI 从概念走向可工程化训练算法，Jack Clark 的 60% RSI 预测为 2028 年底。当前 OWASP / NIST 的 AI 安全框架均假设模型由人类开发和控制——如果 AI 能自我改进，所有这些框架都需要重新设计，这是一个尚未被充分定价的安全风险。<br><br>5. <span class='highlight'>AI Agent 治理形成「围栏 + 身份 + 研发防护」三轨并进：</span>本周国内出现密集落地：华为 OpenClaw 三层围栏 + 360 倚天屠龙 + 奇安信 QAgent Fabric + 天融信 TopLMG + 安恒恒脑 3.0 同步发布。国际端 Zscaler 零信任 + Cisco Splunk Agentic Enterprise + AppViewX AI Agent 身份 + Microsoft Agent 365 GA。AI Agent 安全正在从「概念定义」走向「产品级实战」阶段。<br><br>6. <span class='highlight'>Q2 收官与 Q3 序幕：</span>今天是 6 月最后一天，回看 6 月：奇安信五天五连发 + 360 倚天屠龙 + 华为 OpenClaw 白皮书 + 阿里 GLM 5.2 突破 + Anthropic Mythos 5 解禁 + GPT-5.6 白宫安全锁 + NVIDIA 红皇后哥德尔机 + Sysdig 首例 LLM Agent 攻击实录——6 月无疑是 AI 安全行业 2026 年最具里程碑意义的月份。7 月初预计将迎来 Q3 季度的第一波产品迭代潮，重点关注 RSAC 2027 路线图预热、PANW Prisma AIRS 3.x、CrowdStrike Charlotte AI 下一阶段、奇安信/深信服 Q3 路线图发布。</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>AI 安全日报 · 每日自动生成 · <a href="https://github.com/aaronxi9527/ai-hot-daily" target="_blank">GitHub</a></p>
+    <p style="margin-top:4px;">数据来源：公开安全媒体、厂商官网、行业报告 | 仅供参考，不构成投资建议</p>
+</div>
+
+</div>
+
+<script>
+(function() {
+    var cards = document.querySelectorAll('.news-card');
+    if (!cards.length) return;
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    cards.forEach(function(card) { observer.observe(card); });
+})();
+</script>
+
+</body>
+</html>
