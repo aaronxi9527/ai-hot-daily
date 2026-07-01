@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-01</title>
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;
+  --border:#222222;--text:#e5e5e5;--text2:#999999;
+  --c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  min-height:100vh;
+}
+.nav{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,10,10,0.85);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:56px;display:flex;align-items:center;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.nav-brand span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{margin-left:auto;font-size:13px;color:var(--text2)}
+.hero{
+  padding:64px 24px 48px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(91,108,247,0.12),transparent 70%);
+}
+.hero-icon{font-size:48px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-meta{color:var(--text2);font-size:14px;margin-top:8px}
+.hero-badge{
+  display:inline-block;margin-top:16px;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;font-size:13px;font-weight:600;
+  padding:6px 18px;border-radius:20px;
+}
+.ai-summary{
+  max-width:720px;margin:-20px auto 40px;padding:0 24px;
+}
+.ai-summary-inner{
+  background:linear-gradient(135deg,rgba(91,108,247,0.08),rgba(139,92,246,0.08));
+  border:1px solid rgba(91,108,247,0.2);
+  border-radius:16px;padding:24px 28px;
+}
+.ai-summary-label{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+}
+.ai-summary p{font-size:14.5px;line-height:1.75;color:#d4d4d4}
+.section{
+  max-width:1200px;margin:0 auto;padding:0 24px 40px;
+}
+.section-title{
+  font-size:18px;font-weight:700;margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title span{
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:15px;
+}
+.news-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:22px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;
+  opacity:0;transform:translateY(24px);
+  animation:fadeUp 0.5s ease forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.news-card:hover{
+  border-color:rgba(139,92,246,0.4);
+  box-shadow:0 4px 24px rgba(91,108,247,0.1);
+  transform:translateY(-2px);
+}
+.card-header{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag-vendor,.tag-industry,.tag-type{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px}
+.card-title{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:10px;color:#f0f0f0}
+.card-summary{font-size:13px;line-height:1.7;color:var(--text2);margin-bottom:14px}
+.card-links{display:flex;flex-wrap:wrap;gap:12px}
+.card-link{font-size:12px;color:var(--c2);text-decoration:none;font-weight:600}
+.card-link:hover{color:#a78bfa;text-decoration:underline}
+.footer{
+  text-align:center;padding:32px 24px;color:var(--text2);font-size:12px;
+  border-top:1px solid var(--border);
+}
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:40px 16px 32px}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>🛡️ 防火墙厂商日报</span></div>
+  <div class="nav-date">2026-07-01 周三</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">🛡️</div>
+  <h1><span>中国防火墙厂商日报</span></h1>
+  <div class="hero-meta">2026-07-01 周三 · 精选 11 条动态</div>
+  <div class="hero-badge">实时聚合 · AI 解读 · 去重合并</div>
+</div>
+
+<div class="ai-summary">
+  <div class="ai-summary-inner">
+    <div class="ai-summary-label">🧠 AI 今日看点</div>
+    <p>今天资本市场对网安板块反应最激烈：天融信6月30日涨停，AI安全+智算云概念成为核心驱动力；启明星辰、山石网科等个股也在6月底出现资金异动。厂商侧，深信服拿下深圳世界之窗防火墙续保项目，奇安信入选Forrester全球企业防火墙代表厂商并持续中标万兆防火墙项目，国际厂商Fortinet G系列NGFW新品也带来参照。行业侧，金融监管总局2026年规章计划继续推动保险合规升级。整体来看，6月底市场热点从单纯的产品发布转向“资本面+政策面+订单面”三线共振。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span>🏢 厂商动态</span></div>
+  <div class="grid">
+<article class="news-card" style="animation-delay:0.0s"><div class="card-header"><span class="tag-vendor" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">深信服</span><span class="tag-type" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">中标项目</span></div><h3 class="card-title">深圳世界之窗有限公司2026年深信服防火墙安全模块升级和容灾授权模块续保项目公告</h3><p class="card-summary">深圳世界之窗发布2026年深信服防火墙安全模块升级和容灾授权模块续保项目公告，显示文旅企业在关键业务系统上的防火墙维保需求持续释放。</p><div class="card-links"><a href="http://www.dlzb.cn/news/202606/30/708895.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.08s"><div class="card-header"><span class="tag-vendor" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">山石网科</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">山石网科6月底股价与主力资金动态（合并2源）</h3><p class="card-summary">截至6月29日收盘，山石网科报收于15.12元，下跌0.53%，主力资金净买入111.39万元，显示市场在双A战略落地后情绪相对平稳。 截至6月30日收盘，山石网科报收于15.79元，上涨4.43%，主力资金净流出45.35万元，游资与散户资金出现分歧。</p><div class="card-links"><a href="https://www.msn.cn/zh-cn/money/%E7%83%AD%E9%97%A8%E8%82%A1/%E5%B1%B1%E7%9F%B3%E7%BD%91%E7%A7%91-688030-6%E6%9C%8829%E6%97%A5%E4%B8%BB%E5%8A%9B%E8%B5%84%E9%87%91%E5%87%80%E4%B9%B0%E5%85%A5111-39%E4%B8%87%E5%85%83/ar-AA26MlTb" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a> <a href="https://www.msn.cn/zh-cn/money/%E7%83%AD%E9%97%A8%E8%82%A1/%E5%B1%B1%E7%9F%B3%E7%BD%91%E7%A7%91-688030-6%E6%9C%8830%E6%97%A5%E4%B8%BB%E5%8A%9B%E8%B5%84%E9%87%91%E5%87%80%E5%8D%96%E5%87%BA45-35%E4%B8%87%E5%85%83/ar-AA26Sa0M" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.16s"><div class="card-header"><span class="tag-vendor" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">天融信</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">天融信6月30日涨停，主力资金净流入9656万元（合并2源）</h3><p class="card-summary">6月30日天融信触及涨停，涨停价6.14元，涨幅10.04%，总市值72.42亿元。AI安全、智算云与业务优化成为市场追捧的核心逻辑。 6月30日天融信报收于5.98元，上涨7.17%，主力资金净买入9656.46万元，与当日涨停形成共振。</p><div class="card-links"><a href="https://finance.sina.com.cn/stock/aiassist/ydfx/2026-06-30/doc-inifczzy1631559.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a> <a href="https://www.msn.cn/zh-cn/news/other/%E5%A4%A9%E8%9E%8D%E4%BF%A1-002212-6%E6%9C%8830%E6%97%A5%E4%B8%BB%E5%8A%9B%E8%B5%84%E9%87%91%E5%87%80%E4%B9%B0%E5%85%A5965646%E4%B8%87%E5%85%83/ar-AA26RZsd" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.24s"><div class="card-header"><span class="tag-vendor" style="background:#F9731620;color:#F97316;border:1px solid #F9731660">启明星辰</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">启明星辰6月26日/30日主力资金动态（合并2源）</h3><p class="card-summary">6月30日启明星辰报收于12.65元，上涨2.1%，主力资金净流入72.86万元，整体表现温和。 6月26日启明星辰报收于12.56元，下跌4.12%，主力资金净流出2797.27万元。</p><div class="card-links"><a href="https://www.msn.cn/zh-cn/money/%E7%83%AD%E9%97%A8%E8%82%A1/%E5%90%AF%E6%98%8E%E6%98%9F%E8%BE%B0-002439-6%E6%9C%8830%E6%97%A5%E4%B8%BB%E5%8A%9B%E8%B5%84%E9%87%91%E5%87%80%E4%B9%B0%E5%85%A572-86%E4%B8%87%E5%85%83/ar-AA26Ro2B" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a> <a href="https://www.msn.cn/zh-cn/money/%E7%83%AD%E9%97%A8%E8%82%A1/%E5%90%AF%E6%98%8E%E6%98%9F%E8%BE%B0-002439-6%E6%9C%8826%E6%97%A5%E4%B8%BB%E5%8A%9B%E8%B5%84%E9%87%91%E5%87%80%E5%8D%96%E5%87%BA2797-27%E4%B8%87%E5%85%83/ar-AA26AFtc" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.32s"><div class="card-header"><span class="tag-vendor" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">天融信</span><span class="tag-type" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D460">行业大会</span></div><h3 class="card-title">天融信出席2026 IT市场年会网络安全研讨会，共话AI时代安全新范式</h3><p class="card-summary">天融信应邀参加2026 IT市场年会网络安全研讨会，围绕安全产业从“合规导向”走向“效果导向”、以智能化与开放生态构建新一代安全能力提出建议。</p><div class="card-links"><a href="https://www.sohu.com/a/1043008766_290304" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.4s"><div class="card-header"><span class="tag-vendor" style="background:#EC489920;color:#EC4899;border:1px solid #EC489960">天融信</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">天融信（002212）6月26日主力资金净卖出2808.20万元</h3><p class="card-summary">6月26日天融信报收于5.6元，下跌4.76%，主力资金净流出2808.2万元，显示涨停前几日资金仍有波动。</p><div class="card-links"><a href="https://www.msn.cn/zh-cn/money/%E7%83%AD%E9%97%A8%E8%82%A1/%E5%A4%A9%E8%9E%8D%E4%BF%A1-002212-6%E6%9C%8826%E6%97%A5%E4%B8%BB%E5%8A%9B%E8%B5%84%E9%87%91%E5%87%80%E5%8D%96%E5%87%BA2808-20%E4%B8%87%E5%85%83/ar-AA26ADh2" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.48s"><div class="card-header"><span class="tag-vendor" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">奇安信</span><span class="tag-type" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">中标项目</span></div><h3 class="card-title">中标公告-奇安信万兆防火墙采购采购结果公示（2026-JXIOZA-W9001）</h3><p class="card-summary">奇安信万兆防火墙采购项目（2026-JXIOZA-W9001）结果公示，位于北京石景山区，体现政企客户在万兆边界防护上的采购需求。</p><div class="card-links"><a href="https://www.rccchina.com/services/bid_project_list/bTh2gxJ0eeBb2Eigs0ErnA==" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.56s"><div class="card-header"><span class="tag-vendor" style="background:#EF444420;color:#EF4444;border:1px solid #EF444460">奇安信</span><span class="tag-type" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">市场动态</span></div><h3 class="card-title">奇安信入选全球《企业防火墙解决方案全景图》代表厂商</h3><p class="card-summary">国际权威咨询机构Forrester发布《企业防火墙解决方案全景图，Q2 2026》报告，奇安信入选全球20家企业防火墙代表厂商，标志着国产防火墙在国际机构中的认可度持续提升。</p><div class="card-links"><a href="https://stock.10jqka.com.cn/20260610/c677362599.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.64s"><div class="card-header"><span class="tag-vendor" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">其他</span><span class="tag-type" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F660">新品发布</span></div><h3 class="card-title">Fortinet全新G系列防火墙：分布式企业的安全性能双保障</h3><p class="card-summary">Fortinet正式发布FortiGate 70G、50G、30G等G系列下一代防火墙新品，面向分布式企业日益增长的安全与性能需求。</p><div class="card-links"><a href="https://www.qxoos.cn/article/8224969491.html" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span>🏭 行业动态</span></div>
+  <div class="grid">
+<article class="news-card" style="animation-delay:0.72s"><div class="card-header"><span class="tag-industry" style="background:#10B98120;color:#10B981;border:1px solid #10B98160">政府</span><span class="tag-type" style="background:#6B728020;color:#6B7280;border:1px solid #6B728060">行业动态</span></div><h3 class="card-title">中国招投标公共服务平台介绍</h3><p class="card-summary">中国招投标公共服务平台通过交易公开服务，依法公开招投标全流程信息，包括招标公告、开标记录、评标公示、中标公告、合同签约等。</p><div class="card-links"><a href="https://tech.huanqiu.com/article/9CaKrnJNMUl" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+<article class="news-card" style="animation-delay:0.8s"><div class="card-header"><span class="tag-industry" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B60">金融</span><span class="tag-type" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF660">合规新规</span></div><h3 class="card-title">金融监管总局2026年拟出台多项保险领域管理办法</h3><p class="card-summary">国家金融监督管理总局发布2026年规章制定工作计划，预备制定、修订《保险资金运用管理办法》《保险公司偿付能力管理办法》等，金融合规要求持续升级。</p><div class="card-links"><a href="https://finance.cctv.com/2026/06/23/ARTIlD0oVaNYFl6ikGOPrO88260623.shtml" target="_blank" rel="noopener" class="card-link">查看来源 &rarr;</a></div></article>
+  </div>
+</div>
+
+<div class="footer">
+  数据来源：WebSearch 实时聚合 · 生成时间：2026-07-01 08:50 (GMT+8) · 由 WorkBuddy 自动化生成
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+});
+document.querySelectorAll('.news-card').forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
