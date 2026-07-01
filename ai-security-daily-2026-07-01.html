@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-07-01</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --card: #111827;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+  --accent-1: #5B6CF7;
+  --accent-2: #8B5CF6;
+  --accent-3: #EC4899;
+  --gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  --red: #ef4444;
+  --orange: #f59e0b;
+  --green: #10b981;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 0 56px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(91,108,247,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.hero-date {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 32px;
+  text-align: center;
+  min-width: 120px;
+  transition: border-color 0.3s;
+}
+
+.stat-card:hover {
+  border-color: var(--accent-1);
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* AI Overview */
+.overview {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.overview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient);
+  border-radius: 16px 16px 0 0;
+}
+
+.overview-header {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.overview-header .icon {
+  font-size: 24px;
+}
+
+.overview p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.overview p:last-child {
+  margin-bottom: 0;
+}
+
+.overview .highlight {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 56px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.section-count {
+  font-size: 13px;
+  color: var(--text-dim);
+  background: var(--card);
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+/* Cards */
+.cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: border-color 0.2s, transform 0.2s;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.news-card:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+}
+
+.news-card:nth-child(1) { animation-delay: 0.05s; }
+.news-card:nth-child(2) { animation-delay: 0.10s; }
+.news-card:nth-child(3) { animation-delay: 0.15s; }
+.news-card:nth-child(4) { animation-delay: 0.20s; }
+.news-card:nth-child(5) { animation-delay: 0.25s; }
+.news-card:nth-child(6) { animation-delay: 0.30s; }
+.news-card:nth-child(7) { animation-delay: 0.35s; }
+.news-card:nth-child(8) { animation-delay: 0.40s; }
+.news-card:nth-child(9) { animation-delay: 0.45s; }
+.news-card:nth-child(10) { animation-delay: 0.50s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.news-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.importance {
+  font-size: 14px;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.tag-vendor {
+  background: rgba(91,108,247,0.15);
+  color: #818cf8;
+}
+
+.tag-category {
+  background: rgba(139,92,246,0.15);
+  color: #a78bfa;
+}
+
+.tag-industry {
+  background: rgba(236,72,153,0.12);
+  color: #f472b6;
+}
+
+.news-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #f3f4f6;
+}
+
+.news-summary {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.news-sources {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.source-link {
+  color: #818cf8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.source-link:hover {
+  color: #a5b4fc;
+  text-decoration: underline;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-dim);
+  font-size: 15px;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+}
+
+.empty-state::before {
+  content: '🌊';
+  display: block;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+/* Trend Summary */
+.trend-summary {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 48px;
+}
+
+.trend-summary h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.trend-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.trend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.trend-dot.red { background: var(--red); }
+.trend-dot.orange { background: var(--orange); }
+.trend-dot.purple { background: var(--accent-2); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 48px 0 32px;
+  color: var(--text-dim);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+}
+
+.footer a {
+  color: var(--accent-1);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 48px 0 32px; }
+  .hero h1 { font-size: 28px; }
+  .hero-stats { gap: 12px; }
+  .stat-card { padding: 14px 20px; min-width: 80px; }
+  .stat-number { font-size: 28px; }
+  .section-title { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<section class="hero">
+  <span class="hero-icon">🤖</span>
+  <h1>AI 安全日报</h1>
+  <p class="hero-date">2026 年 7 月 1 日 · 星期三</p>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">🏢 国际产品</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">🇨🇳 国内产品</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">9</div>
+      <div class="stat-label">📊 行业动态</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">11</div>
+      <div class="stat-label">📋 总计</div>
+    </div>
+  </div>
+</section>
+
+<!-- AI 总览 -->
+<section class="overview">
+  <div class="overview-header"><span class="icon">🧠</span> AI 总览</div>
+  <p>7 月 1 日，AI 安全领域迎来<span class="highlight">三重里程碑同日交汇</span>：<span class="highlight">欧盟 AI Act 高风险条款正式生效</span>——全球 AI 监管从立法时代进入执法时代；<span class="highlight">Anthropic Fable 5/Mythos 5 出口管制解除</span>——结束了长达 18 天的「前沿 AI 史上最短命禁令」，Anthropic 以 Sonnet 5 + Claude Science 两连发强势回应；<span class="highlight">PANW 与 CrowdStrike 创史上最佳季度</span>——AI 网安从概念叙事进入业绩兑现期。</p>
+  <p>值得警惕的是，Bruce Schneier 同日发出警告：AI 正将网络攻击门槛降至「史上最低」，而 Gartner 数据显示企业在 AI 工具上的支出是安全支出的 17 倍——<span class="highlight">「跑得越快，安全带越松」</span>的失衡正在加速。Apple 同日修复的 30+ 漏洞中，有 4 个 WebKit 关键缺陷由 AI 工具独立发现——AI 既是矛也是盾的「双刃剑效应」已从预言变为日常。</p>
+  <p>今日产品侧整体偏静——Q2 末至 Q3 初的交替窗口期，国内外厂商发布节奏放缓。预计 7 月中旬 Q3 第一波产品迭代潮将至。行业侧密度极高，监管、管制解除、市场数据、攻击事件四线并进，为 H2 2026 定下基调。</p>
+</section>
+
+<!-- Sections -->
+
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">🏢 国际友商产品动态</h2>
+            <span class="section-count">2 条动态</span>
+        </div>
+        <div class="cards-grid">
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥</span>
+            <div class="news-tags"><span class="tag tag-vendor">Google</span> <span class="tag tag-category">Security Copilot</span></div>
+        </div>
+        <h3 class="news-title">Google SecOps 上线「Ask Gemini Cloud Assist」AI 驱动 Feed 管理助手</h3>
+        <p class="news-summary">Google SecOps 平台正式集成 Ask Gemini Cloud Assist，为安全运营团队提供 AI 驱动的数据源创建、配置指导与排障建议。该助手内嵌至 Feed Management 界面，可基于上下文生成针对性推荐，但不会自动执行配置变更，所有操作仍需人工确认——体现了「AI 辅助、人做决策」的安全设计理念。</p>
+        <div class="news-sources">📎 <a href="https://security.googlecloudcommunity.com/google-security-operations-2/what-s-new-in-google-secops-2026-06-28-7801" target="_blank" rel="noopener" class="source-link">Google SecOps Changelog</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥</span>
+            <div class="news-tags"><span class="tag tag-vendor">Google</span> <span class="tag tag-category">威胁情报</span></div>
+        </div>
+        <h3 class="news-title">Google Threat Intelligence 上线 AI 增强「目标技术监控列表」预测型威胁情报</h3>
+        <p class="news-summary">Google Threat Intelligence 新增两大 AI 能力：(1) 从 Splunk 事件自动生成威胁配置文件推荐，打通 SIEM→TI 闭环；(2) 目标技术监控列表（Target Technology Watchlist），利用 AI 主动预测漏洞利用趋势，帮助防御方从传统「发现→修复」被动模式转向「预测→预防」主动姿态。同步发布了俄罗斯 Turla 组织 STOCKSTAY 后门及 Cisco CVE-2026-20245 零日漏洞深度分析。</p>
+        <div class="news-sources">📎 <a href="https://security.googlecloudcommunity.com/google-security-operations-2/what-s-new-in-google-secops-2026-06-28-7801" target="_blank" rel="noopener" class="source-link">Google SecOps Changelog</a></div>
+    </div>
+    </div>
+    </section>
+    
+
+
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">🇨🇳 国内友商产品动态</h2>
+            <span class="section-count">0 条动态</span>
+        </div>
+        <div class="cards-grid"><div class="empty-state">今日无新增国内产品动态，行业持续平稳。上轮密集发布（奇安信发布周/ISC.AI/BCS）已收官，静待 Q3 新一波迭代</div></div>
+    </section>
+    
+
+
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📊 行业动态与趋势</h2>
+            <span class="section-count">9 条动态</span>
+        </div>
+        <div class="cards-grid">
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥🔥🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">政策法规</span></div>
+        </div>
+        <h3 class="news-title">🇪🇺 EU AI Act 高风险条款今日正式全面生效</h3>
+        <p class="news-summary">2026 年 7 月 1 日，欧盟《人工智能法案》(Regulation (EU) 2024/1689) 高风险 AI 系统条款正式进入全面执行阶段。这是全球首部综合性 AI 法规从立法走向执法的里程碑时刻。违规企业面临最高 3500 万欧元或全球年营收 7% 的罚款。法案覆盖 AI 系统全生命周期——从训练数据治理、透明性披露到人类监督机制——对全球 AI 供应链产生深远影响。中国 AI 企业出海欧洲将面临合规新门槛。</p>
+        <div class="news-sources">📎 <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener" class="source-link">EU AI Act Official</a> · <a href="https://echelongraph.io/blog/eu-ai-act-2026-enforcement-guide" target="_blank" rel="noopener" class="source-link">Echelon Graph Enforcement Guide</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥🔥🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">前沿模型</span></div>
+        </div>
+        <h3 class="news-title">Anthropic 三部曲：Fable 5/Mythos 5 解禁 + Claude Sonnet 5 发布 + Claude Science 上线</h3>
+        <p class="news-summary">6 月 30 日深夜至 7 月 1 日凌晨，Anthropic 连发三弹：(1) 美国商务部正式解除对 Claude Fable 5 和 Mythos 5 的出口管制，明日恢复全球访问——结束了自 6 月 12 日起长达 18 天的管制令；(2) 同步发布 Claude Sonnet 5，定位为「史上最强 Agent 能力的 Sonnet」，性能接近 Opus 4.8，定价更低，重点强化安全能力和智能体可靠性；(3) 推出 Claude Science——面向科研人员的 AI 工作台。此举被业界视为 Anthropic 对管制事件的「强势回应」——管制解除、新品上线、生态扩展三线并进。</p>
+        <div class="news-sources">📎 <a href="https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/" target="_blank" rel="noopener" class="source-link">TechCrunch</a> · <a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener" class="source-link">Anthropic Blog</a> · <a href="https://www.msn.cn/zh-cn/entertainment/%E9%80%9A%E7%94%A8/%E5%88%9A%E5%88%9A-fable-5%E8%A7%A3%E7%A6%81-anthropic%E8%BF%9E%E5%A4%9C%E5%8F%91-%E6%80%A7%E4%BB%B7%E6%AF%94-%E6%96%B0%E6%A8%A1%E5%9E%8B-%E7%BD%91%E5%8F%8B-%E6%84%9F%E8%B0%A2%E4%B8%AD%E5%9B%BD%E5%BC%80%E6%BA%90%E4%B8%A5%E7%88%B6/ar-AA26VjS5" target="_blank" rel="noopener" class="source-link">智东西 / MSN</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥🔥🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">市场数据</span></div>
+        </div>
+        <h3 class="news-title">PANW & CrowdStrike 双双创史上最佳季度，AI 网安需求井喷</h3>
+        <p class="news-summary">CNBC 6 月 30 日报道：Palo Alto Networks 与 CrowdStrike 双双交出了史上最佳季度成绩单。PANW 2026 财年 Q3 业绩远超华尔街预期并上调全年指引，盘后股价一度飙升逾 13%。两家公司股价在 4-6 月分别累计上涨 113%（PANW）和 95%（CRWD）。报道指出，自主 AI 代理（Agentic AI）的普及正在催生新一代网络安全需求——「企业不仅需要防御人类攻击者，还需要防御 AI 攻击者」。PANW 年初完成的 $250 亿收购整合效应开始显现。</p>
+        <div class="news-sources">📎 <a href="https://www.cnbc.com/2026/06/30/palo-alto-crowdstrike-stock-ai-mythos.html" target="_blank" rel="noopener" class="source-link">CNBC</a> · <a href="https://finance.sina.com.cn/stock/usstock/summary/2026-07-01/doc-iniffumk6390837.shtml" target="_blank" rel="noopener" class="source-link">新浪财经</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">安全趋势</span></div>
+        </div>
+        <h3 class="news-title">Bruce Schneier 重磅警告：AI 正将网络攻击门槛降至「史上最低」</h3>
+        <p class="news-summary">安全领域传奇人物 Bruce Schneier 在 The Guardian 发表深度评论，指出现代 AI 系统实质上已成为帮助攻击者实施有害行为的「万能顾问」。五眼联盟（Five Eyes）国家安全机构罕见联合发出警告：AI 模型已具备自主黑客攻击能力，从前需要高度专业技能的侦察、漏洞利用、横向移动等任务正被 AI 自动化工具取代。Schneier 警告：「攻击门槛下降的速度超过了防御能力提升的速度」——这对传统基于人类行为模式的防御策略构成根本性挑战。</p>
+        <div class="news-sources">📎 <a href="https://www.theguardian.com/commentisfree/2026/jun/29/cyber-attacks-ai" target="_blank" rel="noopener" class="source-link">The Guardian</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">安全事件</span></div>
+        </div>
+        <h3 class="news-title">伪装成 Perplexity AI 的恶意 Chrome 扩展截获搜索与地址栏输入</h3>
+        <p class="news-summary">微软发现一款伪装成 AI 搜索引擎 Perplexity 的恶意 Chrome 扩展，该扩展静默记录用户搜索内容，并将地址栏中输入的每一个字符实时转发至攻击者控制的服务器，然后将用户重定向至真实搜索结果——全程对用户透明。Google 在负责任披露后已将其从应用商店下架。该事件揭示了一种新型攻击模式：利用用户对 AI 工具的信任进行社会工程学攻击，传统网络边界和端点安全控制难以有效检测。</p>
+        <div class="news-sources">📎 <a href="https://thehackernews.com/2026/06/malicious-perplexity-chrome-extension.html" target="_blank" rel="noopener" class="source-link">The Hacker News</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">漏洞披露</span></div>
+        </div>
+        <h3 class="news-title">Apple 紧急修复 30+ 漏洞，Anthropic Claude / OpenAI Codex Security 发现 WebKit 关键 0-day</h3>
+        <p class="news-summary">Apple 发布大规模安全更新，修复 iOS/macOS/Safari 逾 30 个漏洞。其中四个 WebKit 关键漏洞由 AI 工具主动发现——Anthropic Claude 和 OpenAI Codex Security 在浏览器引擎中定位到内存损坏缺陷。关键漏洞 CVE-2026-43707 可被利用实现驱动式攻击（drive-by compromise）。这一事件标志 AI 驱动的漏洞挖掘已进入实战产出阶段——AI 从「辅助工具」进化为「独立漏洞猎人」。</p>
+        <div class="news-sources">📎 <a href="https://thehackernews.com/2026/06/apple-patches-30-ios-macos-safari-flaws.html" target="_blank" rel="noopener" class="source-link">The Hacker News</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">行业报告</span></div>
+        </div>
+        <h3 class="news-title">Gartner: 企业 AI 工具支出是 AI 安全支出的 17 倍，安全投入严重失衡</h3>
+        <p class="news-summary">Gartner 最新数据显示，2026 年全球信息安全支出预计达到 $2442 亿美元（同比增长 13.3%），但企业在 AI 工具上的支出是 AI 安全支出的 17 倍。Gartner 将 2026 年定义为 AI 安全「拐点年」，警告「AI 的无序发展、地缘政治紧张、监管波动和加速的威胁态势」四大驱动力正在重塑 CISO 的职责边界。安全牛等国内媒体同步指出，国内企业落地 AI 安全时普遍面临四大不确定核心风险。</p>
+        <div class="news-sources">📎 <a href="https://softwarestrategiesblog.com/2026/03/24/information-security-spending-2026/" target="_blank" rel="noopener" class="source-link">Gartner (Software Strategies Blog)</a> · <a href="https://www.cnitom.com/security/202605/78134.html" target="_blank" rel="noopener" class="source-link">Gartner 中国深度解读</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">行业事件</span></div>
+        </div>
+        <h3 class="news-title">Meta 承包商冒充青少年测试竞品 AI 聊天机器人安全性</h3>
+        <p class="news-summary">WIRED 独家报道：数百名 Meta 承包商伪装成未成年人，系统性地向 Gemini、ChatGPT 等竞争对手聊天机器人发送涉及自杀、性、毒品等高风险话题的查询，测试其内容安全策略的有效性。此举揭示了「对抗性提示工程」(Adversarial Prompt Engineering）在企业竞争情报与 AI 安全研究中的广泛应用——也引发了关于 AI 安全测试伦理边界的争议。</p>
+        <div class="news-sources">📎 <a href="https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/" target="_blank" rel="noopener" class="source-link">WIRED</a></div>
+    </div>
+    
+
+    <div class="news-card">
+        <div class="news-header">
+            <span class="importance">🔥</span>
+            <div class="news-tags"><span class="tag tag-industry">标准框架</span></div>
+        </div>
+        <h3 class="news-title">NIST AI RMF 关键基础设施 Profile 概念文件发布，AI 安全标准加速落地</h3>
+        <p class="news-summary">NIST 于 4 月 7 日发布 AI 风险管理框架（AI RMF 1.0）关键基础设施 Profile 概念文件，为能源、交通、金融等关键基础设施领域的 AI 部署提供针对性风险管理指南。该 Profile 聚焦四大核心功能（治理、映射、测量、管理），与欧盟 AI Act 形成跨大西洋监管呼应。6 月多家安全机构（BlueRadius/GLACIS）发布实施细则指南，推动 AI RMF 从框架走向可操作化。</p>
+        <div class="news-sources">📎 <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener" class="source-link">NIST AI RMF</a> · <a href="https://blueradius.io/nist-ai-rmf-implementation-guide" target="_blank" rel="noopener" class="source-link">BlueRadius Implementation Guide</a></div>
+    </div>
+    </div>
+    </section>
+    
+
+<!-- Trend Summary -->
+<section class="trend-summary">
+  <h2>📈 趋势判断精简版</h2>
+  <div class="trend-items">
+    <div class="trend-item">
+      <span class="trend-dot red"></span>
+      <span><strong>AI 监管从立法走向执法：</strong>EU AI Act 今日生效标志全球 AI 治理进入新阶段。高风险 AI 系统的全生命周期合规要求将重塑全球 AI 供应链。中国 AI 企业出海欧洲面临实质性合规门槛，LLM-WAF/AI-SPM/AI 安全评估等安全产品将迎来合规驱动的新需求。</span>
+    </div>
+    <div class="trend-item">
+      <span class="trend-dot orange"></span>
+      <span><strong>前沿 AI 管制博弈未完待续：</strong>Anthropic Fable 5 从「72 小时下架」到「18 天管制解除」——这不会是最后一次。美国对前沿 AI 的出口管制已成为常态工具，但其执行标准、持续时间和范围仍高度不确定。管制→解除→新管制 的循环将成为行业常态。</span>
+    </div>
+    <div class="trend-item">
+      <span class="trend-dot purple"></span>
+      <span><strong>AI 网安进入业绩兑现期：</strong>PANW/CrowdStrike 史上最佳季度证明 AI 安全需求已从「讲故事」进入「赚真钱」阶段。$244.2B 的市场规模 + 17:1 的投入失衡比意味着巨大增长空间。Q3 预计将迎来新一轮产品迭代和并购整合。</span>
+    </div>
+    <div class="trend-item">
+      <span class="trend-dot red"></span>
+      <span><strong>AI 双刃剑加速旋转：</strong>同日三条线——Schneier 警告攻击门槛降低、Apple 漏洞由 AI 工具发现、恶意 Chrome 扩展伪装 AI 工具——完美诠释 AI 安全的本质矛盾：安全工具和攻击工具用的是同一套技术。防御方的时间窗口在缩窄。</span>
+    </div>
+    <div class="trend-item">
+      <span class="trend-dot purple"></span>
+      <span><strong>Q3 前瞻：</strong>H1 2026 收官——奇安信 5 连发 + 360 倚天屠龙 + 华为 OpenClaw + 安恒恒脑 3.0 + PANW 史上最佳季度 + Anthropic 管制解禁。6 月堪称 AI 安全行业最具里程碑意义的月份。Q3 重点关注：(1) 国内厂商 Q3 产品迭代潮（预计 7 月中旬起）、(2) EU AI Act 执法首月案例、(3) 美国 AI 出口管制后续走向、(4) Black Hat USA 2026 前瞻议题。</span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>🤖 AI 安全日报 · 每日 08:30 (北京时间) 自动生成 · 数据来源：公开网络</p>
+  <p>Powered by WorkBuddy AI · <a href="https://aaronxi9527.github.io/ai-hot-daily/">GitHub Pages</a></p>
+</footer>
+
+</div>
+</body>
+</html>
