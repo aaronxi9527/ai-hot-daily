@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-07-02</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0a0a;color:#e5e7eb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+  .container{max-width:960px;margin:0 auto;padding:24px 16px}
+
+  /* Hero */
+  .hero{text-align:center;padding:48px 24px 32px;position:relative}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(91,108,247,.15) 0%,transparent 70%);pointer-events:none}
+  .hero-icon{font-size:48px;margin-bottom:12px}
+  .hero-title{font-size:36px;font-weight:700;background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+  .hero-date{font-size:16px;color:#9ca3af;margin-bottom:24px}
+  .stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .stat-card{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:16px 24px;text-align:center;min-width:140px;transition:transform .2s}
+  .stat-card:hover{transform:translateY(-2px)}
+  .stat-num{font-size:28px;font-weight:700;background:linear-gradient(135deg,#5B6CF7,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .stat-label{font-size:12px;color:#9ca3af;margin-top:4px}
+
+  /* AI Overview */
+  .overview{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:24px 28px;margin:24px 0;position:relative;overflow:hidden}
+  .overview::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899)}
+  .overview-title{font-size:18px;font-weight:600;color:#f9fafb;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .overview-title .emoji{font-size:20px}
+  .overview-text{font-size:14px;color:#d1d5db;line-height:1.8}
+
+  /* Section */
+  .section{margin:32px 0}
+  .section-header{display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid #1f2937;margin-bottom:16px}
+  .section-icon{font-size:24px}
+  .section-title{font-size:20px;font-weight:600;color:#f9fafb}
+  .section-count{font-size:12px;color:#6b7280;margin-left:auto}
+
+  /* News Card */
+  .card{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:20px 24px;margin-bottom:12px;opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+  .card.visible{opacity:1;transform:translateY(0)}
+  .card:hover{border-color:#374151;background:#151c2c}
+  .card-header{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .importance{font-size:14px;line-height:1}
+  .card-title{font-size:15px;font-weight:600;color:#f9fafb;line-height:1.5}
+  .card-desc{font-size:13px;color:#d1d5db;line-height:1.7;margin-bottom:12px}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .tag{font-size:11px;padding:3px 10px;border-radius:6px;font-weight:500}
+  .tag-vendor{background:rgba(91,108,247,.15);color:#7c8cf8;border:1px solid rgba(91,108,247,.3)}
+  .tag-category{background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.25)}
+  .tag-merge{background:rgba(236,72,153,.1);color:#f472b6;border:1px solid rgba(236,72,153,.2)}
+  .sources{display:flex;gap:8px;flex-wrap:wrap}
+  .source-link{font-size:12px;color:#60a5fa;text-decoration:none;border-bottom:1px solid rgba(96,165,250,.3);transition:border-color .2s}
+  .source-link:hover{border-color:#60a5fa}
+
+  /* Empty State */
+  .empty-state{text-align:center;padding:40px 24px;color:#6b7280;font-size:14px}
+  .empty-emoji{font-size:32px;margin-bottom:8px}
+
+  /* Trend */
+  .trend{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:24px 28px;margin:32px 0}
+  .trend-title{font-size:16px;font-weight:600;color:#f9fafb;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .trend-text{font-size:13px;color:#d1d5db;line-height:1.8}
+
+  /* Footer */
+  .footer{text-align:center;padding:32px 0;color:#4b5563;font-size:12px;border-top:1px solid #1f2937;margin-top:24px}
+
+  /* Animations */
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .hero{animation:fadeInUp .6s ease}
+  .overview{animation:fadeInUp .6s ease .1s both}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-icon">🤖</div>
+    <div class="hero-title">AI 安全日报</div>
+    <div class="hero-date">2026 年 7 月 2 日 · 星期四</div>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">国际产品动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0</div>
+        <div class="stat-label">国内产品动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6</div>
+        <div class="stat-label">行业动态</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="background:linear-gradient(135deg,#EC4899,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">9</div>
+        <div class="stat-label">共计动态</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI 总览 -->
+  <div class="overview">
+    <div class="overview-title"><span class="emoji">🧠</span> AI 总览</div>
+    <div class="overview-text">
+      今天的产品侧有点意思——Cognition 用 Agentic MapReduce 架构搞了个 Devin Security Swarm，72% 召回率扫漏洞还能自动提交修复 PR，算是 AI 代码安全扫描从"检测工具"进化到"自治修复系统"的标志性一步。Factory AI 的 Droid Shield 2.0 也在密钥检测上升级了，Mistral 给 Connectors 加了企业级安全管控。<br><br>
+      但今天的重头戏全在行业侧：Anthropic 一天之内上演了两场风暴——Fable 5 出口管制解除后全球恢复上线（带着新分类器和越狱评分框架），同时 Claude Code 隐蔽追踪中国用户的丑闻被迫撤回，信任危机和产品回归同日交汇，戏剧性拉满。联合国 Bengio 和 Ressa 警告 AI 风险窗口正在收窄，OpenAI GPT-5.6 Sol 也开始受限访问——前沿模型"被管控"正在从个案变成行业常态。Q3 开篇第二天，产品迭代潮还没完全起来，但治理博弈已经白热化了。
+    </div>
+  </div>
+
+  <!-- 版块一：国际友商产品动态 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🏢</span>
+      <span class="section-title">国际友商产品动态</span>
+      <span class="section-count">3 条</span>
+    </div>
+
+    <div class="card" data-delay="0">
+      <div class="card-header">
+        <span class="importance">🔥🔥🔥</span>
+        <span class="card-title">Cognition 发布 Devin Security Swarm — Agentic MapReduce 架构代码安全扫描系统</span>
+      </div>
+      <div class="card-desc">
+        Cognition 推出全新 Devin Security Swarm，基于 Agentic MapReduce 架构（确定性选择器 + 并行受限分片代理 + 归约器），可扫描大型代码库、在沙箱中验证漏洞可利用性、自动提交修复 PR。在 50 个真实 GHSA 漏洞测试中跨 14 种语言达到 72% 召回率，每次运行成本约 $90，发现了其他工具遗漏的关键漏洞。标志着 AI 代码安全扫描从"检测工具"进入"自治修复系统"阶段。
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">Cognition</span>
+        <span class="tag tag-category">代码安全扫描</span>
+        <span class="tag tag-category">Agentic MapReduce</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://cognition.com/blog/introducing-devin-security-swarm" target="_blank" rel="noopener">Cognition 官方</a>
+        <a class="source-link" href="https://www.prnewswire.com/news-releases/cognition-launches-devin-security-swarm-to-tackle-the-vulnerability-backlog-302814800.html" target="_blank" rel="noopener">PR Newswire</a>
+        <a class="source-link" href="https://devin.ai/blog/security-swarm-eval/" target="_blank" rel="noopener">Devin Eval 详情</a>
+      </div>
+    </div>
+
+    <div class="card" data-delay="100">
+      <div class="card-header">
+        <span class="importance">🔥🔥</span>
+        <span class="card-title">Factory AI 发布 Droid Shield 2.0 — 自主工程代理密钥泄露检测系统升级</span>
+      </div>
+      <div class="card-desc">
+        Factory AI 发布 Droid Shield 2.0，面向自主工程代理（Droid）的密钥泄露检测系统重大升级。基于微调检测器，可在仓库级别评估中捕获遗漏的密钥并显著减少误报。专为 AI 编程代理大规模自主提交代码场景设计，解决 AI 生成代码中密钥泄露的新型安全风险。
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">Factory AI</span>
+        <span class="tag tag-category">密钥检测</span>
+        <span class="tag tag-category">AI Agent 安全</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://factory.ai/news/droid-shield-2-0" target="_blank" rel="noopener">Factory AI 官方</a>
+      </div>
+    </div>
+
+    <div class="card" data-delay="200">
+      <div class="card-header">
+        <span class="importance">🔥</span>
+        <span class="card-title">Mistral 新增企业级代理连接器安全控制</span>
+      </div>
+      <div class="card-desc">
+        Mistral 为其 Connectors 系统新增企业级安全控制能力：Scoped API keys（限定范围的 API 密钥）、多账户连接器支持、管理员控制面板、连接器调试器等。为 MCP（Model Context Protocol）连接提供更细粒度的安全管控，面向企业级 AI Agent 集成场景。
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">Mistral</span>
+        <span class="tag tag-category">Agent 连接器安全</span>
+        <span class="tag tag-category">MCP 安全管控</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://mistral.ai/news/more-control-over-connectors/" target="_blank" rel="noopener">Mistral 官方</a>
+        <a class="source-link" href="https://www.ai-360.online/mistral-beefs-up-enterprise-controls-for-its-ai-connectors/" target="_blank" rel="noopener">AI-360</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 版块二：国内友商产品动态 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🇨🇳</span>
+      <span class="section-title">国内友商产品动态</span>
+      <span class="section-count">0 条</span>
+    </div>
+    <div class="empty-state">
+      <div class="empty-emoji">📭</div>
+      Q3 开篇第二天，国内厂商暂无新产品/新功能发布动态。<br>上一波密集发布（奇安信 5 连发 / 华为 OpenClaw / 天融信 TopLMG / 安恒恒脑 3.0 / 360 ISC）已于 6 月收官，<br>预计 7 月中旬将迎来 Q3 季度新一轮产品迭代潮。
+    </div>
+  </div>
+
+  <!-- 版块三：行业动态与趋势 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">行业动态与趋势</span>
+      <span class="section-count">6 条</span>
+    </div>
+
+    <div class="card" data-delay="0">
+      <div class="card-header">
+        <span class="importance">🔥🔥🔥</span>
+        <span class="card-title">Anthropic Fable 5 全球恢复上线 — 出口管制 18 天后解除，新增分类器安全防护 + 越狱严重性评分框架</span>
+      </div>
+      <div class="card-desc">
+        7 月 1 日，Anthropic 恢复 Claude Fable 5 全球访问。此前因 Amazon 报告的网络安全防护绕过漏洞，美国出口管制指令于 6 月 12 日将 Fable 5 和 Mythos 5 全球关闭。恢复上线后新增：(1) 多层防御性分类器，在 99%+ 情况下拦截已知越狱攻击；(2) 业界首个四级越狱严重性评分框架（Low/Medium/High/Critical），提议成为行业通用标准；(3) Anthropic 在发布前一个月将安全与对齐工程团队翻倍。Mythos 5 仍仅限美国获批组织使用。同一事件还关联 OpenAI GPT-5.6 Sol 受限访问——前沿模型"被管控"正从个案变成行业常态。(合并4源)
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">Anthropic</span>
+        <span class="tag tag-category">模型安全防护</span>
+        <span class="tag tag-category">出口管制</span>
+        <span class="tag tag-merge">合并4源</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.anthropic.com/news/redeploying-fable-5" target="_blank" rel="noopener">Anthropic 官方</a>
+        <a class="source-link" href="https://thehackernews.com/2026/07/anthropic-restores-claude-fable-5-after.html" target="_blank" rel="noopener">The Hacker News</a>
+        <a class="source-link" href="https://www.infosecurity-magazine.com/news/anthropic-fable-mythos-back/" target="_blank" rel="noopener">Infosecurity Magazine</a>
+        <a class="source-link" href="https://knightli.com/en/2026/07/01/claude-fable-5-redeployment-jailbreak-framework/" target="_blank" rel="noopener">Knightli</a>
+      </div>
+    </div>
+
+    <div class="card" data-delay="100">
+      <div class="card-header">
+        <span class="importance">🔥🔥🔥</span>
+        <span class="card-title">Anthropic 撤回 Claude Code 隐蔽追踪中国用户功能 — 隐私信任危机与产品回归同日交汇</span>
+      </div>
+      <div class="card-desc">
+        7 月 1 日，安全研究员 Adnane Khan 在 GitHub 发布 Claude Code v2.1.193-v2.1.196 的完整逆向分析报告，揭露 Anthropic 在编程工具 Claude Code 中植入隐蔽检测代码，通过本地时区、IP 地址追踪、封禁邮件埋置追踪代码等多维度手段识别并标记来自中国的代理用户。Reddit 用户 LegitMichel777 同日发布详细逆向工程报告。事件引发开发者社区广泛争议和信任质疑，Anthropic 已撤回该功能。同日 Fable 5 恢复上线——信任危机与产品回归的戏剧性同日交汇。(合并5源)
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">Anthropic</span>
+        <span class="tag tag-category">隐私/信任危机</span>
+        <span class="tag tag-merge">合并5源</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://cybersecuritynews.com/anthropic-claude-hidden-code/" target="_blank" rel="noopener">Cybersecurity News</a>
+        <a class="source-link" href="https://www.huxiu.com/ainews/13630.html" target="_blank" rel="noopener">虎嗅</a>
+        <a class="source-link" href="https://www.theinformation.com/briefings/anthropic-backtracks-spyware-targeting-chinese-users-controversy" target="_blank" rel="noopener">The Information</a>
+        <a class="source-link" href="https://news.qq.com/rain/a/20260701A066JV00" target="_blank" rel="noopener">TechWeb/腾讯新闻</a>
+        <a class="source-link" href="https://www.80aj.com/2026/07/01/anthropic-claude-code-china-user-tracking/" target="_blank" rel="noopener">80AJ</a>
+      </div>
+    </div>
+
+    <div class="card" data-delay="200">
+      <div class="card-header">
+        <span class="importance">🔥🔥🔥</span>
+        <span class="card-title">联合国独立科学委员会发布 AI 初步报告 — Bengio & Ressa 警告风险窗口正在收窄</span>
+      </div>
+      <div class="card-desc">
+        7 月 1 日，联合国独立国际科学委员会发布 AI 初步报告。图灵奖得主 Yoshua Bengio 和诺贝尔和平奖得主 Maria Ressa 联合警告：世界在集中权力、失效防护栏和共享现实威胁变得难以控制之前，协调 AI 风险的窗口期非常狭窄。报告涵盖心理健康、欺骗行为、信息完整性、人权和自主系统控制等风险维度。联合国同时启动 AI for Good 全球委员会，由 Salesforce CEO Marc Benioff 和卢旺达总统 Paul Kagame 共同主持。(合并4源)
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">联合国</span>
+        <span class="tag tag-category">AI 风险治理</span>
+        <span class="tag tag-merge">合并4源</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.reuters.com/legal/litigation/un-report-sees-enormous-potential-benefits-big-risks-ai-2026-07-01/" target="_blank" rel="noopener">Reuters</a>
+        <a class="source-link" href="https://www.axios.com/2026/07/01/un-ai-commission-ceos-world-leaders" target="_blank" rel="noopener">Axios</a>
+        <a class="source-link" href="https://www.un.org/independent-international-scientific-panel-ai/sites/default/files/2026-06/en_Message%20from%20Yoshua%20Bengio%20and%20Maria%20Ressa%20on%20the%20release%20of%20the%20Preliminary%20Report%20of%20the%20Independent%20International%20Scientific%20Panel%20on%20AI%20-%201%20July%202026.pdf" target="_blank" rel="noopener">UN 报告 PDF</a>
+      </div>
+    </div>
+
+    <div class="card" data-delay="300">
+      <div class="card-header">
+        <span class="importance">🔥🔥</span>
+        <span class="card-title">OpenAI GPT-5.6 Sol 受限访问 — 前沿模型访问限制从个案走向行业常态</span>
+      </div>
+      <div class="card-desc">
+        AP 报道将 OpenAI 临时限制 GPT-5.6 Sol 仅对获批客户开放一事与 Anthropic Fable/Mythos 事件关联。此前白宫通过出口管制指令使前沿模型可被远程关闭，模型路线图正变成政策路线图。企业选择 AI 时需考虑监管风险、安全门、出口管制和紧急关闭等新增维度。Andrew Curran 报道白宫正加速推进自愿性 AI 模型标准和基准制定，涉及 Anthropic、CAISI 和 NSA。(合并2源)
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">OpenAI</span>
+        <span class="tag tag-category">模型访问管制</span>
+        <span class="tag tag-vendor">白宫</span>
+        <span class="tag tag-category">AI 标准制定</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://apnews.com/article/anthropic-fable-mythos-trump-claude-028db5135128fce6b38c873bf9cb5e09" target="_blank" rel="noopener">AP News</a>
+        <a class="source-link" href="https://x.com/AndrewCurran_/status/2072459054044295315" target="_blank" rel="noopener">Andrew Curran</a>
+      </div>
+    </div>
+
+    <div class="card" data-delay="400">
+      <div class="card-header">
+        <span class="importance">🔥🔥</span>
+        <span class="card-title">加州 AI 算法价格操纵诉讼 — 首次测试州反垄断法对 AI 定价的适用</span>
+      </div>
+      <div class="card-desc">
+        加州加油站被控利用 AI 定价软件（Kalibrate）协调汽油价格，这是对加州更新后的反垄断法针对算法价格操纵的首次法律测试。诉讼指控加油站运营商和定价软件公司使用 AI 工具协调价格，标志着 AI 在商业决策中的法律边界正在被司法系统首次定义。
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">加州法院</span>
+        <span class="tag tag-category">AI 法律/反垄断</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://www.latimes.com/california/story/2026-07-01/lawsuit-over-gas-prices-tests-clarification-to-states-antitrust-law" target="_blank" rel="noopener">LA Times</a>
+      </div>
+    </div>
+
+    <div class="card" data-delay="500">
+      <div class="card-header">
+        <span class="importance">🔥</span>
+        <span class="card-title">网络安全代理评估方法论 — 现实评估需 24+ 小时和约 $40K API 费用</span>
+      </div>
+      <div class="card-desc">
+        Eugene Yan 撰文解释为什么现实的网络安全代理评估极其昂贵和耗时：需 24+ 小时运行时间和约 $40K API 费用，且需要部分计分机制（涵盖发现、复现和利用漏洞等步骤）。Cameron Wolfe 推文引用并扩展讨论，指出当前 AI 安全评估的成本结构对行业形成实质性制约。
+      </div>
+      <div class="tags">
+        <span class="tag tag-vendor">Eugene Yan</span>
+        <span class="tag tag-category">安全评估方法论</span>
+      </div>
+      <div class="sources">
+        <a class="source-link" href="https://eugeneyan.com/writing/cybersecurity-evals/" target="_blank" rel="noopener">Eugene Yan</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 趋势判断 -->
+  <div class="trend">
+    <div class="trend-title"><span class="emoji">📈</span> 趋势判断</div>
+    <div class="trend-text">
+      <strong>1. 前沿模型"被管控"常态化：</strong>Fable 5 出口管制解除 + GPT-5.6 Sol 受限 + 白宫推进自愿标准——三线同日推进，前沿 AI 的访问权正从"技术问题"变成"政策问题"。对企业而言，选择 AI 模型时需要新增考虑：监管风险、安全门、出口管制、紧急关闭。<br><br>
+      <strong>2. AI 安全扫描进入自治修复阶段：</strong>Devin Security Swarm 的 Agentic MapReduce 架构把"检测→验证→修复"串成一条自动化链路，72% 召回率虽然不算完美，但"自治修复"的方向标志着 AI 代码安全从辅助工具进化为自治系统。<br><br>
+      <strong>3. Anthropic 的双面日：</strong>同一天 Fable 5 恢复上线（产品回归）和 Claude Code 追踪丑闻撤回（信任危机）——对一家主打"安全与信任"的公司而言，这种双重叙事将成为行业审视 AI 厂商诚信的标志性案例。<br><br>
+      <strong>4. Q3 产品迭代潮蓄势：</strong>国内厂商 6 月密集发布收官后进入短暂静默期，预计 7 月中旬将迎来新一轮。国际厂商 Q2 末发布高峰（RSAC/Cisco Live/Build）已消化完毕，Q3 首波产品（如 Devin Security Swarm）正在启动。
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    AI 安全日报 · 数据截至 2026-07-02 10:00 CST<br>
+    Powered by WebSearch + AI 分析 · Linear 暗色主题
+  </div>
+
+</div>
+
+<script>
+  // IntersectionObserver 滑动渐入
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay) || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
