@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-03</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0a0a0a;
+    color: #e5e5e5;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+.nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.nav-brand {
+    font-size: 18px; font-weight: 600;
+    background: linear-gradient(135deg, #5B6CF7, #8B5CF6, #EC4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.nav-date { color: #999; font-size: 14px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 48px 32px 96px; }
+.hero { text-align: center; margin-bottom: 48px; animation: fadeIn 0.6s ease; }
+.hero h1 {
+    font-size: 48px; font-weight: 700; margin-bottom: 16px;
+    background: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-meta { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.metric {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px; padding: 12px 24px;
+}
+.metric-num {
+    font-size: 24px; font-weight: 700;
+    background: linear-gradient(135deg, #5B6CF7, #EC4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.metric-label { color: #999; font-size: 12px; margin-top: 4px; }
+.ai-summary {
+    background: linear-gradient(135deg, rgba(91, 108, 247, 0.08), rgba(236, 72, 153, 0.08));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 16px; padding: 24px 28px; margin-bottom: 48px;
+    animation: fadeIn 0.7s ease;
+}
+.ai-summary-label {
+    display: inline-block; font-size: 12px; font-weight: 600; color: #8B5CF6;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
+}
+.ai-summary p { font-size: 15px; color: #d4d4d4; line-height: 1.75; }
+.section-title {
+    font-size: 24px; font-weight: 600; margin: 48px 0 24px;
+    display: flex; align-items: center; gap: 12px;
+}
+.section-title::before {
+    content: ''; width: 4px; height: 24px;
+    background: linear-gradient(180deg, #5B6CF7, #EC4899);
+    border-radius: 2px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+}
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px; padding: 20px;
+    transition: all 0.3s ease;
+    opacity: 0; transform: translateY(20px);
+}
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    background: rgba(139, 92, 246, 0.04);
+    transform: translateY(-2px);
+}
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.tag {
+    display: inline-block; padding: 4px 10px;
+    border-radius: 6px; font-size: 11px; font-weight: 600;
+}
+.tag-vendor { background: rgba(91, 108, 247, 0.15); color: #8B9CFF; }
+.tag-industry { background: rgba(236, 72, 153, 0.15); color: #F472B6; }
+.date { color: #666; font-size: 12px; }
+.card-title {
+    font-size: 15px; font-weight: 600; color: #f5f5f5;
+    margin-bottom: 10px; line-height: 1.4;
+}
+.card-summary { color: #a3a3a3; font-size: 13px; line-height: 1.6; margin-bottom: 14px; }
+.card-link {
+    color: #8B5CF6; font-size: 13px; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+}
+.card-link:hover { color: #C4B5FD; text-decoration: underline; }
+.empty {
+    text-align: center; color: #888; padding: 80px 20px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px; border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+.footer {
+    text-align: center; color: #666; font-size: 12px;
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 720px) {
+    .container { padding: 24px 16px 64px; }
+    .hero h1 { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-brand">🛡️ 防火墙日报</div>
+    <div class="nav-date">2026-07-03</div>
+</nav>
+<div class="container">
+    <header class="hero">
+        <h1>🛡️ 中国防火墙厂商日报</h1>
+        <div class="hero-meta">
+            <div class="metric"><div class="metric-num">11</div><div class="metric-label">厂商动态</div></div>
+            <div class="metric"><div class="metric-num">2</div><div class="metric-label">行业动态</div></div>
+            <div class="metric"><div class="metric-num">13</div><div class="metric-label">总计</div></div>
+        </div>
+    </header>
+
+    <section class="ai-summary">
+        <div class="ai-summary-label">🤖 AI 解读</div>
+        <p>今日看点：1）金融+教育+海关三线政企采购齐发，湖北银行 286.7 万、城商行体系防火墙集采释放规模需求；2）奇安信 AI 安全发布周收官后机构资金接力买入 3321 万，散户获利了结，AI 智能体方向仍是 Q3 投资主线；3）等保 2.0 数据安全新规 GA/T 2380—2026 落地重构合规体系，防火墙厂商需将传统 IPS/AV 升级为 AI 加持的智能联动体系以应对 AI 驱动攻击与供应链漏洞新威胁。</p>
+    </section>
+
+    <h2 class="section-title">🏢 厂商动态</h2>
+    <div class="grid">
+        
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">其他</span>
+            <span class="date">2026-07-01</span>
+        </div>
+        <h3 class="card-title">教育部教育考试院 Web 应用防火墙采购项目公开招标：预算 97 万元</h3>
+        <p class="card-summary">7月1日，教育部教育考试院发布 Web 应用防火墙采购项目公开招标公告（项目编号 TC260306B），预算 97 万元，合同履行期限预计 2026 年 7 月起到质保期结束，要求供应商提供符合等保及教育考试高并发场景的 WAF 设备及服务。</p>
+        <a href="http://www.ccgp.gov.cn/cggg/zygg/gkzb/202607/t20260701_26849185.htm" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">其他</span>
+            <span class="date">2026-07-02</span>
+        </div>
+        <h3 class="card-title">湖北银行分支行网络设备和防火墙入围选型项目发布招标公告</h3>
+        <p class="card-summary">7月2日，湖北银行发布 2026 年度分支行网络设备和防火墙入围选型项目招标公告，覆盖全省分支行的下一代防火墙、上网行为管理及配套维保服务，是城商行体系年度规模较大的防火墙集采。</p>
+        <a href="https://baijiahao.baidu.com/s?id=1869562911491244720&wfr=spider&for=pc" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">其他</span>
+            <span class="date">2026-07-01</span>
+        </div>
+        <h3 class="card-title">中国电子口岸数据中心防火墙维保服务采购项目成交：北京领航华鑫 62.32 万元中标</h3>
+        <p class="card-summary">7月1日，中国电子口岸数据中心防火墙维保服务采购项目成交公告发布，北京领航华鑫科技有限公司以 62.32 万元中标（项目编号 0730-2623ZC0115-01），为海关电子口岸数据中心的边界防火墙提供原厂级运维保障。</p>
+        <a href="http://www.ccgp.gov.cn/cggg/zygg/cjgg/202607/t20260701_26849480.htm" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">其他</span>
+            <span class="date">2026-07-01</span>
+        </div>
+        <h3 class="card-title">中国国民党革命委员会福建省委员会防火墙系统采购项目开标：7月1日 16:00 最低投标价法评标</h3>
+        <p class="card-summary">7月1日，中国国民党革命委员会福建省委员会发布防火墙系统采购项目中标获选人公示，采用经评审的最低投标价法评标，覆盖民主党派省级机关边界安全建设，体现政信通系统在民主党派系统的下沉。</p>
+        <a href="http://www.fjmg.gov.cn/gg/202607/t20260701_7170265.htm" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">奇安信</span>
+            <span class="date">2026-07-02</span>
+        </div>
+        <h3 class="card-title">奇安信 7 月 2 日主力资金净买入 3321.74 万元：股价跌 0.79% 至 23.96 元</h3>
+        <p class="card-summary">7月2日奇安信（688561）收盘 23.96 元，下跌 0.79%，主力资金净流入 3321.74 万元（占总成交额 14.73%），游资净流入 382.57 万元，散户净流出 3704.31 万元——AI 安全发布周收官后机构资金接力买入，散户获利了结迹象明显。</p>
+        <a href="https://www.msn.cn/zh-cn/money/%E7%83%AD%E9%97%A8%E8%82%A1/%E5%A5%87%E5%AE%89%E4%BF%A1-688561-7%E6%9C%882%E6%97%A5%E4%B8%BB%E5%8A%9B%E8%B5%84%E9%87%91%E5%87%80%E4%B9%B0%E5%85%A53321-74%E4%B8%87%E5%85%83/ar-AA273jxi" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">山石网科</span>
+            <span class="date">2026-07-01</span>
+        </div>
+        <h3 class="card-title">山石网科 7 月 1 日获融资买入 1189.32 万元：融券余额低于历史 10% 分位</h3>
+        <p class="card-summary">7月1日山石网科（688030）获融资买入 1189.32 万元，融券偿还 0 股，融券余额 0 元低于历史 10% 分位水平，叠加 ISC.AI 2026「双 A 战略」+国药太极灯塔工厂案例落地余波，看多资金持续进场。</p>
+        <a href="https://stock.10jqka.com.cn/20260702/c677888393.shtml" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">绿盟科技</span>
+            <span class="date">2026-07-02</span>
+        </div>
+        <h3 class="card-title">绿盟科技（含亿赛通）再度登顶中国 DLP 市场份额第一</h3>
+        <p class="card-summary">绿盟科技技术博客最新更新显示，绿盟科技（含亿赛通）再度登顶中国 DLP 市场份额第一，叠加 6 月 17 日兰州 2026 全国 CIO 大会上「AI 落地场景 & ROI」主题演讲，公司在数据安全赛道持续巩固龙头地位。</p>
+        <a href="https://blog.nsfocus.net/" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">深信服</span>
+            <span class="date">2026-07-02</span>
+        </div>
+        <h3 class="card-title">深信服近期中标结果公告密集发布：覆盖浙江、湖南、广西、北京、四川等 15 省</h3>
+        <p class="card-summary">据招标雷达最新数据，深信服科技股份有限公司近期发布 40 个中标结果公告，覆盖浙江、湖南、广西、北京、四川、新疆、广东、江西、上海、安徽、云南、福建、江苏、河北等 15 省，是行业内中标最活跃的厂商之一。</p>
+        <a href="https://www.bidcenter.com.cn/newssearchzb-172151282.html" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">深信服</span>
+            <span class="date">2026-07-02</span>
+        </div>
+        <h3 class="card-title">深信服近期发布 6 个新招标采购公告：业主涵盖中科院深圳先进技术研究院等</h3>
+        <p class="card-summary">采招网最新更新显示，深信服近期发布 6 个新招标采购公告，业主单位包括深圳世界之窗有限公司、中国科学院江西稀土研究院、深圳技术大学、修水县妇幼保健院、南昌市青云谱区教师发展中心、中国电信集团等。</p>
+        <a href="https://www.bidcenter.com.cn/zhaobiao/zbkeyw-105917.html" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">其他</span>
+            <span class="date">2026-07-01</span>
+        </div>
+        <h3 class="card-title">GA/T 2380—2026《等保数据安全基本要求》正式施行：等保合规体系重构</h3>
+        <p class="card-summary">6月1日，公安部发布的 GA/T 2380—2026《信息安全技术 网络安全等级保护数据安全基本要求》、GA/T 2381—2026《测评机构能力要求》两项等保数据安全新标准正式施行——以往网络、主机、防火墙过关就能通过等保的体系被彻底重构，所有等级测评必须叠加数据安全测评结论。</p>
+        <a href="https://www.bsia.org.cn/site/content/33328.html" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="vendor">
+        <div class="card-header">
+            <span class="tag tag-vendor">其他</span>
+            <span class="date">2026-07-01</span>
+        </div>
+        <h3 class="card-title">2026 年新型网络威胁演进：AI 驱动攻击门槛降低、供应链漏洞成主要入侵入口</h3>
+        <p class="card-summary">Check Point 最新 2026 威胁报告揭示：AI 驱动攻击门槛持续降低，供应链漏洞成为主要入侵入口，钓鱼攻击精准化趋势明显。报告提出情报驱动、AI 检测、零信任访问的一体化防御方案——防火墙厂商需将 IPS/AV/URL 等传统引擎升级为 AI 加持的智能联动体系。</p>
+        <a href="https://cloud.tencent.com.cn/developer/article/2651336" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+    </div>
+
+    <h2 class="section-title">🏭 行业动态</h2>
+    <div class="grid">
+        
+    <article class="card" data-category="industry">
+        <div class="card-header">
+            <span class="tag tag-industry">行业:运营商</span>
+            <span class="date">2026-06-24</span>
+        </div>
+        <h3 class="card-title">运营商：中国移动 2026-2028 年高端防火墙集采 3.2 亿大单落地（华为/新华三/迪普）</h3>
+        <p class="card-summary">6月24日，中国移动采购与招标网发布 2026-2028 年（二年期）硬件防火墙产品集中采购项目标包 1 中标候选人公示，华为（50% 份额 3.07 亿）、新华三（27% 份额 3.32 亿）、迪普科技（剩余份额 7668 万）三家分食 3.2 亿高端防火墙大单。</p>
+        <a href="https://finance.sina.com.cn/tech/roll/2026-06-25/doc-iniepqxs2857617.shtml" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+
+    <article class="card" data-category="industry">
+        <div class="card-header">
+            <span class="tag tag-industry">行业:金融</span>
+            <span class="date">2026-06-29</span>
+        </div>
+        <h3 class="card-title">运营商：杭州银行 2026 年专用防火墙、负载均衡设备招标结果公布</h3>
+        <p class="card-summary">杭州银行 2026 年专用防火墙、负载均衡设备招标结果公布，浙江众岩科技有限公司以 286.7 万元中标防火墙标段，浙江建达科技股份有限公司以 282.8 万元中标负载均衡标段，发布日期 2026-06-29。</p>
+        <a href="https://stock.stockstar.com/RB2026070200018529.shtml" target="_blank" rel="noopener" class="card-link">查看原文 →</a>
+    </article>
+    
+    </div>
+
+    <div class="footer">
+        <p>📅 报告日期：2026-07-03 · 由防火墙日报自动化系统生成 · 数据源：WebSearch</p>
+    </div>
+</div>
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.card').forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
