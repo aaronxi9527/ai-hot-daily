@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-05</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --card-bg: #141417;
+    --border: #1f1f23;
+    --text: #e4e4e7;
+    --muted: #a1a1aa;
+    --gradient: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 10, 0.7);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-weight: 700; font-size: 18px;
+    background: var(--gradient);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .nav-date { color: var(--muted); font-size: 14px; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; }
+  .hero {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s ease-out;
+  }
+  .hero h1 {
+    font-size: 48px; font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .hero .sub { color: var(--muted); font-size: 18px; margin-bottom: 24px; }
+  .stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .stat-pill {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .stat-pill strong {
+    background: var(--gradient);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 18px; margin-right: 4px;
+  }
+  .ai-take {
+    background: linear-gradient(135deg, rgba(91,108,247,0.08), rgba(236,72,153,0.05));
+    border: 1px solid rgba(139,92,246,0.3);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.9s ease-out;
+  }
+  .ai-take h2 {
+    font-size: 20px; margin-bottom: 12px;
+    background: var(--gradient);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  .ai-take p { color: var(--text); font-size: 16px; line-height: 1.8; }
+  .section-title {
+    font-size: 28px; font-weight: 700; margin: 48px 0 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    transition: all 0.3s ease;
+    opacity: 0; transform: translateY(20px);
+  }
+  .card.visible { opacity: 1; transform: translateY(0); }
+  .card:hover {
+    border-color: rgba(139,92,246,0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(91,108,247,0.15);
+  }
+  .card-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+  }
+  .date { color: var(--muted); font-size: 12px; }
+  .card-title {
+    font-size: 17px; font-weight: 600; line-height: 1.5;
+    margin-bottom: 10px; color: var(--text);
+  }
+  .card-summary {
+    color: var(--muted); font-size: 14px; line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .card-link {
+    color: #8B5CF6; text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .card-link:hover { color: #EC4899; text-decoration: underline; }
+  .empty { text-align: center; color: var(--muted); padding: 60px 20px; font-size: 18px; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; }
+    .nav-inner { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo">🛡️ Firewall Daily</div>
+      <div class="nav-date">2026-07-05 · 周日</div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="hero">
+      <h1>🛡️ 中国防火墙厂商日报</h1>
+      <div class="sub">2026-07-05 · 周末观察</div>
+      <div class="stats">
+        <div class="stat-pill"><strong>23</strong>条动态</div>
+        <div class="stat-pill"><strong>16</strong>厂商动态</div>
+        <div class="stat-pill"><strong>7</strong>行业动态</div>
+      </div>
+    </div>
+    <div class="ai-take">
+      <h2>🤖 AI 解读</h2>
+      <p>今天最值得关注的，是中国电信 2026 年防火墙 D 档、E 档集采的 3230 台大单落地，新华三 3272 万居首、华为 3758 万第二，运营商集采的国产化格局基本稳了——头部三家分食，外部品牌几乎没机会。另外两件事也别漏：华为凭 IDC Q1 报告拿下中国防火墙市场份额第一，山石网科在浙大 CERNET 学术年会上把"双 A 战略"（ASIC + AI）正式推进高校场景，ASIC 自研芯片已经从厂商 PPT 走到了真实校园网络。周末消息面整体偏平静，没有重大漏洞或政策出台，是补读周报的好日子。</p>
+    </div>
+    <h2 class="section-title">🏢 厂商动态</h2>
+    <div class="grid">
+      
+    <article class="card" data-date="2026-07-04">
+      <div class="card-meta">
+        <span class="tag" style="background:#64748B22;color:#64748B;border:1px solid #64748B55;">行业</span>
+        <span class="date">2026-07-04</span>
+      </div>
+      <h3 class="card-title">2026 上半年 CVE 漏洞榜单：Linux 以 2308 个数量居首</h3>
+      <p class="card-summary">2026年上半年披露的CVE漏洞排名中Linux内核以2308个位居榜首，谷歌以1752个位居第二。报告反映了开源生态漏洞披露规模持续扩大。</p>
+      <a class="card-link" href="https://www.ithome.com/0/972/498.htm" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-04">
+      <div class="card-meta">
+        <span class="tag" style="background:#64748B22;color:#64748B;border:1px solid #64748B55;">行业</span>
+        <span class="date">2026-07-04</span>
+      </div>
+      <h3 class="card-title">2026年7月第1周网络安全形势周报</h3>
+      <p class="card-summary">本周报聚焦BlueHammer（CVE-2026-33825）漏洞，Microsoft Defender被用作勒索软件提权跳板，CVSS评分7.8，安全产品自身漏洞被武器化引发关注。</p>
+      <a class="card-link" href="https://jishuzhan.net/article/2073312805662609410" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-03">
+      <div class="card-meta">
+        <span class="tag" style="background:#E74C3C22;color:#E74C3C;border:1px solid #E74C3C55;">华为</span>
+        <span class="date">2026-07-03</span>
+      </div>
+      <h3 class="card-title">华为网络安全防火墙2026年第一季度中国区市场份额第一</h3>
+      <p class="card-summary">IDC发布《中国安全硬件市场跟踪，2026Q1》，华为防火墙凭借产品竞争力与行业落地能力，赢得2026年第一季度中国防火墙市场份额第一。</p>
+      <a class="card-link" href="https://e.huawei.com/cn/news/2026/solutions/enterprise-network/network-security-firewalls-ranked-no1" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-02">
+      <div class="card-meta">
+        <span class="tag" style="background:#E74C3C22;color:#E74C3C;border:1px solid #E74C3C55;">华为</span>
+        <span class="date">2026-07-02</span>
+      </div>
+      <h3 class="card-title">中国电信2026年防火墙D档、E档设备集采：新华三、华为等入围（合并2源）</h3>
+      <p class="card-summary">中国电信云网信息安全产品（2026年）集中采购项目（防火墙D档、E档）完成评审，新华三、华为、安博等厂商入围。</p>
+      <a class="card-link" href="https://www.c114.com.cn/news/6564/a1313230.html" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-02">
+      <div class="card-meta">
+        <span class="tag" style="background:#10B98122;color:#10B981;border:1px solid #10B98155;">山石网科</span>
+        <span class="date">2026-07-02</span>
+      </div>
+      <h3 class="card-title">股市必读:山石网科(688030)7月2日主力资金净流出382.68万元</h3>
+      <p class="card-summary">截至2026年7月2日收盘，山石网科报收16.3元，上涨0.62%，成交额6695.87万元。当日主力资金净流出382.68万元，散户资金净流入383.71万元。</p>
+      <a class="card-link" href="https://news.sohu.com/a/1045026292_122123195" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-02">
+      <div class="card-meta">
+        <span class="tag" style="background:#10B98122;color:#10B981;border:1px solid #10B98155;">山石网科</span>
+        <span class="date">2026-07-02</span>
+      </div>
+      <h3 class="card-title">山石网科:7月1日获融资买入1189.32万元</h3>
+      <p class="card-summary">山石网科7月1日获融资买入1189.32万元，融资余额8045.97万元，占流通市值2.76%，超过历史70%分位水平。</p>
+      <a class="card-link" href="https://stock.10jqka.com.cn/20260702/c677888393.shtml" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-02">
+      <div class="card-meta">
+        <span class="tag" style="background:#F59E0B22;color:#F59E0B;border:1px solid #F59E0B55;">天融信</span>
+        <span class="date">2026-07-02</span>
+      </div>
+      <h3 class="card-title">天融信（002212）7月2日主力资金净卖出1659.17万元</h3>
+      <p class="card-summary">截至2026年7月2日收盘，天融信报收5.72元，下跌2.22%，成交额2.38亿元。主力资金净流出1659.17万元，游资净流入825.07万元。</p>
+      <a class="card-link" href="https://www.msn.cn/zh-cn/money/热门股票/天融信-002212-7月2日主力资金净卖出1659-17万元/ar-AA272j3h" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-02">
+      <div class="card-meta">
+        <span class="tag" style="background:#64748B22;color:#64748B;border:1px solid #64748B55;">行业</span>
+        <span class="date">2026-07-02</span>
+      </div>
+      <h3 class="card-title">中国信通院发布2026可信安全最新评估结果</h3>
+      <p class="card-summary">中国信通院于2026年7月2日发布最新可信安全评估结果，覆盖云安全、AI云安全、数据安全、AI+安全、软件供应链安全及互联网智能体治理六大领域。</p>
+      <a class="card-link" href="https://www.gm7.org/archives/122650" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-02">
+      <div class="card-meta">
+        <span class="tag" style="background:#A855F722;color:#A855F7;border:1px solid #A855F755;">安恒信息</span>
+        <span class="date">2026-07-02</span>
+      </div>
+      <h3 class="card-title">安恒威胁情报：CISA要求限期修复Cisco UCMServer严重漏洞CVE-2026-20230</h3>
+      <p class="card-summary">美国CISA近日将Cisco Unified Communications Manager Server中的严重漏洞CVE-2026-20230列入已知被利用漏洞目录，并要求联邦机构限期修复。</p>
+      <a class="card-link" href="https://ti.dbappsecurity.com.cn/" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-01">
+      <div class="card-meta">
+        <span class="tag" style="background:#10B98122;color:#10B981;border:1px solid #10B98155;">山石网科</span>
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">山石网科(688030)7月1日主力资金净卖出1025.37万元</h3>
+      <p class="card-summary">截至2026年7月1日收盘，山石网科报收16.2元，上涨2.6%，成交额7713.85万元。主力资金净流出1025.37万元，游资净流入423.75万元。</p>
+      <a class="card-link" href="https://stock.stockstar.com/RB2026070100029623.shtml" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-01">
+      <div class="card-meta">
+        <span class="tag" style="background:#10B98122;color:#10B981;border:1px solid #10B98155;">山石网科</span>
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">山石快讯|山石网科亮相CERNET华东南2026学术年会</h3>
+      <p class="card-summary">CERNET华东南地区2026年学术年会在浙江大学举办，山石网科受邀参会，展示基于双A战略（ASIC+AI）的校园全域网络安全与高校数据安全方案。</p>
+      <a class="card-link" href="https://baijiahao.baidu.com/s?id=1869582042750052093&wfr=spider&for=pc" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-01">
+      <div class="card-meta">
+        <span class="tag" style="background:#F59E0B22;color:#F59E0B;border:1px solid #F59E0B55;">天融信</span>
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">天融信参编！首个数据接口安全国家标准将于7月1日正式实施</h3>
+      <p class="card-summary">GB/T 46796-2025《数据安全技术 数据接口安全风险监测方法》于2026年7月1日起正式实施，是数据接口安全领域首个国家标准，天融信作为起草单位之一参与制定。</p>
+      <a class="card-link" href="https://zone.ci/secarticles/wx/489035.html" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-25">
+      <div class="card-meta">
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF755;">深信服</span>
+        <span class="date">2026-06-25</span>
+      </div>
+      <h3 class="card-title">深信服（300454）：中标水利部信息中心采购项目，中标金额为310.00万元</h3>
+      <p class="card-summary">深信服中标水利部信息中心采购项目，中标金额310.00万元；同期公司调整长沙研发基地项目实施期限至2027年4月。属公司近期经营动态。</p>
+      <a class="card-link" href="https://vip.stock.finance.sina.com.cn/corp/go.php/vCB_AllNewsStock/symbol/sz300454.phtml" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-25">
+      <div class="card-meta">
+        <span class="tag" style="background:#EC489922;color:#EC4899;border:1px solid #EC489955;">启明星辰</span>
+        <span class="date">2026-06-25</span>
+      </div>
+      <h3 class="card-title">启明星辰（002439）：业绩拐点确立+AI安全技术领跑+运营效率持续优化</h3>
+      <p class="card-summary">分析指出启明星辰业绩拐点确立，AI安全技术领跑行业，三重强催化集中落地，当下处于最佳布局窗口期。</p>
+      <a class="card-link" href="https://caifuhao.eastmoney.com/news/20260625103606617485150" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-16">
+      <div class="card-meta">
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border:1px solid #06B6D455;">绿盟科技</span>
+        <span class="date">2026-06-16</span>
+      </div>
+      <h3 class="card-title">绿盟科技亮相2026网络空间安全学术大会，解读AI Agent的自动化防御</h3>
+      <p class="card-summary">绿盟科技在2026网络空间安全学术大会上展示全新安全数字人平台，基于AI Agent构建7×24小时自动化防御体系。</p>
+      <a class="card-link" href="https://stock.10jqka.com.cn/20260616/c677506873.shtml" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-13">
+      <div class="card-meta">
+        <span class="tag" style="background:#64748B22;color:#64748B;border:1px solid #64748B55;">行业</span>
+        <span class="date">2026-06-13</span>
+      </div>
+      <h3 class="card-title">防火墙十大品牌-2026年硬件防火墙品牌</h3>
+      <p class="card-summary">十大品牌网CNPP于2026年6月13日发布防火墙十大品牌排行榜，前十名包括天融信、华为、新华三、Palo Alto、Fortinet、迪普科技、山石网科、启明星辰、深信服、奇安信。</p>
+      <a class="card-link" href="https://www.cnpp.cn/china/2026/list_10467.html" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+    </div>
+    <h2 class="section-title">🏭 行业动态</h2>
+    <div class="grid">
+      
+    <article class="card" data-date="2026-07-03">
+      <div class="card-meta">
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF755;">政府</span>
+        <span class="date">2026-07-03</span>
+      </div>
+      <h3 class="card-title">中央政府采购网采购项目公告（7月24日投标截止）</h3>
+      <p class="card-summary">中央政府采购网发布采购项目公告，投标文件截止提交时间为2026年7月24日，采用电子采购系统(国e采)进行网上投标。</p>
+      <a class="card-link" href="https://www.zycg.gov.cn/freecms/site/zygjjgzfcgzx/ggxx/info/2026/c4604156-5fa0-41e4-90a6-012743088ba5.html" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-01">
+      <div class="card-meta">
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF755;">政府</span>
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">教育部教育考试院Web应用防火墙采购项目公开招标公告</h3>
+      <p class="card-summary">教育部教育考试院发布Web应用防火墙采购项目公开招标公告，预算97万元人民币，不接受联合体投标。</p>
+      <a class="card-link" href="http://www.ccgp.gov.cn/cggg/zygg/gkzb/202607/t20260701_26849185.htm" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-07-01">
+      <div class="card-meta">
+        <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF655;">运营商</span>
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">2026年厦门电信某客户云二期云防火墙服务采购询比公告</h3>
+      <p class="card-summary">厦门电信发布云二期云防火墙服务采购询比公告，部署最小规格1Gbps峰值防护能力的云防火墙系统。</p>
+      <a class="card-link" href="https://www.chinabidding.cn/zbgg/U-vz2gvTx.html" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-26">
+      <div class="card-meta">
+        <span class="tag" style="background:#64748B22;color:#64748B;border:1px solid #64748B55;">其他</span>
+        <span class="date">2026-06-26</span>
+      </div>
+      <h3 class="card-title">2026年医院互联网出口及数据中心防火墙采购项目竞标邀请公告</h3>
+      <p class="card-summary">广州市花都区人民医院拟采购2026年医院互联网出口及数据中心防火墙，进行院内竞标确定智慧云平台定点采购供应商。</p>
+      <a class="card-link" href="https://www.hdhosp.com/info/1016/8935.htm" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-26">
+      <div class="card-meta">
+        <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF655;">运营商</span>
+        <span class="date">2026-06-26</span>
+      </div>
+      <h3 class="card-title">2026-2028年中国联通国际防火墙集中采购项目标前技术商务交流公告</h3>
+      <p class="card-summary">中国联通发布2026-2028年国际防火墙集中采购项目标前技术商务交流公告，涉及国际防火墙硬件设备集中采购。</p>
+      <a class="card-link" href="https://www.zbytb.com/s-zb-67355862.html" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-13">
+      <div class="card-meta">
+        <span class="tag" style="background:#EC489922;color:#EC4899;border:1px solid #EC489955;">金融</span>
+        <span class="date">2026-06-13</span>
+      </div>
+      <h3 class="card-title">专家解读｜筑牢数据安全治理根基引领金融信息服务规范发展</h3>
+      <p class="card-summary">网信办发布专家解读文章，阐述金融信息服务数据安全治理框架，为金融信息服务提供者履行数据安全保护义务提供明确路径。</p>
+      <a class="card-link" href="https://www.cac.gov.cn/2026-06/13/c_1783104512415861.htm" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+
+    <article class="card" data-date="2026-06-13">
+      <div class="card-meta">
+        <span class="tag" style="background:#EC489922;color:#EC4899;border:1px solid #EC489955;">金融</span>
+        <span class="date">2026-06-13</span>
+      </div>
+      <h3 class="card-title">专家解读｜从“通用防护”到“精准治理”：深化金融信息服务数据安全</h3>
+      <p class="card-summary">《指南》结合金融信息服务行业特点与数据安全治理需求，在方法论、框架设计和实施路径上进行多项创新。</p>
+      <a class="card-link" href="https://www.cac.gov.cn/2026-06/13/c_1783104512229599.htm" target="_blank" rel="noopener">查看原文 →</a>
+    </article>
+    </div>
+  </div>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.card').forEach(c => observer.observe(c));
+  </script>
+</body>
+</html>
