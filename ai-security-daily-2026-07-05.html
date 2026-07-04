@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-07-05</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e5e7eb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:48px 24px 32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899);opacity:0.08;z-index:0}
+.hero h1{font-size:2.4em;color:#fff;position:relative;z-index:1}
+.hero h1 .emoji{font-size:2.8em;margin-right:8px}
+.hero .date{font-size:1.1em;color:#9ca3af;margin-top:8px;position:relative;z-index:1}
+.stats{display:flex;justify-content:center;gap:24px;margin:24px 0;position:relative;z-index:1}
+.stat-card{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:16px 24px;text-align:center;min-width:140px}
+.stat-card .num{font-size:2em;color:#8B5CF6;font-weight:700}
+.stat-card .label{font-size:0.85em;color:#9ca3af;margin-top:4px}
+.overview{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:24px;margin:24px 0}
+.overview .tag{display:inline-block;background:linear-gradient(90deg,#5B6CF7,#8B5CF6);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.85em;font-weight:600;margin-bottom:12px}
+.overview p{color:#d1d5db;font-size:1em;line-height:1.8}
+.section{margin:32px 0}
+.section-title{font-size:1.5em;color:#fff;padding-bottom:12px;border-bottom:2px solid;display:inline-block;margin-bottom:16px}
+.section-intl{border-color:#5B6CF7}
+.section-domestic{border-color:#EC4899}
+.section-industry{border-color:#8B5CF6}
+.card{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:20px;margin:16px 0;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.card.visible{opacity:1;transform:translateY(0)}
+.card .header{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.card .title{font-size:1.1em;color:#fff;font-weight:600;flex:1}
+.card .imp{font-size:0.9em;white-space:nowrap}
+.tags{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.tag{font-size:0.75em;padding:3px 10px;border-radius:4px;color:#fff;font-weight:500}
+.tag-vendor{background:linear-gradient(90deg,#5B6CF7,#8B5CF6)}
+.tag-category{background:#374151;border:1px solid #4b5563}
+.card .desc{color:#9ca3af;font-size:0.95em;line-height:1.7;margin-bottom:12px}
+.sources{display:flex;gap:12px;flex-wrap:wrap}
+.sources a{color:#5B6CF7;font-size:0.85em;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.sources a:hover{border-color:#5B6CF7}
+.trend{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:24px;margin:32px 0}
+.trend .tag{display:inline-block;background:linear-gradient(90deg,#EC4899,#8B5CF6);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.85em;font-weight:600;margin-bottom:12px}
+.trend p{color:#d1d5db;font-size:0.95em;line-height:1.8}
+.zero{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:20px;margin:16px 0;text-align:center;color:#9ca3af;font-size:0.95em}
+.footer{text-align:center;color:#6b7280;font-size:0.8em;padding:32px 0;border-top:1px solid #1f2937;margin-top:32px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1><span class="emoji">🤖</span> AI 安全日报</h1>
+  <div class="date">2026-07-05 · 周六 · Q3 第 5 天</div>
+</div>
+
+<div class="stats">
+  <div class="stat-card"><div class="num">3</div><div class="label">国际产品</div></div>
+  <div class="stat-card"><div class="num">0</div><div class="label">国内产品</div></div>
+  <div class="stat-card"><div class="num">7</div><div class="label">行业动态</div></div>
+  <div class="stat-card"><div class="num">10</div><div class="label">共</div></div>
+</div>
+
+<div class="overview">
+  <div class="tag">🧠 AI 总览</div>
+  <p>周六日报重点：AI 编程 Agent 安全在本周迎来「双炸弹」——Cursor DuneSlide 沙箱逃逸（CVSS 9.8 零点击 RCE）和 Tenet Security Agentjacking（85% 成功率劫持编程 Agent），两者从不同角度证明 AI Agent 信任模型存在系统性缺陷，不是个案而是范式级问题。行业侧，全球 LLM 安全测评报告首次量化越狱攻击成功率（场景伪装+示例诱导高达 53.8%），而中国 7 月双新规正式落地标志着 AIGC 从"事后处罚"转向"全生命周期前置管控"。产品端，Anthropic Claude Compliance API 28 家集成生态闭合了企业合规差距，但国内产品连续数日静默。</p>
+</div>
+
+<div class="section">
+  <h2 class="section-title section-intl">🏢 国际友商产品动态</h2>
+
+  <div class="card">
+    <div class="header"><span class="title">Anthropic 发布 Claude Compliance API，首批 28 家企业安全集成伙伴上线</span><span class="imp">🔥🔥🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">Anthropic</span><span class="tag tag-category">AI治理</span></div>
+    <div class="desc">Anthropic 于 5/21 推出 Claude Compliance API，暴露对话内容和活动事件两大数据面，28 家安全伙伴首日上线生产级集成，覆盖 DLP（7家）、SASE（4家）、数据安全（4家）、SIEM（4家）、身份治理（2家）、eDiscovery（4家）、AI-SPM（3家）、AI可观测性（3家）八大类别。核心伙伴包括 CrowdStrike、Microsoft Purview、Okta、Wiz、Zscaler、PANW、Cloudflare、Snyk 等。此举闭合了 Claude 与 Microsoft Copilot 在企业合规能力上的差距，将 AI 治理从「模型好不好」转向「能不能干净集成到现有安全架构」。</div>
+    <div class="sources"><a href="https://www.helpnetsecurity.com/2026/05/25/anthropic-security-compliance-integrations-claude/" target="_blank" rel="noopener">HelpNetSecurity</a><a href="https://www.ai-heroes.co/blog/claude-compliance-api-security-partners-2026" target="_blank" rel="noopener">AI Heroes</a><a href="https://www.techtimes.com/articles/317272/20260527/claude-enterprise-security-integrations-28-vendors-now-route-ai-activity-existing-siem-dlp-tools.htm" target="_blank" rel="noopener">TechTimes</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">PANW Prisma AIRS 上线 Multi-Category Toxicity Detection，从单一毒性标记升级为语义级有害内容分类</span><span class="imp">🔥🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">PANW</span><span class="tag tag-category">AI-SPM</span></div>
+    <div class="desc">Palo Alto Networks Prisma AIRS AI Runtime 新增 Multi-Category Toxicity Detection 能力，将 AI Runtime API 从通用毒性检测升级为识别特定类型有害内容的语义级分类检测。此功能增强了对 AI 应用输入输出中多种有害内容类型的精确识别能力，是 Prisma AIRS 3.0 Agentic AI 全生命周期防护的重要补充。</div>
+    <div class="sources"><a href="https://origin-docs.paloaltonetworks.com/ai-runtime-security/new-features/by-date/prisma-airs/february-2026" target="_blank" rel="noopener">PANW Docs</a><a href="https://pan.dev/airs/" target="_blank" rel="noopener">PANW AIRS API</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">Concentric AI 推出 Anthropic Compliance API 集成，Semantic DLP 审计 Claude 数据安全治理</span><span class="imp">🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">Concentric AI</span><span class="tag tag-category">DLP</span></div>
+    <div class="desc">Concentric AI 成为首批接入 Anthropic Compliance API 的安全厂商，推出 Claude 平台数据安全治理集成。利用 Concentric AI Semantic DLP 技术，组织可以审计 Claude 中的数据访问和使用行为，实现语义级数据分类与防泄漏管控。这是 Claude Compliance API 生态中 DLP 类别的首个落地案例。</div>
+    <div class="sources"><a href="https://concentric.ai/press-release/concentric-ais-anthropic-compliance-api-integration/" target="_blank" rel="noopener">Concentric AI</a><a href="https://www.enterpriseaiworld.com/Articles/News/News/Concentric-AI-Introduces-Anthropic-Compliance-API-Integration-for-Data-Security-Governance-for-Claude-174845.aspx" target="_blank" rel="noopener">EnterpriseAIWorld</a></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title section-domestic">🇨🇳 国内友商产品动态</h2>
+  <div class="zero">📋 国内厂商产品动态今日无新增，Q3 初延续 6 月末以来的发布静默期</div>
+</div>
+
+<div class="section">
+  <h2 class="section-title section-industry">📊 行业动态与趋势</h2>
+
+  <div class="card">
+    <div class="header"><span class="title">Cursor IDE DuneSlide 沙箱逃逸双 CVE（CVE-2026-50548/50549，CVSS 9.8，零点击提示注入→完整RCE）</span><span class="imp">🔥🔥🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">漏洞</span><span class="tag tag-category">AI Agent安全</span></div>
+    <div class="desc">Cato AI Labs 发现 Cursor IDE（财富 500 半数企业使用）两个关键沙箱逃逸漏洞：CVE-2026-50548（工作目录参数操纵→路径遍历→覆盖cursorsandbox→RCE）和 CVE-2026-50549（符号链接规范化失败→任意文件写入→RCE），均达 CVSS 9.8。攻击通过零点击提示注入触发（恶意 MCP 服务器/ poisoned 网页搜索结果），无需用户交互即可完成沙箱逃逸和完整系统接管。Cursor 3.0 已修复。Cato 表示正在对其他主流编程 Agent 进行类似漏洞披露，暗示此为系统性问题而非个案。</div>
+    <div class="sources"><a href="https://www.catonetworks.com/blog/duneslide-two-critical-rce-vulnerabilities/" target="_blank" rel="noopener">Cato Networks</a><a href="https://denizhalil.com/2026/07/02/cve-2026-50548-cursor-ai-vulnerabilities/" target="_blank" rel="noopener">DenizHalil</a><a href="https://aviatrix.ai/threat-research-center/critical-cursor-flaws-cve-2026-50548-cve-2026-50549/" target="_blank" rel="noopener">Aviatrix</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">Tenet Security Agentjacking 攻击：伪造 Sentry 错误报告劫持 AI 编程 Agent，85% 成功率，2,388 组织受影响</span><span class="imp">🔥🔥🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">安全事件</span><span class="tag tag-category">AI Agent安全</span></div>
+    <div class="desc">Tenet Security 于 6 月披露新型攻击「Agentjacking」：攻击者通过公开暴露的 Sentry DSN 注入伪造错误报告，利用 AI 编程 Agent（Claude Code、Cursor、Codex）无法区分真实与恶意内容的缺陷，将 Agent 劫持为执行恶意代码的工具。实测成功率 85%，至少 2,388 组织存在可注入 DSN。攻击可窃取 AWS 密钥等凭证，入侵 CI/CD 管线。CSA 发布专项研究报告，标志着 AI 编程 Agent 安全从理论风险进入实战化攻击阶段。</div>
+    <div class="sources"><a href="https://tenetsecurity.ai/blog/a-fake-bug-report-hijacks-your-ai-coding-agent-and-nothing-catches-it/" target="_blank" rel="noopener">Tenet Security</a><a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-agentjacking-mcp-sentry-injection-20260612/" target="_blank" rel="noopener">CSA Research</a><a href="https://aviatrix.ai/threat-research-center/fake-bug-report-hijacks-ai-coding-agents-2026/" target="_blank" rel="noopener">Aviatrix</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">《全球大语言模型安全防范能力测评报告（2026）》发布：38 模型/313 题，场景伪装+示例诱导成功率高达 53.8%</span><span class="imp">🔥🔥🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">安全评估</span><span class="tag tag-category">行业报告</span></div>
+    <div class="desc">7/2 在北京全球数字经济大会云智算安全论坛上，东壁科技数据联合上海财经大学发布《全球大语言模型安全防范能力测评报告（2026）》。报告覆盖 38 个国内外大语言模型、313 条科技类高风险测试集，新增「越狱攻击防护」维度。核心发现：直接攻击总体成功率仅 7.6%，但场景伪装+示例诱导复合攻击成功率达 53.8%；「合法授权」「安全研究」等场景合法化叙事比情绪求助更易削弱模型安全边界。国外、闭源、大参数模型在恶意拦截和越狱稳健性上整体更优，但也更容易拒答善意问题。</div>
+    <div class="sources"><a href="https://www.chinanews.com/sh/2026/07-04/10652677.shtml" target="_blank" rel="noopener">中新网</a><a href="https://finance.people.com.cn/n1/2026/0704/c1004-40753271.html" target="_blank" rel="noopener">人民网</a><a href="https://finance.eastmoney.com/a/202607023792258950.html" target="_blank" rel="noopener">东方财富</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">中国 7 月 AIGC 双新规落地：网络安全标识管理办法（7/1）+ 拟人化互动服务管理暂行办法（7/15）</span><span class="imp">🔥🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">政策法规</span><span class="tag tag-category">AI治理</span></div>
+    <div class="desc">7 月中国 AIGC 监管进入强监管时代。《网络安全标识管理办法》7/1 生效，设置一星至三星安全分级标识体系，覆盖所有联网 AI 产品，未达基础级将限制线上销售。《人工智能拟人化互动服务管理暂行办法》7/15 施行，首次对 AI 虚拟伴侣/情感陪伴等拟人化交互场景专项监管：严禁向未成年人提供虚拟亲密关系服务、强制 AI 身份显性标识、2 小时防沉迷提醒、交互日志留存 180 天。叠加生成式 AI 既有法规，形成「底层产品安全+大模型生成+拟人化情感交互」三层闭环。</div>
+    <div class="sources"><a href="https://cloud.tencent.com/developer/article/2701369" target="_blank" rel="noopener">腾讯云</a><a href="https://www.gov.cn/zhengce/zhengceku/202604/content_7065212.htm" target="_blank" rel="noopener">中国政府网</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">Redis CVE-2026-23479：AI 工具 XintCode 自主挖掘潜伏 2 年的 RCE 后门</span><span class="imp">🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">漏洞</span><span class="tag tag-category">AI红队</span></div>
+    <div class="desc">Redis 官方 5/5 发布紧急安全公告修复 CVE-2026-23479，该漏洞为阻塞客户端代码路径中的释放后使用（UAF）缺陷，已潜伏整整 2 年（自 Redis 7.2.0 引入）。由 Team Xint Code 的自主 AI 漏洞挖掘工具发现，经身份验证用户可通过特定权限组合实现远程代码执行。这是 AI 自主漏洞挖掘工具实战化发现高危 CVE 的又一标志性案例，延续了 AI 红队进入工程实战阶段的趋势。</div>
+    <div class="sources"><a href="https://www.freebuf.com/articles/ai-security/484433.html" target="_blank" rel="noopener">FreeBuf</a><a href="https://cn-sec.com/archives/5266650.html" target="_blank" rel="noopener">CN-SEC</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">CRN 评选 2026 上半年最热门 10 家 AI 安全初创公司</span><span class="imp">🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">行业排名</span><span class="tag tag-category">AI-SPM</span></div>
+    <div class="desc">CRN 于 7/2 发布 2026 上半年最热门 AI 安全初创公司榜单，覆盖 AI-SPM、Agent 安全、AI 治理、运行时防护和 AI 红队五大细分领域。入选公司代表了 AI 安全市场从边缘走向主流的态势，Presidio 等大型解决方案提供商正在评估哪些初创公司具备长期差异化能力而非狭窄功能，筛选逻辑从「模型最好」转向「能干净集成到客户现有安全架构」。</div>
+    <div class="sources"><a href="https://www.crn.com/news/security/2026/the-10-hottest-ai-security-startups-of-2026-so-far" target="_blank" rel="noopener">CRN</a></div>
+  </div>
+
+  <div class="card">
+    <div class="header"><span class="title">三部门联合印发《智能体规范应用与创新发展实施意见》</span><span class="imp">🔥</span></div>
+    <div class="tags"><span class="tag tag-vendor">政策法规</span><span class="tag tag-category">AI Agent治理</span></div>
+    <div class="desc">国家网信办、发改委、工信部于 5/8 联合印发《智能体规范应用与创新发展实施意见》，明确智能体是具备自主感知、记忆、决策、交互与执行能力的智能系统。文件从科技创新、治理能力、产业生态、民生福祉四个维度提出发展路径，是中国首个针对 AI Agent 专项治理的政策文件，与 7 月双新规共同构成 AI Agent 治理三重框架。</div>
+    <div class="sources"><a href="https://www.cac.gov.cn/2026-05/08/c_1779979789523320.htm" target="_blank" rel="noopener">网信办</a><a href="https://www.gov.cn/lianbo/202605/content_7068177.htm" target="_blank" rel="noopener">中国政府网</a></div>
+  </div>
+</div>
+
+<div class="trend">
+  <div class="tag">📈 趋势判断</div>
+  <p><strong>趋势判断</strong>：① AI 编程 Agent 信任模型系统性崩溃——DuneSlide+Agentjacking 同周曝光证明沙箱隔离与 Agent 行为校验需要根本性重设计；② LLM 越狱攻击从"理论风险"进入"量化实测"阶段，53.8% 复合攻击成功率远超行业预期；③ 中国 AIGC 监管进入「三层闭环」时代（产品安全+模型生成+拟人化交互），全球监管密度持续攀升；④ Anthropic Compliance API 代表 AI 治理从"模型自审"转向"生态共治"，28 家安全伙伴首日上线标志着企业级 AI 安全进入平台化阶段。</p>
+</div>
+
+<div class="footer">
+  AI 安全日报 · 2026-07-05 · 由 AI 自动生成 · 数据来源：WebSearch 多轮搜索<br>
+  <a href="https://aaronxi9527.github.io/ai-hot-daily/ai-security-daily-2026-07-05.html?lk_jump_to_browser=true" style="color:#5B6CF7;text-decoration:none">永久链接</a>
+</div>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+cards.forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.15) + 's';
+  observer.observe(card);
+});
+</script>
+</body>
+</html>
