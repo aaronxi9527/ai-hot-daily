@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-06</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 0;
+}
+
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+.nav-date { font-size: 13px; color: #888; }
+
+.main { max-width: 1200px; margin: 0 auto; padding: 88px 24px 60px; }
+
+.hero {
+  text-align: center; padding: 48px 0 36px;
+  position: relative;
+}
+
+.hero::before {
+  content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+  width: 400px; height: 200px;
+  background: radial-gradient(ellipse at center, rgba(91,108,247,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 36px; font-weight: 800; letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 40%, #EC4899 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+
+.hero .date { font-size: 15px; color: #888; margin-bottom: 8px; }
+.hero .stats {
+  display: inline-flex; gap: 20px; margin-top: 16px;
+  font-size: 14px; color: #aaa;
+}
+
+.hero .stats span { padding: 4px 14px; background: rgba(255,255,255,0.04); border-radius: 20px; }
+.hero .stats strong { color: #8B5CF6; }
+
+.ai-insight {
+  background: linear-gradient(135deg, rgba(91,108,247,0.08) 0%, rgba(139,92,246,0.06) 50%, rgba(236,72,153,0.04) 100%);
+  border: 1px solid rgba(91,108,247,0.15);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.ai-insight::before {
+  content: '🤖 AI 今日看点';
+  display: block; font-size: 12px; font-weight: 600; color: #8B5CF6;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+}
+
+.ai-insight p { font-size: 15px; color: #ccc; line-height: 1.8; }
+
+.section { margin-bottom: 40px; }
+
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.section-header h2 {
+  font-size: 20px; font-weight: 700; letter-spacing: -0.3px;
+}
+
+.section-header .count {
+  font-size: 13px; color: #888;
+  padding: 2px 10px; background: rgba(255,255,255,0.04); border-radius: 12px;
+}
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.25s ease;
+  opacity: 0; transform: translateY(20px);
+}
+
+.card.visible { opacity: 1; transform: translateY(0); }
+
+.card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(139,92,246,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(91,108,247,0.08);
+}
+
+.card-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+
+.card-header .importance { font-size: 16px; flex-shrink: 0; }
+
+.card-title {
+  font-size: 16px; font-weight: 700; line-height: 1.5;
+  color: #f0f0f0; letter-spacing: -0.2px;
+}
+
+.card-summary {
+  font-size: 14px; color: #999; line-height: 1.7; margin-bottom: 16px;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+
+.tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+  padding: 3px 10px; border-radius: 6px;
+}
+
+.tag-vendor { background: rgba(91,108,247,0.15); color: #7B8CF8; }
+.tag-industry { background: rgba(236,72,153,0.12); color: #EC4899; }
+.tag-conference { background: rgba(139,92,246,0.12); color: #A78BFA; }
+
+.card-sources { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.source-link {
+  font-size: 12px; color: #8B5CF6; text-decoration: none;
+  padding: 3px 10px; background: rgba(139,92,246,0.08);
+  border-radius: 6px; transition: all 0.2s;
+  display: inline-block;
+}
+
+.source-link:hover {
+  color: #A78BFA; background: rgba(139,92,246,0.15);
+  text-decoration: underline;
+}
+
+.source-merge {
+  font-size: 11px; color: #666; padding: 3px 8px;
+  background: rgba(255,255,255,0.03); border-radius: 6px;
+}
+
+.card-date {
+  font-size: 11px; color: #666; margin-bottom: 10px;
+}
+
+.footer {
+  text-align: center; padding: 40px 0 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 48px;
+}
+
+.footer p { font-size: 12px; color: #555; }
+.footer a { color: #8B5CF6; text-decoration: none; }
+
+.empty-state {
+  text-align: center; padding: 48px 24px;
+  color: #666; font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .hero .stats { flex-direction: column; gap: 8px; }
+  .main { padding: 80px 16px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">🛡️ 防火墙日报</div>
+    <div class="nav-date">2026-07-06</div>
+  </div>
+</nav>
+
+<main class="main">
+
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="date">2026-07-06 · 北京时间</div>
+    <div class="stats">
+      <span>🏢 厂商 <strong>3</strong> 条</span>
+      <span>🏭 行业 <strong>1</strong> 条</span>
+      <span>📊 共 <strong>4</strong> 条动态</span>
+    </div>
+  </section>
+
+  <div class="ai-insight">
+    <p>本周头条无疑是《金融业网络安全管理办法（征求意见稿）》的发布——这是近年来金融行业网络安全领域最大的政策动作，四部门联合出手，首次为金融全行业划定了统一的网络安全合规底线，十五条安全保护义务直接对标防火墙、WAF、数据安全等设备采购需求。同一时间，人保集团网络安全项目五家头部厂商激烈竞标，天融信以最低价拿下一千多万大单，说明金融安全赛道「合规驱动+价格竞争」双线并行的态势已经明确。对于防火墙厂商来说，下半年谁能把金融行业解决方案做到'合规开箱即用'，谁就能吃到最大的蛋糕。</p>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>🏢 厂商动态</h2>
+      <span class="count">3 条</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" style="transition-delay:0ms">
+        <div class="card-date">2026-07-02</div>
+        <div class="card-header">
+          <span class="importance">🔥</span>
+          <div class="card-title">人保集团2026年网络安全大单：天融信1059万第一候选人、奇安信1102万第二、深信服1393万第三</div>
+        </div>
+        <div class="tags"><span class="tag tag-vendor">天融信</span><span class="tag tag-vendor">奇安信</span><span class="tag tag-vendor">深信服</span></div>
+        <div class="card-summary">中国人民保险集团2026年网络安全专项保障人力项目7月2日发布中标候选人公示。第一候选人：天融信（含税报价1059.96万元）；第二：奇安信网神（1102.07万元）；第三：深信服（1393.92万元）；第四：微步在线（871.2万元）；第五：绿盟科技（1248.72万元）。五家头部厂商分食人保集团安全服务大单，天融信以最低报价夺魁，显示金融行业安全服务赛道价格竞争依然激烈。</div>
+        <div class="card-sources"><a href="https://www.163.com/dy/article/L0V2APSD0511D6RL.html" target="_blank" rel="noopener" class="source-link">网易/云头条</a><a href="https://www.myzaker.com/article/6a486b588e9f094cfc6f3b26" target="_blank" rel="noopener" class="source-link">ZAKER新闻</a> <span class="source-merge">合并2源</span></div>
+      </div>
+      <div class="card" style="transition-delay:100ms">
+        <div class="card-date">2026-07-03</div>
+        <div class="card-header">
+          
+          <div class="card-title">深信服中标天水市第二人民医院安全设备序列号采购项目</div>
+        </div>
+        <div class="tags"><span class="tag tag-vendor">深信服</span></div>
+        <div class="card-summary">天水市第二人民医院发布深信服安全设备序列号采购项目单一来源采购公告（2026-07-03），拟采购深信服品牌安全设备序列号续费服务。医疗行业作为网络安全投入的稳定增长板块，深信服持续渗透区域医院市场。</div>
+        <div class="card-sources"><a href="https://www.gsei.com.cn/html/1664/2026-07-03/content-682838.html" target="_blank" rel="noopener" class="source-link">甘肃经济信息网</a> </div>
+      </div>
+      <div class="card" style="transition-delay:200ms">
+        <div class="card-date">2026-07-01</div>
+        <div class="card-header">
+          
+          <div class="card-title">天融信NGFW4000-UF防火墙中标深圳航天信息有限公司采购项目</div>
+        </div>
+        <div class="tags"><span class="tag tag-vendor">天融信</span></div>
+        <div class="card-summary">深圳航天信息有限公司于7月1日发布防火墙天融信NGFW4000-UF（FT-E04）千兆防火墙询价采购公告（询价单编号：WXXC092026032），项目位于广东省深圳市。航天信息作为央企子公司，选用天融信防火墙进一步验证了天融信在央企市场的品牌认可度。</div>
+        <div class="card-sources"><a href="https://www.rccchina.com/services/bid_project_list/VRa7lp3D0QTHsbZ9Jn0D4g==" target="_blank" rel="noopener" class="source-link">RCC瑞达恒</a> </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>🏭 行业动态</h2>
+      <span class="count">1 条</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" style="transition-delay:0ms">
+        <div class="card-date">2026-07-03</div>
+        <div class="card-header">
+          <span class="importance">🔥</span>
+          <div class="card-title">四部门联合发布《金融业网络安全管理办法（征求意见稿）》，首次统一金融全行业网络安全合规底线</div>
+        </div>
+        <div class="tags"><span class="tag tag-industry">🏭 金融</span><span class="tag tag-industry">🏭 政府</span></div>
+        <div class="card-summary">7月3日，央行、金融监管总局、证监会、外汇局四部门联合起草《金融业网络安全管理办法（征求意见稿）》，共五章三十三条。核心亮点：①首次在金融全行业构建统一、贯通的网络安全规章，打破分业监管碎片化格局；②确立十五条网络安全保护义务（含组织治理、基础运营、数据保护、业务管控四大维度），关键信息基础设施运营者另有五项专项义务；③搭建跨部门综合监管体系，建立法律追责分层机制。天融信第一时间发布解读，提出依托边界防护/安全检测/数据安全/AI创新产品构建多层次安全防护方案。该办法将直接拉动金融行业防火墙等安全设备采购需求，信创替代与合规升级双轮驱动金融行业安全投入。</div>
+        <div class="card-sources"><a href="https://finance.china.com.cn/money/bank/20260706/6314913.shtml" target="_blank" rel="noopener" class="source-link">来源</a><a href="https://finance.sina.com.cn/wm/2026-07-05/doc-iniftwhw2603671.shtml" target="_blank" rel="noopener" class="source-link">来源</a><a href="https://finance.eastmoney.com/a/202607043793968837.html" target="_blank" rel="noopener" class="source-link">来源</a> <span class="source-merge">合并3源</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>数据来源：公开搜索聚合 · 仅供参考 | 推送时间：每日 09:00 北京时间</p>
+    <p><a href="https://aaronxi9527.github.io/ai-hot-daily/" target="_blank">日报归档</a></p>
+  </footer>
+
+</main>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card').forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      card.classList.add('visible');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
