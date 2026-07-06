@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-07-06</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; color:#D1D5DB; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif; line-height:1.6; }
+.container { max-width:900px; margin:0 auto; padding:40px 20px; }
+
+/* Hero */
+.hero { text-align:center; padding:60px 20px 40px; position:relative; }
+.hero::before { content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:300px; height:300px; background:radial-gradient(circle,rgba(91,108,247,0.15) 0%,transparent 70%); pointer-events:none; }
+.hero h1 { font-size:36px; font-weight:800; background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:12px; position:relative; }
+.hero .date { font-size:15px; color:#6B7280; margin-bottom:24px; }
+.hero .stats { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
+.hero .stat { background:#111827; border:1px solid #1f2937; border-radius:12px; padding:16px 24px; text-align:center; min-width:120px; }
+.hero .stat .num { font-size:28px; font-weight:800; background:linear-gradient(135deg,#5B6CF7,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero .stat .label { font-size:12px; color:#6B7280; margin-top:4px; }
+
+/* AI Overview */
+.overview { background:linear-gradient(135deg,#111827,#1a1030); border:1px solid #1f2937; border-radius:16px; padding:28px 32px; margin-bottom:40px; position:relative; overflow:hidden; }
+.overview::before { content:""; position:absolute; top:-50px; right:-50px; width:200px; height:200px; background:radial-gradient(circle,rgba(139,92,246,0.1) 0%,transparent 70%); }
+.overview h3 { font-size:18px; color:#A78BFA; margin-bottom:12px; position:relative; }
+.overview p { font-size:14px; color:#D1D5DB; line-height:1.8; position:relative; }
+
+/* Sections */
+.section { margin-bottom:40px; }
+.section-title { font-size:22px; font-weight:700; color:#F3F4F6; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+.count-badge { display:inline-flex; align-items:center; justify-content:center; background:#5B6CF720; color:#8B8FE8; font-size:14px; font-weight:600; border-radius:20px; padding:2px 12px; border:1px solid #5B6CF740; }
+
+/* News Items */
+.news-list { display:flex; flex-direction:column; gap:16px; }
+.news-item { background:#111827; border:1px solid #1f2937; border-radius:12px; padding:20px 24px; transition:all 0.3s ease; opacity:0; transform:translateY(20px); animation:fadeInUp 0.5s ease forwards; }
+.news-item:hover { border-color:#5B6CF740; box-shadow:0 4px 24px rgba(91,108,247,0.08); transform:translateY(-2px); }
+
+@keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
+
+/* Trend */
+.trend { background:#111827; border:1px solid #1f2937; border-radius:16px; padding:28px 32px; margin-top:40px; }
+.trend h3 { font-size:18px; color:#F59E0B; margin-bottom:16px; }
+.trend p { font-size:13px; color:#9CA3AF; line-height:1.8; }
+
+/* Footer */
+.footer { text-align:center; padding:40px 20px; color:#4B5563; font-size:12px; border-top:1px solid #1f2937; margin-top:40px; }
+.footer a { color:#8B8FE8; text-decoration:none; }
+
+/* Responsive */
+@media (max-width:640px) {
+    .container { padding:20px 12px; }
+    .hero h1 { font-size:24px; }
+    .hero .stats { gap:12px; }
+    .hero .stat { padding:12px 16px; min-width:90px; }
+    .hero .stat .num { font-size:22px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+    <h1>🤖 AI 安全日报</h1>
+    <div class="date">2026-07-06 · 星期一</div>
+    <div class="stats">
+        <div class="stat"><div class="num">3</div><div class="label">🏢 国际产品</div></div>
+        <div class="stat"><div class="num">0</div><div class="label">🇨🇳 国内产品</div></div>
+        <div class="stat"><div class="num">10</div><div class="label">📊 行业动态</div></div>
+        <div class="stat"><div class="num">13</div><div class="label">📋 合计</div></div>
+    </div>
+</div>
+
+<!-- AI 总览 -->
+<div class="overview">
+    <h3>🧠 AI 总览</h3>
+    <p>这个周一，AI 安全圈被几件事同时点燃。最炸裂的是 JADEPUFFER——首个完全由 AI Agent 自主执行的勒索攻击，从入侵到加密全流程零人工干预，Agent 自己诊断错误、自己修、继续打。这不是实验室 PoC，是真实在野攻击，AI Agent 攻击元年正式拉开帷幕。
+
+与 JADEPUFFER 呼应的是 PANW Unit 42 刚披露的"幻影抢注"——攻击者利用 LLM 的幻觉能力，模型编一个不存在的链接，坏人就去注册这个域名放钓鱼页面。AI 的"想象力"成了攻击者的武器库，这种信任链被反向利用的模式前所未见。
+
+好消息是国内产品继续静默，没有新的突破性发布。但行业层面的信号越来越明确：Five Eyes 紧急呼吁、AI 漏洞扫描信任度崩塌至 9%、Axis Intelligence 47 个在野利用——都在说明一个问题：AI 安全已经从"会不会出事"进入到"什么时候出事、出多大事"的阶段。</p>
+</div>
+
+<!-- 国际友商产品动态 -->
+<div class="section">
+    <h2 class="section-title">🏢 国际友商产品动态 <span class="count-badge">3</span></h2>
+    <div class="news-list">
+    <div class="news-item" style="animation-delay:0.0s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#5B6CF720;color:#5B6CF7;border:1px solid #5B6CF740;margin-right:4px;">OpenAI</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Security LLM</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">OpenAI 发布 GPT-5.6 Sol 网络安全专精模型（受限早期访问）</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">OpenAI 于 6 月 29 日正式发布 GPT-5.6 Sol，一款专为网络安全场景优化的语言模型。该模型在漏洞分析、威胁情报解读和安全代码审计方面表现出显著优势，目前仅向通过审核的安全团队提供受限早期访问权限。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.infosecurity-magazine.com/news/openai-gpt-5-6-sol-limited-preview/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Infosecurity Magazine</a> · 2026-06-29</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.08s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#5B6CF720;color:#5B6CF7;border:1px solid #5B6CF740;margin-right:4px;">AWS</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">AI 漏洞管理</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">AWS 发布 Continuum——AI 驱动的漏洞管理平台</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">AWS 于 6 月 19 日发布 Continuum 平台，利用 AI 实现全生命周期漏洞管理，覆盖发现、优先级排序、修复验证等环节。平台深度整合 AWS 安全服务生态，提供从云工作负载到 AI 模型资产的统一漏洞视图。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.infosecurity-magazine.com/news/aws-continuum-ai-vulnerability/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Infosecurity Magazine</a> · 2026-06-19</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.16s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#5B6CF720;color:#5B6CF7;border:1px solid #5B6CF740;margin-right:4px;">OpenAI</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Security Copilot</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">OpenAI 扩展 Daybreak 项目——助防御者自动修补漏洞</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">OpenAI 于 6 月 23 日宣布扩展 Daybreak 安全项目，基于 GPT-5.5 的能力，帮助安全防御者自动识别漏洞并生成修复补丁。该工具已在多个开源项目中验证，平均修复时间缩短 60%。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.infosecurity-magazine.com/news/openai-daybreak-gpt-5-5-cyber/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Infosecurity Magazine</a> · 2026-06-23</div>
+    </div></div>
+</div>
+
+<!-- 国内友商产品动态 -->
+
+    <div class="section">
+        <h2 class="section-title">🇨🇳 国内友商产品动态 <span class="count-badge">0</span></h2>
+        <div style="padding:20px;text-align:center;color:#6B7280;font-size:14px;">
+            <p>📭 今日无新增产品动态，行业持续平稳</p>
+        </div>
+    </div>
+
+<!-- 行业动态与趋势 -->
+<div class="section">
+    <h2 class="section-title">📊 行业动态与趋势 <span class="count-badge">10</span></h2>
+    <div class="news-list">
+    <div class="news-item" style="animation-delay:0.0s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Sysdig</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">AI Agent 攻击</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Langflow RCE</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">JADEPUFFER：首个全自主 AI Agent 驱动的端到端勒索软件攻击</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">Sysdig 于 7 月 1-2 日披露首个完全由 AI Agent 自主执行的勒索软件攻击。攻击者 JADEPUFFER 利用 Langflow 漏洞 CVE-2025-3248 入侵，AI Agent 自动窃取云凭证、横向移动并加密 1342 项配置。Agent 在登录失败时仅用 31 秒自行诊断修复，超 600 个 payload 均自带解释性注释，标志着 LLM Agent 自主攻击从理论走向实战的重要里程碑。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://thehackernews.com/2026/07/ai-agent-exploits-langflow-rce-to.html" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">The Hacker News / Sysdig</a> · 2026-07-02</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.08s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">PANW Unit 42</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Phantom Squatting</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">AI 供应链</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">PANW Unit 42 披露「幻影抢注」攻击：AI 幻觉域名成新型钓鱼武器</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">Palo Alto Networks Unit 42 于 7 月 1 日披露名为「幻影抢注」(Phantom Squatting) 的新型攻击手法：LLM 在回答中虚构不存在网址，攻击者抢注这些域名并部署钓鱼页面。研究显示对 913 个品牌提问 68.5 万次后，模型生成 210 万个链接，其中 13,229 个已被标记为恶意。开发者越来越倾向将模型返回的链接视为真实来源，构成严重信任风险。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://thehackernews.com/2026/07/phantom-squatting-uses-ai-hallucinated.html" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">The Hacker News / PANW Unit 42</a> · 2026-07-01</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.16s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Anthropic</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">出口管制</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">越狱防护</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">Anthropic Claude Fable 5 出口管制解除——新增安全护栏后恢复全球访问</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">美国商务部于 6 月 30 日解除对 Claude Fable 5 及 Mythos 5 的出口管制，Anthropic 于 7 月 1 日恢复全球访问。此前因亚马逊研究人员在 Fable 5 中发现越狱漏洞，政府于 6 月 12 日下达紧急出口管制令。Anthropic 表示已部署新的安全护栏机制，此次事件凸显前沿模型安全评估与出口管控之间的新型博弈关系。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://thehackernews.com/2026/07/anthropic-restores-claude-fable-5-after.html" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">The Hacker News / Infosecurity Magazine</a> · 2026-07-01</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.24s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Axis Intelligence</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">漏洞追踪</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">AI Agent</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">Axis Intelligence 更新 AI 模型漏洞追踪器——47 个已确认利用，Agent 工具注入成功率 84%</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">Axis Intelligence 于 7 月 4 日更新 AI 模型漏洞追踪器，2026 年上半年在 6 个生产级 LLM 中成功复现 47 个攻击向量。其中 Agent 工具输入注入以 84% 成功率成为影响最大且未解决的攻击类别；多会话记忆中毒链（AVI-2026-0089）可在 5 个模型中的 4 个里使虚假上下文持续 9 个会话。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://axis-intelligence.com/research/ai-model-vulnerability-tracker/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Axis Intelligence</a> · 2026-07-04</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.32s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">漏洞扫描</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">AI 信任</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">行业调研</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">自动化 AI 漏洞扫描信任度暴跌至 9%，新研究揭示安全团队信心危机</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">6 月 25 日发布的最新研究显示，安全团队对自动化 AI 漏洞扫描工具的信任度已从年初的 34% 暴跌至仅 9%。调查发现主要原因是 AI 扫描工具频繁产生误报和漏报，导致安全团队的「告警疲劳」加剧。研究建议将 AI 工具定位为辅助而非替代，并与传统扫描器并行使用。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.infosecurity-magazine.com/news/trust-ai-vulnerability-scanning/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Infosecurity Magazine</a> · 2026-06-25</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.4s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Five Eyes</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">前沿 AI</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">威胁情报</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">Five Eyes 联盟发布前沿 AI 威胁紧急行动呼吁</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">Five Eyes 情报联盟于 6 月 23 日罕见发布联合行动呼吁，敦促全球组织正视前沿 AI 威胁。文件指出 AI 赋能的网络攻击在速度、规模和隐蔽性三方面出现质的飞跃，传统纵深防御体系面临结构性挑战，呼吁建立跨国 AI 威胁情报共享机制。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.infosecurity-magazine.com/news/five-eyes-issues-urgent-call/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Infosecurity Magazine</a> · 2026-06-23</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.48s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Bitdefender</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">安全评估</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">意识差距</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">Bitdefender 2026 网络安全评估：AI 安全意识与韧性之间存在显著鸿沟</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">Bitdefender 于 7 月 1 日发布 2026 年网络安全评估报告，揭示一系列矛盾：IT 领导层认为对员工 AI 使用有充分可见性，但一线从业者不认同；安全团队理解减少攻击面的重要性，却缺乏技能和资源；AI 主导安全讨论，却在某些场景分散了对更普遍攻击手法的关注。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://thehackernews.com/2026/07/2026-cybersecurity-assessment-gap.html" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">The Hacker News / Bitdefender</a> · 2026-07-01</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.56s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">macOS</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">提示注入</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">AI 分诊逃避</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">macOS Gaslight 后门利用提示注入技术逃避 AI 安全分诊</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">安全研究人员于 6 月 24 日披露名为 Gaslight 的 macOS Rust 后门，该恶意软件首次利用提示注入技术针对 AI 驱动的安全分诊系统。通过在恶意代码中嵌入精心构造的自然语言指令，后门可误导 AI 安全分析工具将其归类为良性，展示了攻击者针对 AI 防御体系的新型对抗手法。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.infosecurity-magazine.com/news/macos-gaslight-rust-backdoor/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Infosecurity Magazine</a> · 2026-06-24</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.64s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">JFrog</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">供应链安全</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">AI 开发</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">AI 供应链攻击升级——JFrog 警告 AI 驱动开发加速威胁扩散</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">JFrog 于 5 月 28 日发布警告称 AI 驱动的软件开发正在以前所未有的速度加速供应链威胁。研究表明 AI 编码助手在生成代码时可能引入已知漏洞的依赖项，而开发者由于信任 AI 输出而跳过手动审查环节，导致漏洞扩散速度远超传统开发模式。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.esecurityplanet.com/threats/ai-software-supply-chain-threats-escalate-in-2026/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">eSecurity Planet / JFrog</a> · 2026-05-28</div>
+    </div>
+
+    <div class="news-item" style="animation-delay:0.72s;">
+        <div style="margin-bottom:6px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">M&A</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">Agentic AI</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640;margin-right:4px;">行业整合</span><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:#EC489920;color:#EC4899;border:1px solid #EC489940;margin-right:4px;">🔥</span></div>
+        <h4 style="margin:0 0 6px 0;font-size:15px;color:#F3F4F6;line-height:1.5;">6 月安全并购聚焦 Agentic AI——行业加速布局 AI Agent 安全</h4>
+        <p style="margin:0 0 6px 0;font-size:13px;color:#9CA3AF;line-height:1.6;">Infosecurity Magazine 于 7 月 3 日发布 6 月安全行业并购综述，显示 Agentic AI 安全成为最热门的并购主题。多家传统安全厂商通过收购 AI Agent 安全初创公司补全产品矩阵，标志着 AI Agent 安全已从概念验证进入商业化整合阶段。Accenture 收购 Dragos 多数股权是本月最大交易之一。</p>
+        <div style="font-size:12px;color:#6B7280;">📎 <a href="https://www.infosecurity-magazine.com/news-features/cybersecurity-ma-roundup-june-2026/" target="_blank" rel="noopener" style="color:#8B8FE8;text-decoration:none;border-bottom:1px solid #8B8FE840;">Infosecurity Magazine</a> · 2026-07-03</div>
+    </div></div>
+</div>
+
+<!-- 趋势判断 -->
+<div class="trend">
+    <h3>📈 趋势判断精简版</h3>
+    <p><strong>Agentic AI 攻击实战化</strong> — JADEPUFFER 证明 AI Agent 自主攻击已从理论走向野外，传统基于签名的检测体系面临结构性失效<br><br>
+<strong>AI 幻觉成新型攻击面</strong> — 幻影抢注揭示 LLM 不确定性被恶意利用的新范式，AI 输出信任机制需要根本性重构<br><br>
+<strong>防御侧信心崩塌</strong> — AI 漏洞扫描信任度暴跌至 9%，表明当前 AI 安全产品的实际效果远未达到行业预期<br><br>
+<strong>前沿模型出口管制博弈加剧</strong> — Anthropic Fable 5 事件开创了「发现漏洞→紧急管制→修复后解除」的先例，未来可能成为常态</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>AI 安全日报 · 2026-07-06 · 数据来源：The Hacker News / Infosecurity Magazine / Sysdig / PANW Unit 42 / Axis Intelligence 等</p>
+    <p style="margin-top:4px;">Generated by WorkBuddy · <a href="https://aaronxi9527.github.io/ai-hot-daily/ai-security-daily-2026-07-06.html?lk_jump_to_browser=true" target="_blank">在线查看</a></p>
+</div>
+
+</div>
+</body>
+</html>
