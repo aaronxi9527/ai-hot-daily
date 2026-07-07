@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤖 AI 安全日报 · 2026-07-07</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #111827;
+      --border: #1f2937;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --accent-1: #5B6CF7;
+      --accent-2: #8B5CF6;
+      --accent-3: #EC4899;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .hero {
+      padding: 80px 20px 60px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 0%, rgba(91,108,247,0.18), transparent 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin: 0 0 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .hero .date {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 28px;
+      min-width: 140px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .stat:hover { transform: translateY(-4px); }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+    .overview {
+      max-width: 880px;
+      margin: 40px auto;
+      padding: 28px 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .overview::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    }
+    .overview h2 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+    .overview p { margin: 0; font-size: 1.05rem; }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    .section { margin-bottom: 56px; }
+    .section-title {
+      font-size: 1.5rem;
+      margin: 0 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .count {
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cards { display: flex; flex-direction: column; gap: 20px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: slideIn 0.6s ease forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .importance { font-size: 1rem; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .tag-purple {
+      background: rgba(139, 92, 246, 0.15);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .tag-blue {
+      background: rgba(91, 108, 247, 0.12);
+      color: #a5b4fc;
+      border: 1px solid rgba(91, 108, 247, 0.25);
+    }
+    .card-title {
+      font-size: 1.15rem;
+      margin: 0 0 10px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+    .card-summary {
+      color: #d1d5db;
+      margin: 0 0 16px;
+      font-size: 0.95rem;
+    }
+    .card-source { font-size: 0.85rem; }
+    .source-link {
+      color: #818cf8;
+      text-decoration: none;
+      margin-right: 12px;
+      transition: color 0.2s;
+    }
+    .source-link:hover { color: #c7d2fe; text-decoration: underline; }
+    .trend {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 40px;
+    }
+    .trend h2 { margin: 0 0 14px; font-size: 1.3rem; }
+    .trend p { margin: 0; color: #d1d5db; font-size: 0.98rem; }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .stat { min-width: 120px; padding: 16px 20px; }
+      .section-title { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>🤖 AI 安全日报</h1>
+    <div class="date">2026-07-07 · 北京时间 10:00</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">5</div>
+        <div class="stat-label">国际产品动态</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">4</div>
+        <div class="stat-label">国内产品动态</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">10</div>
+        <div class="stat-label">行业动态</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">4</div>
+        <div class="stat-label">重大热点</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="overview">
+    <h2>🧠 AI 总览</h2>
+    <p>今天 AI 安全圈热闹非凡。国际上 Fortinet、Palo Alto、Aegis AI、NetFoundry 都在强化 AI 应用与 Agent 的边界防护；国内深信服、新华三、绿盟、腾讯云持续把大模型安全能力产品化。更值得警惕的是行业侧：JADEPUFFER 成为全球首例全自主 AI Agent 勒索软件，Axis Intelligence 上半年已确认 47 个大模型攻击向量，中美监管同步收紧，AI 安全正从‘可选增强’变成‘基础合规’。</p>
+  </div>
+
+  <main class="container">
+    
+    <section class="section">
+      <h2 class="section-title"><span class="gradient-text">🏢 国际友商产品动态</span> <span class="count">5 条</span></h2>
+      <div class="cards">
+        
+    <article class="card" style="--delay: 0ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">Fortinet</span> <span class="tag tag-blue">AI 安全运营</span> <span class="tag tag-blue">AI 应用安全</span></div>
+      </div>
+      <h3 class="card-title">Fortinet 升级 FortiAI 2.0 并强化 FortiAI-Protect AI 应用安全能力</h3>
+      <p class="card-summary">Fortinet 在 Accelerate 2026 亚太区巡展中披露其 AI 安全双轮布局：FortiAI 已进化至 2.0，具备自主推理与行动能力；FortiAI-Protect 提供全面的 AI 应用可见性、风险评估、访问控制与威胁检测增强。</p>
+      <div class="card-source">
+        <a href="https://www.fortinet.com/solutions/ai-security" target="_blank" rel="noopener" class="source-link">来源：Fortinet 官网 / 至顶网</a> <a href="https://net.zhiding.cn/network_security_zone/2026/0601/3188855.shtml" target="_blank" rel="noopener" class="source-link">来源2</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 50ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">Palo Alto Networks</span> <span class="tag tag-blue">AI-SPM / AI Runtime Security</span> <span class="tag tag-blue">AI 红蓝对抗</span></div>
+      </div>
+      <h3 class="card-title">Palo Alto Networks Prisma AIRS 6 月更新：AI 红队目标画像可配置化</h3>
+      <p class="card-summary">Prisma AIRS AI Red Teaming 新增可配置目标画像（configurable target profiling），安全团队可直接控制对 AI 端点自动画像的时机与范围，减少误报和测试风险。</p>
+      <div class="card-source">
+        <a href="https://origin-docs.paloaltonetworks.com/ai-runtime-security/new-features/by-date/prisma-airs/june-2026" target="_blank" rel="noopener" class="source-link">来源：Palo Alto Networks 官方文档</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 100ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">Aegis AI</span> <span class="tag tag-blue">LLM-WAF / LLM Firewall</span> <span class="tag tag-blue">开源安全网关</span></div>
+      </div>
+      <h3 class="card-title">Aegis AI 发布 Guardian 开源 LLM 安全网关</h3>
+      <p class="card-summary">Aegis AI 推出 Guardian 开源框架，作为 LLM 应用的安全网关，聚焦提示词注入、输出处理与访问控制，面向企业级生成式 AI 部署提供可审计的边界防护。</p>
+      <div class="card-source">
+        <a href="https://www.aibreakingwire.com/news/security-news-aegis-ai-releases-guardian-an-open-source-llm-firewall-for-enterpr" target="_blank" rel="noopener" class="source-link">来源：AI Breaking Wire</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 150ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">NetFoundry</span> <span class="tag tag-blue">AI Agent 安全网关</span> <span class="tag tag-blue">LLM Gateway</span> <span class="tag tag-blue">零信任</span></div>
+      </div>
+      <h3 class="card-title">NetFoundry 发布企业级 MCP 与 LLM 零信任网关</h3>
+      <p class="card-summary">NetFoundry 推出面向 AI 部署的企业级 MCP 与 LLM 网关，核心解决 AI 时代可达性（reachability）问题，为 API、AI Agent、MCP 服务器和 LLM 端点提供零信任访问控制。</p>
+      <div class="card-source">
+        <a href="https://netfoundry.io/press-release/netfoundry-launches-enterprise-class-mcp-and-llm-gateways-bringing-zero-trust-to-ai-deployments/" target="_blank" rel="noopener" class="source-link">来源：NetFoundry 官方新闻</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 200ms">
+      <div class="card-header">
+        <div class="importance">🔥</div>
+        <div class="tags"><span class="tag tag-purple">CrowdStrike</span> <span class="tag tag-blue">Security Agent / Copilot</span> <span class="tag tag-blue">AI 安全运营</span></div>
+      </div>
+      <h3 class="card-title">CrowdStrike Charlotte AI 强调 Agentic Analyst 安全运营自动化定位</h3>
+      <p class="card-summary">CrowdStrike 更新 Charlotte AI 产品页，明确其为 Falcon 平台的 Agentic AI 分析师，承担告警分流、调查与响应的自动化工作负载，降低安全运营人工耗时。</p>
+      <div class="card-source">
+        <a href="https://www.crowdstrike.com/en-us/platform/charlotte-ai/" target="_blank" rel="noopener" class="source-link">来源：CrowdStrike 官网</a>
+      </div>
+    </article>
+    
+      </div>
+    </section>
+    
+    
+    <section class="section">
+      <h2 class="section-title"><span class="gradient-text">🇨🇳 国内友商产品动态</span> <span class="count">4 条</span></h2>
+      <div class="cards">
+        
+    <article class="card" style="--delay: 250ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">深信服</span> <span class="tag tag-blue">安全大模型</span> <span class="tag tag-blue">数据安全</span> <span class="tag tag-blue">AI 勒索防护</span></div>
+      </div>
+      <h3 class="card-title">深信服发布安全 GPT 4.0 数据安全大模型与 EDS 520 分布式存储</h3>
+      <p class="card-summary">深信服秋季新品发布会推出安全 GPT 4.0，聚焦动静态数据分类分级、数据风险自动研判分析；同步发布具备 AI 勒索防护能力的分布式存储 EDS 新版本 520。</p>
+      <div class="card-source">
+        <a href="http://www.lryc.cn/news/470947.html" target="_blank" rel="noopener" class="source-link">来源：深信服 / 两仪视频</a> <a href="https://www.securitygpt.com.cn/" target="_blank" rel="noopener" class="source-link">来源2</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 300ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">新华三/H3C</span> <span class="tag tag-blue">AI 防火墙</span> <span class="tag tag-blue">智能体安全</span> <span class="tag tag-blue">AI 应用安全</span></div>
+      </div>
+      <h3 class="card-title">新华三 NAVIGATE 2026 发布业界最高性能 AI 防火墙及智能体安全防护体系</h3>
+      <p class="card-summary">新华三在 NAVIGATE 2026 领航者峰会上发布智能体安全防护体系，围绕算力、模型、应用三大维度推出业界最高性能 AI 防火墙，针对身份冒用、权限越界、行为不可控等智能体新风险构建全场景防线。</p>
+      <div class="card-source">
+        <a href="https://www.h3c.com/cn/d_202605/2837365_30008_0.htm" target="_blank" rel="noopener" class="source-link">来源：新华三官网</a> <a href="https://www.afzhan.com/news/detail/109764.html" target="_blank" rel="noopener" class="source-link">来源2</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 350ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">绿盟科技/NSFOCUS</span> <span class="tag tag-blue">安全大模型</span> <span class="tag tag-blue">AI 安全运营</span> <span class="tag tag-blue">智能攻防</span></div>
+      </div>
+      <h3 class="card-title">绿盟科技发布风云卫 AI 安全能力平台（NSFGPT）</h3>
+      <p class="card-summary">绿盟科技推出风云卫 AI 安全能力平台（NSFOCUS Generative Pre-trained Transformer），融合多年 AI/ML 研究、攻防知识与威胁情报，面向智能攻防与安全运营提供大模型能力支撑。</p>
+      <div class="card-source">
+        <a href="https://www.nsfocus.com.cn/html/2026/209_0428/288.html" target="_blank" rel="noopener" class="source-link">来源：绿盟科技官网</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 400ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">腾讯云</span> <span class="tag tag-blue">LLM-WAF</span> <span class="tag tag-blue">大模型应用安全</span> <span class="tag tag-blue">AI-SPM</span></div>
+      </div>
+      <h3 class="card-title">腾讯云大模型 Web 应用防火墙 LLM-WAF 正式提供全栈防护</h3>
+      <p class="card-summary">腾讯云 LLM-WAF 面向大模型应用场景提供算力滥用防护、提示词攻击拦截、涉敏信息识别等能力，覆盖开发、部署到应用全流程，支持 80+ 大模型场景的快速接入。</p>
+      <div class="card-source">
+        <a href="https://cloud.tencent.com/product/llmwaf" target="_blank" rel="noopener" class="source-link">来源：腾讯云开发者社区</a> <a href="https://cloud.tencent.com/developer/article/2663478" target="_blank" rel="noopener" class="source-link">来源2</a>
+      </div>
+    </article>
+    
+      </div>
+    </section>
+    
+    
+    <section class="section">
+      <h2 class="section-title"><span class="gradient-text">📊 行业动态与趋势</span> <span class="count">10 条</span></h2>
+      <div class="cards">
+        
+    <article class="card" style="--delay: 450ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">Sysdig</span> <span class="tag tag-blue">安全事件</span> <span class="tag tag-blue">AI Agent 安全</span> <span class="tag tag-blue">勒索软件</span></div>
+      </div>
+      <h3 class="card-title">🔥🔥🔥 全球首例全自主 AI Agent 勒索软件 JADEPUFFER 曝光</h3>
+      <p class="card-summary">Sysdig 首次记录到完全由 AI Agent 自主完成的勒索软件攻击 JADEPUFFER：从 Langflow RCE 漏洞利用到云凭证窃取再到 1,342 项配置加密，全程无需人类参与。</p>
+      <div class="card-source">
+        <a href="https://www.aisort.net/ai_news/20260705/jadepuffer-ai-agent-ransomware/" target="_blank" rel="noopener" class="source-link">来源：AISort / Sysdig</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 500ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">Axis Intelligence</span> <span class="tag tag-blue">研究报告</span> <span class="tag tag-blue">AI 红蓝对抗</span> <span class="tag tag-blue">LLM 漏洞</span></div>
+      </div>
+      <h3 class="card-title">🔥🔥🔥 Axis Intelligence 更新 AI 模型漏洞追踪器：2026 上半年确认 47 个利用向量</h3>
+      <p class="card-summary">Axis Intelligence Research 复现并确认 47 个针对生产部署大模型的攻击向量；Agent 工具输入注入成功率高达 84%，揭示当前 LLM 应用在生产环境中的真实脆弱性。</p>
+      <div class="card-source">
+        <a href="https://axis-intelligence.com/research/ai-model-vulnerability-tracker/" target="_blank" rel="noopener" class="source-link">来源：Axis Intelligence</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 550ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">美国政府 / OpenAI</span> <span class="tag tag-blue">政策法规</span> <span class="tag tag-blue">AI 监管</span> <span class="tag tag-blue">大模型安全</span></div>
+      </div>
+      <h3 class="card-title">🔥🔥🔥 美国白宫以安全为由首次直接干预 OpenAI 新一代模型发布节奏</h3>
+      <p class="card-summary">美国政府要求 OpenAI 推迟新一代 AI 模型发布，这是白宫首次直接干预前沿 AI 模型发布节奏，引发市场对 AI 应用快速落地预期的调整，也标志着 AI 监管进入更主动阶段。</p>
+      <div class="card-source">
+        <a href="https://finance.sina.com.cn/jjxw/2026-06-26/doc-inieszry5214375.shtml" target="_blank" rel="noopener" class="source-link">来源：新浪财经</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 600ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">国家网信办等</span> <span class="tag tag-blue">政策法规</span> <span class="tag tag-blue">AIGC 合规</span> <span class="tag tag-blue">大模型安全</span></div>
+      </div>
+      <h3 class="card-title">🔥🔥 中国 7 月 AIGC 双新规正式实施：网络安全标识 + 拟人化互动服务管理</h3>
+      <p class="card-summary">《网络安全标识管理办法》7 月 1 日与《人工智能拟人化互动服务管理暂行办法》7 月 15 日正式实施，构建覆盖 AI 产品安全、大模型生成、拟人化交互的完整监管体系。</p>
+      <div class="card-source">
+        <a href="https://cloud.tencent.com/developer/article/2701369" target="_blank" rel="noopener" class="source-link">来源：腾讯云开发者社区</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 650ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">安全牛</span> <span class="tag tag-blue">行业报告</span> <span class="tag tag-blue">大模型安全</span> <span class="tag tag-blue">AI 治理</span></div>
+      </div>
+      <h3 class="card-title">🔥🔥 安全牛发布《2026 年 AI 大模型安全评估及防护技术应用指南报告》</h3>
+      <p class="card-summary">报告指出 AI 产业高速发展催生全新安全窗口期，企业面临数据、内容、智能体、供应链、身份权限等六大核心风险，AI 安全已进入风险集中暴露阶段。</p>
+      <div class="card-source">
+        <a href="https://www.360why.com/bg/38a550000108490.html" target="_blank" rel="noopener" class="source-link">来源：安全牛 / 360why</a> <a href="https://www.sohu.com/a/1037917799_121752158" target="_blank" rel="noopener" class="source-link">来源2</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 700ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">OWASP</span> <span class="tag tag-blue">行业标准</span> <span class="tag tag-blue">AI Agent 安全</span> <span class="tag tag-blue">最佳实践</span></div>
+      </div>
+      <h3 class="card-title">🔥🔥 OWASP 2026 发布 Agentic AI Top 10 安全风险框架</h3>
+      <p class="card-summary">OWASP 发布全球首个针对自主 AI Agent 的安全风险框架，系统梳理 Agent 系统在提示注入、权限失控、供应链、工具滥用等维度的 top 10 风险与防御建议。</p>
+      <div class="card-source">
+        <a href="https://friday-go.icu/security/offensive/owasp-agentic-ai-top10-2026" target="_blank" rel="noopener" class="source-link">来源：friday-go</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 750ms">
+      <div class="card-header">
+        <div class="importance">🔥🔥</div>
+        <div class="tags"><span class="tag tag-purple">Veracode / Georgia Tech</span> <span class="tag tag-blue">AI 代码安全</span> <span class="tag tag-blue">研究报告</span> <span class="tag tag-blue">安全趋势</span></div>
+      </div>
+      <h3 class="card-title">🔥🔥 AI 生成代码安全危机：25%–45% 引入安全漏洞，1/5 安全事件与其相关</h3>
+      <p class="card-summary">多项 2026 年研究显示，AI 生成代码中 25%–45% 存在安全漏洞，且已成为 1/5 数据泄露事件的诱因，Vibe Coding 正在重塑开发安全左移的边界。</p>
+      <div class="card-source">
+        <a href="https://www.alexcloudstar.com/blog/ai-generated-code-security-risks-2026/" target="_blank" rel="noopener" class="source-link">来源：Alex Cloudstar / Vibe Coding</a> <a href="https://vibecoding.app/blog/zh/ai-shengcheng-daima-anquan-fengxian" target="_blank" rel="noopener" class="source-link">来源2</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 800ms">
+      <div class="card-header">
+        <div class="importance">🔥</div>
+        <div class="tags"><span class="tag tag-purple">Gartner</span> <span class="tag tag-blue">行业报告</span> <span class="tag tag-blue">网络安全趋势</span> <span class="tag tag-blue">AI 治理</span></div>
+      </div>
+      <h3 class="card-title">🔥 Gartner 2026 网络安全趋势：AI 无序发展、监管波动与威胁态势加剧</h3>
+      <p class="card-summary">Gartner 发布 2026 年网络安全重要趋势，认为 AI 的无序发展、地缘政治、监管波动和日益加剧的威胁态势是主要驱动力，前置式主动网络安全与 AI 安全平台成为关键方向。</p>
+      <div class="card-source">
+        <a href="https://www.gartner.com/cn/newsroom/press-releases/2026-top-cybersecurity-trends" target="_blank" rel="noopener" class="source-link">来源：Gartner 中国</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 850ms">
+      <div class="card-header">
+        <div class="importance">🔥</div>
+        <div class="tags"><span class="tag tag-purple">国务院</span> <span class="tag tag-blue">政策法规</span> <span class="tag tag-blue">AI 立法</span> <span class="tag tag-blue">大模型安全</span></div>
+      </div>
+      <h3 class="card-title">🔥 国务院 2026 年度立法计划明确推进人工智能综合性立法</h3>
+      <p class="card-summary">《国务院 2026 年度立法工作计划》明确提出完善人工智能治理、加快推进人工智能健康发展综合性立法，意味着中国 AI 基本法（或促进法）进入实质性推进阶段。</p>
+      <div class="card-source">
+        <a href="https://www.sohu.com/a/1021233563_585328" target="_blank" rel="noopener" class="source-link">来源：搜狐 / ResGov</a>
+      </div>
+    </article>
+    
+
+    <article class="card" style="--delay: 900ms">
+      <div class="card-header">
+        <div class="importance">🔥</div>
+        <div class="tags"><span class="tag tag-purple">FreeBuf / 多源</span> <span class="tag tag-blue">市场数据</span> <span class="tag tag-blue">漏洞研究</span> <span class="tag tag-blue">AI 攻防</span></div>
+      </div>
+      <h3 class="card-title">🔥 2026 年漏洞预测：AI 推动 CVE 数量激增至 6.6 万</h3>
+      <p class="card-summary">AI 工具推动 CVE 发现数量在 2026 年预测增至 6.6 万，但仅约 6.5% 构成真正威胁，显示 AI 在漏洞发现规模化与风险评估精度之间仍存在鸿沟。</p>
+      <div class="card-source">
+        <a href="https://www.freebuf.com/news/486744.html" target="_blank" rel="noopener" class="source-link">来源：FreeBuf</a>
+      </div>
+    </article>
+    
+      </div>
+    </section>
+    
+
+    <div class="trend">
+      <h2>📈 趋势判断精简版</h2>
+      <p>今日 AI 安全战场呈现三条主线：一是“AI 对抗 AI”从概念走向实战——JADEPUFFER 与 Axis Intelligence 的 47 个利用向量证明 Agent 正在成为攻防双方的共同武器；
+二是“网关/护栏”类产品加速落地——从 LLM-WAF、AI 防火墙到 MCP 零信任网关，企业开始把大模型安全从“模型层”前移到“访问层”；
+三是监管前置化——中国 AIGC 双新规、国务院 AI 综合性立法、美国白宫干预模型发布，2026 下半年正在从“技术竞赛”切换为“安全与合规竞赛”。</p>
+    </div>
+  </main>
+
+  <footer>
+    AI 安全日报 · 每日 10:00 北京时间自动推送 · 数据来源：公开网络搜索
+  </footer>
+
+  <script>
+    // IntersectionObserver 已在 CSS 动画中通过 animation-delay 实现渐进效果，无需额外逻辑
+    document.querySelectorAll('.card').forEach((card, index) => {
+      card.style.setProperty('--delay', (index * 50) + 'ms');
+    });
+  </script>
+</body>
+</html>
