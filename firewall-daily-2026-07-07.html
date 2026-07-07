@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-07</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e5e5e5;font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+.topbar{position:fixed;top:0;left:0;right:0;height:56px;background:rgba(10,10,10,0.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:100}
+.topbar-logo{font-size:15px;font-weight:600;color:#e5e5e5;letter-spacing:-0.02em}
+.topbar-logo span{color:#5B6CF7}
+.topbar-date{font-size:13px;color:#888;font-weight:400}
+.container{max-width:960px;margin:0 auto;padding:72px 24px 48px}
+.hero{text-align:center;padding:48px 0 32px;position:relative}
+.hero::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:480px;height:480px;background:radial-gradient(circle,rgba(91,108,247,0.12) 0%,rgba(139,92,246,0.06) 40%,transparent 70%);pointer-events:none}
+.hero h1{font-size:32px;font-weight:700;letter-spacing:-0.03em;color:#fff;margin-bottom:8px}
+.hero h1 .emoji{font-size:28px}
+.hero .meta{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px;font-size:14px;color:#888}
+.hero .meta .dot{width:4px;height:4px;border-radius:50%;background:#5B6CF7}
+.hero .count-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(91,108,247,0.15);border:1px solid rgba(91,108,247,0.3);border-radius:20px;padding:4px 14px;font-size:13px;color:#5B6CF7;font-weight:500}
+.ai-insight{background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.18);border-radius:16px;padding:24px 28px;margin:24px 0 36px;position:relative}
+.ai-insight::before{content:'🤖';position:absolute;top:-12px;left:20px;font-size:20px;background:#0a0a0a;padding:0 6px;border-radius:8px}
+.ai-insight h3{font-size:15px;font-weight:600;color:#8B5CF6;margin-bottom:8px;letter-spacing:-0.01em}
+.ai-insight p{font-size:14px;color:#c4c4c4;line-height:1.7}
+.ai-insight p strong{color:#e5e5e5}
+.section-title{font-size:18px;font-weight:700;color:#fff;margin:36px 0 16px;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:18px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:20px 24px;transition:all 0.3s ease;opacity:0;transform:translateY(24px)}
+.card.visible{opacity:1;transform:translateY(0)}
+.card:hover{border-color:rgba(91,108,247,0.3);background:rgba(255,255,255,0.05);transform:translateY(-2px)}
+.card .tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:0.02em}
+.tag-vendor{background:rgba(91,108,247,0.15);color:#5B6CF7;border:1px solid rgba(91,108,247,0.25)}
+.tag-industry{background:rgba(236,72,153,0.15);color:#EC4899;border:1px solid rgba(236,72,153,0.25)}
+.tag-merge{background:rgba(139,92,246,0.15);color:#8B5CF6;border:1px solid rgba(139,92,246,0.25)}
+.tag-hot{background:rgba(255,120,50,0.15);color:#FF7832;border:1px solid rgba(255,120,50,0.25)}
+.card h4{font-size:15px;font-weight:600;color:#e5e5e5;margin-bottom:6px;letter-spacing:-0.01em;line-height:1.5}
+.card .summary{font-size:13px;color:#999;line-height:1.6;margin-bottom:12px}
+.card .source{font-size:12px;color:#666;display:flex;align-items:center;gap:4px}
+.card .source a{color:#8B5CF6;text-decoration:none;transition:all 0.2s}
+.card .source a:hover{color:#a78bfa;text-decoration:underline}
+.empty-state{text-align:center;padding:48px 0;color:#666;font-size:15px}
+.empty-state .emoji{font-size:32px;margin-bottom:8px;display:block}
+@media(max-width:520px){.card-grid{grid-template-columns:1fr}.hero h1{font-size:24px}.container{padding:72px 16px 32px}}
+.fade-in{animation:fadeInUp 0.5s ease forwards}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="topbar">
+<div class="topbar-logo"><span>🛡️</span> 防火墙厂商日报</div>
+<div class="topbar-date">2026-07-07</div>
+</div>
+<div class="container">
+<section class="hero fade-in">
+<h1><span class="emoji">🛡️</span> 中国防火墙厂商日报</h1>
+<div class="meta">
+<span>2026年7月7日 · 周二</span>
+<span class="dot"></span>
+<span class="count-badge">厂商 4 条 · 行业 2 条 · 共 6 条动态</span>
+</div>
+</section>
+
+<section class="ai-insight fade-in">
+<h3>AI 看点</h3>
+<p>今天是合规新规落地日——<strong>网络安全标识管理办法</strong>7/1正式施行，<strong>AI拟人化互动服务管理暂行办法</strong>7/15即将生效，两大新规叠加将重塑产品安全能力公示和AI服务监管格局。漏洞层面，<strong>BlueHammer CVE-2026-33825</strong>被确认与勒索软件攻击关联，CISA紧急通告提醒所有Windows用户立即更新——安全产品自身成为攻击跳板的趋势值得关注。厂商端，深信服连下广电总局146万攻防演习项目、天融信连续三年获评数字经济标杆企业、山石网科ESG评级稳居A级，头部厂商在合规+实战双赛道持续发力。</p>
+</section>
+
+<div class="section-title"><span class="icon">🏢</span> 厂商动态</div>
+<div class="card-grid">
+
+<div class="card" data-delay="0">
+<div class="tags">
+<span class="tag tag-vendor">深信服</span>
+</div>
+<h4>深信服中标国家广播电视总局监管中心网络安全攻防演习项目 146.50万元</h4>
+<div class="summary">7月3日公告中标，深信服科技股份有限公司中标国家广播电视总局监管中心网络安全攻防演习专业技术服务项目，中标金额146.50万元。攻防演习服务成为政企安全采购新热点。</div>
+<div class="source">来源：<a href="https://caifuhao.eastmoney.com/news/20260703183128911914720" target="_blank" rel="noopener">东方财富</a> · <a href="https://www.chinabidding.cn/zbgs/U-vzfHU9G.html" target="_blank" rel="noopener">采购与招标网</a> · <a href="https://www.diuta.com/gov_281719.html" target="_blank" rel="noopener">E界商机网</a></div>
+</div>
+
+<div class="card" data-delay="1">
+<div class="tags">
+<span class="tag tag-vendor">天融信</span>
+</div>
+<h4>天融信三获北京市数字经济标杆企业称号，李雪莹提出"安全+智算"双翼赋能路径</h4>
+<div class="summary">7月2日，2026产业互联网创新发展论坛在京举办。天融信连续第三年获评"北京市数字经济标杆企业"。董事长李雪莹在主题演讲中指出产业互联网数据流通面临安全与效率双重挑战，提出"安全+智算"双翼赋能新路径，推动数据流通价值创造。</div>
+<div class="source">来源：<a href="https://www.topsec.com.cn/newsx/6733" target="_blank" rel="noopener">天融信官网</a> · <a href="https://stock.10jqka.com.cn/20260703/c677930778.shtml" target="_blank" rel="noopener">同花顺</a> · <a href="https://baijiahao.baidu.com/s?id=1869670783048707887&wfr=spider&for=pc" target="_blank" rel="noopener">百度百家号</a></div>
+</div>
+
+<div class="card" data-delay="2">
+<div class="tags">
+<span class="tag tag-vendor">山石网科</span>
+</div>
+<h4>山石网科秩鼎ESG评级维持A级，位居GICS三级软件行业143家公司前列</h4>
+<div class="summary">7月5日秩鼎发布最新ESG评级结果，山石网科获得A级，评级维持。近五年ESG评级从BB→BBB→A→A→A持续上升后稳定。位居GICS三级软件行业143家公司前列，公司可持续发展能力获得资本市场认可。</div>
+<div class="source">来源：<a href="https://finance.sina.com.cn/stock/aiassist/esgpj/2026-07-05/doc-iniftmth9031961.shtml" target="_blank" rel="noopener">新浪财经</a> · <a href="https://baijiahao.baidu.com/s?id=1869843543727027903&wfr=spider&for=pc" target="_blank" rel="noopener">百度百家号</a></div>
+</div>
+
+<div class="card" data-delay="3">
+<div class="tags">
+<span class="tag tag-vendor">启明星辰</span>
+</div>
+<h4>启明星辰222.86万中标某政务云和政务外网安全保障系统运维项目</h4>
+<div class="summary">某政务云和政务外网安全保障系统运维项目发布中标公告，启明星辰以222.86万元中标。政务云安全运维服务需求持续增长，运营商系安全厂商在政务云场景持续占优。</div>
+<div class="source">来源：<a href="https://www.bidcenter.com.cn/news-425337343-4.html" target="_blank" rel="noopener">采招网</a> · <a href="https://www.qianlima.com/bid-607116762.html" target="_blank" rel="noopener">千里马招标网</a></div>
+</div>
+
+</div>
+
+<div class="section-title"><span class="icon">🏭</span> 行业动态</div>
+<div class="card-grid">
+
+<div class="card" data-delay="4">
+<div class="tags">
+<span class="tag tag-industry">漏洞</span>
+<span class="tag tag-hot">🔥 重大</span>
+</div>
+<h4>BlueHammer (CVE-2026-33825) Microsoft Defender提权零日漏洞被勒索软件利用，CISA发布紧急通告</h4>
+<div class="summary">7月1日CISA将CVE-2026-33825（BlueHammer）重新纳入已知主动利用漏洞目录。该漏洞为Microsoft Defender反恶意软件平台本地权限提升零日（CVSS 7.8），允许攻击者将Defender本身变为勒索软件的提权跳板，已被证实与勒索软件攻击关联。微软4月已推送修复，但三个月过去仍有大量系统未更新。安全产品自身漏洞武器化趋势值得警惕。</div>
+<div class="source">来源：<a href="https://news.mydrivers.com/1/1133/1133426.htm" target="_blank" rel="noopener">快科技</a> · <a href="https://news.zol.com.cn/1208/12083269.html" target="_blank" rel="noopener">ZOL</a> · <a href="https://blog.csdn.net/weixin_42376192/article/details/162507689" target="_blank" rel="noopener">CSDN</a> · <a href="https://cn-sec.com/archives/5182849.html" target="_blank" rel="noopener">cn-sec</a> · <a href="https://www.venusgroup.com.cn/new_type/aqjx/20260702/29459.html" target="_blank" rel="noopener">启明星辰</a></div>
+</div>
+
+<div class="card" data-delay="5">
+<div class="tags">
+<span class="tag tag-industry">政府</span>
+<span class="tag tag-industry">合规</span>
+<span class="tag tag-merge">合并2规</span>
+</div>
+<h4>两项网信新规7月落地：网络安全标识管理办法7/1施行 + AI拟人化互动服务管理暂行办法7/15施行</h4>
+<div class="summary">国家网信办等三部门联合印发《网络安全标识管理办法》，7月1日起施行，将产品网络安全能力从低到高分为基础级、增强级、领先级三个等级（一星/二星/三星标识），首批纳入消费类网联摄像头等目录。同时五部门公布《人工智能拟人化互动服务管理暂行办法》，7月15日起施行，规范AI拟人化交互服务的身份标识、内容安全和用户权益保护。两大新规叠加将重塑网络安全产品能力公示制度与AI服务监管框架。</div>
+<div class="source">来源：<a href="https://www.sohu.com/a/1043821817_664487" target="_blank" rel="noopener">搜狐</a> · <a href="https://finance.sina.com.cn/tech/roll/2026-06-30/doc-inifcvuk3566866.shtml" target="_blank" rel="noopener">新浪财经</a> · <a href="https://www.gov.cn/zhengce/zhengceku/202604/content_7065212.htm" target="_blank" rel="noopener">国务院</a> · <a href="https://cloud.tencent.com/developer/article/2701369" target="_blank" rel="noopener">腾讯云开发者</a></div>
+</div>
+
+</div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const delay=parseInt(entry.target.dataset.delay)||0;setTimeout(()=>{entry.target.classList.add('visible')},delay*80);observer.unobserve(entry.target)}})},{threshold:0.1});
+cards.forEach(card=>observer.observe(card));
+</script>
+</body>
+</html>
