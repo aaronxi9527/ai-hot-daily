@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-21</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; color:#e0e0e0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.nav { position:fixed; top:0; left:0; right:0; z-index:100; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); background:rgba(10,10,10,0.85); border-bottom:1px solid rgba(255,255,255,0.06); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
+.nav-title { font-size:16px; font-weight:700; background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.nav-date { font-size:13px; color:#888; }
+.hero { padding:120px 24px 60px; text-align:center; }
+.hero h1 { font-size:42px; font-weight:800; background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; }
+.hero .subtitle { color:#888; font-size:15px; margin-bottom:24px; }
+.hero .stats { display:flex; justify-content:center; gap:40px; }
+.hero .stat { text-align:center; }
+.hero .stat-num { font-size:48px; font-weight:800; background:linear-gradient(135deg,#5B6CF7,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero .stat-label { font-size:13px; color:#666; margin-top:4px; }
+.ai-insight { max-width:800px; margin:0 auto 60px; padding:24px 32px; background:rgba(91,108,247,0.08); border:1px solid rgba(91,108,247,0.15); border-radius:12px; }
+.ai-insight h2 { font-size:18px; color:#8B5CF6; margin-bottom:12px; }
+.ai-insight p { color:#b0b0b0; font-size:14px; line-height:1.8; }
+.section { max-width:1200px; margin:0 auto 60px; padding:0 24px; }
+.section-title { font-size:24px; font-weight:700; margin-bottom:24px; display:flex; align-items:center; gap:10px; }
+.section-title .emoji { font-size:28px; }
+.section-title .count { font-size:13px; color:#666; font-weight:400; margin-left:8px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:20px; }
+.card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:24px; transition:all 0.3s ease; }
+.card:hover { border-color:rgba(139,92,246,0.3); transform:translateY(-2px); background:rgba(255,255,255,0.05); }
+.card h3 { font-size:16px; font-weight:600; color:#e8e8e8; margin:12px 0 10px; line-height:1.5; }
+.card p { font-size:13px; color:#999; line-height:1.7; }
+.card-header { display:flex; align-items:center; justify-content:space-between; }
+.card-footer { margin-top:16px; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px; }
+.tag { font-size:11px; padding:3px 10px; border-radius:6px; font-weight:600; letter-spacing:0.3px; }
+.tag-vendor { background:rgba(91,108,247,0.2); color:#5B6CF7; }
+.tag-gov { background:rgba(236,72,153,0.2); color:#EC4899; }
+.tag-finance { background:rgba(139,92,246,0.2); color:#8B5CF6; }
+.tag-operator { background:rgba(59,130,246,0.2); color:#3B82F6; }
+.tag-military { background:rgba(239,68,68,0.2); color:#EF4444; }
+.tag-compliance { background:rgba(16,185,129,0.2); color:#10B981; }
+.tag-standard { background:rgba(245,158,11,0.2); color:#F59E0B; }
+.tag-other { background:rgba(100,116,139,0.2); color:#94A3B8; }
+.stars { font-size:12px; color:#F59E0B; }
+.source-links a { color:#8B5CF6; text-decoration:none; font-size:12px; margin-right:8px; transition:color 0.2s; }
+.source-links a:hover { color:#A78BFA; text-decoration:underline; }
+.footer { text-align:center; padding:40px; color:#555; font-size:12px; border-top:1px solid rgba(255,255,255,0.04); margin-top:40px; }
+.animate { opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+.animate.visible { opacity:1; transform:translateY(0); }
+@media (max-width:768px) {
+  .hero h1 { font-size:28px; }
+  .hero .stats { gap:20px; }
+  .hero .stat-num { font-size:32px; }
+  .grid { grid-template-columns:1fr; }
+  .section { padding:0 16px; }
+  .ai-insight { margin:0 16px 40px; padding:16px 20px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="nav-title">🛡️ 防火墙厂商日报</span>
+  <span class="nav-date">2026-07-21</span>
+</nav>
+
+<section class="hero">
+  <h1>🛡️ 中国防火墙厂商日报</h1>
+  <p class="subtitle">2026-07-21 · AI 自动采集 & 生成</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">11</div><div class="stat-label">厂商动态</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">行业动态</div></div>
+    <div class="stat"><div class="stat-num">16</div><div class="stat-label">总计条数</div></div>
+  </div>
+</section>
+
+<div class="ai-insight">
+  <h2>🤖 AI 今日看点</h2>
+  <p>今天的防火墙圈核心看点是<b>标准制定权之争</b>——华为牵头CCIA制定AI防火墙技术规范、新华三提出「AI就绪度」概念、云防火墙行业标准YD/T 6859正式发布，三条标准线同日推进，说明AI防火墙正从「厂商自说自话」走向「行业统一标尺」，先入局者将掌握话语权。</p>
+  <p>其次，<b>大模型安全建设需求正在落地</b>——天融信中标环保行业首例大模型安全体系项目、深信服AI算力网关+安全护栏全行业商用、奇安信WAIC亮相AI安全全矩阵，AI安全已从PPT进入真实采购环节。天风证券判断下半年AI安全有望进入产业爆发期，这个判断在当前数据下是成立的。</p>
+  <p>另外值得注意的是<b>运营商集采格局微调</b>——电信D/E档3230台项目新华三以最低价拿下第一候选人、华为落至第二、山石网科从名单消失，价格竞争在加剧。但华为并未防守——联合NIDA发白皮书+牵头CCIA标准是更高级别的战场布局。</p>
+</div>
+
+<section class="section">
+  <h2 class="section-title"><span class="emoji">🏢</span>厂商动态<span class="count">(11条)</span></h2>
+  <div class="grid">
+        <div class="card animate" style="animation-delay:0.0s">
+          <div class="card-header">
+            <span class="tag tag-vendor">华为</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>华为联合NIDA发布AIFW技术白皮书，牵头编制CCIA AI防火墙技术规范</h3>
+          <p>7月15日GSMA亚太电信网络安全论坛期间，华为联合NIDA发布《华为AIFW技术白皮书》，明确AI防火墙五大核心设计原则（稳定可信/高性能防护/智能驱动检测/实时防御/自治运营），同时牵头在CCIA制定《人工智能防火墙安全技术要求》，填补AI防火墙技术标准空白。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.sohu.com/a/1051212835_121119001" target="_blank" rel="noopener">源1</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.1s">
+          <div class="card-header">
+            <span class="tag tag-vendor">深信服</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>深信服全新AI算力网关完成全行业商用迭代，配套AI安全护栏防数据泄露</h3>
+          <p>深信服盘后披露全新一代AI算力网关完成全行业商用迭代，支持昇腾/海光/英伟达多类型异构GPU统一调度，可降低企业算力使用成本30%以上，配套AI安全护栏解决大模型提示词泄露与数据窃取风险，已落地制造/医疗/政企上千家客户。同步申请AI网络安全检测核心专利，威胁检测效率提升80%。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.toutiao.com/article/7660158832361882146" target="_blank" rel="noopener">源2</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.2s">
+          <div class="card-header">
+            <span class="tag tag-vendor">奇安信</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>奇安信亮相WAIC 2026：全方位赋能AI安全治理，与哈萨克斯坦签署网络安全合作备忘录（合并2源）</h3>
+          <p>7月17日WAIC 2026开幕，奇安信携安全运营数字员工（单条告警研判8.97秒）、具身智能机器人安全防护体系等AI安全产品亮相。齐向东作为中方代表出席哈中圆桌会议，与哈副总理签署网络安全合作备忘录，双方将在安全信息共享、AI安全实验室建设等领域合作。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://new.qq.com/rain/a/LNK2026071720272700" target="_blank" rel="noopener">源31</a> <a href="https://www.qianxin.com/" target="_blank" rel="noopener">源32</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.30000000000000004s">
+          <div class="card-header">
+            <span class="tag tag-vendor">山石网科</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>山石网科ASIC防火墙+OpenXDR双双入围CCIA「网安三新」，双A战略全面开花</h3>
+          <p>中国网络安全产业联盟（CCIA）发布「网安三新」第二批名单，山石网科自研ASIC防火墙（吞吐性能提升200%/时延≤4.8微秒/功耗降低50%）与山石智源OpenXDR智能安全运营平台双双入围「新产品」名单，双A战略（ASIC+AI）获行业权威认可。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.163.com/dy/article/L1DCUA3F0538ER6X.html" target="_blank" rel="noopener">源4</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.4s">
+          <div class="card-header">
+            <span class="tag tag-vendor">天融信</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>天融信中标某环保大模型安全建设项目，企业行业首例大模型安全体系落地（合并2源）</h3>
+          <p>天融信中标中原环保大模型安全建设项目，通过大模型安全网关+数据安全监测联动下一代防火墙、等保一体机，打造「防护-监测-审计-处置」安全闭环。这是天融信在企业行业首例落地的大模型安全体系建设项目，天风证券认为国内AI安全下半年有望进入产业爆发期。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.toutiao.com/article/7662305190430720522" target="_blank" rel="noopener">源51</a> <a href="https://www.toutiao.com/article/7662582088734769716" target="_blank" rel="noopener">源52</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.5s">
+          <div class="card-header">
+            <span class="tag tag-vendor">H3C</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>新华三提出「AI就绪度」概念：防火墙选型迎来AI Agent管理能力新考题（合并2源）</h3>
+          <p>新华三率先提出防火墙「AI就绪度」概念，从CLI完整度、可编程接口、结构化输出和AI内置能力四个维度衡量防火墙能否被AI Agent高效管理。引用港大CLI-Anything论文数据：CLI方案token消耗仅GUI方案的1/35，效率差距高达35倍。Comware操作系统全面适配NETCONF/YANG/RESTful API，内置AI推理能力。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://zone.ci/secarticles/wx/551945.html" target="_blank" rel="noopener">源6</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.6000000000000001s">
+          <div class="card-header">
+            <span class="tag tag-vendor">深信服</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>深信服连续中标多地政府/医疗项目：广东医附院·嘉兴中医·怀化·崇阳全面开花（合并4源）</h3>
+          <p>深信服近期密集中标——广东医科大学附属医院霞山院区防火墙设备升级（AF-2000-FH3120B，113.5万）、嘉兴市中医医院信息安全防火墙+准入防护（43.6万）、怀化市网络安全防护升级（千兆防火墙/上网行为管理/国密VPN，67.98万）、崇阳县数据安全升级（AF-1000-FH2150B四台）。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="http://gpcgd.gd.gov.cn/bsfw/cgxx/zbjjgs/content/post_4926523.html" target="_blank" rel="noopener">源71</a> <a href="https://zfcg.czt.zj.gov.cn/luban/detail?parentId=600007&articleId=eh7IY/C6H96WG3SaZdFXpg==" target="_blank" rel="noopener">源72</a> <a href="https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202607/t20260715_26940558.htm" target="_blank" rel="noopener">源73</a> <a href="https://www.ccgp-hubei.gov.cn/notice/202607/notice_b1c0e19049f480ac935d0a04c8485869.html" target="_blank" rel="noopener">源74</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.7000000000000001s">
+          <div class="card-header">
+            <span class="tag tag-vendor">深信服</span>
+            <span class="stars">🔥🔥</span>
+          </div>
+          <h3>深信服防钓鱼GPT防火墙方案公开：AI识别钓鱼邮件+密送检测闭环</h3>
+          <p>深信服社区公开防钓鱼GPT防火墙部署方案（v8.0.107），通过对接企业密送邮箱+BCC投递+GPT大模型研判，实现钓鱼邮件的自动识别与拦截。该功能基于云威胁情报模块，可对加密流量和免杀攻击进行智能分析，填补邮件安全最后一公里。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://bbs.sangfor.com.cn/forum.php?mod=viewthread&tid=323443" target="_blank" rel="noopener">源8</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.8s">
+          <div class="card-header">
+            <span class="tag tag-vendor">奇安信</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>奇安信网神7月密集中标：恒丰银行·甘肃电信·兵器装备·中国铁塔·财政部等（合并3源）</h3>
+          <p>7月上旬奇安信网神连续中标——恒丰银行网络安全实战防守人力外包、甘肃电信信息安全驻场服务、兵器装备集团重要时期保障防护、中日友好医院等保测评、中国铁塔智联安全左移研究、财政部应用系统安全检测（2026-2027）等多个安全服务项目，覆盖金融/运营商/军工/医疗/政务全行业。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://aiqicha.baidu.com/tenderbidding/detail?dataId=10d64e0c5fba1cf93cf04d770b128e4e7e1d8d0e&pid=99008900416111" target="_blank" rel="noopener">源91</a> <a href="https://aiqicha.baidu.com/tenderbidding/detail?dataId=ee2e2530ebe64955b071ad916a1809ba1265ebc0&pid=99008900416111" target="_blank" rel="noopener">源92</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.9s">
+          <div class="card-header">
+            <span class="tag tag-vendor">天融信</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>天融信7月项目全面开花：中国电子口岸·浙能数科·宁波公安·中国船舶（合并4源）</h3>
+          <p>天融信7月连续中标——中国电子口岸数据中心网络安全服务、浙能数科堡垒机采购、宁波市公安局商用密码基础设施建设（国密堡垒机+安全接入/认证网关，61.7万）、中国船舶虚拟化防火墙系统、贵州长江汽车VSOC平台、天翼物联数据安全风险评估等多个项目，「安全+智算」双轮驱动路径清晰。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://aiqicha.baidu.com/tenderbidding/detail?dataId=7d3435da28a33370eacd5a1df54bfac913e2d9af&pid=29444461976619" target="_blank" rel="noopener">源101</a> <a href="https://aiqicha.baidu.com/tenderbidding/detail?dataId=e5abd90efc8f3bd4da77bcaf2bd872a1030a6c04&pid=29444461976619" target="_blank" rel="noopener">源102</a> <a href="https://www.ccgp-ningbo.gov.cn/project/zcyNotice_view.aspx?Id=202607092045082075199575773286400" target="_blank" rel="noopener">源103</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:1.0s">
+          <div class="card-header">
+            <span class="tag tag-vendor">其他</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>锐捷发布防火墙2.0：独立SSL解密芯片使检出量提升25倍，CPU占用从68%降至18%</h3>
+          <p>锐捷网络推出防火墙2.0新品（RG-WALL 1600-Z5000-D05/CF6000-05 V2），内置独立SSL解密芯片，将SSL加解密任务从CPU分离。同流量测试显示威胁检出量从4万提升至107万（25倍），CPU占用从68%降至18%，破解加密流量检测与性能的长期矛盾。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.163.com/dy/article/L0S4O7S205568W0A.html" target="_blank" rel="noopener">源11</a></span>
+          </div>
+        </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title"><span class="emoji">🏭</span>行业动态<span class="count">(5条)</span></h2>
+  <div class="grid">
+        <div class="card animate" style="animation-delay:0.0s">
+          <div class="card-header">
+            <span class="tag tag-standard">标准</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>云防火墙能力要求行业标准YD/T 6859-2026正式发布，天融信/阿里云/华为云等首批通过评估</h3>
+          <p>云防火墙能力要求行业标准YD/T 6859-2026正式发布，明确云防火墙在访问控制、入侵防御、威胁情报、日志审计等方面的能力要求，天融信、阿里云、华为云、联通云、腾讯云、天翼云等已通过评估。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.sohu.com/a/1047423374_120138488" target="_blank" rel="noopener">源1</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.1s">
+          <div class="card-header">
+            <span class="tag tag-compliance">合规</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>等保测评机构能力要求新国标GB/T 36959-2026发布，12月1日实施</h3>
+          <p>GB/T 36959-2026《网络安全技术 网络安全等级保护测评机构能力要求和评估规范》由TC260归口发布，2026年12月1日起实施。与2018版相比：删除注册资金要求、增加专职渗透人员能力要求、更改技术主管任职要求等。标志着等保测评体系进入新一轮规范化升级。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.sohu.com/a/1047423374_120138488" target="_blank" rel="noopener">源1</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.2s">
+          <div class="card-header">
+            <span class="tag tag-other">其他</span>
+            <span class="stars">🔥🔥</span>
+          </div>
+          <h3>网宿科技WAIC 2026发布边缘AI安全全栈新品：LLM WAF+AI防爬虫+安全托管</h3>
+          <p>WAIC 2026期间，网宿科技发布「统一AI安全网关」（三层纵深防御解决身份/数据/行为失控）、LLM WAF（大模型应用防火墙，秒级拦截提示词注入/越狱攻击）及Agentic MSS安全托管服务，面向大模型应用全生命周期提供AI原生防护。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-07-20/doc-iniimzhh4999471.shtml" target="_blank" rel="noopener">源1</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.30000000000000004s">
+          <div class="card-header">
+            <span class="tag tag-finance">金融</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>金融AI安全监管收紧：金融监管总局发布《银行业保险业AI安全开发应用指导意见》</h3>
+          <p>国家金融监督管理总局6月18日发布指导意见，系统性规范金融AI领域六类安全风险（数据隐私与投毒/算法黑箱与幻觉/生成式AI市场操纵/供应链安全/AI新型网络攻击/人机权责边界），填补金融AI合规系统性空白，将直接推动金融行业AI安全网关/防火墙配套采购。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://www.sohu.com/a/1047423374_120138488" target="_blank" rel="noopener">源1</a></span>
+          </div>
+        </div>
+        <div class="card animate" style="animation-delay:0.4s">
+          <div class="card-header">
+            <span class="tag tag-gov">政府</span>
+            <span class="stars">🔥🔥🔥</span>
+          </div>
+          <h3>政府/医疗/教育行业防火墙采购7月持续活跃：龙岩网络应急中心/肥西文旅局/楚雄师院等（合并3源）</h3>
+          <p>7月政府采购持续活跃——龙岩市网络应急指挥中心采购电科网安（卫士通）防火墙76.6万；肥西县文旅局应急广播防火墙升级24.5万；楚雄师范学院AI算力中心网络安全平台建设（奇安信+深信服+派网），113.5万。政教医防火墙采购延续高景气。</p>
+          <div class="card-footer">
+            <span class="source-links"><a href="https://ggzy.longyan.gov.cn:8443/lyztb/zqcg/008001/008001003/20260706/7de07424-d1ec-4775-90d9-fe474fea29dc.html" target="_blank" rel="noopener">源1</a> <a href="https://www.fxggzy.cn/jyxx/003004/003004004/20260707/a802ceee-e349-4c72-8c9a-5081597ab0fa.html" target="_blank" rel="noopener">源2</a> <a href="https://www.sohu.com/a/1051916592_122434053" target="_blank" rel="noopener">源3</a></span>
+          </div>
+        </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>数据来源：公开网络搜索 & 官方渠道 · 自动生成于 2026-07-21</p>
+  <p style="margin-top:8px;">AI日报仅供行业参考，不构成投资建议</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
