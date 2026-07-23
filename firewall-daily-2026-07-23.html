@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-23</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; color:#e5e7eb; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; line-height:1.6; }
+a { color:#8B5CF6; text-decoration:none; transition:color .2s; }
+a:hover { color:#A78BFA; text-decoration:underline; }
+
+/* 顶栏 */
+.nav { position:fixed; top:0; left:0; right:0; z-index:100; backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); background:rgba(10,10,10,.75); border-bottom:1px solid rgba(255,255,255,.06); padding:16px 32px; display:flex; align-items:center; justify-content:space-between; }
+.nav-title { font-size:20px; font-weight:700; background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.nav-date { font-size:14px; color:#6b7280; }
+
+/* Hero */
+.hero { padding:120px 32px 60px; text-align:center; }
+.hero h1 { font-size:42px; font-weight:800; margin-bottom:12px; background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero .date { font-size:18px; color:#9ca3af; margin-bottom:20px; }
+.hero .stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+.stat-item { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:20px 28px; text-align:center; }
+.stat-num { font-size:36px; font-weight:800; background:linear-gradient(135deg,#5B6CF7,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.stat-label { font-size:13px; color:#6b7280; margin-top:4px; }
+
+/* AI 解读 */
+.ai-insight { max-width:900px; margin:0 auto 40px; padding:0 32px; }
+.ai-insight .insight-card { background:linear-gradient(135deg,rgba(91,108,247,.06),rgba(236,72,153,.06)); border:1px solid rgba(139,92,246,.15); border-radius:16px; padding:28px 32px; }
+.ai-insight h3 { font-size:18px; font-weight:700; margin-bottom:12px; color:#A78BFA; }
+.ai-insight p { font-size:15px; color:#d1d5db; line-height:1.8; }
+
+/* 版块 */
+.section { max-width:1200px; margin:0 auto 60px; padding:0 32px; }
+.section-title { font-size:24px; font-weight:700; margin-bottom:24px; display:flex; align-items:center; gap:8px; }
+.section-title .badge { font-size:14px; color:#6b7280; font-weight:400; }
+
+/* 卡片 */
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:20px; }
+.card { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:24px; transition:border-color .3s,transform .3s; opacity:0; transform:translateY(20px); animation:fadeIn .5s ease forwards; }
+.card:hover { border-color:rgba(139,92,246,.3); transform:translateY(-2px); }
+.card h3 { font-size:16px; font-weight:600; margin:12px 0 8px; line-height:1.5; color:#f3f4f6; }
+.card p { font-size:14px; color:#9ca3af; line-height:1.7; margin-bottom:14px; }
+.card-header { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.card-footer { font-size:12px; color:#6b7280; padding-top:12px; border-top:1px solid rgba(255,255,255,.05); word-break:break-all; }
+.card-footer .source-label { display:block; margin-bottom:4px; color:#8B5CF6; font-weight:600; }
+
+/* Tags */
+.tag { display:inline-block; padding:2px 10px; border-radius:6px; font-size:12px; font-weight:600; }
+.imp-badge { font-size:14px; }
+
+/* Anim */
+@keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+
+/* Footer */
+.footer { text-align:center; padding:40px 32px 60px; color:#4b5563; font-size:13px; border-top:1px solid rgba(255,255,255,.05); }
+.footer .gradient { background:linear-gradient(135deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+@media (max-width:768px) {
+  .hero h1 { font-size:28px; }
+  .cards { grid-template-columns:1fr; }
+  .hero .stats { gap:12px; }
+  .stat-item { padding:12px 16px; }
+  .stat-num { font-size:24px; }
+  .nav { padding:12px 16px; }
+  .hero { padding:100px 16px 40px; }
+  .section { padding:0 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-title">🛡️ 中国防火墙厂商日报</span>
+  <span class="nav-date">2026-07-23</span>
+</nav>
+
+<section class="hero">
+  <h1>🛡️ 中国防火墙厂商日报</h1>
+  <div class="date">2026-07-23 · 星期四</div>
+  <div class="stats">
+    <div class="stat-item"><div class="stat-num">21</div><div class="stat-label">总动态</div></div>
+    <div class="stat-item"><div class="stat-num">18</div><div class="stat-label">厂商动态</div></div>
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">行业动态</div></div>
+    <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">覆盖厂商</div></div>
+  </div>
+</section>
+
+<section class="ai-insight">
+  <div class="insight-card">
+    <h3>🤖 AI 今日看点</h3>
+    <p>今天最值得关注的是<strong>启明星辰半年报扭亏为盈</strong>——归母净利润2600-3800万，经营现金流首次中期转正，账上躺了46亿现金还开始布局抗量子密码，这是"网安国家队"（中移动加持）的业绩兑现时刻。天融信这周动静也不小，智算云升级、雄安三连冠、IDC推荐智能体安全三线并行，看得出来"网安+智算"双轮战略在加速推进。山石网科双A（ASIC+AI）在WAIC和数字安全大会接连获奖，ASIC芯片的量产导入正在转化为行业话语权。另外运营商端电信云南、移动昆明、广电山西三个防火墙采购项目同时浮出水面，虽然单子不大但说明下半年运营商网络安全投入正在进入密集落地期。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">🏢 厂商动态 <span class="badge">18 条</span></div>
+  <div class="cards">
+    
+        <div class="card vendor-card" style="animation-delay:0.0s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B40">山石网科</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>山石网科亮相2026世界人工智能大会(WAIC)，展示ASIC芯片与AI智能体全栈安全能力</h3>
+            <p>山石网科在2026 WAIC上展示自研ASIC防火墙芯片与AI智能体平台，呈现从芯片底层到AI应用的全栈安全能力，双A战略全面开花。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.163.com/dy/media/T1585635046834.html" target="_blank" rel="noopener">https://www.163.com/dy/media/T1585635046834.html...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.05s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B40">山石网科</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>山石网科荣获2026数字安全大会ASIC专用芯片创新赛道领航者</h3>
+            <p>在2026第六届数字安全大会上，山石网科凭借自研ASIC安全专用芯片荣获创新赛道领航者奖项，ASIC芯片使整机功耗降低超50%。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.163.com/dy/media/T1585635046834.html" target="_blank" rel="noopener">https://www.163.com/dy/media/T1585635046834.html...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.1s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#F59E0B20;color:#F59E0B;border:1px solid #F59E0B40">山石网科</span>
+            </div>
+            <h3>央视报道：山石网科以本地化策略深耕港澳，加速全球化布局</h3>
+            <p>央视新闻报道山石网科通过本地化策略深耕港澳市场，以ASIC芯片和双A战略加速全球化布局。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.163.com/dy/media/T1585635046834.html" target="_blank" rel="noopener">https://www.163.com/dy/media/T1585635046834.html...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.15000000000000002s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">天融信</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>天融信智算云重磅升级：三大技术突破构建一体化算力底座</h3>
+            <p>天融信智算云平台重磅升级，通过三大技术突破实现通用业务与AI创新的兼顾，构建'网安+智算'双轮驱动的一体化算力底座。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.topsec.com.cn/" target="_blank" rel="noopener">https://www.topsec.com.cn/...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.2s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">天融信</span>
+            </div>
+            <h3>天融信雄安场景汇网安赛连续三届大满贯，2026互联网安全赛道夺魁</h3>
+            <p>天融信在2026雄安场景汇网络安全大赛中连续第三届实现大满贯，在互联网安全赛道展现顶尖攻防能力。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.topsec.com.cn/" target="_blank" rel="noopener">https://www.topsec.com.cn/...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.25s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">天融信</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>天融信智能体安全产品方案获IDC推荐</h3>
+            <p>IDC发布报告推荐天融信智能体安全产品方案，指出智能体安全已成为企业AI部署的必选项，天融信在该领域率先布局。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.topsec.com.cn/" target="_blank" rel="noopener">https://www.topsec.com.cn/...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.30000000000000004s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">绿盟科技</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>绿盟科技5项网络安全国家标准参编成果落地</h3>
+            <p>国家市场监管总局发布7项网络安全国家标准，绿盟科技参与编制其中5项，覆盖数据安全、网络安全等级保护等核心领域。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.nsfocus.com" target="_blank" rel="noopener">https://www.nsfocus.com...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.35000000000000003s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">绿盟科技</span>
+            </div>
+            <h3>绿盟科技AI服务成果入选CCIA第二批网络安全新技术新产品新服务名单</h3>
+            <p>绿盟科技自动化主机应急分析服务入选CCIA第二批网安三新名单，AI安全服务能力再获行业认可。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.nsfocus.com" target="_blank" rel="noopener">https://www.nsfocus.com...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.4s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">绿盟科技</span>
+            </div>
+            <h3>绿盟科技获国际权威机构评为威胁情报领域知名供应商</h3>
+            <p>绿盟科技被国际权威机构评为威胁情报领域知名供应商，进一步巩固其在国际安全市场的地位与影响力。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.nsfocus.com" target="_blank" rel="noopener">https://www.nsfocus.com...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.45s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#6366F120;color:#6366F1;border:1px solid #6366F140">启明星辰</span> <span class="imp-badge">🔥</span>
+            </div>
+            <h3>启明星辰上半年扭亏为盈，手握46亿元现金布局抗量子密码研发</h3>
+            <p>启明星辰发布2026半年报预告，预计归母净利润2600-3800万元实现扭亏为盈，经营现金流首次中期转正，账面资金约46.3亿元，同时布局抗量子密码(PQC)前沿研发。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.163.com/dy/article/L1QL7GJ305199NPP.html" target="_blank" rel="noopener">https://www.163.com/dy/article/L1QL7GJ305199NPP.html...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.5s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#6366F120;color:#6366F1;border:1px solid #6366F140">启明星辰</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>启明星辰发布天镜AI-PTS，双引擎架构破解漏洞验证自动化难题</h3>
+            <p>启明星辰推出天镜AI自动化渗透测试系统，采用漏洞智能利用引擎+智能决策引擎双引擎架构，以大模型多智能体协同实现全流程自动化渗透测试。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.venustech.com.cn/new_type/cpdt/20260708/29480.html" target="_blank" rel="noopener">https://www.venustech.com.cn/new_type/cpdt/20260708/29480.ht...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.55s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#6366F120;color:#6366F1;border:1px solid #6366F140">启明星辰</span>
+            </div>
+            <h3>启明星辰携手内蒙古工业大学打造网信产教融合'北疆样板'</h3>
+            <p>启明星辰与内蒙古工业大学合作打造网信领域产教融合示范项目，推动网络安全人才培养的校企协同新模式。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.venustech.com.cn/" target="_blank" rel="noopener">https://www.venustech.com.cn/...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.6000000000000001s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#6366F120;color:#6366F1;border:1px solid #6366F140">启明星辰</span>
+            </div>
+            <h3>启明星辰出席2026 IT市场年会，提出以数据飞轮驱动AI安全新范式</h3>
+            <p>启明星辰在2026 IT市场年会网络安全研讨会上提出以数据飞轮驱动AI安全新范式的理念，强调安全数据闭环对AI防御的关键作用。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.venustech.com.cn/" target="_blank" rel="noopener">https://www.venustech.com.cn/...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.65s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F640">奇安信</span>
+            </div>
+            <h3>华润双鹤发布2026年奇安信安全许可采购项目，含工控防火墙等9类产品</h3>
+            <p>华润双鹤药业发布奇安信安全许可及维保采购公告，涵盖工控防火墙、外网防火墙、专线防火墙、态势感知等9类安全产品一年期许可，投标截止7月9日。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.sohu.com/a/1045082421_122014422" target="_blank" rel="noopener">https://www.sohu.com/a/1045082421_122014422...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.7000000000000001s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#A78BFA20;color:#A78BFA;border:1px solid #A78BFA40">惠而特</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>惠而特54款网络安全产品入围中央国家机关2026年度采购框架，含18款第二代防火墙</h3>
+            <p>惠而特54款网络安全产品入围中央国家机关2026年度网络安全产品框架协议采购项目，其中第二代防火墙系统V3.1下属18款细分型号（信创9款+非信创9款），代表国产安全厂商在央采市场的集体突破。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.hereit.com.cn/newsDetail.html?id=292" target="_blank" rel="noopener">https://www.hereit.com.cn/newsDetail.html?id=292...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.75s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">Fortinet</span> <span class="imp-badge">⭐</span>
+            </div>
+            <h3>Fortinet发布FortiGate Rugged 70G：首款融合5G+AI+零信任的OT工业防火墙</h3>
+            <p>Fortinet发布FortiGate Rugged 70G，首次融合5G双调制解调器，搭载第五代安全处理单元SP5，支持8Gbps防火墙吞吐量和7Gbps IPSec VPN，面向远程OT恶劣环境的一体化安全组网。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="http://www.uruin.com/news/119e3299848.html" target="_blank" rel="noopener">http://www.uruin.com/news/119e3299848.html...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.8s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#F9731620;color:#F97316;border:1px solid #F9731640">SonicWall</span>
+            </div>
+            <h3>SonicWall SMA100系列曝SSRF+命令注入双漏洞（CVE-2026-15409/CVE-2026-15410），CISA要求72小时内修补</h3>
+            <p>CISA于7月14日披露SonicWall SMA100系列防火墙存在SSRF和命令注入两个严重漏洞，已被在野利用，命令注入可让攻击者获取root权限，要求受影响机构在7月17日前完成修补。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://blog.securemymind.com/preventing-micro-attacks-security-defense-line-in-the-digital-era-from-real-vulnerability-cases-to-improving-national-security-awareness.html" target="_blank" rel="noopener">https://blog.securemymind.com/preventing-micro-attacks-secur...</a>
+            </div>
+        </div>
+        <div class="card vendor-card" style="animation-delay:0.8500000000000001s">
+            <div class="card-header">
+                <span class="tag vendor-tag" style="background:#14B8A620;color:#14B8A6;border:1px solid #14B8A640">Sophos</span>
+            </div>
+            <h3>Sophos Firewall v22 MR2发布：新增后量子密码检测与生成式AI应用管控</h3>
+            <p>Sophos Firewall v22 MR2于7月14日发布，新增后量子密码(PQC)检测与控制（支持ML-KEM算法）、生成式AI应用管理、Chromebook支持等功能，强化Secure by Design理念。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://segmentfault.com/a/1190000048038240" target="_blank" rel="noopener">https://segmentfault.com/a/1190000048038240...</a>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">🏭 行业动态 <span class="badge">3 条</span></div>
+  <div class="cards">
+    
+        <div class="card industry-card" style="animation-delay:0.0s">
+            <div class="card-header">
+                <span class="tag industry-tag" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F640">运营商</span>
+            </div>
+            <h3>中国电信云南公司天翼网络省级智算节点及量子城域网防火墙采购8台D类设备</h3>
+            <p>中国电信云南公司采购8台D类防火墙，用于省级智算节点及量子城域网建设，最高限价14.4万元，投标截止7月9日。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.zhiliaobiaoxun.cn/detail/597891817b1DB837744c.html" target="_blank" rel="noopener">https://www.zhiliaobiaoxun.cn/detail/597891817b1DB837744c.ht...</a>
+            </div>
+        </div>
+        <div class="card industry-card" style="animation-delay:0.05s">
+            <div class="card-header">
+                <span class="tag industry-tag" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F640">运营商</span>
+            </div>
+            <h3>中国广电山西网络有限公司采购H3C F1000-AI-80防火墙安全功能授权</h3>
+            <p>中国广电山西公司采购2台H3C F1000-AI-80防火墙的IPS/AV特征库及WAF授权，补齐安全防护能力，报名时间7月16日至20日。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.isxtv.com/xia_zbgg/4620.html" target="_blank" rel="noopener">https://www.isxtv.com/xia_zbgg/4620.html...</a>
+            </div>
+        </div>
+        <div class="card industry-card" style="animation-delay:0.1s">
+            <div class="card-header">
+                <span class="tag industry-tag" style="background:#3B82F620;color:#3B82F6;border:1px solid #3B82F640">运营商</span>
+            </div>
+            <h3>中国移动云南公司昆明分公司网络核心卡位安全扩容采购防火墙等设备，预估369.9万元</h3>
+            <p>中国移动昆明分公司采购视频专网及公安专网防火墙各2台，以及IPS、WAF、堡垒机、日志审计等安全设备，预估不含税金额369.9万元，投标截止6月25日。</p>
+            <div class="card-footer">
+                <span class="source-label">📎 来源</span>
+                <a href="https://www.zhiliaobiaoxun.cn/detail/595490982b1A5F68DC3c.html" target="_blank" rel="noopener">https://www.zhiliaobiaoxun.cn/detail/595490982b1A5F68DC3c.ht...</a>
+            </div>
+        </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>数据来源：公开网络搜索 · 自动化生成于 2026-07-23</p>
+  <p>覆盖厂商：深信服、奇安信、华为、H3C、山石网科、天融信、<span class="gradient">绿盟科技</span>、启明星辰等</p>
+  <p style="margin-top:8px;font-size:11px;">时效范围：最近 30 天 · AI 日报自动聚合，仅供参考</p>
+</footer>
+
+</body>
+</html>
