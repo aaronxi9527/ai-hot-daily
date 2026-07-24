@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-07-24</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0a0a;
+    --card-bg: rgba(255,255,255,0.025);
+    --card-border: rgba(255,255,255,0.06);
+    --card-hover-border: rgba(139,92,246,0.3);
+    --text: #e5e5e5;
+    --text-dim: #888;
+    --text-bright: #fff;
+    --grad-start: #5B6CF7;
+    --grad-mid: #8B5CF6;
+    --grad-end: #EC4899;
+    --link: #8B5CF6;
+    --link-hover: #a78bfa;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  /* 顶栏 */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(10,10,10,0.72);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .navbar-brand {
+    font-size: 16px; font-weight: 700; color: var(--text-bright);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .navbar-brand .grad-text {
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-mid), var(--grad-end));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .navbar-date { font-size: 13px; color: var(--text-dim); }
+  /* Hero */
+  .hero {
+    padding: 120px 24px 48px;
+    text-align: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .hero h1 {
+    font-size: 42px; font-weight: 800; margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-mid), var(--grad-end));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+  }
+  .hero .date { font-size: 18px; color: var(--text-dim); margin-bottom: 32px; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; max-width: 800px; margin: 0 auto;
+  }
+  .stat-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 20px;
+  }
+  .stat-card .num {
+    font-size: 36px; font-weight: 800; color: var(--text-bright);
+  }
+  .stat-card .label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  .stat-card .detail { font-size: 12px; color: var(--text-dim); margin-top: 8px; line-height: 1.5; }
+  /* AI 解读 */
+  .ai-section {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px 48px;
+  }
+  .ai-box {
+    background: linear-gradient(135deg, rgba(91,108,247,0.08), rgba(236,72,153,0.06));
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 16px; padding: 28px 32px;
+  }
+  .ai-box .ai-label {
+    font-size: 13px; font-weight: 600; color: var(--grad-mid);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+  }
+  .ai-box .ai-text { font-size: 15px; color: var(--text); line-height: 1.85; }
+  /* 版块 */
+  .section {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px 48px;
+  }
+  .section-title {
+    font-size: 24px; font-weight: 700; color: var(--text-bright);
+    margin-bottom: 24px; display: flex; align-items: center; gap: 8px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--card-border);
+  }
+  .section-title .count {
+    font-size: 14px; color: var(--text-dim); font-weight: 400;
+  }
+  /* 卡片网格 */
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 14px; padding: 24px;
+    transition: border-color 0.3s, transform 0.3s;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .card:hover {
+    border-color: var(--card-hover-border);
+    transform: translateY(-2px);
+  }
+  .card-header {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 11px; font-weight: 600; padding: 3px 10px;
+    border-radius: 6px; letter-spacing: 0.3px;
+  }
+  .important-badge {
+    font-size: 11px; font-weight: 600; padding: 3px 8px;
+    border-radius: 6px; background: rgba(236,72,153,0.15); color: #EC4899;
+  }
+  .merged-badge {
+    font-size: 11px; font-weight: 600; padding: 3px 8px;
+    border-radius: 6px; background: rgba(91,108,247,0.15); color: #8B5CF6;
+  }
+  .date { font-size: 12px; color: var(--text-dim); margin-left: auto; }
+  .card-title {
+    font-size: 16px; font-weight: 700; color: var(--text-bright);
+    line-height: 1.5;
+  }
+  .card-summary {
+    font-size: 14px; color: var(--text-dim); line-height: 1.7;
+  }
+  .sources {
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .source-label { font-size: 12px; color: var(--text-dim); }
+  .source-link {
+    font-size: 12px; color: var(--link); text-decoration: none;
+    padding: 2px 8px; border-radius: 4px;
+    background: rgba(139,92,246,0.08);
+    transition: all 0.2s;
+  }
+  .source-link:hover {
+    color: var(--link-hover); text-decoration: underline;
+    background: rgba(139,92,246,0.15);
+  }
+  /* 渐入动画 */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+  /* 页脚 */
+  .footer {
+    text-align: center; padding: 48px 24px;
+    color: var(--text-dim); font-size: 13px;
+    border-top: 1px solid var(--card-border);
+  }
+  .footer a { color: var(--link); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 28px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .navbar-date { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">🛡️ <span class="grad-text">防火墙厂商日报</span></div>
+  <div class="navbar-date">2026-07-24</div>
+</nav>
+
+<div class="hero">
+  <h1>🛡️ 中国防火墙厂商日报</h1>
+  <div class="date">2026-07-24 · 星期五</div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="num">11</div>
+      <div class="label">总动态条数</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">10</div>
+      <div class="label">厂商动态</div>
+      <div class="detail">H3C 2条 · 山石网科 2条 · 其他 2条 · 华为 1条 · 深信服 1条 · Fortinet 1条 · Palo Alto 1条</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">1</div>
+      <div class="label">行业动态</div>
+      <div class="detail">金融 1条</div>
+    </div>
+  </div>
+</div>
+
+<div class="ai-section">
+  <div class="ai-box reveal">
+    <div class="ai-label">🤖 AI 看点</div>
+    <div class="ai-text">今天最重磅的是中国电信2026防火墙集采正式落槌——新华三以3272万最低价力压华为（3758万）拿下第一中标，3230台设备大单折射出运营商市场"价格战+国产化"双线并行格局。华为虽在集采中惜败，但在曼谷亚太电信网络安全峰会上高调发布AIFW技术白皮书并牵头CCIA制定AI防火墙标准，走的是"标准制定权"上层路线。国际端Fortinet FortiGate 700G和Palo Alto量子安全方案同期发布，后量子加密正在成为NGFW标配能力。四部门金融网络安全管理办法持续发酵，合规驱动仍是防火墙采购的核心拉动力。</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🏢 厂商动态 <span class="count">(10 条)</span></div>
+  <div class="card-grid">
+    <div class="card reveal" style="transition-delay:0ms">
+      <div class="card-header">
+        <span class="tag" style="color:#8B5CF6;background:#2D1B4E;">H3C</span>
+        <span class="important-badge">🔥 重要</span>
+        <span class="date">2026-07-17</span>
+      </div>
+      <h3 class="card-title">中国电信2026防火墙集采落槌：新华三3272万第一中标，华为3758万第二出局</h3>
+      <p class="card-summary">中国电信2026年防火墙集中采购（D档、E档）评审结果公布，共采购3230台防火墙设备。新华三以3272万元最低报价成为第一中标候选人，华为以3758万元排名第二遗憾出局，安博通、迪普科技依次入围。这是今年以来运营商市场最大单防火墙集采之一，折射出价格竞争与国产替代双线并行格局。</p>
+      <div class="sources"><span class="merged-badge">合并2源</span><span class="source-label">来源：</span><a href="https://www.mscbsc.com/info/Nw52kg6" target="_blank" rel="noopener" class="source-link">mscbsc</a><a href="http://cfyys.com.cn/show-list-119229.html" target="_blank" rel="noopener" class="source-link">cfyys</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:60ms">
+      <div class="card-header">
+        <span class="tag" style="color:#F59E0B;background:#4A3208;">华为</span>
+        <span class="important-badge">🔥 重要</span>
+        <span class="date">2026-07-15</span>
+      </div>
+      <h3 class="card-title">华为亚太电信网络安全峰会曼谷举办，发布AIFW技术白皮书+AI防火墙+量子加密架构</h3>
+      <p class="card-summary">华为在曼谷举办亚太电信网络安全峰会，数据通信安全产品领域总裁介绍以AI为核心的端到端全域防御体系，网络层部署AI防火墙及量子加密。期间联合NIDA正式发布《华为AIFW技术白皮书》，明确人工智能防火墙技术演进方向，并在CCIA牵头制定《人工智能防火墙安全技术要求》送审稿，填补AI防火墙标准空白。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://www.sohu.com/a/1051600199_121119001" target="_blank" rel="noopener" class="source-link">sohu</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:120ms">
+      <div class="card-header">
+        <span class="tag" style="color:#8B5CF6;background:#2D1B4E;">H3C</span>
+        <span class="important-badge">🔥 重要</span>
+        <span class="date">2026-07-17</span>
+      </div>
+      <h3 class="card-title">新华三亮相粤网安大会，AI防火墙M9000-X实现16Tbps吞吐+万种AI应用指纹识别</h3>
+      <p class="card-summary">新华三在第三届粤网安大会上展示AI安全战略布局，总工程师郭天奇发表主题演讲。其AI防火墙M9000-X采用分布式架构与专用硬件加速引擎，最高可实现16Tbps吞吐能力，时延低至1微秒以内，支持超10000种AI应用指纹识别，重新定义AI算力场景边界安全防护基准。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://www.toutiao.com/article/7663464756587102756" target="_blank" rel="noopener" class="source-link">toutiao</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:180ms">
+      <div class="card-header">
+        <span class="tag" style="color:#EF4444;background:#4A1515;">山石网科</span>
+        
+        <span class="date">2026-07-22</span>
+      </div>
+      <h3 class="card-title">山石网科百城巡展海口站举办，双A战略(ASIC+AI)落地海南自贸港</h3>
+      <p class="card-summary">山石网科在海口举办百城巡展并举行海南办事处揭牌仪式，售前经理谭亮系统分享双A战略(ASIC+AI)产品与技术进展，聚焦海南自贸港封关运作数字安全等本地核心需求。百城巡展是山石网科渠道下沉与区域市场深耕的标志性活动。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://c.m.163.com/news/a/KVKNDTRK0538ER6X.html" target="_blank" rel="noopener" class="source-link">163</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:240ms">
+      <div class="card-header">
+        <span class="tag" style="color:#EF4444;background:#4A1515;">山石网科</span>
+        
+        <span class="date">2026-07-10</span>
+      </div>
+      <h3 class="card-title">山石网科入围CCIA网安三新，ASIC防火墙吞吐提升200%时延低至4.8微秒</h3>
+      <p class="card-summary">山石网科ASIC防火墙与OpenXDR入围CCIA网络安全新技术新产品新服务(第二批)名单。ASIC防火墙依托自研芯片实现吞吐性能提升200%、时延不超过4.8微秒，突破传统设备算力瓶颈，标志着山石网科自研芯片路线获得行业权威认可。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://www.toutiao.com/article/7660410384881058356" target="_blank" rel="noopener" class="source-link">toutiao</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:300ms">
+      <div class="card-header">
+        <span class="tag" style="color:#3B82F6;background:#1E3A5F;">深信服</span>
+        
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">深信服防火墙加量不加价，Platos自研底座实现全威胁吞吐提升50%-100%</h3>
+      <p class="card-summary">深信服防火墙在硬件供应链涨价潮中保持价格稳定，通过Platos自研底座、全链路转发优化与云网一体架构，实现全威胁吞吐量提升50%-100%，并增强银狐木马、钓鱼等新型威胁的检测能力。同时SASE云安全业务保持20%以上增速，市占率稳步提升。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://www.sangfor.com/news/ca7ccd4adaaf4a4ca615bc8836f8c619" target="_blank" rel="noopener" class="source-link">sangfor</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:360ms">
+      <div class="card-header">
+        <span class="tag" style="color:#F97316;background:#4A2A0F;">Fortinet</span>
+        
+        <span class="date">2026-07-15</span>
+      </div>
+      <h3 class="card-title">Fortinet发布FortiGate 700G，NP7+CP10 ASIC+AI威胁检测+后量子加密</h3>
+      <p class="card-summary">Fortinet发布面向现代园区的下一代防火墙FortiGate 700G系列，搭载第七代NP7与第十代CP10 ASIC，防火墙吞吐164Gbps、威胁防护吞吐26Gbps，支持FortiAI-Protect AI驱动威胁检测与后量子加密防护，安全智能体加持混合式部署。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://www.freebuf.com/news/432494.html" target="_blank" rel="noopener" class="source-link">freebuf</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:420ms">
+      <div class="card-header">
+        <span class="tag" style="color:#6366F1;background:#1E1B4B;">Palo Alto</span>
+        
+        <span class="date">2026-07-18</span>
+      </div>
+      <h3 class="card-title">Palo Alto推出企业级量子安全防护方案，14款NGFW量子优化硬件</h3>
+      <p class="card-summary">Palo Alto Networks推出企业级量子防护方案，包括量子防护准备仪表板、密码转换功能及14款第5代NGFW量子优化硬件，加速客户迈向后量子加密安全。后量子加密正成为全球NGFW厂商标配能力。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://www.informationsecurity.com.tw/article/article_detail.aspx?aid=12142" target="_blank" rel="noopener" class="source-link">informationsecurity</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:480ms">
+      <div class="card-header">
+        <span class="tag" style="color:#6B7280;background:#2D2D2D;">其他</span>
+        
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">Kaspersky推出商用NGFW，AI反病毒引擎+IDPS检出率95%+180Gbps吞吐</h3>
+      <p class="card-summary">Kaspersky Lab推出商用版NGFW，集成自研IDPS（检出率超95%）与AI反病毒引擎，搭配KX硬件平台可达180Gbps防火墙吞吐，面向政府、金融等中大型组织防护场景。标志着传统终端安全厂商向网络边界安全延伸。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://avalanchenoticias.com.br/mercado-de-tecnologia-e-ti-noticia/kaspersky-lab-apresenta-o-kaspersky-ngfw-com-protecao-de-ia" target="_blank" rel="noopener" class="source-link">avalanchenoticias</a></div>
+    </div>
+    <div class="card reveal" style="transition-delay:540ms">
+      <div class="card-header">
+        <span class="tag" style="color:#6B7280;background:#2D2D2D;">其他</span>
+        
+        <span class="date">2026-07-01</span>
+      </div>
+      <h3 class="card-title">2026 NGFW市场趋势分析：内联ML+加密流量行为分析+mesh架构成主流</h3>
+      <p class="card-summary">2026年NGFW市场分析指出，内联机器学习、加密流量行为分析与mesh架构成为趋势，厂商对自身漏洞的响应透明度与多年度订阅许可成为企业选型关键因素。AI原生安全能力正在从营销概念变为硬性技术门槛。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://securitycurated.com/infrastructure-and-network-security/top-next-generation-firewalls-shape-the-2026-security-market" target="_blank" rel="noopener" class="source-link">securitycurated</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🏭 行业动态 <span class="count">(1 条)</span></div>
+  <div class="card-grid">
+    <div class="card reveal" style="transition-delay:0ms">
+      <div class="card-header">
+        <span class="tag" style="color:#F59E0B;background:#4A3208;">金融</span>
+        <span class="important-badge">🔥 重要</span>
+        <span class="date">2026-07-06</span>
+      </div>
+      <h3 class="card-title">四部门联合起草《金融业网络安全管理办法（征求意见稿）》，全金融机构纳入统一监管</h3>
+      <p class="card-summary">央行、金融监管总局、证监会、外汇局联合起草《金融业网络安全管理办法（征求意见稿）》，将国内全部金融机构纳入统一监管，消除分头监管套利空间，要求机构建立网络安全责任制并落实等级保护制度。合规驱动将持续拉动金融行业防火墙采购需求。</p>
+      <div class="sources"><span class="source-label">来源：</span><a href="https://www.ce.cn/xwzx/gnsz/gdxw/202607/t20260706_3071071.shtml" target="_blank" rel="noopener" class="source-link">ce.cn</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>数据来源：WebSearch 多轮搜索 · 时效窗口：2026-06-24 ~ 2026-07-24</p>
+  <p style="margin-top:8px;">由 AI 自动生成 · 仅供行业参考</p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
