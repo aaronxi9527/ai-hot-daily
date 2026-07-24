@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-07-24</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                 "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0a0a0a;
+    color: #e4e4e7;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0 0 80px 0;
+  }
+  .hero {
+    background: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,0.15), transparent 60%);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero h1 {
+    font-size: 44px; font-weight: 700; color: #fff; margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero .subtitle { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 36px; }
+  .hero .stats {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .stat {
+    background: rgba(0,0,0,0.35); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+    padding: 18px 24px; min-width: 140px;
+  }
+  .stat-num {
+    font-size: 32px; font-weight: 700; color: #fff;
+    background: linear-gradient(90deg, #fff, #fbbf24);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat-label { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+  .container { max-width: 1080px; margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 2; }
+
+  .overview {
+    background: #111827; border: 1px solid #1f2937; border-radius: 16px;
+    padding: 32px; margin-bottom: 48px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+  .overview h2 {
+    font-size: 22px; color: #fff; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .overview h2::before {
+    content: "🤖"; font-size: 26px;
+  }
+  .overview p {
+    color: #d4d4d8; font-size: 15px; line-height: 1.8; margin-bottom: 12px;
+  }
+  .overview p:last-child { margin-bottom: 0; }
+  .overview b { color: #fbbf24; font-weight: 600; }
+
+  .section { margin-bottom: 56px; }
+  .section-title {
+    font-size: 26px; color: #fff; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+    padding-left: 4px;
+  }
+  .section-blue .section-title::before {
+    content: ""; display: inline-block; width: 4px; height: 26px;
+    background: linear-gradient(180deg, #5B6CF7, #8B5CF6); border-radius: 2px;
+  }
+  .section-red .section-title::before {
+    content: ""; display: inline-block; width: 4px; height: 26px;
+    background: linear-gradient(180deg, #EF4444, #EC4899); border-radius: 2px;
+  }
+  .section-purple .section-title::before {
+    content: ""; display: inline-block; width: 4px; height: 26px;
+    background: linear-gradient(180deg, #8B5CF6, #EC4899); border-radius: 2px;
+  }
+
+  .card-grid {
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+  }
+  @media (min-width: 768px) {
+    .card-grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: #111827; border: 1px solid #1f2937; border-radius: 12px;
+    padding: 24px; transition: all 0.3s ease;
+    opacity: 0; transform: translateY(20px);
+  }
+  .card.visible { opacity: 1; transform: translateY(0); }
+  .card:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 8px 30px rgba(91, 108, 247, 0.15);
+    transform: translateY(-2px);
+  }
+  .card-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px;
+  }
+  .importance { font-size: 16px; letter-spacing: 1px; }
+  .vendor {
+    font-size: 12px; color: #a1a1aa;
+    background: rgba(255,255,255,0.04); padding: 4px 10px;
+    border-radius: 6px; border: 1px solid rgba(255,255,255,0.08);
+  }
+  .card-title {
+    font-size: 18px; color: #fff; font-weight: 600;
+    margin-bottom: 12px; line-height: 1.4;
+  }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 100px;
+    font-weight: 500; letter-spacing: 0.3px;
+  }
+  .tag-blue   { background: rgba(91, 108, 247, 0.15); color: #93C5FD; border: 1px solid rgba(91, 108, 247, 0.3); }
+  .tag-red    { background: rgba(239, 68, 68, 0.15); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.3); }
+  .tag-green  { background: rgba(34, 197, 94, 0.15); color: #86EFAC; border: 1px solid rgba(34, 197, 94, 0.3); }
+  .tag-purple { background: rgba(139, 92, 246, 0.15); color: #C4B5FD; border: 1px solid rgba(139, 92, 246, 0.3); }
+
+  .card-summary {
+    font-size: 14px; color: #d4d4d8; line-height: 1.7; margin-bottom: 14px;
+  }
+  .source-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; color: #93C5FD; text-decoration: none;
+    padding: 6px 12px; background: rgba(91, 108, 247, 0.1);
+    border: 1px solid rgba(91, 108, 247, 0.25); border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .source-link:hover {
+    background: rgba(91, 108, 247, 0.2); border-color: rgba(91, 108, 247, 0.5);
+  }
+
+  .trend {
+    background: linear-gradient(135deg, rgba(91, 108, 247, 0.08), rgba(236, 72, 153, 0.05));
+    border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 12px;
+    padding: 28px; margin-top: 24px;
+  }
+  .trend h3 {
+    font-size: 20px; color: #fff; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .trend ul { list-style: none; padding: 0; }
+  .trend li {
+    font-size: 14px; color: #d4d4d8; line-height: 1.8;
+    padding-left: 20px; position: relative; margin-bottom: 8px;
+  }
+  .trend li::before {
+    content: "▸"; position: absolute; left: 0; top: 0;
+    color: #8B5CF6; font-weight: 700;
+  }
+  .trend li b { color: #fbbf24; }
+
+  footer {
+    text-align: center; color: #71717a; font-size: 12px;
+    margin-top: 60px; padding: 24px;
+  }
+  footer a { color: #a1a1aa; text-decoration: none; }
+
+  /* Fade-in animation on scroll */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>🤖 AI 安全日报</h1>
+    <div class="subtitle">2026-07-24 · 周五 · 友商产品动态 × 行业全景</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">国际产品动态</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">国内产品动态</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">9</div>
+        <div class="stat-label">行业动态</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">16</div>
+        <div class="stat-label">总动态条数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="overview">
+    <h2>AI 总览 · 今日主线</h2>
+    <p>今天 AI 安全赛道呈现「<b>产品融资井喷 + 漏洞披露高密度 + 中国 AI 立法进入场景化</b>」三线并进：</p><p>国际侧 Anthropic 推出 Claude Security 插件正式攻入代码漏洞扫描，三家初创公司单周累计融资近 4 亿美元（Glow 1.8 亿/Neo 1 亿/Beacon 1300 万），</p><p>主战场全部锁定 AI 代理/AI 身份治理；Sophos 2026 AI 安全报告首次实证攻击者用 12 个 AI 代理加速攻击开发周期（STAC6994 行动），</p><p>GitHub Agentic Workflows GitLost 漏洞 + PraisonAI CVSS 10.0 RCE 让"提示词即 shell"成为真实威胁；</p><p>国内侧《拟人化互动服务管理暂行办法》7/15 正式施行（中国首部拟人化 AI 专项立法），驱动豆包/通义千问下线用户自建智能体，</p><p>强制性国标《智能体应用安全基本要求》4 月启动制定（WAIC 上正式披露），2 项 AI 安全团体标准在互联网大会发布——</p><p>AI 安全正式从「事后处罚」转向「全生命周期前置管控」。</p>
+  </div>
+
+  
+<section class="section section-blue">
+  <h2 class="section-title">🏢 国际友商产品动态</h2>
+  <div class="card-grid">
+    
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥🔥</div>
+    <div class="vendor">Anthropic</div>
+  </div>
+  <h3 class="card-title">Anthropic 推出 Claude Security 插件 — 终端内 AI 代码漏洞扫描</h3>
+  <div class="tags"><span class="tag tag-green">代码安全</span><span class="tag tag-blue">AI漏洞扫描</span></div>
+  <p class="card-summary">7/22 Anthropic 推出 Claude Security 插件（基于 Claude Code），作为研究级 AI 安全助手在终端内扫描代码漏洞。插件像安全研究员一样推理：读取 Git 历史、跨文件追踪数据流、理解业务逻辑；针对内存损坏、注入缺陷、认证绕过、复杂逻辑错误等传统工具易漏的严重漏洞。支持 webhook 推送到 Slack/Jira、CSV/Markdown 导出、定时扫描与目录限定，可与现有安全栈集成。面向所有 Claude Code 用户测试版开放，企业管理员可通过控制台启用。</p>
+  <a class="source-link" href="https://www.freebuf.com/articles/ai-security/491731.html" target="_blank" rel="noopener">📎 来源：FreeBuf</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">Microsoft</div>
+  </div>
+  <h3 class="card-title">微软加速推进「感知项目」（Perception Project）AI 漏洞检测工具</h3>
+  <div class="tags"><span class="tag tag-blue">AI漏洞检测</span><span class="tag tag-purple">多模型协同</span></div>
+  <p class="card-summary">7 月微软正加速推进代号「感知项目」的 AI 安全工具，由新任安全主管海耶特·加洛（Hayeat Gallo）领导。核心是「模型路由」机制，可动态调度微软、OpenAI、Anthropic 等多厂商 AI 模型，分别执行代码分析、弱点识别与修复生成等任务，兼顾性能与成本控制——避免单一高价模型（如 Anthropic Mythos）的高部署开销。产品最快本月发布，标志着微软安全战略全面转向 AI 驱动。</p>
+  <a class="source-link" href="https://www.donews.com/news/detail/8/6637436.html" target="_blank" rel="noopener">📎 来源：DoNews</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">Neo Security（初创）</div>
+  </div>
+  <h3 class="card-title">Neo Security 获 1 亿美元融资，发布 Agentic Software Control 平台</h3>
+  <div class="tags"><span class="tag tag-purple">AI-SPM</span><span class="tag tag-red">智能体安全</span></div>
+  <p class="card-summary">7/20 Neo Security 结束隐身模式，宣布获 a16z 与 Bessemer Venture Partners 领投 1 亿美元融资，由前 SentinelOne、Wiz、Palo Alto Networks 高管创立。平台提供 Neoverse 驱动的软件资产清单、能力与风险情报、实时归因（human/agent/identity）、策略控制与企业级粒度策略执行。Gartner 数据显示企业应用从 2025 年 5% 代理化跃升至 2026 年底 40%，Neo 抢占「Agent 软件控制层」新赛道。</p>
+  <a class="source-link" href="https://finance.yahoo.com/technology/ai/articles/neo-launches-100m-secure-ai-113000705.html" target="_blank" rel="noopener">📎 来源：Yahoo Finance / Globe Newswire</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">Glow（初创）</div>
+  </div>
+  <h3 class="card-title">Glow 隐身模式亮相：1.8 亿美元融资重新定义 AI 时代端点安全</h3>
+  <div class="tags"><span class="tag tag-green">端点安全</span><span class="tag tag-blue">AI原生</span></div>
+  <p class="card-summary">7/22 Glow 隐身模式结束，宣布 1.8 亿美元融资（估值 12 亿美元），由 Sequoia、Cyberstarts、Greenoaks、Redpoint 领投。由前 Meta 工程 VP、Snowflake 网络安全战略负责人、Claroty R&D VP 等创立，COO Emily Heath 兼任 Wiz 董事会成员至被 Google 320 亿美元收购。Glow 提出 AI 时代端点新范式：企业内部 AI 使用率从 15% 飙升至 45%（一年），传统端点安全已无法保护 AI 入口。Glow Labs 将以「预防优先」思路重塑端点防御。</p>
+  <a class="source-link" href="https://www.globenewswire.com/news-release/2026/07/22/3331154/0/en/Glow-Emerges-From-Stealth-With-180-Million-to-Reinvent-Endpoint-Security-in-the-AI-Era.html" target="_blank" rel="noopener">📎 来源：Globe Newswire</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥</div>
+    <div class="vendor">Beacon Security（初创）</div>
+  </div>
+  <h3 class="card-title">Beacon Security 获 1300 万美元种子轮，发布 Agentic Cybersecurity Work 平台</h3>
+  <div class="tags"><span class="tag tag-green">安全数据中台</span><span class="tag tag-red">AI Agent</span></div>
+  <p class="card-summary">7/16 Beacon Security 关闭 1300 万美元种子轮，Notable Capital 领投，60 余位创始人/CISO 参与。由前 HiredScore CEO（Workday 5.2 亿美元收购）Gal Tal-Hochberg 联合国家网络防御资深老兵创立。平台提供 best-of-breed 数据操作层（融合多厂商遥测，预解析实体并自动归一化）+ Agentic Cybersecurity Work 平台（开放式 harness 支持检测工程、调查支持、shadow AI 分析等任务）+ 即用型安全 Agent 库。ARR 半年增长 300%，已被金融、保险、科技行业 Fortune 500 团队采用。</p>
+  <a class="source-link" href="https://www.prnewswire.com/news-releases/beacon-security-raises-13-million-in-seed-funding-to-give-ai-agents-a-trustworthy-data-foundation-for-cyber-defense-302826450.html" target="_blank" rel="noopener">📎 来源：PR Newswire</a>
+</div>
+
+  </div>
+</section>
+
+
+<section class="section section-red">
+  <h2 class="section-title">🇨🇳 国内友商产品动态</h2>
+  <div class="card-grid">
+    
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">中国移动</div>
+  </div>
+  <h3 class="card-title">中国移动发布九天安全可信多模态大模型 JT4.1 + MoMA 多模型服务引擎 2.0</h3>
+  <div class="tags"><span class="tag tag-purple">多模态大模型</span><span class="tag tag-green">安全可信</span></div>
+  <p class="card-summary">7/17 WAIC 2026 企业 AI 高质量发展论坛上，中国移动正式发布九天安全可信多模态大模型 JT4.1 + MoMA 2.0。JT4.1 主打安全/可信双跃升：通过视觉 DWC 全信数据体系为图片补齐时间/地点/传播路径，在数据构建阶段识别风险；针对多模态隐蔽式攻击做专项安全增强。在可信层面通过九天价值罗盘进行 12 维度价值观校准，已携手中国电气装备、中国石油等央企及行业龙头落地，并启动「九天安全伙伴计划」。MoMA 2.0 解决多模型选择/调用/Token 成本控制难题。</p>
+  <a class="source-link" href="https://www.toutiao.com/article/7663795069157114387" target="_blank" rel="noopener">📎 来源：今日头条</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">阿里云</div>
+  </div>
+  <h3 class="card-title">阿里云 AI Red Teaming 结束公测，付费版 7/23 正式上线</h3>
+  <div class="tags"><span class="tag tag-red">AI红队</span><span class="tag tag-blue">安全评估</span></div>
+  <p class="card-summary">阿里云应用安全中心（ASC）的 AI Red Teaming 服务 7/21 结束公测，公测期间生成的集成配置和评估记录将被清除，需提前备份。7/23 起以 pay-as-you-go 模式继续提供针对 AI Agent 的安全评估服务。标志着阿里云在 AI 红队/模型安全评估 SaaS 化方向的商业化正式落地。</p>
+  <a class="source-link" href="https://www.alibabacloud.com/help/en/asc/latest/product-change-ai-red-teaming-stops-public-testing" target="_blank" rel="noopener">📎 来源：Alibaba Cloud 官方</a>
+</div>
+
+  </div>
+</section>
+
+
+<section class="section section-purple">
+  <h2 class="section-title">📊 行业动态与趋势</h2>
+  <div class="card-grid">
+    
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥🔥</div>
+    <div class="vendor">中国网信办 / 5 部门</div>
+  </div>
+  <h3 class="card-title">《人工智能拟人化互动服务管理暂行办法》7/15 正式施行</h3>
+  <div class="tags"><span class="tag tag-red">监管政策</span><span class="tag tag-purple">拟人化 AI</span></div>
+  <p class="card-summary">国家网信办、国家发展改革委、工信部、公安部、市场监管总局五部门联合公布，自 2026/7/15 起施行。明确禁止「生成诱导情感依赖/沉迷的内容」「通过情感操纵诱导用户不合理决策」等行为；要求注册用户 100 万+ 或月活 10 万+ 提供方开展安全评估；首次提出「拟人化互动服务」概念并单独立法（中国首部拟人化 AI 专项立法）。专家评价：从生成式 AI 治理向场景化精细规制迈出重要一步。</p>
+  <a class="source-link" href="https://k.sina.com.cn/article_2810373291_a782e4ab02002vdvy.html" target="_blank" rel="noopener">📎 来源：新浪网</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥🔥</div>
+    <div class="vendor">Sophos</div>
+  </div>
+  <h3 class="card-title">Sophos 发布 AI Security 2026 报告：STAC6994 首次实证攻击者用 12 个 AI 代理加速攻击开发</h3>
+  <div class="tags"><span class="tag tag-blue">研究报告</span><span class="tag tag-red">AI 攻击武器化</span></div>
+  <p class="card-summary">7/22 Sophos 发布 AI Security 2026 报告，基于 62.5 万客户案例。首次披露 STAC6994 行动——攻击者在客户网络内运行软件开发操作，使用约 12 个 AI Agent 编写并测试针对 Sophos/CrowdStrike/Microsoft Defender 端点 Agent 的攻击，产出近 80 个模块和 70+ 绕过技术，把人类数周工作压缩到数天。报告指出企业 AI 身份（OAuth Token、Agent、API key、模型权重）成为最高价值攻击面，AI 治理已从「模型行为问题」升级为「身份+治理+供应链」问题。</p>
+  <a class="source-link" href="https://www.globenewswire.com/news-release/2026/07/22/3331164/0/en/AI-Is-Compressing-Cyberattack-Timelines-and-Targeting-Ungoverned-AI-Identities-Sophos-AI-Security-Report-Finds.html" target="_blank" rel="noopener">📎 来源：Globe Newswire</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥🔥</div>
+    <div class="vendor">Noma Labs</div>
+  </div>
+  <h3 class="card-title">GitHub Agentic Workflows 曝「GitLost」严重提示词注入漏洞（间接注入 → 私有仓库数据外泄）</h3>
+  <div class="tags"><span class="tag tag-red">漏洞披露</span><span class="tag tag-purple">AI 编程 Agent</span></div>
+  <p class="card-summary">2026 年 7 月初 Noma Labs 公开披露 GitHub Agentic Workflows 中 GitLost 漏洞：未认证攻击者仅需在同一组织的公开仓库发布一个含隐藏自然语言指令的 Issue，即可让内置 AI 代理（基于 Claude 或 GitHub Copilot）未经授权读取、复制甚至外传私有仓库内容。无需窃取账号、不需供应链漏洞，传统身份验证与访问控制均无法阻断。Generative Labs 评价为「Lethal Trifecta 致命三合一」（私有数据访问+不受信内容+外部通信）教科书案例。</p>
+  <a class="source-link" href="https://www.dreamjtech.com/30888/" target="_blank" rel="noopener">📎 来源：DreamJT 报道</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">CrowdStrike</div>
+  </div>
+  <h3 class="card-title">CrowdStrike 7/7 报告披露 5 种新型提示词注入攻击技术（分类扩展至 200+ 种方法）</h3>
+  <div class="tags"><span class="tag tag-blue">研究报告</span><span class="tag tag-red">提示词注入</span></div>
+  <p class="card-summary">CrowdStrike AI 安全研究团队 7/7 发布报告，披露 5 种新型提示词注入技术：① PT0201 触发激活规则添加（休眠载荷）；② PT0197 认知 Token 抑制（限制模型拒绝语言）；③ PT0200 算法载荷分解（碎片化绕过过滤）；④ PT0198 特殊 Token 注入（伪装系统级指令）；⑤ IM0005 无意识用户投递（社工借刀杀人）。将分类扩展至 200+ 种攻击方法，强调检测策略必须从模式识别进化到链式技术与上下文滥用检测。</p>
+  <a class="source-link" href="https://thecyberedition.com/crowdstrike-finds-5-new-prompt-injection-techniques-targeting-ai-agents-in-2026/" target="_blank" rel="noopener">📎 来源：The Cyber Edition</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">PraisonAI（开源框架）</div>
+  </div>
+  <h3 class="card-title">PraisonAI CodeAgent 曝 CVE-2026-61447 严重 RCE 漏洞（CVSS 10.0）</h3>
+  <div class="tags"><span class="tag tag-red">漏洞披露</span><span class="tag tag-red">AI Agent 框架</span></div>
+  <p class="card-summary">7/11 公开披露 PraisonAI AI Agent 框架中 CVE-2026-61447 严重 RCE 漏洞，影响 1.6.78 之前所有版本，CVSS 评分 10.0（v3.1 / v4.0 双满）。CodeAgent._execute_python() 直接执行 LLM 生成的 Python 代码，无 AST 校验、无 import 限制、无沙箱强制——攻击者通过提示词注入即可让 Agent 在主机上运行任意代码，窃取 API key、云凭证、数据库密码等环境密钥。PraisonAI 1.6.78 已修复，建议立即升级并轮换潜在泄露密钥。</p>
+  <a class="source-link" href="https://www.mallory.ai/stories/019f5182-6990-7bb9-8171-8b5a1e2dc3f3" target="_blank" rel="noopener">📎 来源：Mallory</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">中国互联网协会</div>
+  </div>
+  <h3 class="card-title">中国互联网大会发布 2 项 AI 安全团体标准（大模型安全护栏 + 安全评测）</h3>
+  <div class="tags"><span class="tag tag-green">行业标准</span><span class="tag tag-green">团体标准</span></div>
+  <p class="card-summary">7/20 在 2026（第二十五届）中国互联网大会「第三届智能体创新推进论坛」上，中国互联网协会正式发布 2 项 AI 安全系列团体标准：①《大模型安全护栏能力技术规范》——围绕「如何建设」提出由输入防护、推理监测、输出防护、安全干预、日志审计、策略管理和人工复核等模块构成的技术架构；②《大模型服务与应用安全评测技术规范》——围绕「如何评价」建立覆盖提示词攻击、敏感信息泄露、工具调用、多轮行为偏移及多模态风险的检测方法，设置风险识别率/拦截成功率/误报率等量化指标。芳禾数据等参编。</p>
+  <a class="source-link" href="https://dy.163.com/article/L29O268T05561S7R.html" target="_blank" rel="noopener">📎 来源：芳禾数据</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">上海人工智能实验室</div>
+  </div>
+  <h3 class="card-title">上海 AI 实验室牵头 6 项 AI 国家标准获批立项（覆盖大模型/科学智能/AI 安全/具身智能）</h3>
+  <div class="tags"><span class="tag tag-green">国家标准</span><span class="tag tag-green">标准立项</span></div>
+  <p class="card-summary">近日国家标准化管理委员会批准上海 AI 实验室牵头 6 项 AI 国家标准立项：《人工智能 大模型评测平台建设要求规范》《人工智能 科学数据准备技术规范》《人工智能 科学数据线索汇聚与分类分级技术规范》《网络安全技术 人工智能安全能力成熟度评估方法》《人工智能 世界模型评测规范》《人工智能 具身智能数据质量规范 第 2 部分：生成数据》。同步推进 IEEE 首个科学智能领域国际标准，搭建全链条 AI 安全管控规范。</p>
+  <a class="source-link" href="https://www.163.com/dy/article/L17PBCO5055040N3.html" target="_blank" rel="noopener">📎 来源：上观新闻</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥🔥</div>
+    <div class="vendor">字节豆包 / 阿里通义千问</div>
+  </div>
+  <h3 class="card-title">豆包/通义千问 7/15 同步下线用户自建智能体功能</h3>
+  <div class="tags"><span class="tag tag-purple">行业事件</span><span class="tag tag-purple">合规整改</span></div>
+  <p class="card-summary">字节豆包与阿里通义千问同步官宣 7/15 下线用户自建智能体功能：豆包智能体功能下线后用户可短期保留资料与对话记录，10/15 后依据《隐私政策》清理数据；千问智能体功能同步下线，用户可复制/截图/导出对话。两大平台调整时间节点与《人工智能拟人化互动服务管理暂行办法》正式施行日期完全吻合，为 C 端开放式智能体划上合规休止符——「伪智能体」娱乐化玩法正式告别，行业转向合规化、工具化、产业价值化的高质量发展阶段。</p>
+  <a class="source-link" href="https://new.qq.com/rain/a/20260708A0AIBB00" target="_blank" rel="noopener">📎 来源：中国经营报</a>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="importance">🔥</div>
+    <div class="vendor">中国电子技术标准化研究院</div>
+  </div>
+  <h3 class="card-title">WAIC 2026 正式披露：强制性国标《智能体应用安全基本要求》4 月启动制定</h3>
+  <div class="tags"><span class="tag tag-red">强制性国标</span><span class="tag tag-red">智能体安全</span></div>
+  <p class="card-summary">7/18 WAIC 2026 人工智能国际标准化论坛上，中国电子技术标准化研究院副院长刘贤刚透露：今年 4 月我国已启动制定《智能体应用安全基本要求》强制性国家标准，将通过明确智能体应用的基础安全、交互安全、运行安全等强制性技术要求，削减智能体安全能力不足、应用方式不当引发的各类安全风险，为智能体健康有序发展构筑安全基线。全球首个针对智能体安全的强制性国家标准。</p>
+  <a class="source-link" href="https://new.qq.com/rain/a/20260718A0368S00" target="_blank" rel="noopener">📎 来源：WAIC 2026</a>
+</div>
+
+  </div>
+</section>
+
+
+  <div class="trend">
+    <h3>📈 趋势判断 · 精简版</h3>
+    <ul>
+      <li><b>国际产品井喷</b>：Anthropic Claude Security 插件攻入代码扫描 + 三家初创单周累计融资近 4 亿美元（Glow 1.8 亿/Neo 1 亿/Beacon 1300 万），赛道集中于「AI 身份治理 + Agent 软件控制层」</li>
+      <li><b>国内产品稳健</b>：中国移动九天 JT4.1 多模态大模型 + MoMA 2.0 服务引擎 7/17 WAIC 首发；阿里云 AI Red Teaming 7/21 公测结束 7/23 付费上线</li>
+      <li><b>漏洞高密度披露</b>：GitHub Agentic Workflows GitLost（间接注入→私有仓库外泄）+ PraisonAI CVE-2026-61447（CVSS 10.0 RCE）+ CrowdStrike 5 种新型提示词注入技术（分类扩展至 200+ 种方法）</li>
+      <li><b>Sophos 报告实证</b>：STAC6994 行动首次披露攻击者用 12 个 AI 代理把数周工作压缩到数天，AI 治理从「模型行为」升级为「身份+治理+供应链」</li>
+      <li><b>国内立法进入场景化</b>：《拟人化互动服务管理暂行办法》7/15 施行（中国首部拟人化 AI 专项立法）+ 强制性国标《智能体应用安全基本要求》4 月已启动 + 2 项 AI 安全团体标准在互联网大会发布</li>
+      <li><b>豆包/千问下线</b>：C 端用户自建智能体同步下线，行业从「伪智能体娱乐化」转向「合规+工具化+产业价值化」</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <div>由 AI 安全日报自动化系统生成 · 数据来源：WebSearch 多轮搜索</div>
+  <div style="margin-top: 8px;">
+    <a href="https://aaronxi9527.github.io/ai-hot-daily/">GitHub Pages 主页</a>
+  </div>
+</footer>
+
+<script>
+  // 滑动渐入动画
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, idx * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card').forEach((card, i) => {
+    card.style.transition = `all 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${i * 40}ms`;
+    observer.observe(card);
+  });
+
+  // 立即显示已在视口内的卡片
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.card').forEach((card, i) => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        setTimeout(() => card.classList.add('visible'), i * 40);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
