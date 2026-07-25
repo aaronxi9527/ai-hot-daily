@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛡️ 中国防火墙厂商日报 · 2026-07-25</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1c1c1c;
+      --text: #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --accent-start: #5B6CF7;
+      --accent-mid: #8B5CF6;
+      --accent-end: #EC4899;
+      --link: #8B5CF6;
+      --link-hover: #b48cf9;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(10,10,10,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    main { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+    .hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+      border-radius: var(--radius);
+      background: radial-gradient(circle at 30% 20%, rgba(91,108,247,0.12), transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(236,72,153,0.1), transparent 40%),
+                  var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 48px;
+    }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); margin: 0 0 16px; letter-spacing: -1px; }
+    .hero .date { color: var(--text-secondary); font-size: 18px; margin-bottom: 24px; }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat .num {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat .label { font-size: 13px; color: var(--text-secondary); }
+    .section { margin-bottom: 56px; }
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ai-box {
+      background: var(--surface);
+      border: 1px solid rgba(139,92,246,0.25);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ai-box::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+    }
+    .ai-box p { margin: 0; color: #e2e2e2; font-size: 16px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: transform 0.25s, box-shadow 0.25s, opacity 0.6s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(91,108,247,0.12);
+    }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag-sangfor { background: rgba(239,108,0,0.15); color: #ff9800; }
+    .tag-qianxin { background: rgba(33,150,243,0.15); color: #4fc3f7; }
+    .tag-huawei { background: rgba(244,67,54,0.15); color: #ff5252; }
+    .tag-h3c { background: rgba(0,150,136,0.15); color: #4db6ac; }
+    .tag-hillstone { background: rgba(63,81,181,0.15); color: #7986cb; }
+    .tag-topsec { background: rgba(233,30,99,0.15); color: #f06292; }
+    .tag-nsfocus { background: rgba(76,175,80,0.15); color: #81c784; }
+    .tag-venus { background: rgba(156,39,176,0.15); color: #ba68c8; }
+    .tag-default { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+    .tag-gov { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .tag-finance { background: rgba(16,185,129,0.15); color: #34d399; }
+    .tag-telecom { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .tag-military { background: rgba(107,114,128,0.15); color: #9ca3af; }
+    .card-date { font-size: 12px; color: var(--text-secondary); }
+    .card h3 { font-size: 16px; margin: 0 0 10px; line-height: 1.45; }
+    .card p { font-size: 14px; color: var(--text-secondary); margin: 0 0 16px; }
+    .card-links a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 13px;
+      margin-right: 12px;
+      transition: color 0.2s;
+    }
+    .card-links a:hover { color: var(--link-hover); text-decoration: underline; }
+    .merge-badge {
+      font-size: 11px;
+      color: var(--accent-end);
+      font-weight: 600;
+    }
+    .empty {
+      color: var(--text-secondary);
+      padding: 24px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .stats { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">🛡️ 防火墙厂商日报</div>
+      <div class="nav-links">
+        <a href="#ai">AI 解读</a>
+        <a href="#vendors">厂商动态</a>
+        <a href="#industry">行业动态</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>🛡️ 中国防火墙厂商日报</h1>
+      <div class="date">2026-07-25</div>
+      <div class="stats">
+        <div class="stat"><div class="num">13</div><div class="label">总动态</div></div>
+        <div class="stat"><div class="num">11</div><div class="label">厂商动态</div></div>
+        <div class="stat"><div class="num">2</div><div class="label">行业动态</div></div>
+      </div>
+    </section>
+
+    <section id="ai" class="section">
+      <h2 class="section-title">🤖 AI 解读</h2>
+      <div class="ai-box"><p>今日防火墙圈看点集中：共 13 条新动态，厂商侧以 绿盟科技(6), H3C(2), 山石网科(2) 为主动方；行业侧 政府(1), 金融(1) 持续释放采购与合规信号。头条是「绿盟科技新型智能渗透测试系统AI-PTS实现&quot;用AI对抗AI&quot;」。</p></div>
+    </section>
+
+    <section id="vendors" class="section">
+      <h2 class="section-title">🏢 厂商动态</h2>
+      <div class="grid">
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07-24</span>
+      </div>
+      <h3>绿盟科技新型智能渗透测试系统AI-PTS实现&quot;用AI对抗AI&quot;</h3>
+      <p>面对HuggingFace AI智能体入侵事件所揭示的AI加速漏洞挖掘趋势，绿盟科技发布智能渗透测试系统AI-PTS，用AI对抗AI，应对日益智能化的攻击手段，突破传统人海战术渗透测试的局限。</p>
+      <div class="card-links"><a href="https://app.kjrb.com.cn/app/template/displayTemplate/news/newsDetail/0/553175.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07-24</span>
+      </div>
+      <h3>绿盟科技AI安全&quot;双轮&quot;驱动，在Kimi时代重获生机</h3>
+      <p>绿盟科技凭借&quot;风云卫&quot;AI安全能力平台与&quot;清风卫&quot;AI安全产品体系的双轮驱动布局，在AI大模型产业安全蓝海中寻找新增长曲线，覆盖大模型从开发到运行的全生命周期安全防护。</p>
+      <div class="card-links"><a href="http://mp.weixin.qq.com/s?__biz=MzcwMDM4MDM2OA==&amp;mid=2247486060&amp;idx=2&amp;sn=d7565f704e375820e6f8f31a4b0ecaf7" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-huawei">华为</span>
+        <span class="card-date">2026-07-23</span>
+      </div>
+      <h3>HNS 2026｜华为星河AI网络安全以AI对抗和保护AI，构建下一代端到端安全防护体系</h3>
+      <p>华为在HNS 2026南非站发布HiSecEngine USG6500G系列7款AI防火墙，搭载AI Core智能引擎实现毫秒级在线推理，未知威胁检测率达95%，威胁防护与SSL解密性能较业界同类产品实现2倍提升。</p>
+      <div class="card-links"><a href="https://e.huawei.com/cn/news/2026/solutions/enterprise-network/network-security-establishing-security-protection-system" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07-23</span>
+      </div>
+      <h3>001号！绿盟科技斩获国内首张智能体管理能力成熟度L2认证证书</h3>
+      <p>2026年7月世界人工智能大会发布国内首个智能体管理成熟度标准（T/CIIA070-2026），绿盟科技斩获编号CIIA-ACMM-L2-20260001的国内首张L2级认证证书，成为标准深度参编单位与首批获证企业。</p>
+      <div class="card-links"><a href="http://stock.10jqka.com.cn/20260723/c678386609.shtml" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-h3c">H3C</span>
+        <span class="card-date">2026-07-17</span>
+      </div>
+      <h3>新华三击败华为中标中国电信3000多万信息安全项目</h3>
+      <p>中国电信云网信息安全产品(2026年)集中采购防火墙项目中标结果出炉，新华三以3272万元最低报价排名第一，华为以3757万元排名第二遗憾出局，共采购3230台防火墙设备。</p>
+      <div class="card-links"><a href="https://www.toutiao.com/article/7663481785438732834" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-hillstone">山石网科</span>
+        <span class="card-date">2026-07-02</span>
+      </div>
+      <h3>山石网科亮相CERNET华东南2026学术年会，以双A战略护航高教数智化转型</h3>
+      <p>中国教育和科研计算机网CERNET华东南地区2026年学术年会在浙江大学紫金港校区举办，山石网科受邀参会，现场重点展示依托双A战略（ASIC+AI）打造的校园全域网络安全、高校数据安全、AI智能安全运营一体化解决方案。</p>
+      <div class="card-links"><a href="https://www.163.com/dy/article/L0RC6R1D0538ER6X.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-hillstone">山石网科</span>
+        <span class="card-date">2026-07</span>
+      </div>
+      <h3>2026第六届数字安全大会 山石网科荣获&quot;ASIC专用芯片&quot;创新赛道领航者</h3>
+      <p>在2026第六届数字安全大会上，山石网科凭借自研ASIC安全专用芯片战略及技术创新，荣获&quot;ASIC专用芯片&quot;创新赛道领航者奖项，体现其在安全芯片自主可控方向的持续突破。</p>
+      <div class="card-links"><a href="https://www.163.com/dy/article/L15KP6U40538ER6X.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07</span>
+      </div>
+      <h3>数字中国建设峰会 绿盟科技加入中国电信Token生态联盟共筑智能体安全防线</h3>
+      <p>绿盟科技在数字中国建设峰会期间加入中国电信Token生态联盟，并宣布开源清风卫NSF-ClawGuard端侧安全检测引擎，为OpenClaw等智能体框架提供全生命周期安全防护，共筑AI时代智能体安全防线。</p>
+      <div class="card-links"><a href="https://blog.nsfocus.net/%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E5%BB%BA%E8%AE%BE%E5%B3%B0%E4%BC%9A%EF%BD%9C%E7%BB%BF%E7%9B%9F%E7%A7%91%E6%8A%80%E5%8A%A0%E5%85%A5%E4%B8%AD%E5%9B%BD%E7%94%B5%E4%BF%A1token%E7%94%9F%E6%80%81" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-h3c">H3C</span>
+        <span class="card-date">2026-07-01</span>
+      </div>
+      <h3>领航者峰会 2026新华三发布业界最高性能AI防火墙及智能体安全防护体系</h3>
+      <p>新华三在NAVIGATE 2026领航者峰会上发布AI防火墙M9000-X，实现16Tbps吞吐量，时延小于5us，支持10000+AI应用指纹识别。同步发布AI安全网关和Agentic SOC自主式安全运营平台，覆盖边界防护、AI应用治理、运营决策全场景。</p>
+      <div class="card-links"><a href="https://www.cinic.org.cn/zgzz/qy/1636859.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07-01</span>
+      </div>
+      <h3>以AI之名聚伙伴之力：绿盟科技2026年合作伙伴峰会在福州召开</h3>
+      <p>绿盟科技2026年合作伙伴峰会在福州召开，发布新一代扫描器、WAF、防火墙等产品升级。绿盟防火墙超越下一代防火墙标准，适配IPv6场景领先，全面支持全栈国产化，并推出渗透测试、代码审计等安全智能体矩阵。</p>
+      <div class="card-links"><a href="https://www.unsafe.sh/go-410926.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07</span>
+      </div>
+      <h3>深耕数智安全 2026绿盟科技徽安峰会在安徽巢县圆满落幕</h3>
+      <p>以&quot;安全内生筑基·数智赋能焕新&quot;为主题的2026绿盟科技徽安峰会在安徽巢湖举办，汇聚政府、运营商、金融、能源、交通、科教等多领域客户专家，聚焦AI与网络安全深度融合，发布安全数字人平台等创新成果。</p>
+      <div class="card-links"><a href="https://www.toutiao.com/article/7646725492486259252" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    </div>
+    </section>
+
+    <section id="industry" class="section">
+      <h2 class="section-title">🏭 行业动态</h2>
+      <div class="grid">
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-gov">政府</span>
+        <span class="card-date">2026-07-09</span>
+      </div>
+      <h3>中国科学院计算机网络信息中心防火墙设备采购项目中标公告</h3>
+      <p>中国科学院人机物融合信息基础设施创新与试验平台项目防火墙设备采购中标，北京昆仑联通科技中标，金额332.7万元，采用H3C SecPath系列下一代防火墙。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/zygg//zbgg/202607/t20260709_26906469.htm" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-finance">金融</span>
+        <span class="card-date">2026-07-03</span>
+      </div>
+      <h3>四部门出手！金融业网络安全新规来了，这些底线不能碰</h3>
+      <p>四部门联合起草《金融业网络安全管理办法（征求意见稿）》公开征求意见，明确网络安全保护义务、关键信息基础设施认定要求及运营者特别合规要求。</p>
+      <div class="card-links"><a href="https://vod-finance.cctv.cn/cctv/cctvh5/cctv2/2021/share/index.html?pageId=app://ARTI1783158053529784&amp;unlink=app://ARTI1783158053529784" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    </div>
+    </section>
+  </main>
+
+  <footer>中国防火墙厂商日报 · 每日 09:00 自动推送 · 2026-07-25</footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
