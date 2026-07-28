@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛡️ 中国防火墙厂商日报 · 2026-07-28</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1c1c1c;
+      --text: #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --accent-start: #5B6CF7;
+      --accent-mid: #8B5CF6;
+      --accent-end: #EC4899;
+      --link: #8B5CF6;
+      --link-hover: #b48cf9;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(10,10,10,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    main { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+    .hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+      border-radius: var(--radius);
+      background: radial-gradient(circle at 30% 20%, rgba(91,108,247,0.12), transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(236,72,153,0.1), transparent 40%),
+                  var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 48px;
+    }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); margin: 0 0 16px; letter-spacing: -1px; }
+    .hero .date { color: var(--text-secondary); font-size: 18px; margin-bottom: 24px; }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat .num {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat .label { font-size: 13px; color: var(--text-secondary); }
+    .section { margin-bottom: 56px; }
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ai-box {
+      background: var(--surface);
+      border: 1px solid rgba(139,92,246,0.25);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ai-box::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+    }
+    .ai-box p { margin: 0; color: #e2e2e2; font-size: 16px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: transform 0.25s, box-shadow 0.25s, opacity 0.6s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(91,108,247,0.12);
+    }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag-sangfor { background: rgba(239,108,0,0.15); color: #ff9800; }
+    .tag-qianxin { background: rgba(33,150,243,0.15); color: #4fc3f7; }
+    .tag-huawei { background: rgba(244,67,54,0.15); color: #ff5252; }
+    .tag-h3c { background: rgba(0,150,136,0.15); color: #4db6ac; }
+    .tag-hillstone { background: rgba(63,81,181,0.15); color: #7986cb; }
+    .tag-topsec { background: rgba(233,30,99,0.15); color: #f06292; }
+    .tag-nsfocus { background: rgba(76,175,80,0.15); color: #81c784; }
+    .tag-venus { background: rgba(156,39,176,0.15); color: #ba68c8; }
+    .tag-default { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+    .tag-gov { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .tag-finance { background: rgba(16,185,129,0.15); color: #34d399; }
+    .tag-telecom { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .tag-military { background: rgba(107,114,128,0.15); color: #9ca3af; }
+    .card-date { font-size: 12px; color: var(--text-secondary); }
+    .card h3 { font-size: 16px; margin: 0 0 10px; line-height: 1.45; }
+    .card p { font-size: 14px; color: var(--text-secondary); margin: 0 0 16px; }
+    .card-links a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 13px;
+      margin-right: 12px;
+      transition: color 0.2s;
+    }
+    .card-links a:hover { color: var(--link-hover); text-decoration: underline; }
+    .merge-badge {
+      font-size: 11px;
+      color: var(--accent-end);
+      font-weight: 600;
+    }
+    .empty {
+      color: var(--text-secondary);
+      padding: 24px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .stats { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">🛡️ 防火墙厂商日报</div>
+      <div class="nav-links">
+        <a href="#ai">AI 解读</a>
+        <a href="#vendors">厂商动态</a>
+        <a href="#industry">行业动态</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>🛡️ 中国防火墙厂商日报</h1>
+      <div class="date">2026-07-28</div>
+      <div class="stats">
+        <div class="stat"><div class="num">32</div><div class="label">总动态</div></div>
+        <div class="stat"><div class="num">19</div><div class="label">厂商动态</div></div>
+        <div class="stat"><div class="num">13</div><div class="label">行业动态</div></div>
+      </div>
+    </section>
+
+    <section id="ai" class="section">
+      <h2 class="section-title">🤖 AI 解读</h2>
+      <div class="ai-box"><p>今日防火墙圈看点：共 32 条新动态，厂商侧 19 条以 启明星辰(3)、天融信(3)、山石网科(3)、奇安信(2)、深信服(2) 为主；行业侧 13 条 其他(5)、政府(3)、运营商(3) 持续释放信号。头条聚焦 「SonicWall SMA1000零日漏洞深度分析（CVE-…」；「资安周报0713-0717：Fortinet FortiSa…」；「山石网科亮相HKT科技周:以AI之力,构筑自适应安全防线」。整体看国际防火墙漏洞态势依然严峻（SonicWall/Fortinet/Palo Alto/WatchGuard 集中披露高危 CVE），国内厂商在政企采购与等保合规场景继续放量，AI 安全与抗量子密码布局加速。</p></div>
+    </section>
+
+    <section id="vendors" class="section">
+      <h2 class="section-title">🏢 厂商动态</h2>
+      <div class="grid">
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">Fortinet</span>
+        <span class="card-date">2026-07-14</span>
+      </div>
+      <h3>CVE-2026-59837：Fortinet FortiOS栈缓冲区溢出漏洞</h3>
+      <p>Fortinet FortiOS 7.4.0-7.4.1、7.2全版本及FortiPAM、FortiProxy多个产品存在栈缓冲区溢出漏洞CVE-2026-59837。特权认证攻击者可绕过栈保护和ASLR，通过构造HTTP请求执行任意代码或命令。CISA评估技术影响为total级别，但暂无野外利用证据。该漏洞由Fortinet PSIRT于2026年7月14日披露，影响范围广泛。</p>
+      <div class="card-links"><a href="https://nvd.nist.gov/vuln/detail/cve-2026-59837" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">Palo Alto</span>
+        <span class="card-date">2026-07-09</span>
+      </div>
+      <h3>Palo Alto Networks PAN-OS 2026年7月披露多个CVE漏洞</h3>
+      <p>Palo Alto Networks PAN-OS于2026年7月9日集中披露多个CVE漏洞：CVE-2026-0287（未认证DoS，CVSS 6.6，可致防火墙进入维护模式）、CVE-2026-0286（认证管理员root命令注入，CVSS 6.0）、CVE-2026-0285（SSRF，CVSS 4.7）、CVE-2026-0284（LSVPN XML注入）、CVE-2026-0283（LSVPN认证绕过）、CVE-2026-0281（会话令牌泄露）。Cloud NGFW和Prisma Access不受影响。</p>
+      <div class="card-links"><a href="https://www.cvelogic.com/zh-cn/product/palo_alto_networks/pan-os" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">SonicWall</span>
+        <span class="card-date">2026-07-14</span>
+      </div>
+      <h3>SonicWall SMA1000零日漏洞深度分析（CVE-2026-15409/CVE-2026-15410） <span class="merge-badge">(合并3源)</span></h3>
+      <p>InfraTrust 2026年7月报告揭示14家基础设施厂商发布61条安全公告，其中26个漏洞可未认证远程利用。SonicWall SMA1000 CVE-2026-15409（CVSS 10.0）可与CVE-2026-15410链式利用实现RCE，已被野外利用。Fortinet FortiSandbox存在未认证命令注入漏洞；Dell EMC Networking OS10和F5 BIG-IP均有CVSS 9.8/9.2高危漏洞。CISA已将SonicWall漏洞加入KEV目录。</p>
+      <div class="card-links"><a href="https://starmap.dbappsecurity.com.cn/info/15580" target="_blank" rel="noopener">来源1</a><a href="https://www.esentire.com/security-advisories/sonicwall-discloses-two-zero-day-vulnerabilities-cve-2026-15409-cve-2026-15410" target="_blank" rel="noopener">来源2</a><a href="https://cyberwebspider.com/cyber-security-news/july-2026-sonicwall-vulnerabilities" target="_blank" rel="noopener">来源3</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">WatchGuard</span>
+        <span class="card-date">2026-07-09</span>
+      </div>
+      <h3>WatchGuard Firebox存在重大漏洞CVE-2026-13368（CVSS 9.2）</h3>
+      <p>WatchGuard Firebox次世代防火墙存在重大漏洞CVE-2026-13368（CVSS 9.2），源于Mobile User VPN with IKEv2的LDAP验证机制存在竞争条件，导致Use-After-Free漏洞。若Firebox配置IKEv2 VPN并使用外部LDAP验证，未认证远程攻击者可在iked进程上下文执行任意代码。影响Fireware OS 2025.1、12.x、11.x版本，建议升级至2026.2.1或12.12.1。</p>
+      <div class="card-links"><a href="https://news.stust.edu.tw/id/95199" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-venus">启明星辰</span>
+        <span class="card-date">2026-07-08</span>
+      </div>
+      <h3>北京应用科学技术研究院网络防火墙反拍采购成交公告</h3>
+      <p>北京应用科学技术研究院网络防火墙反拍采购成交公告公布，启明星辰天清汉马USG防火墙系统V2.6(USG-FW-N-G3112-DNR-YC)中标，成交金额7.47万元，要求合同签订后15个日历日内到货，用于研究院网络边界安全防护。</p>
+      <div class="card-links"><a href="https://www.chinamae.com/purchases/e9b8a2f891828bc0580ef1d8c4be7ebf.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-venus">启明星辰</span>
+        <span class="card-date">2026-07-13</span>
+      </div>
+      <h3>中国地震局发展研究中心WEB应用防火墙(WAF)反拍采购需求公告</h3>
+      <p>中国地震局发展研究中心发布WEB应用防火墙WAF反拍采购需求公告，预算10万元，采购启明星辰天清Web应用安全网关系统V7.0(WAF6000-WAAP-CT6)，报价截止2026年7月16日，用于地震局发展研究中心Web应用安全防护。</p>
+      <div class="card-links"><a href="https://mkt.zycg.gov.cn/mall-view/information/detail?noticeId=794881" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-venus">启明星辰</span>
+        <span class="card-date">2026-07-22</span>
+      </div>
+      <h3>启明星辰两大案例入选《&quot;AI+网信安全&quot;典型案例集》</h3>
+      <p>启明星辰两大案例入选中国网络安全产业创新发展联盟AI+网信安全典型案例集。MAF大模型应用防火墙实现96%拒答率通过备案，自主承接90%安全运维；安星威胁检测智能体将7000万条告警精简至400余条，事件闭环率达99%，闭环时长缩至5分钟。</p>
+      <div class="card-links"><a href="https://www.venustech.com.cn/new_type/gsxw/20260722/29504.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-topsec">天融信</span>
+        <span class="card-date">2026-07-03</span>
+      </div>
+      <h3>张家口市财政局更换财政业务专网安全设备及续保采购项目中标公告</h3>
+      <p>张家口市财政局更换财政业务专网安全设备及部分安全设备续保采购项目中标公告，天融信NGFW4000-UF(HG-A40)万兆防火墙中标，数量2台，单价24万元，评审得分90.1分，用于财政业务专网安全防护设备升级替换。</p>
+      <div class="card-links"><a href="https://www.chinamae.com/purchases/6a68840f7b744d776652236de3f0c77b.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-topsec">天融信</span>
+        <span class="card-date">2026-07-10</span>
+      </div>
+      <h3>山东青年政治学院学校网络安全防护体系建设项目结果公告</h3>
+      <p>天融信中标山东青年政治学院学校网络安全防护体系建设项目采购包1，中标金额112.81万元，评审得分84.69。供货产品包括天融信万兆防火墙NGFW4000-UF(HG-A80)两台、态势分析与安全运营系统TopSA及终端威胁防御系统TopEDR等，用于数据中心网络安全防护。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202607/t20260710_26916809.htm" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-topsec">天融信</span>
+        <span class="card-date">2026-07-13</span>
+      </div>
+      <h3>南宁市智慧医院软硬件设备项目采购成交结果公告</h3>
+      <p>南宁市智慧医院软硬件设备项目采购成交公告公布，广西码农信息科技中标分标1，供货天融信NGFW4000-UF防火墙两台，分别用于核心业务区与边界防护，成交金额9.12万元，为智慧医院信息化建设提供网络安全边界防护保障。</p>
+      <div class="card-links"><a href="https://www.zhaotoubiaowang.com/bidding/detail_for_141301.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-qianxin">奇安信</span>
+        <span class="card-date">2026-07-06</span>
+      </div>
+      <h3>BTXC-TZ-2024-02项目-出口防火墙采购(重)结果公告</h3>
+      <p>爱企查招投标信息显示，广西北投信创科技投资集团有限公司BTXC-TZ-2024-02项目出口防火墙采购(重)中标公告于2026年7月6日公布，奇安信网神信息技术(北京)股份有限公司中标。同期奇安信还连续中标甘肃电信网络攻防演习支撑、兴业银行开源卫士技术服务、东航零信任架构建设、南昌海关网络安全服务等多个项目，体现其在政企网络安全市场的持续拓展。</p>
+      <div class="card-links"><a href="https://aiqicha.baidu.com/tenderbidding/detail?dataId=4a9b65705f9cffad9de064d481b945d23f56543c&amp;pid=99008900416111" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-qianxin">奇安信</span>
+        <span class="card-date">2026-07-09</span>
+      </div>
+      <h3>国家药品监督管理局药品审评中心网络安全设备规则特征库及软件授权续费更新服务(2026年)项目公开招标公告</h3>
+      <p>中国政府采购网发布国家药监局药品审评中心网络安全设备规则特征库及软件授权续费更新服务(2026年)项目公开招标公告。招标内容涵盖奇安信网神NSG7000-TX45P-Q互联网接入区防火墙2台的入侵防御库、病毒库、威胁情报库、应用识别库、URL库升级授权，以及奇安信网神W9000-U045M Web应用防护、S9000-W030M漏洞扫描、NDDS-NAMS-100H资产测绘等设备授权续费，反映奇安信防火墙在监管机构的存量运营服务需求。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/zygg//gkzb/202607/t20260709_26902052.htm" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-hillstone">山石网科</span>
+        <span class="card-date">2026-07-06</span>
+      </div>
+      <h3>春风化雨,遍地生花|山石网科2026春华行动正式收官</h3>
+      <p>山石网科2026春华行动收官，走访华东、华南、西北、西南四大区域30余家客户。自研ASIC防火墙成功替代国外品牌解决性能瓶颈，基于灵岩大模型的AI智能体矩阵将安全响应处置压缩至分钟级，防通报与SD-WAN方案获客户认可，沉淀数十条产品需求驱动研发迭代。</p>
+      <div class="card-links"><a href="https://security.zone.ci/secarticles/wx/555084.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-hillstone">山石网科</span>
+        <span class="card-date">2026-07-20</span>
+      </div>
+      <h3>山石网科亮相HKT科技周:以AI之力,构筑自适应安全防线</h3>
+      <p>山石网科作为银牌赞助商亮相香港电讯HKT企业解决方案科技周2026，以AI赋能网络安全为主题，展示AI驱动的超视距威胁感知、下一代防火墙NGFW、入侵防御系统等完整产品线。活动吸引逾千名金融、医疗、政府行业高管参会，深化亚太市场布局。</p>
+      <div class="card-links"><a href="https://www.163.com/dy/article/L2K01COK0538ER6X.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-hillstone">山石网科</span>
+        <span class="card-date">2026-07-22</span>
+      </div>
+      <h3>山石网科:投资者调研纪要20260722</h3>
+      <p>山石网科发布投资者调研纪要，回应人员变动影响。公司新增三名核心技术人员覆盖防火墙、WAF、ADC、芯片、操作系统等核心领域。双A战略落地成效突出，自研ASIC芯片自2026年起持续释放商业化收益，内部AI落地应用与AI安全解决方案体系同步完善。</p>
+      <div class="card-links"><a href="https://data.eastmoney.com/notices/detail/688030/AN202607231827287542.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-sangfor">深信服</span>
+        <span class="card-date">2026-07-14</span>
+      </div>
+      <h3>#信服智创#防火墙8.0.107如何配置钓鱼GPT</h3>
+      <p>深信服社区发布防火墙8.0.107版本钓鱼GPT功能配置案例。深信服防钓鱼GPT具备自然语言理解、视觉伪装识别、攻击意图推理及海量安全知识储备能力，可识别攻击者钓鱼意图与伪装行为，有效应对加密流量与免杀技术攻击。文章详述授权确认、密送邮箱配置、防火墙对接及aES联动处置等部署步骤，展示深信服AF防火墙在AI防钓鱼方向的产品更新与版本迭代。</p>
+      <div class="card-links"><a href="https://bbs.sangfor.com.cn/archiver?tid-323443.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-sangfor">深信服</span>
+        <span class="card-date">2026-07-17</span>
+      </div>
+      <h3>广东医科大学附属医院霞山院区互联网出口负载均衡、防火墙及上网行为管理的设备升级结果公告</h3>
+      <p>中国政府采购网发布广东医科大学附属医院霞山院区互联网出口负载均衡、防火墙及上网行为管理设备升级项目中标公告，中国电信股份有限公司湛江分公司中标，金额113.5万元。采购标的包括深信服AF-2000-FH3120B-H下一代防火墙一台(36.5万元)及深信服上网行为管理设备一批(77万元)，综合得分85.17分排名第一，反映深信服下一代防火墙在医疗行业中标落地。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202607/t20260717_26958509.htm" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07-07</span>
+      </div>
+      <h3>深圳大学城图书馆信息化系统基础硬件设施升级改造项目-网络安全设备采购中标结果公示</h3>
+      <p>北京神州绿盟科技中标深圳大学城图书馆信息化系统基础硬件设施升级改造项目网络安全设备采购，中标金额128.3万元。核心产品为绿盟科技WAF防火墙WAFNX5-HHA两台，单价11.5万元，用于图书馆信息化系统基础硬件设施升级改造。</p>
+      <div class="card-links"><a href="https://www.chengezhao.com/cms/post/7/c/7c564a742fb64ece29af82dc597246f9" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-nsfocus">绿盟科技</span>
+        <span class="card-date">2026-07-08</span>
+      </div>
+      <h3>绿盟科技:AI安全威胁检测龙头,减亏拐点确立估值修复上涨逻辑</h3>
+      <p>深度研报分析绿盟科技作为AI安全威胁检测龙头的投资价值。WAF防火墙连续六年国内市占率第一，DLP连续两年行业首位，抗DDoS在运营商市场具垄断优势。2025年四季度实现单季盈利，亏损大幅收窄，基本面迎来业绩拐点，AI安全与金融信创题材催化估值修复。</p>
+      <div class="card-links"><a href="https://www.toutiao.com/article/7660035616385663507/" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+      </div>
+    </section>
+
+    <section id="industry" class="section">
+      <h2 class="section-title">🏭 行业动态</h2>
+      <div class="grid">
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">None</span>
+        <span class="card-date">2026-07</span>
+      </div>
+      <h3>2026年十大NGFW解决方案评测排名</h3>
+      <p>Cryptika发布2026年十大NGFW解决方案评测，Palo Alto PA-Series评为最佳整体NGFW（App-ID应用识别领先），Fortinet FortiGate评为最佳性价比（ASIC加速+内置SD-WAN）。评测涵盖安全有效性、性能、管理、生态和TCO五维度。其他入选包括Cisco Firepower、Check Point、Sophos、SonicWall Gen7、WatchGuard、HPE Juniper SRX、Barracuda和Forcepoint。价格数据更新至2026年7月。</p>
+      <div class="card-links"><a href="https://www.cryptika.com/top-10-best-next-generation-firewall-ngfw-solutions-in-2026" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">None</span>
+        <span class="card-date">2026-07</span>
+      </div>
+      <h3>全球及中国防火墙行业投资专项报告（2026年）</h3>
+      <p>2025年全球防火墙市场达187.6亿美元（+12.4%），预计2026年突破212.3亿美元。中国2025年收入68.9亿元（+14.7%），NGFW占41.5%、云防火墙占28.3%。硬件防火墙占56.4%但云防火墙从17.1%升至25.8%。全球前5供应商占68.3%收入，三家北美企业合计45.6%。预计2026年中国市场突破79.5亿元，2030年达142.6亿元，CAGR约12.2%。IoT与ICS边界防护成为新增长点。</p>
+      <div class="card-links"><a href="https://m.inwwin.com.cn/1192/view-1180530-1.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">其他</span>
+        <span class="card-date">2026-07</span>
+      </div>
+      <h3>等保标准再扩新篇，&quot;数据安全&quot;纳入GA/T 2380-2026</h3>
+      <p>公安部发布GA/T 2380-2026等三项等保数据安全新标准，于2026年6-7月陆续实施。新标在GB/T 22239-2019基础上新增&quot;安全数据处理&quot;独立大类，首次将数据安全作为独立体系纳入等保框架，实现网络安全与数据安全协同防护。</p>
+      <div class="card-links"><a href="https://m.sohu.com/a/1052933771_121473021" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">其他</span>
+        <span class="card-date">2026-07-08</span>
+      </div>
+      <h3>等保新标准下的个人信息安全保护工作解读——云南网络安全云社区直播</h3>
+      <p>2026年7月7日云南网络安全云社区举办直播，解读三项等保配套新标准（GA/T 2380-2026等），聚焦个人信息保护与跨境数据流转，为云南城市高质量发展提供等保合规指引。</p>
+      <div class="card-links"><a href="https://www.163.com/news/article/L1B546O20001A1UG.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-default">None</span>
+        <span class="card-date">2026-07-17</span>
+      </div>
+      <h3>资安周报0713-0717：Fortinet FortiSandbox与SonicWall防火墙漏洞遭积极利用 <span class="merge-badge">(合并2源)</span></h3>
+      <p>InfraTrust报告显示14家厂商7月发布61条安全公告，含26个可远程未认证利用漏洞、6个Critical级CVSS评分。SonicWall SMA1000 CVE-2026-15409/15410已被野外利用，攻击者窃取凭证和TOTP种子；Fortinet FortiSandbox CVE-2026-39808/25089存在未认证命令注入且有PoC；F5 BIG-IP、Dell EMC、Juniper SRX均有高危漏洞。建议按暴露面和可利用性排序修补优先级。</p>
+      <div class="card-links"><a href="https://baudrate.tw/articles/0713-0717-7-cve-sharepoint-e1bd9057" target="_blank" rel="noopener">来源1</a><a href="https://cybersecuritynews.com/infratrust-flags-26-vulnerabilities/" target="_blank" rel="noopener">来源2</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-gov">政府</span>
+        <span class="card-date">2026-07-01</span>
+      </div>
+      <h3>民革福建省委员会防火墙系统采购中标候选人公示</h3>
+      <p>中国国民党革命委员会福建省委员会防火墙系统采购于2026年7月1日开标，福州宇翔电子科技有限公司以25600元成为第一中标候选人，采用经评审的最低投标价法评标，公示期为7月2日至4日。</p>
+      <div class="card-links"><a href="http://fjmg.gov.cn/gg/202607/t20260701_7170265.htm" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-gov">政府</span>
+        <span class="card-date">2026-07-06</span>
+      </div>
+      <h3>龙岩市网络应急指挥中心改造升级项目（含电科网安防火墙）中标公告</h3>
+      <p>龙岩市网络应急指挥中心改造升级项目由福建广电网络集团龙岩分公司以766100元中标，含电科网安（卫士通）VIS800E-G等防火墙设备，项目于2026年7月6日发布采购结果公告。</p>
+      <div class="card-links"><a href="https://ggzy.longyan.gov.cn/lyztb/zqcg/008001/008001003/20260706/7de07424-d1ec-4775-90d9-fe474fea29dc.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-gov">政府</span>
+        <span class="card-date">2026-07-21</span>
+      </div>
+      <h3>攀枝花市中级人民法院防火墙设备采购中标公告</h3>
+      <p>攀枝花市中级人民法院防火墙设备采购项目于2026年7月21日开标，成都奇点信安科技有限公司以25500元中标，公示期为7月21日至24日，公示期满无异议后正式成交。</p>
+      <div class="card-links"><a href="http://pzhzy.scssfw.gov.cn/article/detail/2026/07/id/9417105.shtml" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-telecom">运营商</span>
+        <span class="card-date">2026-07-01</span>
+      </div>
+      <h3>中国电信靖江分公司数字化集成项目（含工业防火墙）询比公告</h3>
+      <p>中国电信靖江分公司发布数字化集成项目公开询比公告，核心产品为工业防火墙，须具备中国国家信息安全产品认证证书，项目预估规模80500元（含税），响应文件递交截止7月9日。</p>
+      <div class="card-links"><a href="https://www.dlzb.com/d-zb-67346334.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-telecom">运营商</span>
+        <span class="card-date">2026-07-02</span>
+      </div>
+      <h3>中国电信云南公司量子城域网建设项目防火墙采购谈判公告</h3>
+      <p>中国电信云南公司发布量子城域网建设项目防火墙采购谈判公告，采购D类防火墙8台，用于天翼网络省级智算节点及量子城域网建设，最高限价144000元（不含税），响应截止7月9日。</p>
+      <div class="card-links"><a href="https://www.zbytb.com/s-zb-67547533.html" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-telecom">运营商</span>
+        <span class="card-date">2026-07-15</span>
+      </div>
+      <h3>中国移动中低端防火墙集采结果公布：迪普科技、新华三、华为中标</h3>
+      <p>中国移动2026-2028年硬件防火墙集采项目于2026年7月15日公示中标候选人，迪普科技、新华三和华为入选中低端防火墙（4026台），此前高端防火墙（1913台）同样由三家厂商中标，总采购规模5939台。</p>
+      <div class="card-links"><a href="https://gu.qq.com/resources/shy/news/detail-v2/index.html?t=1#/index?_tentrees_trans=0&amp;id=SN20260715111645a47e52f8" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-finance">金融</span>
+        <span class="card-date">2026-07-01</span>
+      </div>
+      <h3>金融业AI应用监管划红线：天融信一站式安全保障筑牢创新根基</h3>
+      <p>国家金融监督管理总局发布《关于银行业保险业人工智能安全开发应用的指导意见》，确立AI应用四大原则——谁使用谁负责、自主可控、务实高效、安全发展，从治理架构、数据治理、风险管理等维度提出32项指导意见。</p>
+      <div class="card-links"><a href="https://www.toutiao.com/article/7657437988355326474/" target="_blank" rel="noopener">来源1</a></div>
+    </article>
+    
+    <article class="card">
+      <div class="card-header">
+        <span class="tag tag-finance">金融</span>
+        <span class="card-date">2026-07-17</span>
+      </div>
+      <h3>四部门联合发布《金融业网络安全管理办法（征求意见稿）》 <span class="merge-badge">(合并2源)</span></h3>
+      <p>中国人民银行、金融监管总局、证监会、外汇管理局四部门联合发布《金融业网络安全管理办法（征求意见稿）》，覆盖银行、证券、保险全业态，细化15项刚性合规要求，包括等保、商密、关基保护和供应链安全，征求意见截止2026年8月3日。</p>
+      <div class="card-links"><a href="https://security.zone.ci/secarticles/wx/558536.html" target="_blank" rel="noopener">来源1</a><a href="https://new.qq.com/rain/a/20260709A0ATNB00" target="_blank" rel="noopener">来源2</a></div>
+    </article>
+    
+      </div>
+    </section>
+  </main>
+
+  <footer>中国防火墙厂商日报 · 每日 09:00 自动推送 · 2026-07-28</footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
