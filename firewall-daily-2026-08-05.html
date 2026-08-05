@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国防火墙厂商日报 · 2026-08-05</title>
+<style>
+  :root {
+    --bg:#0a0a0a; --card:#121214; --border:rgba(255,255,255,0.08);
+    --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+    --text:#ededed; --sub:#a1a1aa;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  a { color:var(--g2); text-decoration:none; }
+  .gradient-text {
+    background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  /* 顶栏 */
+  .navbar {
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+    background:rgba(10,10,10,0.65); backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-logo { font-weight:700; font-size:16px; letter-spacing:.3px; }
+  .nav-date { font-size:13px; color:var(--sub); }
+  /* Hero */
+  .hero { padding:130px 28px 50px; text-align:center; max-width:980px; margin:0 auto; }
+  .hero h1 { font-size:46px; font-weight:800; line-height:1.25; margin-bottom:18px; }
+  .hero .date-line { font-size:17px; color:var(--sub); margin-bottom:30px; }
+  .stat-bar {
+    display:inline-flex; gap:14px; flex-wrap:wrap; justify-content:center;
+    padding:14px 22px; border:1px solid var(--border); border-radius:14px;
+    background:var(--card);
+  }
+  .stat-bar .stat { font-size:14px; color:var(--sub); }
+  .stat-bar .stat b {
+    display:block; font-size:26px; font-weight:800;
+    background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  /* 通用容器 */
+  .wrap { max-width:1180px; margin:0 auto; padding:0 28px 60px; }
+  .section { margin-top:54px; }
+  .sec-head {
+    display:flex; align-items:center; gap:12px; margin-bottom:24px;
+    font-size:24px; font-weight:700;
+  }
+  .sec-bar {
+    width:5px; height:26px; border-radius:3px;
+    background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3));
+  }
+  /* AI 解读 */
+  .ai-box {
+    position:relative; border-radius:18px; padding:2px;
+    background:linear-gradient(120deg,var(--g1),var(--g2),var(--g3));
+  }
+  .ai-inner {
+    background:#0e0e12; border-radius:16px; padding:26px 28px;
+  }
+  .ai-label {
+    display:inline-block; font-size:12px; letter-spacing:1px; font-weight:700;
+    color:var(--g2); margin-bottom:12px; text-transform:uppercase;
+  }
+  .ai-text { font-size:16px; color:#d4d4d8; line-height:1.75; }
+  /* 网格 */
+  .grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+    gap:18px;
+  }
+  .card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:16px; padding:22px; display:flex; flex-direction:column;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    opacity:0; transform:translateY(24px);
+    transition:opacity .6s ease, transform .6s ease, border-color .25s ease, box-shadow .25s ease;
+    transition-delay:var(--delay,0ms);
+  }
+  .card.visible { opacity:1; transform:translateY(0); }
+  .card:hover {
+    transform:translateY(-4px); border-color:rgba(255,255,255,0.22);
+    box-shadow:0 12px 34px rgba(0,0,0,0.5);
+  }
+  .card-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .tag {
+    font-size:12px; font-weight:700; padding:4px 11px; border-radius:999px;
+    color:var(--tag); border:1px solid var(--tag);
+    background:color-mix(in srgb, var(--tag) 14%, transparent);
+  }
+  .card-date { font-size:12px; color:var(--sub); }
+  .card-title { font-size:17px; font-weight:700; line-height:1.5; margin-bottom:12px; }
+  .card-summary { font-size:14px; color:var(--sub); flex:1; }
+  .card-foot { margin-top:16px; }
+  .src-link { font-size:13px; color:var(--g2); }
+  .src-link:hover { color:#c4b5fd; text-decoration:underline; }
+  .empty-card { grid-column:1/-1; text-align:center; align-items:center; }
+  .empty-icon { font-size:40px; margin-bottom:10px; opacity:.7; }
+  /* 页脚 */
+  footer {
+    border-top:1px solid var(--border); margin-top:60px;
+    padding:30px 28px; text-align:center; color:var(--sub); font-size:13px;
+  }
+  footer p { margin:6px 0; }
+  @media (max-width:680px) {
+    .navbar { padding:12px 16px; }
+    .nav-logo { font-size:14px; }
+    .hero { padding:108px 16px 36px; }
+    .hero h1 { font-size:30px; }
+    .date-line { font-size:15px; }
+    .wrap { padding:0 16px 50px; }
+    .sec-head { font-size:20px; }
+    .grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <span class="nav-logo gradient-text">🛡️ 防火墙厂商日报</span>
+    <span class="nav-date">2026-08-05（周三）</span>
+  </nav>
+
+  <header class="hero">
+    <h1 class="gradient-text">🛡️ 中国防火墙厂商日报</h1>
+    <div class="date-line">2026-08-05（周三）</div>
+    <div class="stat-bar">
+      <span class="stat">共 <b>5</b> 条动态</span>
+      <span class="stat">厂商 <b>5</b></span>
+      <span class="stat">行业 <b>0</b></span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section">
+      <div class="ai-box">
+        <div class="ai-inner">
+          <span class="ai-label">AI 解读 · 自动化视角</span>
+          <p class="ai-text">今天最值得你们拉响警报的，是两条直指防火墙「管理面」的漏洞：国产 H3C SecPath F1000-C8300 的未授权 SQL 注入（CVE-2026-15907，管理接口默认免认证、公开 EXP 已经满天飞），以及 Cisco FMC 的满分漏洞 CVE-2026-20131（CVSS 10.0）——我帮你们盯出来了，Interlock 勒索组织早在 1 月底、补丁出来之前就抢跑利用了。我的判断很直接：攻击者现在认准了防火墙的「管理平面」当首选入口，它比业务面更值钱、一旦拿下就是 root。厂商侧也挺有戏，山石网科连亏 4 年后重启股权激励，算是给「ASIC 扭亏」叙事交了张验证条；天融信则把智能体安全做成了能交付的服务。行业侧今天确实空窗，因为近期的集采和金融监管新规咱们前几期都推完了，平稳一天。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head"><span class="sec-bar"></span>🏢 厂商动态</div>
+      <div class="grid">
+      <article class="card" style="--delay:0ms">
+        <div class="card-top">
+          <span class="tag" style="--tag:#3B82F6">H3C</span>
+          <span class="card-date">2026-07-16</span>
+        </div>
+        <h3 class="card-title">H3C SecPath F1000-C8300 防火墙曝未授权 SQL 注入漏洞 CVE-2026-15907，已有公开利用代码</h3>
+        <p class="card-summary">新华三 H3C SecPath F1000-C8300 防火墙 Web 管理接口 /webui/?g=log_fw_nbc_mail_jsondata 处理 subject 参数时未做参数化查询，远程未授权攻击者可注入 SQL 读取或篡改防火墙日志数据库。受影响固件为 20260522 及更早版本，该接口默认对远程管理网络开放且无需登录凭证，已存在公开利用代码。建议立即升级固件并收敛管理口暴露面。</p>
+        <div class="card-foot"><a class="src-link" href="https://avd.aliyun.com/detail?id=AVD-2026-15907" target="_blank" rel="noopener">avd.aliyun.com →</a></div>
+      </article>
+
+      <article class="card" style="--delay:70ms">
+        <div class="card-top">
+          <span class="tag" style="--tag:#A855F7">其他</span>
+          <span class="card-date">2026-08-02</span>
+        </div>
+        <h3 class="card-title">Cisco FMC 满分漏洞 CVE-2026-20131 确认在野利用：Interlock 勒索组织早在 1 月底已抢跑攻击</h3>
+        <p class="card-summary">此前披露的 Cisco Secure Firewall Management Center (FMC) 反序列化漏洞 CVE-2026-20131（CVSS 10.0）出现关键进展：调查确认勒索软件组织 Interlock 早在今年 1 月底、即补丁发布之前就已持续利用该漏洞攻击企业防火墙管理平台，未认证攻击者可远程以 root 权限完全控制设备。从「已知有洞」升级为「已确认在野 + 攻击者归因」，凡使用 FMC 的单位需立即排查入侵痕迹、收敛管理接口暴露面。</p>
+        <div class="card-foot"><a class="src-link" href="https://bbs.antiy.cn/thread-210987-1-1.html" target="_blank" rel="noopener">bbs.antiy.cn →</a></div>
+      </article>
+
+      <article class="card" style="--delay:140ms">
+        <div class="card-top">
+          <span class="tag" style="--tag:#06B6D4">山石网科</span>
+          <span class="card-date">2026-08-04</span>
+        </div>
+        <h3 class="card-title">山石网科拟同步实施限制性股票激励与员工持股计划，考核剔除股份支付费用影响</h3>
+        <p class="card-summary">山石网科（688030）推出 2026 年限制性股票激励计划并同步实施员工持股计划，业绩考核指标剔除股份支付费用影响。公司回应称 ASIC 安全产品已成为经营改善核心驱动力，将把握国产替代窗口期。此前 2024 年激励计划曾向 159 名对象授予 992 万股，因业绩考核未达标已作废失效，本次为连亏后重启长期激励的关键动作。</p>
+        <div class="card-foot"><a class="src-link" href="http://www.zqrb.cn/gscy/gongsi/2026-08-04/A1785831135431.html" target="_blank" rel="noopener">www.zqrb.cn →</a></div>
+      </article>
+
+      <article class="card" style="--delay:210ms">
+        <div class="card-top">
+          <span class="tag" style="--tag:#F97316">天融信</span>
+          <span class="card-date">2026-08-04</span>
+        </div>
+        <h3 class="card-title">天融信正式发布 AI 智能体安全评估服务：九维框架 39 项检查项，覆盖 OpenClaw/Hermes/WorkBuddy</h3>
+        <p class="card-summary">天融信（002212）正式发布 AI 智能体安全评估服务，以国家法规标准、OWASP LLM Top 10 为依据构建九维标准化评估框架、39 项通用检查项，并针对 OpenClaw、Hermes Agent、WorkBuddy 三大主流智能体制定专项检测清单。公司称目前在全国有 90 余个分支机构、1000 余名专项安全服务人员支撑交付。</p>
+        <div class="card-foot"><a class="src-link" href="https://www.163.com/dy/article/L3GSFBOT0519QIKK.html" target="_blank" rel="noopener">www.163.com →</a></div>
+      </article>
+
+      <article class="card" style="--delay:280ms">
+        <div class="card-top">
+          <span class="tag" style="--tag:#EF4444">奇安信</span>
+          <span class="card-date">2026-07-28</span>
+        </div>
+        <h3 class="card-title">奇安信天擎 EDR 中标某能源央企终端安全检测与防护系统项目</h3>
+        <p class="card-summary">奇安信天擎终端安全响应系统（EDR）中标某能源央企巨头终端安全检测与防护系统项目。项目覆盖全集团办公终端，兼容信创与非信创环境，构建统一杀毒与 EDR 防护体系，实现全网终端集中管控与威胁快速响应。</p>
+        <div class="card-foot"><a class="src-link" href="https://www.163.com/dy/article/L2UOHLFL053469RG.html" target="_blank" rel="noopener">www.163.com →</a></div>
+      </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head"><span class="sec-bar"></span>🏭 行业动态</div>
+      <div class="grid">
+      <article class="card empty-card">
+        <div class="empty-icon">🏭</div>
+        <h3 class="card-title">今日无新增动态，行业持续平稳</h3>
+        <p class="card-summary">本期行业动态为空。近期集采结果与金融监管新规均已在前几期推送完毕，暂无新的行业级事件入库。</p>
+      </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>生成时间：2026-08-05 09:05</p>
+      <p>数据来源：每日厂商/行业公开新闻聚合与去重筛选</p>
+      <p>本期从 35 条候选中去重筛选出 5 条（已剔除 30 条）</p>
+    </footer>
+  </main>
+
+<script>
+  (function() {
+    var cards = document.querySelectorAll('.card');
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function(c){ c.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:0.12 });
+    cards.forEach(function(c){ io.observe(c); });
+  })();
+</script>
+</body>
+</html>
