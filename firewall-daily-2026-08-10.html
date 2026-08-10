@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-10</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#141416;--bd:#26262b;--tx:#ededf0;--mu:#8b8b96;--ac:#8B5CF6}
+body{background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased}
+.prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:100;
+  background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899)}
+nav{position:fixed;top:0;left:0;right:0;z-index:90;padding:14px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,10,10,.72);backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--bd)}
+nav .b{font-weight:700;font-size:15px;
+  background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+nav .d{font-size:13px;color:var(--mu);font-variant-numeric:tabular-nums}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px 80px}
+header{padding:130px 0 56px;text-align:center;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);
+  width:900px;height:520px;pointer-events:none;
+  background:radial-gradient(circle at 30% 40%,rgba(91,108,247,.18),transparent 62%),
+             radial-gradient(circle at 72% 55%,rgba(236,72,153,.14),transparent 62%)}
+h1{font-size:clamp(30px,5.4vw,50px);font-weight:800;letter-spacing:-.02em;position:relative;
+  background:linear-gradient(100deg,#5B6CF7,#8B5CF6,#EC4899);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--mu);margin-top:14px;font-size:15px;position:relative}
+.stats{display:flex;justify-content:center;gap:0;margin-top:30px;flex-wrap:wrap;position:relative}
+.st{padding:0 30px;position:relative}
+.st+.st::before{content:"";position:absolute;left:0;top:14%;height:72%;width:1px;background:var(--bd)}
+.st b{display:block;font-size:34px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(90deg,#5B6CF7,#EC4899);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.st span{font-size:12.5px;color:var(--mu);letter-spacing:.06em}
+.ai{position:relative;border-radius:16px;padding:2px;margin:8px 0 60px;
+  background:linear-gradient(120deg,#5B6CF7,#8B5CF6,#EC4899)}
+.ai-in{background:#111113;border-radius:14px;padding:26px 30px}
+.ai-h{font-size:14px;font-weight:700;letter-spacing:.08em;color:#b9a8ff;margin-bottom:14px}
+.ai-text{font-size:15.2px;color:#d5d5dc;margin-bottom:12px}
+.ai-text:last-child{margin-bottom:0}
+.ai-text strong{color:#fff;font-weight:700}
+.sec{margin-bottom:56px}
+.sec-t{font-size:21px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:11px}
+.badge{font-size:12px;font-weight:600;color:var(--mu);border:1px solid var(--bd);
+  border-radius:20px;padding:2px 11px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:21px 22px;
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),
+             border-color .25s,background .25s}
+.card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;opacity:0;
+  background:linear-gradient(90deg,var(--tc),transparent);transition:opacity .25s}
+.card.in{opacity:1;transform:none}
+.card:hover{border-color:rgba(var(--tr),var(--tg),var(--tb),.5);background:#17171a;transition-delay:0s!important}
+.card:hover::after{opacity:1}
+.meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.tag{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;color:var(--tc);
+  background:rgba(var(--tr),var(--tg),var(--tb),.13);
+  border:1px solid rgba(var(--tr),var(--tg),var(--tb),.32)}
+.date{font-size:11.5px;color:var(--mu);font-variant-numeric:tabular-nums}
+.dots{margin-left:auto;display:flex;gap:3px}
+.dot{width:5px;height:5px;border-radius:50%;background:#2e2e35}
+.dot.on{background:var(--tc)}
+.title{font-size:15.6px;font-weight:660;line-height:1.5;margin-bottom:11px;letter-spacing:-.005em}
+.sum{font-size:13.4px;color:#a9a9b4;line-height:1.72;margin-bottom:18px}
+.srcs{margin-top:auto;padding-top:13px;border-top:1px solid var(--bd);
+  display:flex;gap:16px;flex-wrap:wrap}
+.src{font-size:12.6px;color:#8B5CF6;text-decoration:none;transition:color .18s}
+.src:hover{color:#c4b5fd;text-decoration:underline}
+.card.empty{grid-column:1/-1;text-align:center;padding:40px 22px;--tc:#6B7280;--tr:107;--tg:114;--tb:128}
+footer{text-align:center;padding-top:34px;border-top:1px solid var(--bd);
+  color:var(--mu);font-size:12.5px;line-height:2}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.wrap{padding:0 16px 60px}
+  header{padding:110px 0 40px}.st{padding:0 18px}.ai-in{padding:20px}}
+@media(prefers-reduced-motion:reduce){.card{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<nav><span class="b">🛡️ 中国防火墙厂商日报</span><span class="d">2026-08-10</span></nav>
+<div class="wrap">
+  <header>
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <p class="sub">2026-08-10 · 星期一 · 每日 09:00 自动生成</p>
+    <div class="stats">
+      <div class="st"><b>13</b><span>总动态</span></div>
+      <div class="st"><b>9</b><span>厂商动态</span></div>
+      <div class="st"><b>4</b><span>行业动态</span></div>
+    </div>
+  </header>
+  <div class="ai"><div class="ai-in">
+    <div class="ai-h">🤖 AI 解读</div>
+    <p class='ai-text'>今天最该放下手头事去处理的只有一件：FortiOS 补丁绕过漏洞 CVE-2025-68686 的 CISA 强制修复窗口<strong>今天到期</strong>，而且它专治"我上个月已经打过补丁"的侥幸心理——上一轮符号链接持久化补丁能被直接绕过，FG-IR-25-934 现在就得核。再加上 Arista VeloCloud Orchestrator 那个 CVSS 满分的未认证命令注入已经在野利用，这已经是近一个月里第三起安全设备<strong>管理平面</strong>被打穿：攻下一台管控台，等于把它纳管的所有边缘设备连配置带凭据一起交出去。防火墙保护别人，现在自己成了最短板。</p><p class='ai-text'>国产阵营今天的信号反倒比新品发布更实在——不是发 PPT，是拿外部背书和真金白银说话：深信服 NGES 挤进 AV-Comparatives 全球仅 9 家的通过名单、还是唯一的中国厂商（14 项攻击检出 13 项、0 误报）；天融信把国产化大模型安全网关真卖进了某省财政的政务外网 IPv6 环境；绿盟 AI 模块商业化收入同比涨了 5 倍多。"AI 安全"这条线，今年上半年终于从概念页跑到了营收表上。</p><p class='ai-text'>行业侧值得盯一眼南方电网那 9 个标包的防火墙框架采购，8 月 31 日开标——这种一次性铺开一档二档全系的框架招标，基本能定下未来两年电网侧的厂商座次。</p>
+  </div></div>
+  <section class="sec">
+    <h2 class="sec-t">🏢 厂商动态<span class="badge">9</span></h2>
+    <div class="grid">
+      <article class="card" style="--tc:#6B7280;--tr:107;--tg:114;--tb:128" data-i="0">
+        <div class="meta">
+          <span class="tag">其他</span>
+          <span class="date">2026-08-07</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span></span>
+        </div>
+        <h3 class="title">CISA KEV 新增 FortiOS 补丁绕过漏洞 CVE-2025-68686：可绕过符号链接持久化补丁，强制修复截止今日 2026-08-10 🔥</h3>
+        <p class="sum">CERT 通报 CISA 在 2026-07-27 至 08-02 期间新增 3 个已知遭利用漏洞：Fortinet FortiOS 敏感信息泄露 CVE-2025-68686（CVSS 5.9）、Arista VeloCloud CVE-2026-16812（CVSS 10.0）、Cisco FMC CVE-2026-20316（CVSS 5.3）。其中 FortiOS 漏洞可让攻击者构造特制 HTTP 请求，绕过此前针对符号链接持久化机制的补丁，属于“补丁绕过”类后利用手段，KEV 强制修复期限正是今天 2026-08-10。使用 FortiGate/FortiOS 的单位应按 FG-IR-25-934 立即升级并核查是否已被植入持久化后门。</p>
+        <div class="srcs"><a class="src" href="https://net.nthu.edu.tw/netsys/mailing:announcement:20260807_21" target="_blank" rel="noopener" title="https://net.nthu.edu.tw/netsys/mailing:announcement:20260807_21">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#6B7280;--tr:107;--tg:114;--tb:128" data-i="1">
+        <div class="meta">
+          <span class="tag">其他</span>
+          <span class="date">2026-08-01</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span></span>
+        </div>
+        <h3 class="title">Arista VeloCloud Orchestrator 命令注入 CVE-2026-16812（CVSS 10.0）在野利用，CISA KEV 3 天强制修复 🔥</h3>
+        <p class="sum">Arista 披露 VeloCloud Orchestrator 本地部署版存在满分 OS 命令注入漏洞 CVE-2026-16812（CVSS 10.0），未认证远程攻击者可访问内部特权功能并在 VCO 主机执行任意系统命令，进而控制其管理的全部 SD-WAN 边缘设备配置、凭据与流量。CISA 于 7 月 27 日加入 KEV，BOD 26-04 修复截止 7 月 30 日，官方安全公告 0144 确认在野利用。这是近期第三起安全/网络设备管理平面被在野打穿的案例，运行本地 VCO 的组织应立即核对版本并排查入侵痕迹。</p>
+        <div class="srcs"><a class="src" href="https://blog.csdn.net/weixin_45635831/article/details/163389026" target="_blank" rel="noopener" title="https://blog.csdn.net/weixin_45635831/article/details/163389026">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#5B6CF7;--tr:91;--tg:108;--tb:247" data-i="2">
+        <div class="meta">
+          <span class="tag">深信服</span>
+          <span class="date">2026-07-29</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">深信服NGES通过AV-Comparatives 2026年度EDR测评：14项攻击检出13项、0误报，全球9家中唯一中国厂商</h3>
+        <p class="sum">国际权威机构AV-Comparatives公布2026年度EDR检测能力验证结果，全球仅9家厂商通过，深信服是唯一入选的中国厂商（其余为Kaspersky、Palo Alto、Bitdefender等）。深信服NGES在14项ATT&amp;CK全链路攻击步骤中检出13项，五大类上百种易误报场景实现0误报，是国产端点安全首次进入全球第一梯队的量化证据。</p>
+        <div class="srcs"><a class="src" href="https://www.sangfor.com.cn/news/669e29f5e835406e82f13598ec40c5c3" target="_blank" rel="noopener" title="https://www.sangfor.com.cn/news/669e29f5e835406e82f13598ec40c5c3">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#06B6D4;--tr:6;--tg:182;--tb:212" data-i="3">
+        <div class="meta">
+          <span class="tag">天融信</span>
+          <span class="date">2026-08-07</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">天融信中标某省财政信息中心数据安全项目，在政务外网IPv6环境落地国产化大模型安全网关，AI安全形成实质性营收</h3>
+        <p class="sum">在网信办对派拓（Palo Alto）在华销售产品实施网络安全审查、海外主流大模型接连发生&quot;越狱&quot;事件的背景下，天融信（002212）近日中标某省财政信息中心数据安全防护设备购置项目，在政务外网IPv6环境部署国产化大模型安全网关，防御提示词注入、敏感数据外泄、API滥用等生成式AI风险；此前已中标中原环保大模型安全建设项目。公司同时发布AI智能体安全评估服务，含九维评估框架与39项通用检查项。这是国产替代+AI安全双主线下网安厂商收入兑现的实证案例。</p>
+        <div class="srcs"><a class="src" href="https://www.163.com/dy/article/L3NK5S770519QIKK.html" target="_blank" rel="noopener" title="https://www.163.com/dy/article/L3NK5S770519QIKK.html">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#22C55E;--tr:34;--tg:197;--tb:94" data-i="4">
+        <div class="meta">
+          <span class="tag">绿盟科技</span>
+          <span class="date">2026-07-23</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">绿盟科技公布2026年中AI安全成果：AI模块商业化收入同比增长超5倍，六大解决方案落地行业头部客户</h3>
+        <p class="sum">绿盟科技官方账号发布2026年中AI安全成果实录：上半年密集发布绿盟安全数字人平台、智能渗透测试系统2.0（融合智谱GLM-5.2）及安全智算一体机，并升级&quot;清风卫&quot;系列，将防护重心从内容安全延伸至智能体意图与行为安全。商业化方面AI模块收入增长超5倍，六大解决方案已在多个行业头部客户完成验证。该数据是判断绿盟AI安全业务从投入期转向兑现期的重要参考。</p>
+        <div class="srcs"><a class="src" href="https://weibo.com/1686253095/5323896368926022" target="_blank" rel="noopener" title="https://weibo.com/1686253095/5323896368926022">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#EF4444;--tr:239;--tg:68;--tb:68" data-i="5">
+        <div class="meta">
+          <span class="tag">华为</span>
+          <span class="date">2026-08-05</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">华为发布《星河AI园区全域安全技术白皮书》：哑终端自动识别率95%，MACsec叠加PQC抗量子算法，推出业界首款防偷拍灵眸AP</h3>
+        <p class="sum">8月5日 HNS 2026 拉美站，华为发布《星河AI园区全域安全技术白皮书》，从资产、连接、空间、隐私四维构建园区安全体系：聚类识别使哑终端自动识别率达95%，有线侧 MACsec 叠加 PQC 抗量子算法，并推出业界首款防偷拍灵眸AP。标志华为把安全能力从网络边界向园区物理空间延伸。</p>
+        <div class="srcs"><a class="src" href="https://e.huawei.com/cn/news/2026/solutions/enterprise-network/security-campus-technical-white-paper-latin-american" target="_blank" rel="noopener" title="https://e.huawei.com/cn/news/2026/solutions/enterprise-network/security-campus-technical-white-paper-latin-american">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#6B7280;--tr:107;--tg:114;--tb:128" data-i="6">
+        <div class="meta">
+          <span class="tag">其他</span>
+          <span class="date">2026-08-04</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">Zyxel ZLD 防火墙固件配置加载 CLI 路径遍历漏洞 CVE-2026-14818（CVSS 7.2）披露</h3>
+        <p class="sum">阿里云漏洞库 2026-08-04 收录 Zyxel ZLD 防火墙固件路径遍历漏洞 CVE-2026-14818（CVSS 7.2，CWE-22）：配置加载 CLI 命令未做目录边界校验，已认证管理员可通过 ../ 序列加载并执行设备任意位置的恶意配置文件。影响 ATP 系列 V4.32–V5.42 Patch 1、USG FLEX 系列 V4.50–V5.42 Patch 1、USG FLEX 50(W) 与 USG20(W)-VPN 系列 V4.16–V5.42 Patch 1。目前暂无在野利用，建议升级至 ZLD V5.43 及以上，并收敛防火墙管理接口的可访问范围。</p>
+        <div class="srcs"><a class="src" href="https://avd.aliyun.com/detail?id=AVD-2026-14818" target="_blank" rel="noopener" title="https://avd.aliyun.com/detail?id=AVD-2026-14818">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#F59E0B;--tr:245;--tg:158;--tb:11" data-i="7">
+        <div class="meta">
+          <span class="tag">H3C</span>
+          <span class="date">2026-08-04</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">烟台银行采用新华三信创网络与安全产品完成数据中心SDN重构，获2026金融数智化转型基础设施创新案例奖</h3>
+        <p class="sum">烟台银行基于新华三信创网络设备与安全产品，以SDN技术将传统数据中心升级为具备“双活架构、SDN自动化配置、AI智能运维”能力的数字基座，业务上线周期从天级缩短至分钟级，该项目获“鑫智奖·2026第七届金融机构数智化转型优秀案例”基础设施创新奖。体现新华三在银行业信创安全替代中的落地能力。</p>
+        <div class="srcs"><a class="src" href="https://www.163.com/dy/article/L3G1FA0F0552P1Q4.html" target="_blank" rel="noopener" title="https://www.163.com/dy/article/L3G1FA0F0552P1Q4.html">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#5B6CF7;--tr:91;--tg:108;--tb:247" data-i="8">
+        <div class="meta">
+          <span class="tag">深信服</span>
+          <span class="date">2026-08-04</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">深信服中标贵州省体育彩票管理中心网络安全运维服务项目，金额129.85万元</h3>
+        <p class="sum">根据《体育彩票系统网络安全运维服务（二次）结果公告》，深信服科技于2026年8月4日公告中标贵州省体育彩票管理中心采购项目，中标金额129.85万元，定标日期为8月3日。该单虽金额不大，但延续了深信服在省级行政事业单位安全运维服务市场的持续拿单节奏。</p>
+        <div class="srcs"><a class="src" href="https://guba.eastmoney.com/news,cfhpl,1754153862,1633085009864904,d.html" target="_blank" rel="noopener" title="https://guba.eastmoney.com/news,cfhpl,1754153862,1633085009864904,d.html">🔗 查看原文</a></div>
+      </article>
+    </div>
+  </section>
+  <section class="sec">
+    <h2 class="sec-t">🏭 行业动态<span class="badge">4</span></h2>
+    <div class="grid">
+      <article class="card" style="--tc:#8B5CF6;--tr:139;--tg:92;--tb:246" data-i="9">
+        <div class="meta">
+          <span class="tag">其他</span>
+          <span class="date">2026-08-05</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">南方电网数字电网集团（广东）启动网络链路安全防护设备框架采购：涵盖一档/二档应用防火墙及IPS、IDS共9个标包，8月31日开标</h3>
+        <p class="sum">南方电网数字电网集团（广东）有限公司于2026年8月5日发布网络链路安全防护设备框架采购招标公告（项目编号CG2100022002340369），采购范围包括一档应用防火墙（三个子项）、二档应用防火墙（三个子项）、入侵防御系统（一档、二档）及入侵检测系统，9个标包合计预估金额约661.6万元，框架有效期12个月，覆盖南网数字电网集团（广东）所有同类项目。投标截止及开标时间为2026年8月31日。</p>
+        <div class="srcs"><a class="src" href="https://www.bidding.csg.cn/zbgg/1200438375.jhtml" target="_blank" rel="noopener" title="https://www.bidding.csg.cn/zbgg/1200438375.jhtml">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#8B5CF6;--tr:139;--tg:92;--tb:246" data-i="10">
+        <div class="meta">
+          <span class="tag">其他</span>
+          <span class="date">2026-08-03</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">国家网信办、工信部、公安部联合公布《网络数据安全风险评估办法》，自2026年8月20日起施行</h3>
+        <p class="sum">国家互联网信息办公室、工业和信息化部、公安部近日联合公布《网络数据安全风险评估办法》，自2026年8月20日起正式施行。《办法》旨在规范网络数据安全风险评估活动、完善数据安全管理体制机制，以数据安全保障数据开发利用和产业发展。该办法落地后将带动各行业数据安全风险评估服务与合规产品的常态化需求。</p>
+        <div class="srcs"><a class="src" href="https://www.bjnews.com.cn/detail/1786010589019294.html" target="_blank" rel="noopener" title="https://www.bjnews.com.cn/detail/1786010589019294.html">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#5B6CF7;--tr:91;--tg:108;--tb:247" data-i="11">
+        <div class="meta">
+          <span class="tag">政府</span>
+          <span class="date">2026-08-03</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">国家信息中心国家电子政务外网及三大平台软硬件维保项目中标：北京国信新网通讯以1213.60万元中标</h3>
+        <p class="sum">国家信息中心《国家电子政务外网和三大平台软硬件维保及现场支撑服务项目》于2026年8月3日公告中标结果，北京国信新网通讯技术有限公司以1213.5989万元中标，代理机构为中电商务（北京）有限公司，代理费10.97万元。项目为国家级政务外网基础设施的软硬件运维与现场支撑，属政务网络安全运维领域千万级订单。</p>
+        <div class="srcs"><a class="src" href="https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260803_27060926.htm" target="_blank" rel="noopener" title="https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260803_27060926.htm">🔗 查看原文</a></div>
+      </article>
+      <article class="card" style="--tc:#22C55E;--tr:34;--tg:197;--tb:94" data-i="12">
+        <div class="meta">
+          <span class="tag">军队</span>
+          <span class="date">2026-08-05</span>
+          <span class="dots"><span class='dot on'></span><span class='dot on'></span><span class='dot'></span><span class='dot'></span><span class='dot'></span></span>
+        </div>
+        <h3 class="title">军队采购网公示《防火墙、入侵防御设备、网闸等信息安全设备采购项目》需求参数，预算180万元（项目编号2026-JQ01-W1243）</h3>
+        <p class="sum">军队采购网发布《防火墙、入侵防御设备、网闸等信息安全设备采购项目》第一次征求意见公告，项目预算/最高限价180万元，公示时间为2026年8月5日至8月11日。供应商资格要求为国有企业、事业单位、军队单位或成立三年以上的非外资（含港澳台）独资/控股企业，是国内安全厂商军队市场的常规准入门槛。该项目尚处需求参数公示阶段，未进入招标与定标。</p>
+        <div class="srcs"><a class="src" href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d00c59fc66603019fc68cb6c8392d.html" target="_blank" rel="noopener" title="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d00c59fc66603019fc68cb6c8392d.html">🔗 查看原文</a></div>
+      </article>
+    </div>
+  </section>
+  <footer>
+    生成时间：2026-08-10 09:08:19 · 数据经 5 层去重过滤 + 人工语义复扫<br>
+    由 WorkBuddy 自动生成 · 每日 09:00 推送
+  </footer>
+</div>
+<script>
+var p=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,m=h.scrollHeight-h.clientHeight;
+  p.style.width=(m>0?(h.scrollTop||document.body.scrollTop)/m*100:0)+'%';
+},{passive:true});
+var cs=document.querySelectorAll('.card');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var i=+e.target.dataset.i||0;
+        e.target.style.transitionDelay=(Math.min(i,7)*60)+'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+  cs.forEach(function(c){io.observe(c)});
+}else{cs.forEach(function(c){c.classList.add('in')});}
+</script>
+</body>
+</html>
