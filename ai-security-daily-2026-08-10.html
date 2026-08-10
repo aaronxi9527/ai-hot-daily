@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>🤖 AI 安全日报 · 2026-08-10</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --card2:#0f1523; --border:#1f2937;
+  --tx:#e5e7eb; --tx2:#9ca3af; --tx3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+  --grad:linear-gradient(135deg,#5B6CF7 0%,#8B5CF6 50%,#EC4899 100%);
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  line-height:1.65; letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 80px;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(760px 420px at 12% -8%, rgba(91,108,247,.16), transparent 62%),
+    radial-gradient(680px 400px at 88% 2%, rgba(236,72,153,.11), transparent 60%);
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+
+/* Hero */
+.hero{padding:64px 0 30px;border-bottom:1px solid var(--border);margin-bottom:34px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--tx2);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:rgba(17,24,39,.6);
+}
+.dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.16)}
+h1{
+  font-size:clamp(32px,6vw,52px);line-height:1.14;font-weight:800;margin:18px 0 12px;
+  letter-spacing:-.02em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sub{color:var(--tx2);font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.stat{
+  background:linear-gradient(180deg,rgba(17,24,39,.9),rgba(15,21,35,.9));
+  border:1px solid var(--border);border-radius:14px;padding:16px 14px;text-align:center;
+  transition:transform .25s ease,border-color .25s ease;
+}
+.stat:hover{transform:translateY(-3px);border-color:#374151}
+.stat b{display:block;font-size:28px;font-weight:800;letter-spacing:-.02em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.03em}
+
+/* Overview */
+.overview{
+  border:1px solid var(--border);border-radius:16px;padding:22px 24px;margin-bottom:40px;
+  background:linear-gradient(180deg,rgba(91,108,247,.09),rgba(17,24,39,.55));
+  position:relative;overflow:hidden;
+}
+.overview::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+.ov-head{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;margin-bottom:10px}
+.ov-head .pill{font-size:11px;font-weight:600;color:#c7d2fe;background:rgba(91,108,247,.18);
+  border:1px solid rgba(91,108,247,.32);border-radius:999px;padding:2px 9px;letter-spacing:.04em}
+.overview p{color:#cbd5e1;font-size:14.5px;margin-bottom:9px}
+.overview p:last-child{margin-bottom:0}
+
+/* Section */
+.section{margin-bottom:46px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  margin-bottom:18px;padding-bottom:11px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.sec-title{font-size:20px;font-weight:750;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+.sec-icon{font-size:21px}
+.sec-sub{font-size:12.5px;color:var(--tx3)}
+.sec-sub b{color:var(--g2)}
+.cards{display:flex;flex-direction:column;gap:13px}
+
+/* Card */
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 19px;
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(16px);
+  transition:border-color .25s ease,transform .25s ease,background .25s ease;
+}
+.section.on .card{animation:fadeUp .6s cubic-bezier(.22,.8,.3,1) forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.card:hover{border-color:#374151;transform:translateY(-2px);background:#131c2e}
+.card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;opacity:.85}
+.card.lvl3::after{background:linear-gradient(180deg,#EC4899,#f43f5e)}
+.card.lvl2::after{background:linear-gradient(180deg,#8B5CF6,#6366f1)}
+.card.lvl1::after{background:linear-gradient(180deg,#334155,#1f2937)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;border-radius:6px;padding:3px 8px;letter-spacing:.02em;white-space:nowrap}
+.tag-vendor{color:#a5b4fc;background:rgba(91,108,247,.14);border:1px solid rgba(91,108,247,.3)}
+.tag-cat{color:#f0abfc;background:rgba(236,72,153,.11);border:1px solid rgba(236,72,153,.26)}
+.tag-merge{color:#86efac;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.26)}
+.meta{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.date-chip{font-size:11px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.fire{font-size:12px;letter-spacing:-1px}
+.card-title{font-size:16.5px;font-weight:700;line-height:1.45;margin-bottom:8px;letter-spacing:-.01em;color:#f3f4f6}
+.card-sum{font-size:14px;color:#9aa5b6;line-height:1.72}
+.sources{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px dashed #1f2937}
+.src{
+  font-size:12px;color:#93c5fd;text-decoration:none;
+  border:1px solid rgba(147,197,253,.22);background:rgba(147,197,253,.06);
+  border-radius:6px;padding:3px 9px;transition:all .2s ease;
+}
+.src:hover{color:#dbeafe;border-color:rgba(147,197,253,.55);background:rgba(147,197,253,.14)}
+.empty{
+  border:1px dashed var(--border);border-radius:14px;padding:30px;text-align:center;
+  color:var(--tx3);font-size:14px;background:rgba(17,24,39,.4);
+}
+
+/* Trend */
+.trend{list-style:none;display:flex;flex-direction:column;gap:10px}
+.trend li{
+  display:flex;gap:13px;align-items:flex-start;
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;
+  font-size:14.5px;color:#cbd5e1;
+}
+.tnum{
+  font-size:12px;font-weight:800;color:#0a0a0a;background:var(--grad);
+  border-radius:6px;padding:2px 7px;flex-shrink:0;margin-top:2px;font-variant-numeric:tabular-nums;
+}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,.8,.3,1)}
+.reveal.on{opacity:1;transform:none}
+
+footer{
+  margin-top:56px;padding-top:22px;border-top:1px solid var(--border);
+  text-align:center;color:var(--tx3);font-size:12.5px;line-height:1.9;
+}
+footer .brand{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+
+@media(max-width:640px){
+  .hero{padding:44px 0 24px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .card{padding:16px}
+  .overview{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.card{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span>DAILY INTELLIGENCE · AI SECURITY</div>
+    <h1>🤖 AI 安全日报</h1>
+    <div class="sub">2026-08-10 周一 · 全球与中国 AI 安全友商产品动态 / 行业趋势</div>
+    <div class="stats">
+      <div class="stat"><b>10</b><span>🏢 国际产品</span></div>
+      <div class="stat"><b>5</b><span>🇨🇳 国内产品</span></div>
+      <div class="stat"><b>10</b><span>📊 行业动态</span></div>
+      <div class="stat"><b>25</b><span>📌 今日总计</span></div>
+    </div>
+  </header>
+
+  <div class="overview reveal">
+    <div class="ov-head">🧠 AI 总览 <span class="pill">今日看点</span></div>
+    <p>Black Hat USA 2026 和 DEF CON 34 上周刚落幕，这个周一的日报基本就是一份「会后清单」——25 条动态里有大半直接来自会场发布。最值得注意的不是数量，而是所有人都挤到了同一个战场：怎么给 AI 智能体上锁。</p><p>今天真正的分水岭信号是「防护点前移」。Anthropic 给 Claude Enterprise 上了 Inference Hooks，每条提示在进模型之前先送到企业自己的安全服务器裁决 allow/deny，拒了就根本不会到达模型；Cloudflare 的身份感知 AI Gateway 则把每一次 AI 请求都绑到一个已验证身份上，还能按人按团队设支出上限。这两家一个管「内容准不准进」，一个管「谁在调」，合起来意味着 AI 安全终于开始长出自己的「身份 + 准入」层，而不再只是在输出端做内容过滤。</p><p>攻防在 AI 编码智能体这个点上撞了个正着。ChainDrop 蠕虫 8 月 4 日污染了 400 多个 npm 包，最狠的一手是往 .claude/settings.json 和 .vscode/tasks.json 里塞自启动钩子——AI 编码代理的配置文件第一次被当成持久化后门用。防守侧几乎同步给出答案：Legit Security 的 VibeGuard 2.0 干脆从 IDE 插件改成跑在开发者端点上、卸都卸不掉，Snyk 把 Evo 持续攻击性安全 GA，Zenity 拿沙箱「引爆」可疑智能体技能。CrowdStrike、Sysdig、Netskope、NeuralTrust 则各自补上 SOC 自治响应、CNAPP 智能体、数据安全控制面和 Agent 运行时网格。</p><p>国内这周终于有了像样的产品密度，而且路子跟国际明显不同——国际做网关和运行时，国内更偏评估、运营和沙箱：天融信推出九维框架的智能体安全评估服务，长亭发布 AI 原生的 AIMDR 做分钟级攻击溯源，安恒预告「零日雷达」要做漏洞的前置免疫，腾讯则同时从 WorkBuddy 5.0 安全中心和 OpenClaw 安全工具箱两条线兜住个人端与办公网的智能体沙箱。</p><p>规则层面也在同一周收紧：全球首部智能体安全强制性国标《智能体应用安全基本要求》正式立项，18 个月周期；OWASP 2026 版 LLM Top 10 首次把 6,639 起真实事件按 25% 权重塞进排名，过度代理直接升到第三；欧盟 AI 法案 GPAI 执法权 8 月 2 日生效，最高能罚全球营收 3%。而另一头，Black Hat 上自主 AI 已经能自己发明全新的 HTTP 解同步攻击并在生产系统拿赏金，学术侧越狱成功率摸到 95%——攻的一侧跑得比防的快，这个差距今天看得格外清楚。</p>
+  </div>
+
+
+    <section class="section reveal" id="intl">
+      <div class="sec-head">
+        <div class="sec-title"><span class="sec-icon">🏢</span>国际友商产品动态</div>
+        <div class="sec-sub">全球主流安全厂商产品层面突破 · <b>10</b> 条</div>
+      </div>
+      <div class="cards">
+      <article class="card lvl3" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Sysdig</span>
+            <span class="tag tag-cat">云安全/AI-SPM</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-04</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Sysdig 发布 Secure AI，将自治安全智能体引入 CNAPP</h3>
+        <p class="card-sum">Sysdig 于 8 月 4 日在 Black Hat USA 发布 Secure AI，基于其 CNAPP 构建，提供三种用 AI 做云防御的方式：自治安全智能体（Agentic AI）、无头云安全（Headless，通过 API/MCP 接入 Claude、Cursor、Codex 等编码智能体）、以及升级后的 GenAI 助手。产品以运行时遥测为核心，声称可在成本降低 88% 的同时将调查量提升至 10 倍以上，关键决策保留人工在环且每次动作可审计。</p>
+        <div class="sources"><a class="src" href="https://www.sysdig.com/press-releases/sysdig-launches-secure-ai-to-democratize-machine-speed-cloud-defense" target="_blank" rel="noopener">Sysdig 官方新闻稿 ↗</a><a class="src" href="https://www.remio.ai/post/sysdig-secure-ai-promises-faster-cloud-defense-but-human-control-remains-essenti" target="_blank" rel="noopener">Remio AI ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:60ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Netskope</span>
+            <span class="tag tag-cat">影子 AI 发现与 DLP</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-04</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Netskope 发布 One DataSec Command Center，统一跨云/AI/网络的数据安全控制面</h3>
+        <p class="card-sum">Netskope 于 8 月 4 日公布 Netskope One DataSec Command Center，作为统一数据安全控制面，覆盖网络、邮件、云（AWS/GCP/Azure）、SaaS、AI 服务（ChatGPT、Claude）及 PaaS（Snowflake、Databricks）等环境。产品通过同一 DLP 引擎与 Data Lineage 关联用户、设备、数据存储与 AI 资产，并内置 DLP AISecOps Agent 自动分诊告警，计划本季度 GA。</p>
+        <div class="sources"><a class="src" href="https://www.netskope.com/blog/data-security-from-discovery-to-remediation" target="_blank" rel="noopener">Netskope 博客 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:120ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Snyk</span>
+            <span class="tag tag-cat">AI 红队/应用安全</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-04</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Snyk 将 Evo Continuous Offensive Security 正式 GA，提供 AI 驱动的持续渗透测试与智能体红队</h3>
+        <p class="card-sum">Snyk 于 8 月 4 日在 Black Hat 将 Evo Continuous Offensive Security（COS）正式 GA，提供自治、AI 驱动的渗透测试，持续对应用与 AI 系统施压以验证修复效果并暴露传统扫描器遗漏的业务逻辑缺陷。COS 内含 Agent Red Teaming，针对运行中的 AI 智能体与 LLM 应用模拟提示注入、工具/智能体滥用与数据外泄，结合 AI-SPM 增强、Snyk Secrets GA 与 Evo Agentic AppSec 预览组成统一防线。</p>
+        <div class="sources"><a class="src" href="https://snyk.io/blog/evo-continuous-offensive-security/" target="_blank" rel="noopener">Snyk 官方博客 ↗</a><a class="src" href="https://finance.yahoo.com/technology/ai/articles/snyk-launches-evo-continuous-offensive-120000775.html" target="_blank" rel="noopener">Yahoo Finance ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:180ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">CrowdStrike</span>
+            <span class="tag tag-cat">安全智能体/SOC</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">CrowdStrike 推出 Charlotte AI Agentic Response 与 Agentic Workflows，迈向自治式 SOC</h3>
+        <p class="card-sum">CrowdStrike 在 Black Hat 期间发布 Charlotte AI 的两项自治能力：Agentic Response 将于数周内 GA，可自主生成并回答引导式问题以辅助根因分析与横向移动排查；Agentic Workflows 现已通过 Falcon Fusion SOAR 向 Charlotte AI 客户开放，允许在 SOAR 流程中直接调用前沿 LLM 进行实时推理与响应。两者均强调有界自治（bounded autonomy），在分析师定义的边界内行事并保留人工监督。</p>
+        <div class="sources"><a class="src" href="https://www.crowdstrike.com/en-us/blog/crowdstrike-launches-agentic-ai-innovations" target="_blank" rel="noopener">CrowdStrike 官方博客 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:240ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Anthropic</span>
+            <span class="tag tag-cat">AI 护栏/企业 DLP</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Anthropic 为 Claude Enterprise 推出 Inference Hooks（测试版），在推理前拦截并裁决每条提示</h3>
+        <p class="card-sum">Anthropic 于 8 月 5 日推出 Inference Hooks（测试版），面向 Claude Enterprise。企业可将每条提示与工具响应在推理前路由至自有的 AI 安全服务器，由其返回 allow/deny 裁决，被拒提示不会到达模型，覆盖 claude.ai、Cowork 与 Claude Code。该能力采用开放 webhook 协议，可对接 Netskope、Palo Alto Networks、Proofpoint、Zscaler 等 DLP 平台，把策略执行点前移到模型层。</p>
+        <div class="sources"><a class="src" href="https://www.unite.ai/anthropic-puts-inline-data-loss-prevention-inside-claude-enterprise" target="_blank" rel="noopener">unite.ai ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:300ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Cloudflare</span>
+            <span class="tag tag-cat">AI 网关/MCP 安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Cloudflare 推出身份感知 AI Gateway 与面向 MCP 的 WriteGuard</h3>
+        <p class="card-sum">Cloudflare 于 8 月 5 日推出 Identity-Aware AI Gateway（开放测试版），将每次 AI 请求与已验证身份绑定，支持按用户/团队设支出上限并自动标记风险内容；配套 User Insights 为每个人与智能体建立行为基线以发现异常。同时推出 WriteGuard（私有测试版），为 Cloudflare MCP 服务器门户提供细粒度写控制，约束智能体对工具的写操作。</p>
+        <div class="sources"><a class="src" href="https://www.cloudflare.com/press/press-releases/2026/cloudflare-gives-companies-full-visibility-to-audit-and-analyze-ai-use/" target="_blank" rel="noopener">Cloudflare 官方新闻稿 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:360ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">NeuralTrust</span>
+            <span class="tag tag-cat">Agent 运行时治理</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">NeuralTrust 推出 Runtime Security Mesh 与 Agent Gateway（TrustGate），覆盖任意智能体运行时</h3>
+        <p class="card-sum">NeuralTrust 于 8 月 5 日发布首个可扩展至全部 AI 智能体的 Runtime Security Mesh，核心为原生内置安全的 Agent Gateway（TrustGate）。它不依赖逐智能体定制集成，而是直接检视智能体流量，在提示、工具调用、MCP 响应、工具鉴权、推理漂移与最终输出六个阶段实时检测提示注入、密钥泄露、恶意代码与越权调用，并一键对接 SIEM。</p>
+        <div class="sources"><a class="src" href="https://www.morningstar.com/news/pr-newswire/20260805ny17596/neuraltrust-launches-the-first-runtime-security-mesh-extensible-to-every-ai-agent" target="_blank" rel="noopener">PR Newswire / Morningstar ↗</a><a class="src" href="https://neuraltrust.ai/news/neuraltrust-brings-agent-security-to-black-hat-usa-2026" target="_blank" rel="noopener">NeuralTrust 官方 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:420ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Legit Security</span>
+            <span class="tag tag-cat">AI 代码安全</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Legit Security 发布 VibeGuard 2.0，以端点级护栏保护 AI 编码智能体</h3>
+        <p class="card-sum">Legit Security 在 Black Hat 期间发布 VibeGuard 2.0，将架构从 IDE 插件改为运行在开发者端点，自动发现并保护 Claude Code、Cursor、GitHub Copilot 等编码智能体及插件，用户难以卸载。新增实时候选护栏（技能发现、危险操作阻断、细粒度 MCP 安全）、命令监控与防篡改能力，在代码生成处阻断凭据泄露与破坏性操作。</p>
+        <div class="sources"><a class="src" href="https://techintelpro.com/news/AI/Agentic-AI/legit-security-launches-vibeguard-20-for-secure-coding-agents" target="_blank" rel="noopener">TechIntelPro ↗</a><a class="src" href="https://bizstack.tech/vibeguard-2-0-adds-endpoint-security-for-claude-code-cursor-and-copilot" target="_blank" rel="noopener">bizstack.tech ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:480ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Zenity</span>
+            <span class="tag tag-cat">模型供应链安全/AI 红队</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-06</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Zenity Labs 发布免费服务 AI Total，动态引爆分析恶意 AI 智能体技能</h3>
+        <p class="card-sum">Zenity Labs 在 Black Hat 发布免费威胁情报服务 AI Total，采用「智能体引爆室（Agent Detonation Chamber）」在隔离沙箱中动态执行 AI 智能体技能并观察其运行时行为，以发现静态检测漏掉的恶意行为。研究同时披露公共仓库中存在数十个恶意技能（其中一个安装量超 25 万），部分滥用 Claude Code 作为恶意软件投放器，涉及 typosquatting 与凭据窃取活动。</p>
+        <div class="sources"><a class="src" href="https://zenity.io/company-overview/newsroom/company-news/zenity-labs-discovers-dozens-of-malicious-ai-agent-skills-evading-detection-launches-ai-total" target="_blank" rel="noopener">Zenity 官方新闻稿 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:540ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Microsoft</span>
+            <span class="tag tag-cat">安全智能体/内部风险</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-08</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Microsoft 将 Purview IRM 分诊智能体摘要接入 Defender 告警队列（8 月预览）</h3>
+        <p class="card-sum">Microsoft 通过 Microsoft 365 Roadmap ID 567472 与 Message Center MC1438568 宣布，将 Purview 内部风险管理的 Data Security Triage Agent 摘要直接呈现于 Microsoft Defender 告警队列，公共预览于 8 月中旬开始。摘要包含告警分类、调查结论、风险模式与用户上下文，让 SOC 分析师无需切换门户即可快速评估内部风险告警，深度调查仍留在 Purview。</p>
+        <div class="sources"><a class="src" href="https://dellenny.com/microsoft-enhances-defender-with-ai-powered-microsoft-purview-insider-risk-management-triage-summaries" target="_blank" rel="noopener">Dellenny.com ↗</a><a class="src" href="https://mc.merill.net/message/MC1438568" target="_blank" rel="noopener">MC1438568 (merill.net) ↗</a></div>
+      </article></div>
+    </section>
+
+    <section class="section reveal" id="cn">
+      <div class="sec-head">
+        <div class="sec-title"><span class="sec-icon">🇨🇳</span>国内友商产品动态</div>
+        <div class="sec-sub">中国主流安全厂商产品层面突破 · <b>5</b> 条</div>
+      </div>
+      <div class="cards">
+      <article class="card lvl3" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">天融信</span>
+            <span class="tag tag-cat">AI Agent 安全评估</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-04</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">天融信正式发布 AI 智能体安全评估服务</h3>
+        <p class="card-sum">基于国家法规、OWASP LLM Top 10 与行业实践，发布面向企业智能体的安全评估服务。依托九维标准化评估框架（执行环境、身份权限、提示词与模型、Skills/MCP、数据隐私、知识库、网络访问、内容合规、审计运营）、39 项通用检查项，并针对 OpenClaw、Hermes Agent、WorkBuddy 三大主流智能体定制专项检测清单，覆盖从风险识别到整改闭环的全生命周期保障。</p>
+        <div class="sources"><a class="src" href="https://www.topsec.com.cn/newsx/6778" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:60ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">腾讯云</span>
+            <span class="tag tag-cat">AI Agent 安全沙箱</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-04</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">腾讯云 WorkBuddy 5.0 上线「安全中心」：越权拦截、删除进回收站、版本还原</h3>
+        <p class="card-sum">WorkBuddy 5.0 及以上版本正式上线「安全中心」，越权操作实时拦截、删除文件自动进回收站、修改文件版本还原等核心管控默认开启。安全沙箱在操作系统 API 层识别 AI 意图并隔离执行，格式化磁盘、遍历系统根目录等越权操作被拦截；删除文件在 OS API 层硬拦截进回收站可找回，修改前自动备份原文件（PPT/Word/图片/PDF 均可还原），备份默认上限 1GB。所有能力集中于客户端「设置→安全中心」入口，默认开启。</p>
+        <div class="sources"><a class="src" href="https://www.163.com/dy/article/L3GMF5CB0534A4SC.html" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:120ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">长亭科技</span>
+            <span class="tag tag-cat">AI 安全运营 / MDR</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-07</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">长亭科技推出 AI 原生安全运营产品 AIMDR，可分钟级完成攻击溯源</h3>
+        <p class="card-sum">发布 AI 原生架构的安全运营托管/检测与响应（MDR）产品 AIMDR。将安全分析师调查思路与 MITRE ATT&amp;CK 模型融入底层，由 AI 承担调度角色，跨日志类型、时间窗口与资产关联离散告警、还原完整攻击链；具备攻击全链路还原与 AI 安全专家两项能力，可分钟级定位攻击入口、判断利用迹象并给出处置建议。企业无需替换现有设备即可 7×24 监测研判处置，已开放免费试用。</p>
+        <div class="sources"><a class="src" href="https://www.163.com/tech/article/L3OG484D00098IEO_pa11y.html" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:180ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">腾讯</span>
+            <span class="tag tag-cat">AI Agent 部署安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">腾讯推出 OpenClaw 安全工具箱，覆盖云端/办公网/个人端部署安全</h3>
+        <p class="card-sum">腾讯安全推出 OpenClaw 安全工具箱，针对三类部署场景：云端通过腾讯云 Lighthouse 与 ClawPro（OpenClaw 企业版）升级专属部署架构，具备环境隔离与一键快照回滚；办公网由腾讯 iOA 发布防护方案构筑自动化联动防线；个人端由腾讯电脑管家 18.0 推出「龙虾管家-AI 安全沙箱」，对本地 OpenClaw 等智能体实施权限边界隔离与审计拦截。</p>
+        <div class="sources"><a class="src" href="https://quotes.aastocks.com/sc/usq/news/comment.aspx?source=AAFN&amp;id=NOW.1508826&amp;catg=1" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:240ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">安恒信息</span>
+            <span class="tag tag-cat">AI 漏洞挖掘 / 主动防御</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-07</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">安恒信息数博会前瞻披露自研新品「零日雷达」，主打 AI 驱动漏洞挖掘与前置免疫</h3>
+        <p class="card-sum">在 2026 数博会前瞻中披露将首次公开发布自研产品「零日雷达」，与恒脑 4.0 安全智能体总指挥协同，构建从漏洞发现到主动防御的能力链条。依托「漏洞挖掘—全域监测—防御下发」三步走体系，通过 AI 驱动的漏洞挖掘与本地资产碰撞，在漏洞被武器化前识别受影响资产并下发防御策略，实现从「发现漏洞」向「前置免疫」跨越。</p>
+        <div class="sources"><a class="src" href="https://new.qq.com/rain/a/20260807A0BX9R00?refer=cp_1009" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article></div>
+    </section>
+
+    <section class="section reveal" id="ind">
+      <div class="sec-head">
+        <div class="sec-title"><span class="sec-icon">📊</span>行业动态与趋势</div>
+        <div class="sec-sub">政策 / 标准 / 报告 / 事件 / 大会 · <b>10</b> 条</div>
+      </div>
+      <div class="cards">
+      <article class="card lvl3" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">欧盟委员会 / AI Office</span>
+            <span class="tag tag-cat">政策法规/政府监管（欧盟）</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-02</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">欧盟 AI 法案 GPAI 章节执法权正式生效，委员会可对基础模型提供商罚款</h3>
+        <p class="card-sum">8月2日，欧盟 AI 法案第五章（GPAI 通用目的 AI 模型）的委员会监督与执法权正式生效，距义务适用日（2025-08-02）整整一年过渡期结束。AI Office 现在可要求文档与信息、实施评估、要求合规/风险缓释/市场限制/召回等措施，并依据第 101 条对提供商处以其全球年营业额 3% 或 1,500 万欧元（取高）罚款。CSA 研究指出，执法能力（约 160 人编制建议）与实际资源之间存在缺口，近期更可能依据公开投诉、重大事件与科学面板警报采取行动；&#x27;系统性风险&#x27;阈值（10^25 FLOPs）为静态值，企业应持续重新评估自身分类。数字综合简化（Digital Omnibus）延期仅涉及高风险系统，未触及 GPAI 章节。</p>
+        <div class="sources"><a class="src" href="https://digital-strategy.ec.europa.eu/en/policies/guidelines-gpai-providers" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:60ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">多家安全研究团队（Unit 42、Microsoft、Aikido、SafeDep）</span>
+            <span class="tag tag-cat">安全事件/攻击活动（模型供应链）</span>
+            <span class="tag tag-merge">合并 3 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-04</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">ChainDrop 自传播 npm 蠕虫爆发，首次将 AI 编码代理配置作为持久化后门</h3>
+        <p class="card-sum">8月4日，攻击者接管 keyv 维护者账号并投毒，ChainDrop 蠕虫在数小时内污染 400+（统计口径最高 868）个 npm 包，携带合法 npm provenance 与 GitHub Actions 签名。其显著新特征是向 .claude/settings.json 与 .vscode/tasks.json 植入自启动钩子，使 Claude Code / VS Code 在打开仓库时静默执行载荷——这是首个将 AI 编码代理配置作为持久化载体的供应链攻击。该蠕虫被归为 Shai-Hulud &#x27;Mini&#x27; 家族衍生，新增基于以太坊智能合约的 C2 域名轮换，影响横跨四大洲。</p>
+        <div class="sources"><a class="src" href="https://unit42.paloaltonetworks.com/chaindrop-npm-worm-analysis/" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://www.infosec.ge/blog/chaindrop-npm-worm-claude-code-vscode-supply-chain-2026" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://no.security/posts/2026-08-05" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:120ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">PortSwigger / Black Hat USA / 多研究团队</span>
+            <span class="tag tag-cat">大会观点与议题</span>
+            <span class="tag tag-merge">合并 3 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Black Hat 2026：自主 AI 生成全新攻击技术，GPUBreach 实现 GPU 提权</h3>
+        <p class="card-sum">Black Hat USA 2026（8/1–8/6）被普遍视为自主 AI 攻防的转折点。PortSwigger 的 James Kettle 展示 HTTP Terminator：系统喂入约 15,000 个 RFC 片段生成 3 万候选向量，自主发现新型 HTTP 解同步触发器、面向云反向代理的投毒向量及双解析器攻击，并已开源、在银行/政府/安全厂商生产系统获得赏金；同一人指导的级联还暴露 Apache Traffic Server 零日（CVE-2026-63078）。腾讯玄武实验室展示自动 LLM 流水线在 Chrome/Android 发现 100+ 逻辑漏洞。GPUBreach（多伦多大学）首次将 Rowhammer 应用于 NVIDIA GDDR6，在 IOMMU 开启下将无特权 CUDA 进程提权至宿主机 root，揭示 AI 算力底层硬件隔离缺口。</p>
+        <div class="sources"><a class="src" href="https://www.techtimes.com/articles/323564/20260807/black-hat-2026-autonomous-ai-invents-novel-attacks-hits-banks-government.htm" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://portswigger.net/research/talks?talkId=23" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:180ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">OWASP GenAI Security Project</span>
+            <span class="tag tag-cat">行业标准</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-06</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">OWASP 发布 2026 版 LLM Top 10，首次引入 6,639 起真实事件数据</h3>
+        <p class="card-sum">OWASP GenAI Security Project 发布 2026 版 LLM 应用 Top 10，首次将真实事件数据（来自公开漏洞库与 AI 危害数据库的 6,639 起事件）以 25% 权重纳入排名（75% 仍为专家共识投票）。提示注入与敏感信息泄露稳居前两位；错误信息（Misinformation）因事件记录靠前而上升两位，过度代理（Excessive Agency）升至第三；系统提示泄露更名为&#x27;隐藏上下文暴露&#x27;（Hidden Context Exposure）。项目明确区分&#x27;模型作为组件&#x27;（本榜覆盖）与&#x27;模型作为行动者&#x27;（应参照 OWASP Agentic Top 10），并提出&#x27;模型必被欺骗，应围绕其构建系统以控制爆炸半径&#x27;的核心思想。</p>
+        <div class="sources"><a class="src" href="https://www.helpnetsecurity.com/2026/08/06/owasp-2026-llm-top-10-released/" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://www.purpleshieldsecurity.com/post/owasp-llm-top-10-2026" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl3" style="animation-delay:240ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">TC260（全国网络安全标准化技术委员会）/ 中央网信办</span>
+            <span class="tag tag-cat">政策法规/标准（中国）</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-07</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">全球首部智能体安全强制性国家标准《智能体应用安全基本要求》正式立项</h3>
+        <p class="card-sum">计划号 20263116-Q-252 的强制性国家标准《智能体应用安全基本要求》正式立项，由中央网信办归口、TC260 执行，中国移动、中国电子标准院、国家计算机网络应急技术处理协调中心牵头起草，周期 18 个月。该标准为全球首部面向智能体安全的强制性国标，聚焦公众智能体产品与服务，覆盖身份识别、系统权限调用、工具使用、数据收集、高风险操作人工干预、输入输出安全防护、日志留存、动态监测、异常阻断与紧急关停等技术要求，填补公众服务领域智能体安全强制性标准的国际空白。</p>
+        <div class="sources"><a class="src" href="https://std.samr.gov.cn/gb/search/gbDetailed?id=558A5B599E7FC47DE06397BE0A0AB03C" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://www.toutiao.com/article/7671107159605641780/" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:300ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Gartner</span>
+            <span class="tag tag-cat">研究报告/趋势</span>
+            <span class="tag tag-merge">合并 3 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-04</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Gartner 发布 2026 中国网络安全技术成熟度曲线：影子 AI、代理型 AI 与机器身份入榜</h3>
+        <p class="card-sum">Gartner《2026 中国网络安全技术成熟度曲线》提出四大趋势：代理型 AI 与机器身份带来的挑战、严格责任下的可执行数据安全、主动威胁暴露面管理与网络韧性、基础设施现代化与技术自主。报告将&#x27;影子 AI&#x27;数据泄露风险列为企业安全管理重点，预测到 2028 年超 80% 中国企业将面临员工在缺乏监管下使用生成式 AI 的情形；机器身份与访问管理首次纳入曲线并进入&#x27;期望膨胀期&#x27;。报告指出代理型 AI 安全仍处早期，市场上尚无单一厂商能提供一体化全栈智能体安全平台，多数方案是在现有产品上叠加功能（AI 网关、身份管理、提示注入检测等）。</p>
+        <div class="sources"><a class="src" href="https://www.infoq.cn/article/zko5GmLUpmxdSwWbkfTI" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://new.qq.com/rain/a/20260804A06NVA00" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://cn-sec.com/archives/5376424.html" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:360ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Akamai</span>
+            <span class="tag tag-cat">行业白皮书/研究报告</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-05</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Akamai《企业 AI 使用风险报告 2026》：近半企业 AI 使用绕开安全管控，三类 AI 原生攻击向量登场</h3>
+        <p class="card-sum">Akamai 发布 Enterprise AI Usage Risk Report 2026（基于其收购的 LayerX 数据），指出约 47% 的企业 AI 对话通过个人账号进行，形成传统安全工具无法覆盖的&#x27;可见性缺口&#x27;；约 75% 的 AI 浏览器扩展请求高/危急权限，16.3% 含已知 CVE。报告首次披露三类 AI 原生攻击方法：Vibe hacking（篡改本地 Markdown 指令文件诱使编码助手生成不安全输出）、CursorJacking（恶意浏览器扩展窃取 API 密钥与代码）、CometJacking（网页间接提示注入劫持本地智能体外泄文件/凭证）。Akamai 提出五点 CISO 路线：聚焦 5% AI 重度用户、用 SSO 联邦消除影子 AI、检查交互层、审查扩展、以最小权限管控自主智能体。</p>
+        <div class="sources"><a class="src" href="https://www.akamai.com/newsroom/press-release/akamai-research-nearly-half-of-enterprise-ai-use-bypasses-corporate-security-creating-massive-shadow-ai-visibility-gaps" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://www.techtimes.com/articles/323241/20260805/akamai-uncovers-ai-browser-exploits-cve-rates-hit-16-enterprises.htm" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:420ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">AI Village / DEF CON</span>
+            <span class="tag tag-cat">大会观点与议题</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-06</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">DEF CON 34 AI Village 推出 HalCTF 自主智能体 CTF，AI 代理成标准攻击武器</h3>
+        <p class="card-sum">DEF CON 34（8/6–8/9）以&#x27;Agency&#x27;为主题，AI 自主代理从两年前的&#x27;新奇事物&#x27;变为标准攻击武器。AI Village 正式推出 HalCTF（Hostile Autonomous Layer CTF）——史上首个纯自主智能体竞赛：参赛者部署 OCI 容器（≤2.5GB）形式的自主代理，在沙箱中独立 exploit 并夺旗，所有推理经集中 Model Service 以开源模型运行以消除 GPU 预算优势。同期，UC 系统的 SageCTF 在 48 小时资格赛中跻身前 5%，中位解题需 5 小时自主探索。这表明自主攻防已从实验室意外逃逸走向公开、结构化的竞争学科。</p>
+        <div class="sources"><a class="src" href="https://www.techtimes.com/articles/323346/20260806/def-con-34-opens-today-ai-agents-graduate-novelty-standard-hacking-weapon.htm" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://aivillage.org/blog/halctf" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:480ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术机构（arXiv）</span>
+            <span class="tag tag-cat">学术研究</span>
+            <span class="tag tag-merge">合并 2 源</span>
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-06</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">学术研究刷新越狱上限：多模态自动红队 HACA 与自越狱 SLIP 均达约 95% 成功率</h3>
+        <p class="card-sum">两项越狱研究于 8 月初在 arXiv 公开。HACA（Hierarchical Atomic Combination Attack）将文-图越狱策略解耦为结构/语义/句法三层与六维策略空间，通过跨模态联合规划器组合原子策略，对五种主流多模态大模型平均攻击成功率达 95.48%。SLIP（Self-Jailbreaking via Lexical Insertion Prompting）提出&#x27;自越狱&#x27;威胁模型：目标模型仅凭自身知识、以多轮对话树 BFS 增量插入词汇锚点引导自身越狱，在 11 个模型（含 GPT-5.1、Claude-Sonnet-4.5、Gemini-2.5-Pro、DeepSeek-V3）上平均 ASR 达 94.7%，仅需约 7.9 次查询；作者提出语义漂移监控（SDM）防御但指出需会话级意图追踪方能根治。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.04034" target="_blank" rel="noopener">来源 ↗</a><a class="src" href="https://arxiv.org/html/2601.02670v2" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article>
+      <article class="card lvl2" style="animation-delay:540ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">TC260（全国网络安全标准化技术委员会）</span>
+            <span class="tag tag-cat">行业标准/政策法规（中国）</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-07</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">《生成式人工智能系统互操作安全规范》国标公开征求意见</h3>
+        <p class="card-sum">推荐性国家标准《网络安全技术 生成式人工智能系统互操作安全规范》于 2026-08-07 至 2026-09-06 公开征求意见，由 TC260 归口，国家计算机网络应急技术处理协调中心、公安部第三研究所、浦江国家实验室等起草。标准规定生成式 AI 系统之间、或与其他系统之间经接口/协议/数据通道进行互操作的安全总体框架、基本要求和测试评价方法，覆盖单向调用、双向交互及多系统协同生成等场景，回应了多智能体协同与模型间调用带来的新型信任与安全风险。</p>
+        <div class="sources"><a class="src" href="https://std.samr.gov.cn/gb/search/gbDetailed?id=555F12C2B2CE2662E06397BE0A0A4E4F" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article></div>
+    </section>
+
+    <section class="section reveal" id="trend">
+      <div class="sec-head">
+        <div class="sec-title"><span class="sec-icon">🧭</span>趋势判断</div>
+        <div class="sec-sub">精简版 · <b>5</b> 条</div>
+      </div>
+      <ul class="trend"><li><span class="tnum">01</span><span>防护点从「输出端过滤」前移到「推理前裁决」——Anthropic Inference Hooks 与 Cloudflare 身份感知 AI Gateway 标志 AI 安全开始建立独立的身份与准入层，这一层未来大概率会成为兵家必争的收费口。</span></li><li><span class="tnum">02</span><span>AI 编码智能体已同时是最热的攻击面和最热的防守面：ChainDrop 用 .claude/settings.json 做持久化后门，VibeGuard 2.0 把护栏下沉到端点，攻防在同一个配置文件上正面相遇。</span></li><li><span class="tnum">03</span><span>国际与国内切入点分化明显——国际主打 Agent 网关、运行时治理与自治红队（Cloudflare / NeuralTrust / Snyk / Zenity），国内主打安全评估、AI 原生运营与沙箱隔离（天融信 / 长亭 / 腾讯），互补而非同质竞争。</span></li><li><span class="tnum">04</span><span>合规窗口正在关闭：全球首部智能体安全强制性国标立项（18 个月周期）+ 欧盟 GPAI 执法权生效（可罚全球营收 3%），意味着「能不能上」很快会先看合规而不是先看效果，产品需要提前预留审计留存与人工干预接口。</span></li><li><span class="tnum">05</span><span>攻防速度差在扩大：自主 AI 已能发明全新攻击技术并在生产环境获赏金，学术越狱成功率约 95%，而防守侧仍停留在「加护栏、加网关」的加法阶段——单纯堆防护层恐怕跟不上，以模制模的自动化防守需要提速。</span></li></ul>
+    </section>
+
+  <footer>
+    <div class="brand">AI 安全日报 · Daily Intelligence</div>
+    <div>数据来源：公开网络检索 · 每日 10:00 自动生成推送</div>
+    <div>共 25 条动态 · 国际产品 10 / 国内产品 5 / 行业 10</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
