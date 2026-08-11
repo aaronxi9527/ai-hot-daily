@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-11</title>
+<style>
+  :root {
+    --bg:#0a0a0a; --card:#141416; --border:rgba(255,255,255,0.08);
+    --text:#e8e8ea; --muted:#9a9aa5; --link:#8B5CF6; --link-h:#C4B5FD;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  /* 固定顶栏 */
+  .topbar {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+    background:rgba(10,10,10,0.6); backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;
+    border-image:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899) 1;
+  }
+  .topbar .brand { font-weight:700; font-size:15px; letter-spacing:.3px; }
+  .topbar .date { color:var(--muted); font-size:13px; }
+  /* Hero */
+  .hero {
+    position:relative; padding:130px 28px 60px; text-align:center; overflow:hidden;
+  }
+  .hero::before {
+    content:""; position:absolute; top:-180px; left:50%; transform:translateX(-50%);
+    width:760px; height:420px; border-radius:50%;
+    background:radial-gradient(closest-side,rgba(139,92,246,.28),rgba(236,72,153,.12),transparent);
+    filter:blur(40px); z-index:0;
+  }
+  .hero h1 {
+    position:relative; z-index:1; font-size:46px; font-weight:800; letter-spacing:.5px;
+    background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero .subtitle { position:relative; z-index:1; color:var(--muted); margin-top:12px; font-size:16px; }
+  .stats { position:relative; z-index:1; display:flex; gap:18px; justify-content:center; margin-top:34px; flex-wrap:wrap; }
+  .stat {
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    padding:18px 30px; min-width:130px;
+  }
+  .stat .num {
+    font-size:32px; font-weight:800;
+    background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .stat .lbl { color:var(--muted); font-size:13px; margin-top:4px; }
+  /* AI 解读 */
+  .section { max-width:1180px; margin:0 auto; padding:40px 28px; }
+  .ai-block {
+    position:relative; background:var(--card); border:1px solid var(--border);
+    border-radius:16px; padding:26px 30px 26px 34px; overflow:hidden;
+  }
+  .ai-block::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:5px;
+    background:linear-gradient(180deg,#5B6CF7,#8B5CF6,#EC4899);
+  }
+  .ai-block h2 { font-size:20px; margin-bottom:14px; }
+  .ai-block p { color:#d4d4d8; margin-bottom:12px; font-size:15px; }
+  .ai-block p:last-child { margin-bottom:0; }
+  .ai-block strong { color:#fff; font-weight:700; }
+  /* 版块标题 */
+  .sec-title { font-size:24px; font-weight:800; margin:14px 0 22px; }
+  .grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(420px,1fr));
+    gap:20px;
+  }
+  @media (max-width:880px) { .grid { grid-template-columns:1fr; } .hero h1 { font-size:34px; } }
+  .news-card {
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    padding:20px 22px; display:flex; flex-direction:column; gap:10px;
+    opacity:0; transform:translateY(20px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .news-card.show { opacity:1; transform:translateY(0); }
+  .card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; }
+  .card-title { font-size:16px; font-weight:700; line-height:1.5; color:#f2f2f4; }
+  .inc-badge {
+    display:inline-block; font-size:11px; font-weight:700; color:#EC4899;
+    border:1px solid #EC489955; background:#EC48991a; border-radius:6px;
+    padding:1px 6px; margin-right:6px; vertical-align:middle;
+  }
+  .tag {
+    flex-shrink:0; font-size:12px; font-weight:700; padding:3px 9px;
+    border-radius:8px; border:1px solid; white-space:nowrap;
+  }
+  .card-date { font-size:12px; color:var(--muted); }
+  .card-summary { font-size:14px; color:#c9c9cf; flex:1; }
+  .card-links { font-size:13px; color:var(--muted); margin-top:4px; }
+  .card-links a, a { color:var(--link); text-decoration:none; }
+  .card-links a:hover, a:hover { color:var(--link-h); text-decoration:underline; }
+  .link-sep { color:#55555c; }
+  footer { text-align:center; color:#55555c; font-size:12px; padding:40px 20px 50px; }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">🛡️ 防火墙厂商日报</span>
+    <span class="date">2026-08-11</span>
+  </header>
+
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="subtitle">2026年8月11日 · 星期二</div>
+    <div class="stats">
+      <div class="stat"><div class="num">22</div><div class="lbl">总条数</div></div>
+      <div class="stat"><div class="num">16</div><div class="lbl">厂商动态</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">行业动态</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="ai-block">
+      <h2>🤖 AI 解读</h2>
+      <p>今天最大的事只有一件：网络安全审查办公室对派拓（Palo Alto Networks）在华销售产品启动网络安全审查。这是继 CVE-2026-0257 那波「47 万台暴露」之后落下的第二只靴子——国产 NGFW 的替换窗口从「技术上可行」变成了「政策上明牌」，手里有存量派拓客户的，今天就该去敲门了。</p>
+<p>耐人寻味的是同一周 Check Point 抢先随 R82.20 推出 AI Network Firewall，不加设备、不改架构，直接在客户存量防火墙上开 AI 管控（提示词注入 inline 拦截 + MCP 通信可视化）。国际大厂已经把「AI 防火墙」做成了一次软件升级，而国内这边华为、新华三还在白皮书和标准送审阶段——这个节奏差，值得盯。</p>
+<p>采购侧今天格外热闹，深信服、奇安信、天融信、绿盟、启明星辰五家全部出现在政采中标名单里，而且多条带出了万兆防火墙的<strong>单价</strong>数据（启明星辰天清汉马 13.9 万/台、绿盟 IPS 34.58 万/台、华为 USG6685F 19.8 万/套），做竞品报价参考可以直接拿来用。另外提醒一句：SonicWall SMA 1000 那条已经从「有洞」升级成「确认在野被打穿、投放 ROOTRUN 后门和内存马」，边界设备自查别再拖了。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="sec-title">🏢 厂商动态</h2>
+    <div class="grid">
+      
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">网络安全审查办公室对派拓（Palo Alto Networks）在华销售产品启动网络安全审查，国产NGFW替换窗口打开（合并3源）</h3>
+        <span class="tag" style="background:#6B728022;color:#6B7280;border-color:#6B728055;">其他</span>
+      </div>
+      <div class="card-date">2026-08-06</div>
+      <p class="card-summary">网络安全审查办公室2026年8月6日依据《国家安全法》《网络安全法》《网络安全审查办法》，对派拓公司在华销售产品正式启动网络安全审查，这是继2023年美光之后又一起针对外资ICT厂商的正式审查。派拓在华主营NGFW、云交付安全服务与AI安全运营平台，其漏洞履历（CVE-2024-3400、CVE-2025-0108、CVE-2026-0257已入CISA KEV，2026年7月一次性修补13个漏洞）成为审查背景。业内分析奇安信、深信服、天融信、启明星辰、绿盟、山石网科已具备承接替换能力，山石网科更被指与Fortinet架构同源、可无缝替换。</p>
+      <div class="card-links">来源：<a href="https://news.sina.com.cn/c/2026-08-06/doc-inimknaz3004001.shtml" target="_blank" rel="noopener">新浪新闻</a> <span class="link-sep">/</span> <a href="https://www.ctocio.com/security/41918.html" target="_blank" rel="noopener">CTOCIO</a> <span class="link-sep">/</span> <a href="https://www.toutiao.com/article/7670850337724449343/" target="_blank" rel="noopener">今日头条</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">Check Point 随 R82.20 推出 AI Network Firewall：零新增基础设施启用，inline 拦截提示词注入并管控 MCP 通信</h3>
+        <span class="tag" style="background:#6B728022;color:#6B7280;border-color:#6B728055;">其他</span>
+      </div>
+      <div class="card-date">2026-08-06</div>
+      <p class="card-summary">Check Point 于2026年8月6日宣布随防火墙软件R82.20版本推出AI Network Firewall，无需新增基础设施或重构架构，可直接在客户既有物理/虚拟防火墙上启用并纳入其AI Defense Plane。能力覆盖员工AI使用发现与数据外泄管控、MCP通信可视化与管控、提示词注入与对抗输入的inline拦截。配套《2026 AI安全报告》称87%~93%企业每月至少发生一次高风险生成式AI交互，敏感数据提示词占比一年翻倍至1/25，所审1万台MCP服务器中40%存在安全弱点。</p>
+      <div class="card-links">来源：<a href="https://news.taiwannet.com.tw/news/214605/check-point-%E5%85%A8%E6%96%B0-ai-network-firewall-%E9%A1%9B%E8%A6%86%E9%98%B2%E7%81%AB%E7%89%86%E5%82%B3%E7%B5%B1%E6%A8%A1%E5%BC%8F-%E6%B6%88%E5%BC%AD%E7%B6%B2%E8%B7%AF-ai-%E7%9B%B2%E5%8D%80.html" target="_blank" rel="noopener">台湾网 taiwannet</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title"><span class="inc-badge">【增量】</span>SonicWall SMA 1000 零点击 root 漏洞链确认在野利用：投放 ROOTRUN 后门与 ORANGETAIL/KNUCKLEBALL 内存马、抓取明文 LDAP 凭据为勒索铺路</h3>
+        <span class="tag" style="background:#6B728022;color:#6B7280;border-color:#6B728055;">其他</span>
+      </div>
+      <div class="card-date">日期未标注</div>
+      <p class="card-summary">牙买加CIRT公告披露 SonicWall SMA 1000 系列（SMA 6210/7210/8200v 及 vCMS）漏洞链的后利用细节：CVE-2026-15409 为 wsproxy 预认证 WebSocket 隧道绕过，可直连 CouchDB 等内部服务；CVE-2026-15410 为 removehotfix 路径穿越，令暂存脚本以 root 执行。相比此前已披露的漏洞本身，本次新增在野利用武器化情报——攻击者实战投放 ROOTRUN 后门、Suo5 转发工具与内存马 ORANGETAIL/KNUCKLEBALL，抓取明文 LDAP 凭据并为勒索软件铺路，IOC 含 HELPRANS[.]COM。SonicWall 防火墙 SSL VPN 与 SMA 100 系列不受影响。原文未标注发布日期。</p>
+      <div class="card-links">来源：<a href="https://cirt.gov.jm/index.php/advisory/internet-facing-sonicwall-sma-appliances-face-zero-click-root-compromise-cve-2026-15409" target="_blank" rel="noopener">Jamaica CIRT</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title">新华三联合中国信通院发布《AI赋能数字基础设施：ICT智能体的技术突破与建设指南》，国内首个系统定义ICT智能体技术体系的权威报告</h3>
+        <span class="tag" style="background:#F59E0B22;color:#F59E0B;border-color:#F59E0B55;">H3C</span>
+      </div>
+      <div class="card-date">2026-08-03</div>
+      <p class="card-summary">紫光股份旗下新华三集团联合中国信通院（CAICT）发布《AI赋能数字基础设施：ICT智能体的技术突破与建设指南》，为国内首个系统定义ICT智能体技术体系与建设路径的权威报告。报告提出“感知-决策-执行-反馈”闭环与L1-L4四级成熟度模型，覆盖算网存安端一体化智能体建设，于2026年7月编制、8月初可信云大会正式发布。该指南将影响后续AI防火墙与自主式安全运营产品的能力定义口径。</p>
+      <div class="card-links">来源：<a href="http://www.ansure-info.com/newsw.asp?id=955" target="_blank" rel="noopener">安数网络</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:4;">
+      <div class="card-head">
+        <h3 class="card-title">深信服 AF-2000-L2250 防火墙中标垫江县电子政务外网核心网络设备更换项目，中电智安165.75万元拿单</h3>
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border-color:#5B6CF755;">深信服</span>
+      </div>
+      <div class="card-date">2026-08-07</div>
+      <p class="card-summary">重庆垫江县人民政府电子政务中心采用询价方式完成电子政务外网核心网络设备更换（第二次，DJX26A00237），中电智安科技有限公司以1,657,500元中标，击败重庆朋旭科技、垒知科技集团重庆公司。主要标的为深信服 AF-2000-L2250 防火墙，单价17万元，品目涵盖交换设备、防火墙及其他信息安全设备。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202608/t20260807_27089982.htm" target="_blank" rel="noopener">中国政府采购网</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:5;">
+      <div class="card-head">
+        <h3 class="card-title">深信服下一代防火墙 AF-1000-L2100-RM 8台中标咸宁市融媒体中心广电等保项目，湖北广电网络142.82万元总包</h3>
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border-color:#5B6CF755;">深信服</span>
+      </div>
+      <div class="card-date">2026-08-02</div>
+      <p class="card-summary">咸宁市融媒体中心本级广播电视业务系统安全等级保护项目由湖北省广播电视信息网络股份有限公司以142.82万元中标（综合评分94.2）。深信服拿下下一代防火墙 AF-1000-L2100-RM 共8台（单价5.8万—6.2万元）及安全感知平台、日志分析、威胁探针；同项目海泰方圆供密码机与国密VPN，天融信供运维安全管理系统。可作为广电融媒体场景国产防火墙报价参考。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260802_27055297.htm" target="_blank" rel="noopener">中国政府采购网</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">奇安信 SecGate3600 NSG6150-D20 万兆防火墙通过中国人民银行大连市分行验收，全国产海光2号CPU、21.17万元</h3>
+        <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border-color:#8B5CF655;">奇安信</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">中国人民银行大连市分行完成货物采购验收（DD26080412079220），采购奇安信 SecGate3600 NSG6150-D20 网络层防火墙1台，网络吞吐量≥80G、最大并发≥1500万，含8个万兆光口与2个40G光口，采用全国产海光2号CPU，金额21.17万元，含三年特征库升级与原厂服务。属奇安信国产化防火墙在央行系统的落地案例。</p>
+      <div class="card-links">来源：<a href="https://www.gc-zb.com/read-767386430.html" target="_blank" rel="noopener">国采招标网</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">启明星辰全领域入选中国信通院第五期《数字安全护航技术能力全景图》，覆盖17大类150项细分领域</h3>
+        <span class="tag" style="background:#A855F722;color:#A855F7;border-color:#A855F755;">启明星辰</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">中国信通院发布第五期《数字安全护航技术能力全景图》，启明星辰入选17大类、150项细分领域，实现全领域覆盖。同步披露其“1+1+N”网络安全大模型体系（泰合安全大模型+盘古AIDK+安星智能体矩阵），以及以MAF大模型应用防火墙、MASB大模型访问安全代理、MAVAS大模型安全评估系统为核心的AI应用安全产品线。</p>
+      <div class="card-links">来源：<a href="https://www.toutiao.com/article/7669990853749867027" target="_blank" rel="noopener">今日头条</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title"><span class="inc-badge">【增量】</span>天融信对话央视解读 Hugging Face 被入侵事件：指出 AI“内生攻击性”风险，主张同步建设攻防垂域大模型体系</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">天融信</span>
+      </div>
+      <div class="card-date">日期未标注</div>
+      <p class="card-summary">天融信就 Hugging Face 被入侵事件接受央视采访，判断该攻击并非纯AI自主行为，但已显现AI“内生攻击性”风险，主张构建面向网络安全攻防的垂域大模型体系。这是天融信首次就AI攻击事件在央视层面公开表态（历史仅推送过其AI智能体安全评估服务发布）。产品侧回顾其已发布的大模型多模态安全网关、大模型数据安全监测、API安全审计系统。原文页未标注发布日期且抓取返回403，正文引用2026年8月4日事件。</p>
+      <div class="card-links">来源：<a href="https://www.topsec.com.cn/newsx/6789" target="_blank" rel="noopener">天融信官网</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title">天融信 NGFW4000-UF 下一代防火墙中标汕头市濠江职业技术教育中心信息化项目，广东卓商124.92万元总包</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">天融信</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">汕头市濠江职业技术教育中心信息化建设项目（PZH026B016）结果公告，广东卓商网络科技有限公司以124.92万元中标。安全设备部分采用天融信下一代防火墙 NGFW4000-UF(FT-B)(千兆)V3，单价63,620元/台，另含天融信 TA-LOG 日志收集与分析系统（66,930元）与 TopEDR 终端威胁防御20点（6,000元）；其余为三未信安国密SSL VPN网关、签名验签服务器与堡垒机。</p>
+      <div class="card-links">来源：<a href="https://www.cfen.com.cn/zcgg/202608/t20260804_911115.html" target="_blank" rel="noopener">中国财经报</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:4;">
+      <div class="card-head">
+        <h3 class="card-title">北京神州绿盟以124.91万元中标深圳龙岗区妇幼保健院2026年网络安全集采服务项目</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">绿盟科技</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">深圳市龙岗区妇幼保健院2026年网络安全集采服务项目（LGCG2026000188）公开招标，北京神州绿盟科技有限公司以1,249,100元直接中标，代理服务费13,594.24元，公示期2026年8月4日至8月7日。属绿盟在医疗行业安全服务类的原厂直签订单。</p>
+      <div class="card-links">来源：<a href="https://zfcg.szggzy.com:8084/gsgg/002001/002001004/002001004001/20260804/09ab985d-73b9-4a8d-bc35-52df470251a1.html" target="_blank" rel="noopener">深圳公共资源交易中心</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:5;">
+      <div class="card-head">
+        <h3 class="card-title">奇安信 NSG6300-K 数据安全防护平台中标东北大学采购项目，辽宁信安众合55.5万元拿单</h3>
+        <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border-color:#8B5CF655;">奇安信</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">东北大学数据安全防护平台采购项目（DDWK2026078）中标公告，辽宁信安众合科技中标，金额55.5万元，中标货物含奇安信 NSG6300-K 数据安全防护平台1套。为奇安信安全产品近期在高校领域的又一落地订单。</p>
+      <div class="card-links">来源：<a href="http://www.czzx.neu.edu.cn/2026/0804/c5673a458648/page.htm" target="_blank" rel="noopener">东北大学采购与招标管理中心</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">山石网科双案例入选TiD大会2026年度软件研发优秀案例：TOI文档Agent评估准确率85%→96%，规格驱动研发设计提效25%-30%</h3>
+        <span class="tag" style="background:#10B98122;color:#10B981;border-color:#10B98155;">山石网科</span>
+      </div>
+      <div class="card-date">2026-08-10</div>
+      <p class="card-summary">TiD质量竞争力大会公布“2026年度软件研发优秀案例”，山石网科“基于上下文工程与规格驱动的研发AI提效体系”与“基于Hermes框架的TOI文档生成Agent”两项案例分别入选人工智能赋能软件工程、智能体应用类别。TOI文档Agent采用三轮迭代生成机制，智能评估准确率由85%提升至96%；规格驱动研发体系实现设计提效25%-30%、单元测试提效40%以上，属其AI能力向内部研发环节的延伸。</p>
+      <div class="card-links">来源：<a href="https://m.10jqka.com.cn/20260810/c678822120.shtml" target="_blank" rel="noopener">同花顺财经</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">山石网科携手光合组织亮相2026人工智能产品应用博览会，展出自研ASIC安全芯片信创平台样机</h3>
+        <span class="tag" style="background:#10B98122;color:#10B981;border-color:#10B98155;">山石网科</span>
+      </div>
+      <div class="card-date">2026-08-05</div>
+      <p class="card-summary">2026人工智能产品应用博览会在苏州举办，山石网科与海光产业生态合作组织（光合组织）联合参展，展出基于自研ASIC安全专用芯片的信创平台样机。该样机以国产CPU为算力底座，适配国产操作系统与数据库，主打超高性能、极低时延、多高速口、低碳节能、稳定可靠五大特性，是其“双A战略（ASIC+AI）”与海光生态绑定的最新落地展示。</p>
+      <div class="card-links">来源：<a href="https://www.163.com/dy/article/L3IT1F1P0538ER6X.html" target="_blank" rel="noopener">网易</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title">绿盟科技三位董监高减持计划届满：合计减持13.67万股占总股本0.0169%，CFO仅完成计划上限22.22%</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">绿盟科技</span>
+      </div>
+      <div class="card-date">2026-08-10</div>
+      <p class="card-summary">2026年8月10日绿盟科技披露董监高减持计划实施完成公告。董事兼高级副总裁叶晓虎8月6日以均价8.12元减持116,700股；董事兼CFO车海辚以均价8.28元减持20,000股，仅为计划上限的22.22%；董秘葛婧瑜未减持。三人合计减持13.67万股、占总股本0.0169%，股份来源均为股权激励，整体减持力度低于计划。</p>
+      <div class="card-links">来源：<a href="https://finance.sina.cn/2026-08-10/detail-inimvsvm4860897.d.html" target="_blank" rel="noopener">新浪财经</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title"><span class="inc-badge">【增量】</span>启明星辰管理层判断AI安全关键窗口期在今年下半年至明年上半年，数据绿洲、MAF大模型应用防火墙已开始落地但体量仍小</h3>
+        <span class="tag" style="background:#A855F722;color:#A855F7;border-color:#A855F755;">启明星辰</span>
+      </div>
+      <div class="card-date">2026-08-06</div>
+      <p class="card-summary">经济观察网报道，启明星辰管理层表示今年下半年至明年上半年将是AI安全规模扩容、形成独立业务板块的关键窗口期。相比此前已披露的“与中国移动协同深化、AI安全五大方向”，本次新增两项增量：一是首次点名数据绿洲新品已开始落地（历史0命中），二是管理层坦言AI安全当前体量仍小、能否兑现取决于后续订单，为此前偏乐观的表述加了风险注脚。</p>
+      <div class="card-links">来源：<a href="https://www.eeo.com.cn/2026/0806/987622.shtml" target="_blank" rel="noopener">经济观察网</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="sec-title">🏭 行业动态</h2>
+    <div class="grid">
+      
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">广州市中级人民法院2026年信息化建设项目1097万元落定：中国移动广东总包，华为USG6685F万兆防火墙2套+奇安信+绿盟分食安全标的</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">政府</span>
+      </div>
+      <div class="card-date">2026-08-05</div>
+      <p class="card-summary">广东省广州市中级人民法院2026年信息化建设项目主体实施部分（CZ2026-0684）结果公告，中国移动通信集团广东有限公司（联合体成员广州数据集团）以10,973,375元中标。安全清单含华为 USG6685F 万兆防火墙2套（单价19.819万元）、奇安信网神数据安全交换/日志审计/数据库审计设备及威胁监测分析系统（34.68万元）、AI安全运营一体机S120M6（59.46万元），绿盟WAF（WAFNX5-HH4000）2台33.69万元、RSAS漏洞扫描1台12.88万元。是近期司法系统多厂商分食的典型大单。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260805_27077556.htm" target="_blank" rel="noopener">中国政府采购网</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">北京IPTV集成播控系统安全建设331.81万元中标：启明星辰天清汉马USG万兆防火墙2台+网神SecGate 3600二代万兆2台（合并2源）</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">政府</span>
+      </div>
+      <div class="card-date">2026-08-03</div>
+      <p class="card-summary">北京IPTV集成播控系统建设项目之IPTV安全系统建设由北京安信天行科技有限公司以331.81万元中标（评审得分96分）。防火墙标的为启明星辰天清汉马USG-FW（万兆）V2.6两台，单价13.9万元、合计27.8万元；网神SecGate 3600第二代防火墙NSG（万兆）V3.6.6.0两台，单价12万元、合计24万元；另含泰合安管平台42万元、天阗APT检测、奇安信天擎与天玥堡垒机。可作为万兆国产防火墙在广电/IPTV场景的竞品报价参考。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260803_27060087.htm" target="_blank" rel="noopener">中国政府采购网</a> <span class="link-sep">/</span> <a href="http://www.ccgp-beijing.gov.cn/xxgg/sjxxgg/zbggs/2026/8/2c2727225aca4cabaf4b7a6ed51f605e.htm" target="_blank" rel="noopener">北京市政府采购网</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title">中国联通泰安分公司教育城域网二次招标：单一中标人独揽130套防火墙（核心1+高中7+初中51+中小幼71），8月25日投标截止</h3>
+        <span class="tag" style="background:#F59E0B22;color:#F59E0B;border-color:#F59E0B55;">运营商</span>
+      </div>
+      <div class="card-date">2026-08-03</div>
+      <p class="card-summary">中国联通山东省分公司发布2026-2027年泰安市某区县教育城域网建设设备采购二次招标（泰安联通公开招标〔2026〕005号），代理机构为河北通信工程招投标有限公司。采购规模较大：核心防火墙1套、高中接入防火墙7套、初中接入防火墙51套、中小学幼儿园防火墙71套，合计130套防火墙，另含SD-WAN一体机、准入认证与日志审计。单一中标人占100%份额，投标截止2026年8月25日，预算金额在公开页面被隐藏。</p>
+      <div class="card-links">来源：<a href="https://yzb.caigou2003.com/detail/2084178469977325569" target="_blank" rel="noopener">易招标</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title">大连大学数据网络安全建设项目103.93万元合同公告：绿盟IPS NIPSNX5-HH20000-P单价34.58万元为最高单价标的</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">政府</span>
+      </div>
+      <div class="card-date">2026-08-05</div>
+      <p class="card-summary">大连大学数据网络安全建设采购项目（DLZY-2026-0515）合同公告，供应商为大连奥远电子，合同总额1,039,288元，签订与公告日期均为2026年8月5日。其中绿盟IPS入侵防御设备 NIPSNX5-HH20000-P 单价345,822元，为该合同单价最高标的；其余为安恒堡垒机、信安世纪链路负载均衡与奇安信服务器杀毒，属高校数据中心多厂商拼盘式采购。</p>
+      <div class="card-links">来源：<a href="https://ggzyjy.dl.gov.cn/jyxx/002002/002002001/002002001005/20260805/1601000000152340.html" target="_blank" rel="noopener">大连市公共资源交易中心</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:4;">
+      <div class="card-head">
+        <h3 class="card-title">河南柘城县人民医院数智化配套设施510.3万元中标：中移系统集成拿下含互联网防火墙在内的整体建设</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">政府</span>
+      </div>
+      <div class="card-date">2026-08-05</div>
+      <p class="card-summary">河南柘城县人民医院数智化配套设施采购项目（含前置机服务器、磁盘阵列、核心交换机、互联网防火墙）公开招标，中移系统集成有限公司以5,103,000元中标，评审得分97.55分，代理服务费66,236元。公告未披露防火墙品牌。评审日期为2026年8月5日，招标公告发布于2026年7月15日，反映县域医疗数智化项目中运营商集成商的总包优势。</p>
+      <div class="card-links">来源：<a href="https://zfcg.henan.gov.cn/henan/content?infoId=1998611" target="_blank" rel="noopener">河南省政府采购网</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:5;">
+      <div class="card-head">
+        <h3 class="card-title">从“护网”转向“护器”：日本防卫省拟2027年起将威胁检测软件直接嵌入雷达与战斗机等武器装备</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">军队</span>
+      </div>
+      <div class="card-date">2026-08-10</div>
+      <p class="card-summary">日本防卫省拟从2027年起把威胁检测软件直接嵌入航空自卫队地面雷达与战斗机等装备，防止单点入侵扩散至与弹道导弹防御指挥中枢JADGE相连的整体军事网络，后续推广至陆上与海上自卫队。牵头方为航空系统通用装备司令部，联合三菱重工、川崎重工、LAC控股、三菱电机、富士通、NEC。该思路把网络防御从网络边界前移到装备内部，对国内军工与军队网络安全边界防护选型有参考意义。原文称据日媒8月9日报道。</p>
+      <div class="card-links">来源：<a href="https://www.secrss.com/articles/92946" target="_blank" rel="noopener">安全内参</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>生成时间 2026-08-11 09:16:28 · 由 WorkBuddy 自动生成</footer>
+
+  <script>
+    (function() {
+      var cards = document.querySelectorAll('.news-card');
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(function(c){ c.classList.add('show'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            var el = e.target;
+            var delay = parseInt(el.style.getPropertyValue('--stagger') || '0', 10) * 60;
+            setTimeout(function(){ el.classList.add('show'); }, delay);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold:0.12 });
+      cards.forEach(function(c){ io.observe(c); });
+    })();
+  </script>
+</body>
+</html>
