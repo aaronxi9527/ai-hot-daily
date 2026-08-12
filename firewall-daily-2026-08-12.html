@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-12</title>
+<style>
+  :root {
+    --bg:#0a0a0a; --card:#141416; --border:rgba(255,255,255,0.08);
+    --text:#e8e8ea; --muted:#9a9aa5; --link:#8B5CF6; --link-h:#C4B5FD;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .topbar {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+    background:rgba(10,10,10,0.6); backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;
+    border-image:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899) 1;
+  }
+  .topbar .brand { font-weight:700; font-size:15px; letter-spacing:.3px; }
+  .topbar .date { color:var(--muted); font-size:13px; }
+  .hero {
+    position:relative; padding:130px 28px 60px; text-align:center; overflow:hidden;
+  }
+  .hero::before {
+    content:""; position:absolute; top:-180px; left:50%; transform:translateX(-50%);
+    width:760px; height:420px; border-radius:50%;
+    background:radial-gradient(closest-side,rgba(139,92,246,.28),rgba(236,72,153,.12),transparent);
+    filter:blur(40px); z-index:0;
+  }
+  .hero h1 {
+    position:relative; z-index:1; font-size:46px; font-weight:800; letter-spacing:.5px;
+    background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero .subtitle { position:relative; z-index:1; color:var(--muted); margin-top:12px; font-size:16px; }
+  .stats { position:relative; z-index:1; display:flex; gap:18px; justify-content:center; margin-top:34px; flex-wrap:wrap; }
+  .stat {
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    padding:18px 30px; min-width:130px;
+  }
+  .stat .num {
+    font-size:32px; font-weight:800;
+    background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .stat .lbl { color:var(--muted); font-size:13px; margin-top:4px; }
+  .section { max-width:1180px; margin:0 auto; padding:40px 28px; }
+  .ai-block {
+    position:relative; background:var(--card); border:1px solid var(--border);
+    border-radius:16px; padding:26px 30px 26px 34px; overflow:hidden;
+  }
+  .ai-block::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:5px;
+    background:linear-gradient(180deg,#5B6CF7,#8B5CF6,#EC4899);
+  }
+  .ai-block h2 { font-size:20px; margin-bottom:14px; }
+  .ai-block p { color:#d4d4d8; margin-bottom:12px; font-size:15px; }
+  .ai-block p:last-child { margin-bottom:0; }
+  .ai-block strong { color:#fff; font-weight:700; }
+  .sec-title { font-size:24px; font-weight:800; margin:14px 0 22px; }
+  .grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(420px,1fr));
+    gap:20px;
+  }
+  @media (max-width:880px) { .grid { grid-template-columns:1fr; } .hero h1 { font-size:34px; } }
+  .news-card {
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    padding:20px 22px; display:flex; flex-direction:column; gap:10px;
+    opacity:0; transform:translateY(20px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .news-card.show { opacity:1; transform:translateY(0); }
+  .card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; }
+  .card-title { font-size:16px; font-weight:700; line-height:1.5; color:#f2f2f4; }
+  .tag {
+    flex-shrink:0; font-size:12px; font-weight:700; padding:3px 9px;
+    border-radius:8px; border:1px solid; white-space:nowrap;
+  }
+  .card-date { font-size:12px; color:var(--muted); }
+  .card-summary { font-size:14px; color:#c9c9cf; flex:1; }
+  .card-links { font-size:13px; color:var(--muted); margin-top:4px; }
+  .card-links a, a { color:var(--link); text-decoration:none; }
+  .card-links a:hover, a:hover { color:var(--link-h); text-decoration:underline; }
+  footer { text-align:center; color:#55555c; font-size:12px; padding:40px 20px 50px; }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">🛡️ 防火墙厂商日报</span>
+    <span class="date">2026-08-12</span>
+  </header>
+
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="subtitle">2026年8月12日 · 星期三</div>
+    <div class="stats">
+      <div class="stat"><div class="num">24</div><div class="lbl">总条数</div></div>
+      <div class="stat"><div class="num">17</div><div class="lbl">厂商动态</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">行业动态</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="ai-block">
+      <h2>🤖 AI 解读</h2>
+      <p><strong>今日看点在政企采购放量与AI安全收入兑现</strong>：天融信4天2板涨停领跑网安板块，半年报披露AI安全防护收入兑现，概念从炒作走向报表；迪普科技上半年净利暴增38.86%、首家通过公安部高性能国产化防火墙认证，国产化硬指标竞争加剧。</p>
+<p><strong>绿盟是本日动作最密集的厂商</strong>：连收Forrester首份ADS（智能体驱动开发安全）报告入选、IDC NDR市场份额9.5%且连续两年营收正增长、安全牛AI安全创新优势榜登顶三重背书，AI/智能体安全能力获第三方密集验证。</p>
+<p><strong>最该关注</strong>：军队两笔防火墙招标（合计超1074万）与政务网安采购（西湖区388万招标、武汉疾控259万中标）持续放量，报价参考价值高；华为USG6000F-S115在医共体隔离场景中标12台、H3C SecPath F1000-AI-90进清华，AI防火墙正从概念走向行业落地采购。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="sec-title">🏢 厂商动态</h2>
+    <div class="grid">
+      
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">天融信4天2板涨停领跑网安板块，AI安全防护收入兑现</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">天融信</span>
+      </div>
+      <div class="card-date">2026-08-11</div>
+      <p class="card-summary">8月11日早盘网安概念异动，天融信（002212）直线涨停报7.17元，封单量65.9万手、成交额4.34亿元，4天内第2个涨停板。公司已完成国产化大模型安全网关落地转化，AI安全防护业务形成实质营收。</p>
+      <div class="card-links">来源：<a href="https://finance.sina.cn/2026-08-11/detail-inimxmes5850306.d.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">绿盟科技入选Forrester首份智能体驱动开发安全(ADS)工具研究报告</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">绿盟科技</span>
+      </div>
+      <div class="card-date">2026-07-30</div>
+      <p class="card-summary">Forrester发布首份ADS工具研究报告，全球收录35家厂商，绿盟科技入选核心厂商。公司依托&quot;风云卫&quot;AI安全能力平台与&quot;清风卫&quot;产品系列，覆盖AI供应链安全评估、防护、响应全流程；AI-SCAN已具备对模型、智能体、Skills技能、MCP服务的安全评估能力，知识图谱实现风险毫秒级溯源。</p>
+      <div class="card-links">来源：<a href="https://www.freebuf.com/news/493114.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title">绿盟科技连续两年保持NDR市场营收正增长，IDC报告显示市场份额9.5%</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">绿盟科技</span>
+      </div>
+      <div class="card-date">2026-08-07</div>
+      <p class="card-summary">IDC发布《中国网络威胁检测与响应市场份额,2025》报告。在NDR市场存量内卷环境下，绿盟科技2025年NDR收入2.205亿元，市场份额9.5%，同比增长2.8%，是头部网安厂商中少数实现连续两年正向增长的企业，AI全链路检测与湖仓一体存算架构构筑差异化壁垒。</p>
+      <div class="card-links">来源：<a href="https://stock.10jqka.com.cn/20260807/c678765441.shtml" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title">绿盟科技登顶安全牛《网络安全企业100强》&quot;AI安全创新优势榜&quot;</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">绿盟科技</span>
+      </div>
+      <div class="card-date">2026-07-28</div>
+      <p class="card-summary">安全牛发布第十三版《网络安全企业100强》报告，绿盟科技凭借AI安全深度布局登顶&quot;AI安全创新优势榜&quot;。公司以&quot;风云卫&quot;安全大模型与&quot;清风卫&quot;产品矩阵双线布局，覆盖威胁检测、安全运营、智能渗透测试等场景；在CSEBenchmark测评中&quot;风云卫&quot;综合评分达83.31分，并积累百亿级安全专项语料。</p>
+      <div class="card-links">来源：<a href="https://www.toutiao.com/article/7667530250452042275" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:4;">
+      <div class="card-head">
+        <h3 class="card-title">迪普科技2026半年报：净利润暴增38.86%，首家通过公安部高性能国产化防火墙认证</h3>
+        <span class="tag" style="background:#6B728022;color:#6B7280;border-color:#6B728055;">其他</span>
+      </div>
+      <div class="card-date">2026-08-05</div>
+      <p class="card-summary">迪普科技发布2026年半年报，净利润同比增长38.86%，安全主业逆势增长6.44%。公司成为首家通过公安部高性能国产化防火墙认证的安全厂商，已推出整机400G处理能力的国产自主可控应用交付产品（国内首台套），信创安全设备在电力能源行业在网应用数超1万台。</p>
+      <div class="card-links">来源：<a href="https://finance.sina.cn/2026-08-05/detail-inimeqvf1851013.d.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:5;">
+      <div class="card-head">
+        <h3 class="card-title">清华大学科学博物馆网络建设项目中标，H3C SecPath F1000-AI-90出口防火墙入选</h3>
+        <span class="tag" style="background:#F59E0B22;color:#F59E0B;border-color:#F59E0B55;">H3C</span>
+      </div>
+      <div class="card-date">2026-08-10</div>
+      <p class="card-summary">清华大学科学博物馆网络建设项目中标公告（清采招第20260219号）显示，北京绿色苹果技术有限公司以100.96万元中标，标的含H3C SecPath F1000-AI-90出口防火墙（单价53187元）等网络设备。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260810_27106663.htm" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">华为星河AI金融网络峰会昆明举办 聚焦AI时代金融网络安全与智能体互联</h3>
+        <span class="tag" style="background:#EC489922;color:#EC4899;border-color:#EC489955;">华为</span>
+      </div>
+      <div class="card-date">2026-08-10</div>
+      <p class="card-summary">8月10日，华为金融网络创新峰会2026在昆明举办，300余位金融客户参会，围绕数据中心、广域、园区网络及网络安全等发布星河AI金融网络方案，并正式发布《金融智能体可信互联研究》报告。</p>
+      <div class="card-links">来源：<a href="https://m.10jqka.com.cn/20260810/c678834639.shtml" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">启明星辰承接新皇岗口岸网络安全核心项目，护航深港跨境枢纽</h3>
+        <span class="tag" style="background:#A855F722;color:#A855F7;border-color:#A855F755;">启明星辰</span>
+      </div>
+      <div class="card-date">2026-08-11</div>
+      <p class="card-summary">作为中国移动专责网信安全子公司，启明星辰承接新皇岗口岸网络安全核心项目，涵盖口岸全网安全防护与深港合作查验平台专项安全保障两大任务，覆盖通关、查验、监控及业务协同等系统。新皇岗口岸为国家级深港跨境枢纽，全面推行&quot;合作查验、一次放行&quot;通关模式。</p>
+      <div class="card-links">来源：<a href="https://stock.10jqka.com.cn/20260811/c678862683.shtml" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title">启明星辰全领域入选信通院第五期《数字安全护航技术能力全景图》</h3>
+        <span class="tag" style="background:#A855F722;color:#A855F7;border-color:#A855F755;">启明星辰</span>
+      </div>
+      <div class="card-date">2026-07-28</div>
+      <p class="card-summary">中国信息通信研究院发布第五期《数字安全护航技术能力全景图》，启明星辰入选17大类、150项细分领域，实现全领域覆盖。其MAF大模型应用防火墙、MASB大模型访问安全代理、MAVAS大模型安全评估系统等AI安全产品矩阵获权威认可，并推出面向OpenClaw智能体部署安全痛点的云地协同三件套解决方案。</p>
+      <div class="card-links">来源：<a href="https://www.venustech.com.cn/new_type/gsxw/20260728/29516.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title">启明星辰联合山石网科中标央行清算总中心120万元网络安全设备采购</h3>
+        <span class="tag" style="background:#A855F722;color:#A855F7;border-color:#A855F755;">启明星辰</span>
+      </div>
+      <div class="card-date">2026-07-22</div>
+      <p class="card-summary">中国人民银行清算总中心2026年桌面云改造网络安全设备采购结果公示，中标金额120万元。标的含启明星辰万兆防火墙USG-FW-N-G7110-JR（20台）、IPS、DDoS、WAF及负载均衡等设备，以及山石网科异构万兆防火墙SG-6000-K6360-B（4台），中标人评审得分89.4分。</p>
+      <div class="card-links">来源：<a href="https://www.chinamae.com/purchases/45bd68e5450179363e2049f7f37f3519.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:4;">
+      <div class="card-head">
+        <h3 class="card-title">厦门市网络安全加固项目中标 深信服AF-2000-FH3220B-QS防火墙等146.5万元成交</h3>
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border-color:#5B6CF755;">深信服</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">8月4日，中国政府采购网福建分网发布厦门市网络安全加固项目（采购包1）结果公告，厦门星舟科技以146.5万元中标，采购标的含深信服AF-2000-FH3220B-QS等防火墙一批，评审总得分91.67，用于当地政企单位边界安全加固。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260804_27063069.htm" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:5;">
+      <div class="card-head">
+        <h3 class="card-title">北京协和医院网络信息安全服务项目中标 奇安信网神124.685万元拿下安全保障服务</h3>
+        <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border-color:#8B5CF655;">奇安信</span>
+      </div>
+      <div class="card-date">2026-08-06</div>
+      <p class="card-summary">8月6日，北京协和医院网络信息安全服务项目中标公告显示，奇安信网神以124.685万元中标安全保障服务，负责全院风险监测、应急响应与风险评估整改，服务期1年；长亭科技以37万元中标渗透测试与代码审计。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260806_27082834.htm" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">云南西畴县医共体医保内外网隔离项目 采购12台华为USG6000F-S115防火墙</h3>
+        <span class="tag" style="background:#EC489922;color:#EC4899;border-color:#EC489955;">华为</span>
+      </div>
+      <div class="card-date">2026-08-10</div>
+      <p class="card-summary">8月10日，西畴县医共体医保内外网物理隔离改造项目成交公告，中国电信文山分公司以108万元中标，采购华为USG6000F-S115防火墙12台、深信服AF-1000-FH1600B防火墙3台及GAP-1000-A600S网闸3台。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg//cjgg/202608/t20260810_27103205.htm" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">龙江银行2026年数据安全咨询服务项目 奇安信网神81万元列第一中标候选人</h3>
+        <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border-color:#8B5CF655;">奇安信</span>
+      </div>
+      <div class="card-date">2026-08-07</div>
+      <p class="card-summary">8月7日，龙江银行2026年数据安全咨询服务项目公示中标候选人，奇安信网神以81万元报价排名第一，绿盟科技（55.5万元）、天职国际（73.6万元）分列二三位，服务期自合同签订起6个月，公示期至8月10日。</p>
+      <div class="card-links">来源：<a href="https://www.365trade.com.cn/jfwzb/855158.jhtml" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title">咸宁市融媒体中心等保项目落地 深信服AF-1000-L2100-RM防火墙8台及SIP安全感知平台中标</h3>
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border-color:#5B6CF755;">深信服</span>
+      </div>
+      <div class="card-date">2026-08-02</div>
+      <p class="card-summary">8月2日，咸宁融媒体中心广播电视业务等保项目中标结果公告，湖北广电网络以142.82万元中标，采购深信服AF-1000-L2100-RM下一代防火墙8台、SIP-1000-L500K安全感知平台、潜伏威胁探针及aES终端防病毒等产品。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp-hubei.gov.cn/notice/202608/notice_a4e19940e0b64fb09415993df898eee5.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title">四川大学华西空港医院信息化采购落地 深信服AF-2000-FH2350A数据中心防火墙2台56.79万元</h3>
+        <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border-color:#5B6CF755;">深信服</span>
+      </div>
+      <div class="card-date">2026-08-03</div>
+      <p class="card-summary">8月3日，成都双流区第一人民医院（华西空港医院）2026年第一批信息化货物结果公告，四川云信服科技以56.79万元中标，采购深信服AF-2000-FH2350A数据中心防火墙2台，单价28.395万元，含AF-2000V8.0万兆模块。</p>
+      <div class="card-links">来源：<a href="https://www.ahzb.net/Bidding/content.html?id=131821864" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:4;">
+      <div class="card-head">
+        <h3 class="card-title">吉林白山校园网络升级项目 华为USG6000F-S160-AC与USG6000F-S13出口网关落地</h3>
+        <span class="tag" style="background:#EC489922;color:#EC4899;border-color:#EC489955;">华为</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">8月4日，白山市江源区校园网络升级改造设备购置项目中标结果公告，吉林省宏瑞智能工程以110.72万元中标，配置华为USG6000F-S160-AC、USG6000F-S13出口网关及S5751R交换机，用于全区校园出口安全防护。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260804_27065317.htm" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="sec-title">🏭 行业动态</h2>
+    <div class="grid">
+      
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">军队&quot;安全保密体系建设项目&quot;公开招标：采购万兆防火墙等设备预算989.67万元</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">军队</span>
+      </div>
+      <div class="card-date">2026-07-29</div>
+      <p class="card-summary">7月29日军队采购网发布招标公告(2026-JQ02-W1196)，采购万兆防火墙、虚拟机安全防护软件、光盘摆渡设备等，项目预算989.67万元，投标截止8月19日，要求供应商具备武器装备科研生产保密资质或涉密信息系统集成资质。</p>
+      <div class="card-links">来源：<a href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d00c79f2c5d22019fa669d5d46aab.html?noticeType=001011" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:1;">
+      <div class="card-head">
+        <h3 class="card-title">杭州西湖区2026年电子政务网络安全保障服务项目公开招标：预算388万元</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">政府</span>
+      </div>
+      <div class="card-date">2026-08-04</div>
+      <p class="card-summary">8月4日中国政府采购网浙江分网发布招标公告，西湖区电子政务网络安全保障服务项目预算及最高限价388万元，涵盖专业安全服务（APT攻击预警、态势感知、漏洞扫描、渗透测试、红队与攻防演练保障）、设备更新及设备维保三部分，投标截止8月26日。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260804_27063440.htm" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:2;">
+      <div class="card-head">
+        <h3 class="card-title">武汉市疾控中心网络安全服务及信息化基础设施运维服务(2026-2027)采购：武汉吧哒科技259万元中标</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">政府</span>
+      </div>
+      <div class="card-date">2026-08-06</div>
+      <p class="card-summary">8月6日评审定标，武汉吧哒科技股份有限公司以259万元中标武汉市疾控中心网络安全服务及信息化基础设施运维服务项目，服务期自签订合同起一年，覆盖网络安全运营、防护及基础设施运维，综合评分93.64分。</p>
+      <div class="card-links">来源：<a href="https://www.ccgp-hubei.gov.cn/notice/202608/notice_1245511915019214848.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:3;">
+      <div class="card-head">
+        <h3 class="card-title">中国人民银行莆田市分行网络防火墙反拍采购：天融信NGFW4000-UF预算4.35万元</h3>
+        <span class="tag" style="background:#10B98122;color:#10B981;border-color:#10B98155;">金融</span>
+      </div>
+      <div class="card-date">2026-07-28</div>
+      <p class="card-summary">7月28日中央政府采购网发布反拍采购需求公告，中国人民银行莆田市分行采购天融信NGFW4000-UF千兆防火墙1台（含3年授权），预算总金额43488元，报价截止7月31日，合同签订后30个日历日内到货。</p>
+      <div class="card-links">来源：<a href="https://mkt.zycg.gov.cn/mall-view/information/detail?noticeId=798471" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:4;">
+      <div class="card-head">
+        <h3 class="card-title">中国移动2026年网络安全漏洞管理平台五期工程软件开发与系统集成服务询比公告</h3>
+        <span class="tag" style="background:#F59E0B22;color:#F59E0B;border-color:#F59E0B55;">运营商</span>
+      </div>
+      <div class="card-date">2026-07-31</div>
+      <p class="card-summary">7月31日中国移动采购与招标网发布询比公告，采购中国移动2026年网络安全漏洞管理平台五期工程应用软件开发与系统集成服务，7月31日公告、应答文件截止时间8月5日，属集团级网络安全能力建设持续投入。</p>
+      <div class="card-links">来源：<a href="https://b2b.10086.cn/b2b/main/viewNoticeContent.htmlnoticeBean.id=375331" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:5;">
+      <div class="card-head">
+        <h3 class="card-title">新疆阿克苏地区公安局安全防护设备采购中标：绿盟边界防火墙等设备72.92万元</h3>
+        <span class="tag" style="background:#06B6D422;color:#06B6D4;border-color:#06B6D455;">政府</span>
+      </div>
+      <div class="card-date">2026-07-16</div>
+      <p class="card-summary">阿克苏地区政府采购中心7月16日发布中标结果，库车疆盾信息技术有限公司以72.92万元中标。采购内容含绿盟NFNX5-HH2000边界防火墙2台、堡垒机、日志审计、数据库审计、漏洞扫描设备及固平等保测评专项服务，另配华为S12700E-4核心交换机1台，采购方为阿克苏地区公安局。</p>
+      <div class="card-links">来源：<a href="https://ggzy.akszwfw.cn/aksggzy/jyxx/001002/001002007/20260717/a875676e-3243-4276-9bde-74b7d30f15ec.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+
+    <article class="news-card" style="--stagger:0;">
+      <div class="card-head">
+        <h3 class="card-title">军队&quot;信息安全设备及软件采购项目(二次)&quot;竞争性谈判：青岛采购万兆防火墙等设备共85万元</h3>
+        <span class="tag" style="background:#EF444422;color:#EF4444;border-color:#EF444455;">军队</span>
+      </div>
+      <div class="card-date">2026-07-24</div>
+      <p class="card-summary">7月24日发布采购公告(2026-JHBAYY-W3010)，山东青岛某部队竞争性谈判采购信息安全设备及软件，含万兆防火墙1台16万元、漏洞扫描、数据库审计、日志审计、网络安全审计、数据脱敏设备及安全管理平台各1台/套，合计85万元，报价截止8月13日。</p>
+      <div class="card-links">来源：<a href="https://shandong.zhaobiao.cn/bidding_v_ab71e4e643ccd68fcf82b4dffb5a71ff.html" target="_blank" rel="noopener">查看原文</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>生成时间 2026-08-12 08:57:07 · 由 WorkBuddy 自动生成</footer>
+
+  <script>
+    (function() {
+      var cards = document.querySelectorAll('.news-card');
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(function(c){ c.classList.add('show'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            var el = e.target;
+            var delay = parseInt(el.style.getPropertyValue('--stagger') || '0', 10) * 60;
+            setTimeout(function(){ el.classList.add('show'); }, delay);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold:0.12 });
+      cards.forEach(function(c){ io.observe(c); });
+    })();
+  </script>
+</body>
+</html>
