@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-14</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --panel: #111114;
+    --panel-2: #16161b;
+    --border: #26262e;
+    --text: #e6e6eb;
+    --text-dim: #9b9ba6;
+    --grad: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+    --link: #8B5CF6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 顶栏毛玻璃 */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 28px;
+    background: rgba(10,10,10,0.72);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+  .nav-logo {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: var(--grad);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; box-shadow: 0 0 18px rgba(139,92,246,0.45);
+  }
+  .nav-links { display: flex; gap: 6px; font-size: 13px; color: var(--text-dim); }
+  .nav-links a { color: var(--text-dim); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all .2s; }
+  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+  main { max-width: 1180px; margin: 0 auto; padding: 96px 24px 60px; }
+  /* Hero */
+  .hero { text-align: center; padding: 44px 0 34px; position: relative; }
+  .hero::before {
+    content: ""; position: absolute; inset: -40px -20% auto -20%; height: 320px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(91,108,247,0.16) 0%, rgba(139,92,246,0.08) 35%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; letter-spacing: 0.5px;
+    background: linear-gradient(120deg, #ffffff 20%, #b9c0ff 50%, #d8b4fe 80%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-date { margin-top: 12px; font-size: 15px; color: var(--text-dim); }
+  .hero-stats { display: flex; gap: 14px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
+  .stat {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+    padding: 12px 26px; min-width: 120px;
+  }
+  .stat b { display: block; font-size: 26px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat span { font-size: 12.5px; color: var(--text-dim); }
+  /* AI 解读 */
+  .ai-box {
+    background: linear-gradient(180deg, rgba(91,108,247,0.09), rgba(236,72,153,0.06)), var(--panel);
+    border: 1px solid rgba(139,92,246,0.28); border-radius: 18px;
+    padding: 26px 30px; margin: 10px 0 40px; position: relative; overflow: hidden;
+  }
+  .ai-box::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad);
+  }
+  .ai-box h2 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: #b9c0ff; display:flex; align-items:center; gap:8px; }
+  .ai-box p { font-size: 14.5px; color: var(--text); opacity: 0.92; }
+  .ai-tag {
+    font-size: 11px; padding: 3px 9px; border-radius: 6px;
+    background: linear-gradient(135deg, rgba(91,108,247,0.25), rgba(236,72,153,0.2));
+    color: #d8b4fe; font-weight: 600; letter-spacing: 0.4px;
+  }
+  /* Section */
+  .sec { margin: 40px 0; }
+  .sec-title { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .sec-title .count {
+    font-size: 13px; font-weight: 700; padding: 3px 12px; border-radius: 999px;
+    background: rgba(139,92,246,0.15); color: #c4b5fd;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    opacity: 0; transform: translateY(26px);
+  }
+  .card.visible { opacity: 1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease, border-color .25s, box-shadow .25s; }
+  .card:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.5); box-shadow: 0 10px 34px rgba(139,92,246,0.14); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .tags { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .tag { font-size: 11.5px; font-weight: 600; padding: 3px 11px; border-radius: 999px; letter-spacing: 0.3px; }
+  .tag-vendor {
+    background: linear-gradient(135deg, rgba(91,108,247,0.22), rgba(139,92,246,0.22));
+    color: #c7d2fe; border: 1px solid rgba(139,92,246,0.35);
+  }
+  .hot { font-size: 12px; }
+  .merged {
+    font-size: 10.5px; color: #f0abfc; background: rgba(236,72,153,0.14);
+    border: 1px solid rgba(236,72,153,0.3); padding: 2px 8px; border-radius: 999px;
+  }
+  .date { font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+  .card-title { font-size: 15.5px; font-weight: 700; line-height: 1.5; }
+  .card-summary { font-size: 13.5px; color: var(--text-dim); flex: 1; }
+  .card-links { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 4px; }
+  .src-link {
+    font-size: 12.5px; font-weight: 600; color: var(--link);
+    text-decoration: none; transition: all .2s; padding: 4px 10px; border-radius: 8px;
+    background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.22);
+  }
+  .src-link:hover { color: #c4b5fd; text-decoration: underline; background: rgba(139,92,246,0.2); border-color: rgba(139,92,246,0.5); }
+  .empty-card {
+    background: var(--panel); border: 1px dashed var(--border); border-radius: 16px;
+    padding: 40px; text-align: center; color: var(--text-dim); font-size: 14px;
+  }
+  footer {
+    text-align: center; color: var(--text-dim); font-size: 12.5px;
+    padding: 36px 0 40px; border-top: 1px solid var(--border); margin-top: 50px;
+  }
+  @media (max-width: 640px) {
+    .nav { padding: 12px 16px; }
+    main { padding: 84px 14px 40px; }
+    .grid { grid-template-columns: 1fr; }
+    .ai-box { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="nav-logo">🛡️</span>
+    <span>防火墙厂商日报</span>
+  </div>
+  <div class="nav-links">
+    <a href="#sec-vendor">厂商动态</a>
+    <a href="#sec-industry">行业动态</a>
+    <a href="#ai-insight">AI 解读</a>
+  </div>
+</nav>
+<main>
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <p class="hero-date">2026年8月14日 星期五</p>
+    <div class="hero-stats">
+      <div class="stat"><b>19</b><span>今日动态</span></div>
+      <div class="stat"><b>6</b><span>厂商动态</span></div>
+      <div class="stat"><b>13</b><span>行业动态</span></div>
+    </div>
+  </section>
+
+  <section class="ai-box" id="ai-insight">
+    <h2><span class="ai-tag">AI 解读</span> 今日看点</h2>
+    <p>今天的头条当属 CISA 在 8 月 11 日一口气把三个在野漏洞塞进 KEV 目录——思科 ASA/FTD 的远程重载漏洞直接打的是防火墙边界本体，加上 Metabase 那个 CVSS 10.0 的未认证 SQL 注入，攻击者正把防火墙和数据分析平台当成同一条信任链来打。国产侧山石网科动作最猛：把自研 ASIC 防火墙塞进了证券量化交易这个微秒级时延的新场景，≤4.4μs 转发直击监管新规下的券商刚需；天融信则把安全触角伸向车联网，车载防火墙全系列加北汽/广汽/东风/吉利四家车企的合作名单，边界安全的战场正在从机房扩展到车轮上。政采侧海关总署 1018 万大单一次披露迪普 55 台 + 山石 123 台 + 深信服 VPN，国产防火墙在关键基础设施里的渗透已经不需要靠故事，报价单本身就是最好的证据。</p>
+  </section>
+
+  
+    <section class="sec sec-vendor">
+      <h2 class="sec-title">🏢 厂商动态 <span class="count">6</span></h2>
+      <div class="grid">
+    <article class="card" data-idx="0">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          <span class="hot">🔥</span><span class="merged">合并3源</span>
+        </div>
+        <span class="date">2026.08.11</span>
+      </div>
+      <h3 class="card-title">CISA KEV 8月11日新增三漏洞：思科ASA/FTD远程重载、Windows afd.sys提权、Metabase未认证SQL注入CVSS10.0</h3>
+      <p class="card-summary">CISA单日向KEV目录新增三条在野利用漏洞：CVE-2026-20349（Cisco ASA/FTD远程SSL VPN堆检查缺陷，CVSS 8.6，可致防火墙重载，BOD 26-04要求8月14日前修复）、CVE-2026-68820（Windows afd.sys内核提权）、CVE-2026-72898（Metabase未认证SQL注入CVSS 10.0，PoC公开，Shodan约2500实例暴露公网）。</p>
+      <div class="card-links"><a href="https://www.cisa.gov/news-events/alerts/2026/08/11/cisa-adds-three-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener" class="src-link">来源1 ↗</a> <a href="https://kb.gajshield.com/a/1236/cisa-adds-three-known-exploited-vulnerabilities-to-catalog" target="_blank" rel="noopener" class="src-link">来源2 ↗</a> <a href="https://www.163.com/dy/article/L471PM5L05384JSS.html" target="_blank" rel="noopener" class="src-link">来源3 ↗</a></div>
+    </article>
+    <article class="card" data-idx="1">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">山石网科</span>
+          <span class="hot">🔥</span>
+        </div>
+        <span class="date">2026.08.13</span>
+      </div>
+      <h3 class="card-title">山石网科&华讯网络发布证券高频量化交易安全隔离解决方案：ASIC防火墙实现≤4.4μs极速转发</h3>
+      <p class="card-summary">2026证券程序化交易监管新规落地，量化私募机房搬迁、边界安全隔离成刚需。山石网科联合华讯网络推出证券高频量化交易安全隔离一体化解决方案，依托自研ASIC芯片防火墙（ASIC+CPU异构架构）实现≤4.4μs极速转发，支持24万条安全策略/4万条NAT规则全硬件加速，兼顾监管合规与交易速度。</p>
+      <div class="card-links"><a href="https://www.163.com/dy/article/L47FT9U20538ER6X.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="2">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">天融信</span>
+          <span class="merged">合并2源</span>
+        </div>
+        <span class="date">2026.08.10</span>
+      </div>
+      <h3 class="card-title">【增量】天融信推出车载防火墙等车联网安全产品全系列，与北汽/广汽/东风/吉利合作，新增无人驾驶概念</h3>
+      <p class="card-summary">天融信互动平台披露：智能驾驶安全领域已推出车载防火墙、车载入侵检测、车联网安全态势感知、车联网数据安全管控平台等系列产品，与北汽、广汽、东风、吉利、上海畅星等头部车企深度合作；同花顺新增「无人驾驶」概念。</p>
+      <div class="card-links"><a href="https://www.cls.cn/detail/xk/92e3b6cd0f3419e11ffbe345140d813d" target="_blank" rel="noopener" class="src-link">来源1 ↗</a> <a href="https://m.10jqka.com.cn/20260810/c678823188.shtml" target="_blank" rel="noopener" class="src-link">来源2 ↗</a></div>
+    </article>
+    <article class="card" data-idx="3">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.13</span>
+      </div>
+      <h3 class="card-title">Palo Alto Networks 2026年8月安全更新修复10个CVE：PAN-OS/GlobalProtect/Prisma Access</h3>
+      <p class="card-summary">8月12日发布更新修复10个独立CVE：1个PAN-OS URL过滤信息泄露（CVE-2026-0301）、5个GlobalProtect（提权/中间人代码执行/UDP隧道溢出/证书验证绕过）、4个Prisma Access Agent，另有Prisma Browser Chromium更新（CVSS-B 9.2），目前暂无在野利用证据。</p>
+      <div class="card-links"><a href="https://hoploninfosec.com/palo-alto-networks-august-2026-vulnerabilities" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="4">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.06</span>
+      </div>
+      <h3 class="card-title">SonicWall SonicOS安全策略绕过漏洞CVE-2026-0516（CERT-FR通告）</h3>
+      <p class="card-summary">SonicWall SonicOS存在HTTP头脚本注入类漏洞可致安全策略绕过，影响防火墙边界防护；法国CERT-FR发布公告，EPSS 30天利用概率0.21%，需应用CVE-2026-0516补丁。</p>
+      <div class="card-links"><a href="https://www.csirts.com/advisory/vulnerability-in-sonicwall-sonicos-august-1389657" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="5">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">天融信</span>
+          
+        </div>
+        <span class="date">2026.08.09</span>
+      </div>
+      <h3 class="card-title">天融信承办2026网络安全技术创新与人才教育大会AI+安全分论坛（长沙）</h3>
+      <p class="card-summary">8月9日天融信携手新安盟工业互联网安全专委会承办「人工智能+安全」分论坛，发布『一个中心统筹、六大能力支撑』智能体安全保障体系与AI安全防护产品矩阵，强调让安全成为智能体规模化落地的加速器而非刹车片。</p>
+      <div class="card-links"><a href="https://www.topsec.com.cn/newsx/6795" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article></div>
+    </section>
+
+  
+    <section class="sec sec-industry">
+      <h2 class="sec-title">🏭 行业动态 <span class="count">13</span></h2>
+      <div class="grid">
+    <article class="card" data-idx="0">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          <span class="hot">🔥</span>
+        </div>
+        <span class="date">2026.08.11</span>
+      </div>
+      <h3 class="card-title">海关总署2026年网络安全设备采购中标1018万元：迪普一类防火墙55台+山石二类123台+深信服VPN网关</h3>
+      <p class="card-summary">荣联科技中标海关总署网络安全设备采购（重新招标）1018.35万元：迪普FW1000-TA-A10一类防火墙55台（10.95万/台）、山石网科SG-6000-K6560-B二类防火墙123台（3万/台）、深信服aTrust VPN网关3台，评审总得分96.29分。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260811_27109684.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="1">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">启明星辰</span>
+          
+        </div>
+        <span class="date">2026.08.10</span>
+      </div>
+      <h3 class="card-title">启明星辰中标青岛市黄岛区政务网络安全运维项目82.6万元</h3>
+      <p class="card-summary">北京启明星辰中标青岛市黄岛区工信局政务网络安全运维项目（三次招标），中标金额82.6万元，评审得分68.0/62.0领先其余三家。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg//zbgg/202608/t20260810_27107369.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="2">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">启明星辰</span>
+          
+        </div>
+        <span class="date">2026.08.04</span>
+      </div>
+      <h3 class="card-title">启明星辰天清汉马防火墙/VPN中标黑龙江广播电视台网络设备升级项目</h3>
+      <p class="card-summary">黑龙江广播电视台新闻短视频内容生产系统及网络升级项目（二次）：黑龙江铎勤科技中标，含启明星辰天清汉马USG防火墙1台（11.8万）、天清汉马VPN 1台（7.7万）、华为S530交换机10台等，合同总额148.6万元。</p>
+      <div class="card-links"><a href="https://www.gc-zb.com/read-767072451.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="3">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">启明星辰</span>
+          
+        </div>
+        <span class="date">2026.08.04</span>
+      </div>
+      <h3 class="card-title">启明星辰防火墙/NGIPS/日志审计中标阿尔泰山国有林管理局管护能力建设项目</h3>
+      <p class="card-summary">阿尔泰山国有林管理局2026年森林保护修复补偿-管护能力建设项目：采购启明星辰防火墙、NGIPS5000入侵防护（2台5.79万）、日志审计、堡垒机、漏洞扫描等安全设备。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260804_27071167.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="4">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">深信服</span>
+          
+        </div>
+        <span class="date">2026.08.03</span>
+      </div>
+      <h3 class="card-title">深信服AF-1000防火墙中标合肥六中智能化改造项目（中国移动安徽369万元总包）</h3>
+      <p class="card-summary">合肥六中百花井校区智能化改造项目第1包：中国移动安徽中标369.2万元，含深信服AF-1000-FH2100B-JD防火墙2台（4.5万/台）。</p>
+      <div class="card-links"><a href="https://www.ahggzyjt.com/jiaoyxx/020003/020003006/20260803/be448e42-584a-4d5c-90e4-ace42398852a.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="5">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">H3C</span>
+          
+        </div>
+        <span class="date">2026.08.05</span>
+      </div>
+      <h3 class="card-title">H3C SecPath F100-M-G5-EI防火墙中标杭州市消防救援支队网络设备采购项目</h3>
+      <p class="card-summary">杭州市消防救援支队计算机网络设备（询价）采购：北京世纪悙通成交10.845万元，含H3C NS-SecPath F100-M-G5-EI防火墙及授权2台（1万/台）、核心路由器、交换机等。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/zygg//cjgg/202608/t20260805_27072286.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="6">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.03</span>
+      </div>
+      <h3 class="card-title">北京卫生职业学院新院区网络安全设备包中标153.7万元</h3>
+      <p class="card-summary">中移系统集成中标北京卫生职业学院新院区信息化配套第9包（网络安全设备）153.7万元：FW1000-TS-HGC等，含校园网出口防火墙（5年原厂保修/软件升级）、数据中心防火墙、WAF、堡垒机、日志审计、数据库审计等。</p>
+      <div class="card-links"><a href="https://ggzyfw.beijing.gov.cn/jyxxzbjggg/20260803/5652858.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="7">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.01</span>
+      </div>
+      <h3 class="card-title">军队卫勤云平台建设相关设备采购公告（含防火墙，预算18.5万）</h3>
+      <p class="card-summary">军队医院卫勤云平台建设采购防火墙及固态硬盘安装调试服务（预算18.5万），解决现有边界防火墙运行年限久、安全特征库过期、防护能力不足问题，硬件维保3年。</p>
+      <div class="card-links"><a href="http://905yy.mil.cn/list/304/3202.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="8">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.14</span>
+      </div>
+      <h3 class="card-title">军队国产化网络安全防护设备采购（二次）竞争性谈判：四平70万元</h3>
+      <p class="card-summary">军队竞争性谈判采购国产化网络安全防护设备：漏洞扫描设备3部+千兆网络入侵检测设备3部，预算/最高限价70万元，交货吉林四平，8月14日谈判。</p>
+      <div class="card-links"><a href="http://www.gdtzb.com/g-zb-47174072.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="9">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.13</span>
+      </div>
+      <h3 class="card-title">2026年广东产互云上安全扩容设备采购招标：下一代防火墙/WAF/日志审计等，预估882万元</h3>
+      <p class="card-summary">联通（广东）产业互联网云上安全扩容采购：下一代防火墙、Web应用防火墙、日志审计、数据库审计等安全设备及实施服务，预估规模882.5万元，8月13日开标，要求20日内到货。</p>
+      <div class="card-links"><a href="https://www.zbytb.com/s-zb-68031030.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="10">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.12</span>
+      </div>
+      <h3 class="card-title">中国联通鄂尔多斯X86云池下一代防火墙购置项目（二次）招标：两度流标后第三次挂网</h3>
+      <p class="card-summary">联通鄂尔多斯采购1台2U国产化下一代防火墙（国产CPU/OS，全系列安全功能），预算10.8万、限价9.72万；前两次招标因投标人不足3家流标，8月12日第三次挂网，9月2日截标。</p>
+      <div class="card-links"><a href="https://www.zbytb.com/s-zb-68799381.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="11">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.05</span>
+      </div>
+      <h3 class="card-title">联通（上海）产业互联网数据中心防火墙设备直接采购需求公示</h3>
+      <p class="card-summary">联通上海产互拟直接采购2台数据中心防火墙，依据《中国联通直接采购实施细则》第四条情形（五）政企客户要求唯一供应商，公示期8月5-10日。</p>
+      <div class="card-links"><a href="https://www.ulilink.com/newDetailsView?id=6da6f309d9dad43ba2bb302de47b20b5c5843b0a7aec114a274b2ad7cb330650" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="12">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">其他</span>
+          
+        </div>
+        <span class="date">2026.08.12</span>
+      </div>
+      <h3 class="card-title">方城县公安局公安信息网传输设备购置项目中标94.66万元（含防火墙/超融合探针）</h3>
+      <p class="card-summary">中国铁塔南阳分公司中标方城县公安局公安信息网传输设备购置项目94.66万元：配置2台网络安全设备防火墙、超融合检测探针1台、高性能路由器2台等，评审总得分92.4分。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260812_27116264.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article></div>
+    </section>
+
+  <footer>
+    🛡️ 中国防火墙厂商日报 · 数据采集于互联网公开信息 · 2026年8月14日 星期五<br>
+    报告由 AI 自动生成，仅作行业信息参考
+  </footer>
+</main>
+<script>
+  // 滚动触发渐入动画
+  (function () {
+    var cards = document.querySelectorAll('.card');
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function (c) { c.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    cards.forEach(function (c, i) {
+      c.style.transitionDelay = (i % 6) * 60 + 'ms';
+      io.observe(c);
+    });
+  })();
+</script>
+</body>
+</html>
