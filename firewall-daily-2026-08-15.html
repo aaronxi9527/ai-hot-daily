@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-15</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --panel: #111114;
+    --panel-2: #16161b;
+    --border: #26262e;
+    --text: #e6e6eb;
+    --text-dim: #9b9ba6;
+    --grad: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+    --link: #8B5CF6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 顶栏毛玻璃 */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 28px;
+    background: rgba(10,10,10,0.72);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+  .nav-logo {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: var(--grad);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; box-shadow: 0 0 18px rgba(139,92,246,0.45);
+  }
+  .nav-links { display: flex; gap: 6px; font-size: 13px; color: var(--text-dim); }
+  .nav-links a { color: var(--text-dim); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all .2s; }
+  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+  main { max-width: 1180px; margin: 0 auto; padding: 96px 24px 60px; }
+  /* Hero */
+  .hero { text-align: center; padding: 44px 0 34px; position: relative; }
+  .hero::before {
+    content: ""; position: absolute; inset: -40px -20% auto -20%; height: 320px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(91,108,247,0.16) 0%, rgba(139,92,246,0.08) 35%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; letter-spacing: 0.5px;
+    background: linear-gradient(120deg, #ffffff 20%, #b9c0ff 50%, #d8b4fe 80%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-date { margin-top: 12px; font-size: 15px; color: var(--text-dim); }
+  .hero-stats { display: flex; gap: 14px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
+  .stat {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+    padding: 12px 26px; min-width: 120px;
+  }
+  .stat b { display: block; font-size: 26px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat span { font-size: 12.5px; color: var(--text-dim); }
+  /* AI 解读 */
+  .ai-box {
+    background: linear-gradient(180deg, rgba(91,108,247,0.09), rgba(236,72,153,0.06)), var(--panel);
+    border: 1px solid rgba(139,92,246,0.28); border-radius: 18px;
+    padding: 26px 30px; margin: 10px 0 40px; position: relative; overflow: hidden;
+  }
+  .ai-box::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad);
+  }
+  .ai-box h2 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: #b9c0ff; display:flex; align-items:center; gap:8px; }
+  .ai-box p { font-size: 14.5px; color: var(--text); opacity: 0.92; }
+  .ai-tag {
+    font-size: 11px; padding: 3px 9px; border-radius: 6px;
+    background: linear-gradient(135deg, rgba(91,108,247,0.25), rgba(236,72,153,0.2));
+    color: #d8b4fe; font-weight: 600; letter-spacing: 0.4px;
+  }
+  /* Section */
+  .sec { margin: 40px 0; }
+  .sec-title { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .sec-title .count {
+    font-size: 13px; font-weight: 700; padding: 3px 12px; border-radius: 999px;
+    background: rgba(139,92,246,0.15); color: #c4b5fd;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    opacity: 0; transform: translateY(26px);
+  }
+  .card.visible { opacity: 1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease, border-color .25s, box-shadow .25s; }
+  .card:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.5); box-shadow: 0 10px 34px rgba(139,92,246,0.14); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .tags { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .tag { font-size: 11.5px; font-weight: 600; padding: 3px 11px; border-radius: 999px; letter-spacing: 0.3px; }
+  .tag-vendor {
+    background: linear-gradient(135deg, rgba(91,108,247,0.22), rgba(139,92,246,0.22));
+    color: #c7d2fe; border: 1px solid rgba(139,92,246,0.35);
+  }
+  .tag-industry {
+    background: linear-gradient(135deg, rgba(16,185,129,0.18), rgba(52,211,153,0.14));
+    color: #6ee7b7; border: 1px solid rgba(52,211,153,0.32);
+  }
+  .hot { font-size: 12px; }
+  .merged {
+    font-size: 10.5px; color: #f0abfc; background: rgba(236,72,153,0.14);
+    border: 1px solid rgba(236,72,153,0.3); padding: 2px 8px; border-radius: 999px;
+  }
+  .date { font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+  .card-title { font-size: 15.5px; font-weight: 700; line-height: 1.5; }
+  .card-summary { font-size: 13.5px; color: var(--text-dim); flex: 1; }
+  .card-links { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 4px; }
+  .src-link {
+    font-size: 12.5px; font-weight: 600; color: var(--link);
+    text-decoration: none; transition: all .2s; padding: 4px 10px; border-radius: 8px;
+    background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.22);
+  }
+  .src-link:hover { color: #c4b5fd; text-decoration: underline; background: rgba(139,92,246,0.2); border-color: rgba(139,92,246,0.5); }
+  .empty-card {
+    background: var(--panel); border: 1px dashed var(--border); border-radius: 16px;
+    padding: 40px; text-align: center; color: var(--text-dim); font-size: 14px;
+  }
+  footer {
+    text-align: center; color: var(--text-dim); font-size: 12.5px;
+    padding: 36px 0 40px; border-top: 1px solid var(--border); margin-top: 50px;
+  }
+  @media (max-width: 640px) {
+    .nav { padding: 12px 16px; }
+    main { padding: 84px 14px 40px; }
+    .grid { grid-template-columns: 1fr; }
+    .ai-box { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="nav-logo">🛡️</span>
+    <span>防火墙厂商日报</span>
+  </div>
+  <div class="nav-links">
+    <a href="#sec-vendor">厂商动态</a>
+    <a href="#sec-industry">行业动态</a>
+    <a href="#ai-insight">AI 解读</a>
+  </div>
+</nav>
+<main>
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <p class="hero-date">2026年8月15日 星期六</p>
+    <div class="hero-stats">
+      <div class="stat"><b>12</b><span>今日动态</span></div>
+      <div class="stat"><b>9</b><span>厂商动态</span></div>
+      <div class="stat"><b>3</b><span>行业动态</span></div>
+    </div>
+  </section>
+
+  <section class="ai-box" id="ai-insight">
+    <h2><span class="ai-tag">AI 解读</span> 今日看点</h2>
+    <p>今天的头条当属华为——金融网络创新峰会上把星河AI金融网络全栈升级摆上桌，AI防火墙+Agent围栏+主机围栏三层体系直接瞄准大模型时代金融机构最头疼的提示词注入和勒索，还联合中国银联发布智能体可信互联报告，1800多家金融机构已上车，这是国内把AI安全产品化和金融场景绑得最紧的一次。同一天IDC数据落地：华为防火墙拿下2026年一季度中国区份额第一，头部格局继续固化。另一个值得盯的信号是公安部第176号令——10月1日起网络空间安全监督检查首次把算法安全、漏洞扫描和渗透测试写进检查方式，对企业来说这等于合规从「自选动作」变「必答题」，防火墙厂商的渗透测试、漏洞治理服务会跟着吃一波红利。政企采购端依旧热闹：银川公安上了H3C的AI防火墙、安徽水利职业学院的深信服WAF、广东粤电新能源场景的天融信，AI防火墙在公安、教育、新能源的落地正在从单点试点走向批量复制。</p>
+  </section>
+
+  
+    <section class="sec sec-vendor">
+      <h2 class="sec-title">🏢 厂商动态 <span class="count">9</span></h2>
+      <div class="grid">
+    <article class="card" data-idx="0">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">华为</span>
+          <span class="hot">🔥</span>
+        </div>
+        <span class="date">2026.08.14</span>
+      </div>
+      <h3 class="card-title">华为发布星河AI金融网络全栈升级方案：AI防火墙+Agent围栏+主机围栏三层安全体系，联合银联推进智能体可信互联</h3>
+      <p class="card-summary">在华为金融网络创新峰会2026上，华为系统性发布星河AI金融网络全栈升级成果，推出以AI为中心（AI-Centric）的智慧金融新联接方案。安全层面构建AI防火墙、Agent围栏及主机围栏三层安全体系，AI勒索检测检出率超95%、提示词注入识别准确率超95%、AI EDR主机防护CPU占用率降至1%以下。华为联合金融科技产业联盟发布《金融智能体可信互联研究报告》，并与中国银联开展联合创新，方案已在国内1800多家金融机构应用。</p>
+      <div class="card-links"><a href="https://www.163.com/dy/article/L4AV1DL70514R9OJ.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="1">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">华为</span>
+          
+        </div>
+        <span class="date">2026.07.23</span>
+      </div>
+      <h3 class="card-title">IDC：华为防火墙2026年第一季度中国区市场份额第一，蝉联领跑</h3>
+      <p class="card-summary">IDC发布《中国安全硬件市场跟踪，2026Q1》，报告显示华为防火墙凭借产品竞争力与行业落地能力，赢得2026年第一季度中国防火墙市场份额第一，领跑国内市场。</p>
+      <div class="card-links"><a href="https://e.huawei.com/cn/products/security?t=1440761631781" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="2">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">山石网科</span>
+          
+        </div>
+        <span class="date">2026.08.10</span>
+      </div>
+      <h3 class="card-title">山石网科出席新加坡电讯（Singtel）行业午餐会，展示NGFW+BDS+ZTNA三层协同架构</h3>
+      <p class="card-summary">8月6日山石网科受邀出席新加坡电讯在香港举办的行业午餐会，分享「突破传统防线：三层协同的网络安全架构」主题演讲，将NGFW、智能威胁检测（BDS）与零信任网络访问（ZTNA）深度联动，并展示AI智能运维（OAM）助手、CVE与CNNVD双漏洞库合规支持，面向金融与关键基础设施行业。</p>
+      <div class="card-links"><a href="https://news.10jqka.com.cn/20260810/c678822121.shtml" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="3">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">奇安信</span>
+          
+        </div>
+        <span class="date">2026.08.11</span>
+      </div>
+      <h3 class="card-title">奇安信NSG9800-TG35防火墙中标安徽省特种设备检测院采购项目，29.7万元</h3>
+      <p class="card-summary">安徽省特种设备检测院防火墙采购项目中标结果公告，安徽晓强科技有限公司以29.7万元中标，供货奇安信NSG9800-TG35防火墙2台（单价14.85万元）。</p>
+      <div class="card-links"><a href="https://www.youzhicai.com/nd/275e84b7-c80e-2b18-fdcc-0545bc1cfb8c-1.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="4">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">天融信</span>
+          
+        </div>
+        <span class="date">2026.08.08</span>
+      </div>
+      <h3 class="card-title">天融信成为广东粤电风光储充新能源防火墙采购标段第一中标候选人</h3>
+      <p class="card-summary">广东粤电信息科技2026年风光储充等新型能源生产数据采集及接入用服务器、网络、安全及二次安防等设备采购项目（标段：防火墙）中标候选人公示，北京天融信网络安全技术有限公司为第一中标候选人。</p>
+      <div class="card-links"><a href="https://www.ebnew.com/businessShow/709423900.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="5">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">深信服</span>
+          
+        </div>
+        <span class="date">2026.08.08</span>
+      </div>
+      <h3 class="card-title">深信服WAF-2000-FH3100A等中标安徽水利水电职业技术学院网络安全设备升级改造项目，179.27万元</h3>
+      <p class="card-summary">安徽水利水电职业技术学院网络安全设备升级改造项目中标结果公告，安徽宜介科技股份有限公司以179.27万元中标，含深信服WAF-2000-FH3100A WEB防火墙1台（17万元）。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202608/t20260808_27098777.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="6">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">H3C</span>
+          
+        </div>
+        <span class="date">2026.07.24</span>
+      </div>
+      <h3 class="card-title">H3C SecPath F1000-AI-55-G防火墙及安管一体机中标银川市公安局网络及网络安全升级改造项目</h3>
+      <p class="card-summary">银川市公安局网络及网络安全升级改造项目中标公告，辰卓科技以154.49万元中标，含H3C SecPath F1000-AI-55-G防火墙2台（13.8万元）、SecCenter X6000-G25安管一体机及S7506X-G/S7503X-G交换机等。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202607/t20260724_27002860.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="7">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">天融信</span>
+          
+        </div>
+        <span class="date">2026.08.03</span>
+      </div>
+      <h3 class="card-title">天融信中标湖北艺术职业学院龙泉校区数据中心网络安全设备采购，33.49万元</h3>
+      <p class="card-summary">湖北艺术职业学院龙泉校区数据中心网络安全设备采购成交结果公告，北京神州新桥科技以33.49万元中标，供货天融信NGFW4000-UF等设备。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260803_27056964.htm" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="8">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-vendor">启明星辰</span>
+          
+        </div>
+        <span class="date">2026.08.11</span>
+      </div>
+      <h3 class="card-title">启明星辰中标宁夏自然资源信息中心自然资源云基础支撑体系建设项目（2026年）二标段</h3>
+      <p class="card-summary">宁夏回族自治区自然资源信息中心自然资源云基础支撑体系建设项目（2026年）二标段内网网络设备采购中标公告，宁夏通信规划设计院中标，含启明星辰网络设备17.69万元及新华三交换机/路由器等。</p>
+      <div class="card-links"><a href="https://www.gc-zb.com/read-768930816.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article></div>
+    </section>
+
+  
+    <section class="sec sec-industry">
+      <h2 class="sec-title">🏭 行业动态 <span class="count">3</span></h2>
+      <div class="grid">
+    <article class="card" data-idx="0">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-industry">合规</span>
+          <span class="hot">🔥</span>
+        </div>
+        <span class="date">2026.08.06</span>
+      </div>
+      <h3 class="card-title">公安部发布《公安机关网络空间安全监督检查办法》（第176号令），10月1日起施行</h3>
+      <p class="card-summary">8月6日公安部发布《公安机关网络空间安全监督检查办法》（公安部令第176号），自2026年10月1日起施行，废止2018年第151号令。新办法将检查对象扩展至网络运营者、数据处理者、个人信息处理者等所有网络空间参与者，首次将算法安全、个人信息保护纳入检查范围，检查方式增加漏洞扫描、漏洞探测和渗透性测试，并建立年度检查、公安提示函、风险通报和负责人约谈等机制。</p>
+      <div class="card-links"><a href="https://www.secrss.com/articles/92931" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="1">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-industry">能源</span>
+          
+        </div>
+        <span class="date">2026.08.04</span>
+      </div>
+      <h3 class="card-title">贵州电网2026年物资类应用防火墙公开谈判采购公告发布</h3>
+      <p class="card-summary">贵州电网有限责任公司发布2026年物资类应用防火墙公开谈判采购公告，8月13日进行谈判，通过南方电网供应链统一服务平台递交响应文件。</p>
+      <div class="card-links"><a href="https://www.bidding.csg.cn/fzbgg/1200438259.jhtml" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article>
+    <article class="card" data-idx="2">
+      <div class="card-top">
+        <div class="tags">
+          <span class="tag tag-industry">军队</span>
+          
+        </div>
+        <span class="date">2026.08.15</span>
+      </div>
+      <h3 class="card-title">军队采购网：网络安全防护系统建设询价公告（2026-JWXZYY-W4007）</h3>
+      <p class="card-summary">军队采购网发布网络安全防护系统建设询价公告（2026-JWXZYY-W4007），8月18日报价截止，采购人位于新疆，报价供应商需现场递交文件。</p>
+      <div class="card-links"><a href="https://xz.qianlima.com/zbcontent-619382658.html" target="_blank" rel="noopener" class="src-link">来源 ↗</a></div>
+    </article></div>
+    </section>
+
+  <footer>
+    🛡️ 中国防火墙厂商日报 · 数据采集于互联网公开信息 · 2026年8月15日 星期六<br>
+    报告由 AI 自动生成，仅作行业信息参考
+  </footer>
+</main>
+<script>
+  // 滚动触发渐入动画
+  (function () {
+    var cards = document.querySelectorAll('.card');
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function (c) { c.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    cards.forEach(function (c, i) {
+      c.style.transitionDelay = (i % 6) * 60 + 'ms';
+      io.observe(c);
+    });
+  })();
+</script>
+</body>
+</html>
