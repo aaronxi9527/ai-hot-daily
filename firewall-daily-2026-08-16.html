@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-16</title>
+<style>
+  :root {
+    --bg: #0a0a0a; --card: #141414; --card2: #1a1a1a; --border: #262626;
+    --text: #e5e5e5; --muted: #9ca3af; --accent1: #5B6CF7; --accent2: #8B5CF6; --accent3: #EC4899;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(10,10,10,0.72); border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { font-weight: 700; font-size: 15px; letter-spacing: 0.02em;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nav-date { color: var(--muted); font-size: 13px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 84px 24px 60px; }
+  .hero { padding: 40px 0 32px; }
+  .hero h1 { font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+  .hero-meta { display:flex; gap:16px; margin-top:16px; flex-wrap:wrap; }
+  .pill { background: rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.3);
+    color:#c4b5fd; padding:6px 16px; border-radius:999px; font-size:13px; font-weight:500; }
+  .ai-box {
+    margin: 8px 0 36px; padding: 24px 26px; border-radius:16px;
+    background: linear-gradient(135deg, rgba(91,108,247,0.14), rgba(139,92,246,0.10), rgba(236,72,153,0.12));
+    border: 1px solid rgba(139,92,246,0.25);
+  }
+  .ai-box h2 { font-size:14px; color:#c4b5fd; letter-spacing:0.08em; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .ai-box p { color: #e2e2ee; font-size:15px; }
+  .sec { display:flex; align-items:center; gap:12px; margin: 40px 0 20px; }
+  .sec h2 { font-size:22px; font-weight:700; }
+  .sec .count { color: var(--muted); font-size:13px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap:18px; }
+  .card {
+    background: linear-gradient(180deg, var(--card), var(--card2));
+    border: 1px solid var(--border); border-radius:14px; padding:20px 22px;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    opacity:0; transform: translateY(24px);
+  }
+  .card.visible { opacity:1; transform: translateY(0); }
+  .card:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.5);
+    box-shadow: 0 12px 40px rgba(91,108,247,0.15); }
+  .card-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .tag { font-size:12px; font-weight:600; padding:4px 12px; border-radius:999px;
+    color: var(--tc); background: color-mix(in srgb, var(--tc) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tc) 40%, transparent); }
+  .date { color: var(--muted); font-size:12px; }
+  .card h3 { font-size:16px; font-weight:650; line-height:1.45; margin-bottom:10px; letter-spacing:-0.01em; }
+  .card p { color: var(--muted); font-size:13.5px; margin-bottom:14px; }
+  .src { color: #8B5CF6; font-size:13.5px; font-weight:500; text-decoration:none; transition: color .2s; }
+  .src:hover { color:#a78bfa; text-decoration:underline; }
+  .foot { text-align:center; color:var(--muted); font-size:12px; margin-top:48px;
+    border-top:1px solid var(--border); padding-top:24px; }
+  @media (max-width: 640px) {
+    .hero h1 { font-size:30px; } .wrap { padding: 72px 16px 40px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <span class="nav-brand">🛡️ 中国防火墙厂商日报</span>
+  <span class="nav-date">2026-08-16</span>
+</div></nav>
+<main class="wrap">
+  <section class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="hero-meta">
+      <span class="pill">📅 2026-08-16</span>
+      <span class="pill">共 15 条动态</span>
+      <span class="pill">🏢 厂商 8 条</span>
+      <span class="pill">🏭 行业 7 条</span>
+    </div>
+  </section>
+  <section class="ai-box">
+    <h2>🤖 AI 解读</h2>
+    <p>今天动作最大的是金融行业——财信证券83.9万采购8台山石网科信创防火墙、甘肃金融监管局51.2万反拍山石A5200-B、赣州银行和南京证券同步启动国产化VPC防火墙招标，加上成方金融173.8万，一天5条金融信创采购动态，说明金融机构信创替换已经进入集中放量期，山石网科凭借ASIC信创防火墙成为本期最大赢家。国际侧，Check Point安全管理服务器曝出CVSS 10.0的认证绕过漏洞（CVE-2026-18574），未认证攻击者可远程执行任意命令，延续了安全设备『管理面被打穿』的叙事，建议关注自有Check Point设备的企业尽快打补丁。另外沙利文认证启明星辰工业防火墙26.8%份额居领导者梯队，绿盟+启明在铜川人社国产化升级中联合中标，政企信创采购正从『能用』转向『能打』。</p>
+  </section>
+  <section>
+    <div class="sec"><h2>🏢 厂商动态</h2><span class="count">8 条</span></div>
+    <div class="grid" id="vendor-grid"></div>
+  </section>
+  <section>
+    <div class="sec"><h2>🏭 行业动态</h2><span class="count">7 条</span></div>
+    <div class="grid" id="industry-grid"></div>
+  </section>
+  <footer class="foot">数据来源：公开网络搜索 · 每日 09:00 自动生成 · 仅作信息参考</footer>
+</main>
+<script>
+const CARDS = [{"title": "Check Point Security Management Server认证绕过CVE-2026-18574：未认证远程任意命令执行（CVSS 10.0）", "date": "2026-08-03", "summary": "Check Point Security Management Server及MDS存在认证绕过漏洞CVE-2026-18574（CVSS v4.0 10.0）：未认证远程攻击者可通过管理服务执行任意命令导致管理面完全沦陷，影响R80-R82.10全系版本，官方已发sk185222通告，暂未发现在野利用。", "url": "https://intel.controlassurance.com/cves/2026/18xxx/CVE-2026-18574.html", "cat": "厂商", "tag": "其他"}, {"title": "沙利文授予启明星辰2025中国工业防火墙市场领导奖：工业防火墙份额26.8%", "date": "2026-08-12", "summary": "弗若斯特沙利文授予启明星辰2025中国工业防火墙市场领导奖：2025年工业防火墙市场份额26.8%居领导者梯队，客户超800家、累计超5000家，覆盖核电、石油、轨交、烟草等，预置百种工业协议（OPC/Modbus/S7等）深度解析。", "url": "https://www.163.com/dy/article/L44I1LA805568W0A.html", "cat": "厂商", "tag": "启明星辰"}, {"title": "财信证券2026年基础防火墙采购成交839万：山石网科SG-6000-K2780-A/K5680-A信创防火墙8台", "date": "2026-08-13", "summary": "财信证券2026年基础防火墙采购项目成交结果：湖南联凯科技以83.9万元成交，采购山石网科信创防火墙8台（SG-6000-K2780-A 2台+SG-6000-K5680-A 6台）及万兆口板卡1块。", "url": "https://pms.hnchasing.com/cqgg/14699.jhtml", "cat": "厂商", "tag": "山石网科"}, {"title": "大同市第六人民医院网络安全三级设备采购结果：奇安信网神防火墙+威胁感知中标81.26万", "date": "2026-08-13", "summary": "大同市第六人民医院（大同市荣复军人医院）信息系统网络安全三级设备采购结果公告：山西正好科技中标81.26万元，含奇安信网神防火墙、漏洞扫描、网络接入控制、威胁感知探针等全套三级等保设备。", "url": "https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260813_27127309.htm", "cat": "厂商", "tag": "奇安信"}, {"title": "宁夏警官职业学院网络安全执法作战实训室中标304.6万：奇安信网神综合演练系统V7.0", "date": "2026-08-04", "summary": "宁夏警官职业学院网络安全执法作战实训室建设项目中标公告：中移建设中标304.6万元，含奇安信网神网络安全综合演练系统V7.0（场景仿真靶场+演练系统，合计31.1万）及联想开天实训工作站等。", "url": "https://www.ccgp-ningxia.gov.cn/public/ZFGMFW/dynamic/contents/CGGG/ZHBGG/content.jsp?cid=2029&id=8b80b27a9fad7548019fcb9e13101b5c&sid=2000&type=ZB", "cat": "厂商", "tag": "奇安信"}, {"title": "国家金融监督管理总局甘肃监管局网络防火墙反拍：山石网科SG-6000-A5200-B 4台（51.2万）", "date": "2026-08-05", "summary": "中国银行保险监督管理委员会甘肃监管局（现国家金融监督管理总局甘肃监管局）网络防火墙反拍采购需求：山石网科SG-6000-A5200-B（吞吐80Gbps）4台，预算51.2万元，8月12日截止报价。", "url": "https://mkt.zycg.gov.cn/mall-view/information/detail?noticeId=800026", "cat": "行业", "tag": "金融"}, {"title": "赣州银行2026年数据中心网络安全设备采购招标：国产化VPC防火墙整机吞吐≥20Gbps", "date": "2026-08-03", "summary": "赣州银行2026年数据中心网络安全设备采购和实施项目公开招标：品目一采购互联网VPC防火墙等，要求国产化CPU芯片和操作系统、整机吞吐≥20Gbps、并发≥1000万、支持IPv4/IPv6双栈、多VPC子接口及RestAPI管理。", "url": "https://www.gzccb.com/bankgz/2026-08/03/article_2026080315080854055.shtml", "cat": "行业", "tag": "金融"}, {"title": "南京证券宁夏分公司防火墙设备采购招标：26台防火墙覆盖13家营业部", "date": "2026-08-07", "summary": "南京证券宁夏分公司防火墙设备采购公开招标：拟采购26台防火墙对分公司及下辖13家营业部（11家B类+2家C类）进行设备更新，开标时间8月31日，要求制造商原厂授权。", "url": "https://www.njzq.com.cn/njzq/xwzx/xwzx_template.jsp?docId=9583656", "cat": "行业", "tag": "金融"}, {"title": "铜川市人社局公共就业机房网络安全设备国产化升级中标99.7万：绿盟NFNX3-HF200防火墙+启明星辰NGIPS8000", "date": "2026-08-14", "summary": "铜川市人力资源和社会保障局公共就业机房网络安全设备国产化升级采购中标99.7万元：陕西卓为信息中标，含绿盟科技NFNX3-HF200下一代防火墙、启明星辰NGIPS8000-P-G2320-DNR入侵防御、绿盟OSM/NIDS/LAS等全套国产化安全设备。", "url": "https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260814_27133407.htm", "cat": "行业", "tag": "政府"}, {"title": "中国移动广东2026惠州政企项目软硬件询比：出口防火墙整机吞吐≥300G（限价55.4万）", "date": "2026-08-03", "summary": "中国移动通信集团广东有限公司2026年惠州分公司政企项目（01号）软硬件公开询比（二次）：含出口防火墙（整机吞吐≥300G、并发≥4000万、IPS/AV/URL/SDWAN/威胁情报模块）、负载均衡器（130G）等，不含税总价限价55.37万元。", "url": "https://www.gc-zb.com/read-766843037.html", "cat": "行业", "tag": "运营商"}, {"title": "成方金融2026云平台服务器及网络设备采购招标：交换机+防火墙（含7年维保，预算173.8万）", "date": "2026-07-24", "summary": "成方金融信息技术服务有限公司2026年云平台服务器及网络设备（包4）采购招标：交换机14台+防火墙2台（均含7年维保），预算173.8万元，8月21日开标，交货地北京/上海数据中心。", "url": "https://www.ccgp.gov.cn/cggg/zygg//qtgg/202607/t20260724_27005787.htm", "cat": "行业", "tag": "金融"}, {"title": "虹口区消防救援支队网络防火墙反拍成交：深信服AF-2000-L2202A 6.25万", "date": "2026-08-05", "summary": "上海市虹口区消防救援支队网络防火墙反拍采购成交：上海集聿信息以6.247万元成交深信服AF-2000-L2202A防火墙1台。", "url": "https://www.chinamae.com/partner/fb475f8ab192f00a6dae3292cfd2e2a4.html", "cat": "厂商", "tag": "深信服"}, {"title": "呼和浩特市青少年活动中心直购成交：H3C SecPath F1000-AK1242防火墙7.36万", "date": "2026-08-03", "summary": "呼和浩特市青少年活动中心以太网交换机等直接订购成交21.5万元：含H3C NS-SECPATH F1000-AK1242复合型防火墙1台（7.36万元，光口+电口/1.2Gbps）及S7500X-G交换机、无线控制器等。", "url": "https://www.gc-zb.com/read-766759460.html", "cat": "厂商", "tag": "H3C"}, {"title": "吉林省经济管理干部学院核心防火墙成交19.36万：360安全防火墙HT-8000-FW-GC8000D", "date": "2026-08-05", "summary": "吉林省经济管理干部学院校园网核心防火墙采购成交：吉林省德彩科技以19.357万元成交360安全防火墙系统V5.5（HT-8000-FW-GC8000D-C-HS-HG）1台，含3年售后服务。", "url": "https://www.cfen.com.cn/zcgg/202608/t20260805_911205.html", "cat": "厂商", "tag": "其他"}, {"title": "澄迈县公安局召开2026网络安全等级保护大会暨商用密码应用推进会：等保+密评常态化", "date": "2026-08-06", "summary": "澄迈县2026年网络安全等级保护大会暨商用密码应用推进会在县公安局召开：总结等保2.0成效，要求企业法定代表人作为网络安全第一责任人，完善边界防火墙、数据备份、日志审计、权限管控等防护措施，推动等保定级备案与测评常态化。", "url": "https://www.toutiao.com/article/7670855225615335971", "cat": "行业", "tag": "政府"}];
+const VC = {"\u6df1\u4fe1\u670d": "#5B6CF7", "\u5947\u5b89\u4fe1": "#8B5CF6", "\u534e\u4e3a": "#EC4899", "H3C": "#06B6D4", "\u5c71\u77f3\u7f51\u79d1": "#10B981", "\u5929\u878d\u4fe1": "#F59E0B", "\u7eff\u76df\u79d1\u6280": "#6366F1", "\u542f\u660e\u661f\u8fb0": "#8B5CF6", "\u5176\u4ed6": "#6B7280"};
+const IC = {"\u653f\u5e9c": "#5B6CF7", "\u91d1\u878d": "#EC4899", "\u8fd0\u8425\u5546": "#06B6D4", "\u519b\u961f": "#F59E0B", "\u80fd\u6e90": "#10B981", "\u5176\u4ed6": "#6B7280"};
+function render() {
+  const vg = document.getElementById('vendor-grid');
+  const ig = document.getElementById('industry-grid');
+  for (const c of CARDS) {
+    const tagColor = (c.cat === '厂商' ? (VC[c.tag] || '#6B7280') : (IC[c.tag] || '#6B7280'));
+    const el = document.createElement('article');
+    el.className = 'card';
+    el.dataset.cat = c.cat;
+    const head = document.createElement('div');
+    head.className = 'card-head';
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.style.setProperty('--tc', tagColor);
+    tag.textContent = c.tag;
+    const d = document.createElement('span');
+    d.className = 'date';
+    d.textContent = c.date;
+    head.appendChild(tag); head.appendChild(d);
+    const h3 = document.createElement('h3'); h3.textContent = c.title;
+    const p = document.createElement('p'); p.textContent = c.summary;
+    const a = document.createElement('a');
+    a.className = 'src'; a.href = c.url; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = '查看来源 →';
+    el.appendChild(head); el.appendChild(h3); el.appendChild(p); el.appendChild(a);
+    (c.cat === '厂商' ? vg : ig).appendChild(el);
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.card').forEach(el => io.observe(el));
+}
+render();
+</script>
+</body>
+</html>
