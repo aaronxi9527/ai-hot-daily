@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-17</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a0a; color: #e4e4e7; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh; -webkit-font-smoothing: antialiased;
+}
+a { color: #8B5CF6; text-decoration: none; transition: all .2s ease; }
+a:hover { color: #c4b5fd; text-decoration: underline; }
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px; background: rgba(10,10,10,.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav-brand { font-weight: 700; font-size: 15px; letter-spacing: .5px; }
+.nav-brand span { background: linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav-date { font-size: 13px; color: #a1a1aa; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 96px 24px 64px; }
+.hero { padding: 40px 0 8px; }
+.hero h1 { font-size: 34px; font-weight: 800; letter-spacing: .5px; line-height: 1.25; }
+.hero h1 em { font-style: normal; background: linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-meta { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+.chip { display: inline-block; padding: 5px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 600; border: 1px solid rgba(255,255,255,.1); color: #d4d4d8; background: rgba(255,255,255,.04); }
+.chip-grad { background: linear-gradient(90deg,rgba(91,108,247,.18),rgba(236,72,153,.18)); border-color: rgba(139,92,246,.35); color: #e9d5ff; }
+.ai-view {
+  margin-top: 28px; padding: 22px 24px; border-radius: 16px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, rgba(91,108,247,.10), rgba(139,92,246,.08) 50%, rgba(236,72,153,.10));
+  border: 1px solid rgba(139,92,246,.22);
+}
+.ai-view::before { content: "AI"; position: absolute; right: 18px; top: 10px; font-size: 42px; font-weight: 900; color: rgba(255,255,255,.05); }
+.ai-view h2 { font-size: 14px; letter-spacing: 1px; color: #c4b5fd; margin-bottom: 10px; }
+.ai-view p { font-size: 14.5px; line-height: 1.85; color: #d4d4d8; }
+.section { margin-top: 44px; }
+.section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.section-head h2 { font-size: 21px; font-weight: 700; }
+.section-head .count { font-size: 12.5px; color: #a1a1aa; background: rgba(255,255,255,.06); padding: 3px 11px; border-radius: 999px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.card {
+  background: #111114; border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 10px; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  opacity: 0; transform: translateY(18px);
+}
+.card.show { opacity: 1; transform: translateY(0); }
+.card:hover { transform: translateY(-3px); border-color: rgba(139,92,246,.45); box-shadow: 0 8px 30px rgba(139,92,246,.12); }
+.card-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; width: fit-content; }
+.card-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.card-title { font-size: 15px; font-weight: 650; line-height: 1.55; color: #f4f4f5; }
+.card-summary { font-size: 13px; line-height: 1.7; color: #a1a1aa; flex: 1; }
+.card-foot { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #71717a; }
+.card-links a { font-size: 12.5px; }
+.empty { grid-column: 1 / -1; text-align: center; padding: 36px; color: #71717a; background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.12); border-radius: 14px; font-size: 14px; }
+.footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.06); text-align: center; color: #52525b; font-size: 12px; line-height: 1.8; }
+.footer span { background: linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 600; }
+@media (max-width: 640px) {
+  .hero h1 { font-size: 26px; }
+  .wrap { padding: 88px 16px 48px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-brand">🛡️ <span>中国防火墙厂商日报</span></div>
+  <div class="nav-date">2026-08-17</div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1>🛡️ 中国<em>防火墙厂商</em>日报</h1>
+    <div class="hero-meta">
+      <span class="chip chip-grad">📅 2026-08-17</span>
+      <span class="chip">🛡️ 厂商 6 条</span>
+      <span class="chip">🏭 行业 6 条</span>
+      <span class="chip">共 12 条动态</span>
+    </div>
+  </div>
+  <div class="ai-view">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p>今天绿盟科技是绝对主角：联合智谱把 GLM-5.2 塞进自动化漏洞挖掘平台，已在多款主流开源系统挖出数百个高危漏洞，证明「AI 挖 0day」不再是概念而是工程现实；同场在长沙高峰论坛发布《2026 年 APT 组织研究年鉴》（119 个活跃组织、42 个新面孔、近 2 万条威胁情报指标），还拿下 Frost & Sullivan 全球抗 DDoS 竞争策略领导奖——研究、产品、市场三条线同时输出。政企侧更值得盯采购信号：H3C 高端 AI 防火墙 F5000-AI-110-G 落进省级政务外网 IPv6 改造，沧州银行把「国产芯片防火墙原厂」写进投标资格门槛，华为 USG6615F 随算力底座打包采购——信创防火墙正从「合规要求」变成「招标硬资格」，算力+安全一体打包成新趋势。</p>
+  </div>
+  <div class="section" id="vendor-section">
+    <div class="section-head"><h2>🛡️ 厂商动态</h2><span class="count">6 条</span></div>
+    <div class="grid" id="vendor-grid"></div>
+  </div>
+  <div class="section" id="industry-section">
+    <div class="section-head"><h2>🏭 行业动态</h2><span class="count">6 条</span></div>
+    <div class="grid" id="industry-grid"></div>
+  </div>
+  <div class="footer">
+    数据来源：公开网络搜索 · 自动聚合去重<br>
+    <span>中国防火墙厂商日报</span> · 每日 09:00 推送
+  </div>
+</div>
+<script>
+const DATA = {"vendor": [{"title": "绿盟科技与智谱联合开展基于GLM-5.2的AI漏洞挖掘研究：平台已挖出数百个高危漏洞", "tag": "绿盟科技", "tagColor": "#34D399", "summary": "绿盟科技与智谱联合开展AI漏洞挖掘研究，自主搭建可工程落地的AI自动化漏洞挖掘平台并建立标准化工程测试基座，截至目前已在多款主流开源系统中累计挖掘出数百个有效高危漏洞，验证了AI自动化挖掘0day漏洞的工程可行性与实战价值。", "date": "2026-08-04", "links": "<a href=\"https://weibo.com/1686253095/5328138516042664\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "绿盟科技深度参与2026年网络安全技术创新与人才教育高峰论坛，联合发布《2026年APT组织研究年鉴》", "tag": "绿盟科技", "tagColor": "#34D399", "summary": "8月9-10日长沙高峰论坛上，绿盟科技获『优秀支撑单位』奖并获授『网络安全人才实训就业合作单位』；与广州大学联合编撰的《2026年APT组织研究年鉴》正式发布，覆盖119个活跃APT组织、新增披露42个、新增收录19925个威胁情报指标；同期承办智能化网络攻防技术分论坛，提出行业需转向自主化网络免疫防御体系。", "date": "2026-08-10", "links": "<a href=\"https://weibo.com/1686253095/5331155558598721\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "绿盟科技抗DDoS解决方案获Frost & Sullivan 2026全球竞争策略领导奖", "tag": "绿盟科技", "tagColor": "#34D399", "summary": "绿盟科技凭前瞻性市场战略与持续技术创新，荣获国际咨询机构Frost & Sullivan授予的2026全球抗DDoS解决方案竞争策略领导奖。其抗DDoS方案支持本地清洗、云清洗及混合部署，设备侧AI小模型实时检测、平台侧风云卫安全大模型（SecLLM）智能决策，推动抗DDoS从『产品能力』向『运营能力』演进。", "date": "2026-08-10", "links": "<a href=\"https://www.toutiao.com/article/7672347690889445940\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "华为HiSecEngine USG6615F应用域防火墙落地算力项目：单台9.45万", "tag": "华为", "tagColor": "#F59E0B", "summary": "2026年算力服务器及配套设备采购项目（CC2026-0151）结果公告显示，广东暨通信息发展有限公司以329万元中标，配套采购华为HiSecEngine USG6615F应用域防火墙1台（9.45万元）、CloudEngine交换机及AI算力服务器等设备，防火墙与算力底座打包采购趋势明显。", "date": "2026-08-12", "links": "<a href=\"https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202608/t20260812_27118381.htm\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "H3C SecPath F5000-AI-110-G中标湖南省政务外网IPv6改造试点项目（434万）", "tag": "H3C", "tagColor": "#10B981", "summary": "湖南省省级电子政务外网IPv6改造试点项目（集采部分）中标结果公布，数字湖南有限公司以434万元中标，采购H3C下一代防火墙SecPath F5000-AI-110-G（IDC机房和二院机房各2台）等设备，H3C高端AI防火墙落地省级政务外网IPv6改造场景。", "date": "2026-07-23", "links": "<a href=\"http://zb.hnsggzy.com/jydt/002002/002002002/002002002002/20260723/158985cf-f9d3-4e15-83d5-4642abc1e3dc.html\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "天融信中标西藏税务2026年安全运行维护服务：137万/年（3年411万）", "tag": "天融信", "tagColor": "#8B5CF6", "summary": "西藏税务2026年安全运行维护服务采购项目（第2次）中标公告显示，北京天融信网络安全技术有限公司以137万元/年（3年共411万元）中标，为金四安全安管平台及配套安全防护体系（含360终端管理、青藤云主机安全、全流量分析、日志审计等）提供驻场运维服务，服务期3年。", "date": "2026-08-13", "links": "<a href=\"https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260813_27124990.htm\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}], "industry": [{"title": "南网超高压2026年电力监控网络安全技术服务中标：天融信、启明星辰分获区域份额", "tag": "其他", "tagColor": "#94A3B8", "summary": "南网超高压公司2026年第二批服务公开招标项目（2026-FW-2-S-ZB3）中标公告显示，电力监控系统网络安全技术服务标的中，广西地区由北京天融信中标，广东海南地区由北京启明星辰中标，云南贵州地区由广州中软中标，电力监控网络安全技术服务需求持续放量。", "date": "2026-08-05", "links": "<a href=\"https://www.bidding.csg.cn/zbhxrgs/1200438300.jhtml\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "沧州银行2026年防火墙采购项目招标：要求国产芯片防火墙原厂", "tag": "金融", "tagColor": "#F472B6", "summary": "沧州银行发布2026年防火墙采购项目招标公告，采购国产芯片防火墙，投标人须为国产芯片防火墙品牌原厂商或授权代理商，且须具备2023年7月至今不低于1个银行业（国有大行总行或省级分行、股份制银行总行或省级分行、城商行总行、省联社）国产芯片防火墙采购项目案例，不接受联合体投标。", "date": "2026-07-23", "links": "<a href=\"https://www.bankcz.cn/bankcz/xwzx/zbcg/2026072315440438073/index.html\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "中国邮政2026年IT软硬件集采（包12防火墙14台140万）重新招标", "tag": "其他", "tagColor": "#94A3B8", "summary": "中国邮政集团2026年IT软硬件集中采购项目（包12、16）重新招标：包12采购防火墙14台、最高限价140万元，包16采购负载均衡4台、最高限价32万元。要求投标产品须具备银行/保险/三大运营商/央企总部同型号销售案例，按包投标、限制总价。", "date": "2026-08-08", "links": "<a href=\"https://www.chinapost.com.cn/cn/report/2608/1101-1.htm\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "哈医大一院智慧医院二期网络安全设备采购：中移集成168.45万中标", "tag": "其他", "tagColor": "#94A3B8", "summary": "省分行营业部关于哈医大一院智慧医院二期信息化建设项目网络安全设备采购项目结果公告：中移系统集成有限公司以168.45万元中标，采购防火墙系统2套、WEB应用防火墙1套、安全隔离与信息交换系统1套、数据库审计1套、服务器区及互联网入侵防御系统各1套、日志审计1套、态势感知平台1套。", "date": "2026-08-11", "links": "<a href=\"https://www.365trade.com.cn/jhwzb/855999.jhtml\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "中国社会科学院图书馆网络设备采购：威努特防火墙NSG5670+WAF6050-E成交48.64万", "tag": "政府", "tagColor": "#F59E0B", "summary": "中国社会科学院图书馆计算机网络设备询价采购成交公告：北京八零九零科技以48.64万元成交，采购威努特NSG5670防火墙2台（11.66万/台）、威努特WAF6050-E Web应用防护及网页防篡改设备2台（12.66万/台）。", "date": "2026-08-03", "links": "<a href=\"https://mkt.zycg.gov.cn//mall-view/information/detail?noticeId=799556\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}, {"title": "白山市江源区校园网络升级改造：华为USG6000F-S160/S13出口网关批量落地", "tag": "政府", "tagColor": "#F59E0B", "summary": "白山市江源区校园网络升级改造设备购置项目中标（成交）结果公告：吉林省宏瑞智能工程以110.7万元中标，采购华为USG6000F-S160-AC出口网关4台（2.65万/台）、USG6000F-S13出口网关8台（1.55万/台）及锐捷核心交换机、华为8口交换机等，县域教育网络边界安全设备批量替换。", "date": "2026-08-04", "links": "<a href=\"https://www.jl.gov.cn/ggzy/zfcg/zbgg/202608/t20260804_9675445.html\" target=\"_blank\" rel=\"noopener\">来源 ↗</a>"}]};
+function renderCards(list, containerId) {
+  const grid = document.getElementById(containerId);
+  if (!list.length) {
+    const d = document.createElement("div");
+    d.className = "empty";
+    d.textContent = "今日无新增动态，行业持续平稳";
+    grid.appendChild(d);
+    return;
+  }
+  list.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const tag = document.createElement("span");
+    tag.className = "card-tag";
+    tag.style.color = item.tagColor;
+    tag.textContent = item.tag;
+    const title = document.createElement("div");
+    title.className = "card-title";
+    title.textContent = item.title;
+    const sum = document.createElement("div");
+    sum.className = "card-summary";
+    sum.textContent = item.summary;
+    const foot = document.createElement("div");
+    foot.className = "card-foot";
+    const date = document.createElement("span");
+    date.textContent = item.date;
+    const links = document.createElement("span");
+    links.className = "card-links";
+    links.innerHTML = item.links;
+    foot.appendChild(date);
+    foot.appendChild(links);
+    card.appendChild(tag);
+    card.appendChild(title);
+    card.appendChild(sum);
+    card.appendChild(foot);
+    grid.appendChild(card);
+  });
+}
+renderCards(DATA.vendor, "vendor-grid");
+renderCards(DATA.industry, "industry-grid");
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("show");
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll(".card").forEach(c => io.observe(c));
+</script>
+</body>
+</html>
