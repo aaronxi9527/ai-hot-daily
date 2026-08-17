@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>🤖 AI 安全日报 · 2026-08-17</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --card2:#0f1523; --border:#1f2937;
+  --tx:#e5e7eb; --tx2:#9ca3af; --tx3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+  --grad:linear-gradient(135deg,#5B6CF7 0%,#8B5CF6 50%,#EC4899 100%);
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  line-height:1.65; letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 80px;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(760px 420px at 12% -8%, rgba(91,108,247,.16), transparent 62%),
+    radial-gradient(680px 400px at 88% 2%, rgba(236,72,153,.11), transparent 60%);
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.hero{padding:64px 0 30px;border-bottom:1px solid var(--border);margin-bottom:34px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--tx2);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:rgba(17,24,39,.6);
+}
+.dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.16)}
+h1{
+  font-size:clamp(32px,6vw,52px);line-height:1.14;font-weight:800;margin:18px 0 12px;
+  letter-spacing:-.02em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sub{color:var(--tx2);font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.stat{
+  background:linear-gradient(180deg,rgba(17,24,39,.9),rgba(15,21,35,.9));
+  border:1px solid var(--border);border-radius:14px;padding:16px 14px;text-align:center;
+  transition:transform .25s ease,border-color .25s ease;
+}
+.stat:hover{transform:translateY(-3px);border-color:#374151}
+.stat b{display:block;font-size:28px;font-weight:800;letter-spacing:-.02em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.03em}
+.overview{
+  border:1px solid var(--border);border-radius:16px;padding:22px 24px;margin-bottom:40px;
+  background:linear-gradient(180deg,rgba(91,108,247,.09),rgba(17,24,39,.55));
+  position:relative;overflow:hidden;
+}
+.overview::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+.ov-head{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;margin-bottom:10px}
+.ov-head .pill{font-size:11px;font-weight:600;color:#c7d2fe;background:rgba(91,108,247,.18);
+  border:1px solid rgba(91,108,247,.32);border-radius:999px;padding:2px 9px;letter-spacing:.04em}
+.overview p{color:#cbd5e1;font-size:14.5px;margin-bottom:9px}
+.overview p:last-child{margin-bottom:0}
+.section{margin-bottom:46px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  margin-bottom:18px;padding-bottom:11px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.sec-title{font-size:20px;font-weight:750;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+.sec-icon{font-size:21px}
+.sec-sub{font-size:12.5px;color:var(--tx3)}
+.sec-sub b{color:var(--g2)}
+.cards{display:flex;flex-direction:column;gap:13px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 19px;
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(16px);
+  transition:border-color .25s ease,transform .25s ease,background .25s ease;
+}
+.section.on .card{animation:fadeUp .6s cubic-bezier(.22,.8,.3,1) forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.card:hover{border-color:#374151;transform:translateY(-2px);background:#131c2e}
+.card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;opacity:.85}
+.card.lvl3::after{background:linear-gradient(180deg,#EC4899,#f43f5e)}
+.card.lvl2::after{background:linear-gradient(180deg,#8B5CF6,#6366f1)}
+.card.lvl1::after{background:linear-gradient(180deg,#334155,#1f2937)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;border-radius:6px;padding:3px 8px;letter-spacing:.02em;white-space:nowrap}
+.tag-vendor{color:#a5b4fc;background:rgba(91,108,247,.14);border:1px solid rgba(91,108,247,.3)}
+.tag-cat{color:#f0abfc;background:rgba(236,72,153,.11);border:1px solid rgba(236,72,153,.26)}
+.tag-merge{color:#86efac;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.26)}
+.meta{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.date-chip{font-size:11px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.fire{font-size:12px;letter-spacing:-1px}
+.card-title{font-size:16.5px;font-weight:700;line-height:1.45;margin-bottom:8px;letter-spacing:-.01em;color:#f3f4f6}
+.card-sum{font-size:14px;color:#9aa5b6;line-height:1.72}
+.sources{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px dashed #1f2937}
+.src{
+  font-size:12px;color:#93c5fd;text-decoration:none;
+  border:1px solid rgba(147,197,253,.22);background:rgba(147,197,253,.06);
+  border-radius:6px;padding:3px 9px;transition:all .2s ease;
+}
+.src:hover{color:#dbeafe;border-color:rgba(147,197,253,.55);background:rgba(147,197,253,.14)}
+.empty{
+  border:1px dashed var(--border);border-radius:14px;padding:30px;text-align:center;
+  color:var(--tx3);font-size:14px;background:rgba(17,24,39,.4);
+}
+.trend{list-style:none;display:flex;flex-direction:column;gap:10px}
+.trend li{
+  display:flex;gap:13px;align-items:flex-start;
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;
+  font-size:14.5px;color:#cbd5e1;
+}
+.tnum{
+  font-size:12px;font-weight:800;color:#0a0a0a;background:var(--grad);
+  border-radius:6px;padding:2px 7px;flex-shrink:0;margin-top:2px;font-variant-numeric:tabular-nums;
+}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,.8,.3,1)}
+.reveal.on{opacity:1;transform:none}
+footer{
+  margin-top:56px;padding-top:22px;border-top:1px solid var(--border);
+  text-align:center;color:var(--tx3);font-size:12.5px;line-height:1.9;
+}
+footer .brand{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+@media(max-width:640px){
+  .hero{padding:44px 0 24px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .card{padding:16px}
+  .overview{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.card{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span>DAILY INTELLIGENCE · AI SECURITY</div>
+    <h1>🤖 AI 安全日报</h1>
+    <div class="sub">2026-08-17 周一 · 全球与中国 AI 安全友商产品动态 / 行业趋势</div>
+    <div class="stats">
+      <div class="stat"><b>7</b><span>🏢 国际产品</span></div>
+      <div class="stat"><b>2</b><span>🇨🇳 国内产品</span></div>
+      <div class="stat"><b>22</b><span>📊 行业动态</span></div>
+      <div class="stat"><b>31</b><span>📌 今日总计</span></div>
+    </div>
+  </header>
+
+  <div class="overview reveal">
+    <div class="ov-head">🧠 AI 总览 <span class="pill">今日看点</span></div>
+    <p>今天 31 条动态里最值得注意的信号是：<b>AI 编码助手的安全范式正在从"人审"切换到"机审"</b>——Anthropic 让 Claude Code 自动模式成为默认，用 AI 分类器拦截危险命令，实测拦截率 89%（人类手动审批只有 13.6%），第三方提示注入 720 次攻击全部失败；同时 OpenAI Daybreak 上线 AWS Bedrock、Cloudflare 给网关加了 MCP 流量检测，AI 安全的"默认安全"在工具链里层层落地。</p>
+<p>攻击侧同样不甘示弱：Tenet 披露 Ghostjacking 投毒日志劫持 AI 代理成功率约九成；前沿模型的包幻觉虽然整体收敛，仍有 53 个可被抢注的包名构成跨模型供应链攻击面。行业层面两件事值得记住——<b>密码学顶会 CRYPTO 2026 今天开幕并首设神经网络密码分析轨道</b>，AI 正式成为密码学的攻防对象；Sequoia 领投防御性安全模型公司 Corma 6000 万美元种子轮，安全大模型的商业化开始向"防守侧"倾斜。国内方面知道创宇 EasyDsh、国舜 AI-ASPM 两款新品补充了智能体沙箱与 AI 应用治理的拼图。</p>
+
+  </div>
+
+  <section class="section reveal" id="intl">
+      <div class="sec-head">
+        <div class="sec-title"><span class="sec-icon">🏢</span>国际友商产品动态</div>
+        <div class="sec-sub">全球主流安全厂商产品层面突破 · <b>7</b> 条</div>
+      </div>
+      <div class="cards">
+      <article class="card lvl3" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Anthropic</span>
+            <span class="tag tag-cat">安全智能体/编码助手安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Anthropic Claude Code 自动模式 8/14 起成为 Pro/Max/Team 默认，AI 分类器拦截危险操作</h3>
+        <p class="card-sum">Claude Code 自动模式自 8/14 起成为 Pro/Max/Team 套餐新会话默认，不再逐条弹窗询问，改由 AI 分类器对每个工具调用路由，专门拦截不可逆/破坏性/针对外部环境的操作；连续拦截 3 次或单会话 20 次自动回退手动审批。对照实验：人类审查只拦截 13.6% 危险命令，自动模式拦截 89%；生产级严重意外事件发生率从 6.3% 降至 2.4%；与 Apollo Research 对抗红队合作将漏报率从 12% 降至 7%；Trajectory Labs 第三方提示注入评估中 720 次攻击全部失败。</p>
+        <div class="sources"><a class="src" href="https://claude.com/blog/auto-mode-default-in-claude-code" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:60ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">OpenAI</span>
+            <span class="tag tag-cat">网络安全模型/云可用性</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">OpenAI Daybreak 网络安全模型上线 AWS Amazon Bedrock，Blue/Red 两级对获准企业可用</h3>
+        <p class="card-sum">OpenAI 将 Daybreak 网络安全方案（含 Blue/Red 两级访问模型）正式上线 AWS Bedrock，获准企业可在 AWS 云环境直接调用，扩展企业级安全运营接入渠道，是 Daybreak 发布后首个主流云平台落地。</p>
+        <div class="sources"><a class="src" href="https://aws.amazon.com/about-aws/whats-new/2026/08/openai-daybreak-red-and-blue-on-amazon-bedrock/" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:120ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Cloudflare</span>
+            <span class="tag tag-cat">AI Agent安全网关</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-12</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Cloudflare Gateway 新增 MCP 协议自动检测与 AI 安全仪表盘</h3>
+        <p class="card-sum">Cloudflare Gateway 上线 MCP（模型上下文协议）流量自动检测能力，可识别环境中 AI Agent 通过 MCP 发起的工具调用，并配套 AI 安全仪表盘可视化，补齐 AI Agent 网关侧可见性与管控。</p>
+        <div class="sources"><a class="src" href="https://developers.cloudflare.com/changelog/post/2026-08-12-mcp-detection-and-dashboard/" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:180ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Palo Alto Networks</span>
+            <span class="tag tag-cat">云安全/CNAPP</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Palo Alto Cortex Cloud 推出图驱动的攻击路径检测功能</h3>
+        <p class="card-sum">Cortex Cloud 新增图驱动的攻击路径检测（Graph-based Attack Path Detection），将云资产关系建模为攻击图，自动识别并优先展示最可能被利用的攻击路径，帮助安全团队在利用发生前收敛风险。</p>
+        <div class="sources"><a class="src" href="https://www.paloaltonetworks.com/blog/cloud-security/neutralize-cloud-threats-stop-the-attack-path" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:240ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Wiz</span>
+            <span class="tag tag-cat">AI-SPM/数据安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Wiz 发布 AI 时代数据安全能力：AI 数据分类 + Red/Green Agent 联动防护</h3>
+        <p class="card-sum">Wiz 扩展 AI 时代数据安全方案：新增 AI 驱动的数据自动分类能力，并引入 Red Agent（主动探测 AI 资产风险）与 Green Agent（自动修复）联动防护机制，将 AI-SPM 从资产发现延伸到数据层治理与自动响应。</p>
+        <div class="sources"><a class="src" href="https://www.wiz.io/blog/securing-data-in-the-ai-era" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:300ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Searchlight Cyber</span>
+            <span class="tag tag-cat">暴露面管理/威胁情报</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">Searchlight Cyber 发布 PTEM 平台：暴露管理 + 真实攻击者情报融合</h3>
+        <p class="card-sum">Searchlight Cyber 推出 Preemptive Threat Exposure Management（PTEM）平台，将持续暴露面可见性与真实攻击者情报结合：Exposure 侧提供攻击面发现与可利用性验证，Threat 侧跟踪攻击者在讨论/开发/瞄准的目标，优先处置最可能被利用的暴露面。</p>
+        <div class="sources"><a class="src" href="https://www.helpnetsecurity.com/2026/08/14/new-infosec-products-of-the-week-august-14-2026" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:360ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Athena Security Group</span>
+            <span class="tag tag-cat">AI-SOC/AI安全运营</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">Athena Security Group 发布 Athena 3.0：统一 AI 安全运营平台 + Pallas v3</h3>
+        <p class="card-sum">Athena Security Group 发布 Athena 3.0 统一 AI 安全运营平台，配套升级 Pallas v3.0 分析引擎，面向安全运营中心提供 AI 原生的事件调查与响应编排能力。</p>
+        <div class="sources"><a class="src" href="https://athenasecuritygroup.ai/athena-security-group-announces-athena-3-0" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article></div>
+    </section>
+
+  <section class="section reveal" id="cn">
+      <div class="sec-head">
+        <div class="sec-title"><span class="sec-icon">🇨🇳</span>国内友商产品动态</div>
+        <div class="sec-sub">中国主流安全厂商产品层面突破 · <b>2</b> 条</div>
+      </div>
+      <div class="cards">
+      <article class="card lvl2" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">知道创宇</span>
+            <span class="tag tag-cat">智能体安全/沙箱</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">知道创宇发布 EasyDsh：一键封装 DeepSeek Harness 智能体，内置安全沙箱与插件风险检测</h3>
+        <p class="card-sum">知道创宇推出 EasyDsh，将 DeepSeek Harness 智能体封装为开箱即用的安全产品：内置隔离安全沙箱环境与插件风险检测能力，降低企业部署 AI 智能体时的运行风险，面向智能体安全交付场景。</p>
+        <div class="sources"><a class="src" href="https://www.toutiao.com/article/7673824824094949914/" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:60ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">国舜科技</span>
+            <span class="tag tag-cat">AI-ASPM/代码安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">国舜科技发布 CodeSentinel AI 与 AI-ASPM 两款新品，面向 Vibe Coding 软件安全治理</h3>
+        <p class="card-sum">国舜科技发布 CodeSentinel AI（AI 代码安全扫描）与 AI-ASPM（AI 应用安全态势管理）两款新产品，面向 Vibe Coding 时代 AI 生成代码的引入风险，提供代码源头扫描与 AI 应用资产全生命周期治理。</p>
+        <div class="sources"><a class="src" href="https://news.qq.com/rain/a/20260814A0BCVP00" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article></div>
+    </section>
+
+  <section class="section reveal" id="ind">
+      <div class="sec-head">
+        <div class="sec-title"><span class="sec-icon">📊</span>行业动态与趋势</div>
+        <div class="sec-sub">政策 / 标准 / 报告 / 事件 / 大会 · <b>22</b> 条</div>
+      </div>
+      <div class="cards">
+      <article class="card lvl3" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术会议</span>
+            <span class="tag tag-cat">量子安全/密码学</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-17</span><span class="fire">🔥🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">CRYPTO 2026 开幕：首次设立神经网络密码分析轨道，AI 模型被当作数学对象攻防</h3>
+        <p class="card-sum">密码学顶会 CRYPTO 2026 开幕，首次设立神经网络密码分析（Neural Cryptanalysis）轨道，把 AI 模型正式当作密码学数学对象研究攻防，标志 AI 与密码学交叉从民间探索进入主流学术体系，与后量子密码进展形成呼应。</p>
+        <div class="sources"><a class="src" href="https://www.techtimes.com/articles/324597/20260815/crypto-2026-opens-today-ai-systems-are-now-both-tool-target-math-attacks.htm" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:60ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">美国国会</span>
+            <span class="tag tag-cat">政策监管</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">美国 Sanders 联合 29 名众议员致信 OpenAI、Anthropic、Meta，要求暂停前沿 AI 开发</h3>
+        <p class="card-sum">参议员 Bernie Sanders 联合 29 名众议员致信 OpenAI、Anthropic、Meta，援引各大厂商此前自愿签署现已悄然放弃的 AI 安全承诺，要求暂停前沿 AI 能力开发直至建立可验证的安全保障机制，国会监管压力再度升温。</p>
+        <div class="sources"><a class="src" href="https://www.techtimes.com/articles/323831/20260810/sanders-invokes-ai-safety-pledges-companies-had-already-quietly-dropped.htm" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:120ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Tenet Security</span>
+            <span class="tag tag-cat">安全事件/AI代理劫持</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Tenet 披露 Ghostjacking 攻击：投毒日志劫持 AI 代理，对 Claude Code 成功率九成、1.5 万组织暴露</h3>
+        <p class="card-sum">Tenet Security 披露 Ghostjacking 攻击：通过向 AI 代理读取的日志中投毒实现劫持，对 Claude Code 类编程代理成功率约 90%，估计约 1.5 万个组织暴露于该攻击面，延续 AI 代理信任链攻击主题。</p>
+        <div class="sources"><a class="src" href="https://www.securityweek.com/ghostjacking-attack-uses-poisoned-logs-to-turn-ai-agents-bad/" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:180ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">澳大利亚AISI</span>
+            <span class="tag tag-cat">研究报告</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">澳大利亚 AI 安全研究所发布首份报告：多智能体系统跨组织部署风险与管控框架</h3>
+        <p class="card-sum">澳大利亚 AI 安全研究所（AISI）发布首份公开报告，聚焦多智能体系统跨组织部署的风险：智能体身份信任、跨域授权与故障传播，并提出对应的管控框架建议，是全球 AISI 体系中对 Agent 身份治理最早期布局之一。</p>
+        <div class="sources"><a class="src" href="https://aigeek.au/news/aisi-first-publication-agent-identity" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:240ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">IBM</span>
+            <span class="tag tag-cat">研究报告/市场数据</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">IBM《2026 数据泄露成本报告》：四分之一恶意泄露由 AI 驱动，平均成本 499 万美元</h3>
+        <p class="card-sum">IBM 与 Ponemon 联合发布《2026 数据泄露成本报告》：602 家组织样本显示全球平均单次泄露成本 4.99 百万美元（同比 +12% 创纪录），四分之一恶意泄露由 AI 驱动（同比 +56%），AI 驱动泄露平均成本约 600 万美元；影子 AI 事件占比翻倍至 43%，92% 因自身 AI 泄露的组织事发前对该 AI 无任何管控。</p>
+        <div class="sources"><a class="src" href="https://www.cdotrends.com/white-paper/5102/cost-data-breach-2026-ai-tipping-point" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:300ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Gartner</span>
+            <span class="tag tag-cat">市场数据/趋势预测</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-12</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Gartner 预测 2026 全球信息安全支出增长 12.5% 至 2400 亿美元，AI 智能体威胁成主驱动</h3>
+        <p class="card-sum">Gartner 预测 2026 年全球信息安全支出增长 12.5% 至约 2400 亿美元，AI 智能体带来的攻击加速（Agentic 攻击从发现到利用只需数小时）成为本轮安全预算扩张的主要驱动因素。</p>
+        <div class="sources"><a class="src" href="https://www.ibtimes.com/ai-agents-are-getting-better-hacking-cybersecurity-could-next-spending-boom-3806342" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:360ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">Corma</span>
+            <span class="tag tag-cat">融资/安全大模型</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Sequoia 领投 Corma 6000 万美元种子轮：防御性网络安全 AI 基础模型公司浮出水面</h3>
+        <p class="card-sum">红杉资本（Sequoia）领投、Khosla Ventures 与 Coatue 跟投，Corma 完成 6000 万美元种子轮，训练防御性网络安全专用基础模型。其测试显示 4 款前沿模型（Claude Opus 4.8/GPT-5.5/Grok 4.3/DeepSeek V4）作为攻击者植入后门成功率 85%，作为防御者仅检出 19% 攻击，'防御差距'成为本轮融资核心叙事；财富 100/500 强早期部署称威胁响应时间下降 94%、覆盖扩大 15 倍。</p>
+        <div class="sources"><a class="src" href="https://www.theregister.com/security/2026/08/16/stopping-a-cyberattack-while-walking-your-dog-defensive-ai-security-ceo-says-its-not-ruff-to-do/5288126" target="_blank" rel="noopener">来源1 ↗</a><a class="src" href="https://www.bankinfosecurity.net/corma-raises-60m-to-build-cyber-defense-foundation-models-a-32537" target="_blank" rel="noopener">来源2 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:420ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">CSA</span>
+            <span class="tag tag-cat">标准发布/白皮书</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">云安全联盟发布《Cyber Defender Models: A CISO's Guide》：防御模型须双重评估</h3>
+        <p class="card-sum">云安全联盟（CSA）发布《Cyber Defender Models: A CISO's Guide》，指导 CISO 评估面向防御场景的 AI 模型，提出安全能力与模型自身安全性双重评估框架，为安全大模型选型提供行业参考。</p>
+        <div class="sources"><a class="src" href="https://labs.cloudsecurityalliance.org/research/cyber-defender-models-ciso-guide" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:480ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">模型供应链安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Load Hijack 攻击：恶意路由器权重将 MoE 大模型专家流量集中到单卡形成 straggler 供应链攻击</h3>
+        <p class="card-sum">arXiv 新研究披露 Load Hijack 攻击：通过植入恶意路由器权重，将 MoE（混合专家）大模型的专家流量定向集中到单一计算卡，制造 straggler 拖垮推理性能，展示模型权重供应链的隐蔽拒绝服务攻击面。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.10614" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:540ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">模型供应链安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">2026 前沿模型包幻觉重评：127 个包名被所有模型一致生成，53 个仍可被抢注</h3>
+        <p class="card-sum">arXiv 2608.08485 复现并重评 2026 前沿模型的包幻觉威胁：5 款前沿模型（Claude Sonnet 4.6/GPT-5.4-mini/Gemini 2.5 Pro 等）在 19.98 万次提示下，幻觉包名率 4.62%-6.10%，其中 127 个包名被所有模型一致编造，经 PyPI 安全团队与 Socket.dev 协调披露后仍有 53 个可被抢注，构成跨模型供应链攻击面。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.08485" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:600ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">AIoT安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">IoTVulBench：跨语料防污染 IoT 固件漏洞检测基准，推动 AI 固件审计泛化</h3>
+        <p class="card-sum">IoTVulBench 发布：面向物联网固件漏洞检测的跨语料、防污染筛选基准，解决现有基准训练/测试重叠导致评估虚高的问题，为 AI 驱动的固件安全审计提供更可信的评测基线。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.11492" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:660ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">红蓝对抗/提示注入</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-12</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">ToolHazard：可扩展对抗环境合成框架，自动化评估 LLM 代理对间接提示注入的脆弱性</h3>
+        <p class="card-sum">ToolHazard 提出可扩展的对抗环境合成框架，自动生成复杂工具调用场景，系统化评估 LLM 代理对间接提示注入攻击的脆弱性，弥补现有测试场景单一、难以规模化的问题。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.11878" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:720ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">AI代码安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">CodeSIFT：用影响函数检测污染代码生成提示批，AUROC 最高 0.98</h3>
+        <p class="card-sum">CodeSIFT 提出基于影响函数的方法检测针对代码生成模型的污染提示批次，识别训练数据投毒对模型输出的异常影响，检测 AUROC 最高达 0.98，为 AI 代码安全评估提供可操作手段。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.14303" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:780ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">红蓝对抗/护栏</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">Tripwire：统计认证安全神经元触发对齐拒答，越狱成功率降至 2.0% 且效用损失最小</h3>
+        <p class="card-sum">Tripwire 提出可验证的安全对齐机制：定位经统计认证的安全神经元并以其触发作为拒答信号，将越狱成功率压低至 2.0%，同时保持最小效用损失，向'可证明的安全拒答'迈进一步。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.14392" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl2" style="animation-delay:840ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">隐私计算/机密计算</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-13</span><span class="fire">🔥🔥</span></div>
+        </div>
+        <h3 class="card-title">YAVIN：TEE 扩展到内存内处理，端侧 LLM 机密推理集成后量子 KEM 与 ASCON</h3>
+        <p class="card-sum">YAVIN 将 TEE（可信执行环境）扩展至内存内处理，端侧 LLM 机密推理原生集成后量子 KEM（LightSaber）与轻量加密 ASCON，兼顾端侧推理安全与抗量子升级路径。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.13496" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:900ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">网易智企</span>
+            <span class="tag tag-cat">标准发布/白皮书</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">网易智企联合金山办公、MiniMax 发布《AI 安全白皮书》，提出五层风险框架</h3>
+        <p class="card-sum">网易智企联合金山办公、MiniMax 发布《AI 安全白皮书》，提出覆盖数据、模型、应用、运营与生态的五层风险框架，面向企业 AI 落地提供安全实践指引。</p>
+        <div class="sources"><a class="src" href="https://m.itbear.com.cn/html/2026-08/1490499.html" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:960ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">VIDRAFT</span>
+            <span class="tag tag-cat">大模型安全评估</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-14</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">VIDRAFT 发布 AX-RAY AI 安全诊断排行榜与评测数据集</h3>
+        <p class="card-sum">VIDRAFT 在 Hugging Face 发布 AX-RAY AI 安全诊断排行榜与配套评测数据集，提供面向安全能力与安全性的可复现评测基准，扩充社区评测资源。</p>
+        <div class="sources"><a class="src" href="https://dev.to/ai_openfree_b23025ef075cf/vidraft-releases-ax-ray-ai-safety-diagnostic-leaderboard-and-evaluation-dataset-on-hugging-face-3094" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:1020ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">法治日报</span>
+            <span class="tag tag-cat">政策监管</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-16</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">法治日报评拟人化 AI 未成年人保护：四类风险与《管理办法》四条专项规定</h3>
+        <p class="card-sum">法治日报就拟人化 AI 对未成年人的影响发文，梳理诱导成瘾、情感依赖、隐私泄露、内容不当四类风险，并解读《人工智能拟人化互动服务管理暂行办法》中四条未成年人专项保护规定，监管细化持续推进。</p>
+        <div class="sources"><a class="src" href="https://www.legaldaily.com.cn/index/content/2026-08/16/content_9441424.html" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:1080ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">模型供应链/水印</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-13</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">互补 LLM 水印：同时提供溯源追踪与篡改检测，抵御 piggyback spoofing</h3>
+        <p class="card-sum">arXiv 新研究提出互补型 LLM 水印方案，在同一生成文本上同时实现来源溯源与内容篡改检测，并抵御 piggyback spoofing（借用他人水印冒名）攻击，完善 AI 内容真实性技术栈。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.12713" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:1140ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">模型供应链安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-11</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">GraphRP：模型重编程构造'结构防火墙'，防御 GNN 黑盒模型窃取</h3>
+        <p class="card-sum">GraphRP 用模型重编程（Model Reprogramming）为图神经网络构造'结构防火墙'，在不改变原始模型的前提下防御黑盒模型窃取攻击，探索 AI 模型知识产权保护的新范式。</p>
+        <div class="sources"><a class="src" href="https://arxiv.org/abs/2608.11495" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:1200ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">多智能体安全</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">多智能体 AI 安全作为制度设计问题：权威状态与阻止路径决定安全而非规则文本</h3>
+        <p class="card-sum">arXiv 论文将多智能体 AI 安全重新定义为制度设计问题：相比依赖规则文本约束，智能体系统的'权威状态'与'阻止路径'设计才真正决定安全性，为 Agent 生态治理提供系统论视角。</p>
+        <div class="sources"><a class="src" href="https://pith.science/paper/2608.09828" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article><article class="card lvl1" style="animation-delay:1260ms">
+        <div class="card-top">
+          <div class="tags">
+            <span class="tag tag-vendor">学术研究</span>
+            <span class="tag tag-cat">红蓝对抗</span>
+            
+          </div>
+          <div class="meta"><span class="date-chip">2026-08-10</span><span class="fire">🔥</span></div>
+        </div>
+        <h3 class="card-title">GFlowNets 自动化 LLM 红队：小模型攻击者生成多样化对抗提示，成功率从 0.08 升至 0.79</h3>
+        <p class="card-sum">arXiv 论文将 GFlowNets 用于自动化 LLM 红队：训练小规模攻击者模型生成多样化的对抗提示，在目标模型上的攻击成功率从 0.08 提升至 0.79，为低成本自动化红队提供新路径。</p>
+        <div class="sources"><a class="src" href="https://www.pith.science/paper/2608.10171" target="_blank" rel="noopener">来源 ↗</a></div>
+      </article></div>
+    </section>
+
+  <section class="section reveal" id="trend">
+    <div class="sec-head">
+      <div class="sec-title"><span class="sec-icon">🧭</span>趋势判断</div>
+      <div class="sec-sub">精简版 · 仅供参考</div>
+    </div>
+    <ul class="trend">
+    <li><span class="tnum">01</span>AI 编码智能体安全全面"默认化"：Claude Code 自动模式用分类器替代人工审批（危险命令拦截 89% vs 人工 13.6%，提示注入 720 次攻击 0 成功），安全不再是可选加固而是出厂默认</li>
+<li><span class="tnum">02</span>Agent 信任链攻击持续武器化：Ghostjacking 投毒日志劫持成功率约 90%，叠加 53 个可抢注幻觉包名，AI 工具链的每个环节（日志/依赖/权重）都在被攻击者系统性地探测</li>
+<li><span class="tnum">03</span>AI×密码学正式进入顶会体系：CRYPTO 2026 首设神经网络密码分析轨道，与 HAWK 后量子签名遭 AI 破解（8/14）形成呼应，密码学是 AI 安全攻防的下一条前线</li>
+<li><span class="tnum">04</span>防御侧 AI 基础模型融资启动：Sequoia 领投 Corma 6000 万美元种子轮，安全大模型从攻击侧（GPT-5.6-Cyber）向防守侧扩展，'以模制模'进入商业化阶段</li>
+<li><span class="tnum">05</span>监管与成本双加压：Sanders 联合 30 名议员要求暂停前沿 AI 开发；IBM 报告四分之一恶意泄露由 AI 驱动（+56%），Gartner 预测安全支出增 12.5%——AI 攻击成本正直接转化为企业预算</li>
+
+    </ul>
+  </section>
+
+  <footer>
+    🤖 AI 安全日报 · 数据采集于互联网公开信息 · 2026-08-17 周一 · 全球与中国 AI 安全友商产品动态 / 行业趋势<br>
+    <span class="brand">AI Security Daily</span> · 由 AI 自动生成，仅作行业信息参考
+  </footer>
+</div>
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('on')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var sec = e.target;
+        sec.classList.add('on');
+        var cards = sec.querySelectorAll('.card');
+        cards.forEach(function(c,i){ c.style.animationDelay = (i%6)*60+'ms'; });
+        if(sec.classList.contains('section')){ sec.classList.add('on'); sec.querySelectorAll('.card').forEach(function(c){c.style.opacity=1;}); }
+        io.unobserve(sec);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  els.forEach(function(e){io.observe(e)});
+  // 兜底：3 秒后全部显示
+  setTimeout(function(){
+    els.forEach(function(e){e.classList.add('on'); e.querySelectorAll('.card').forEach(function(c){c.style.opacity=1;})});
+  },3000);
+})();
+</script>
+</body>
+</html>
