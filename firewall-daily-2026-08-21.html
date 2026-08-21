@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-21</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --panel: #141414;
+    --panel-border: rgba(255,255,255,0.06);
+    --text: #E4E4E7;
+    --text-dim: #A1A1AA;
+    --accent-1: #5B6CF7;
+    --accent-2: #8B5CF6;
+    --accent-3: #EC4899;
+    --link: #8B5CF6;
+    --radius: 14px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC",
+                 "Segoe UI", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    background: rgba(10,10,10,0.72);
+    border-bottom: 1px solid var(--panel-border);
+    padding: 14px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand { font-weight:700; font-size:15px; letter-spacing:.3px; }
+  .nav-brand span { background: linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-3));
+                     -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .nav-date { font-size:13px; color:var(--text-dim); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 88px 24px 64px; }
+  .hero { text-align:left; padding: 34px 0 26px; }
+  .hero h1 {
+    font-size: clamp(26px, 4.2vw, 40px); font-weight: 800; letter-spacing: -.5px;
+    background: linear-gradient(100deg, #fff 20%, var(--accent-1) 55%, var(--accent-2) 80%, var(--accent-3));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .sub { margin-top:10px; color:var(--text-dim); font-size:15px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .stat-pill {
+    display:inline-flex; align-items:center; gap:6px;
+    background: rgba(91,108,247,0.12); border:1px solid rgba(91,108,247,0.28);
+    color:#A5B4FC; padding:4px 12px; border-radius:999px; font-size:13px; font-weight:600;
+  }
+  .insight {
+    margin: 20px 0 34px; padding: 20px 22px; border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(91,108,247,0.10), rgba(236,72,153,0.08));
+    border: 1px solid rgba(139,92,246,0.22);
+    position: relative; overflow: hidden;
+  }
+  .insight::before {
+    content:""; position:absolute; inset:0 0 auto 0; height:2px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  }
+  .insight .kicker { font-size:12px; font-weight:700; letter-spacing:1.5px; color:var(--accent-2); margin-bottom:8px; }
+  .insight p { font-size:14.5px; color:#D4D4D8; }
+  .section-title {
+    font-size: 19px; font-weight: 700; margin: 34px 0 16px; display:flex; align-items:center; gap:10px;
+  }
+  .section-title .line { flex:1; height:1px; background: linear-gradient(90deg, rgba(255,255,255,0.14), transparent); }
+  .section-title .count { font-size:13px; color:var(--text-dim); font-weight:500; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap:16px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--radius);
+    padding: 18px 18px 16px; transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    opacity: 0; transform: translateY(18px);
+  }
+  .card.visible { opacity:1; transform: translateY(0); }
+  .card:hover { transform: translateY(-3px); border-color: rgba(139,92,246,0.4); background:#17171a; }
+  .card .head { display:flex; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap; }
+  .card .tag {
+    font-size: 11px; font-weight:700; padding: 2px 10px; border-radius: 999px; letter-spacing:.4px;
+  }
+  .card .date { font-size:12px; color:var(--text-dim); margin-left:auto; }
+  .card h3 { font-size:15px; font-weight:600; line-height:1.45; margin-bottom:8px; }
+  .card p { font-size:13.5px; color:var(--text-dim); margin-bottom:12px; }
+  .card .src { display:flex; gap:8px; flex-wrap:wrap; }
+  .src-link {
+    font-size:12.5px; font-weight:600; color: var(--link); text-decoration:none;
+    padding: 3px 10px; border:1px solid rgba(139,92,246,0.3); border-radius: 8px;
+    transition: color .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .src-link:hover { color:#C4B5FD; border-color:#A78BFA; background:rgba(139,92,246,0.12); text-decoration:underline; }
+  .empty-note {
+    padding: 26px; text-align:center; color:var(--text-dim); font-size:14px;
+    background: var(--panel); border:1px dashed rgba(255,255,255,0.12); border-radius: var(--radius);
+  }
+  .footer { text-align:center; color:rgba(255,255,255,0.25); font-size:12px; padding: 40px 0 10px; }
+  @media (max-width: 640px) {
+    .wrap { padding: 80px 16px 48px; }
+    .grid { grid-template-columns: 1fr; }
+    .nav { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-brand">🛡️ 防火墙厂商日报 <span>Firewall Daily</span></div>
+  <div class="nav-date">2026-08-21</div>
+</nav>
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="sub">
+      <span>2026-08-21 · 星期五</span>
+      <span class="stat-pill">厂商 7 条</span>
+      <span class="stat-pill">行业 14 条</span>
+      <span class="stat-pill">共 21 条动态</span>
+    </div>
+  </header>
+  <section class="insight">
+    <div class="kicker">AI 解读 · 今日看点</div>
+    <p>今天动作最大的是金融机构，不是厂商——央行 999.6 万大单里新华三 F5000-AI 和华为 USG6655F 同台竞技，广发银行 XC 防火墙直接把「国芯自研芯片」写进投标资格门槛，鞍山银行、国开行厦门、徽商期货、招商证券全线招标，金融信创防火墙采购进入白热化，型号+单价都是竞品分析的活教材。厂商侧天融信最猛：常州智云常经开 AI 一体化平台（大模型安全网关软件化落地）+ 中国铁塔江苏 + 能源 2862 万三连击，AI 安全防护开始批量变现；奇安信防火墙拿下 21 项增强级认证背书。合规侧《网络数据安全风险评估办法》8/20 正式施行，重要数据年度评估成硬性义务，将直接拉动评估/密评服务需求。用户最该关注：金融招标参数里「国芯 + 型号 + 单价」的组合，是下半年报价和产品定位的关键参照。</p>
+  </section>
+
+  <div class="section-title">🏢 厂商动态 <span class="line"></span><span class="count">7 条</span></div>
+  <div class="grid" id="vendor-grid"></div>
+
+  <div class="section-title">🏭 行业动态 <span class="line"></span><span class="count">14 条</span></div>
+  <div class="grid" id="industry-grid"></div>
+
+  <div class="footer">数据来源：公开新闻与采购公告 · 生成于 2026-08-21 09:00 · 仅供行业参考</div>
+</div>
+
+<script>
+const CARDS = [{"title": "天融信AI安全防护中标常州经开区智云常经开AI一体化平台，另斩中国铁塔江苏项目+能源2862万大单", "tag": "天融信", "tagColor": "#FBBF24", "date": "2026-08-20", "summary": "天融信中标「智云常经开」人工智能一体化服务平台建设及运营项目，标志大模型安全网关产品完成软件化落地、技术能力实现商业收入转化——为平台AI安全围栏部署（AI识别、会话解析、应用及API防护、提示词注入防护、价值观内容过滤等）。同期还中标中国铁塔江苏「基于多源设备日志安全分析与预警技术研究」项目，并在能源行业另斩2862万安全服务大单。此前已交付广东疾控、某省财政信息中心数据安全防护、中原环保大模型安全建设等项目，AI安全防护在政府/能源/卫生/运营商多点开花。", "links": "<a class=\"src-link\" href=\"https://news.10jqka.com.cn/20260820/c679133350.shtml\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "奇安信网神防火墙NSG2600-DS60通过TECC权威检测：21项指标全数斩获增强级认证", "tag": "奇安信", "tagColor": "#EC4899", "date": "2026-08-18", "summary": "奇安信网神SecGate 3600防火墙系统V3.6.6.0（型号NSG2600-DS60）通过湖南中检通检测（TECC）权威检测：依据GB/T 20281-2020、GB 42250-2022及GA/T 1177-2014（增强级）三项国家标准，在性能、系统架构、自主原创、DDoS防护、策略管理、深度防护、勒索防护、高可用等21项检测中全部合格，被认定符合「网络型防火墙-增强级」及IPv6支持要求。实测网络吞吐2Gbps、IPS吞吐140Mbps、并发连接100万、MTBF 5万小时。", "links": "<a class=\"src-link\" href=\"https://mtz.china.com/touzi/2026/0818/259377.html\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "启明星辰中标网联清算2026年应用防火墙采购项目：145.04万元（天清WAF×28台）", "tag": "启明星辰", "tagColor": "#A78BFA", "date": "2026-08-10", "summary": "网联清算有限公司2026年应用防火墙采购项目合同公告（8月10日）：北京启明星辰以145.04万元中标，供应天清Web应用安全网关系统V7.0（WAF10000-HG-WL）28台，单价5.18万元，交付至北京、上海、深圳三地，合同签订于8月7日，公开招标方式采购。", "links": "<a class=\"src-link\" href=\"https://bj.zhiliaobiaoxun.com/article/108778618\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "绿盟科技中标中国联通江苏供应链安全管理平台建设工程：69.83万元", "tag": "绿盟科技", "tagColor": "#34D399", "date": "2026-08-14", "summary": "2026年中国联通江苏供应链安全管理平台建设工程中标候选人公示：北京神州绿盟科技为第一中标候选人，含税报价69.834万元，合同签订后15日内完成平台上线。项目7月22日发布招标公告、8月13日开标评标，公示期8月14-17日。", "links": "<a class=\"src-link\" href=\"https://js.zhiliaobiaoxun.com/article/109364715\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "深信服中标中山大学信息技术安全服务项目：中标金额305.79万元", "tag": "深信服", "tagColor": "#22D3EE", "date": "2026-08-15", "summary": "据企查查数据，深信服于2026年8月15日公告中标中山大学采购项目（中大招（服）[2022]176号信息技术安全服务项目），中标金额305.79万元。深信服2025年营收80.43亿元（同比+6.96%），其中网络安全业务收入占比44.01%。", "links": "<a class=\"src-link\" href=\"https://www.popcj.com/depth/8233272608589357\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "中国人民银行清算总中心2026-2029年度业务系统新华三防火墙维修及技术服务单一来源公示", "tag": "H3C", "tagColor": "#60A5FA", "date": "2026-08-18", "summary": "中国人民银行清算总中心发布2026-2029年度业务系统新华三防火墙维修及技术服务项目单一来源公示（8月18日），供应商为新华三技术有限公司，服务期覆盖2026-2029三个年度。央行体系存量新华三防火墙的长期维保继续锁定原厂直签。", "links": "<a class=\"src-link\" href=\"http://www.cfcpn.com/jcw/sys/index/goUrl?url=modules/sys/login/detail&column=undefined&searchVal=d42a8a23702d4d6cb5152abe6a00a44\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "华为坤灵中国行2026·陕西站：AI防火墙融入中小企业智能办公/教育场景", "tag": "华为", "tagColor": "#F87171", "date": "2026-08-14", "summary": "8月14日华为坤灵中国行陕西站举办，面向中小企业发布智能办公/智能教育场景方案：融合AI防火墙与灵眸防偷拍设备构建「网络+空间」双重安全防线，Wi-Fi 7高密AP+AR系列融合网关+S770高性能交换机组合，AI防火墙过滤不良信息，依托坤灵APP实现自动化开局与AI排障，已落地十万余中小企业办公项目。", "links": "<a class=\"src-link\" href=\"https://cnews.chinadaily.com.cn/a/202608/14/WS6a7ebc5fa310099e0fc7bc80.html\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "中国人民银行2026年网络路由交换和网络安全设备项目中标：999.6万（新华三F5000-AI×10+华为USG6655F×8+长亭WAF×6）", "tag": "金融", "tagColor": "#EAB308", "date": "2026-08-14", "summary": "央行集中采购中心公告「2026年网络路由交换和网络安全设备项目」中标：上海华讯网络以999.6万元中标。防火墙部分：新华三F5000-AI-130-G×8（17.52万/台）+F5000-AI-25-G×2（12.5万/台）、华为USG6655F×8（13.29万/台）、长亭SL-H20-HG-3000 WAF×6（23.5万/台），另含华为/新华三交换机路由器若干。AI防火墙头部厂商同台竞技，型号+单价参考价值极高。", "links": "<a class=\"src-link\" href=\"https://jzcg.pbc.gov.cn/freecms/site/rmyh/ggxx/info/2026/3f155e79432249ceac898f33343e5d98.html?noticeType=001021&Type=jzcggg\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "广发银行总行XC防火墙采购招标：要求国芯自研芯片+金融行业供货案例", "tag": "金融", "tagColor": "#EAB308", "date": "2026-08-13", "summary": "广发银行总行发布XC防火墙采购招标公告：选定1家供应商提供信创防火墙。资格要求供应商须具备应标品牌国芯防火墙（关键芯片为国内厂商自研CPU，须原厂出具承诺函）的金融行业供货案例，并取得网络安全专用产品安全检测证书。国芯防火墙已从「合规可选」变成银行采购硬性门槛。", "links": "<a class=\"src-link\" href=\"https://jszb.chinaccsscm.cn/zbgg/461605.jhtml\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "徽商期货客户端软件服务器、网络安全设备更新扩容项目中标候选人公示：预算382万", "tag": "金融", "tagColor": "#EAB308", "date": "2026-08-18", "summary": "徽商期货「客户端软件服务器、网络安全设备更新扩容项目」8月18日发布中标候选人公示，预算382万元（含税）：采购万兆防火墙2台、万兆入侵防御设备1台、态势感知探针1台、服务器29台等。投标人须具备近3年合同金额≥200万（含服务器/交换机/防火墙/入侵防御/探针中两类）的供货业绩。", "links": "<a class=\"src-link\" href=\"https://www.youzhicai.com/nd/d803e1f9-47df-c282-c2e1-389524837e0d-1.html\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "鞍山银行同城互联网区网络安全设备采购310万招标：防火墙/IPS/IDS/WAF等全系", "tag": "金融", "tagColor": "#EAB308", "date": "2026-08-11", "summary": "鞍山银行「同城（梦网）互联网区网络安全设备采购项目」公开招标，预算310万元：A/B品牌防火墙各2台、IPS 2台、IDS 2台、链路/应用负载均衡各2台、抗DDoS 2台、WAF 2台及交换机16台，全部明确要求国产（是否进口：否），中标通知书发出后30个自然日内交货至鞍山银行数据中心。", "links": "<a class=\"src-link\" href=\"https://www.gxzbcg.cn/news/879407.html\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "国家开发银行厦门市分行网络升级改造项目招标：146万采购信创防火墙/IPS等35台设备", "tag": "金融", "tagColor": "#EAB308", "date": "2026-08-14", "summary": "国家开发银行厦门市分行「2025年网络升级改造项目」8月14日公开招标，预算146万元：采购信创设备35台，含外层防火墙2套、内层防火墙2套、IPS 4套、上网行为管理2套、全流量监测2套、堡垒机1台、日志审计1台、核心交换机2台等。", "links": "<a class=\"src-link\" href=\"https://cg.cdb.com.cn/cmscaigou/c0730971618c4dc3a9f8e8a82010f597.html\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "招商证券2026年职场防火墙设备采购（三次采购）招标：自主可控防火墙须现场验证", "tag": "金融", "tagColor": "#EAB308", "date": "2026-08-13", "summary": "招商证券「2026年职场防火墙设备采购（三次采购）」招标公告：采购一批自主可控防火墙设备，要求投标产品提供网络安全专用产品安全检测证书；排名第一的中标候选人须在指定场所对投标防火墙进行现场验证，验证不符将取消资格并顺延复核，合同生效后30日内完成供货安装。", "links": "<a class=\"src-link\" href=\"https://www.jinrongzhaobiao.com/news-d35dca5e99c550203749c904bfd242fe\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "新华社技术系统升级改造二期项目中标：909万元（H3C全系组网）", "tag": "政府", "tagColor": "#5B6CF7", "date": "2026-08-19", "summary": "新华社「技术系统升级改造二期项目·总社融合办公网升级改造子项」中标公告（8月19日）：北京海联捷讯以909万元中标（预算1243万元），核心设备为H3C S12508G-AF核心交换机×2（17.5万/台）等H3C全系网络设备，覆盖总社融合办公网升级改造。", "links": "<a class=\"src-link\" href=\"https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260819_27167620.htm\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "安徽省特种设备检测院防火墙采购项目中标：29.7万元（奇安信NSG9800-TG35×2）", "tag": "政府", "tagColor": "#5B6CF7", "date": "2026-08-12", "summary": "安徽省特种设备检测院防火墙采购项目8月12日中标公告：安徽晓强科技以29.7万元中标，采购奇安信NSG9800-TG35防火墙2台（单价14.85万元）。", "links": "<a class=\"src-link\" href=\"https://www.ahtba.org.cn/site/trade/affiche/detail/99fdafc7-96ad-11f1-b7f6-00163e1f3e9b\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "广东海洋大学云资源中心安全升级119万：联通广东中标，深信服WAF/堡垒机/日志审计组合", "tag": "政府", "tagColor": "#5B6CF7", "date": "2026-08-12", "summary": "广东海洋大学2026年云资源中心安全升级改造项目结果公告（8月12日）：联通（广东）产业互联网以119万元中标，供应深信服Web应用防火墙AF-2000-FH3120B（23.6万）、数据库审计、运维安全管理系统OSM、日志分析管理系统SIP-Logger-C600及远江盛邦抗DDoS设备。", "links": "<a class=\"src-link\" href=\"https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260812_27122342.htm\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "中国联通鄂尔多斯工业智能网三期网络安全配套采购（二次）：17台防火墙预算116万", "tag": "运营商", "tagColor": "#06B6D4", "date": "2026-08-12", "summary": "中国联通鄂尔多斯分公司「工业智能网三期网络安全配套采购项目（二次）询比采购」公告：为乌审旗卓正煤矿、梅林庙、沙圪堵硅铝新材料、长滩煤矿西等5处站点及中心局/养护所等配置生产网、办公监控网防火墙，合计17台，预算116万元（不含税）。8月4日首次询比因应答不足3家失败后二次发起。", "links": "<a class=\"src-link\" href=\"https://nmg.zhiliaobiaoxun.com/article/108793064\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "中国电建华科软防火墙设备采购竞价：山石网科SG-6000-K2780-A/K3280-A边界+隔离防火墙", "tag": "能源", "tagColor": "#FB7185", "date": "2026-08-17", "summary": "中国电建北京华科软科技防火墙设备采购公开竞价公告：采购山石网科边界防火墙SG-6000-K2780-A×2（吞吐16Gbps、并发700万、25万新建/秒）与隔离防火墙SG-6000-K3280-A×1（吞吐20Gbps、并发900万），明确要求投标产品必须为山石防火墙产品并提供原厂项目授权，8月19日截止报价。", "links": "<a class=\"src-link\" href=\"https://zdjjt.zgdlyzc.com/ywgg/1/0/4626308.html\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "海南电网2026年第一批数字化服务专项询比：启明星辰中标海南电网本部网络安全技术服务", "tag": "能源", "tagColor": "#FB7185", "date": "2026-08-14", "summary": "海南电网2026年第一批数字化服务类专项公开询比采购成交候选人公示（8月14日）：北京启明星辰以7.38%下浮率中标「海南电网本部2026年个性化网络安全技术服务项目」；同期标包含渗透测试服务（南方电网数字电网集团信通中标）、国产密码应用安全性评估（中科安永中标）等。", "links": "<a class=\"src-link\" href=\"https://www.bidding.csg.cn/zbhxrgs/1200439315.jhtml\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a>"}, {"title": "军队采购网连发多条防火墙相关采购：网络设备6型需求公示+防火墙测试能力验证+信息服务防护设备招标（合并3源）", "tag": "军队", "tagColor": "#F97316", "date": "2026-08-17", "summary": "①网络设备采购项目需求公示（2026-JCLKXX-W1001）：采购路由器、交换机、防火墙、负载均衡等6型设备，要求二级（含）以上保密资质；②防火墙安全功能和性能测试能力验证服务采购意向（预算4.5万）：按GB/T 20281-2020对防火墙安全功能和性能测试能力进行能力验证（UTM类按GJB 6871-2009）；③信息服务防护设备和服务器等信息化设备采购招标（2026-JQ01-W1236）：要求武器装备科研生产单位二级（含）以上保密资质，8月31日开标。", "links": "<a class=\"src-link\" href=\"https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d03b19fd9a922019feaed9c792d3f.html\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a><a class=\"src-link\" href=\"https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d03ed9f3f3788019fd63182eb5d3b.html\" target=\"_blank\" rel=\"noopener\">来源 2 ↗</a><a class=\"src-link\" href=\"https://www.anfangzhaobiao.com/news-04b4a1260ab65f2c54db74874c88a34f\" target=\"_blank\" rel=\"noopener\">来源 3 ↗</a>"}, {"title": "《网络数据安全风险评估办法》8月20日正式施行：网信办答记者问公布评估机构认证规则", "tag": "其他", "tagColor": "#94A3B8", "date": "2026-08-20", "summary": "国家网信办、工信部、公安部联合发布的《网络数据安全风险评估办法》（24号令）于2026年8月20日正式施行：重要数据处理者须每年开展风险评估、报告20个工作日内报送、档案留存至少3年；加密保护重要数据须联动商用密码应用安全性评估。国家网信办数据与技术保障中心、公安部第三研究所、泰尔认证中心等已备案数据安全风险评估服务认证规则，第三方评估从「可选项」升级为「必选项」，未按规定开展评估将依法处理。", "links": "<a class=\"src-link\" href=\"https://www.cac.gov.cn/2026-08/20/c_1788889498173657.htm\" target=\"_blank\" rel=\"noopener\">来源 1 ↗</a><a class=\"src-link\" href=\"https://politics.gmw.cn/2026-08/21/content_38955099.htm\" target=\"_blank\" rel=\"noopener\">来源 2 ↗</a>"}];
+const VENDOR_COUNT = 7;
+
+function renderInto(el, items) {
+  if (!items.length) {
+    el.innerHTML = '<div class="empty-note">今日无新增动态，行业持续平稳</div>';
+    return;
+  }
+  items.forEach((c, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.idx = idx;
+    const head = document.createElement('div');
+    head.className = 'head';
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = c.tag;
+    tag.style.background = c.tagColor + '22';
+    tag.style.color = c.tagColor;
+    tag.style.border = '1px solid ' + c.tagColor + '55';
+    const date = document.createElement('span');
+    date.className = 'date';
+    date.textContent = c.date;
+    head.appendChild(tag); head.appendChild(date);
+    const h3 = document.createElement('h3');
+    h3.textContent = c.title;
+    const p = document.createElement('p');
+    p.textContent = c.summary;
+    const src = document.createElement('div');
+    src.className = 'src';
+    src.innerHTML = c.links;
+    card.appendChild(head); card.appendChild(h3); card.appendChild(p); card.appendChild(src);
+    el.appendChild(card);
+  });
+}
+
+renderInto(document.getElementById('vendor-grid'), CARDS.slice(0, VENDOR_COUNT));
+renderInto(document.getElementById('industry-grid'), CARDS.slice(VENDOR_COUNT));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.card').forEach(c => io.observe(c));
+</script>
+</body>
+</html>
