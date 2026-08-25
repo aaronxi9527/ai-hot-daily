@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-25</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card: #141414;
+    --card-hover: #1a1a1a;
+    --border: #262626;
+    --text: #f5f5f5;
+    --text-dim: #a3a3a3;
+    --accent-1: #5B6CF7;
+    --accent-2: #8B5CF6;
+    --accent-3: #EC4899;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 顶栏毛玻璃 */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 10, 10, 0.72);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-weight: 700; font-size: 15px; letter-spacing: 0.3px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-meta { font-size: 13px; color: var(--text-dim); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 88px 20px 60px; }
+  /* Hero */
+  .hero {
+    padding: 44px 0 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+    width: 720px; height: 320px;
+    background: radial-gradient(ellipse at center, rgba(91, 108, 247, 0.22), rgba(139, 92, 246, 0.12) 45%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; letter-spacing: -0.5px;
+    position: relative;
+  }
+  .hero .date-row {
+    margin-top: 10px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    color: var(--text-dim); font-size: 14px; position: relative;
+  }
+  .hero .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 999px;
+    background: linear-gradient(90deg, rgba(91,108,247,.18), rgba(236,72,153,.18));
+    border: 1px solid rgba(139,92,246,.35);
+    color: #e0e7ff; font-size: 13px; font-weight: 600;
+  }
+  /* AI 解读 */
+  .ai-box {
+    margin: 28px 0 40px;
+    padding: 20px 22px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(91,108,247,.10), rgba(139,92,246,.08) 50%, rgba(236,72,153,.10));
+    border: 1px solid rgba(139,92,246,.28);
+    position: relative;
+  }
+  .ai-box .ai-label {
+    display: inline-block; margin-bottom: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .ai-box p { font-size: 14.5px; color: #d4d4d8; }
+  .ai-box strong { color: #fff; }
+  /* 版块标题 */
+  .section {
+    margin: 38px 0 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.2px; }
+  .section .count {
+    font-size: 12px; font-weight: 600; color: #a5b4fc;
+    padding: 2px 10px; border-radius: 999px;
+    background: rgba(91,108,247,.14); border: 1px solid rgba(91,108,247,.3);
+  }
+  .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(139,92,246,.4), transparent); }
+  /* 卡片网格 */
+  .grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 18px 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    opacity: 0; transform: translateY(22px);
+  }
+  .card.visible { opacity: 1; transform: translateY(0); }
+  .card:hover {
+    transform: translateY(-3px);
+    background: var(--card-hover);
+    border-color: rgba(139,92,246,.45);
+    box-shadow: 0 8px 30px rgba(0,0,0,.4);
+  }
+  .card-top { display: flex; align-items: center; gap: 8px; }
+  .tag {
+    font-size: 11px; font-weight: 700; letter-spacing: .3px;
+    padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+  }
+  .card-date { font-size: 11.5px; color: var(--text-dim); margin-left: auto; white-space: nowrap; }
+  .card h3 { font-size: 15px; font-weight: 650; line-height: 1.5; letter-spacing: -0.1px; color: #fafafa; }
+  .card p { font-size: 13px; color: var(--text-dim); line-height: 1.65; }
+  .src-link {
+    color: var(--accent-2); font-size: 12.5px; text-decoration: none; font-weight: 600;
+    transition: color .15s ease;
+  }
+  .src-link:hover { color: #c4b5fd; text-decoration: underline; }
+  .footer {
+    margin-top: 56px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center; color: #525252; font-size: 12px;
+  }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    .wrap { padding: 80px 14px 40px; }
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">🛡️ Firewall Daily</div>
+    <div class="nav-meta">2026-08-25 · 中国防火墙厂商日报</div>
+  </nav>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>🛡️ 中国防火墙厂商日报</h1>
+      <div class="date-row">
+        <span>2026-08-25 周二</span>
+        <span class="badge">厂商 10 条 · 行业 10 条 · 共 20 条</span>
+      </div>
+    </header>
+
+    <div class="ai-box">
+      <div class="ai-label">✦ AI 解读</div>
+      <p>今天最大的看点是**财报季落地**——深信服半年报营收 +32.85% 扭亏为盈、启明星辰大模型应用防火墙收入暴涨 238%，AI 防火墙第一次从「概念热度」变成「报表数字」，验证了「AI 安全 + 防火墙替换周期」双主线。奇安信把安全能力签进伊利的牧场到消费端全链条，网安龙头开始向实体产业下沉。采购侧金融最猛：建行 493 万攻防演习五家分食、光大银行防火墙选型、北京银行、广州期货同日开闸，军队再放 2918 万防火墙大单。深信服今天存在感最强（4 条），用户最该关注启明星辰 +238% 那条——AI 防火墙正在变成真金白银的收入。</p>
+    </div>
+
+    <div class="section">
+      <h2>🏢 厂商动态</h2>
+      <span class="count">10</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid" id="vendor-grid"></div>
+
+    <div class="section">
+      <h2>🏭 行业动态</h2>
+      <span class="count">10</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid" id="sector-grid"></div>
+
+    <div class="footer">
+      数据来源：公开网络搜索 · 自动生成于 2026-08-25 09:00 · 点击「来源」可跳转原文
+    </div>
+  </div>
+
+<script>
+const DATA = {"vendor": [{"title": "深信服2026年半年报：营收39.98亿同比+32.85%扭亏为盈，NGFW进入替换周期+AI安全平台放量", "summary": "深信服8月21日公布2026年中报：营收39.98亿元同比+32.85%，归母净利润2.31亿元扭亏为盈（上年同期亏2.28亿）；云及AI基础设施收入22.12亿+58.6%；网络安全业务收入15.87亿+10.57%，受益于下一代防火墙、全网行为管理进入替换周期及AI安全平台、安全托管服务放量，毛利率78.52%。", "tag": "深信服", "tagColor": "#5B6CF7", "links": "<a class=\"src-link\" href=\"https://www.sohu.com/a/1066950898_250147\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-24"}, {"title": "启明星辰2026半年报：营收12.35亿同比+9.01%，大模型应用防火墙收入同比+238.15%", "summary": "启明星辰8月21日晚发布2026年半年报：营收12.35亿元同比+9.01%，Q2营收+15.34%，归母净利润与扣非净利润双盈利，三费同比降28.38%；AI产品创新持续转化为收入，大模型应用防火墙收入同比增长238.15%，推出安星数字员工、智能体安全新三件套等。", "tag": "启明星辰", "tagColor": "#A855F7", "links": "<a class=\"src-link\" href=\"https://www.toutiao.com/article/7676490257881219627/\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-21"}, {"title": "奇安信与伊利集团签署战略合作协议，打造乳品全产业链AI安全防护体系（合并4源）", "summary": "8月18日，奇安信与伊利集团在呼和浩特签署战略合作，董事长齐向东与潘刚见证。双方围绕网络安全体系、常态化安全运营、AI安全赋能及国际化业务合规展开合作，依托奇安信安全垂域大模型与AI安全网关技术，构建从牧场、智能制造工厂到消费端的全链条AI安全防护体系，并联合推进跨境数据合规与隐私保护。", "tag": "奇安信", "tagColor": "#8B5CF6", "links": "<a class=\"src-link\" href=\"https://www.163.com/dy/article/L4MIKQ3D0534A4SC.html\" target=\"_blank\" rel=\"noopener\">来源1 ↗</a> · <a class=\"src-link\" href=\"https://www.hstong.com/news/detail/26081919150234225\" target=\"_blank\" rel=\"noopener\">来源2 ↗</a> · <a class=\"src-link\" href=\"https://www.toutiao.com/article/7675575508834206260\" target=\"_blank\" rel=\"noopener\">来源3 ↗</a> · <a class=\"src-link\" href=\"https://www.eeo.com.cn/2026/0820/1005454.shtml\" target=\"_blank\" rel=\"noopener\">来源4 ↗</a>", "date": "2026-08-18"}, {"title": "山石网科中标上汽红岩汽车2026国产化替换项目，ASIC信创防火墙落地车企", "summary": "山石网科中标上汽红岩汽车2026国产化替换项目，中标产品为山石网科ASIC信创防火墙，标志国产防火墙在汽车制造行业的国产化替换落地。", "tag": "山石网科", "tagColor": "#10B981", "links": "<a class=\"src-link\" href=\"https://www.toutiao.com/w/1872582100397132/\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-04"}, {"title": "中国人民银行清算总中心办公网安全防护采购（二次）中标：绿盟科技298万元", "summary": "中国人民银行清算总中心2026年办公网安全防护系统网络安全软硬件采购（二次）8月20日公布中标结果，北京神州绿盟科技有限公司以298万元中标，评审总得分88.57分。", "tag": "绿盟科技", "tagColor": "#3B82F6", "links": "<a class=\"src-link\" href=\"https://www.chinamae.com/partner/5481e3221fe27ea155186646ae5c1402.html\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-20"}, {"title": "兴业银行互联网访问行为审计分析设备采购：深信服中标", "summary": "兴业银行互联网访问行为审计分析设备采购项目8月21日公布采购结果，供应商为深信服科技股份有限公司。", "tag": "深信服", "tagColor": "#5B6CF7", "links": "<a class=\"src-link\" href=\"https://cg.cib.com.cn/cms/default/webfile/ywgg3/20260821/1275410346684710912.html\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-21"}, {"title": "联通江苏内网安全身份与访问控制扩容零信任系统直接采购：深信服中选", "summary": "2026年中国联通江苏内网安全硬件身份与访问控制能力扩容项目零信任系统采购直接采购评审结果公示，供应商为深信服科技股份有限公司。", "tag": "深信服", "tagColor": "#5B6CF7", "links": "<a class=\"src-link\" href=\"https://www.chinaunicombidding.cn/bidInformation/detail?id=2090702924398583808&amp;cid=14\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-21"}, {"title": "天融信三项AI安全成果获2026 CCIA网络安全优秀创新成果大赛奖项", "summary": "天融信凭借大模型安全、工业互联网安全、智能安全运营方向布局，在CCIA主办的2026年网络安全优秀创新成果大赛斩获三项大奖，含大模型数据安全监测系统（解析MCP/A2A协议、监测提示词注入）。", "tag": "天融信", "tagColor": "#F59E0B", "links": "<a class=\"src-link\" href=\"https://www.topsec.com.cn/newsx/6819\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-20"}, {"title": "绿盟科技受邀参与2026世界机器人大会，共研具身智能安全（AI-PTS 2.0覆盖机器人产业）", "summary": "绿盟科技受邀参与2026世界机器人大会，以清风卫AI安全系列、风云卫AI安全能力平台及AI-PTS 2.0智能渗透测试系统覆盖机器人调度平台、具身智能大模型安全；牵头TC260大模型安全网关国标立项。", "tag": "绿盟科技", "tagColor": "#3B82F6", "links": "<a class=\"src-link\" href=\"https://www.toutiao.com/article/7676036103250264576/\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-21"}, {"title": "Broadcom推出AI驱动多层网络防御：VMware安全平台升级，防火墙吞吐最高75Gbps", "summary": "博通对VMware安全产品进行升级：内部流量检测、防火墙与API保护融合、部署最少两台机器、硬件省三分之一、防火墙处理速度最高75Gbps（提升两倍多），并内置AI助手自动排障。", "tag": "其他", "tagColor": "#6B7280", "links": "<a class=\"src-link\" href=\"https://www.163.com/dy/article/L3VBPJ3M0552C3W2.html\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-10"}], "sector": [{"title": "军队某数据中心配套安全防护建设（二次）招标：2918.91万元含万兆/千兆防火墙及WAF 28台", "summary": "军队采购网8月6日发布某数据中心配套安全防护建设（二次）招标（2026-JL01-W1025），预算2918.91万元，含万兆防火墙13台、千兆防火墙18台、WAF 28台、数据防泄漏21台、恶意代码检测14套等。", "tag": "军队", "tagColor": "#F87171", "links": "<a class=\"src-link\" href=\"https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d00c89f2c5ed3019fd146d80e5707.html\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-06"}, {"title": "建行网络攻防实战演习专项安全支持服务：360/天融信/绿盟/长亭/安恒五家分食493万元", "summary": "中国建设银行网络攻防实战演习专项安全支持服务-安全加固采购结果8月21日公开，三六零、天融信、绿盟、长亭、安恒五家厂商并列中标，金额各493.17万元。", "tag": "金融", "tagColor": "#FBBF24", "links": "<a class=\"src-link\" href=\"https://ibuy.ccb.com/cms/index.html#/content?pId=353&amp;id=29234\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-21"}, {"title": "南方电网2026年主网保护框架中标公示：启明星辰/天融信/绿盟分食变电站二次安防硬件防火墙包", "summary": "南方电网2026年主网保护、厂站自动化、安防设备第一批框架招标中标公示：广东包安全可控变电站二次安防硬件防火墙由启明星辰（228.39万）、天融信（199.84万）、绿盟（142.75万）分获40%/35%/25%份额，迪普独中广西云南包。", "tag": "运营商", "tagColor": "#38BDF8", "links": "<a class=\"src-link\" href=\"https://www.bidding.csg.cn/zbhxrgs/1200440127.jhtml\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-20"}, {"title": "中国光大银行低端防火墙设备选型入围项目中标候选人公示：江南博仁/先进数通/金信润天", "summary": "光大银行低端防火墙设备选型入围项目8月21日公示中标候选人：江南博仁（千兆3.2万/万兆5-5.5万每台）、先进数通（千兆3.58万/万兆4.8-4.9万）、金信润天（千兆3.5万/万兆7-7.56万），含千兆盒式、万兆盒式三类设备。", "tag": "金融", "tagColor": "#FBBF24", "links": "<a class=\"src-link\" href=\"https://www.chengezhao.com/cms/post/d/4/d4885c39ce270ea0f4939b0d7fc467bb\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-21"}, {"title": "国家广播电视总局信息中心设备购置中标：启明星辰万兆WAF+IPS、深信服上网行为管理，222.1万元", "summary": "国家广播电视总局信息中心设备购置项目8月20日公布中标，中国广播电视国际经济技术合作有限公司222.1万元中标，含启明星辰WAF10000万兆WAF（27.41万）、NGIPS8000万兆IPS（29.65万）及深信服AC上网行为管理（33.52万）。", "tag": "政府", "tagColor": "#34D399", "links": "<a class=\"src-link\" href=\"https://www.ccgp.gov.cn/cggg/zygg//zbgg/202608/t20260820_27174941.htm\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-20"}, {"title": "北京银行2026年防火墙设备采购项目中标候选人公示：紫光软件76.9万元", "summary": "北京银行2026年防火墙设备采购项目8月20日公示中标候选人：紫光软件系统有限公司76.9万元、东华软件77.8万元、金穗合利78.12万元。", "tag": "金融", "tagColor": "#FBBF24", "links": "<a class=\"src-link\" href=\"https://login-cpm-xt.bankofbeijing.com.cn/cms/default/webfile/1ywgg3/20260820/1275160817670553600.html\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-20"}, {"title": "江苏省体育局防火墙采购（2026）成交：深信服AF-1000-FH2300B单台23.85万元", "summary": "江苏省体育局防火墙采购项目（2026）8月20日成交，供应商江苏驰鑫达信息技术有限公司，深信服AF-1000-FH2300B防火墙1台23.85万元。", "tag": "政府", "tagColor": "#34D399", "links": "<a class=\"src-link\" href=\"https://jsstyj.jiangsu.gov.cn/art/2026/8/20/art_84013_11818584.html\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-20"}, {"title": "云南体育运动职业技术学院数据中心安全保障体系：山石+深信服+安恒联合中标133.3万元", "summary": "云南体育运动职业技术学院学校数据中心安全保障体系建设8月18日公布中标，联通数字科技云南分公司133.3万元中标，含山石网科SG-6000-K3280-A主机安全、深信服数据库审计/漏扫、安恒APT预警平台等。", "tag": "政府", "tagColor": "#34D399", "links": "<a class=\"src-link\" href=\"https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260818_27156554.htm\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-18"}, {"title": "广州期货大学城机房核心防火墙国产化改造项目采购：预算100万元竞争性谈判", "summary": "广州期货股份有限公司大学城机房核心防火墙国产化改造项目8月19日发布采购公告，采购国产化防火墙设备，控制价100万元，竞争性谈判方式。", "tag": "金融", "tagColor": "#FBBF24", "links": "<a class=\"src-link\" href=\"https://www.gzfco.com.cn/NewsInfo.aspx?id=44378\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-19"}, {"title": "军队网络及安全设备采购意向公开：189.3万元构建安全准入+微隔离+流量分析体系", "summary": "军队网络及安全设备采购意向公开（2026-YJJSYP-0803），概算189.3万元，涉及网络安全准入、微隔离管理、流量分析、高性能交换互联四大方向5类产品，8月4日-10日公示。", "tag": "军队", "tagColor": "#F87171", "links": "<a class=\"src-link\" href=\"https://bj.zhiliaobiaoxun.com/article/108300446\" target=\"_blank\" rel=\"noopener\">原文 ↗</a>", "date": "2026-08-04"}]};
+
+function renderCard(c, i, el) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.style.transitionDelay = (Math.min(i, 8) * 45) + 'ms';
+
+  const top = document.createElement('div');
+  top.className = 'card-top';
+  const tag = document.createElement('span');
+  tag.className = 'tag';
+  tag.style.background = c.tagColor + '22';
+  tag.style.color = c.tagColor;
+  tag.style.border = '1px solid ' + c.tagColor + '55';
+  tag.textContent = c.tag;
+  const date = document.createElement('span');
+  date.className = 'card-date';
+  date.textContent = c.date;
+  top.appendChild(tag);
+  top.appendChild(date);
+
+  const h3 = document.createElement('h3');
+  h3.textContent = c.title;
+
+  const p = document.createElement('p');
+  p.textContent = c.summary;
+
+  const links = document.createElement('div');
+  links.innerHTML = c.links;
+
+  card.appendChild(top);
+  card.appendChild(h3);
+  card.appendChild(p);
+  card.appendChild(links);
+  el.appendChild(card);
+}
+
+const vg = document.getElementById('vendor-grid');
+const sg = document.getElementById('sector-grid');
+DATA.vendor.forEach((c, i) => renderCard(c, i, vg));
+DATA.sector.forEach((c, i) => renderCard(c, i, sg));
+
+// IntersectionObserver 渐入
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.card').forEach(c => io.observe(c));
+</script>
+</body>
+</html>
