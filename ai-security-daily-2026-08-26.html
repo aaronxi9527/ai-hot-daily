@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-08-26</title>
+<style>
+:root {
+  --bg: #0a0a0a; --card: #111827; --border: #1f2937;
+  --text: #e5e7eb; --muted: #9ca3af;
+  --g1: #5B6CF7; --g2: #8B5CF6; --g3: #EC4899;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+  line-height: 1.7; padding: 40px 20px;
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, #5B6CF722, #8B5CF622 50%, #EC489922);
+  border: 1px solid var(--border); border-radius: 16px;
+  padding: 40px 36px; margin-bottom: 24px; position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(600px 200px at 80% 0%, #5B6CF733, transparent 60%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: 30px; font-weight: 800; letter-spacing: 0.5px;
+  background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+.hero .date { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+.stats { display: flex; gap: 12px; flex-wrap: wrap; }
+.stat {
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 10px 18px; font-size: 13px; color: var(--muted);
+}
+.stat b { font-size: 20px; color: #fff; margin-right: 6px; }
+.overview {
+  background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--g2);
+  border-radius: 12px; padding: 20px 24px; margin-bottom: 28px;
+}
+.overview h4 { color: var(--g2); margin-bottom: 8px; font-size: 15px; }
+.overview p { color: #d1d5db; font-size: 14.5px; }
+.sec { margin-bottom: 34px; }
+.sec-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 16px;
+}
+.sec-head h2 { font-size: 20px; font-weight: 700; }
+.sec-stat { color: var(--muted); font-size: 12.5px; }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 14px; opacity: 0; transform: translateY(14px);
+  transition: opacity .5s ease, transform .5s ease, border-color .2s;
+}
+.card:hover { border-color: #374151; }
+.card.show { opacity: 1; transform: translateY(0); }
+.card-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.fire { font-size: 15px; line-height: 1.5; }
+.card h3 { font-size: 15.5px; font-weight: 600; line-height: 1.5; }
+.desc { color: #c4c9d2; font-size: 13.5px; margin-bottom: 12px; }
+.meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; }
+.tag {
+  padding: 2px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600;
+}
+.src { color: var(--muted); margin-left: auto; }
+.src a { color: #7dd3fc; text-decoration: none; }
+.src a:hover { text-decoration: underline; }
+.merge { color: #fbbf24; margin-left: 4px; }
+.trend {
+  background: linear-gradient(135deg, #111827, #1a1f35);
+  border: 1px solid var(--border); border-radius: 14px; padding: 26px 28px; margin-top: 10px;
+}
+.trend h3 {
+  font-size: 16px; margin-bottom: 12px;
+  background: linear-gradient(90deg, var(--g1), var(--g3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.trend li { font-size: 13.5px; color: #c4c9d2; margin-bottom: 8px; list-style: none; padding-left: 20px; position: relative; }
+.trend li::before { content: "▸"; position: absolute; left: 0; color: var(--g2); }
+.footer { text-align: center; color: #4b5563; font-size: 12px; margin-top: 30px; }
+@media (max-width: 640px) {
+  .hero { padding: 28px 20px; }
+  .hero h1 { font-size: 24px; }
+  .stats { flex-direction: column; }
+  .sec-stat { display: none; }
+  .src { margin-left: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>🤖 AI 安全日报</h1>
+    <div class="date">2026-08-26 · 周三</div>
+    <div class="stats">
+      <div class="stat"><b>4</b>国际产品</div>
+      <div class="stat"><b>2</b>国内产品</div>
+      <div class="stat"><b>9</b>行业动态</div>
+      <div class="stat"><b>15</b>总动态</div>
+    </div>
+  </div>
+
+  <div class="overview">
+    <h4>📌 AI 总览</h4>
+    <p>今天的核心词是「AI 安全开始量产化」——不是安全产品发布会变多，而是安全能力正式下沉为 AI 基建的标配零件。Cisco 把 AI Defense 铺到边缘与主权云（分布式 AI 安全）、Cloudflare 开源零信任沙箱平台 Cloudflare OS、Google 为金融业推出带完整数据溯源与审计日志的治理 Agent、腾讯云 ADP 4.0 出海——产品侧全部在回答同一个问题：AI 跑在哪儿，安全就跟到哪儿。行业侧出现难得的「冷静数据」：Unit 42 实测 405 个 AI 恶意软件样本只有 12 个真正进入生产环境（97% 停在实验室），AI 攻击的恐怖叙事被量化降温；但同一周 Alice 融资 1.4 亿美元、RAND 发布模型权重 SL3 安全框架，「以模制模」的防御投资与标准化反而在加速。国内侧：腾讯云 ADP 4.0 海外版 + 中国电信 TeleAgent 企业版，「带安全出厂」成为 Agent 平台出海标配；华为发布《金融智能体可信互联研究报告》、工信部征求人形机器人安全标准——金融与具身智能两个场景的治理框架开始补位。</p>
+  </div>
+
+  
+    <section class="sec">
+      <div class="sec-head">
+        <h2>🏢 国际友商产品动态</h2>
+        <span class="sec-stat">4 条 · 🔥🔥🔥0 🔥🔥3 🔥1</span>
+      </div>
+      
+        <div class="card" style="animation-delay:0.0s">
+          <div class="card-head">
+            <span class="fire">🔥🔥</span>
+            <h3>Cisco AI Defense × Armada：分布式 AI 安全，红队与运行时防护铺到边缘/主权云</h3>
+          </div>
+          <p class="desc">Cisco 8/25 官宣与 GPU 基础设施商 Armada 合作：AI Defense 的 Adaptive Red-Teaming（上线前对模型做自适应红队验证）与运行时防护（提示词/响应/MCP 交互/工具调用护栏，覆盖提示注入、越狱、敏感数据暴露、工具滥用）可部署到 Armada Bridge/Galleon 管理的私有 AI 工厂、主权云与边缘站点，敏感载荷与执行策略不出客户环境，形成跨云-数据中心-边缘的统一治理面——回答「AI 推理下沉后安全边界碎片化」问题。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Cisco</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">AI 运行时安全 · 边缘/主权云</span>
+            <span class="src"><a href="https://blogs.cisco.com/ai/ai-defense-armada-safe-distributed-ai" target="_blank" rel="noopener">Cisco 官方博客</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.06s">
+          <div class="card-head">
+            <span class="fire">🔥🔥</span>
+            <h3>Cloudflare OS 开源：能力模型 + 零信任沙箱的企业级 AI 平台</h3>
+          </div>
+          <p class="desc">Cloudflare 8/23-24 开源企业 AI 平台 Cloudflare OS（Apache-2.0）：基于 capability-based 的 Gatekeepers 权限模型，每个文档/应用实例跑在独立 V8 isolate 沙箱（workerd 运行时），Agent 默认零环境权限、可模拟执行结果等人工审批后再放行；分享 Gadget 时自动校验接收方对每个连接资源都有直接权限。内部 30 天非技术人员自建 4000+ 业务工具、销售团队回收 1 万工时，工程侧 Codex 策略库拦截 1.6 万次不合规合并。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Cloudflare</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">AI 平台安全 · 零信任沙箱</span>
+            <span class="src"><a href="https://www.163.com/dy/article/L532BJ7A05561FZI.html" target="_blank" rel="noopener">网易号报道</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.12s">
+          <div class="card-head">
+            <span class="fire">🔥🔥</span>
+            <h3>Google Cloud 发布 Gemini Enterprise for Financial Services：金融业治理级 Agent 平台</h3>
+          </div>
+          <p class="desc">Google Cloud 8/25 正式发布首个行业专属 agentic 方案：Google 托管的 Financial Research agent + 50+ 金融角色技能 + 13 个企业数据连接器（FactSet/LSEG/Moody's/MSCI/S&P Global/SEC EDGAR 等），覆盖 KYC、债券组合风险、信用机会挖掘、客户提案压缩等工作流。主打合规与审计：输出附置信度/方法论说明/数据快照/来源引用，通过 MCP 与企业系统集成、A2A API 接入既有 Agent 工作流；CME Group、德意志银行为首批用户，为资本市场与公司银行场景预览。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Google Cloud</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">Agent 治理 · 金融行业</span>
+            <span class="src"><a href="https://www.pymnts.com/google/2026/google-cloud-debuts-specialized-ai-agents-for-financial-services-and-legal-industries/" target="_blank" rel="noopener">PYMNTS</a> · <a href="https://www.nasdaq.com/articles/google-cloud-launches-gemini-enterprise-financial-services" target="_blank" rel="noopener">Nasdaq</a> <span class="merge">(合并2源)</span></span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.18s">
+          <div class="card-head">
+            <span class="fire">🔥</span>
+            <h3>Microsoft Copilot for Security 新增 MCP 安全与评估：Agent Governance Toolkit + Agent 365 CLI</h3>
+          </div>
+          <p class="desc">AzureTracks 8/22 汇总 Microsoft 安全侧更新：Copilot for Security 推出 MCP 安全与评估能力（Agent Governance Toolkit + Agent 365 CLI），为安全运营智能体的 MCP 连接提供安全配置检查与评估通道；同期 Sentinel 上线 AI 驱动的 Playbook 生成器（更多客户可用）与 Sentinel Connector Builder Agent 公开预览（支持嵌套 API），UEBA 异常检测扩展至 Behaviors 层。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Microsoft</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">安全智能体 · MCP 治理</span>
+            <span class="src"><a href="https://azuretracks.com/2026/08/azure-updates-number-144-august-22-2026" target="_blank" rel="noopener">AzureTracks #144</a> </span>
+          </div>
+        </div>
+    </section>
+  
+    <section class="sec">
+      <div class="sec-head">
+        <h2>🇨🇳 国内友商产品动态</h2>
+        <span class="sec-stat">2 条 · 🔥🔥🔥0 🔥🔥1 🔥1</span>
+      </div>
+      
+        <div class="card" style="animation-delay:0.0s">
+          <div class="card-head">
+            <span class="fire">🔥🔥</span>
+            <h3>腾讯云 ADP 4.0 海外版发布：Agent 开发全生命周期管理出海</h3>
+          </div>
+          <p class="desc">腾讯云 8/25 发布 ADP 4.0 海外版：面向 Agent 开发全生命周期管理（构建-接入-分发-治理四环节），针对企业 Agent「上线容易、运营难」的痛点——稳定运行、跨团队分发、持续治理与监控缺乏统一方案；海外版补齐多区域部署与国际生态适配，将 Agent 平台能力输出海外市场，与国内版共用治理底座。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">腾讯云</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">Agent 平台 · 出海</span>
+            <span class="src"><a href="https://www.163.com/dy/article/L5700A2105561FZP.html" target="_blank" rel="noopener">网易号报道</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.06s">
+          <div class="card-head">
+            <span class="fire">🔥</span>
+            <h3>中国电信 TeleAgent（星辰超级智能体）企业版发布：全栈私有化 + 智能体安全实时防控</h3>
+          </div>
+          <p class="desc">中国电信四川 8/21 发布 TeleAgent 企业版（8/25 封面新闻跟进）：基于星辰大模型的全栈私有化智能体平台，满足信创国产化要求并通过中国信通院认证。安全能力写进架构：数据存储/处理/传输全程企业边界内自主决策；智能体执行任务时自动安全检测与风险拦截（实时防控而非事后审计）。企业超管后台提供租户分级授权、Token 配额到人、多模型统一纳管、技能全生命周期审核。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">中国电信</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">智能体平台 · 私有化</span>
+            <span class="src"><a href="https://www.163.com/dy/article/L564P9E40514D3UH.html" target="_blank" rel="noopener">封面新闻/网易</a> </span>
+          </div>
+        </div>
+    </section>
+  
+    <section class="sec">
+      <div class="sec-head">
+        <h2>📊 行业动态与趋势</h2>
+        <span class="sec-stat">9 条 · 🔥🔥🔥2 🔥🔥3 🔥4</span>
+      </div>
+      
+        <div class="card" style="animation-delay:0.0s">
+          <div class="card-head">
+            <span class="fire">🔥🔥🔥</span>
+            <h3>AI 安全赛道大额融资：Alice 完成 1.4 亿美元融资，ARR 逼近 1 亿美元</h3>
+          </div>
+          <p class="desc">AI 信任安全公司 Alice（原 ActiveFence）8/25 宣布完成 1.4 亿美元融资，Apax Digital 领投，Samsung、SentinelOne、Maj Invest 等参与，累计融资 2.8 亿美元、估值约 8 亿美元、ARR 近 1 亿美元（AI 业务两年增长 500%+）。核心资产 Rabbit Hole 专有对抗数据（覆盖 30 亿用户平台的滥用模式），为前沿实验室（Anthropic/Google/Cohere 等 8/10 头部实验室）提供越狱/提示注入/智能体任务的发布前压力测试。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Alice</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">融资 · 以模制模</span>
+            <span class="src"><a href="https://techstartups.com/2026/08/25/alice-raises-140m-to-secure-ai-models-as-revenue-nears-100m-arr/" target="_blank" rel="noopener">Tech Startups</a> · <a href="https://www.globes.co.il/en/article-1001553384" target="_blank" rel="noopener">Globes</a> <span class="merge">(合并2源)</span></span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.06s">
+          <div class="card-head">
+            <span class="fire">🔥🔥🔥</span>
+            <h3>RAND 发布 AI 模型权重安全级别 3（SL3）框架：262 项控制措施保护模型权重</h3>
+          </div>
+          <p class="desc">RAND 8/26 提出 AI 模型权重安全级别 3（SL3）方案：改编自 NIST SP 800-53 的 262 项安全控制措施，针对 31 个高可行性攻击向量保护 AI 模型权重，预计六至十二个月可完成部署，为 AI 开发机构提供系统化防护标准——回应开源/前沿模型权重泄露与篡改风险（与 8 月 HF 越狱、DeepSeek Harness 漏洞暴露的模型供应链风险呼应）。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">RAND</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">行业标准 · 模型供应链</span>
+            <span class="src"><a href="http://view.inews.qq.com/a/20260826A0013Z00" target="_blank" rel="noopener">至顶科技</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.12s">
+          <div class="card-head">
+            <span class="fire">🔥🔥</span>
+            <h3>Unit 42 实测 AI 恶意软件：405 样本仅 12 个进入生产环境，97% 停在实验室</h3>
+          </div>
+          <p class="desc">PANW Unit 42 8/25 发布分析：对 405 个含 AI 能力的恶意软件样本（LLM 生成代码到 agentic 执行循环）检测发现仅 12 个出现在生产端点遥测中，约 97% 停留在研究/沙箱/安全测试环境；生产样本均被常规行为分析/沙箱/代码签名异常/端点防护检出。结论：AI 恶意软件尚未让传统 EDR 失效，近期真实风险是 AI 大幅降低攻击者「创建-修改-分发」常规恶意软件的成本与时间。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Palo Alto Networks Unit 42</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">研究报告 · AI 攻击实证</span>
+            <span class="src"><a href="https://unit42.paloaltonetworks.com/ai-enabled-malware-analysis/" target="_blank" rel="noopener">Unit 42 官方</a> · <a href="http://aisengtech.com/AI-Security-&-Risk-Brief-2026-08-25" target="_blank" rel="noopener">AI Security & Risk Brief</a> <span class="merge">(合并2源)</span></span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.18s">
+          <div class="card-head">
+            <span class="fire">🔥🔥</span>
+            <h3>Cloudflare：AI Agent 流量一年暴涨 1700%，已占全网流量 60%</h3>
+          </div>
+          <p class="desc">Cloudflare 亚太区副总裁 8/25 在首尔媒体会披露：AI Agent 产生流量同比增长超 1700%，约占全网流量 60%——「互联网本为人类设计，如今被机器速度的 Agent 驱动」。随之而来的是 shadow AI（员工用未批准 AI 服务传输敏感信息）与 shadow MCP（未批准 MCP 连接）成为新安全挑战；建议企业先盘点内部 AI 工具、对 MCP 服务器访问施加零信任策略（按用户身份与权限放行），并预告 Q-Day（量子破解）约 2030 年、2028 年完成量子安全认证支持。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Cloudflare</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">市场数据 · 威胁趋势</span>
+            <span class="src"><a href="https://www.chosun.com/english/industry-en/2026/08/25/LLDRQICLDJF47G2AGLAZXRYUIM" target="_blank" rel="noopener">韩国中央日报</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.24s">
+          <div class="card-head">
+            <span class="fire">🔥🔥</span>
+            <h3>工信部《国家人形机器人产业标准体系建设指南（2026版）》征求意见：安全伦理纳入六大标准结构</h3>
+          </div>
+          <p class="desc">工信部 8/24 发布《国家人形机器人产业标准体系建设指南（2026版）》征求意见稿（8/25-9/23 公开征集）：提出到 2028 年完成至少 100 项关键标准制定、标准宣贯企业超 200 家；标准体系含基础共性、类脑与智算、肢体与部组件、整机与系统、应用、安全伦理六大结构，明确规范人形机器人能力分级方法、唯一标识与识别机制，以及技术研发与场景应用的伦理约束和社会影响评估。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">工信部</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">政策标准 · 具身智能安全</span>
+            <span class="src"><a href="https://new.qq.com/rain/a/20260826A02TZ800" target="_blank" rel="noopener">腾讯新闻 Harness 汇总</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.3s">
+          <div class="card-head">
+            <span class="fire">🔥</span>
+            <h3>华为联合金融科技产业联盟发布《金融智能体可信互联研究报告》</h3>
+          </div>
+          <p class="desc">华为 8/24 在金融网络创新峰会发布《金融智能体可信互联研究报告》：针对智能体海量爆发下传统 API 编码模式失效的痛点，提出以智能体自协同模式替代 API 编码，联合中国银联打通跨机构智能体安全高效互联通道——智能体可信入网、高效发现、安全可管可追溯；加速智能税务核查、智能医保风控等场景规模化上线，并规划端到端智能联接总线支持「全国超级金融智能体」。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">华为</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">行业报告 · 金融 Agent 互联</span>
+            <span class="src"><a href="https://www.ce.cn/cysc/tech/gd2012/202608/t20260824_3166667.shtml" target="_blank" rel="noopener">中国经济网</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.36s">
+          <div class="card-head">
+            <span class="fire">🔥</span>
+            <h3>Linux 基金会官宣 AGNTCon + MCPCon Japan：Agent 安全进入标准与治理议程</h3>
+          </div>
+          <p class="desc">Linux Foundation 旗下 Agentic AI Foundation 8/25 公布 AGNTCon + MCPCon Japan 官方日程（9 月举办），集结 SoftBank、Hitachi、NTT、Google、Microsoft、Anthropic 等：聚焦可靠 Agent 设计、信任边界、治理、可观测性、安全与企业级部署——Agent 安全正从应用安全问题上升为基础设施与标准问题，信任边界/审批门/审计追踪/身份与互操作控制将成为企业 Agent 架构核心组件。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">Linux Foundation</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">大会 · Agent 标准</span>
+            <span class="src"><a href="https://www.linuxfoundation.org/press/agntcon-mcpcon-japan-to-convene-builders-advancing-production-ready-agentic-ai" target="_blank" rel="noopener">Linux Foundation 官方</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.42s">
+          <div class="card-head">
+            <span class="fire">🔥</span>
+            <h3>新石器发布行业首个 L4 无人车安全智能体「玄武」：Agentic AI 安全治理范式落地 AIoT</h3>
+          </div>
+          <p class="desc">新石器 8/20 发布国内首个专为无人车规模化运营设计的安全智能体「玄武」（8/25 报道）：运行于自动驾驶系统与运营流程逻辑中间层，持续接入感知/行驶/货物/故障/任务多源数据，结合摄像头视觉分析与云端大模型交叉验证，实现风险感知-处置-预警自我进化闭环——把 L4 无人车安全治理从单车维度升级为万台级车队治理，从「事后被动响应」变为「事前主动防控」。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">新石器</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">AIoT 安全 · 无人车</span>
+            <span class="src"><a href="https://www.163.com/dy/article/L56KEHBC054764EL.html" target="_blank" rel="noopener">汽车总站网/网易</a> </span>
+          </div>
+        </div>
+
+        <div class="card" style="animation-delay:0.48s">
+          <div class="card-head">
+            <span class="fire">🔥</span>
+            <h3>GitLab GraphQL 0-day（CVE-2026-19478）披露 48 小时内出现在野利用</h3>
+          </div>
+          <p class="desc">watchTowr 确认 GitLab GraphQL API 代码注入漏洞（CVE-2026-19478，CVSS 9.4）在 8/17 紧急补丁发布后约 48 小时内即被在野利用，未认证攻击者可远程修改/删除仓库数据；研究者指出 AI 辅助武器化正在压缩「漏洞披露到利用」时间线，开发者工具链关键漏洞几乎立即被武器化，对企业补丁管理周期提出更高要求。</p>
+          <div class="meta">
+            <span class="tag" style="background:#8B5CF622;color:#8B5CF6;border:1px solid #8B5CF644">GitLab / watchTowr</span>
+            <span class="tag" style="background:#5B6CF722;color:#5B6CF7;border:1px solid #5B6CF744">漏洞事件 · 开发工具链</span>
+            <span class="src"><a href="https://cybersecurityhunter.com/daily-cybersecurity-news-roundup-august-24-2026" target="_blank" rel="noopener">CyberSecurity Hunter</a> · <a href="https://www.enigma-global.com/blog/daily-digest-2026-08-24" target="_blank" rel="noopener">Enigma Global</a> <span class="merge">(合并2源)</span></span>
+          </div>
+        </div>
+    </section>
+
+  <div class="trend">
+    <h3>🧭 趋势判断</h3>
+    <ul>
+      <li><b>「AI 安全量产化，跟着工作负载走」：</b>Cisco 把 AI Defense 铺到边缘/主权云、Cloudflare OS 开源零信任沙箱、Google 金融治理 Agent、腾讯云 ADP 出海——产品回答同一个问题：AI 跑在哪儿，安全就跟到哪儿，安全从「模型旁路」变成 AI 基建的标准件。</li>
+      <li><b>「AI 攻击叙事被数据冷静下来，防御投资却更热」：</b>Unit 42 实测 97% 的 AI 恶意软件停在实验室，近期威胁是成本通胀而非新恶意行为；但 Alice 1.4 亿美元融资、RAND SL3 权重安全框架同日出现——「以模制模」从口号变成重资产赛道与可执行标准。</li>
+      <li><b>「国内 Agent 平台带安全出厂，治理框架补位」：</b>腾讯云 ADP 4.0 出海 + 中国电信 TeleAgent 私有化企业版，安全内建成为平台标配；华为金融智能体可信互联报告、工信部人形机器人安全标准征求意见——金融与具身智能两个新场景的治理开始补位，安全大厂产品发布仍处空窗。</li>
+    </ul>
+  </div>
+
+  <div class="footer">AI 安全日报 · 自动生成于 2026-08-26 10:00 CST · 数据来源已标注，点击来源链接可核验</div>
+</div>
+
+<script>
+(function () {
+  var cards = document.querySelectorAll('.card');
+  if (!('IntersectionObserver' in window)) {
+    cards.forEach(function (c) { c.classList.add('show'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  cards.forEach(function (c) { obs.observe(c); });
+})();
+</script>
+</body>
+</html>
