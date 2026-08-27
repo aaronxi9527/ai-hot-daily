@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-08-27</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #131316;
+    --surface-2: #1a1a1f;
+    --border: #26262c;
+    --text: #e8e8ea;
+    --text-dim: #9a9aa2;
+    --grad: linear-gradient(135deg, #5B6CF7 0%, #8B5CF6 50%, #EC4899 100%);
+    --link: #8B5CF6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI","Microsoft YaHei",sans-serif; line-height:1.6; }
+  .nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,10,10,0.72); backdrop-filter:blur(16px) saturate(1.4); -webkit-backdrop-filter:blur(16px) saturate(1.4);
+    border-bottom:1px solid var(--border);
+    padding:12px 24px; display:flex; align-items:center; gap:12px;
+  }
+  .nav-logo { width:28px; height:28px; border-radius:8px; background:var(--grad); display:flex; align-items:center; justify-content:center; font-size:15px; }
+  .nav-title { font-weight:600; font-size:14px; letter-spacing:0.3px; }
+  .nav-date { color:var(--text-dim); font-size:12px; margin-left:auto; }
+  .wrap { max-width:1200px; margin:0 auto; padding:84px 24px 60px; }
+  .hero { text-align:center; padding:36px 0 30px; }
+  .hero h1 { font-size:clamp(26px,4vw,40px); font-weight:800; letter-spacing:0.5px;
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .hero .sub { color:var(--text-dim); margin-top:10px; font-size:14px; }
+  .stats { display:flex; justify-content:center; gap:16px; margin-top:22px; flex-wrap:wrap; }
+  .stat { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:12px 22px; min-width:110px; }
+  .stat b { display:block; font-size:26px; font-weight:800; background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat span { color:var(--text-dim); font-size:12px; }
+  .ai-box {
+    background:linear-gradient(135deg, rgba(91,108,247,0.12), rgba(236,72,153,0.08));
+    border:1px solid rgba(139,92,246,0.35); border-radius:16px; padding:20px 24px; margin:26px 0 36px;
+  }
+  .ai-box h2 { font-size:15px; margin-bottom:8px; color:#b7a7ff; }
+  .ai-box p { color:var(--text); font-size:14.5px; }
+  .section { margin-top:36px; }
+  .section h2 { font-size:20px; font-weight:700; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .section h2::after { content:""; flex:1; height:1px; background:linear-gradient(90deg, var(--border), transparent); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:16px; }
+  .card {
+    background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px 20px;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    opacity:0; transform:translateY(24px);
+  }
+  .card.visible { opacity:1; transform:translateY(0); }
+  .card:hover { transform:translateY(-3px); border-color:rgba(139,92,246,0.5); box-shadow:0 8px 32px rgba(139,92,246,0.15); }
+  .card[data-imp="1"] { border-color:rgba(236,72,153,0.45); }
+  .card-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+  .tag { font-size:11.5px; padding:3px 10px; border-radius:999px; font-weight:600; letter-spacing:0.3px; }
+  .tag-vendor { background:rgba(91,108,247,0.16); color:#8fa0ff; border:1px solid rgba(91,108,247,0.35); }
+  .tag-industry { background:rgba(236,72,153,0.14); color:#ff9dc4; border:1px solid rgba(236,72,153,0.35); }
+  .date { color:var(--text-dim); font-size:12px; }
+  .card-title { font-size:15.5px; font-weight:700; line-height:1.5; margin-bottom:8px; }
+  .card-title .merge { color:var(--text-dim); font-weight:400; font-size:12px; }
+  .card-summary { color:var(--text-dim); font-size:13px; line-height:1.7; margin-bottom:14px; }
+  .card-links a { color:var(--link); font-size:12.5px; text-decoration:none; font-weight:600; margin-right:14px; transition:all .2s; }
+  .card-links a:hover { color:#c4b5fd; text-decoration:underline; }
+  .empty { color:var(--text-dim); text-align:center; padding:30px; border:1px dashed var(--border); border-radius:16px; }
+  footer { text-align:center; color:var(--text-dim); font-size:12px; padding:40px 0 20px; border-top:1px solid var(--border); margin-top:48px; }
+  @media (max-width:640px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">🛡️</div>
+  <div class="nav-title">中国防火墙厂商日报</div>
+  <div class="nav-date">2026-08-27</div>
+</nav>
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <p class="sub">2026-08-27 · 中国主流网络安全厂商与行业动态速览</p>
+    <div class="stats">
+      <div class="stat"><b>22</b><span>今日动态</span></div>
+      <div class="stat"><b>5</b><span>厂商动态</span></div>
+      <div class="stat"><b>17</b><span>行业动态</span></div>
+    </div>
+  </header>
+  <div class="ai-box">
+    <h2>🤖 AI 解读</h2>
+    <p>今天的最大信号是「AI 防火墙进入认证与横评阶段」——启明星辰天清汉马 USG 首家通过信通院《AI 防火墙能力要求》标准检验，深信服 SangforAI 又在 CyberGym 国际基准测试登顶全球第一，国产 AI 安全从「发布会」走向「标准认证+国际横评」；金融信创本周集中放量：国信证券 720 万信创防火墙、湖南农信 320 万替换、人保数据中心招标、广发证券低时延防火墙要求时延≤20μs，券商极速交易正把防火墙性能逼向硬件极限，利好山石这类自研 ASIC 厂商。漏洞侧 pfSense 管理界面 XSS 和 Citrix NetScaler 可 RCE 同周曝光——边界设备管理面依旧是攻击者首选入口，公网暴露的防火墙管理口建议今天就做访问收敛。</p>
+  </div>
+  <section class="section">
+    <h2>🏢 厂商动态</h2>
+    <div class="grid" id="vendor-grid">
+    <article class="card" data-imp="1">
+      <div class="card-head">
+        <span class="tag tag-vendor">🏢 启明星辰</span>
+        <span class="date">2026-08-24</span>
+      </div>
+      <h3 class="card-title">启明星辰天清汉马USG AI智能防火墙首家通过信通院《AI防火墙能力要求》标准检验 🔥</h3>
+      <p class="card-summary">启明星辰8/24投资者关系活动记录表披露：天清汉马USG AI智能防火墙首家通过中国信通院《AI防火墙能力要求》标准检验，实现云原生多场景部署与全栈国产化兼容；同步发布安星智能体产品集群、AI数字人、AI自动化渗透测试等新品，9大数字员工已在代码审计、自动化渗透等场景规模化替代人力。</p>
+      <div class="card-links"><a href="https://data.eastmoney.com/notices/detail/002439/AN202608251828416646,JUU1JTkwJUFGJUU2JTk4JThFJUU2JTk4JTlGJUU4JUJFJUIw.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="1">
+      <div class="card-head">
+        <span class="tag tag-vendor">🏢 深信服</span>
+        <span class="date">2026-08-26</span>
+      </div>
+      <h3 class="card-title">深信服SangforAI登顶CyberGym国际AI安全基准测试全球第一（2026年8月） 🔥<span class="merge">(合并2源)</span></h3>
+      <p class="card-summary">深信服半年报及管理层讨论披露：2026年8月在面向全球顶尖AI安全能力的国际权威基准测试CyberGym中，SangforAI与全球头部科技厂商的模型与智能体同场竞技，评测成绩登顶全球第一；同期AI安全平台钓鱼邮件检测率达98%，可替代80%人工研判工作量。</p>
+      <div class="card-links"><a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/841073829294/index.phtml" target="_blank" rel="noopener">来源 1</a> · <a href="https://stock.stockstar.com/RB2026082200015708.shtml" target="_blank" rel="noopener">来源 2</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-vendor">🏢 山石网科</span>
+        <span class="date">2026-08-25</span>
+      </div>
+      <h3 class="card-title">央广网专访山石网科贾宇：自研ASIC芯片是长期主义——内部三次讨论、2024一次流片、2025年11月量产</h3>
+      <p class="card-summary">央广网8/25专访山石网科副总经理贾宇：公司内部曾三次讨论自研芯片，2019年国产化替代加速后人才/资金/流片产业链齐备才下定决心；2024年一次流片成功、2025年11月量产、2026年推向市场。ASIC防火墙吞吐提升200%、时延≤4.8μs、功耗降40%，将持续迭代SECoC芯片架构并开放加速接口与API共建国产硬件生态。</p>
+      <div class="card-links"><a href="https://new.qq.com/rain/a/20260825A03WQZ00?refer=cp_1009" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-vendor">🏢 天融信</span>
+        <span class="date">2026-08-26</span>
+      </div>
+      <h3 class="card-title">天融信CCF-NSS大会分享AI Agent数字安全攻防体系：智能攻防+智能运营双引擎</h3>
+      <p class="card-summary">天融信助理总裁王媛媛在第一届CCF网络与系统安全大会发表主题演讲，提出基于AI智能体的数字安全攻防体系：智能攻防将漏洞修复周期从月级压缩至小时级、智能运营将威胁响应从小时级缩短至秒级；依托天问大模型+多年漏洞库与真实攻防数据转化为RAG知识与训练样本，全面对标CrowdStrike/谷歌/OpenAI/Anthropic前沿进展。</p>
+      <div class="card-links"><a href="https://www.topsec.com.cn/newsx/6825" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-vendor">🏢 山石网科</span>
+        <span class="date">2026-08-24</span>
+      </div>
+      <h3 class="card-title">山石网科客户服务门户上线Zabbix模板与MIB库下载：防火墙运维监控对接开箱即用</h3>
+      <p class="card-summary">山石网科客户服务门户生态工具更新，正式上线Zabbix模板与MIB库查询下载两大能力：可按CPU/内存/会话/HA状态等监控维度筛选，支持v8/v9多版本MIB库适配不同StoneOS固件版本，一键下载模板即可完成防火墙监控对接，大幅降低运维配置工作量。</p>
+      <div class="card-links"><a href="https://caifuhao.eastmoney.com/news/20260824140309807610300?from=guba" target="_blank" rel="noopener">来源 1</a></div>
+    </article></div>
+  </section>
+  <section class="section">
+    <h2>🏭 行业动态</h2>
+    <div class="grid" id="industry-grid">
+    <article class="card" data-imp="1">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 金融</span>
+        <span class="date">2026-08-20</span>
+      </div>
+      <h3 class="card-title">央行清算总中心办公网安全防护298万：绿盟中标(410万预算二次招标) 🔥</h3>
+      <p class="card-summary">中国人民银行清算总中心2026年办公网安全防护系统网络安全软硬件采购(预算410万，6月首次废标后二次招标)8/20公布中标结果：北京神州绿盟科技298万元中标，采购含主机安全防护、邮件威胁综合检测、全流量设备、运维审计系统。</p>
+      <div class="card-links"><a href="https://www.163.com/dy/article/L4U8PQE70511D6RL.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="1">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 金融</span>
+        <span class="date">2026-08-20</span>
+      </div>
+      <h3 class="card-title">国信证券数据中心防火墙信创改造采购招标：26台防火墙、控制价720万 🔥</h3>
+      <p class="card-summary">国信证券2026数据中心防火墙信创改造采购项目公开招标：防火墙型号一16台+型号二10台，采购控制价720万元，8/20发布、9/10截止、35日内交货，券商数据中心防火墙信创批量替换启动。</p>
+      <div class="card-links"><a href="https://www.sizebid.com/002/guangdong/shenzhen/2026/e67f9e20d21c434996b5089c4130d8fa.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 金融</span>
+        <span class="date">2026-08-25</span>
+      </div>
+      <h3 class="card-title">人保集团数据中心防火墙招标(标包4)：人保财险数据中心网络及防火墙采购</h3>
+      <p class="card-summary">人保集团网络设备采购项目(人保财险数据中心网络及防火墙)标包4数据中心防火墙8/25发布招标公告，中信国际招标代理，保险巨头数据中心边界防火墙采购进入实施阶段。</p>
+      <div class="card-links"><a href="https://ec.picc.com/cms/default/webfile/ywgg1/20260825/1276950208806125568.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 金融</span>
+        <span class="date">2026-08-21</span>
+      </div>
+      <h3 class="card-title">湖南省农信社洋湖数据中心区域边界防火墙替换项目招标：预算320万</h3>
+      <p class="card-summary">湖南省农村信用社联合社洋湖数据中心区域边界防火墙替换项目邀请招标：预算320万元，要求投标人具备金融行业防火墙销售案例(合同金额≥100万)，农信系统数据中心边界防火墙替换周期开启。</p>
+      <div class="card-links"><a href="https://www.hnnxs.com/info/90095.jspx" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 金融</span>
+        <span class="date">2026-08-25</span>
+      </div>
+      <h3 class="card-title">广发证券信创低时延防火墙供应商征集：时延≤20μs、吞吐≥100Gbps</h3>
+      <p class="card-summary">广发证券2026年沪深两地极速中心建设项目信创低时延防火墙供应商征集：要求穿透时延不高于20微秒、整机吞吐不低于100Gbps、原厂或授权代理商且广州本地有服务团队，9/2截止——证券极速交易场景把防火墙时延逼向硬件极限。</p>
+      <div class="card-links"><a href="http://gfjc.gf.com.cn/gyszjgg/13272.jhtml" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 政府</span>
+        <span class="date">2026-08-24</span>
+      </div>
+      <h3 class="card-title">辽宁省地震烈度速报与预警工程通用设备采购招标655万：含预警运营商互联防火墙</h3>
+      <p class="card-summary">中央政府采购网8/24发布辽宁省地震烈度速报与预警工程通用设备采购招标：预算655.21万，采购清单含预警运营商互联防火墙、国密算法介质云服务管理系统、台站网络设备、万兆交换机等，9/16开标。</p>
+      <div class="card-links"><a href="https://www.zycg.gov.cn/freecms/site/zygjjgzfcgzx/ggxx/info/2026/1bf77da6-964e-4f4f-b0fb-0bcdbc2c5000.html?id=324e4130-9f9d-11f1-9615-fa163ee0ead6" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 其他</span>
+        <span class="date">2026-08-19</span>
+      </div>
+      <h3 class="card-title">CVE-2026-67189：pfSense存储型XSS，攻击者可控PTR记录可完全控制防火墙管理界面</h3>
+      <p class="card-summary">NVD 8/19收录CVE-2026-67189：pfSense Plus(26.07前)与CE(2.8.1前)的Traffic Graphs流量图功能存在存储型XSS，攻击者控制PTR记录后可在管理员浏览器执行任意JavaScript，获得同源访问权后可创建管理员账户并在防火墙操作系统上执行命令，Netgate设备受影响。</p>
+      <div class="card-links"><a href="https://www.sentinelone.com/vulnerability-database/cve-2026-67189" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="2">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 其他</span>
+        <span class="date">2026-08-26</span>
+      </div>
+      <h3 class="card-title">Citrix NetScaler CVE-2026-8452：内存溢出CVSS 8.8，PoC显示可致RCE</h3>
+      <p class="card-summary">8月安全通告：Citrix NetScaler ADC/Gateway CVE-2026-8452内存溢出漏洞(CVSS 8.8)，厂商定级DoS但安全研究人员已发布PoC证明可升级为远程代码执行(RCE)；同批Cisco ASA/FTD CVE-2026-20349(CVSS 8.6)确认在野利用、CISA已列入KEV目录。</p>
+      <div class="card-links"><a href="https://csc.gov.im/news-advisories/vulnerability-notice-cisco-citrix-and-microsoft-s-august-release" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 金融</span>
+        <span class="date">2026-08-21</span>
+      </div>
+      <h3 class="card-title">长沙银行2026年度安全服务项目：绿盟科技包一第一中标候选人</h3>
+      <p class="card-summary">长沙银行2026年度安全服务项目(8/21)开标：包一第一中标候选人为北京神州绿盟科技、包二第二候选同为绿盟；安恒信息、亿盾互联分列其他包次，城商行安全服务市场持续放量。</p>
+      <div class="card-links"><a href="http://www.hnglzb.com/opportunity/getPublishBidDetail?id=4449214547549742929" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 金融</span>
+        <span class="date">2026-08-07</span>
+      </div>
+      <h3 class="card-title">河南中原消费金融防火墙策略可视化平台采购招标</h3>
+      <p class="card-summary">河南中原消费金融防火墙策略可视化平台采购项目招标：要求投标品牌近两年内有国内金融机构防火墙策略管理/可视化平台案例，消费金融公司开始补齐防火墙策略治理与可视化能力。</p>
+      <div class="card-links"><a href="https://www.365trade.com.cn/zfwzb/861377.jhtml" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 政府</span>
+        <span class="date">2026-08-24</span>
+      </div>
+      <h3 class="card-title">山东省公安厅防火墙、网闸采购结果：天融信NGFW4000-UF防火墙+TopRules网闸</h3>
+      <p class="card-summary">山东省公安厅防火墙、网闸采购(8/24)由山东科之睿中标7.698万元：天融信安全隔离与信息交换系统TopRules(FT-A10)1台+天融信防火墙系统NGFW4000-UF(FT-E04)千兆1台，公安系统信创防火墙持续配备。</p>
+      <div class="card-links"><a href="http://ggzyjyzx.shandong.gov.cn:6006/art/2026/8/24/art_209869_11394691.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 政府</span>
+        <span class="date">2026-08-21</span>
+      </div>
+      <h3 class="card-title">齐齐哈尔应急指挥部提档升级：启明星辰USG-FW-12600-N防火墙+态势感知/网闸成套</h3>
+      <p class="card-summary">齐齐哈尔市应急管理局应急指挥部提档升级项目(8/21)采购启明星辰全套安全设备：USG-FW-12600-N-G008防火墙3台(9.8万/台)+入侵检测NT3000+数据库审计+堡垒机OSM-7700-S+态势感知XDR6800XC 26.5万+网闸GAP-6000-G7200-HG 15.5万，应急行业国产化安全成套落地。</p>
+      <div class="card-links"><a href="https://www.ulilink.com/newDetailsView?id=e493b0182d3f44cb2417ec2794cb1a5ddf41dda64c394773d9073f86ebb8b589" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 政府</span>
+        <span class="date">2026-08-21</span>
+      </div>
+      <h3 class="card-title">国家体育总局网络安全服务中标346万：绿盟科技(综合得分91.27)</h3>
+      <p class="card-summary">国家体育总局体育信息中心网络安全服务项目(8/21)由北京神州绿盟中标346万元，服务期2026年10月至2027年9月，绿盟综合得分91.27分，体育总局系统安全运营服务连续落地。</p>
+      <div class="card-links"><a href="https://www.ccgp.gov.cn/cggg/zygg//zbgg/202608/t20260821_27178412.htm" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 运营商</span>
+        <span class="date">2026-08-21</span>
+      </div>
+      <h3 class="card-title">中电信数智鄂尔多斯2026NMSZLX-001项目遴选：含数据中心防火墙2台+WAF，预算410万</h3>
+      <p class="card-summary">中电信数智鄂尔多斯分公司2026NMSZLX-001项目遴选合作伙伴：采购数据中心防火墙2台、web应用防火墙1台、网闸1台、超融合节点等，项目预算410万，交付期15日、质保5年，电信系政企项目防火墙需求持续释放。</p>
+      <div class="card-links"><a href="https://neimenggu.jianyu360.cn/jybx/20260821_26082079569350.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 能源</span>
+        <span class="date">2026-08-21</span>
+      </div>
+      <h3 class="card-title">深圳供电局2026年第一批物资询比中标：含变电站二次安防硬件防火墙、安全隔离网闸</h3>
+      <p class="card-summary">深圳供电局2026年信息类软硬件第一批次物资专项公开询比采购中标：含电力调度数字证书系统、正反向隔离装置、变电站二次安防硬件防火墙、安全隔离网闸等，深鹏达电网科技等中标，电网侧边界安全设备持续更新。</p>
+      <div class="card-links"><a href="https://www.bidding.csg.cn/zbhxrgs/1200439922.jhtml" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 军队</span>
+        <span class="date">2026-08-25</span>
+      </div>
+      <h3 class="card-title">军队综合客服中心拓展建设采购(二次)招标：预算296万、要求二级保密资质</h3>
+      <p class="card-summary">军队采购网8/25发布综合客服中心拓展建设采购项目(二次)招标：预算296万元，投标企业须取得武器装备科研生产单位二级(含)以上保密资格或涉密信息系统集成乙级(含)以上资质，军队信息化网络建设持续放量。</p>
+      <div class="card-links"><a href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d00c79f2c5d2201a032860174390f.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article>
+
+    <article class="card" data-imp="3">
+      <div class="card-head">
+        <span class="tag tag-industry">🏭 军队</span>
+        <span class="date">2026-08-26</span>
+      </div>
+      <h3 class="card-title">军队远程传输设备及网络改造采购意向公开(2026-JCFKXX-W1002)</h3>
+      <p class="card-summary">军队采购网发布远程传输设备及网络改造采购项目意向公开(2026-JCFKXX-W1002)，需求对接至9/3，要求供应商具备二级及以上武器装备科研生产单位保密资格或乙级及以上涉密信息系统集成资质。</p>
+      <div class="card-links"><a href="https://m.chinamae.com/purchases/8619467edca987156f2d44d410feeb64.html" target="_blank" rel="noopener">来源 1</a></div>
+    </article></div>
+  </section>
+  <footer>数据来源：公开渠道 WebSearch 聚合 · 仅保留最近 30 天内动态 · 已与历史去重库比对</footer>
+</div>
+<script>
+const DATA = {"vendor": [{"title": "启明星辰天清汉马USG AI智能防火墙首家通过信通院《AI防火墙能力要求》标准检验", "urls": ["https://data.eastmoney.com/notices/detail/002439/AN202608251828416646,JUU1JTkwJUFGJUU2JTk4JThFJUU2JTk4JTlGJUU4JUJFJUIw.html"], "date": "2026-08-24", "vendor": "启明星辰", "industry": null, "summary": "启明星辰8/24投资者关系活动记录表披露：天清汉马USG AI智能防火墙首家通过中国信通院《AI防火墙能力要求》标准检验，实现云原生多场景部署与全栈国产化兼容；同步发布安星智能体产品集群、AI数字人、AI自动化渗透测试等新品，9大数字员工已在代码审计、自动化渗透等场景规模化替代人力。", "importance": 1}, {"title": "深信服SangforAI登顶CyberGym国际AI安全基准测试全球第一（2026年8月）", "urls": ["https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/841073829294/index.phtml", "https://stock.stockstar.com/RB2026082200015708.shtml"], "date": "2026-08-26", "vendor": "深信服", "industry": null, "summary": "深信服半年报及管理层讨论披露：2026年8月在面向全球顶尖AI安全能力的国际权威基准测试CyberGym中，SangforAI与全球头部科技厂商的模型与智能体同场竞技，评测成绩登顶全球第一；同期AI安全平台钓鱼邮件检测率达98%，可替代80%人工研判工作量。", "importance": 1, "merge_sources": 2}, {"title": "央广网专访山石网科贾宇：自研ASIC芯片是长期主义——内部三次讨论、2024一次流片、2025年11月量产", "urls": ["https://new.qq.com/rain/a/20260825A03WQZ00?refer=cp_1009"], "date": "2026-08-25", "vendor": "山石网科", "industry": null, "summary": "央广网8/25专访山石网科副总经理贾宇：公司内部曾三次讨论自研芯片，2019年国产化替代加速后人才/资金/流片产业链齐备才下定决心；2024年一次流片成功、2025年11月量产、2026年推向市场。ASIC防火墙吞吐提升200%、时延≤4.8μs、功耗降40%，将持续迭代SECoC芯片架构并开放加速接口与API共建国产硬件生态。", "importance": 2}, {"title": "天融信CCF-NSS大会分享AI Agent数字安全攻防体系：智能攻防+智能运营双引擎", "urls": ["https://www.topsec.com.cn/newsx/6825"], "date": "2026-08-26", "vendor": "天融信", "industry": null, "summary": "天融信助理总裁王媛媛在第一届CCF网络与系统安全大会发表主题演讲，提出基于AI智能体的数字安全攻防体系：智能攻防将漏洞修复周期从月级压缩至小时级、智能运营将威胁响应从小时级缩短至秒级；依托天问大模型+多年漏洞库与真实攻防数据转化为RAG知识与训练样本，全面对标CrowdStrike/谷歌/OpenAI/Anthropic前沿进展。", "importance": 2}, {"title": "山石网科客户服务门户上线Zabbix模板与MIB库下载：防火墙运维监控对接开箱即用", "urls": ["https://caifuhao.eastmoney.com/news/20260824140309807610300?from=guba"], "date": "2026-08-24", "vendor": "山石网科", "industry": null, "summary": "山石网科客户服务门户生态工具更新，正式上线Zabbix模板与MIB库查询下载两大能力：可按CPU/内存/会话/HA状态等监控维度筛选，支持v8/v9多版本MIB库适配不同StoneOS固件版本，一键下载模板即可完成防火墙监控对接，大幅降低运维配置工作量。", "importance": 3}], "industry": [{"title": "央行清算总中心办公网安全防护298万：绿盟中标(410万预算二次招标)", "urls": ["https://www.163.com/dy/article/L4U8PQE70511D6RL.html"], "date": "2026-08-20", "vendor": null, "industry": "金融", "summary": "中国人民银行清算总中心2026年办公网安全防护系统网络安全软硬件采购(预算410万，6月首次废标后二次招标)8/20公布中标结果：北京神州绿盟科技298万元中标，采购含主机安全防护、邮件威胁综合检测、全流量设备、运维审计系统。", "importance": 1}, {"title": "国信证券数据中心防火墙信创改造采购招标：26台防火墙、控制价720万", "urls": ["https://www.sizebid.com/002/guangdong/shenzhen/2026/e67f9e20d21c434996b5089c4130d8fa.html"], "date": "2026-08-20", "vendor": null, "industry": "金融", "summary": "国信证券2026数据中心防火墙信创改造采购项目公开招标：防火墙型号一16台+型号二10台，采购控制价720万元，8/20发布、9/10截止、35日内交货，券商数据中心防火墙信创批量替换启动。", "importance": 1}, {"title": "人保集团数据中心防火墙招标(标包4)：人保财险数据中心网络及防火墙采购", "urls": ["https://ec.picc.com/cms/default/webfile/ywgg1/20260825/1276950208806125568.html"], "date": "2026-08-25", "vendor": null, "industry": "金融", "summary": "人保集团网络设备采购项目(人保财险数据中心网络及防火墙)标包4数据中心防火墙8/25发布招标公告，中信国际招标代理，保险巨头数据中心边界防火墙采购进入实施阶段。", "importance": 2}, {"title": "湖南省农信社洋湖数据中心区域边界防火墙替换项目招标：预算320万", "urls": ["https://www.hnnxs.com/info/90095.jspx"], "date": "2026-08-21", "vendor": null, "industry": "金融", "summary": "湖南省农村信用社联合社洋湖数据中心区域边界防火墙替换项目邀请招标：预算320万元，要求投标人具备金融行业防火墙销售案例(合同金额≥100万)，农信系统数据中心边界防火墙替换周期开启。", "importance": 2}, {"title": "广发证券信创低时延防火墙供应商征集：时延≤20μs、吞吐≥100Gbps", "urls": ["http://gfjc.gf.com.cn/gyszjgg/13272.jhtml"], "date": "2026-08-25", "vendor": null, "industry": "金融", "summary": "广发证券2026年沪深两地极速中心建设项目信创低时延防火墙供应商征集：要求穿透时延不高于20微秒、整机吞吐不低于100Gbps、原厂或授权代理商且广州本地有服务团队，9/2截止——证券极速交易场景把防火墙时延逼向硬件极限。", "importance": 2}, {"title": "辽宁省地震烈度速报与预警工程通用设备采购招标655万：含预警运营商互联防火墙", "urls": ["https://www.zycg.gov.cn/freecms/site/zygjjgzfcgzx/ggxx/info/2026/1bf77da6-964e-4f4f-b0fb-0bcdbc2c5000.html?id=324e4130-9f9d-11f1-9615-fa163ee0ead6"], "date": "2026-08-24", "vendor": null, "industry": "政府", "summary": "中央政府采购网8/24发布辽宁省地震烈度速报与预警工程通用设备采购招标：预算655.21万，采购清单含预警运营商互联防火墙、国密算法介质云服务管理系统、台站网络设备、万兆交换机等，9/16开标。", "importance": 2}, {"title": "CVE-2026-67189：pfSense存储型XSS，攻击者可控PTR记录可完全控制防火墙管理界面", "urls": ["https://www.sentinelone.com/vulnerability-database/cve-2026-67189"], "date": "2026-08-19", "vendor": null, "industry": "其他", "summary": "NVD 8/19收录CVE-2026-67189：pfSense Plus(26.07前)与CE(2.8.1前)的Traffic Graphs流量图功能存在存储型XSS，攻击者控制PTR记录后可在管理员浏览器执行任意JavaScript，获得同源访问权后可创建管理员账户并在防火墙操作系统上执行命令，Netgate设备受影响。", "importance": 2}, {"title": "Citrix NetScaler CVE-2026-8452：内存溢出CVSS 8.8，PoC显示可致RCE", "urls": ["https://csc.gov.im/news-advisories/vulnerability-notice-cisco-citrix-and-microsoft-s-august-release"], "date": "2026-08-26", "vendor": null, "industry": "其他", "summary": "8月安全通告：Citrix NetScaler ADC/Gateway CVE-2026-8452内存溢出漏洞(CVSS 8.8)，厂商定级DoS但安全研究人员已发布PoC证明可升级为远程代码执行(RCE)；同批Cisco ASA/FTD CVE-2026-20349(CVSS 8.6)确认在野利用、CISA已列入KEV目录。", "importance": 2}, {"title": "长沙银行2026年度安全服务项目：绿盟科技包一第一中标候选人", "urls": ["http://www.hnglzb.com/opportunity/getPublishBidDetail?id=4449214547549742929"], "date": "2026-08-21", "vendor": null, "industry": "金融", "summary": "长沙银行2026年度安全服务项目(8/21)开标：包一第一中标候选人为北京神州绿盟科技、包二第二候选同为绿盟；安恒信息、亿盾互联分列其他包次，城商行安全服务市场持续放量。", "importance": 3}, {"title": "河南中原消费金融防火墙策略可视化平台采购招标", "urls": ["https://www.365trade.com.cn/zfwzb/861377.jhtml"], "date": "2026-08-07", "vendor": null, "industry": "金融", "summary": "河南中原消费金融防火墙策略可视化平台采购项目招标：要求投标品牌近两年内有国内金融机构防火墙策略管理/可视化平台案例，消费金融公司开始补齐防火墙策略治理与可视化能力。", "importance": 3}, {"title": "山东省公安厅防火墙、网闸采购结果：天融信NGFW4000-UF防火墙+TopRules网闸", "urls": ["http://ggzyjyzx.shandong.gov.cn:6006/art/2026/8/24/art_209869_11394691.html"], "date": "2026-08-24", "vendor": null, "industry": "政府", "summary": "山东省公安厅防火墙、网闸采购(8/24)由山东科之睿中标7.698万元：天融信安全隔离与信息交换系统TopRules(FT-A10)1台+天融信防火墙系统NGFW4000-UF(FT-E04)千兆1台，公安系统信创防火墙持续配备。", "importance": 3}, {"title": "齐齐哈尔应急指挥部提档升级：启明星辰USG-FW-12600-N防火墙+态势感知/网闸成套", "urls": ["https://www.ulilink.com/newDetailsView?id=e493b0182d3f44cb2417ec2794cb1a5ddf41dda64c394773d9073f86ebb8b589"], "date": "2026-08-21", "vendor": null, "industry": "政府", "summary": "齐齐哈尔市应急管理局应急指挥部提档升级项目(8/21)采购启明星辰全套安全设备：USG-FW-12600-N-G008防火墙3台(9.8万/台)+入侵检测NT3000+数据库审计+堡垒机OSM-7700-S+态势感知XDR6800XC 26.5万+网闸GAP-6000-G7200-HG 15.5万，应急行业国产化安全成套落地。", "importance": 3}, {"title": "国家体育总局网络安全服务中标346万：绿盟科技(综合得分91.27)", "urls": ["https://www.ccgp.gov.cn/cggg/zygg//zbgg/202608/t20260821_27178412.htm"], "date": "2026-08-21", "vendor": null, "industry": "政府", "summary": "国家体育总局体育信息中心网络安全服务项目(8/21)由北京神州绿盟中标346万元，服务期2026年10月至2027年9月，绿盟综合得分91.27分，体育总局系统安全运营服务连续落地。", "importance": 3}, {"title": "中电信数智鄂尔多斯2026NMSZLX-001项目遴选：含数据中心防火墙2台+WAF，预算410万", "urls": ["https://neimenggu.jianyu360.cn/jybx/20260821_26082079569350.html"], "date": "2026-08-21", "vendor": null, "industry": "运营商", "summary": "中电信数智鄂尔多斯分公司2026NMSZLX-001项目遴选合作伙伴：采购数据中心防火墙2台、web应用防火墙1台、网闸1台、超融合节点等，项目预算410万，交付期15日、质保5年，电信系政企项目防火墙需求持续释放。", "importance": 3}, {"title": "深圳供电局2026年第一批物资询比中标：含变电站二次安防硬件防火墙、安全隔离网闸", "urls": ["https://www.bidding.csg.cn/zbhxrgs/1200439922.jhtml"], "date": "2026-08-21", "vendor": null, "industry": "能源", "summary": "深圳供电局2026年信息类软硬件第一批次物资专项公开询比采购中标：含电力调度数字证书系统、正反向隔离装置、变电站二次安防硬件防火墙、安全隔离网闸等，深鹏达电网科技等中标，电网侧边界安全设备持续更新。", "importance": 3}, {"title": "军队综合客服中心拓展建设采购(二次)招标：预算296万、要求二级保密资质", "urls": ["https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d00c79f2c5d2201a032860174390f.html"], "date": "2026-08-25", "vendor": null, "industry": "军队", "summary": "军队采购网8/25发布综合客服中心拓展建设采购项目(二次)招标：预算296万元，投标企业须取得武器装备科研生产单位二级(含)以上保密资格或涉密信息系统集成乙级(含)以上资质，军队信息化网络建设持续放量。", "importance": 3}, {"title": "军队远程传输设备及网络改造采购意向公开(2026-JCFKXX-W1002)", "urls": ["https://m.chinamae.com/purchases/8619467edca987156f2d44d410feeb64.html"], "date": "2026-08-26", "vendor": null, "industry": "军队", "summary": "军队采购网发布远程传输设备及网络改造采购项目意向公开(2026-JCFKXX-W1002)，需求对接至9/3，要求供应商具备二级及以上武器装备科研生产单位保密资格或乙级及以上涉密信息系统集成资质。", "importance": 3}]};
+(function(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.card').forEach(c=>io.observe(c));
+})();
+</script>
+</body>
+</html>
