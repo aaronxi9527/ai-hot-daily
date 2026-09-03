@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026 年 09 月 03 日 · 星期四</title>
+<style>
+:root{--bg:#0a0a0a;--panel:#101014;--panel2:#15151b;--line:#232329;--tx:#e8e8ea;--tx2:#9a9aa3;--tx3:#6a6a74;
+--v1:#5B6CF7;--v2:#8B5CF6;--v3:#EC4899;--link:#8B5CF6;--linkh:#b79bff;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;background:
+ radial-gradient(900px 500px at 15% -5%,rgba(91,108,247,.16),transparent 60%),
+ radial-gradient(900px 520px at 85% -8%,rgba(236,72,153,.12),transparent 60%),
+ radial-gradient(700px 420px at 50% 108%,rgba(139,92,246,.10),transparent 60%);pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 22px}
+/* navbar */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);
+ background:rgba(10,10,10,.72);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:.2px}
+.brand .logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--v1),var(--v2),var(--v3));display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 0 18px rgba(139,92,246,.45)}
+.nav a.nv{color:var(--tx2);text-decoration:none;font-size:13px;margin-left:22px;transition:color .2s}
+.nav a.nv:hover{color:var(--tx)}
+.nav .date-badge{font-size:12px;color:var(--tx2);border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.03)}
+/* hero */
+.hero{padding:128px 0 34px}
+.hero .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--tx2);border:1px solid var(--line);border-radius:999px;padding:5px 14px;background:rgba(255,255,255,.03);margin-bottom:20px}
+.hero .kicker i{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--v1),var(--v3));box-shadow:0 0 8px var(--v3);display:inline-block}
+h1.hero-title{font-size:42px;line-height:1.18;font-weight:800;letter-spacing:-.5px;margin-bottom:14px;background:linear-gradient(90deg,#fff 20%,#c9c4ff 60%,#e4a3ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{color:var(--tx2);font-size:15px;max-width:640px}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 20px;min-width:130px}
+.stat b{display:block;font-size:24px;font-weight:800;background:linear-gradient(90deg,var(--v1),var(--v3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3)}
+/* AI view */
+.ai-box{margin:26px 0 8px;background:linear-gradient(150deg,rgba(91,108,247,.10),rgba(139,92,246,.08) 45%,rgba(236,72,153,.08));border:1px solid rgba(139,92,246,.28);border-radius:18px;padding:22px 24px}
+.ai-box .ai-h{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#c9b8ff;letter-spacing:1px;margin-bottom:10px}
+.ai-box .ai-h .dot{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,var(--v1),var(--v2),var(--v3));display:flex;align-items:center;justify-content:center;font-size:11px;box-shadow:0 0 12px rgba(139,92,246,.5)}
+.ai-box p{color:#d9d6ec;font-size:14.5px}
+/* section head */
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin:44px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px}
+.sec-head h2 .bar{width:4px;height:18px;border-radius:3px;background:linear-gradient(180deg,var(--v1),var(--v3));display:inline-block}
+.sec-head .cnt{font-size:12.5px;color:var(--tx3);font-weight:400}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;margin-top:18px}
+.card{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease,border-color .3s,box-shadow .3s}
+.card.show{opacity:1;transform:none}
+.card:hover{border-color:rgba(139,92,246,.45);box-shadow:0 10px 34px rgba(91,108,247,.12);transform:translateY(-2px)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{--c:#A78BFA;font-size:11px;font-weight:600;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 38%,transparent);padding:2px 9px;border-radius:999px;letter-spacing:.2px;white-space:nowrap}
+.meta{display:flex;align-items:center;gap:6px;color:var(--tx3);font-size:11.5px;white-space:nowrap}
+.fire{font-size:12px}
+.card-title{font-size:15.5px;font-weight:700;line-height:1.5;margin-bottom:9px;letter-spacing:.1px}
+.card-sum{font-size:13px;color:var(--tx2);line-height:1.75;margin-bottom:14px}
+.card-src{display:flex;flex-wrap:wrap;gap:8px;border-top:1px dashed var(--line);padding-top:12px}
+a.src{font-size:12.5px;color:var(--link);text-decoration:none;padding:3px 10px;border-radius:8px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.22);transition:all .2s}
+a.src:hover{color:#fff;background:var(--v2);border-color:var(--v2);text-decoration:underline}
+footer{padding:52px 0 60px;color:var(--tx3);font-size:12.5px;text-align:center;border-top:1px solid var(--line);margin-top:56px;line-height:2}
+@media(max-width:640px){h1.hero-title{font-size:30px}.hero{padding:104px 0 24px}.grid{grid-template-columns:1fr}.nav .date-badge{display:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <div class="brand"><span class="logo">🛡️</span><span>防火墙厂商日报</span></div>
+  <div style="display:flex;align-items:center">
+    <a class="nv" href="#vendor">厂商动态</a><a class="nv" href="#industry">行业动态</a>
+    <span class="date-badge">2026-09-03</span>
+  </div>
+</div></nav>
+
+<header class="hero wrap">
+  <div class="kicker"><i></i>每日 09:00 自动生成 · 最近 30 天动态 · 已三重去重</div>
+  <h1 class="hero-title">🛡️ 中国防火墙厂商日报</h1>
+  <p class="sub">2026 年 09 月 03 日 · 星期四 · 全网检索中国主流网络安全厂商最新动态：新品发布、功能迭代、中标项目、市场财报、安全漏洞与行业标准。</p>
+  <div class="stats">
+    <div class="stat"><b>7</b><span>厂商动态</span></div>
+    <div class="stat"><b>6</b><span>行业动态</span></div>
+    <div class="stat"><b>13</b><span>今日总条数</span></div>
+  </div>
+  <div class="ai-box">
+    <div class="ai-h"><span class="dot">✦</span>AI 解读 · 今日看点</div>
+    <p>今天最大的看点是「行业大盘的分化」：18 家 A 股网安公司 Q2 收入连续第 12 个季度下滑，奇安信和天融信两家就吃掉了 99.4% 的降幅；但与此同时，华为在金融峰会端出 USG AI 防火墙三层围栏、齐向东公开喊话「带着漏洞防」、绿盟 NSFOCUS AI 还悄悄登顶了 CyberGym 全球榜。钱并没有消失，只是换了个方向——正加速流向 AI 防火墙、智能体安全和国产替代这三条确定性赛道。昨天 Palo Alto 财报也验证了同一逻辑：AI 防御需求已经在转化成真金白银的订单。建议重点盯两个口子：金融/政务的 AI 防火墙合规刚需落地节奏，以及运营商、军队两大采购体系的国产化替代进度——这是下半年最确定的两条主线。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="sec-head" id="vendor"><h2><span class="bar"></span>🏢 厂商动态</h2><span class="cnt">7 条 · 新品 / 功能 / 中标 / 市场</span></section>
+  <div class="grid">
+    <article class="card sec-vendor">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#F87171">华为</span></div>
+        <div class="meta"><span class="date">📅 2026-08-18</span><span class="fire">🔥</span></div>
+      </div>
+      <h3 class="card-title">华为星河AI金融网络全栈升级：USG系列AI防火墙三层安全围栏+联合发布《金融智能体可信互联研究报告》（合并2源）</h3>
+      <p class="card-sum">华为金融网络创新峰会2026上，华为展示星河AI金融网络：网络围栏侧USG系列AI防火墙内置AI CORE与AI勒索检测模型，毫秒级阻断、检出率超95%；Agent围栏侧HiSec AI-Guard提示词注入识别率超95%、时延由500ms压缩至200ms；主机围栏AI EDR将CPU占用降至1%以下。峰会联合金融科技产业联盟发布《金融智能体可信互联研究报告》，并披露与中国银联的智能体自协同互联联合创新。</p>
+      <div class="card-src"><a class="src" href="https://new.qq.com/rain/a/20260817A065P400?refer=cp_1009" target="_blank" rel="noopener">来源① ↗</a> · <a class="src" href="https://lw.news.cn/20260818/9eb77314552f400088ffa0ad67c22d83/c.html" target="_blank" rel="noopener">来源② ↗</a></div>
+    </article>
+
+    <article class="card sec-vendor">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#FB7185">奇安信</span></div>
+        <div class="meta"><span class="date">📅 2026-09-02</span><span class="fire">🔥</span></div>
+      </div>
+      <h3 class="card-title">齐向东：AI推动网络攻击进入「工业化」时代，行业须从「追着漏洞跑」转向「带着漏洞防」</h3>
+      <p class="card-sum">2026年国家网络安全宣传周前夕，奇安信董事长齐向东接受专访：大模型挖漏洞能力代际跃升（EpochAI统计6月全球高危及关键漏洞约1500个、达历史纪录3.5倍），AI可分钟级发现并利用零日；传统被动防御难以为继，应构建「即使存在漏洞也能抵御、限损、快速恢复」的弹性安全体系。他还直言行业「清单式合规、低价内卷」问题，呼吁客户从合规采购转向实效防护。</p>
+      <div class="card-src"><a class="src" href="https://news.qq.com/rain/a/20260902A0CAE700" target="_blank" rel="noopener">腾讯新闻（中国财富网） ↗</a></div>
+    </article>
+
+    <article class="card sec-vendor">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#34D399">绿盟科技</span></div>
+        <div class="meta"><span class="date">📅 2026-08-30</span><span class="fire">🔥</span></div>
+      </div>
+      <h3 class="card-title">绿盟 NSFOCUS AI 以95.02%漏洞复现成功率登顶 CyberGym 网络安全大模型全球排行榜</h3>
+      <p class="card-sum">权威网络安全大模型基准 CyberGym Level 1 最新一轮榜单中，NSFOCUS 自研智能攻防Agent「NSFOCUS AI」以95.02%的漏洞复现成功率（1507项任务完成1432项）登顶全球第一。该模型基于智谱GLM-5.3大模型，蒸馏了绿盟多年攻防实战知识，是国产安全大模型在国际基准上的一次领先。</p>
+      <div class="card-src"><a class="src" href="https://nsfocusglobal.com/95-02-success-rate-nsfocus-ai-tops-the-cybergym-global-leaderboard/" target="_blank" rel="noopener">NSFOCUS 官网 ↗</a></div>
+    </article>
+
+    <article class="card sec-vendor">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#34D399">绿盟科技</span></div>
+        <div class="meta"><span class="date">📅 2026-08-28</span></div>
+      </div>
+      <h3 class="card-title">NSFOCUS WAF 连续三年入选 Gartner 云 Web 应用与 API 保护（WAAP）市场指南</h3>
+      <p class="card-sum">Gartner 发布《Market Guide for Cloud Web Application and API Protection》，绿盟科技 NSFOCUS 凭借 WAF 产品连续第三年入选。报告周期内 NSFOCUS 在 WAAP 云化、API 防护与 AI 能力融合上的持续投入获认可，反映国产 WAF/WAAP 产品在全球权威评估中的常态化占位。</p>
+      <div class="card-src"><a class="src" href="https://nsfocusglobal.com/global-recognition-nsfocus-listed-in-gartner-market-guide-for-cloud-web-application-and-api-protection-for-three-consecutive-years/" target="_blank" rel="noopener">NSFOCUS 官网 ↗</a></div>
+    </article>
+
+    <article class="card sec-vendor">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#A78BFA">其他</span></div>
+        <div class="meta"><span class="date">📅 2026-09-02</span></div>
+      </div>
+      <h3 class="card-title">Palo Alto 2026财年Q4超预期：NGS ARR同比+63%首破90亿美元，宣布收购AI智能体公司Console（国际）</h3>
+      <p class="card-sum">Palo Alto Networks 发布截至7/31的2026财年Q4业绩：营收34.1亿美元同比+34%，下一代安全经常性收入（NGS ARR）91亿美元同比+63%，剩余履约义务（RPO）首破200亿美元；CEO Arora 称全球约1万亿美元「网络安全债务」尚未为AI时代做好准备，AI防御需求已开始转化为订单动能。公司同时宣布完成对AI智能体公司 Console 的收购。</p>
+      <div class="card-src"><a class="src" href="https://www.163.com/dy/article/L5QGBC1U05198NMR.html" target="_blank" rel="noopener">华尔街见闻/网易 ↗</a></div>
+    </article>
+
+    <article class="card sec-vendor">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#A78BFA">其他</span></div>
+        <div class="meta"><span class="date">📅 2026-09-02</span></div>
+      </div>
+      <h3 class="card-title">SonicWall SMA1000 双0day被在野链式利用：预认证SSRF（CVSS 10.0）+命令注入或致未认证RCE（国际漏洞）</h3>
+      <p class="card-sum">SonicWall 为 SMA1000 系列 SSL VPN 设备发布热修复：CVE-2026-83548 为预认证 SSRF（CVSS 10.0），CVE-2026-83549 为管理控制台命令注入（CVSS 7.8），两者可能被链式组合实现未认证远程代码执行，厂商已观测到在野利用。这是该产品线数月内第二轮被利用的0day（此前CVE-2026-15409/15410已被用于部署恶意软件）——VPN/接入类边界设备仍是高危攻击面。</p>
+      <div class="card-src"><a class="src" href="https://cyberrecaps.com/news/cybersecurity-news-september-02-2026" target="_blank" rel="noopener">CyberRecaps（援引THN） ↗</a></div>
+    </article>
+
+    <article class="card sec-vendor">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#60A5FA">深信服</span></div>
+        <div class="meta"><span class="date">📅 2026-08-24</span></div>
+      </div>
+      <h3 class="card-title">深信服教育行业再下一城：云南「数字校园二期」网安运营中心165.38万，XDR+AF-2000防火墙等13类设备成套中标</h3>
+      <p class="card-sum">云南省数字校园二期建设项目（标段一：网络安全运营中心）公布中标结果：云南信服网安科技以165.38万元中标，采用深信服 XDR 平台、AF-2000-FH2350 下一代防火墙×2、WAF、日志审计、aTrust 零信任、上网行为管理等13类设备——教育行业「等保合规+安全运营」一体化打包采购模式进一步普及。</p>
+      <div class="card-src"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260824_27193357.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+    </article></div>
+
+  <section class="sec-head" id="industry"><h2><span class="bar"></span>🏭 行业动态</h2><span class="cnt">6 条 · 政府 / 金融 / 运营商 / 军队 / 医疗</span></section>
+  <div class="grid">
+    <article class="card sec-industry">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#A78BFA">🏭 行业趋势</span></div>
+        <div class="meta"><span class="date">📅 2026-09-02</span><span class="fire">🔥</span></div>
+      </div>
+      <h3 class="card-title">行业大盘：18家A股网安公司Q2收入同比-8.0%，连续12个季度下滑，奇安信/天融信贡献99.4%降幅</h3>
+      <p class="card-sum">安全内参统计18家A股网络安全公司2026年二季度合计营收51.74亿元，同比-8.0%（较一季度-2.0%明显走阔），行业收入自2023Q3起连续12个季度同比下滑、拐点未现。11家下滑、其中8家两位数下降；降幅高度集中于奇安信（-26.1%）、天融信（-34.7%）两家，合计减少4.46亿元、占全部降幅99.4%，剔除后其余16家同比基本持平（-0.07%）——总量承压与结构性分化并存。</p>
+      <div class="card-src"><a class="src" href="https://www.secrss.com/articles/93503" target="_blank" rel="noopener">安全内参 ↗</a></div>
+    </article>
+
+    <article class="card sec-industry">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#F472B6">🏭 金融</span></div>
+        <div class="meta"><span class="date">📅 2026-08-26</span></div>
+      </div>
+      <h3 class="card-title">贵州银行2026-27生产网信息安全设备采购A包候选人公示：防火墙/IPS/抗DDoS/零信任全覆盖（金融）</h3>
+      <p class="card-sum">贵州银行2026-2027年生产网信息安全设备采购项目（A包安全防护类）公示中标候选人：北京神州新桥98.31分居首、上海华讯96.62分次之、北京先进数通93.47分第三。标的覆盖防火墙01/02、入侵防御、入侵检测、抗DDoS、全流量威胁检测与零信任安全等，公示期至8/31——城商行生产网安全设备两年期框架采购进入落地阶段。</p>
+      <div class="card-src"><a class="src" href="https://pms.bgzchina.com:8080/cms/channel/1ywgg4gs/90012009.htm" target="_blank" rel="noopener">贵州银行集采平台 ↗</a></div>
+    </article>
+
+    <article class="card sec-industry">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#38BDF8">🏭 运营商</span></div>
+        <div class="meta"><span class="date">📅 2026-08-25</span></div>
+      </div>
+      <h3 class="card-title">运营商集成侧防火墙需求放量：福建广电厦门4台防火墙询比 + 联通枣庄薛城区法院网安设备采购（合并2源）</h3>
+      <p class="card-sum">广电/电信运营商集成的政企防火墙采购持续释放：福建广电网络厦门分公司启动2026信息安全设备询比采购（防火墙设备1/2各2台，报名8/31截止、9/1解密报价）；中国联通枣庄分公司为薛城区人民法院采购数据中心防火墙、运维安全审计、入侵检测、终端安全与网络准入5类设备，预算约45.62万元——政企网络安全建设「运营商总包」模式已成常态。</p>
+      <div class="card-src"><a class="src" href="https://epu.fjgdwl.com/purDetail?Manageid=7887&amp;type=1" target="_blank" rel="noopener">来源① ↗</a> · <a class="src" href="https://shandong.jianyu360.cn/jybx/20260818_26081778626624.html" target="_blank" rel="noopener">来源② ↗</a></div>
+    </article>
+
+    <article class="card sec-industry">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#F87171">🏭 军队</span></div>
+        <div class="meta"><span class="date">📅 2026-08-19</span></div>
+      </div>
+      <h3 class="card-title">军队防火墙/UTM采购再放量：45台UTM安全网关等采购意向二次补充 + 1249万教学条件建设项目开标（合并2源）</h3>
+      <p class="card-sum">军队采购网8/19发布「防火墙及数据库管理系统等信息化设备采购项目」意向二次补充公告：拟采购45台UTM安全网关、入侵检测、漏洞扫描、运维安全管理系统等，明确要求自主可控名录产品与国产化处理器/OS；另8/6启动的2026-JQ03-W1090教学条件建设项目（预算1249万元，要求涉密集成乙级/二级保密资质，含万兆网络防火墙、千兆UTM网关）已于8/27开标——军队边界与内网安全设备国产化采购保持高频。</p>
+      <div class="card-src"><a class="src" href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d04f39fb7690a01a0177f5be61e02.html" target="_blank" rel="noopener">来源① ↗</a> · <a class="src" href="https://www.infochina.cn/rili-zhaobiao-20260806180512140801.html" target="_blank" rel="noopener">来源② ↗</a></div>
+    </article>
+
+    <article class="card sec-industry">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#FBBF24">🏭 政府</span></div>
+        <div class="meta"><span class="date">📅 2026-08-25</span></div>
+      </div>
+      <h3 class="card-title">龙岩市公安局网络安全边界采购140.18万成交：中国移动总集成，含下一代防火墙/网闸等边界设备（政府）</h3>
+      <p class="card-sum">龙岩市公安局网络安全边界采购项目（采购包1）成交结果出炉：中国移动福建龙岩分公司以140.18万元中标，集成下一代防火墙、交换机、网络数据安全交换系统前置/后置接口机、运维安全管理系统等——公安行业网络安全边界标准化建设继续由运营商总集成方式交付。</p>
+      <div class="card-src"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202608/t20260825_27201910.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+    </article>
+
+    <article class="card sec-industry">
+      <div class="card-top">
+        <div class="chips"><span class="chip" style="--c:#34D399">🏭 医疗</span></div>
+        <div class="meta"><span class="date">📅 2026-08-28</span></div>
+      </div>
+      <h3 class="card-title">头部三甲医院防火墙采购双单：云南阜外心血管288万深信服全家桶 + 川大华西195万中科网威（合并2源）</h3>
+      <p class="card-sum">医院网络边界安全采购持续放量：云南省阜外心血管病医院网络安全设备购置（288万元）由云南南天中标，含深信服AF-2000-L2250-GT内/外网防火墙9台、链路负载均衡、aTrust VPN、态势感知等；四川大学华西医院网络安全设备采购（195万元）由北京中科网威中标，含8台NSFW系列防火墙及智隼APT威胁检测探针——头部三甲医院成为国产防火墙「全家桶」与专业厂商并存的增量市场。</p>
+      <div class="card-src"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260819_27162354.htm" target="_blank" rel="noopener">来源① ↗</a> · <a class="src" href="https://www.ccgp.gov.cn/cggg/zygg/zbgg/202608/t20260828_27224837.htm" target="_blank" rel="noopener">来源② ↗</a></div>
+    </article></div>
+</main>
+
+<footer class="wrap">
+  数据来源：全网公开信息检索（WebSearch） · 仅保留最近 30 天内动态并执行三重去重<br>
+  本日报由自动化流程生成 · 每日 09:00（北京时间）推送 · 生成于 2026-09-03
+</footer>
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.card').forEach((c,i)=>{c.style.transitionDelay=((i%6)*60)+'ms';io.observe(c)});
+</script>
+</body>
+</html>
