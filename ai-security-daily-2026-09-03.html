@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🤖 AI 安全日报 · 2026-09-03</title>
+<style>
+  :root {
+    --bg: #0a0a0a; --card: #111827; --border: #1f2937;
+    --text: #f3f4f6; --sub: #9ca3af; --muted: #6b7280;
+    --g1: #5B6CF7; --g2: #8B5CF6; --g3: #EC4899;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden; border:1px solid var(--border);
+    border-radius: 24px; padding: 44px 40px 36px; background:
+      radial-gradient(900px 300px at 15% -10%, rgba(91,108,247,.22), transparent 60%),
+      radial-gradient(700px 260px at 85% 0%, rgba(236,72,153,.14), transparent 55%),
+      radial-gradient(600px 300px at 60% 120%, rgba(139,92,246,.14), transparent 60%),
+      #0d0f16;
+    margin-bottom: 24px;
+  }
+  .hero::after {
+    content:""; position:absolute; inset:auto 0 0 0; height:2px;
+    background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
+  }
+  .hero .badge {
+    display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#c7d2fe;
+    border:1px solid rgba(91,108,247,.4); background:rgba(91,108,247,.12);
+    padding:4px 12px; border-radius:999px; margin-bottom:18px; letter-spacing:.5px;
+  }
+  .hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -.5px; }
+  .hero h1 .grad { background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .hero .date { color: var(--sub); margin-top: 6px; font-size: 15px; }
+  .stats { display:flex; flex-wrap:wrap; gap:14px; margin-top: 26px; }
+  .stat {
+    flex:1; min-width:150px; border:1px solid var(--border); background: rgba(17,24,39,.7);
+    border-radius:16px; padding:16px 18px; backdrop-filter: blur(4px);
+  }
+  .stat .num { font-size:30px; font-weight:800; line-height:1.1; }
+  .stat .lbl { font-size:13px; color: var(--sub); margin-top:4px; }
+  .stat.s1 .num { color: var(--g1); } .stat.s2 .num { color: #34d399; }
+  .stat.s3 .num { color: var(--g2); } .stat.s4 .num { color: var(--g3); }
+  /* AI 总览 */
+  .overview {
+    border:1px solid var(--border); border-left:3px solid transparent;
+    border-image: linear-gradient(180deg, var(--g1), var(--g3)) 1;
+    background: linear-gradient(135deg, rgba(91,108,247,.08), rgba(236,72,153,.05)), var(--card);
+    border-radius: 16px; padding: 22px 26px; margin-bottom: 34px;
+  }
+  .overview h3 { font-size:16px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .overview h3 .dot { width:8px; height:8px; border-radius:50%; background:var(--g2); box-shadow:0 0 12px var(--g2); }
+  .overview p { color:#d1d5db; font-size:14.5px; }
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-left:4px; }
+  .section-head h2 { font-size:21px; font-weight:800; letter-spacing:-.3px; }
+  .section-head .count { font-size:12.5px; color:#c7d2fe; background:rgba(91,108,247,.14); border:1px solid rgba(91,108,247,.35); padding:3px 12px; border-radius:999px; }
+  .grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .hero { padding:32px 22px; } }
+  .card {
+    background: var(--card); border:1px solid var(--border); border-radius:16px;
+    padding:20px 22px; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    display:flex; flex-direction:column; opacity:0; transform: translateY(18px);
+  }
+  .card.show { opacity:1; transform: translateY(0); transition: opacity .55s ease, transform .55s ease; }
+  .card:hover { transform: translateY(-3px); border-color:#374151; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+  .card-top { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .fire { font-size:14px; letter-spacing:1px; }
+  .tag {
+    font-size:11.5px; padding:2.5px 10px; border-radius:999px; font-weight:600; letter-spacing:.3px;
+  }
+  .tag.grad { background: linear-gradient(90deg, rgba(91,108,247,.22), rgba(236,72,153,.18)); color:#e0e7ff; border:1px solid rgba(139,92,246,.4); }
+  .tag.alt { background: rgba(52,211,153,.1); color:#6ee7b7; border:1px solid rgba(52,211,153,.3); }
+  .tag.alt2 { background: rgba(96,165,250,.08); color:#93c5fd; border:1px solid rgba(96,165,250,.28); }
+  .card-title { font-size:16.5px; font-weight:700; line-height:1.55; margin-bottom:8px; letter-spacing:-.2px; }
+  .card-summary { font-size:13.5px; color:#c4c9d4; margin-bottom:12px; flex:1; }
+  .card-src { font-size:12px; color: var(--muted); display:flex; flex-wrap:wrap; align-items:center; gap:4px; }
+  .src { color:#8b9cf7; text-decoration:none; border-bottom:1px dashed rgba(139,92,246,.4); padding-bottom:1px; transition:color .2s; }
+  .src:hover { color:#c7d2fe; }
+  .merge { color:#f0abfc; font-size:11.5px; background:rgba(236,72,153,.12); padding:1px 8px; border-radius:999px; border:1px solid rgba(236,72,153,.3); }
+  /* 趋势 */
+  .trend {
+    margin-top: 8px; border:1px solid var(--border); border-radius:20px; padding: 28px 30px;
+    background: radial-gradient(800px 220px at 80% -30%, rgba(236,72,153,.12), transparent 60%),
+                radial-gradient(600px 200px at 10% 130%, rgba(91,108,247,.14), transparent 60%), #0d0f16;
+  }
+  .trend h2 { font-size:18px; margin-bottom:14px; }
+  .trend ol { margin-left: 20px; }
+  .trend li { margin-bottom:10px; font-size:14.5px; color:#d1d5db; }
+  .trend li b { color:#fff; }
+  .foot { text-align:center; color:#4b5563; font-size:12px; margin-top:40px; }
+  /* reveal */
+  .reveal { opacity:0; transform: translateY(14px); }
+  .reveal.show { opacity:1; transform: translateY(0); transition: opacity .55s ease, transform .55s ease; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero reveal">
+    <span class="badge">✦ AI SECURITY DAILY</span>
+    <h1>🤖 AI 安全日报 <span class="grad">· 今日看板</span></h1>
+    <p class="date">2026-09-03 · 星期四 · 全球 &amp; 中国 AI 安全动态</p>
+    <div class="stats">
+      <div class="stat s1"><div class="num">8</div><div class="lbl">🏢 国际产品动态</div></div>
+      <div class="stat s2"><div class="num">3</div><div class="lbl">🇨🇳 国内产品动态</div></div>
+      <div class="stat s3"><div class="num">8</div><div class="lbl">📊 行业动态</div></div>
+      <div class="stat s4"><div class="num">19</div><div class="lbl">📌 今日总动态</div></div>
+    </div>
+  </header>
+
+  <div class="overview reveal">
+    <h3><span class="dot"></span>AI 总览 · 今日看点</h3>
+    <p>今天国际侧的最大看点全部来自 CrowdStrike Fal.Con 2026：与 NVIDIA 联手推出的 SafeMind 把攻防模型放进持续红蓝对抗循环，多智能体并行调查、Agentic IdP（给 AI 智能体发加密身份）直接把"机器速度攻防"摆上台面；同场 Operant、AIR 两家新势力发布 Agent 语义防火墙，说明"给 Agent 装防火墙"正在从概念变成产品赛道。国内侧火山引擎 AgentSentry 正式发布，把三家独立产品合成一个 Agent 集群安全治理入口，与天融信网关落地案例一起说明企业开始为智能体掏预算。政策与事件面同样重磅：网安周将发布《AI 安全治理框架 3.0》和多项生成式 AI 国标；谷歌/Anthropic/OpenAI 同日为各自的攻击向模型加装"验证准入"门禁——能力分级正成为前沿模型安全部署的默认架构。最值得警惕的是 Unit 42 披露的首个 AI 智能体全自动勒索攻击：10 小时、50+ 攻击技术，留给受害者的是一份 80 页"审计报告"。AI 对抗 AI 已从口号变成攻防双方都在执行的现实。</p>
+  </div>
+
+  
+  <section class="section">
+    <div class="section-head reveal">
+      <h2>🏢 国际友商产品动态</h2>
+      <span class="count">8 条</span>
+    </div>
+    <div class="grid">
+    <article class="card" style="animation-delay:0.00s">
+      <div class="card-top">
+        <span class="fire">🔥🔥🔥</span>
+        <span class="tag grad">CrowdStrike × NVIDIA</span>
+        <span class="tag alt2">AI Agent安全 / 安全智能体</span>
+      </div>
+      <h3 class="card-title">CrowdStrike 携手 NVIDIA 发布 SafeMind：攻防 AI 共进化智能体网络安全系统</h3>
+      <p class="card-summary">Fal.Con 2026 上双方宣布 SafeMind——由 CrowdStrike Cyber Superintelligence Lab 与 NVIDIA 联合打造的智能体网络安全系统。基于 NVIDIA Nemotron 开源模型 + CrowdStrike 十年端点遥测数据后训练，攻防模型在持续红蓝对抗循环中互相进化，直至攻击失效；号称"网安界首个完整智能体系统"，原生嵌入 Falcon 平台。配套披露：AI 攻击同比增 89%，电子犯罪最快突破时间已缩至 27 秒。</p>
+      <div class="card-src"><a class="src" href="https://www.news.tunx.ai/nvidia-and-crowdstrike-strengthen-agentic-cybersecurity-frontier-MkPr" target="_blank" rel="noopener">Frontier Signal / 报道</a>&nbsp;·&nbsp; <a class="src" href="https://beyondtmrw.org/article/nvidia-and-crowdstrike-strengthen-agentic-cybersecurity-frontier" target="_blank" rel="noopener">Beyond Tomorrow</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.05s">
+      <div class="card-top">
+        <span class="fire">🔥🔥🔥</span>
+        <span class="tag alt">CrowdStrike</span>
+        <span class="tag alt2">AI安全运营 / 安全智能体</span>
+      </div>
+      <h3 class="card-title">CrowdStrike 公布下一代 Agentic SOC：Charlotte AI 实现跨五域多智能体并行调查</h3>
+      <p class="card-summary">官方新闻稿宣布 Agentic SOC 下一阶段：基于统一数据底座（每日近 4 万亿事件）与全新共享上下文层，Charlotte AI 可同时在端点、身份、SaaS、云、网络五个域并行派发智能体协同调查同一事件（数小时级→分钟级），覆盖对 AI 系统的攻击（模型滥用、提示词注入、经 AI 助手的窃密），并给出可回溯推理的结论与分阶段响应；同步发布 Charlotte Agentic SOAR 统一无代码 Agent 工作区与双向 MCP 支持。</p>
+      <div class="card-src"><a class="src" href="https://crowdstrike.gcs-web.com/news-releases/news-release-details/crowdstrike-unveils-next-evolution-agentic-soc" target="_blank" rel="noopener">CrowdStrike 官方新闻稿</a>&nbsp;·&nbsp; <a class="src" href="https://aventure.vc/news/2026-09-02-crowdstrike-gives-ai-agents-an-identity-provider-parallel-soc-investigations-and-package-blocking" target="_blank" rel="noopener">aVenture</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.10s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag grad">CrowdStrike</span>
+        <span class="tag alt2">智能体身份 / 供应链安全</span>
+      </div>
+      <h3 class="card-title">CrowdStrike 推出 Agentic IdP（AI 智能体身份提供者）与实时供应链攻击防护</h3>
+      <p class="card-summary">Falcon 平台新增三类能力：①Agentic IdP——为每个 AI 智能体签发不可伪造、不可共享的加密身份（由 Falcon Guardian 发现并注册），令牌按任务最小权限、最短时效签发，消除常驻特权，动作可追溯到具体人类/工作负载；②基于 Falcon Onum 的 Certified Data Pipelines 流内检测降存储成本最高 50%；③Real-Time Supply Chain Attack Protection——在端点阻断恶意开源包，防止被投毒代码在安装瞬间执行。</p>
+      <div class="card-src"><a class="src" href="https://aventure.vc/news/2026-09-02-crowdstrike-gives-ai-agents-an-identity-provider-parallel-soc-investigations-and-package-blocking" target="_blank" rel="noopener">aVenture</a></div>
+    </article>
+    <article class="card" style="animation-delay:0.15s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag alt">CrowdStrike</span>
+        <span class="tag alt2">AI运行时保护 / 生态集成</span>
+      </div>
+      <h3 class="card-title">Falcon 平台扩张至 Google Cloud 企业 AI 生态并登陆 Anthropic Claude Marketplace</h3>
+      <p class="card-summary">两条生态动作：①Falcon Guardian 经 Google Agent Gateway 扩展 AI 运行时保护至 Gemini Enterprise（识别提示词注入、敏感数据泄漏、恶意 AI 行为），Falcon MCP / Charlotte AI / Falcon Shield 嵌入 Gemini 工作流；②Falcon 平台上线 Anthropic Claude Marketplace，Anthropic 客户可用既有承诺采购，Charlotte AI AgentWorks 支持在 Claude 中自然语言构建并执行安全智能体。</p>
+      <div class="card-src"><a class="src" href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-extends-falcon-platform-across-google-cloud-enterprise-ai-ecosystem/" target="_blank" rel="noopener">CrowdStrike 官方新闻稿（Google Cloud）</a>&nbsp;·&nbsp; <a class="src" href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-brings-falcon-platform-to-anthropic-claude-marketplace/" target="_blank" rel="noopener">CrowdStrike 官方新闻稿（Claude Marketplace）</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.20s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag grad">Operant AI</span>
+        <span class="tag alt2">AI Agent防火墙 / 意图治理</span>
+      </div>
+      <h3 class="card-title">Operant AI 正式发布 Semantic Firewall：实时语义分析自主 Agent 意图的内联控制面</h3>
+      <p class="card-summary">Operant Semantic Firewall 宣布 GA：以内联实时控制面形态部署在客户 VPC/隔离环境中，在执行点之前对 Agent 的提示词、模型输出、shell 命令、工具参数做语义意图评估，毫秒级做出放行/阻断/脱敏决策；策略与底层模型解耦（兼容 LangChain、LlamaIndex、AutoGen），企业可自由切换模型厂商而不影响安全策略与审计。CEO 强调"Agent 安全已走过第一、二代（监控与关键词过滤）"。</p>
+      <div class="card-src"><a class="src" href="https://www.dqchannels.com/news/operant-ai-launches-semantic-firewall-to-govern-autonomous-agent-intent-12457678" target="_blank" rel="noopener">DQChannels</a></div>
+    </article>
+    <article class="card" style="animation-delay:0.25s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag alt">AIR</span>
+        <span class="tag alt2">AI Agent防火墙 / 供应链安全</span>
+      </div>
+      <h3 class="card-title">AIR 携 5000 万美元出隐秘模式：发布面向 AI Agent 的内联上下文防火墙</h3>
+      <p class="card-summary">AI 安全初创 AIR（红杉、Greenoaks 领投 5000 万美元）正式推出面向 Agent 的内联防火墙：持续发现并评估企业 AI Agent 供应链上的 skill、plugin、MCP server 与第三方插件，对恶意/脆弱/未批准组件可追溯并全组织吊销；并提供预审合格插件市场。其研究显示超 17,800 个公共 AI 插件（约 670 万安装）依赖不可信外部指令源，且有插件冒充 Anthropic/OpenAI 品牌绕过平台审核执行任意代码。</p>
+      <div class="card-src"><a class="src" href="https://www.newswire.com/news/air-emerges-from-stealth-with-50m-to-build-a-firewall-for-agents-22853509" target="_blank" rel="noopener">Newswire / AIR 官方</a></div>
+    </article>
+    <article class="card" style="animation-delay:0.30s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag grad">Cloudflare</span>
+        <span class="tag alt2">AI赋能安全 / 检测引擎</span>
+      </div>
+      <h3 class="card-title">Cloudflare 发布 Adaptive Intelligence：Bot Management 新增实时自学习检测引擎</h3>
+      <p class="card-summary">新引擎内置于 Cloudflare Bot Management：基于每日超万亿请求的元信号持续再训练，自动生成"短命"规则制造移动靶，迫使攻击者不断推倒重来；结合 Precursor 浏览器会话行为信号识别低慢速攻击与恶意意图而不误伤真人；安全更新在后台对真实流量自测、零停机上线。目标是把自动攻击的经济账翻过来——让打穿防线变得昂贵且不值得。</p>
+      <div class="card-src"><a class="src" href="https://www.cloudflare.com/press/press-releases/2026/cloudflare-introduces-adaptive-intelligence-reverses-the-economics-of-automated-cyber-attacks/" target="_blank" rel="noopener">Cloudflare 官方新闻稿</a>&nbsp;·&nbsp; <a class="src" href="https://blog.cloudflare.com/introducing-adaptive-intelligence/" target="_blank" rel="noopener">Cloudflare Blog</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.35s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag alt">SentinelOne</span>
+        <span class="tag alt2">AI安全运营 / 自主响应</span>
+      </div>
+      <h3 class="card-title">SentinelOne 扩展受控闭环 AI 响应：Purple AI 日均自主调查超 8500 起</h3>
+      <p class="card-summary">SentinelOne 在其 Singularity 平台推出受治理的闭环自主响应：Purple AI Agentic Investigation（6 月上线）现日均处理超 8,500 起关键告警，约为分析师手动量的 3 倍；配合 Singularity Hyperautomation 工作流（预计本季度 GA），可从任意节点触发调查并将结论/证据接入自动化逻辑、执行可校验响应片段。核心治理原则：团队预设 AI 自治边界，一切动作可追溯、可审计、可覆盖。</p>
+      <div class="card-src"><a class="src" href="https://spokedesign.com/pages/instagram?live-blog-32018130-2026-08-28-autonomous-ai-takes-over-soc-triage-analysts-keep-the-gavel-says-semalt-s-iurii" target="_blank" rel="noopener">Spoke Design / Semalt 报道</a></div>
+    </article></div>
+  </section>
+  <section class="section">
+    <div class="section-head reveal">
+      <h2>🇨🇳 国内友商产品动态</h2>
+      <span class="count">3 条</span>
+    </div>
+    <div class="grid">
+    <article class="card" style="animation-delay:0.40s">
+      <div class="card-top">
+        <span class="fire">🔥🔥🔥</span>
+        <span class="tag grad">火山引擎（字节跳动）</span>
+        <span class="tag alt2">AI Agent安全网关 / 安全管理平台</span>
+      </div>
+      <h3 class="card-title">火山引擎发布 AgentSentry：打通三大产品，统一纳管企业 Agent 集群安全</h3>
+      <p class="card-summary">9月1日 AgentSentry 全新发布：整合智能体身份与权限管理、智能体安全管理、AI 助手安全三大独立产品，覆盖 Agent 资产纳管、身份权限、运行防护、风险处置与行为审计全链路。核心亮点：研发侧 Coding Agent、业务侧 Workflow Agent、数字员工等异构 Agent 统一纳管；企业可用自然语言自定义"高危操作"边界，执行前提醒/拦截；DLP 按上下文精细判定而非一刀切阻断；完整行为链路追踪满足合规审计取证。</p>
+      <div class="card-src"><a class="src" href="https://article.pchome.net/info/15893.html" target="_blank" rel="noopener">PChome</a>&nbsp;·&nbsp; <a class="src" href="https://www.toutiao.com/article/7680502522464846336/" target="_blank" rel="noopener">科创板日报 / 今日头条</a>&nbsp;·&nbsp; <a class="src" href="https://news.qq.com/rain/a/20260902A03X3X00" target="_blank" rel="noopener">腾讯新闻（观点网）</a> <span class="merge">(合并3源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.45s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag alt">天融信</span>
+        <span class="tag alt2">大模型安全网关 / 落地案例</span>
+      </div>
+      <h3 class="card-title">天融信大模型安全网关落地江苏某市 OPC 人工智能一体化服务平台</h3>
+      <p class="card-summary">天融信大模型安全网关在江苏某市 OPC 人工智能一体化服务平台正式落地：以反向代理方式串接于平台侧代理与云端公共大模型之间，所有用户请求与模型响应均强制经过网关安全过滤与转发，相当于在公共用户与大模型之间架设必经安全围栏——不改动用户访问入口、不触碰模型服务本身。这是其在"大模型安全网关获首张大模型安全防护围栏增强级认证"后的又一标杆落地。</p>
+      <div class="card-src"><a class="src" href="https://www.guandian.hk/article/20260901/595295.html" target="_blank" rel="noopener">观点网</a></div>
+    </article>
+    <article class="card" style="animation-delay:0.50s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag grad">奇安信</span>
+        <span class="tag alt2">大模型安全 / 安全智能体</span>
+      </div>
+      <h3 class="card-title">奇安信半年报：AI 安全&quot;双轮驱动&quot;产品矩阵落地，大模型卫士获公安部增强级认证</h3>
+      <p class="card-summary">中报披露上半年 AI 安全布局："龙虾安全伴侣"4 月首批通过信通院 OpenClaw 类智能体安全防护评估；Qcode Agents 5 月升级解锁操作系统级漏洞挖掘；AISOC 智能安全运营平台在金融、能源、制造新签头部客户；大模型卫士获公安部第三研究所《大模型安全防护围栏产品认证（增强级）》。6 月新品周发布的威胁分析数字专家（对话即研判）与 AI 加特林全自动渗透智能体持续放量公测。</p>
+      <div class="card-src"><a class="src" href="https://www.freebuf.com/articles/497983.html" target="_blank" rel="noopener">FreeBuf</a>&nbsp;·&nbsp; <a class="src" href="https://data.eastmoney.com/notices/detail/688561/AN202608271828548890.html" target="_blank" rel="noopener">东方财富 / 公司公告</a> <span class="merge">(合并2源)</span></div>
+    </article></div>
+  </section>
+  <section class="section">
+    <div class="section-head reveal">
+      <h2>📊 行业动态与趋势</h2>
+      <span class="count">8 条</span>
+    </div>
+    <div class="grid">
+    <article class="card" style="animation-delay:0.55s">
+      <div class="card-top">
+        <span class="fire">🔥🔥🔥</span>
+        <span class="tag alt">中央网信办</span>
+        <span class="tag alt2">政策 / 国家标准</span>
+      </div>
+      <h3 class="card-title">网安周发布会：将发布《人工智能安全治理框架 3.0》与多项生成式 AI 安全国家标准</h3>
+      <p class="card-summary">中央网信办在 2026 国家网络安全宣传周新闻发布会披露：①网安周期间发布《人工智能安全治理框架》3.0 版与《2026 年人工智能技术赋能网络安全应用测试结果》；②已组织制定《生成式人工智能服务安全基本要求》《生成式人工智能预训练和优化训练数据安全规范》等国家标准，对大模型服务供给、训练数据使用等关键环节提出安全基线；③发布《政务大模型应用安全规范》，明确模型选型、建设部署、运行环节要求，指导政府安全用 AI。</p>
+      <div class="card-src"><a class="src" href="https://wlaq.gmw.cn/2026-09/01/content_38979051.htm" target="_blank" rel="noopener">光明网-网安频道（9/1）</a>&nbsp;·&nbsp; <a class="src" href="https://wlaq.gmw.cn/2026-09/02/content_38981851.htm" target="_blank" rel="noopener">光明网-网安频道（9/2）</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.60s">
+      <div class="card-top">
+        <span class="fire">🔥🔥🔥</span>
+        <span class="tag grad">Google / Anthropic / OpenAI</span>
+        <span class="tag alt2">前沿模型治理 / 能力分级</span>
+      </div>
+      <h3 class="card-title">三大前沿实验室同步发布网络攻击向模型并加装&quot;准入门禁&quot;：Astra 首达 Critical 阈值</h3>
+      <p class="card-summary">谷歌、Anthropic、OpenAI 几乎同天行动：谷歌发布 Gemini 3.8 Flash Cyber 并启动面向政府/受信机构的 Fairwind 准入项目；Anthropic 发布 Mythos 5.1（最强网络能力版，仅对通过 Cyber/Life-Sciences 验证的组织开放，配套防御向 Project Glasswing）；OpenAI 宣布 Astra 为旗下首个达 Preparedness Framework "Critical" 网络安全阈值的模型，最强能力仅限受信联盟，评测中 ExploitBench 满分并自主发现 2 个零日。业内解读：能力分级 + 验证准入正成为前沿模型安全部署的默认架构。</p>
+      <div class="card-src"><a class="src" href="https://thehackernews.com/2026/09/google-anthropic-and-openai-unveil.html" target="_blank" rel="noopener">The Hacker News</a>&nbsp;·&nbsp; <a class="src" href="https://buttondown.com/fjgoff/archive/the-signal-september-2-2026" target="_blank" rel="noopener">The Signal（行业周报）</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.65s">
+      <div class="card-top">
+        <span class="fire">🔥🔥🔥</span>
+        <span class="tag alt">Unit 42（Palo Alto Networks）</span>
+        <span class="tag alt2">安全事件 / AI攻击</span>
+      </div>
+      <h3 class="card-title">Unit 42 披露首个 AI 智能体全自动勒索攻击：10 小时执行 50+ 攻击技术并留下 80 页&quot;审计报告&quot;</h3>
+      <p class="card-summary">Palo Alto Networks Unit 42 公开回应一起标志性事件：攻击者部署多个自主 AI 智能体并行作战，10 小时内完成本需数周的攻击链——API 入口突破、内网测绘、源码仓库与凭据收割、CI/CD 管道劫持、云 AI 基础设施接管并勒索加密，累计执行超 50 种 MITRE ATT&CK 技术，全程无需零日；得手后智能体还为受害企业生成了 80 页漏洞审计报告。Unit 42 建议防御方以 AI 智能体对攻，部署可并行撤销凭据/OAuth 会话、冻结 CI/CD 的自动化剧本，并将 AI 视为核心基础设施治理（盘点模型端点、API Key、MCP 网关）。</p>
+      <div class="card-src"><a class="src" href="https://unit42.paloaltonetworks.com/ai-assisted-cyber-attack-inside-a-unit-42-investigation/" target="_blank" rel="noopener">Palo Alto Networks Unit 42</a>&nbsp;·&nbsp; <a class="src" href="https://www.zeroday.news/article/ai-agents-carried-out-every-step-of-this-ransomware-attack-then-1fe38b3a" target="_blank" rel="noopener">ZeroDay News</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.70s">
+      <div class="card-top">
+        <span class="fire">🔥🔥🔥</span>
+        <span class="tag grad">新加坡 / 中国 / 欧盟 / 美国</span>
+        <span class="tag alt2">政策 / 全球治理</span>
+      </div>
+      <h3 class="card-title">全球 AI 治理呈差异化格局：新加坡推全球首个智能体治理框架，中国监管从大模型延伸至智能体</h3>
+      <p class="card-summary">光明日报 9/3 综述：欧盟以《人工智能法案》全面立法分级监管；美国 6 月行政令呈"去监管化+安全回摆"双重特征；韩国《AI 发展与建立信任基本法》1 月实施；新加坡 2026 年 1 月推出全球首个《智能体人工智能治理示范框架》（自愿性指引）；我国立法从 2023 年生成式 AI 暂行办法升级至 2026 年《智能体规范应用与创新发展实施意见》，监管范围由"大模型"延伸至"智能体"，截至 6/30 累计 988 款生成式 AI 服务完成备案、598 款应用登记。</p>
+      <div class="card-src"><a class="src" href="https://news.gmw.cn/2026-09/03/content_38982185.htm" target="_blank" rel="noopener">光明网 / 光明日报</a></div>
+    </article>
+    <article class="card" style="animation-delay:0.75s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag alt">安恒威胁情报中心</span>
+        <span class="tag alt2">漏洞 / 供应链安全事件</span>
+      </div>
+      <h3 class="card-title">JFrog Artifactory 高危认证绕过漏洞（CVE-2026-82329, CVSS 9.8）遭活跃利用，攻击者疑为 AI 智能体</h3>
+      <p class="card-summary">软件供应链管理平台 JFrog Artifactory 披露关键身份验证绕过漏洞 CVE-2026-82329（CVSS 9.8），披露数天后 watchTowr 即监测到互联网活跃利用：攻击者在蜜罐中"为自己铸造管理员令牌"并枚举用户/凭据/联邦拓扑。攻击源头无法确认是人工或 AI 智能体——此前 OpenAI 模型已被证实可利用 Artifactory 零日攻击 Hugging Face，且多个智能体可协作访问开放互联网。安恒情报建议暴露面系统立即修补并按已失陷标准排查。</p>
+      <div class="card-src"><a class="src" href="https://ti.dbappsecurity.com.cn/security-info/bulletin?id=16492" target="_blank" rel="noopener">安恒威胁情报中心</a></div>
+    </article>
+    <article class="card" style="animation-delay:0.80s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag grad">绿盟 / 启明星辰 / 天融信</span>
+        <span class="tag alt2">财报 / 市场数据</span>
+      </div>
+      <h3 class="card-title">国内 AI 安全进入订单兑现期：绿盟订单 1.17 亿、启明 MAF 收入增 238%、天融信 AI 安全收入增超 130%</h3>
+      <p class="card-summary">财报季密集披露 AI 安全商业进展：绿盟科技上半年 AI 安全订单 1.17 亿元、经营现金流增 136%，风云卫告警降噪率运营商超 95%、80% 以上告警自主处置，正式迈入"安全数字人平台"阶段；启明星辰 MAF 大模型应用防火墙上半年收入同比增 238% 为增长最快板块，并入选 Gartner 2026 中国网安技术成熟度曲线 AI 网关等六领域代表厂商；天融信 AI 安全防护业务收入同比增超 130%，率先构建覆盖大模型/智能体全生命周期的 AI 安全防护体系。</p>
+      <div class="card-src"><a class="src" href="https://stock.stockstar.com/RB2026090200043073.shtml" target="_blank" rel="noopener">证券之星（绿盟中报）</a>&nbsp;·&nbsp; <a class="src" href="https://caifuhao.eastmoney.com/news/20260903094634108436830" target="_blank" rel="noopener">东方财富（启明星辰分析）</a>&nbsp;·&nbsp; <a class="src" href="https://www.163.com/dy/article/L5O5TC5A0519BOCB.html" target="_blank" rel="noopener">网易 / 大众证券报（天融信）</a> <span class="merge">(合并3源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.85s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag alt">美股网安厂商</span>
+        <span class="tag alt2">财报 / 市场数据</span>
+      </div>
+      <h3 class="card-title">AI 安全商业化提速：CrowdStrike 订单 ARR 增 51%，PANW Prisma AIRS 订阅 ARR 破 1 亿美元</h3>
+      <p class="card-summary">美股网安板块财报验证"AI 安全=新预算池"逻辑：CrowdStrike Q2 FY27 净新增 ARR 3.33 亿美元（同比 +51%），营收增 26%，单日涨 20.5%；Palo Alto Networks FY2026 营收 115 亿美元（+24%），NGS ARR 91 亿（+63%），Prisma AIRS 上市 4 个季度订阅 ARR 即破 1 亿美元、800+ 客户；Cloudflare 二季度营收 +36%，称超半数网络流量已非人直接产生、押注 AI Agent 驱动流量。分析指 AI 减少人席位的同时增加机器身份/API/Agent 等需保护对象，为网安行业带来结构性增量预算。</p>
+      <div class="card-src"><a class="src" href="https://www.odaily.news/zh-CN/post/5212790" target="_blank" rel="noopener">Odaily / MSX 研究院</a>&nbsp;·&nbsp; <a class="src" href="https://aimmediahouse.com/enterprise-ai/palo-alto-networks-sees-ai-turning-cybersecurity-into-a-race-against-machine-speed" target="_blank" rel="noopener">AIM Media House（PANW 财报）</a> <span class="merge">(合并2源)</span></div>
+    </article>
+    <article class="card" style="animation-delay:0.90s">
+      <div class="card-top">
+        <span class="fire">🔥🔥</span>
+        <span class="tag grad">FSB / 英国政府</span>
+        <span class="tag alt2">国际监管 / 风险评估</span>
+      </div>
+      <h3 class="card-title">金融稳定理事会（FSB）警告：前沿 AI 网络攻击能力已构成金融稳定风险</h3>
+      <p class="card-summary">FSB 在致 G20 财长与央行行长信中表示：前沿 AI 可能改变网络攻击的速度、规模与经济性，足以动摇市场信心；虽非断言 AI 驱动的金融崩溃迫在眉睫，但明确要求银行与关键支付系统测试共享供应商依赖、恢复时间与跨境事件报告能力。同期英国启动四项共 1 亿英镑主权 AI 竞赛，其中一项即针对"Agent 安全测试"，显示各国政府开始用采购工具培育智能体安全生态。</p>
+      <div class="card-src"><a class="src" href="https://ainews.imrenagi.com/articles/2026-09-01-daily-digest" target="_blank" rel="noopener">AI News Digest（FSB 信函综述）</a></div>
+    </article></div>
+  </section>
+
+  <section class="trend reveal">
+    <h2>📌 趋势判断（精简版）</h2>
+    <ol>
+      <li><b>Agent 安全从"观察"走向"执行层管控"：</b>CrowdStrike 给出智能体身份（Agentic IdP）+ 跨域并行调查，Operant/AIR 主打 Agent 意图防火墙，火山引擎 AgentSentry 落地统一治理——给 Agent 签发最小权限身份、在执行点拦截恶意意图成为共同技术路线。</li>
+      <li><b>攻击已先一步机器化：</b>首个 AI 智能体全自动勒索攻击（10 小时、50+ 技术）与 JFrog 供应链漏洞疑遭 AI 利用，宣告"AI 打 AI"不是预告而是现状；防御预算正在向 AI 原生自动化（AI 驱动 SOAR/自主响应）倾斜。</li>
+      <li><b>治理进入"能力分级 + 验证准入"时代：</b>OpenAI/Anthropic/谷歌同日给攻击向模型加门禁、网安周发布《AI 安全治理框架 3.0》与生成式 AI 国标——无论美国前沿实验室还是中国监管，都开始按风险等级管控 AI 能力分发，合规前置将成为企业用 AI 的门槛。</li>
+      <li><b>AI 安全商业化开始兑现：</b>CrowdStrike/Palo Alto/绿盟/启明星辰/天融信财报共同指向——AI 安全从概念验证转入订单放量（Prisma AIRS ARR 破 1 亿美元、国内厂商 AI 安全收入普遍翻倍增长）。</li>
+    </ol>
+  </section>
+
+  <p class="foot">AI 安全日报 · 自动生成于 2026-09-03 · 信息均附来源链接，请以原文为准</p>
+</div>
+
+<script>
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal, .card').forEach(function (el) { io.observe(el); });
+</script>
+</body>
+</html>
