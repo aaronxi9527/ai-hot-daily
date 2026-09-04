@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-09-04</title>
+<style>
+:root{--bg:#0a0a0a;--panel:#121216;--panel2:#16161c;--line:rgba(255,255,255,.07);
+--txt:#e8e8ec;--sub:#9a9aa6;--dim:#6b6b78;--c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","HarmonicOS Sans","Microsoft YaHei",sans-serif;line-height:1.65;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+background:radial-gradient(900px 420px at 15% -5%,rgba(91,108,247,.14),transparent 60%),
+radial-gradient(800px 380px at 85% 0%,rgba(236,72,153,.10),transparent 55%),
+radial-gradient(1000px 600px at 50% 110%,rgba(139,92,246,.10),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 22px 80px}
+/* 顶栏 */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+background:rgba(10,10,10,.66);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:12px}
+.logo{width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+background:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3));box-shadow:0 4px 18px rgba(91,108,247,.35)}
+.nav-t{font-size:14px;font-weight:700;letter-spacing:.2px}
+.nav-d{margin-left:auto;font-size:12px;color:var(--dim)}
+/* Hero */
+.hero{padding:56px 4px 26px}
+.hero .kicker{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--c2);font-weight:600;
+padding:5px 12px;border:1px solid rgba(139,92,246,.35);border-radius:999px;background:rgba(139,92,246,.08);margin-bottom:18px;letter-spacing:.5px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.5px;line-height:1.2;
+background:linear-gradient(90deg,#fff 20%,var(--c1) 55%,var(--c3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .meta{margin-top:14px;font-size:13px;color:var(--sub);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);font-size:12px;color:var(--txt)}
+.pill b{color:#fff}
+.dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c3));display:inline-block}
+/* AI 解读 */
+.ai{background:linear-gradient(150deg,rgba(91,108,247,.10),rgba(139,92,246,.08) 45%,rgba(236,72,153,.08));
+border:1px solid rgba(139,92,246,.22);border-radius:16px;padding:20px 22px;margin:8px 0 40px;position:relative;overflow:hidden}
+.ai::before{content:"AI";position:absolute;top:-14px;right:14px;font-size:74px;font-weight:800;opacity:.06;letter-spacing:-2px}
+.ai-h{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:700;margin-bottom:10px}
+.ai-h .spark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3));display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.ai p{font-size:14.5px;color:#d6d6de}
+/* 版块 */
+.sec-title{display:flex;align-items:center;gap:12px;margin:44px 0 20px}
+.sec-title h2{font-size:20px;font-weight:800;letter-spacing:-.2px}
+.sec-title .bar{width:4px;height:20px;border-radius:2px;background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3))}
+.sec-title .cnt{font-size:12px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);padding:2px 10px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;position:relative;
+transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;opacity:0;transform:translateY(22px)}
+.card.visible{opacity:1;transform:none}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.45);box-shadow:0 12px 34px rgba(0,0,0,.45)}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.tag{font-size:11px;font-weight:600;padding:2.5px 9px;border-radius:6px;letter-spacing:.3px}
+.t-v{background:rgba(91,108,247,.14);color:#9dabff;border:1px solid rgba(91,108,247,.3)}
+.t-i{background:rgba(236,72,153,.12);color:#f5a3c4;border:1px solid rgba(236,72,153,.3)}
+.t-o{background:rgba(255,255,255,.07);color:#c9c9d4;border:1px solid rgba(255,255,255,.14)}
+.t-date{margin-left:auto;font-size:11px;color:var(--dim);align-self:center}
+.card h3{font-size:15.5px;font-weight:700;line-height:1.5;margin-bottom:9px;letter-spacing:-.1px}
+.card p{font-size:13.2px;color:var(--sub);line-height:1.7}
+.src{margin-top:13px;font-size:12.5px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.src a{color:var(--c2);text-decoration:none;font-weight:500;transition:color .15s;display:inline-flex;align-items:center;gap:4px}
+.src a:hover{color:#b39dff;text-decoration:underline}
+.src .sep{color:var(--line)}
+.merged{font-size:11px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 7px}
+.ic{flex:none}
+.foot{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:center}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.hero{padding-top:40px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <div class="logo">🛡️</div>
+  <div class="nav-t">防火墙厂商日报</div>
+  <div class="nav-d">2026-09-04</div>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">· FIREWALL DAILY ·</span>
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="meta">
+      <span class="pill">📅 2026 年 9 月 4 日 · 星期五</span>
+      <span class="pill"><span class="dot"></span>共 <b>9</b> 条动态</span>
+      <span class="pill">厂商 <b>5</b> · 行业 <b>4</b></span>
+    </div>
+  </header>
+  <section class="ai">
+    <div class="ai-h"><span class="spark">✦</span>AI 今日看点</div>
+    <p>财报季落幕，市场回归招投标节奏：央企订单（南网安全服务标段、中核核信）密集落槌，深信服、天融信、启明星辰轮番进账，关基安全预算的「压舱石」属性依旧。今天最该盯的反而是条进口消息——WatchGuard 一口气修了 5 个 CVSS 9.3 的未授权 RCE，叠加此前派拓（Palo Alto）在华被启动网络安全审查，境外防火墙的合规与安全双重风险，正在给国产替代持续递刀。叙事层面，齐向东再抛「All in AI」、绿盟跻身北京市工商联 AI 专委会，AI 仍是各家争夺行业话语权的主战场。</p>
+  </section>
+  <section>
+    <div class="sec-title"><span class="bar"></span><h2>🏢 厂商动态</h2><span class="cnt">5 条</span></div>
+    <div class="grid">
+<article class="card" id="c1" style="transition-delay:40ms">
+  <div class="tagrow"><span class="tag t-v">深信服</span><span class="t-date">09-01</span></div>
+  <h3>深信服中标中核核信「统一安全风险感知系统」采购项目，金额 439 万元</h3>
+  <p>中核核信2026年统一安全风险感知系统采购项目（核信分采）公布中标结果，深信服科技以439.00万元中标。中核核信为中核集团旗下信息化平台，该项目落地显示深信服在央企/核工业关基场景的安全能力持续获得认可，也是其「安全+云」双轮在能源央企的又一单。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.popcj.com/depth/8945362609458001" target="_blank" rel="noopener">来源</a></div>
+</article>
+
+<article class="card" id="c2" style="transition-delay:80ms">
+  <div class="tagrow"><span class="tag t-v">绿盟科技</span><span class="t-date">09-01</span></div>
+  <h3>绿盟科技受邀成为北京市工商联人工智能产业专委会委员单位，图神经网络APT取证溯源入选「两新」融合案例</h3>
+  <p>首都民营经济创新发展大会宣布增补市工商联人工智能产业专委会委员，绿盟科技正式成为委员单位；其申报的《基于图神经网络的高级威胁取证溯源创新应用》入选首都「两新」融合案例并获荣誉证书。该应用依托图神经网络实现攻击行为关联与攻击链自动重构，已累计命名新APT组织9个、跟踪监测APT组织33个、追踪攻击活动2200余起。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.toutiao.com/article/7680505363501744655/" target="_blank" rel="noopener">来源</a><span class="merged">合并3源</span><span class="sep">·</span><a href="https://weibo.com/1686253095/5338634335289481" target="_blank" rel="noopener">来源2</a><span class="sep">·</span><a href="https://www.fupanwang.com/kplart_info/1084659.html" target="_blank" rel="noopener">来源3</a></div>
+</article>
+
+<article class="card" id="c3" style="transition-delay:120ms">
+  <div class="tagrow"><span class="tag t-v">奇安信</span><span class="t-date">09-03</span></div>
+  <h3>齐向东「数智中国」演讲：AI 时代攻防战升级，奇安信聚焦「All in AI」双主线</h3>
+  <p>奇安信董事长齐向东指出行业须从「择低价、选产品」转向「择效果、选伙伴」，并详解「All in AI」战略：「安全智能」与「智能安全」双主线由Q-GPT大模型与Q-Agent智能体驱动。AI+代码卫士已在近10家头部金融机构验证、高危漏洞拦截率超95%，大模型安全护栏在20多个行业百余家客户实验局部署；2025年公司营收43.92亿元，经营现金流改善2.81亿元创上市以来最佳。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-09-03/doc-iniqpzpq4335604.shtml" target="_blank" rel="noopener">来源</a></div>
+</article>
+
+<article class="card" id="c4" style="transition-delay:160ms">
+  <div class="tagrow"><span class="tag t-v">启明星辰</span><span class="t-date">09-01</span></div>
+  <h3>启明星辰入选工信部 NVDB 五大漏洞专业库技术支撑单位</h3>
+  <p>启明星辰官微宣布入选工信部网络安全威胁和漏洞信息共享平台（NVDB）五大漏洞专业库技术支撑单位。NVDB是国家层面漏洞信息汇聚与通报的核心平台，入选技术支撑单位意味着厂商在漏洞挖掘、验证与报送方面的能力通过主管部门认可，可承接国家级漏洞库的专项支撑工作。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.futunn.com/stock/002439-SZ/news/news?tid=898628" target="_blank" rel="noopener">来源</a></div>
+</article>
+
+<article class="card" id="c5" style="transition-delay:200ms">
+  <div class="tagrow"><span class="tag t-v">其他</span><span class="t-date">09-01</span></div>
+  <h3>WatchGuard 修复 5 个 CVSS 9.3 严重漏洞：iked 未授权 RCE + Dimension 管理员会话劫持</h3>
+  <p>WatchGuard 于8月27日/9月1日发布补丁，修复 Fireware OS 与 Dimension 共5个 CVSS 9.3 严重漏洞：CVE-2026-19313/19315/19318 位于处理 IPsec 密钥交换的 iked 守护进程，攻击者无需认证即可构造报文实现远程代码执行（堆溢出/栈溢出/类型混淆）；CVE-2026-13086 为弃用功能 EPM 栈溢出 RCE；CVE-2026-78174 允许低权限管理员窃取超级管理员会话致账号接管。需升级 Fireware OS 2026.2.2/12.12.2/12.5.20 与 Dimension 2.3.1。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://dailysecurityreview.com/resources/watchguard-patches-five-critical-rce-flaws-in-fireware-and-dimension" target="_blank" rel="noopener">来源</a><span class="merged">合并3源</span><span class="sep">·</span><a href="https://qpulse.quasarcybertech.com/news/5553/watchguard-patches-five-critical-rce-and-account-takeover-vulnerabilities-in-fireware-os-and-dimension" target="_blank" rel="noopener">来源2</a><span class="sep">·</span><a href="https://www.thecybersignal.com/cybersignal-weekly-security-roundup-2026-09-03" target="_blank" rel="noopener">来源3</a></div>
+</article></div>
+  </section>
+  <section>
+    <div class="sec-title"><span class="bar"></span><h2>🏭 行业动态</h2><span class="cnt">4 条</span></div>
+    <div class="grid">
+<article class="card" id="c6" style="transition-delay:240ms">
+  <div class="tagrow"><span class="tag t-i">电力</span><span class="t-date">09-01</span></div>
+  <h3>南方电网 2026 网络安全技术防护及技术服务中标：天融信、启明星辰分获风险评估与全局管控等标段</h3>
+  <p>中国南方电网供应链平台公布2026年网络安全技术防护及技术服务等项目中标结果：北京天融信中标「安全风险发现与评估支持」标段，北京启明星辰连中「全局网络安全管控与运营支持」「网络安全运行防护优化设计支持」两标段；同期还包含百度智能云参与的AI系统漏洞评估等14个标包，覆盖防御作战、监测值守、实训基地运营等方向，央企网安服务外包持续放量。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.bidding.csg.cn/zbhxrgs/1200440994.jhtml" target="_blank" rel="noopener">来源</a></div>
+</article>
+
+<article class="card" id="c7" style="transition-delay:280ms">
+  <div class="tagrow"><span class="tag t-i">交通</span><span class="t-date">09-01</span></div>
+  <h3>杭州地铁 2026 年度安全设备采购单一来源公示：山石网科核心防火墙+态势感知全栈中标</h3>
+  <p>杭州地铁2026年度安全设备采购项目（最高限价约444.29万元）公示单一来源采购，全部指向山石网科：核心防火墙SG-6000-K20803、下一代防火墙SG-6000-K3280-A、15台车站防火墙SG-6000-K2380-A，以及主机防护、漏洞扫描、日志审计、堡垒机、态势感知平台与探针、等保测评服务等完整产品线，交通行业轨交场景对国产边界安全设备的高粘性可见一斑。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://hcl.jxcqgs.cn/jyxx/001002/001002002/001002002001/20260901/449b3055-3ab3-4a19-a24a-b959ff51c137.html" target="_blank" rel="noopener">来源</a></div>
+</article>
+
+<article class="card" id="c8" style="transition-delay:320ms">
+  <div class="tagrow"><span class="tag t-i">政务</span><span class="t-date">09-02</span></div>
+  <h3>山西省委网信办数据流通基础设施建设 548 万中标：网御星云防火墙覆盖省市两级</h3>
+  <p>山西省数据流通基础设施建设项目（招标人：中共山西省委网信办）公布结果，联通（山西）产业互联网548万元中标，安全设备市级与区县两级防火墙均采用网御星云（启明星辰旗下），并配套H3C核心交换机与终端准入监控系统，政务数据流通场景下安全底座国产化、品牌集中化趋势明显。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://prec.sxzwfw.gov.cn/jyxxzczb/1091612.jhtml" target="_blank" rel="noopener">来源</a></div>
+</article>
+
+<article class="card" id="c9" style="transition-delay:360ms">
+  <div class="tagrow"><span class="tag t-i">金融</span><span class="t-date">09-02</span></div>
+  <h3>深交所「新一代指数计算发布系统」防火墙采购中标候选人公示：北京神州新桥 38.88 万元</h3>
+  <p>深圳证券信息有限公司「新一代指数计算发布系统建设项目防火墙采购」公开招标结果公示，中标候选人为北京神州新桥科技有限公司，投标价38.88万元（含税），公示期至9月7日。金融基础设施核心系统的网络防火墙采购持续推进，交易所侧对边界设备的合规与稳定性要求通常高于普通政企。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://ebs.szse.cn/cmschengjiaogg/1a01cd9bfa3846fb8a5bddaf5fa1be1b.html" target="_blank" rel="noopener">来源</a></div>
+</article></div>
+  </section>
+  <footer class="foot">
+    <span>数据来源：公开报道 / 政府采购平台 · 仅供内部参考</span>
+    <span>自动生成于 2026-09-04 09:00 · 时效窗口 30 天内</span>
+  </footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.card').forEach(c=>io.observe(c));
+</script>
+</body>
+</html>
