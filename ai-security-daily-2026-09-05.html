@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 安全日报 · 2026-09-05</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e5e7eb;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:40px 20px 80px}
+.hero{text-align:center;padding:52px 24px 40px;position:relative;overflow:hidden;border:1px solid #1f2937;border-radius:20px;background:radial-gradient(1200px 400px at 50% -80px,rgba(91,108,247,.18),transparent 60%),radial-gradient(900px 300px at 85% 120%,rgba(236,72,153,.10),transparent 60%),#0d0f14}
+.hero h1{font-size:40px;font-weight:800;letter-spacing:1px}
+.hero .sub{margin-top:10px;color:#9ca3af;font-size:15px}
+.grad{background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.chip{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:12px 22px;min-width:130px;text-align:center}
+.chip .n{font-size:26px;font-weight:800;background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chip .l{font-size:12px;color:#9ca3af;margin-top:2px}
+.overview{margin:28px 0 6px;padding:26px 28px;border:1px solid rgba(139,92,246,.4);border-radius:16px;background:linear-gradient(135deg,rgba(91,108,247,.10),rgba(236,72,153,.06)),#0d0f14}
+.overview h2{font-size:17px;font-weight:800;margin-bottom:14px}
+.overview p{color:#d1d5db;font-size:14.5px;margin-bottom:10px}
+.overview ul{margin-left:18px;color:#d1d5db;font-size:14px}
+.overview li{margin:6px 0}
+.b{color:#EC4899;font-weight:700}
+.sec{margin:44px 0 16px;font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px}
+.sec .bar{width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,#5B6CF7,#EC4899)}
+.card{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:20px 22px;margin:14px 0;opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.card.show{opacity:1;transform:none}
+.card .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tag{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.3px}
+.tag.v{color:#cdd6ff;background:rgba(91,108,247,.16);border:1px solid rgba(91,108,247,.45)}
+.tag.c{color:#f4d6ff;background:rgba(139,92,246,.16);border:1px solid rgba(139,92,246,.45)}
+.fire{font-size:12px;letter-spacing:1px}
+.date{margin-left:auto;font-size:12px;color:#6b7280;font-variant-numeric:tabular-nums}
+.card h3{font-size:16.5px;font-weight:700;line-height:1.5;color:#f3f4f6}
+.card p{font-size:13.8px;color:#9ca3af;margin-top:8px}
+.src{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.src a{font-size:12px;color:#8b9cf9;text-decoration:none;border:1px solid rgba(139,92,246,.3);padding:2px 10px;border-radius:999px;transition:.2s}
+.src a:hover{background:rgba(139,92,246,.15);color:#fff}
+.trend{margin-top:46px;padding:26px 28px;border:1px solid #1f2937;border-radius:16px;background:linear-gradient(180deg,rgba(91,108,247,.07),transparent),#0d0f14}
+.trend h2{font-size:17px;font-weight:800;margin-bottom:14px}
+.trend ul{margin-left:18px;color:#d1d5db;font-size:14px}
+.trend li{margin:7px 0}
+.foot{text-align:center;color:#4b5563;font-size:12px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:30px}.chip{min-width:100px;padding:10px 14px}.chip .n{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>🤖 <span class="grad">AI 安全日报</span></h1>
+    <div class="sub">2026年9月5日 星期六 · 全球与中国 AI 安全领域 · 友商产品 &amp; 行业动态</div>
+    <div class="stats">
+      <div class="chip"><div class="n">6</div><div class="l">🏢 国际产品</div></div>
+      <div class="chip"><div class="n">1</div><div class="l">🇨🇳 国内产品</div></div>
+      <div class="chip"><div class="n">6</div><div class="l">📊 行业动态</div></div>
+      <div class="chip"><div class="n">13</div><div class="l">共 13 条</div></div>
+    </div>
+  </div>
+
+  <div class="overview"><h2>📌 AI 总览 · 今日看点</h2>
+<p>今日三股力量把 <b class="b">「智能体安全」</b>推向主舞台中央：</p>
+<ul>
+<li><b>① Daybreak 生态全面开花</b>——OpenAI 10 亿美元防护计划落地，SentinelOne、Proofpoint 同日发布首批 Daybreak 模型安全产品，Cloudflare 把 GPT-5.6 Cyber 塞进漏洞发现流水线。前沿模型正在批量变成防守方生产力，「安全模型 + 门禁发布」已成行业标配（Google / Anthropic / OpenAI 三巨头本周步调惊人一致）。</li>
+<li><b>② 攻击侧实证升级</b>——CISA 一口气把 7 个 AI 基础设施漏洞列入在野利用目录（LiteLLM 网关被勒索/挖矿组织链式打穿）；llms.txt「孤儿引用」研究证明：注册一个没人要的包名，Claude/Codex 就会在企业内网替你执行。文档即代码、网关即靶标，智能体供应链安全从概念走向真实事故风险。</li>
+<li><b>③ 财报开始替概念说话</b>——PANW Prisma AIRS 四季度 ARR 破亿、CS AIDR 环比近 3 倍、Zscaler AI 预订 +50%，AI 安全首次集体成为巨头财报里的「增长引擎」；国内绿盟正式发布安全数字人平台、启明星辰 MAF 提速，订单兑现期已至。</li>
+</ul>
+<p style="color:#6b7280;font-size:13px">国内今日处于财报披露窗口，除绿盟「安全数字人平台」正式发布外无重大新品，故国内产品版块从简（宁缺毋滥），更多国内进展以财报/认证口径归入行业版块。</p>
+</div>
+
+  <div class="sec"><span class="bar"></span>🏢 国际友商产品动态</div>
+  <div class="card"><div class="meta"><span class="tag v">Cloudflare</span><span class="tag c">AI 漏洞发现与修复</span><span class="fire">🔥🔥🔥</span><span class="date">09-03</span></div><h3>Cloudflare 上线「漏洞发现与修复」服务：GPT-5.6 Cyber 联动边缘流量情报，自动产出补丁与临时 WAF 规则</h3><p>Cloudflare 9/3 推出邀请制早期访问的 Vulnerability Discovery and Remediation（隶属 Managed Defense）：用 OpenAI GPT-5.6 Cyber 完成侦察/狩猎/验证，再把模型发现的漏洞与生产流量、可达路由、WAF 现状关联排序——只挑出「真实暴露且正被探测」的代码；证据充分时自动预备精准 WAF 规则，所有变更经人工审批后落地。</p><div class="src"><a href="https://wpnews.pro/news/cloudflare-launches-openai-powered-vulnerability-defense-tied-to-live-traffic" target="_blank" rel="noopener">Web Pulse（转引 Cloudflare 官方博客）</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">Anthropic</span><span class="tag c">前沿安全模型 + 企业护栏</span><span class="fire">🔥🔥</span><span class="date">09-02</span></div><h3>Anthropic 发布 Claude Fable 5.1 / Mythos 5.1 安全模型，同步推出 Enterprise Frontier Safeguards（零留存+滥用检测）</h3><p>9/2 Anthropic 上线 Claude Fable 5.1（漏洞发现专用，只挖洞不做利用）与 Mythos 5.1（限于可信访问计划），后者在外部提示词注入基准上表现最强、恶意 agentic 请求拒答率对齐 Mythos 5/Sonnet 5/Opus 5；EFS 企业防护提供零数据留存+实时滥用检测，2026 秋起覆盖 Claude Code / Claude Enterprise 及 Bedrock 等云平台，不额外收费。</p><div class="src"><a href="https://cn-sec.com/archives/5418529.html" target="_blank" rel="noopener">CN-SEC</a><a href="https://uanalyze.com.tw/articles/2862354461" target="_blank" rel="noopener">优分析（转引 Reuters）</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">SentinelOne</span><span class="tag c">AI 安全服务 / 漏洞管理</span><span class="fire">🔥🔥</span><span class="date">09-03</span></div><h3>SentinelOne Wayfinder Frontier AI Services 接入 OpenAI Daybreak 模型，新增 AI 代码风险分析与入侵评估</h3><p>官方 PR：Wayfinder Frontier AI Services 引入 OpenAI GPT-5.6-Cyber（Daybreak Defense Network），新增「AI 代码风险分析」（机器速度扫描 OWASP 类缺陷、恶意埋点、泄露密钥与供应链风险）与「AI 入侵评估」两大能力，由攻防分析师复核后交付可利用性排序结论；SentinelLABS 评测 GPT-5.6-Cyber 在 fast16 等军事级恶意软件逆向分析上表现最佳。私测中。</p><div class="src"><a href="https://investors.sentinelone.com/press-releases/news-details/2026/SentinelOne-Expands-Wayfinder-Frontier-AI-Services-with-OpenAI-Daybreak-Models/default.aspx" target="_blank" rel="noopener">SentinelOne 官方投资者新闻稿</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">Proofpoint</span><span class="tag c">安全智能体（SOC）</span><span class="fire">🔥🔥</span><span class="date">09-03</span></div><h3>Proofpoint 发布 SOC Analyst Agent：Daybreak 模型驱动的智能体化威胁调查助手</h3><p>Proofpoint 首个落地 OpenAI Daybreak Defense Network 的产品：以自然语言跨产品（邮件 DLP、内鬼风险、云 DLP 等）调查告警，支持定时自动威胁狩猎与升级报告，结论可溯源到源数据；Agent 不自行执行账号变更/遏制等后果性操作，人在环路。当前私测，预计 Q3 末 GA。</p><div class="src"><a href="https://www.proofpoint.com/us/blog/corporate-news/proofpoint-introduces-soc-analyst-agent-powered-openai-daybreak-models-through" target="_blank" rel="noopener">Proofpoint 官方博客</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">Capsule Security</span><span class="tag c">AI Agent 运行时安全</span><span class="fire">🔥</span><span class="date">09-02</span></div><h3>初创 Capsule Security 发布「AI 熔断器」：执行前毫秒级判定并拦截越界智能体动作</h3><p>9/2 发布智能体运行时防护层：基于 NVIDIA Nemotron 3 Ultra 训练专用小模型评估器，内嵌进 agent 执行链路，在动作执行前实时判定放行/标记/阻断，避免大模型审查带来的延迟与成本；最准模型检测率达 96.9%（对比第三方最强 86%）、判定最快 71ms，StepShield 基准下决策准确率 98%。定位「rogue agent 造成真实事故前的最后一道闸」。</p><div class="src"><a href="https://mgicomputers.com/tech-news/capsule-security-launches-ai-circuit-breaker-to-stop-rogue-agents" target="_blank" rel="noopener">MGI Computers（转引公司公告）</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">Box</span><span class="tag c">AI Agent 内容层安全</span><span class="fire">🔥</span><span class="date">本周</span></div><h3>Box 为自主 AI Agent 推出内容层安全与治理套件：提示词注入检测 + Agent/MCP 护栏</h3><p>新套件覆盖 Box 原生 Agent 及经 Box MCP Server 接入的 Claude / ChatGPT / Gemini 等第三方模型：输入侧检测直接、跨 Agent 与供应链变体提示词注入；规则化护栏（批量删除需人工审批、限制外部共享、第三方 Agent 目录白名单）；把 Box Shield 分类能力延伸到 AI 层，敏感内容可排除在 AI 读取范围外；配套活动监督仪表盘与法律保全/留存治理。官方调研称 90% IT 领导者视安全为 AI 采用首要障碍。</p><div class="src"><a href="https://www.thenextgentechinsider.com/pulse/box-launches-new-security-and-governance-suite-for-autonomous-ai-agents" target="_blank" rel="noopener">The Next Gen Tech Insider（转引 Box 官方公告）</a></div></div>
+
+  <div class="sec"><span class="bar"></span>🇨🇳 国内友商产品动态</div>
+  <div class="card"><div class="meta"><span class="tag v">绿盟科技/NSFOCUS</span><span class="tag c">AI 安全运营平台</span><span class="fire">🔥🔥</span><span class="date">09-02</span></div><h3>绿盟科技正式发布「安全数字人平台」：以风云卫为核心，7×24 自主运营、应急响应压缩至分钟级</h3><p>2026 中报披露：绿盟正式发布安全数字人平台——以风云卫 AI 安全大模型为核心推出可自主运行的数字人团队，覆盖告警研判到溯源响应全流程、复杂事件端到端闭环处置，「自然语言交互+工单驱动」把攻防任务转为标准工单/卡片/简报，迈入「AI 自主、专家监督」新阶段；同期 AI-PTS 智能渗透系统与 AI-SCAN 大模型安全评估系统落地运营商/金融客户，渗透测试智能体获第二届腾讯云黑客松智能渗透挑战赛冠军。</p><div class="src"><a href="https://4g.stockstar.com/detail/RB2026090200043073" target="_blank" rel="noopener">证券之星（中报解读）</a><a href="https://search.10jqka.com.cn/yike/detail/auid/c1b7445fa2d89351" target="_blank" rel="noopener">同花顺（中报全文摘录）</a></div></div>
+
+  <div class="sec"><span class="bar"></span>📊 行业动态与趋势</div>
+  <div class="card"><div class="meta"><span class="tag v">CISA / Microsoft / Wiz</span><span class="tag c">漏洞事件 · AI 基础设施</span><span class="fire">🔥🔥🔥</span><span class="date">09-02~04</span></div><h3>AI 基础设施成攻击靶心：CISA KEV 一次新增 7 个在野利用漏洞，LiteLLM 等 LLM 网关被勒索/挖矿组织链式利用 (合并3源)</h3><p>CISA 9/2 将 7 个被积极利用的漏洞加入 KEV 目录：LiteLLM CVE-2026-59822（伪造 Bearer Token 即可建立 MCP 会话）、Kestra 命令注入（CVSS 10.0）、Starlette 请求走私、JFrog Artifactory 等。攻击者将 Starlette 走私链上既有漏洞绕过 LiteLLM 认证达成 RCE——Wiz 称 Qilin 勒索组织使用该链，微软观测到 XMRig 挖矿持久化与 PostgreSQL 中模型密钥/虚拟密钥批量收割；联邦系统修复期限 9/5-9/16，新加坡 CSA 同步督促修补 SonicWall SMA1000（CVSS 10.0 SSRF 已在野利用）。</p><div class="src"><a href="https://www.esecurityplanet.com/news/news-cisa-exploited-ai-flaws" target="_blank" rel="noopener">eSecurity Planet</a><a href="https://mangodeveloper.com/articles/cisa-adds-seven-actively-exploited-flaws-as-attackers-target-ai-infrastructure-for-crypto-mining" target="_blank" rel="noopener">Mango Developer</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">Pandex / Alon Hertz</span><span class="tag c">供应链安全 · 研究实证</span><span class="fire">🔥🔥🔥</span><span class="date">8月底-9月初</span></div><h3>「llms.txt」成新攻击面实证：注册孤儿包名即可让 Claude/Codex 等编码智能体在企业内网自动装恶意代码 (合并4源)</h3><p>以色列安全团队 Pandex（Alon Hertz，报告「Data Became Code」）扫描 6,214 个财富 500 强/防务/大厂域名的 8,000+ 个 llms.txt 文件，发现 120 个站点引用无人注册的包或域名；研究者注册这些名字并投放 beacon 包后，4 分钟到 1 小时内即有财富 500 强环境回连，最终数十家——父进程链证实 Claude、OpenAI Codex、Nous Hermes 等编码智能体自动执行安装。典型案例：Clerk 官方文档里看似合法的 npx 命令，npx 回落公共 npm 命中同名恶意包。研究者与 Schneier 均警告这是「SolarWinds 式」智能体供应链攻击——数据（文档）事实上已成为可执行代码。</p><div class="src"><a href="https://www.schneier.com/blog/archives/2026/09/ai-coding-agents-are-installing-unknown-untrusted-code-on-corporate-networks.html" target="_blank" rel="noopener">Schneier on Security</a><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/researchers-easily-trick-fortune-500-companies-ai-agents-into-running-arbitrary-code-supply-chain-attack-via-llms-txt-guidance-file-illustrates-how-data-has-become-code" target="_blank" rel="noopener">Tom&#x27;s Hardware</a><a href="https://cloudnews.tech/orphaned-code-becomes-a-new-risk-for-ai-agents" target="_blank" rel="noopener">Cloud News</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">PANW / CrowdStrike / Zscaler / Fortinet</span><span class="tag c">财报 · 市场数据</span><span class="fire">🔥🔥</span><span class="date">08-31~09-04</span></div><h3>国际网安巨头财报季齐证「AI 安全放量」：PANW Prisma AIRS 四季度 ARR 破亿、CS AIDR 环比近 3 倍、Zscaler AI 预订环比 +50% (合并4源)</h3><p>财报季数据互相印证：Palo Alto Q4 FY26 营收 34 亿美元（+34%），Prisma AIRS 上线仅 4 个季度 ARR 即破 1 亿美元、客户从 300+ 增至 800+，为史上最快规模化产品，SASE 上 agentic 流量 9 个月增 9 倍；CrowdStrike 单季净增 ARR 3.33 亿美元（+51% 创纪录），AIDR（AI 检测与响应）ARR 环比近 3 倍；Zscaler Q4 营收 +25%，「Security for AI」预订环比 +50%、销售管线 +75%，并预告 9/9 发布 Agentic SecOps 方案（结合 Red Canary）；Fortinet 硬件收入 +52%。华尔街解读：AI 推理扩张正把安全预算从「可选支出」变为「部署 AI 的前置条件」。</p><div class="src"><a href="https://www.163.com/dy/article/L5VG3RKH05198UNI.html" target="_blank" rel="noopener">网易财经（智通财经）</a><a href="https://news.qq.com/rain/a/20260904A0A50S00" target="_blank" rel="noopener">腾讯新闻（Zscaler Q4 电话会）</a><a href="https://finance.yahoo.com/quote/PANW.VI/earnings/PANW.VI-Q4-2026-earnings_call-684482.html" target="_blank" rel="noopener">Yahoo Finance（PANW 电话会）</a><a href="https://www.toutiao.com/article/7681604626801574440/" target="_blank" rel="noopener">金融界（今日头条）</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">OpenAI</span><span class="tag c">生态计划 · 防御倡议</span><span class="fire">🔥🔥</span><span class="date">09-03</span></div><h3>OpenAI 启动 10 亿美元「Daybreak for Frontline Defenders」：面向关键基础设施防御方补贴前沿 AI 安全能力</h3><p>9/3 OpenAI 宣布 Daybreak for Frontline Defenders：投入 10 亿美元，为全球关基防护组织提供 AI 网络安全模型的补贴化访问、培训与支持，与 8/27 116 家企业「把网络安全置于首位」联名信一脉相承。生态同步快速落地：SentinelOne、Proofpoint 本周推出首批 Daybreak 模型能力产品，与 Google Fairwind（650+ 伙伴）、Anthropic 可信访问计划共同把「安全模型 + 门禁发布」变成行业标配。</p><div class="src"><a href="https://threatcluster.io/cluster/ai-driven-cybersecurity-initiatives-launched-amid-rising-thr-30e1687d" target="_blank" rel="noopener">ThreatCluster</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">工信部</span><span class="tag c">政策 · 国内监管</span><span class="fire">🔥</span><span class="date">09-01</span></div><h3>工信部发文推动加大 Token 等 AI 服务采购，要求「内嵌安全到全流程、变被动应对为主动防控」</h3><p>工信部最新文件将 Token 等 AI 软件服务纳入企业采购项，并明确安全要求：AI 安全能力须内嵌到应用全流程，从被动应对转向主动防控。业内解读认为 AI 网关/治理类产品迎政策东风——Gartner《中国网络安全技术成熟度曲线 2026》已将 AI 网关定义为「管理和保护与 AI 提供商连接」的安全治理平台；奇安信等厂商随即以 AI 安全网关（AISG，统一接入+Token 成本治理+双层检测）回应。</p><div class="src"><a href="https://field.10jqka.com.cn/20260901/c679495847.shtml" target="_blank" rel="noopener">同花顺行业频道</a></div></div>
+<div class="card"><div class="meta"><span class="tag v">启明星辰</span><span class="tag c">财报 · 评测认证</span><span class="fire">🔥</span><span class="date">08-26~09-02</span></div><h3>启明星辰半年报：MAF 大模型应用防火墙收入快速增长、9 大「安星」数字员工落地；AIDR 获公安部三所首张智能体安全管理系统认证 (合并2源)</h3><p>启明星辰 2026 半年报（8 月末披露）：「安全护航 AI」商业化提速——MAF（大模型应用防火墙）收入快速增长，落地政府/金融/运营商/能源；泰合安全大模型全面升级为「安全大模型+驾驭工程+多安全智能体」架构，9 大「安星」数字员工在代码审计、自动化渗透、数据合规核查规模化落地，并推出智能体安全「新三件套」。另据天极网：其端点 AI 智能体安全检测与响应系统 AIDR 首批通过公安部第三研究所（国家网络与信息系统安全产品质量检验检测中心）测试，拿下网安行业首张智能体安全管理系统认证证书。</p><div class="src"><a href="https://finance.sina.com.cn/jjxw/2026-09-01/doc-iniqhscx6709856.shtml" target="_blank" rel="noopener">新浪财经（半年报解读）</a><a href="https://gu.qq.com/resources/shy/news/detail-v2/index.html?t=1#/index?_tentrees_trans=0&amp;id=SN20260826152837974ed6ba" target="_blank" rel="noopener">天极网（AIDR 认证）</a></div></div>
+
+  <div class="trend"><h2>🧭 趋势判断</h2>
+<ul>
+<li><b>防御对象迁移：</b>从「人用 AI」转向「AI 自主行动的治理与拦截」——熔断器、运行时护栏、MCP/Skill 供应链审计成为新品标配能力（Cloudflare / Capsule / Box / 火山 AgentSentry 同方向）。</li>
+<li><b>攻击面前移：</b>LLM 网关（LiteLLM 等）与编码智能体成为高危靶标，KEV 收录与供应链实证研究都在加速，「补丁管理」边界扩展到 AI 中间件与文档文件。</li>
+<li><b>中美监管同步收紧：</b>美国 Stop Rogue AI Act（NIST 智能体标准）+ 中国《智能体规范应用与创新发展实施意见》+ 工信部 Token 采购新规——智能体资产清单与全流程安全内嵌将成合规硬约束，直接利好 AI-SPM / 网关赛道。</li>
+</ul>
+</div>
+  <div class="foot">AI 安全日报 · 数据来源见各条目链接 · 每日 10:00 自动生成</div>
+</div>
+<script>
+var cards=document.querySelectorAll('.card');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e,i){if(e.isIntersecting){e.target.style.transitionDelay=((i%6)*80)+'ms';e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08});
+  cards.forEach(function(c){io.observe(c);});
+}else{cards.forEach(function(c){c.classList.add('show');});}
+</script>
+</body>
+</html>
