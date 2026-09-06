@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-09-06</title>
+<style>
+:root{--bg:#0a0a0a;--panel:#121216;--panel2:#16161c;--line:rgba(255,255,255,.07);
+--txt:#e8e8ec;--sub:#9a9aa6;--dim:#6b6b78;--c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","HarmonicOS Sans","Microsoft YaHei",sans-serif;line-height:1.65;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+background:radial-gradient(900px 420px at 15% -5%,rgba(91,108,247,.14),transparent 60%),
+radial-gradient(800px 380px at 85% 0%,rgba(236,72,153,.10),transparent 55%),
+radial-gradient(1000px 600px at 50% 110%,rgba(139,92,246,.10),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 22px 80px}
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+background:rgba(10,10,10,.66);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:12px}
+.logo{width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+background:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3));box-shadow:0 4px 18px rgba(91,108,247,.35)}
+.nav-t{font-size:14px;font-weight:700;letter-spacing:.2px}
+.nav-d{margin-left:auto;font-size:12px;color:var(--dim)}
+.hero{padding:56px 4px 26px}
+.hero .kicker{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--c2);font-weight:600;
+padding:5px 12px;border:1px solid rgba(139,92,246,.35);border-radius:999px;background:rgba(139,92,246,.08);margin-bottom:18px;letter-spacing:.5px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.5px;line-height:1.2;
+background:linear-gradient(90deg,#fff 20%,var(--c1) 55%,var(--c3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .meta{margin-top:14px;font-size:13px;color:var(--sub);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);font-size:12px;color:var(--txt)}
+.pill b{color:#fff}
+.dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c3));display:inline-block}
+.ai{background:linear-gradient(150deg,rgba(91,108,247,.10),rgba(139,92,246,.08) 45%,rgba(236,72,153,.08));
+border:1px solid rgba(139,92,246,.22);border-radius:16px;padding:20px 22px;margin:8px 0 40px;position:relative;overflow:hidden}
+.ai::before{content:"AI";position:absolute;top:-14px;right:14px;font-size:74px;font-weight:800;opacity:.06;letter-spacing:-2px}
+.ai-h{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:700;margin-bottom:10px}
+.ai-h .spark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3));display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.ai p{font-size:14.5px;color:#d6d6de}
+.sec-title{display:flex;align-items:center;gap:12px;margin:44px 0 20px}
+.sec-title h2{font-size:20px;font-weight:800;letter-spacing:-.2px}
+.sec-title .bar{width:4px;height:20px;border-radius:2px;background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3))}
+.sec-title .cnt{font-size:12px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);padding:2px 10px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;position:relative;
+transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;opacity:0;transform:translateY(22px)}
+.card.visible{opacity:1;transform:none}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.45);box-shadow:0 12px 34px rgba(0,0,0,.45)}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px;align-items:center}
+.tag{font-size:11px;font-weight:600;padding:2.5px 9px;border-radius:6px;letter-spacing:.3px}
+.t-date{margin-left:auto;font-size:11px;color:var(--dim)}
+.card h3{font-size:15.5px;font-weight:700;line-height:1.5;margin-bottom:9px;letter-spacing:-.1px}
+.card p{font-size:13.2px;color:var(--sub);line-height:1.7}
+.src{margin-top:13px;font-size:12.5px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.src a{color:var(--c2);text-decoration:none;font-weight:500;transition:color .15s;display:inline-flex;align-items:center;gap:4px}
+.src a:hover{color:#b39dff;text-decoration:underline}
+.src .sep{color:var(--line)}
+.merged{font-size:11px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 7px}
+.ic{flex:none}
+.foot{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:center}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.hero{padding-top:40px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <div class="logo">🛡️</div>
+  <div class="nav-t">防火墙厂商日报</div>
+  <div class="nav-d">2026-09-06</div>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">· FIREWALL DAILY ·</span>
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="meta">
+      <span class="pill">📅 2026 年 9 月 6 日 · 星期日</span>
+      <span class="pill"><span class="dot"></span>共 <b>11</b> 条动态</span>
+      <span class="pill">厂商 <b>6</b> · 行业 <b>5</b></span>
+    </div>
+  </header>
+  <section class="ai">
+    <div class="ai-h"><span class="spark">✦</span>AI 今日看点</div>
+    <p>今天最实用的信号来自华为：USG6000 系列防火墙曝出高危命令注入漏洞，低权限管理员就能注入系统命令、偷 VPN 密钥、篡改安全策略，直接接管整台设备——如果你是华为 USG 用户，今天第一件事是查版本、堵管理口。厂商侧的另一条主线是刚落幕的天津论坛：奇安信发布「天狗」，把检测视角从「目标地址是否合法」升级到「执行关系是否可信」；深信服、天融信、亚信安全则在「AI+信创」分论坛齐声表态——安全能力要下沉到信创底座，行业风向已经从「外挂补丁」转向「内生可信」。行业侧值得盯的是联通鄂尔多斯那台 12 万的国产化 NGFW：前三次招标全部流标，第四次仍坚持再发——小单 + 国产化硬指标 + 区域市场没人陪跑，供应商的参与意愿成了胜负手。</p>
+  </section>
+  <section>
+    <div class="sec-title"><span class="bar"></span><h2>🏢 厂商动态</h2><span class="cnt">6 条</span></div>
+    <div class="grid">
+<article class="card" id="c1" style="transition-delay:40ms">
+  <div class="tagrow"><span class="tag" style="color:#EC4899;background:rgba(236,72,153,.14);border:1px solid #EC489933">华为</span><span class="t-date">09-03</span></div>
+  <h3>华为 USG 系列防火墙曝高危命令注入漏洞：低权限管理员可执行任意命令、完整接管设备</h3>
+  <p>安信与诚 8 月信息安全通告（9/3 发布）披露：华为 USG 系列下一代防火墙 Web 管理后台对传入配置参数过滤校验不足，经过身份验证的低权限管理员可构造恶意请求注入系统指令，在设备上执行任意操作系统命令——篡改安全策略、窃取 VPN 密钥与设备账号凭证，完整接管防火墙，对企业内网构成严重威胁。受影响版本：USG6000 V500R005、V600R007、V600R009。建议受影响用户尽快评估补丁状态，收敛管理接口暴露面。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.sohu.com/a/1071238706_465935" target="_blank" rel="noopener">通告全文</a></div>
+</article>
+<article class="card" id="c2" style="transition-delay:80ms">
+  <div class="tagrow"><span class="tag" style="color:#8B5CF6;background:rgba(139,92,246,.16);border:1px solid #8B5CF633">奇安信</span><span class="t-date">09-04</span></div>
+  <h3>奇安信亮相第四届网络空间安全(天津)论坛：发布「天狗」可信指令执行序列检测技术</h3>
+  <p>9/1-3 第四届天津论坛上，奇安信副总裁吴亚东发表主题演讲，分享运行时异常检测与纵深防御的最新实践：传统检测只问「目标地址是否合法」，而「天狗」将判定视角升级为「执行关系是否可信」——通过「可信学习、基线比对、运行检测」链路，即使攻击路径完全由合法代码节点组成，只要调用来源、上下文或相邻顺序偏离已知执行关系即可尽早捕获并留下可复核证据。其核心增量价值在于面向既有二进制提供运行时检测：无需预知漏洞编号、无需重新编译业务应用，在补丁与 CPU 原生保护「未就绪/未覆盖」环节做兜底。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://news.10jqka.com.cn/20260904/c679615372.shtml" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c3" style="transition-delay:120ms">
+  <div class="tagrow"><span class="tag" style="color:#5B6CF7;background:rgba(91,108,247,.16);border:1px solid #5B6CF733">深信服</span><span class="tag" style="color:#F59E0B;background:rgba(245,158,11,.14);border:1px solid #F59E0B33">天融信</span><span class="t-date">09-04</span></div>
+  <h3>深信服、天融信、亚信安全同台天津「AI+信创」安全论坛：安全能力要下沉到信创底座</h3>
+  <p>9/3 天津论坛「AI+信创」安全发展主题论坛上，多家厂商观点高度一致：天融信助理总裁张博称信创已从替代阶段迈向技术创新阶段，应构建国产化智算基础设施、实现大模型全链路内生安全防护；深信服产业研究院副院长孙凌表示 AI 正重构攻防博弈格局，建议建立高速风险闭环机制、把大模型能力转化为可落地的工程化安全能力并推进国产化生态适配；亚信安全高级副总裁吴湘宁则呼吁建设统一智能体安全治理平面，实现智能体身份可信、行为可控、责任可追溯。信创安全正从「外挂式防护」走向「内生安全」。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.toutiao.com/article/7681514406156501504/" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c4" style="transition-delay:160ms">
+  <div class="tagrow"><span class="tag" style="color:#10B981;background:rgba(16,185,129,.14);border:1px solid #10B98133">绿盟</span><span class="t-date">09-03</span></div>
+  <h3>绿盟科技发布 AI Agent 安全治理系列第三步：三层机制识别 Agent 异常轨迹</h3>
+  <p>绿盟官方发布 AI Agent 安全治理系列第三篇，聚焦「识别 Agent 的异常轨迹」：将不同平台、不同叫法的工具日志翻译成统一行为序列，通过规则引擎（秒杀确定性风险）+ 行为分析（捕捉跨步骤偏离）+ LLM 语义分析（理解复杂上下文）三层机制协同取证，以「最强证据为主、交叉印证」融合结论。异常覆盖运行故障（死循环、虚假成功）与安全风险（提示注入、数据外泄），结论落到可复核的步骤、工具与影响链路，配合可视化工作台形成治理闭环。绿盟在智能体安全治理上的方法论输出持续加码。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://weibo.com/1686253095/5339478295053418" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c5" style="transition-delay:200ms">
+  <div class="tagrow"><span class="tag" style="color:#5B6CF7;background:rgba(91,108,247,.16);border:1px solid #5B6CF733">深信服</span><span class="t-date">09-04</span></div>
+  <h3>浙江药科职业大学智慧校园网络安全防护设备采购 37.6 万：深信服 AD/AC + 安恒 WAF 落地</h3>
+  <p>浙江致信招标代理发布中标结果公告（9/4）：浙江药科职业大学智慧校园网络安全防护设备采购由宁波华力信息系统工程以 37.6 万元中标，核心设备为深信服 AD-1000-B2450 应用交付网关、AC-1000-B2210 全网行为管理，以及安恒明御 DAS-WAF-M Web 应用防火墙。高校校园网「出口应用交付 + 上网行为管理 + WAF」的标配组合再次落单，深信服与安恒的搭配在浙江教育市场持续复购。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260904_27265038.htm" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c6" style="transition-delay:240ms">
+  <div class="tagrow"><span class="tag" style="color:#c9c9d4;background:rgba(255,255,255,.08);border:1px solid #c9c9d433">其他</span><span class="t-date">09-03</span></div>
+  <h3>CISA 紧急通报 7 大在野利用高危漏洞：SonicWall SMA1000 现预认证 SSRF + 命令注入链</h3>
+  <p>美国 CISA 将 7 枚正遭在野恶意利用的高危漏洞纳入 KEV 目录，含两枚 CVSS 10.0 级：SonicWall SMA1000 WorkPlace 界面预认证 SSRF（CVE-2026-83548，可未授权访问敏感功能）与其 AMC 管理控制台命令注入（CVE-2026-83549，可冒充管理员执行任意命令）形成链式闭环，无需认证即可接管远程访问网关；另有 JFrog Artifactory 认证绕过（9.8）、Kestra 命令注入（10.0）等。风险提示：暴露于互联网的 VPN / 远程访问网关类设备需立即评估补丁状态并重置口令。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.163.com/dy/article/L5U92CFF0511A5GF.html" target="_blank" rel="noopener">来源</a><span class="sep">·</span><a href="https://new.qq.com/rain/a/20260904A000X800" target="_blank" rel="noopener">详情</a><span class="merged">合并2源</span></div>
+</article></div>
+  </section>
+  <section>
+    <div class="sec-title"><span class="bar"></span><h2>🏭 行业动态</h2><span class="cnt">5 条</span></div>
+    <div class="grid">
+<article class="card" id="c7" style="transition-delay:280ms">
+  <div class="tagrow"><span class="tag" style="color:#06B6D4;background:rgba(6,182,212,.14);border:1px solid #06B6D433">运营商</span><span class="t-date">09-02</span></div>
+  <h3>联通鄂尔多斯 X86 云池国产化下一代防火墙（四次）招标：12.2 万，前三次全部流标</h3>
+  <p>中国联通鄂尔多斯市分公司 X86 云池下一代防火墙购置项目第 4 次发标（9/2，编号 HX-NMLT-EEDS-2026054）：采购 1 台 2U 机架式国产化 NGFW（国产处理器/操作系统，含访问控制、攻击防御、病毒防护、Web 防护、链路负载、漏洞扫描、弱口令与暴力破解防护等全功能），预算 12.2 万元（含税），9/23 开标。项目 7/2、7/23、8/12 三次招标均因投标/获取标书不足 3 家失败——单体小单 + 国产化硬指标 + 区域市场容量有限，供应商参与意愿已成此类项目落地的最大变量。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://m.ccement.com/xm/bcon-688346038037389.html" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c8" style="transition-delay:320ms">
+  <div class="tagrow"><span class="tag" style="color:#06B6D4;background:rgba(6,182,212,.14);border:1px solid #06B6D433">运营商</span><span class="t-date">09-01</span></div>
+  <h3>中国电信巫溪分公司智慧云网核心安全服务询比：核心防火墙 + 日志审计 43.8 万</h3>
+  <p>中国电信巫溪分公司 2026 年智慧云网核心安全服务项目公开询比（9/1，编号 CQBBFA202608270049）：采购范围为核心防火墙服务、日志审计服务及配套安全运维保障服务，预估金额 43.8 万元（含税），9/8 截止响应，成交供应商 1 名。地市电信「安全服务化」采购持续放量——防火墙从卖设备走向卖服务，安全运维保障能力正成为运营商采购的核心评估项。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.gxzbcg.cn/class4/908719.html" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c9" style="transition-delay:360ms">
+  <div class="tagrow"><span class="tag" style="color:#10B981;background:rgba(16,185,129,.14);border:1px solid #10B98133">金融</span><span class="t-date">09-01</span></div>
+  <h3>贵州金融专网建设网络安全设备采购询比：1 台国产化 NGFW + IPS + 日志审计，全信创要求</h3>
+  <p>贵州省某金融专网建设项目发布网络安全设备询比采购公告（9/1，编号 GQQY-XB2026090006）：采购 1 台下一代防火墙、1 台入侵防御系统、1 台日志审计设备及 4 台路由器共 7 台设备，并负责安装实施，明确「所采购设备均要求为国产化产品，符合信创要求」，9/8 截止递交。金融专网新建项目的全信创化已是硬门槛，防火墙/IPS 国产化替换从大行下沉到区域金融机构。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://ggzy.guizhou.gov.cn/tradeInfo/detailHtml?metaId=1254660500411781120" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c10" style="transition-delay:400ms">
+  <div class="tagrow"><span class="tag" style="color:#F59E0B;background:rgba(245,158,11,.14);border:1px solid #F59E0B33">政府</span><span class="t-date">09-04</span></div>
+  <h3>第四届网络空间安全(天津)论坛落幕：聚焦 AI 新型威胁，政务智能体安全监测预警体系呼声渐起</h3>
+  <p>9/1-3 第四届网络空间安全（天津）论坛闭幕，公安部、中央网信办、工信部出席开幕式。「新型威胁与攻防对抗」主题论坛上，国家信息中心信息与网络安全部陈永刚指出政务 AI 应用步入全面普及阶段、智能体逃逸与提示注入等新型风险凸显，呼吁构建智能体时代政务安全监测预警体系（事前 AI 审计、事中意图感知、事后全链路溯源）；绿盟科技伏影实验室主任吴铁军警示APT 正瓦解传统四层防御，AI 供应链植入、USB 隔离网渗透等新型威胁高发，建议前移安全关口、强化供应链校验与全链路溯源。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://epaper.tianjinwe.com/tjrb/html/2026-09/04/content_143080_3804786.htm" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c11" style="transition-delay:440ms">
+  <div class="tagrow"><span class="tag" style="color:#EC4899;background:rgba(236,72,153,.14);border:1px solid #EC489933">医疗</span><span class="t-date">09-04</span></div>
+  <h3>高唐县人民医院影像存储扩容及网络安全防护升级采购 52.97 万：防火墙核心产品 + 网闸 + 云威胁情报</h3>
+  <p>聊城市高唐县人民医院影像存储扩容及网络安全防护升级采购项目（三次）结果公告（9/4）：山东天启信息、山东省信息产业服务分获三个采购包合计 52.97 万元。其中网络安全设备包以防火墙为核心产品，含云威胁情报服务、安全隔离网闸与安全服务；另含影像存储扩容与服务器安全防护软件。县级医院网络安全投入正以「防火墙 + 隔离 + 托管/云情报服务」组合稳步推进，云化威胁情报开始进入县级医疗采购清单。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.ccgp.gov.cn/cggg/dfgg//zbgg/202609/t20260904_27273231.htm" target="_blank" rel="noopener">来源</a></div>
+</article></div>
+  </section>
+  <footer class="foot">
+    <span>数据来源：公开报道 / 政府采购平台 · 仅供内部参考</span>
+    <span>自动生成于 2026-09-06 09:00 · 时效窗口 30 天内</span>
+  </footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.card').forEach(c=>io.observe(c));
+</script>
+</body>
+</html>
