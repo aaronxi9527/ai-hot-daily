@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-09-07</title>
+<style>
+:root{--bg:#0a0a0a;--panel:#121216;--panel2:#16161c;--line:rgba(255,255,255,.07);
+--txt:#e8e8ec;--sub:#9a9aa6;--dim:#6b6b78;--c1:#5B6CF7;--c2:#8B5CF6;--c3:#EC4899;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","HarmonicOS Sans","Microsoft YaHei",sans-serif;line-height:1.65;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+background:radial-gradient(900px 420px at 15% -5%,rgba(91,108,247,.14),transparent 60%),
+radial-gradient(800px 380px at 85% 0%,rgba(236,72,153,.10),transparent 55%),
+radial-gradient(1000px 600px at 50% 110%,rgba(139,92,246,.10),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 22px 80px}
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+background:rgba(10,10,10,.66);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:12px}
+.logo{width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+background:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3));box-shadow:0 4px 18px rgba(91,108,247,.35)}
+.nav-t{font-size:14px;font-weight:700;letter-spacing:.2px}
+.nav-d{margin-left:auto;font-size:12px;color:var(--dim)}
+.hero{padding:56px 4px 26px}
+.hero .kicker{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--c2);font-weight:600;
+padding:5px 12px;border:1px solid rgba(139,92,246,.35);border-radius:999px;background:rgba(139,92,246,.08);margin-bottom:18px;letter-spacing:.5px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.5px;line-height:1.2;
+background:linear-gradient(90deg,#fff 20%,var(--c1) 55%,var(--c3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .meta{margin-top:14px;font-size:13px;color:var(--sub);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);font-size:12px;color:var(--txt)}
+.pill b{color:#fff}
+.dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c3));display:inline-block}
+.ai{background:linear-gradient(150deg,rgba(91,108,247,.10),rgba(139,92,246,.08) 45%,rgba(236,72,153,.08));
+border:1px solid rgba(139,92,246,.22);border-radius:16px;padding:20px 22px;margin:8px 0 40px;position:relative;overflow:hidden}
+.ai::before{content:"AI";position:absolute;top:-14px;right:14px;font-size:74px;font-weight:800;opacity:.06;letter-spacing:-2px}
+.ai-h{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:700;margin-bottom:10px}
+.ai-h .spark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3));display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.ai p{font-size:14.5px;color:#d6d6de}
+.sec-title{display:flex;align-items:center;gap:12px;margin:44px 0 20px}
+.sec-title h2{font-size:20px;font-weight:800;letter-spacing:-.2px}
+.sec-title .bar{width:4px;height:20px;border-radius:2px;background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3))}
+.sec-title .cnt{font-size:12px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);padding:2px 10px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;position:relative;
+transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;opacity:0;transform:translateY(22px)}
+.card.visible{opacity:1;transform:none}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.45);box-shadow:0 12px 34px rgba(0,0,0,.45)}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px;align-items:center}
+.tag{font-size:11px;font-weight:600;padding:2.5px 9px;border-radius:6px;letter-spacing:.3px}
+.t-date{margin-left:auto;font-size:11px;color:var(--dim)}
+.card h3{font-size:15.5px;font-weight:700;line-height:1.5;margin-bottom:9px;letter-spacing:-.1px}
+.card p{font-size:13.2px;color:var(--sub);line-height:1.7}
+.src{margin-top:13px;font-size:12.5px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.src a{color:var(--c2);text-decoration:none;font-weight:500;transition:color .15s;display:inline-flex;align-items:center;gap:4px}
+.src a:hover{color:#b39dff;text-decoration:underline}
+.src .sep{color:var(--line)}
+.merged{font-size:11px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 7px}
+.ic{flex:none}
+.foot{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:center}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.hero{padding-top:40px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <div class="logo">🛡️</div>
+  <div class="nav-t">防火墙厂商日报</div>
+  <div class="nav-d">2026-09-07</div>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">· FIREWALL DAILY ·</span>
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="meta">
+      <span class="pill">📅 2026 年 9 月 7 日 · 星期一</span>
+      <span class="pill"><span class="dot"></span>共 <b>8</b> 条动态</span>
+      <span class="pill">厂商 <b>3</b> · 行业 <b>5</b></span>
+    </div>
+  </header>
+  <section class="ai">
+    <div class="ai-h"><span class="spark">✦</span>AI 今日看点</div>
+    <p>今天动作最大的是天融信：2800 多万元拿下国家管网旗下北京智网数科的网络安全服务框架采购——注意，这不是卖盒子，是 7×24 的安全服务，能源央企级别的「安全服务化」大单正在成为厂商的胜负手；同一天它又和河北出版传媒签了可信数据空间合作，往数据要素市场伸手。政策侧最大的看点是下周一（9/14）网安周在济南开幕，中央网信办预告将发布《人工智能安全治理框架》3.0 版，AI 防火墙的合规叙事又要加码，盯着大模型防护的厂商下周会有密集动作。采购侧今天没有爆点大单，但教育（新疆兵团、安徽职校）和县域医疗的单子在稳定给国产防火墙喂订单，奇安信、天融信、华为、锐捷轮番落单。一句话：厂商拼「服务化 + 数据要素」，行业在等「AI 治理政策」，节奏平稳但信号明确。</p>
+  </section>
+  <section>
+    <div class="sec-title"><span class="bar"></span><h2>🏢 厂商动态</h2><span class="cnt">3 条</span></div>
+    <div class="grid">
+<article class="card" id="c1" style="transition-delay:40ms">
+  <div class="tagrow"><span class="tag" style="color:#F59E0B;background:rgba(245,158,11,.14);border:1px solid #F59E0B33">天融信</span><span class="t-date">09-03</span></div>
+  <h3>天融信中标国家管网旗下北京智网数科安全服务框架采购：项目规模超 2800 万元</h3>
+  <p>天融信近日成功中标北京智网数科技术有限公司网络安全服务框架协议采购项目，规模 2800 余万元。北京智网数科系国家石油天然气管网集团数字化平台公司，本次项目遵循公安部「三化六防」思想，为国家管网集团开展全维度安全服务：依托天融信安全专家 7×24 小时支撑能力，常态化开展风险监测与安全审计、事件预警、突发响应、宣传培训，健全风险识别-分析-处置全流程防范体系。自 2022 年起天融信已连续服务管网多年，HVV 演习、攻防演练、重保值守成绩突出；其能源行业服务已覆盖电力、油气、煤炭、长输管网等核心客户——能源央企「安全服务化」框架大单，再次印证大客户采购正从设备转向实战化服务能力。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.toutiao.com/article/7681127546376831514/" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c2" style="transition-delay:80ms">
+  <div class="tagrow"><span class="tag" style="color:#EC4899;background:rgba(236,72,153,.14);border:1px solid #EC489933">华为</span><span class="t-date">09-03</span></div>
+  <h3>星河 AI 网络河南创新峰会在郑州举办：华为以「智联 + 全域安全」双轮驱动商业市场智能化</h3>
+  <p>9/3 华为在郑州举办星河 AI 网络河南创新峰会，河南各地信息化管理者与行业专家参会。华为数据通信产品线政企领域总裁杨加园表示，AI 时代 Agent 加速进入办公与生产系统，华为星河 AI 网络以智联和安全重构行业方案，面向智慧办公、教育、医疗、酒店、零售、制造等场景，通过 Wi-Fi 7 极致体验、全域安全、超融合数据中心网络、量子安全广域网等构筑 AI 时代网络基石；华为河南政企总经理齐萌强调「以 AI 对抗 AI、以 AI 守护 AI」，在端、边、云每道防线植入 AI 基因，让网络自带内生免疫力。星河 AI 网络携安全能力向河南商业市场密集下沉，数通 + 安全融合打法在区域渠道持续铺开。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.163.com/news/article/L5VN1NGK00019UD6.html" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c3" style="transition-delay:120ms">
+  <div class="tagrow"><span class="tag" style="color:#F59E0B;background:rgba(245,158,11,.14);border:1px solid #F59E0B33">天融信</span><span class="t-date">09-01</span></div>
+  <h3>天融信与河北出版传媒集团等达成战略合作：可信数据空间平台落地签约</h3>
+  <p>第十六届中国国际数字出版博览会（8/27-29 济南）上，河北出版传媒集团「可信数据空间平台」正式发布并举行战略签约仪式。天融信科技集团与河北纪元光电、河北新智数据研究院、河北科学技术出版社、河北教育出版社、河北移动多家单位完成战略合作签约，各方将依托各自资源优势，在数据资源开发、场景应用等方面深化合作。可信数据空间是数据要素市场化的重要基础设施，天融信借「安全 + 数据流通」切入出版行业数据要素场景——传统防火墙厂商向数据安全与流通服务的延伸动作值得关注。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://gu.qq.com/resources/shy/news/detail-v2/index.html?t=1#/index?_tentrees_trans=0&id=SN2026090109332297582f8c" target="_blank" rel="noopener">来源</a></div>
+</article></div>
+  </section>
+  <section>
+    <div class="sec-title"><span class="bar"></span><h2>🏭 行业动态</h2><span class="cnt">5 条</span></div>
+    <div class="grid">
+<article class="card" id="c4" style="transition-delay:160ms">
+  <div class="tagrow"><span class="tag" style="color:#F59E0B;background:rgba(245,158,11,.14);border:1px solid #F59E0B33">政府</span><span class="t-date">09-01</span></div>
+  <h3>2026 国家网络安全宣传周定档 9/14-20 济南：将发布《人工智能安全治理框架》3.0 版（合并2源）</h3>
+  <p>中央网信办等十部门联合举办、以「网络安全为人民 网络安全靠人民——智能时代 网安护航」为主题的 2026 年国家网络安全宣传周，将于 9/14-20 在全国举行，开幕式与高峰论坛落地济南，论坛按「1+15」架构设 15 场分论坛，聚焦关基保护、AI 赋能网络安全、人工智能安全治理、政务信息系统安全管理、开源软件供应链安全等议题。发布会明确：网安周期间将发布《人工智能安全治理框架》3.0 版与《2026 年人工智能技术赋能网络安全应用测试结果》；截至 7 月底全国已备案大模型服务 1028 款。AI 安全治理框架两年内从 1.0 迭代到 3.0，大模型/智能体安全正加速从倡议走向可执行标准——对防火墙厂商而言，AI 安全能力将直接挂钩合规采购。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.rmzxw.com.cn/c/2026-09-01/3968831.shtml" target="_blank" rel="noopener">发布</a><span class="sep">·</span><a href="https://wlaq.gmw.cn/2026-09/01/content_38981399.htm" target="_blank" rel="noopener">详情</a><span class="merged">合并2源</span></div>
+</article>
+<article class="card" id="c5" style="transition-delay:200ms">
+  <div class="tagrow"><span class="tag" style="color:#8B5CF6;background:rgba(139,92,246,.16);border:1px solid #8B5CF633">教育</span><span class="t-date">09-04</span></div>
+  <h3>塔里木职业技术学院网络安全设备采购 56.8 万中标：奇安信防火墙 NSG8300 + 日志审计落地</h3>
+  <p>新疆兵团政府采购公告（9/4）：塔里木职业技术学院网络安全设备采购项目由阿拉尔市沧澜网络以 56.8 万元中标，核心设备为奇安信NSG8300-KP25M 下一代防火墙与 LAS-PKQ2M 日志审计系统。项目采取谈判采购、单包落地。新疆兵团职业院校以「国产防火墙 + 日志审计」组合完成安全基础设施补课，奇安信在兵团教育市场的信创订单持续。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260904_27271786.htm" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c6" style="transition-delay:240ms">
+  <div class="tagrow"><span class="tag" style="color:#8B5CF6;background:rgba(139,92,246,.16);border:1px solid #8B5CF633">教育</span><span class="t-date">08-29</span></div>
+  <h3>淮北工业和艺术学校网络安全改造（三次）48.89 万中标：安徽移动集成 + 天融信 NGFW4000-UF</h3>
+  <p>安徽淮北市政府采购中心公告（8/29）：淮北工业和艺术学校网络安全基础设施改造项目（三次）由安徽移动以 48.89 万元中标，核心产品为天融信 NGFW4000-UF 下一代防火墙（单价 10 万元）。项目历经三次招标方才落地，运营商集成分销 + 安全厂商品牌的组合在区域职校市场继续复用——「移动拿项目、天融信出设备」的渠道模式在安徽教育市场颇具代表性。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.ccgp.gov.cn/cggg/dfgg//zbgg/202608/t20260829_27230155.htm" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c7" style="transition-delay:280ms">
+  <div class="tagrow"><span class="tag" style="color:#EC4899;background:rgba(236,72,153,.14);border:1px solid #EC489933">医疗</span><span class="t-date">09-01</span></div>
+  <h3>竹山县公共卫生应急能力提升一期 1877.2 万：湖北电信总集成，含华为 USG6615F 防火墙</h3>
+  <p>湖北省政府采购网公告（9/1）：竹山县公共卫生应急综合能力提升建设项目（一期）由湖北电信以 1877.2 万元中标，标的覆盖应急指挥调度软件、4K 视频终端 70 套、可视电话等，其中网络安全设备为 2 台华为 USG6615F 防火墙（单价 8.75 万元）与华为 CloudEngine S8700-4 核心交换机。县域公共卫生信息化大单中，华为「安全 + 网络」设备随运营商总集成批量落地——县级项目里网络与安全设备的品牌话语权，越来越掌握在总集成商手里。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://www.ccgp-hubei.gov.cn/notice/202609/notice_8d16a101a968903ead5647f6a10ce02c.html" target="_blank" rel="noopener">来源</a></div>
+</article>
+<article class="card" id="c8" style="transition-delay:320ms">
+  <div class="tagrow"><span class="tag" style="color:#c9c9d4;background:rgba(255,255,255,.08);border:1px solid #c9c9d433">其他</span><span class="t-date">08-26</span></div>
+  <h3>中研普华《2026-2030 中国 AI 防火墙行业报告》：AI 防火墙从「可选模块」转为关基行业「合规刚需」</h3>
+  <p>中研普华产业研究院报告分析：进入「十五五」开局，网络安全主战场从「护边界」转向「护智能」——MCP 服务器劫持、API 密钥泄露、提示词注入、模型权重投毒等新型风险集中爆发，传统特征库 + 静态规则的 NGFW 已难覆盖 AI 业务流量。新修订《网络安全法》嵌入 AI 安全框架、智能体规范管理意见出台、信通院 AI 防火墙能力标准落地，共同推动 AI 防火墙成为政务、金融、能源等关基行业的合规刚需。竞争格局上华为、新华三、奇安信、深信服、启明星辰、天融信构成第一梯队，山石深耕高端云边界；信创主线下列入天融信「太行」平台、启明星辰天清汉马 USG 等已通过信通院 AI 防火墙能力检验。对厂商而言，AI 防火墙的招投标叙事已从产品特性升级为合规准入门槛。</p>
+  <div class="src"><span class="ic">🔗</span><a href="https://m.chinairn.com/hyzx/20260826/104323926.shtml" target="_blank" rel="noopener">报告</a></div>
+</article></div>
+  </section>
+  <footer class="foot">
+    <span>数据来源：公开报道 / 政府采购平台 · 仅供内部参考</span>
+    <span>自动生成于 2026-09-07 09:00 · 时效窗口 30 天内</span>
+  </footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.card').forEach(c=>io.observe(c));
+</script>
+</body>
+</html>
