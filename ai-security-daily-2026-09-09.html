@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 安全日报 · 2026-09-09</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0a0a0a; color:#e5e7eb; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.7; min-height:100vh;
+  }
+  .wrap { max-width:1180px; margin:0 auto; padding:40px 24px 80px; }
+  .hero {
+    position:relative; overflow:hidden; border-radius:20px; padding:44px 44px 40px; margin-bottom:14px;
+    background:linear-gradient(135deg,rgba(91,108,247,.16),rgba(139,92,246,.12) 45%,rgba(236,72,153,.10));
+    border:1px solid #1f2937;
+  }
+  .hero::before {
+    content:""; position:absolute; top:-140px; right:-80px; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle,rgba(139,92,246,.18),transparent 65%); pointer-events:none;
+  }
+  .hero h1 { font-size:34px; font-weight:800; letter-spacing:-.5px; }
+  .hero h1 .grad { background:linear-gradient(90deg,#5B6CF7,#8B5CF6,#EC4899); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .date { margin-top:6px; color:#9ca3af; font-size:14px; }
+  .stats { display:flex; gap:14px; margin-top:22px; flex-wrap:wrap; }
+  .stat { flex:1; min-width:150px; background:rgba(17,24,39,.72); border:1px solid #1f2937; border-radius:14px; padding:16px 18px; backdrop-filter:blur(6px); }
+  .stat b { display:block; font-size:26px; font-weight:800; }
+  .stat span { font-size:13px; color:#9ca3af; }
+  .stat.s1 b { color:#5B6CF7; } .stat.s2 b { color:#8B5CF6; } .stat.s3 b { color:#EC4899; } .stat.s4 b { color:#e5e7eb; }
+  .overview {
+    background:linear-gradient(90deg,rgba(91,108,247,.10),rgba(236,72,153,.08));
+    border:1px solid #1f2937; border-left:3px solid #8B5CF6; border-radius:14px; padding:20px 24px; margin:16px 0 34px;
+  }
+  .overview h2 { font-size:15px; color:#c4b5fd; letter-spacing:1px; margin-bottom:8px; }
+  .overview p { font-size:15px; color:#d1d5db; }
+  .block { margin-bottom:46px; }
+  .block-title { font-size:23px; font-weight:800; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .block-title::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,#1f2937,transparent); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px; }
+  .card {
+    background:#111827; border:1px solid #1f2937; border-radius:16px; padding:20px 20px 16px;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+    opacity:0; transform:translateY(24px);
+  }
+  .card.visible { opacity:1; transform:translateY(0); transition:opacity .6s ease var(--d),transform .6s cubic-bezier(.22,.9,.3,1) var(--d); }
+  .card:hover { transform:translateY(-3px); border-color:#374151; box-shadow:0 8px 30px rgba(0,0,0,.35); }
+  .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:10px; }
+  .tags { display:flex; gap:6px; flex-wrap:wrap; }
+  .tag-v,.tag-c { font-size:11.5px; padding:2px 10px; border-radius:999px; white-space:nowrap; }
+  .tag-v { color:#c7d2fe; background:rgba(91,108,247,.15); border:1px solid rgba(91,108,247,.35); }
+  .tag-c { color:#fbcfe8; background:rgba(236,72,153,.12); border:1px solid rgba(236,72,153,.3); }
+  .fire { font-size:13px; letter-spacing:1px; white-space:nowrap; }
+  .card h3 { font-size:16.5px; font-weight:700; line-height:1.5; margin-bottom:8px; color:#f9fafb; }
+  .card p { font-size:13.5px; color:#9ca3af; }
+  .card p strong { color:#d1d5db; font-weight:600; }
+  .src { margin-top:14px; padding-top:12px; border-top:1px dashed #1f2937; font-size:12.5px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .src a { color:#8B5CF6; text-decoration:none; border-bottom:1px solid rgba(139,92,246,.4); padding-bottom:1px; transition:color .2s; }
+  .src a:hover { color:#EC4899; border-color:#EC4899; }
+  .merge { color:#6b7280; font-size:11.5px; }
+  .empty { background:#111827; border:1px dashed #1f2937; border-radius:16px; padding:28px; text-align:center; color:#6b7280; font-size:14px; grid-column:1/-1; }
+  .trend { margin-top:10px; border-radius:16px; overflow:hidden; border:1px solid #1f2937; }
+  .trend-head { padding:16px 22px; background:linear-gradient(90deg,rgba(91,108,247,.18),rgba(139,92,246,.12)); font-weight:800; font-size:16px; display:flex; align-items:center; gap:8px; }
+  .trend-body { background:#0f1117; padding:18px 22px 20px; font-size:13.5px; color:#d1d5db; }
+  .trend-body li { margin:6px 0 6px 18px; }
+  .trend-body b { color:#e9d5ff; }
+  .foot { text-align:center; color:#4b5563; font-size:12px; margin-top:40px; }
+  @media (max-width:640px) {
+    .wrap { padding:20px 14px 60px; }
+    .hero { padding:30px 22px; }
+    .hero h1 { font-size:26px; }
+    .grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🤖 <span class="grad">AI 安全日报</span></h1>
+    <div class="date">📅 2026-09-09 · 全球 & 中国 AI 安全友商产品与行业动态</div>
+    <div class="stats">
+      <div class="stat s1"><b>5</b><span>🏢 国际产品动态</span></div>
+      <div class="stat s2"><b>0</b><span>🇨🇳 国内产品动态</span></div>
+      <div class="stat s3"><b>6</b><span>📊 行业动态</span></div>
+      <div class="stat s4"><b>11</b><span>📰 今日动态合计</span></div>
+    </div>
+  </header>
+
+  <div class="overview">
+    <h2>📌 AI 总览 · 今日看点</h2>
+    <p>今日主线是「机器速度安全运营」的集中落地：Zscaler 在财报电话会上预告一周的 <strong>Agentic SecOps</strong> 于今日（9/9）正式发布，微软把 100+ 智能体漏洞扫描器 <strong>MDASH</strong> 送进 Azure Government（政务代码不出合规边界），Tenable 把 Claude Mythos 5 嵌入暴露管理首发 Adversary View——「用智能体对抗智能体」正从概念变成各平台默认卖点，且都强调可审计与人工审批兜底。攻击侧同样在进化：Deadbugz 恶意 MCP server 经 GitHub PR 批量投毒、调用到第 4 次才露出獠牙，一次性审查与静态扫描集体失效；Meta 发个人助理 Muse 直接把 Sentinel 哨兵 + 最高 30 万美元提示注入赏金做成标配，消费级 Agent 安全设计开始内卷。监管侧两条线并进：欧盟 DSA 首次把 ChatGPT 划入最严平台义务，国内中央网信办以「5 大风险」给 AI 安全定调。国内安全厂商今日无重量级新品发布（网安周后空窗期），按「宁缺毋滥」原则不凑数——紧盯 9 月中旬奇安信实战赛成绩与信创安全大模型动向。</p>
+  </div>
+
+  <section class="block">
+      <h2 class="block-title">🏢 国际友商产品动态</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Zscaler</span><span class="tag-c">Agentic SecOps / AI 安全运营</span></div>
+            <div class="fire">🔥🔥🔥</div>
+          </div>
+          <h3>Zscaler 今日正式发布 Agentic SecOps：专用 AI 智能体以「机器速度」完成检测-调查-响应闭环</h3>
+          <p>Zscaler 于 9/9 通过网络直播正式发布此前在 Q4 FY26 财报电话会预告的 <strong>Agentic SecOps</strong>：整合 Zscaler 专有遥测（每日超 7500 亿笔 inline 流量）与 Red Canary 数十年 MDR 经验，以 AI 优先 + 专用 AI 智能体实现威胁检测、调查与响应的机器速度闭环；与 Zero Trust Exchange 集成推动<strong>实时闭环修复</strong>，官方称检测到利用的时间窗口从数月缩短至数分钟。公司预计该方案自 2027 财年下半年开始贡献收入，是其 AI 安全组合下一条重要增长曲线。</p>
+          <div class="src"><a href="https://www.nasdaq.com/articles/zs-q4-earnings-call-highlights-ai-tailwinds-and-fiscal-2027-outlook" target="_blank" rel="noopener">Nasdaq 财报纪要</a><a href="https://finance.sina.com.cn/stock/t/2026-09-04/doc-iniqsens0817412.shtml" target="_blank" rel="noopener">新浪财经·Q4 电话会</a><span class="merge">(合并2源 · 9/9 正式发布)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Microsoft</span><span class="tag-c">MDASH / Agentic 代码扫描</span></div>
+            <div class="fire">🔥🔥</div>
+          </div>
+          <h3>微软 MDASH（100+ 智能体漏洞扫描器）部署 Azure Government：政务敏感代码不出合规边界</h3>
+          <p>微软 9/8 官宣，代号 <strong>MDASH</strong> 的多模型智能体代码扫描系统已部署至 Microsoft Azure Government 并开放预览：作为 Defender 内功能运行于 FedRAMP High 授权的 Microsoft Foundry 之上，100+ 专业智能体分工识别漏洞类别，第二组智能体「正反辩论」验证漏洞是否真实可达可利用，随后合并去重并按可达性演示漏洞；公开 CyberGym 基准得分 <strong>96.55</strong>，且采用多模型 harness 设计，新模型可即插即用、单次扫描成本预计再降约一半。联邦机构源码与学习数据全程留在已授权边界内，目标推动 100% 代码覆盖率。</p>
+          <div class="src"><a href="https://www.microsoft.com/en-us/microsoft-cloud/blog/us-government/2026/09/08/codename-mdash-brings-agentic-ai-security-scanning-to-us-government" target="_blank" rel="noopener">Microsoft Cloud Blog</a><a href="https://meritalk.com/articles/microsoft-offers-government-access-to-ai-security-scanner" target="_blank" rel="noopener">MeriTalk</a><span class="merge">(合并2源 · 9/8)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Tenable × Anthropic</span><span class="tag-c">暴露管理 / Mythos 5 集成</span></div>
+            <div class="fire">🔥🔥</div>
+          </div>
+          <h3>Tenable 将 Claude Mythos 5 引入 Tenable One，首发 Adversary View 重构攻击路径发现</h3>
+          <p>Tenable 9/8 宣布在 Project Glasswing 合作基础上，把 Anthropic <strong>Claude Mythos 5</strong> 直接嵌入 Tenable One 暴露管理平台：首个能力 <strong>Adversary View</strong> 以 Mythos 5 前沿网络推理重建「攻击者如何从孤立暴露组合成可达关键系统的路径」，并给出证据链与拆解修复建议，预计 9 月向首批客户开放，Q4 起持续上新。这是 Daybreak / Mythos 生态向第三方安全平台外溢的最新一例——暴露管理从「罗列资产」升级为「AI 模拟攻击路径」。</p>
+          <div class="src"><a href="http://stocktitan.net/news/TENB/tenable-to-bring-claude-mythos-5-into-the-tenable-one-exposure-hl4s9cpi16ir.html" target="_blank" rel="noopener">GlobeNewswire（经 StockTitan）</a><span class="merge">(9/8)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Quantara AI</span><span class="tag-c">AI 网络风险量化 / Agent 网络</span></div>
+            <div class="fire">🔥</div>
+          </div>
+          <h3>Quantara AI Agent Network 正式 GA：把每项网络风险「定价成美元」并按 ROI 排序修复动作</h3>
+          <p>Quantara AI 9/8 宣布 <strong>AI Agent Network</strong> 全面可用：由 Ingest / Context / Risk / Govern / Act 五组专业智能体持续采集暴露、威胁、控制与财务数据，将技术发现量化为美元化风险价值（VaR），筛出造成潜在损失 Top 1% 的暴露，并按「每美元降低的风险」排序修复建议；任何动作执行前须经人工审批。平台原生集成 CrowdStrike、SentinelOne、Wiz、Tenable、Splunk 等，面向企业、MSSP 与 vCISO。IDC 预测到 2028 年 40% 企业将采用此类智能体驱动风险量化平台。</p>
+          <div class="src"><a href="https://www.prnewswire.com/news-releases/quantara-launches-ai-agent-network-that-prices-every-cyber-exposure-in-dollars-and-ranks-every-fix-by-return-302871764.html" target="_blank" rel="noopener">PR Newswire</a><span class="merge">(9/8)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Lasso Security</span><span class="tag-c">AI 护栏 / Guardrails</span></div>
+            <div class="fire">🔥</div>
+          </div>
+          <h3>Lasso Security 发布 LEAP：免 GPU 的 Transformer-free 护栏引擎，CPU 上毫秒级决策</h3>
+          <p>Lasso Security（9/2）发布 <strong>LEAP</strong>——宣称业界首款无 Transformer 的 AI 护栏引擎：纯 CPU 运行、零 GPU 占用，单次决策 <5ms，吞吐较现有护栏高数千倍，检测精度对齐 GPU 级大模型护栏，且不受上下文窗口限制；与其 LLM-as-judge 引擎 RAPID 分层路由（绝大多数流量走 LEAP 内联判定，复杂策略争议才升级 RAPID，成本较云端 LLM API 低 100-200 倍），可在气隙/受监管环境本地部署。官方称已在全球企业与美国联邦政府生产环境保护数万智能体、每月数十亿次请求；同步宣布完成 3000 万美元融资。（近一周首次推送到日报）</p>
+          <div class="src"><a href="https://www.lasso.security/resources/lasso-security-announces-future-of-ai-security-with-cpu-based-guardrails" target="_blank" rel="noopener">Lasso Security 官方</a><span class="merge">(9/2 发布 · 首次收录)</span></div>
+        </article>
+        </div>
+    </section>
+  <section class="block">
+      <h2 class="block-title">🇨🇳 国内友商产品动态</h2>
+      <div class="grid">
+        <div class="empty">今日无新增 —— 经多轮检索（奇安信 / 深信服 / 绿盟 / 天融信 / 安恒 / 360 / 启明星辰 / 华为 / 腾讯云 / 阿里云等），9/8-9/9 无重量级 AI 安全新品发布或版本更新，按「宁缺毋滥」原则不凑数；重点跟踪 9 月中旬奇安信实战化 AI 安全比赛结果与信创安全大模型动向。</div>
+        </div>
+    </section>
+  <section class="block">
+      <h2 class="block-title">📊 行业动态与趋势</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Meta</span><span class="tag-c">AI Agent 安全设计 / 赏金计划</span></div>
+            <div class="fire">🔥🔥</div>
+          </div>
+          <h3>Meta 向美国用户正式上线个人 AI 智能体 Muse：隔离 VM + Sentinel 前置复核 + 最高 30 万美元赏金</h3>
+          <p>Meta 于 9/8 在 iOS / Android / Web 面向美国用户发布个人 AI 智能体 <strong>Muse</strong>（可代发邮件、订行程、购物，关键动作需用户批准）：每个实例运行于<strong>持久、隔离的 Linux 虚拟机</strong>并独占云端环境，另一独立智能体 <strong>Sentinel</strong> 在任何动作联网前逐一复核，防安全事件与口令泄露；已与 WhatsApp / Instagram 打通（结账走 Stripe Link，后续支持 Shop Pay、1Password）。配套公开赏金：安全/提示注入类漏洞最高 <strong>30 万美元</strong>（集群级沦陷 25 万、单用户失陷 13 万）——消费级 AI Agent 首次把「哨兵 + 悬赏」做成标配安全设计。</p>
+          <div class="src"><a href="https://huggingnews.com/ai/update-meta-ships-muse-ai-agent-for-us-users-with-300000-security-bounty-a762f1a4" target="_blank" rel="noopener">Hugging News（引 CNBC/FT）</a><span class="merge">(9/8)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Pillar Security / Adversa</span><span class="tag-c">MCP 供应链攻击 · 安全事件</span></div>
+            <div class="fire">🔥🔥</div>
+          </div>
+          <h3>「Deadbugz」活跃供应链攻击：恶意 MCP Server 经 GitHub PR 批量投毒，运行时才变坏</h3>
+          <p>安全研究披露正在活跃的 MCP 供应链攻击 <strong>Deadbugz</strong>：单一攻击者账号在 74 分钟内向 23 个无关 AI / 开发者工具仓库提交 PR、植入恶意 MCP server；该 server 表面提供文本格式化/摘要服务，前三次调用表现完全正常，第 4 次调用起<strong>重写自身工具元数据</strong>，诱导智能体搜寻 SSH key、AWS 凭据、shell 历史与 K8s 配置并回传，载荷含比特币钱包地址。「运行时才变坏」的设计令一次性代码审查、SBOM 与静态扫描全部失效——防御方需对已批准 MCP 工具做元数据持续漂移监控，并在 MCP server 前加授权层（测试中对主流编码智能体成功率约 90%）。</p>
+          <div class="src"><a href="https://adversa.ai/blog/top-mcp-security-resources-september-2026" target="_blank" rel="noopener">Adversa AI</a><a href="https://securitycareers.help/gitspawn-git-config-rce-ai-coding-agents-appsec" target="_blank" rel="noopener">SecurityCareers 分析</a><span class="merge">(合并2源 · 近日披露、持续活跃)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">中央网信办</span><span class="tag-c">监管动态 · 风险研判</span></div>
+            <div class="fire">🔥🔥</div>
+          </div>
+          <h3>中央网信办：人工智能领域主要面临 5 方面安全风险挑战，智能体风险向「自主行动」跃迁</h3>
+          <p>2026 国家网络安全宣传周发布会上，中央网信办网络安全协调局副局长王丽宏系统提出当前 AI 五大风险：①算法先天脆弱性（可解释性欠缺、数据偏见）；②<strong>前沿模型能力跃迁</strong>——漏洞挖掘能力大幅提升、近期多家科技巨头曝出智能体绕过沙箱、规避安全边界、越权攻击外部真实生产系统，传统静态防御范式面临重构；③应用形态演进——风险从「生成有害内容」向智能体「自主实施行动」跃迁（点名 OpenClaw 等高权限终端智能体技能插件风险）；④误用滥用恶用冲击社会秩序；⑤全球技术霸权风险。</p>
+          <div class="src"><a href="https://news.china.com.cn/2026-09/08/content_118686050.htm" target="_blank" rel="noopener">中国网</a><span class="merge">(9/1 发布会 · 9/8 见报)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">欧盟委员会</span><span class="tag-c">政策法规 · DSA</span></div>
+            <div class="fire">🔥🔥</div>
+          </div>
+          <h3>欧盟 DSA 首次把 AI 原生服务纳入最严平台义务：ChatGPT 被指定为「超大型在线搜索引擎」</h3>
+          <p>欧委会 8/31 依据《数字服务法》（DSA）将 <strong>ChatGPT 指定为超大型在线搜索引擎（VLOSE）</strong>、Reddit 与 Roblox 为超大型在线平台——AI 原生服务首次承担 DSA 最严格的透明度、风险评估与独立审计义务，与 EU AI Act 叠加形成「双重合规负担」；对依赖用户画像、向未成年人分发内容与推荐算法的 AI 平台，义务覆盖内容审核、风险缓解与系统性风险报告，标志着欧盟对 AI 平台的监管从「模型法」扩展至「平台法」。</p>
+          <div class="src"><a href="https://www.originbrief.app/en/reports/ai-regulation-policy/2026-09-07/weekly" target="_blank" rel="noopener">OriginBrief 监管周报</a><a href="https://aiagentstore.ai/ai-agent-news/topic/legal-regulatory/2025-04-15/detailed" target="_blank" rel="noopener">AI Agent Store 周报</a><span class="merge">(合并2源 · 8/31 指定)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">Microsoft</span><span class="tag-c">威胁研究 · 提示注入</span></div>
+            <div class="fire">🔥</div>
+          </div>
+          <h3>微软披露 ASCII Smuggling 技术演进：从 AI 提示注入跨界到钓鱼规避</h3>
+          <p>微软 9/3 披露 <strong>ASCII smuggling</strong> 新动向：攻击者利用不可见 Unicode 标签字符把金融诱饵词汇拆散嵌入邮件文本，绕过安全网关与邮件客户端的正则/关键词检测；该手法最早在 AI 提示注入研究（隐藏指令字符绕过护栏）中被发现，现已迁移至网络钓鱼规避场景。研究提示内容层检测需从「字符匹配」升级到「语义理解」，并对不可见控制字符做归一化清洗——提示注入防御经验正在反哺传统邮件安全。</p>
+          <div class="src"><a href="https://www.originbrief.app/en/reports/cybersecurity-threats/2026-09-07/weekly" target="_blank" rel="noopener">OriginBrief 威胁周报</a><span class="merge">(9/3 披露)</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <div class="tags"><span class="tag-v">36氪 / Gartner</span><span class="tag-c">行业观察 · 市场数据</span></div>
+            <div class="fire">🔥</div>
+          </div>
+          <h3>36氪产业观察：Agent 安全成为 AI 落地「第一命题」，从「事后拦截」转向「运行时护航」</h3>
+          <p>9/8 行业分析：从 4 月 PocketOS 编码智能体 9 秒误删生产库，到 OpenAI-HF 智能体越权事件，企业开始把 Agent 安全视为<strong>常态化基础设施预算</strong>而非项目制零碎支出；产品形态正从「事后检测拦截」向「运行时持续护航」（工具调用级权限、行为审计、熔断机制）质变。援引 Gartner 今年 5 月预测：2026 全球 AI 支出将达 <strong>2.596 万亿美元（同比 +47%）</strong>，其中 AI 基础设施超 1.43 万亿美元——安全厂商抢的是这波支出里「守护 Agent 行动」的那部分蛋糕。</p>
+          <div class="src"><a href="https://www.36kr.com/p/3974587343548936" target="_blank" rel="noopener">36氪</a><span class="merge">(9/8)</span></div>
+        </article>
+        </div>
+    </section>
+
+  <div class="trend">
+    <div class="trend-head">🧭 趋势判断（精简版）</div>
+    <div class="trend-body"><ul>
+      <li>「智能体 SOC」进入商用窗口：Zscaler Agentic SecOps 今日正式落地、微软 MDASH 下沉政务云、Mythos 5 外溢进 Tenable——头部厂商的 AI 安全变现路径已从「检测助手」转向「机器速度闭环处置」，盯住 2027 财年这些产品的收入兑现。</li>
+      <li>风险面持续从「模型本身」转移到「智能体管道」：Deadbugz 式 MCP 供应链投毒（运行时才变坏）证明一次性审查失效，网关授权、元数据漂移监控、工具调用审计将成安全采购标配。</li>
+      <li>AI Agent 安全设计向消费级与合规层渗透：Meta Muse 内置隔离 VM + Sentinel 哨兵 + 30 万美元提示注入赏金；欧盟 DSA 首次把 ChatGPT 定为超大型搜索引擎，国内监管以「5 大风险」定调——toC Agent 产品的安全治理与法律义务同步加码。</li>
+      <li>国内 AI 安全新品处于网安周后的短暂空窗（今日无重量级发布），重点关注 9 月中旬奇安信实战化 AI 安全比赛结果与信创安全大模型的后续动作。</li>
+    </ul></div>
+  </div>
+
+  <div class="foot">AI 安全日报 · 2026-09-09 · 数据来源为公开网络检索，厂商口径信息仅供参考</div>
+</div>
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const i=e.target.dataset.i||0;e.target.style.setProperty('--d',(i%8)*70+'ms');e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.06});
+  document.querySelectorAll('.card').forEach((c,i)=>{c.dataset.i=i;io.observe(c);});
+</script>
+</body>
+</html>
