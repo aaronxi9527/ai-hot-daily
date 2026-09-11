@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🛡️ 中国防火墙厂商日报 · 2026-09-11</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.07);
+  --t1:#EDEDF2; --t2:#A1A1AA; --t3:#6B6B76;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--t1); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 62%),
+    radial-gradient(760px 460px at 88% 4%, rgba(236,72,153,.12), transparent 62%),
+    radial-gradient(700px 420px at 50% 105%, rgba(139,92,246,.10), transparent 62%);
+}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 22px 80px}
+
+/* ── 顶栏 ── */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);
+  background:rgba(10,10,10,.72);border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px}
+.nav-logo span{background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{font-size:12.5px;color:var(--t3);margin-left:auto;font-variant-numeric:tabular-nums}
+
+/* ── Hero ── */
+.hero{padding:62px 0 40px;text-align:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#C4B5FD;
+  padding:5px 13px;border-radius:999px;border:1px solid rgba(139,92,246,.32);
+  background:rgba(139,92,246,.10);margin-bottom:22px;letter-spacing:.3px;
+}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1.1px;line-height:1.14;
+  background:linear-gradient(100deg,#FFFFFF 6%,var(--g1) 34%,var(--g2) 62%,var(--g3) 96%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{margin-top:14px;color:var(--t2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap}
+.stat{
+  min-width:112px;padding:15px 20px;border-radius:14px;border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+}
+.stat b{display:block;font-size:25px;font-weight:800;letter-spacing:-.6px;
+  background:linear-gradient(120deg,var(--g1),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat i{font-style:normal;font-size:11.5px;color:var(--t3);letter-spacing:.4px}
+
+/* ── AI 解读 ── */
+.ai{
+  position:relative;margin:26px 0 46px;padding:24px 26px 24px 28px;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(139,92,246,.24);
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 46%,rgba(236,72,153,.09));
+}
+.ai::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3))}
+.ai-h{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700;color:#C4B5FD;letter-spacing:.5px;margin-bottom:11px}
+.ai-dot{width:7px;height:7px;border-radius:50%;background:var(--g3);box-shadow:0 0 0 4px rgba(236,72,153,.16)}
+.ai p{font-size:14.6px;color:#DDD9E8;line-height:1.85}
+.ai p b{color:#fff;font-weight:700}
+
+/* ── 版块 ── */
+.sec{margin-top:52px}
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sec-h h2{font-size:20px;font-weight:750;letter-spacing:-.3px}
+.sec-h em{font-style:normal;font-size:12px;color:var(--t3);padding:3px 9px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+
+.card{
+  position:relative;padding:20px 20px 17px;border-radius:16px;border:1px solid var(--line);
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  transition:transform .28s cubic-bezier(.2,.7,.3,1),border-color .28s,box-shadow .28s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.4);
+  box-shadow:0 16px 40px -18px rgba(91,108,247,.5)}
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:999px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.hot{font-size:10.5px;color:#FCA5A5;background:rgba(239,68,68,.13);border:1px solid rgba(239,68,68,.3);
+  padding:2.5px 8px;border-radius:999px;margin-left:auto;white-space:nowrap}
+.card-title{font-size:15.6px;font-weight:700;line-height:1.5;letter-spacing:-.2px;margin-bottom:9px}
+.card-sum{font-size:13.3px;color:var(--t2);line-height:1.82;flex:1}
+.card-src{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}
+.src{font-size:12.4px;color:#8B5CF6;text-decoration:none;transition:color .2s,text-decoration-color .2s;
+  border-bottom:1px solid transparent;padding-bottom:1px}
+.src:hover{color:#C4B5FD;text-decoration:underline;text-underline-offset:3px}
+
+.empty{padding:40px;text-align:center;color:var(--t3);border:1px dashed var(--line);border-radius:16px}
+
+.foot{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--t3)}
+.foot b{color:var(--t2);font-weight:600}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .62s ease var(--d,0ms),transform .62s cubic-bezier(.2,.7,.3,1) var(--d,0ms)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px} .nav-in{padding:11px 15px}
+  .hero{padding:44px 0 30px} .grid{grid-template-columns:1fr}
+  .ai{padding:20px 18px 20px 20px} .stat{min-width:94px;padding:13px 15px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="nav-logo">🛡️ <span>中国防火墙厂商日报</span></div>
+    <div class="nav-date">2026-09-11 · 星期五</div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-badge">● 每日 09:00 自动生成 · 三重去重 · 30 天时效窗口</div>
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <p class="hero-sub">2026-09-11 星期五 · 覆盖深信服 / 奇安信 / 华为 / H3C / 山石网科 / 天融信 / 绿盟 / 启明星辰 等主流厂商</p>
+    <div class="hero-stats">
+      <div class="stat"><b>13</b><i>总动态</i></div>
+      <div class="stat"><b>5</b><i>厂商动态</i></div>
+      <div class="stat"><b>8</b><i>行业动态</i></div>
+      <div class="stat"><b>4</b><i>重点标记</i></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <div class="ai-h"><span class="ai-dot"></span>AI 解读 · 今日看点</div>
+    <p>今天动作最大的是<b>启明星辰</b>——天镜安全效能评测系统把「安全到底值不值这个钱」做成了百分制评分卡，从卖设备转向卖「度量」，这是行业少见的商业模式创新，值得盯着它的落地节奏。<b>天融信</b>则把宝押在智能体安全上，9/15 网安周要发《智能体全域安全防护框架 1.0》，配合新华三 Agentic SOC 内置 30 余款智能体、信锐「网络内生安全」，三家不约而同把叙事从「防漏洞」换成「管智能体」。采购侧信号更直接：广发银行总行 452 万 XC 防火墙、通化中院 27.5 万国产化全家桶，金融总行级信创替换和政法系统全链条国产化已进入放量阶段，而地市级单位还在 14-20 万区间「防火墙+等保一体机」打包过等保。一句话：<b>高端拼智能体治理，中低端拼打包性价比</b>，中间层最难受。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>🏢 厂商动态</h2><em>5 条</em><div class="sec-line"></div></div>
+    <div class="grid">
+    <article class="card reveal" style="--d:0ms">
+      <div class="card-top"><span class="tag" style="color:#EC4899;background:rgba(236,72,153,.14);border-color:#EC489933">启明星辰</span><span class="hot">🔥 重点</span></div>
+      <h3 class="card-title">启明星辰发布天镜安全效能评测系统，首创「安全 QoS」量化度量框架</h3>
+      <p class="card-sum">启明星辰正式发布天镜安全效能评测系统，跳出传统「查漏洞+比合规」的单点评估模式，首创安全 QoS（安全服务质量）理念：以合规符合度、技术验证能力、攻防效能表现、运营管理成熟度、整改闭环能力五大能力域做百分制量化评分，并引入风险惩罚因子对高危漏洞、可利用攻击链做非线性扣分。系统以「1+1+1」形态落地（智能化评测中枢 + 按需选配评测工具 + 内置安全 QoS 模型标准），通过模块化工具链与多智能体协同，构建「发现—验证—分析—整改—复测—度量」闭环，让每一项得分都能回溯到标准条款与原始检测数据。</p>
+      <div class="card-src"><a class="src" href="https://finance.sina.com.cn/roll/2026-09-10/doc-iniritau2891459.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:60ms">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:rgba(139,92,246,.14);border-color:#8B5CF633">天融信</span><span class="hot">🔥 重点</span></div>
+      <h3 class="card-title">天融信预告网安周：9/15 发布《智能体全域安全防护框架 1.0》</h3>
+      <p class="card-sum">2026 国家网络安全宣传周（9/14-20）前夕，天融信发布参展预告：将于 9 月 15 日 15:30-15:45 在济南网络安全技术应用体验区 6 号馆前沿技术展演区，重磅发布《智能体全域安全防护框架 1.0》，主打「对象管得住、权限控得住、异常停得住、数据追得清」。展台聚焦网络安全与智算云两大业务、AI 安全防护 / AI 赋能安全 / AI 安全运营 / AI 基础设施四大方向，并设沉浸式互动体验。</p>
+      <div class="card-src"><a class="src" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_8256aa20c0137552" target="_blank" rel="noopener">腾讯网 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:120ms">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:rgba(6,182,212,.14);border-color:#06B6D433">H3C</span></div>
+      <h3 class="card-title">H3C SecPath F1000-AI-60 防火墙成都渠道报价 40899 元</h3>
+      <p class="card-sum">中关村在线四川行情显示，新华三面向中大型企业、数据中心、教育、金融行业的高性能防火墙 SecPath F1000-AI-60 在授权经销商处现货促销，报价 40899 元（含全川配送、工程师上门安装调试与培训）。该型号以 AI/机器学习实时分析流量识别未知威胁，支持双机热备、冗余电源、iMC 集中纳管，以及路由/透明/混合多部署模式。渠道端价格松动，是国产 NGFW 中端主力机型竞争加剧的直接信号。</p>
+      <div class="card-src"><a class="src" href="https://price.zol.com.cn/1245/12457187.html" target="_blank" rel="noopener">中关村在线 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:180ms">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:rgba(6,182,212,.14);border-color:#06B6D433">H3C</span></div>
+      <h3 class="card-title">新华三中报：16T 吞吐 AI 防火墙 + AI 安全网关 + Agentic SOC 全面落地</h3>
+      <p class="card-sum">券商对紫光股份 2026 中报的点评显示，新华三上半年营收 499.75 亿元、同比 +37.28%，安全产品线同步升维：新一代 16T 吞吐 AI 防火墙适配超大型数据中心与 AI 算力集群高流量场景；AI 安全网关深度融合多维度安全能力，实现智能体全链路保护；态势感知全面升级为 Agentic SOC，内置 30 余款智能体，告警降噪率达 95% 并实现运营自主闭环。安全能力正从「旁挂产品」变为智算底座的内置组件。</p>
+      <div class="card-src"><a class="src" href="https://news.10jqka.com.cn/field/sr/20260904/59666693.shtml" target="_blank" rel="noopener">同花顺财经 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:240ms">
+      <div class="card-top"><span class="tag" style="color:#14B8A6;background:rgba(20,184,166,.14);border-color:#14B8A633">信锐</span><span class="tag" style="color:#94A3B8;background:rgba(148,163,184,.14);border-color:#94A3B833">其他</span></div>
+      <h3 class="card-title">信锐发布「网络内生安全」新范式，安全融合网关 + SASE 云化 vFW</h3>
+      <p class="card-sum">信锐技术提出「网络内生安全」理念，主张安全从外挂式「边界加固」转向与网络基础架构深度融合。四大动作：①让每台接入交换机、无线 AP 具备探针能力，检测到威胁后由 iBrain NMC 中台自动隔离；②以东西向细粒度虚拟边界替代「内外网」二元模型；③防火墙/态势感知发现的威胁情报实时同步至 NMC，统一编排全网设备分钟级封堵；④通过安全融合网关（SIG）与 SASE 架构把 vFW、vAC 云化，实现「安全即服务」与策略一键下发。</p>
+      <div class="card-src"><a class="src" href="https://www.cfbond.com/ejy/qyzxpd/4896211862.shtml" target="_blank" rel="noopener">中国财富网 ↗</a></div>
+    </article></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>🏭 行业动态</h2><em>8 条</em><div class="sec-line"></div></div>
+    <div class="grid">
+    <article class="card reveal" style="--d:0ms">
+      <div class="card-top"><span class="tag" style="color:#6366F1;background:rgba(99,102,241,.14);border-color:#6366F133">政府</span><span class="hot">🔥 重点</span></div>
+      <h3 class="card-title">通化市中级人民法院网络安全国产化改造（一期）27.5 万元，启明星辰全家桶</h3>
+      <p class="card-sum">中国政府采购网 9 月 10 日公告，通化市中级人民法院网络安全国产化改造项目一期由联通（吉林）产业互联网有限公司以 27.5 万元中标。标的清单为纯国产化「全家桶」：启明星辰下一代防火墙 USG-FW-N-G1110-DNR、日志审计 TSOC-SA-HG-1600、WAF6000、流量探针 NT3000-CSP-HG-M、数据库审计 DA-FT-1200U，另含魔点钉钉门禁机。政法系统国产化改造正从「核心设备替换」走向「边界+审计+探针+准入」全链条一体采购。</p>
+      <div class="card-src"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260910_27302249.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:60ms">
+      <div class="card-top"><span class="tag" style="color:#6366F1;background:rgba(99,102,241,.14);border-color:#6366F133">政府</span></div>
+      <h3 class="card-title">昆明市公安局「党政军边界设备」采购 162 万元：迪普防火墙 + 网御星云网闸</h3>
+      <p class="card-sum">昆明市公安局「2026 年度党政军边界设备（交换设备和信息安全软件）采购项目」询价成交，联诚科技集团以 162 万元中标。清单直指党政军链路可信边界：辰锐万兆可信边界安全网关（政务专用）42 万、万兆数据交换系统 46 万、集控探针 5 万、网御星云数据交换安全隔离网闸 19 万、迪普边界平台专用防火墙 FW1000-GA-GF 12.5 万、迪普 IPS2000 两台 29 万、华三万兆交换机。跨网数据交换场景对「专用防火墙 + 网闸 + 探针」组合的刚性需求明确。</p>
+      <div class="card-src"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg//cjgg/202609/t20260910_27304431.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:120ms">
+      <div class="card-top"><span class="tag" style="color:#6366F1;background:rgba(99,102,241,.14);border-color:#6366F133">政府</span></div>
+      <h3 class="card-title">温州市消防救援支队 14.04 万元采购：上元信安防火墙 + 奇安信等保一体机</h3>
+      <p class="card-sum">中央国家机关政府采购中心 9 月 9 日公告，温州市消防救援支队计算机网络设备询价项目由四川省数创智网科技以 14.04 万元成交（预算 17 万）。采购内容为上元信安 ASG-4500-S1800R 防火墙 1 台（3.12 万）与奇安信网神 NSG9800-DBO25 等保一体机 1 台（10.92 万）。消防救援等垂管行业基层单位以「防火墙 + 等保一体机」低预算打包过等保，是地市级市场的主流形态。</p>
+      <div class="card-src"><a class="src" href="https://www.ccgp.gov.cn/cggg/zygg/cjgg/202609/t20260909_27300477.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:180ms">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:rgba(245,158,11,.14);border-color:#F59E0B33">金融</span><span class="hot">🔥 重点</span></div>
+      <h3 class="card-title">广发银行总行 XC 防火墙采购 452 万元中选，广州启睿信息科技中标</h3>
+      <p class="card-sum">中通服供应链电子招标系统 9 月 1 日公示，广发银行（总行）XC 防火墙采购项目（项目编号 CGB-HO-2026-123）经公开招标，由广州启睿信息科技有限公司以 452 万元中选。这是股份制银行总行级别的信创防火墙集中采购，单笔金额远超普通分行项目，反映金融行业核心网络设备国产化替代已进入总行主干网改造阶段。</p>
+      <div class="card-src"><a class="src" href="https://zb.chinaccsscm.cn/zbjg/463221.jhtml" target="_blank" rel="noopener">中通服供应链 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:240ms">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:rgba(245,158,11,.14);border-color:#F59E0B33">金融</span></div>
+      <h3 class="card-title">绍兴银行网银区防火墙采购招标，预算 20.1 万元需先过 POC 测试</h3>
+      <p class="card-sum">绍兴市阳光采购服务平台发布绍兴银行网银区防火墙设备采购项目招标公告，预算与最高限价均为 20.1 万元，9 月 16 日开标。资格要求中两条值得注意：一是须提供原厂商对本次项目招标的授权函原件；二是开标前供应商必须通过采购人组织的功能项 POC 测试（测试截止开标前两个工作日），测试不通过不得参加开标。网银区属高敏感区域，银行对防火墙「先测后用」已成硬门槛。</p>
+      <div class="card-src"><a class="src" href="https://ygcg.sxjypt.com/detail?bulletinId=d2f3f0d0-4be7-4e5b-a239-00de4ced21a6" target="_blank" rel="noopener">绍兴市阳光采购服务平台 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:300ms">
+      <div class="card-top"><span class="tag" style="color:#6366F1;background:rgba(99,102,241,.14);border-color:#6366F133">政府</span></div>
+      <h3 class="card-title">中国地震应急搜救中心反拍采购 2 台深信服 AF-1000-L1600B，4.94 万元</h3>
+      <p class="card-sum">中央政府采购网 9 月 2 日公告，中国地震应急搜救中心网络防火墙反拍采购由北京智元信科技以 4.94 万元成交（2 台深信服 AF-1000-L1600B，单价 2.47 万元）。三家供应商报价区间仅 2.47-2.49 万元/台，竞价极为贴近。应急管理系统以反拍（最低价成交）方式采购入门级防火墙，价格战在中小规模采购中已无回旋余地。</p>
+      <div class="card-src"><a class="src" href="https://mkt.zycg.gov.cn/mall-view/information/detail?noticeId=805538" target="_blank" rel="noopener">中央政府采购网 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:360ms">
+      <div class="card-top"><span class="tag" style="color:#6366F1;background:rgba(99,102,241,.14);border-color:#6366F133">政府</span></div>
+      <h3 class="card-title">黑龙江省消防救援总队 16 万元比价采购：山石网科 SG-6000-K1280 + 天融信行为管理</h3>
+      <p class="card-sum">黑龙江省政府采购网公告，黑龙江省消防救援总队防火墙比价项目由鸡西越亿商贸有限公司以 16 万元成交（预算 16.95 万，6 家参与报价）。清单为多品牌组合：山石网科 SG-6000-K1280-B-AS-CN 防火墙 1 台 + 山石网科 SG-6000-D1100 网络入侵检测系统 1 台 + 网御星云 Leadsec-RS-200N 日志审计 1 台 + 天融信 PB26000-QL4100 上网行为管理 1 台，另含科华 10K UPS 与 16 块电池。省级垂管单位「防火墙+IDS+审计+行为管理」四件套是标准配置。</p>
+      <div class="card-src"><a class="src" href="http://www.ccgp-heilongj.gov.cn/mall-view/information/detail?noticeId=1244663" target="_blank" rel="noopener">黑龙江省政府采购网 ↗</a></div>
+    </article>
+    <article class="card reveal" style="--d:420ms">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:rgba(100,116,139,.18);border-color:#64748B33">军队</span></div>
+      <h3 class="card-title">军队采购网 150 万元打包招标：存储 + 网络 + 信息安全设备含防火墙</h3>
+      <p class="card-sum">军队采购网 9 月 4 日发布「存储设备、计算机网络设备、信息安全设备等计算机设备及软件采购项目」（2026-JQ01-W1241）招标公告，预算与最高限价均为 150 万元，9 月 28 日上海杨浦线下开标。包内含全闪存盘阵列 96 万、国产数据库 12 万、国产化终端 6 部、高性能图形工作站、25G/千兆交换机、防火墙 1 台（单价 6 万）、国产化数据库服务器 14.5 万。要求投标人具备武器装备科研生产单位二级以上保密资质或涉密信息系统集成乙级资质。</p>
+      <div class="card-src"><a class="src" href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d00c59fd53cf501a0661b3dee7a7f.html" target="_blank" rel="noopener">军队采购网 ↗</a></div>
+    </article></div>
+  </section>
+
+  <footer class="foot">
+    <div>数据来源：WebSearch 聚合 · 中国政府采购网 / 军队采购网 / 企业官网 / 财经媒体</div>
+    <div><b>自动生成</b> · 2026-09-11</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
