@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-09-14</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0a0a; --card:#111827; --border:#1f2937;
+    --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+    --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+  }
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+    padding:0 0 72px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* Hero */
+  .hero{position:relative;padding:64px 0 40px;text-align:center;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;top:-180px;left:50%;transform:translateX(-50%);
+    width:820px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(91,108,247,.20),rgba(139,92,246,.10) 42%,transparent 70%);
+    filter:blur(28px);pointer-events:none;
+  }
+  .hero-badge{
+    display:inline-block;font-size:12px;letter-spacing:.14em;color:#a5b4fc;
+    border:1px solid rgba(139,92,246,.42);border-radius:999px;padding:5px 15px;margin-bottom:20px;
+    background:rgba(91,108,247,.10);
+  }
+  .hero h1{
+    position:relative;font-size:44px;font-weight:800;letter-spacing:-.02em;line-height:1.16;
+    background:linear-gradient(100deg,var(--g1),var(--g2) 48%,var(--g3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    margin-bottom:14px;
+  }
+  .hero .sub{position:relative;color:var(--txt2);font-size:15px}
+  .hero .sub b{color:#c7d2fe;font-weight:600}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:34px 0 6px}
+  .stat{
+    background:linear-gradient(180deg,rgba(31,41,55,.72),rgba(17,24,39,.72));
+    border:1px solid var(--border);border-radius:14px;padding:20px 14px;position:relative;overflow:hidden;
+  }
+  .stat::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));opacity:.9}
+  .stat .num{font-size:30px;font-weight:800;letter-spacing:-.02em;
+    background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .stat .lbl{font-size:12.5px;color:var(--txt2);margin-top:4px}
+
+  /* Overview */
+  .overview{
+    margin:36px 0 8px;background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:26px 26px 24px;position:relative;overflow:hidden;
+  }
+  .overview::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3))}
+  .ov-title{font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:9px}
+  .ov-title .dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));
+    box-shadow:0 0 12px rgba(139,92,246,.85)}
+  .overview p{color:#d1d5db;font-size:14.6px;margin-bottom:10px}
+  .overview p:last-child{margin-bottom:0}
+  .overview .hl{color:#c4b5fd;font-weight:600}
+
+  /* Section */
+  .sec{margin-top:52px}
+  .sec-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;margin-bottom:20px;
+    border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .sec-head h2{font-size:21px;font-weight:750;letter-spacing:-.01em}
+  .sec-head .cnt{font-size:12px;color:#a5b4fc;background:rgba(91,108,247,.13);
+    border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:3px 11px}
+  .sec-head .hint{font-size:12.5px;color:var(--txt3);margin-left:auto}
+
+  /* Card */
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;margin-bottom:14px;position:relative;overflow:hidden;
+    transition:border-color .22s ease,transform .22s ease,box-shadow .22s ease;
+  }
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--border);transition:background .22s}
+  .card.lv3::before{background:linear-gradient(180deg,#EC4899,#8B5CF6)}
+  .card.lv2::before{background:linear-gradient(180deg,#8B5CF6,#5B6CF7)}
+  .card.lv1::before{background:#374151}
+  .card:hover{border-color:rgba(139,92,246,.52);transform:translateY(-2px);
+    box-shadow:0 10px 30px -12px rgba(91,108,247,.36)}
+  .card-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px;flex-wrap:wrap}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;flex:1;min-width:0}
+  .tag{font-size:11.5px;padding:3px 10px;border-radius:6px;color:#c7d2fe;
+    background:rgba(91,108,247,.13);border:1px solid rgba(91,108,247,.28);white-space:nowrap}
+  .tags .tag:nth-child(2n){color:#f5d0fe;background:rgba(236,72,153,.11);border-color:rgba(236,72,153,.26)}
+  .imp{display:flex;align-items:center;gap:6px;flex-shrink:0}
+  .flame{font-size:13px;letter-spacing:-1px}
+  .implabel{font-size:11px;color:var(--txt3);border:1px solid var(--border);border-radius:5px;padding:2px 7px}
+  .card-title{font-size:16.5px;font-weight:680;line-height:1.5;color:#f3f4f6;margin-bottom:10px;letter-spacing:-.005em}
+  .card-desc{font-size:14.2px;color:#b6bdc9;line-height:1.78}
+  .card-bottom{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:15px;
+    padding-top:13px;border-top:1px dashed rgba(31,41,55,.95)}
+  .merge{font-size:11.5px;color:#fbbf24;background:rgba(251,191,36,.10);
+    border:1px solid rgba(251,191,36,.26);border-radius:6px;padding:2px 9px;white-space:nowrap}
+  .src{font-size:12.5px;color:#93c5fd;text-decoration:none;border-bottom:1px solid rgba(147,197,253,.28);
+    padding-bottom:1px;transition:color .18s,border-color .18s}
+  .src:hover{color:#bfdbfe;border-color:#bfdbfe}
+  .src::after{content:" ↗";font-size:10px;opacity:.65}
+
+  /* Empty */
+  .empty{background:var(--card);border:1px dashed var(--border);border-radius:14px;
+    padding:36px 24px;text-align:center}
+  .empty-icon{font-size:30px;margin-bottom:10px;opacity:.75}
+  .empty-title{font-size:15.5px;font-weight:650;color:#d1d5db;margin-bottom:8px}
+  .empty-sub{font-size:13.2px;color:var(--txt3);max-width:620px;margin:0 auto;line-height:1.7}
+
+  /* Trend */
+  .trend{margin-top:52px;background:linear-gradient(180deg,rgba(31,41,55,.55),rgba(17,24,39,.55));
+    border:1px solid var(--border);border-radius:16px;padding:26px}
+  .trend h2{font-size:19px;font-weight:730;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+  .trend h2 .dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--g2),var(--g3));
+    box-shadow:0 0 12px rgba(236,72,153,.8)}
+  .trend ol{list-style:none;counter-reset:t}
+  .trend li{counter-increment:t;position:relative;padding-left:34px;margin-bottom:13px;
+    font-size:14.2px;color:#c3cad6;line-height:1.75}
+  .trend li:last-child{margin-bottom:0}
+  .trend li::before{content:counter(t);position:absolute;left:0;top:1px;width:22px;height:22px;
+    border-radius:7px;font-size:11.5px;font-weight:700;color:#c7d2fe;display:flex;align-items:center;
+    justify-content:center;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.32)}
+  .trend li b{color:#e9d5ff;font-weight:650}
+
+  footer{margin-top:44px;text-align:center;font-size:12.4px;color:var(--txt3);line-height:1.9}
+  footer .g{background:linear-gradient(100deg,var(--g1),var(--g2),var(--g3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:650}
+
+  .reveal{opacity:0;transform:translateY(18px)}
+  .reveal.in{animation:rise .62s cubic-bezier(.22,.68,.32,1) forwards}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:760px){
+    .hero h1{font-size:31px}
+    .hero{padding:44px 0 28px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .sec-head .hint{display:none}
+    .card{padding:17px 16px}
+    .card-title{font-size:15.4px}
+    .card-desc{font-size:13.7px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-badge">AI SECURITY INTELLIGENCE · DAILY</div>
+    <h1>🤖 AI 安全日报</h1>
+    <p class="sub"><b>2026年9月14日</b> · 星期一 · 国际/国内友商产品动态 + 行业趋势</p>
+    <div class="stats">
+      <div class="stat"><div class="num">6</div><div class="lbl">🏢 国际产品动态</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">🇨🇳 国内产品动态</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl">📊 行业动态</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">📌 动态总数</div></div>
+    </div>
+  </header>
+
+  <section class="overview reveal">
+    <div class="ov-title"><span class="dot"></span>AI 总览 · 今日看点</div>
+    <p>今天最值得盯的一件事：<span class="hl">国内智能体安全开始「平台化落地」，而不是停留在概念层</span>。启云方在 AI 生产力大会上正式发布启云方舟 2.0，并端出「小笼虾」智能体安全方案——身份网关、AI/模型网关、作业网关三层 + 六层围栏，直接给出「影子 AI 发现 → 交互审计 → 精细权限」的完整闭环；同一天网安周体验区里，中国移动端出 37 项网信安全智能体与「智能体安全监管平台」（已对 280 项大模型、699 项智能体做完风险排查），中国电信的星辰超级智能体 TeleAgent 也把四层安全防护做进产品并过了信通院类 Claw 检验。三家不约而同把「智能体准入 + 运行时拦截 + 事后追溯」写进产品，说明国内这一轮是真在卖东西了。</p>
+    <p>国际侧的动作集中在同一个技术点：<span class="hl">把策略执行点从「事后审计」前移到「动作发生之前」</span>。Nightfall AI 的 MCP Gateway、开源的 MCPbouncer 都明确要在工具调用执行前拦截、修剪高危操作、代理凭据；Google Cloud 把 VPC Service Controls 铺到 Agent Gateway，并让 Agent Runtime 与 Agent Identity 转正 GA——补的正是智能体架构评审里最常缺的那块网络边界。Cloudflare 则把 CASB 做成自动撤销高风险共享的自动化引擎。一个行业数据很能说明紧迫性：91% 的组织只能在智能体做完之后才发现它做了什么，仅 23% 有内联实时执行能力。</p>
+    <p>监管与事件层面，今天是「网安周开幕日 + 标准密集落地」：2026 国家网络安全宣传周在济南开幕，《人工智能安全治理框架》3.0 版本周发布，9 月 15 日人工智能安全治理分论坛、9 月 16 日开源供应链闭门会排上日程；国内首个金融智能体安全团标落地，把「用户 + 机构双重授权」写成硬底线，读屏模拟类智能体面临改造压力。风险侧也不安静——Anthropic 第四份威胁报告披露三大 GTG 集群（含疑似长沙运营者用自主 Agent 一个月挖出十余个潜在零日）；LiteLLM 公网暴露扫描显示近 10% 实例还在用默认主密钥 sk-1234。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2>🏢 国际友商产品动态</h2>
+      <span class="cnt">6 条</span>
+      <span class="hint">判断标准：可答出「哪家厂商的哪个产品的哪项功能/版本变了」</span>
+    </div>
+
+      <article class="card lv2 reveal" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Nightfall AI</span><span class="tag">AI Agent 安全网关</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">Nightfall AI 发布 MCP Gateway：在工具调用执行前拦截并执行策略</h3>
+        <p class="card-desc">Nightfall AI 于 9 月 9 日发布 MCP Gateway，定位为智能体与 MCP 工具之间的执行前策略执行点——在工具调用真正发生之前完成拦截与裁决，具备高风险操作修剪（pruning）与凭据代理（credential brokering）能力。该产品直接回应了行业调研揭示的核心缺口：91% 的组织只能在智能体已经执行动作之后才发现它做了什么，仅 23% 具备内联实时 AI 安全执行能力。同周 F5 亦发布 Workforce AI Security，CrowdStrike、Akamai、Zscaler 等正把既有的身份、网络、终端控制向智能体工作负载延伸。</p>
+        <div class="card-bottom"><a class="src" href="https://www.cybersecurity-insiders.com/ai-agent-governance-is-moving-to-the-point-of-action/" target="_blank" rel="noopener">Cybersecurity Insiders</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:70ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Cloudflare</span><span class="tag">AI-SPM / CASB 自动化</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">Cloudflare 上线 CASB 自动修复策略，并补齐后量子基础设施</h3>
+        <p class="card-desc">Cloudflare 于 9 月 11 日推出自动 CASB 修复策略——一个构建在其开发者平台之上的原生自动化引擎，可自动撤销高风险的文件共享并发出 webhook，无需人工介入。同期 Cloudflare 于 9 月 8 日发布面向后量子源站握手的自动密钥交换（Automatic Key Exchange），9 月 10 日上线后量子 DNSSEC。该组合把「AI 原生安全栈」从检测推进到自动处置，并同步为量子迁移预置底座。</p>
+        <div class="card-bottom"><a class="src" href="https://www.originbrief.app/en/reports/developer-tools-platforms/2026-09-14/weekly" target="_blank" rel="noopener">OriginBrief</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:140ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">MCPbouncer</span><span class="tag">MCP 安全 / 本地动作防火墙</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">MCPbouncer 开源本地动作防火墙：拦截并审计每一次 MCP 工具调用</h3>
+        <p class="card-desc">开发者于 9 月 13 日在 dev.to 公布开源项目 MCPbouncer——一个位于 AI 编码助手（Cursor、Claude Desktop、Windsurf、Zed 等）与其 MCP 服务器之间的零信任内联代理，包裹既有 MCP 服务器并检查流经连接的每一次工具调用。五大能力：类 Wireshark 的 JSON-RPC 2.0 实时调用检视器；高危操作（SQL drop、递归删除、磁盘级动作）人机在环暂停并弹窗审批；出站数据防泄漏（识别 OpenAI/Anthropic/AWS/GitHub/Stripe/Slack 等 API Key 并在离机前剥离）；注入与隐写防护（识别指令覆盖、越狱人格、零宽 Unicode 走私）；为每次工具执行写入 SHA-256 动作回执的防篡改本地账本。Apache-2.0 许可，完全本地运行、无云端遥测。</p>
+        <div class="card-bottom"><a class="src" href="https://deniz.in/mcpbouncer-open-sources-a-local-action-firewall-for-ai-agents-wired-to-mcp-tools" target="_blank" rel="noopener">Deniz.in（dev.to 发布）</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:210ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Google Cloud</span><span class="tag">AI Agent 安全网关 / 身份治理</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">Google Cloud 将 VPC Service Controls 扩展至 Agent Gateway，Agent Runtime 与 Agent Identity 正式 GA</h3>
+        <p class="card-desc">Google Cloud 把 VPC Service Controls 扩展至 2026 年 9 月 8 日之后创建、使用 agent connectivity 模板的 Agent Gateway 部署；同期 Gemini Enterprise Agent Platform 下的 Agent Runtime 与 Agent Identity 进入正式可用（GA）。这补上了智能体治理中最常缺失的网络边界一环——该层恰是概念验证首次架构评审最容易被卡住的位置。</p>
+        <div class="card-bottom"><a class="src" href="https://ariana.digital/insights/agent-control-plane-four-vendors-reference-architecture-2026-09-12" target="_blank" rel="noopener">Ariana.Digital</a></div>
+      </article>
+
+      <article class="card lv1 reveal" style="animation-delay:280ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">strix</span><span class="tag">AI 红蓝对抗 / 自动化渗透</span></div>
+          <div class="imp" title="值得关注"><span class="flame">🔥</span><span class="implabel">值得关注</span></div>
+        </div>
+        <h3 class="card-title">strix 开源自主 AI 渗透测试平台：多智能体链式验证漏洞并产出可修复 PR</h3>
+        <p class="card-desc">strix 发布面向自有应用的自主 AI 驱动渗透测试工具：以多智能体链式协作自主验证漏洞，本地 Docker 模式零外发，UI 预构建。对编码智能体生态提供 SKILL.md 兼容集成——一条命令即可为 Claude Code、Cursor、Codex 装载 9 个技能，使其直接运行渗透测试、修复发现项并配置 CI 扫描。商业化层 Strix Cloud 提供一键 autofix PR、持续扫描及 GitHub/GitLab/Bitbucket/Slack/Jira/Linear 集成，企业版增加 SAML/OIDC SSO、SOC 2/ISO 27001/PCI DSS 合规映射报告与 VPC 或自托管部署。</p>
+        <div class="card-bottom"><a class="src" href="https://www.offsecblog.com/2026/09/strix-for-autonomous-ai-driven.html" target="_blank" rel="noopener">OffSec Blog</a></div>
+      </article>
+
+      <article class="card lv1 reveal" style="animation-delay:350ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">GitHub</span><span class="tag">AI 代码安全（跨领域）</span></div>
+          <div class="imp" title="值得关注"><span class="flame">🔥</span><span class="implabel">值得关注</span></div>
+        </div>
+        <h3 class="card-title">GitHub Copilot 扩展自主代码审查与修复闭环，并开放智能体使用度量</h3>
+        <p class="card-desc">GitHub 于 9 月 11 日发布 Copilot 代码审查的自动解决与分析更新，9 月 9 日上线面向代码质量发现的 agentic autofix，9 月 11 日将 VS Code Agents 纳入 Copilot 使用度量；GitHub Enterprise Server 3.22 于 9 月 8 日 GA。这条产品线把 Copilot 的自主面从「建议」推进到「修复」再到「批准」，配合智能体活动的用量指标，为企业买家补齐了治理所需的可观测性。</p>
+        <div class="card-bottom"><a class="src" href="https://www.originbrief.app/en/reports/developer-tools-platforms/2026-09-14/weekly" target="_blank" rel="noopener">OriginBrief</a></div>
+      </article>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2>🇨🇳 国内友商产品动态</h2>
+      <span class="cnt">3 条</span>
+      <span class="hint">判断标准：可答出「哪家厂商的哪个产品的哪项功能/版本变了」</span>
+    </div>
+
+      <article class="card lv3 reveal" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">启云方（华为）</span><span class="tag">AI Agent 安全网关 / 智能体治理</span></div>
+          <div class="imp" title="重大"><span class="flame">🔥🔥🔥</span><span class="implabel">重大</span></div>
+        </div>
+        <h3 class="card-title">启云方发布启云方舟 2.0，同步推出「小笼虾」智能体安全方案（三层网关 + 六层围栏）</h3>
+        <p class="card-desc">9 月 11 日 2026 首届 AI 生产力大会上，启云方科技 CEO 苏立清正式发布启云方舟 2.0 企业 AI 原生平台；安全业务部总裁周榆在数智驱动智能制造论坛专题分享「小笼虾」智能体安全方案。方案基于「三层网关、六层围栏」架构构建 Agentic AI 全链路纵深防御：身份网关在终端侧自动发现「影子 AI」、规范人/业务/智能体委托权限；AI/模型网关对 Skill、MCP、大模型交互行为全量审计、识别用户真实意图、实时拦截恶意提示与违规操作；作业网关针对文件、网络、进程、业务应用配置精细化访问策略，用确定性权限约束智能体的不确定性行为。三层网关之上再融入身份、主机、网络、应用、数据、模型六层围栏。据披露已在半导体等行业落地验证：90% 以上常规安全威胁可自动处置，复杂告警研判时长由 120 分钟压缩至 10 分钟。产品提供内嵌于启云方舟 2.0 的服务模式与可独立部署的轻量版两种形态。</p>
+        <div class="card-bottom"><span class="merge">合并 3 源</span><a class="src" href="https://biz.ifeng.com/c/8wNv1dMQ5gY" target="_blank" rel="noopener">凤凰网</a><a class="src" href="https://www.jiemian.com/article/15088402.html" target="_blank" rel="noopener">界面新闻</a><a class="src" href="https://www.cet.com.cn/wzsy/kjzx/10553506.shtml" target="_blank" rel="noopener">中国经济新闻网</a></div>
+      </article>
+
+      <article class="card lv3 reveal" style="animation-delay:70ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">中国移动</span><span class="tag">智能体安全监管平台 / 大模型安全评估</span></div>
+          <div class="imp" title="重大"><span class="flame">🔥🔥🔥</span><span class="implabel">重大</span></div>
+        </div>
+        <h3 class="card-title">中国移动「中移智安麒」智能体矩阵与「智能体安全监管平台」亮相网安周</h3>
+        <p class="card-desc">9 月 13 日 2026 国家网络安全宣传周网络安全技术应用体验区在济南开幕，中国移动集中展示 AI 安全治理成果。「中移智安麒」智能体依托网信安全知识库与标准化安全能力集，形成 37 项网信安全领域智能体；其中 AI 安全测评智能体具备安全漏洞、提示词注入攻击、数据安全等 75 项检测能力，可实现测评任务秒级发起、安全漏洞分钟级验证，已支撑对 280 项通用及行业大模型、699 项智能体完成安全风险排查。同步亮相的「智能体安全监管平台」聚焦智能体规模化应用的安全监管痛点，打造覆盖身份、数据、行为的全栈式防护体系：事前准入管控并完成智能体身份权限确认，事中全流程风险监测与秒级阻断，事后实人追溯与体系优化。</p>
+        <div class="card-bottom"><a class="src" href="https://news.sdchina.com/show/2099303754149064705.html" target="_blank" rel="noopener">中国山东网</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:140ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">中国电信</span><span class="tag">安全智能体 / 智能体安全评估</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">中国电信「星辰超级智能体 TeleAgent」构建四层安全防护，通过信通院企业级类 Claw 安全能力检验</h3>
+        <p class="card-desc">9 月 13 日网安周体验区开展，中国电信以「无安全不智能 无智能不安全」为主题展出多项成果。其中「星辰超级智能体（TeleAgent）」可理解用户需求、自主规划任务并调用工具，支持文档处理、深度调研、数据分析等办公任务；围绕感知、推理、执行、记忆构建四层安全防护体系，支持私有化部署与数据零出境，是国内首批通过中国信通院企业级类 Claw 安全能力检验的智能体。同场还展出「星海御风」穿透式监管平台（AI + 图计算实现风险智能识别、自动预警与闭环管控）与「星小辰」通话助手（通话前提示、通话中告警、通话后报告的防诈闭环）。</p>
+        <div class="card-bottom"><a class="src" href="https://www.toutiao.com/article/7684958292375831076" target="_blank" rel="noopener">中国电信（今日头条）</a></div>
+      </article>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2>📊 行业动态与趋势</h2>
+      <span class="cnt">11 条</span>
+      <span class="hint">政策法规 · 监管 · 报告 · 大会 · 事件漏洞 · 标准 · 市场数据</span>
+    </div>
+
+      <article class="card lv3 reveal" style="animation-delay:0ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">中央网信办</span><span class="tag">大会/政策</span></div>
+          <div class="imp" title="重大"><span class="flame">🔥🔥🔥</span><span class="implabel">重大</span></div>
+        </div>
+        <h3 class="card-title">2026 国家网络安全宣传周今日在济南开幕，《人工智能安全治理框架》3.0 版本周发布</h3>
+        <p class="card-desc">2026 年国家网络安全宣传周于 9 月 14 日至 20 日在山东省济南市举办，由中央宣传部、中央网信办、教育部、工信部、公安部、中国人民银行等联合主办，济南市人民政府承办，主题为「网络安全为人民 网络安全靠人民——智能时代 网安护航」。论坛按「1+15」架构设置，即 1 场网络安全技术高峰论坛加 15 场专题分论坛，高峰论坛将发布一系列网络安全领域重磅成果。其中 9 月 15 日「人工智能安全治理分论坛」以「智能之治 向上向善」为主题，由中央网信办网络安全协调局、网络执法与监督局联络，中国网络空间研究院等主办；9 月 16 日举办开源软件供应链安全闭门会，主题为「人工智能对开源软件供应链安全体系建设的影响与挑战」，华为等参与承办。此外，据网安周发布会此前披露，期间将发布《人工智能安全治理框架》3.0 版；截至 7 月底全国已备案大模型服务 1028 款、登记大模型应用 630 余款。框架 2.0 是当前企业 AI 安全自评的主流基准，3.0 版预计对智能体行为管控、生成内容标识提出增量要求。</p>
+        <div class="card-bottom"><span class="merge">合并 4 源</span><a class="src" href="https://field.10jqka.com.cn/20260914/c679866668.shtml" target="_blank" rel="noopener">同花顺</a><a class="src" href="https://news.qq.com/rain/a/20260913A045DT00" target="_blank" rel="noopener">腾讯新闻</a><a class="src" href="https://wlaq.gmw.cn/2026-09/13/content_38998205.htm" target="_blank" rel="noopener">光明网</a><a class="src" href="http://jjckb.xinhuanet.com/20260914/9bf886a551c545fdb9534812e7b7cf30/c.html" target="_blank" rel="noopener">经济参考网</a></div>
+      </article>
+
+      <article class="card lv3 reveal" style="animation-delay:70ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">北京国家金融科技认证中心</span><span class="tag">行业标准</span></div>
+          <div class="imp" title="重大"><span class="flame">🔥🔥🔥</span><span class="implabel">重大</span></div>
+        </div>
+        <h3 class="card-title">国内首个金融智能体安全团体标准发布：确立「双重授权」合规底线</h3>
+        <p class="card-desc">《智能体技术金融应用安全要求》团体标准于 9 月 11 日发布，由北京国家金融科技认证中心牵头，工商银行、中国银行、邮储银行、银联及华为、蚂蚁、火山引擎、腾讯云等共同制定。核心规范包括：手机端第三方智能体未经金融机构授权，不得利用系统权限自动化读取、操作金融 App 界面；经麦克风、截屏、共享屏幕等获取数据须遵守被调用方安全策略——业内概括为「双重授权」（用户 + 机构同时授权）。标准同时引导行业从高风险的读屏模拟转向安全可控的 MCP 官方接口交互，填补了端侧 AI 助手自动操作金融场景的合规空白。此前「AI 手机助手导致银行 App 异常」类纠纷的无规则状态由此终结，凡具备模拟点击、OCR 读屏、自动操作能力的智能体产品若涉金融/支付场景，须自查是否同时取得用户与机构授权。</p>
+        <div class="card-bottom"><span class="merge">合并 2 源</span><a class="src" href="http://jjckb.xinhuanet.com/20260914/9bf886a551c545fdb9534812e7b7cf30/c.html" target="_blank" rel="noopener">经济参考网</a><a class="src" href="https://blog.csdn.net/Smoothly_Lu/article/details/165097593" target="_blank" rel="noopener">CSDN（金融科技产业联盟发布）</a></div>
+      </article>
+
+      <article class="card lv3 reveal" style="animation-delay:140ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Anthropic</span><span class="tag">威胁情报报告</span></div>
+          <div class="imp" title="重大"><span class="flame">🔥🔥🔥</span><span class="implabel">重大</span></div>
+        </div>
+        <h3 class="card-title">Anthropic 第四份威胁情报报告披露三大 GTG 集群，首次批量发布 IoC</h3>
+        <p class="card-desc">Anthropic 发布第四份威胁情报报告，覆盖 2025 年 12 月至 2026 年 8 月期间其处置的滥用活动，横跨网络行动、影响行动、生物滥用、非法蒸馏等七大危害领域。报告披露三个主要集群：GTG-20006（疑似俄罗斯国家背景、对齐 Midnight Blizzard/APT29）使用 Claude 构建 AI 辅助工作流，在恶意软件被检测后自动改写并重新部署工具链，规避传统静态检测，攻击目标为 20 余个乌克兰及欧洲政府、军事、外交、国防、情报组织，并与北非某政府技术机构被入侵、大量国民身份记录泄露相关；GTG-50014（关联 ShinyHunters）批量下载约 180 万份 Android 应用文件并扫描硬编码密钥，同伙还获取了数千万条航空乘客记录；GTG-10007（疑似位于中国湖南长沙的运营者）使用自主 AI 智能体挖掘软件漏洞，一个月内针对教育、能源、零售、政府约 50 家组织，产出十余个可能的零日发现。Anthropic 称除一起非法蒸馏尝试外，所披露案例均未涉及其较新的 Claude Fable 或 Mythos 模型层，并同步发布域名、文件哈希、账号标识等 IoC 供防守方自查。</p>
+        <div class="card-bottom"><span class="merge">与 9/12 条目互补</span><a class="src" href="http://news.dxtoday.com/?trk=public_post-text" target="_blank" rel="noopener">DX Today</a><a class="src" href="http://accendum.com/news/ai-agents-drive-cybersecurity-investment-and-threat-evolution-financial-sector-adopts-gemi" target="_blank" rel="noopener">Accendum</a></div>
+      </article>
+
+      <article class="card lv3 reveal" style="animation-delay:210ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">CISA / LiteLLM</span><span class="tag">漏洞披露 / 在野利用</span></div>
+          <div class="imp" title="重大"><span class="flame">🔥🔥🔥</span><span class="implabel">重大</span></div>
+        </div>
+        <h3 class="card-title">LiteLLM AI 网关暴露面扫描：近 10% 公网实例接受默认主密钥，CVE-2026-59822 已被在野利用</h3>
+        <p class="card-desc">研究者对 3,074 个可公开访问的 LiteLLM AI 网关实例进行扫描，发现 294 个系统（9.6%）接受广为人知的默认主密钥 sk-1234，191 个实例（6.2%）完全未启用身份认证。最严重的外部可访问问题为 CVE-2026-59822，影响 LiteLLM 的 MCP 流式 HTTP 端点：在 1.84.0 之前，攻击者可提供任意 Bearer 令牌触发 OAuth2 回退路径，把失败的 API Key 校验转化为一个空的已验证用户对象——即使只有一个字符的令牌也能建立有效 MCP 会话并访问已配置的 MCP 工具。由于 MCP 服务器不仅暴露数据还暴露操作，被攻破的网关可能连带提供对内部数据库、源代码库、工单系统、Slack 工作区、文件存储、CI/CD 工具的访问。研究者还演示了利用直通端点（pass-through）配置指向云元数据服务（169.254.169.254）窃取临时 IAM 凭据的场景。该漏洞已被列入 CISA 已知已利用漏洞目录。缓解建议：升级至 1.84.0 以上、更换强主密钥、限制 MCP 访问并审计配置。</p>
+        <div class="card-bottom"><span class="merge">与 9/12 条目互补</span><a class="src" href="https://cn-sec.com/archives/5429602.html" target="_blank" rel="noopener">CN-SEC 中文网</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:280ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Claude Code</span><span class="tag">漏洞披露 / 提示注入</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">Claude Code CVE-2026-21852 审计：pre-trust 执行窗口可致 API Key 窃取与 Hook 劫持</h3>
+        <p class="card-desc">一项针对 Claude Code CVE-2026-21852（CVSS 5.3）的安全审计披露：在 2.0.65 之前的版本中，CLI 会在评估目录信任之前就把 ./.claude/settings.json 合并进运行时上下文。攻击者可在开源仓库中提交恶意的 .claude/settings.json，通过 env 段把 ANTHROPIC_BASE_URL 重定向到受控域名并开启 allowBash；开发者克隆仓库后运行 claude，运行时立即发起的模型列表/配额校验请求会由 Anthropic SDK 自动携带 x-api-key 头直发攻击者服务器，明文收割有效凭据。同一 pre-trust 窗口还延伸到生命周期 Hook（SessionStart 中的 curl | python3 立即执行）与 git 元数据劫持（CVE-2025-59536，在 .git/config 中配置 core.fsmonitor 反弹 shell，任何 git status/git diff 都会触发）。审计还指出 Linux 环境下会话令牌与 MCP 凭据曾以明文存放于 ~/.claude/.credentials.json。</p>
+        <div class="card-bottom"><a class="src" href="https://www.worldprogramming.org/posts/claude-code-token-compromise-hook-hijacking-auditing-cve-2026-21852-5plhkt" target="_blank" rel="noopener">World Programming</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:350ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">加州 / Tech Policy Law</span><span class="tag">政策法规</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">加州集中签署 13 项 AI 与儿童在线安全法案，全美首个 AI 审计师注册框架落地</h3>
+        <p class="card-desc">据 Tech Policy Law 9 月 13 日周报，加州州长近期一次性签署 13 项扩大 AI 与儿童在线安全保护的法案，与 9 月 9 日已生效的全美首部 AI 独立审计法（SB 813 + AB 1405）形成组合；同批次还包含全美首个 AI 审计师注册与验证框架的落地细节。加州 AI 立法由此从「审计制度」扩展至「未成年人保护」，面向美国市场的陪伴机器人、AI 玩具、青少年智能体产品线须把加州儿童保护要求（年龄验证、成瘾防护、AI 交互披露）纳入产品合规基线。注：本条为聚合源信息，具体条文以官方公报为准。</p>
+        <div class="card-bottom"><span class="merge">与 9/13 条目互补</span><a class="src" href="https://www.workercn.cn/c/2026-09-14/8892824.shtml" target="_blank" rel="noopener">Tech Policy Law 周报（聚合源）</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:420ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Neo Security / Bessemer</span><span class="tag">融资 / 赛道动向</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">Bessemer 领投 Neo Security 1 亿美元 A 轮，AI Agent 端点安全成新赛道</h3>
+        <p class="card-desc">Bessemer Venture Partners 领投 Neo Security 1 亿美元 A 轮融资，该公司专注构建专为 AI 智能体设计的端点安全方案。融资背景是缺口持续放大：Gartner 预计到 2026 年底 40% 的企业应用将嵌入 AI 智能体，而 CyberArk 报告显示 68% 的企业对所部署的智能体缺乏身份控制。现有端点安全工具往往只能识别运行中的进程，却缺乏理解智能体行为的可见性——尤其是通过扩展与插件运行的智能体，导致相当一部分智能体活动处于无监控状态。Neo Security 的定位是给企业提供对 AI 智能体的真实可见性与控制力：判定哪些智能体软件被允许、评估其安全态势、执行护栏。</p>
+        <div class="card-bottom"><a class="src" href="http://accendum.com/news/ai-agents-drive-cybersecurity-investment-and-threat-evolution-financial-sector-adopts-gemi" target="_blank" rel="noopener">Accendum</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:490ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Gartner / IDC</span><span class="tag">市场数据 / 趋势预测</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">Gartner 2026 网络安全八大趋势与 IDC 智能体数量预测：治理能力缺口仍是主线</h3>
+        <p class="card-desc">Gartner 发布的 2026 年网络安全八大趋势指出，绝大多数企业仍存在 AI 安全能力缺口；代理型 AI 打破了传统身份识别与访问管理的管控边界，Agentic AI 的行为可观测性与及时响应已成为当前安全治理的核心挑战。行业判断安全智能体将从告警分诊、威胁检测向自动化响应闭环持续演进，推动安全运营中心从「辅助」走向「主导」。IDC《DAA 研究报告》预测，全球日活智能体数 2025 年为 2,860 万个，2026 年将达 7,940 万个，2030 年增长至 22.16 亿个。行业分析同时指出，安全大模型市场已形成 AI 网关/防火墙、AI 安全测试、AI 运行时保护三大细分赛道，正从「单一 Prompt 过滤器」的浅层防护转向覆盖模型开发测试、部署运行、持续监控的全生命周期安全体系；AISec 完整攻击面已覆盖模型层、数据层、基础设施层三大维度。</p>
+        <div class="card-bottom"><a class="src" href="https://search.10jqka.com.cn/yike/detail/auid/5041c682c1e35cfc" target="_blank" rel="noopener">同花顺问财（安博通半年报引用）</a></div>
+      </article>
+
+      <article class="card lv2 reveal" style="animation-delay:560ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">UC Berkeley / Gartner</span><span class="tag">趋势分析</span></div>
+          <div class="imp" title="重要"><span class="flame">🔥🔥</span><span class="implabel">重要</span></div>
+        </div>
+        <h3 class="card-title">智能体信任栈仍三层分裂：79% 多智能体失败源于规格问题，而非模型能力</h3>
+        <p class="card-desc">Dreamforce 2026 期间 Salesforce 力推统一「信任边界」架构，但市场现实是智能体信任栈仍割裂在三个互不兼容的领域：治理规格（governance specification）、运行时授权（runtime authority）与运行时执行（runtime enforcement）。UC Berkeley 的 MAST 分类法指出，79% 的多智能体失败可追溯到规格问题而非模型能力限制；87% 的组织在 2025 年报告过 API 安全事件。行业正从静态权限转向动态模型——Akeyless 引入意图级访问控制，CrowdStrike 推进基于 SPIFFE 的智能体身份以实现密码学可验证。Gartner 警告 40% 的自主 AI 努力将因只在生产事故后才被发现的治理缺口而部分脱轨。商业侧的「商户准备度悖论」同样明显：42% 的商户在测试智能体系统，但仅 3% 的交易实际由智能体完成，81% 的消费者表示一次糟糕的智能体体验后就不会再回到该品牌。</p>
+        <div class="card-bottom"><a class="src" href="https://wpnews.pro/news/dreamforce-will-pitch-unified-agent-trust-the-market-is-still-stitching-together" target="_blank" rel="noopener">Web Pulse</a></div>
+      </article>
+
+      <article class="card lv1 reveal" style="animation-delay:630ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">SadTalker / TEN Framework / PAN-OS</span><span class="tag">漏洞披露</span></div>
+          <div class="imp" title="值得关注"><span class="flame">🔥</span><span class="implabel">值得关注</span></div>
+        </div>
+        <h3 class="card-title">AI 组件与网关高危漏洞周报：SadTalker、TEN Framework 双双 9.8 分</h3>
+        <p class="card-desc">本周 AI 相关组件新增多个高危漏洞。SadTalker 存在 OS 命令注入漏洞（CVE-2026-85696，CVSS 9.8）：视频封装流程把上传音频的文件名未转义地插值进 ffmpeg 命令，攻击者可用带 shell 元字符的文件名突破引号执行任意系统命令。TEN Framework 0.11.71 的 TMAN Designer 文件内容 API 端点存在未认证任意文件读写漏洞（CVE-2026-85688，CVSS 9.8）。此外，Palo Alto Networks 于 9 月 9 日披露其自身 PAN-OS 防火墙软件中的越界写漏洞 CVE-2026-0310（CVSS 9.2），由公司内部发现、无已知利用，属已披露并修复而非实际入侵——发布时机颇具讽刺意味：就在其 CEO 在舞台上阐述 AI 如何精准发现此类缺陷的同一周。</p>
+        <div class="card-bottom"><span class="merge">合并 3 源</span><a class="src" href="https://tonyharris.io/poc-week/poc-week-20260913" target="_blank" rel="noopener">PoC Week</a><a class="src" href="https://www.tikr.com/blog/palo-alto-networks-beat-earnings-and-fell-anyway-heres-where-the-stock-could-go-in-2026" target="_blank" rel="noopener">TIKR</a></div>
+      </article>
+
+      <article class="card lv1 reveal" style="animation-delay:700ms">
+        <div class="card-top">
+          <div class="tags"><span class="tag">Mordor Intelligence / 国盛证券</span><span class="tag">市场数据</span></div>
+          <div class="imp" title="值得关注"><span class="flame">🔥</span><span class="implabel">值得关注</span></div>
+        </div>
+        <h3 class="card-title">全球 AI 网络安全市场 2030 年预计达 863 亿美元，海外厂商业绩率先兑现</h3>
+        <p class="card-desc">据 Mordor Intelligence 估算，2025 年全球 AI 网络安全市场规模达 309 亿美元，预计 2030 年将上升至 863 亿美元。国盛证券研报指出，AI 安全正从技术政策共振走向海外业绩兑现：政策层面，AI+网络安全已成为中美国家级战略重点方向，2026 年下半年两国均有国家级政策文件提及 AI 赋能网络安全；技术层面，模型可获取的数据边界与操作权限不断提升，叠加大模型在网络安全领域能力提升明显，技术成熟正把 AI 安全推向刚需。市场端，CrowdStrike、Palo Alto Networks 等北美头部厂商业绩超预期兑现，AI 安全产品需求真实性得到验证；奇安信、深信服等国内头部厂商正加速推进业务布局，完成 AI 安全赛道卡位。</p>
+        <div class="card-bottom"><a class="src" href="https://stock.hexun.com/2026-09-13/224998080.html" target="_blank" rel="noopener">和讯网（国盛证券）</a></div>
+      </article>
+  </section>
+
+  <section class="trend reveal">
+    <h2><span class="dot"></span>趋势判断 · 精简版</h2>
+    <ol>
+      <li><b>控制点前移是本轮最清晰的技术主线。</b>从 Nightfall 的 MCP Gateway 到开源的 MCPbouncer，从 Google Cloud 的 VPC 边界到 Cloudflare 的自动撤销，产品都在抢「动作发生之前」这个位置。91% 只能事后发现的现状，就是这块市场存在的理由。</li>
+      <li><b>国内智能体安全已从「发布方案」走到「平台化 + 可验证指标」。</b>启云方的三层网关六层围栏、中国移动的 37 项智能体与监管平台、中国电信的四层防护 + 信通院检验，共同点是都开始给交付数字（自动处置率、排查数量、检验等级），而不是只讲架构。</li>
+      <li><b>监管重心从「模型」转向「智能体的身份与动作」。</b>金融团标的双重授权、外滩大会的身份鉴别与运行时安全两项团标、网安周即将发布的治理框架 3.0，指向同一个方向：先解决谁在动、动了什么、谁能喊停。</li>
+      <li><b>攻击侧的自动化已成常态，防御窗口被压到分钟级。</b>Anthropic 报告里一个运营者一个月挖出十余个潜在零日、PaperCut 事件 26 秒攻陷 11 家组织，说明「人工研判 + 事后补丁」的节奏已经不够用；同时 LiteLLM 这类 AI 基础设施仍在用默认密钥裸奔，最基础的问题反而最致命。</li>
+      <li><b>警惕「信任栈三层分裂」的落地代价。</b>UC Berkeley 指出 79% 多智能体失败源于规格问题而非模型能力，Gartner 警告 40% 自主 AI 努力会被治理缺口拖垮。治理规格、运行时授权、运行时执行三块目前没有单一厂商能全覆盖，采购时应按层验收，别被「统一方案」话术带偏。</li>
+    </ol>
+  </section>
+
+  <footer>
+    <div>数据来源：公开网络检索（厂商官网/安全媒体/行业报告/监管发布），生成时间 2026-09-14 10:06</div>
+    <div><span class="g">AI 安全日报</span> · 自动生成 · 仅供内部研究参考，不构成投资建议</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
