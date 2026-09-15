@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-09-15</title>
+<style>
+  :root{
+    --bg:#0a0a0a; --card:#111827; --border:#1f2937; --border-hi:#374151;
+    --txt:#e5e7eb; --txt-dim:#9ca3af; --txt-mute:#6b7280;
+    --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 12% 0%,rgba(91,108,247,.10),transparent 42%),radial-gradient(circle at 88% 4%,rgba(236,72,153,.08),transparent 40%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px;}
+
+  /* Hero */
+  .hero{padding:72px 0 44px;text-align:center;position:relative;}
+  .hero-badge{
+    display:inline-block;padding:5px 14px;border-radius:999px;font-size:12px;letter-spacing:.12em;
+    color:#c7d2fe;border:1px solid rgba(139,92,246,.42);background:rgba(139,92,246,.10);margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(34px,6vw,58px);font-weight:800;letter-spacing:-.02em;line-height:1.12;
+    background:linear-gradient(100deg,var(--g1),var(--g2) 46%,var(--g3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    margin-bottom:16px;
+  }
+  .hero .date{color:var(--txt-dim);font-size:15px;letter-spacing:.06em;}
+  .hero .rule{width:120px;height:3px;margin:26px auto 30px;border-radius:3px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));}
+  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+  .stat{
+    min-width:118px;padding:16px 20px;border-radius:14px;
+    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    border:1px solid var(--border);
+  }
+  .stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+    background:linear-gradient(100deg,var(--g1),var(--g2) 55%,var(--g3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .stat .l{font-size:12px;color:var(--txt-mute);margin-top:3px;letter-spacing:.05em;}
+
+  /* Overview */
+  .overview{
+    margin:8px 0 52px;padding:26px 28px;border-radius:18px;
+    background:linear-gradient(180deg,rgba(139,92,246,.085),rgba(17,24,39,.5));
+    border:1px solid rgba(139,92,246,.28);position:relative;overflow:hidden;
+  }
+  .overview::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3));}
+  .overview h2{font-size:16px;letter-spacing:.04em;margin-bottom:14px;color:#dbeafe;font-weight:700;}
+  .overview p{font-size:14.5px;color:#cbd5e1;line-height:1.92;}
+
+  /* Section */
+  .section{margin-bottom:56px;}
+  .sec-head{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+  .sec-title{font-size:22px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;}
+  .sec-icon{font-size:22px;}
+  .sec-sub{font-size:13px;color:var(--txt-mute);margin-top:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .count{font-size:11px;padding:2px 9px;border-radius:999px;border:1px solid var(--border-hi);color:var(--txt-dim);}
+
+  .grid{display:grid;gap:16px;grid-template-columns:1fr;}
+  @media(min-width:820px){.grid{grid-template-columns:1fr 1fr;}}
+
+  /* Card */
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:15px;
+    padding:20px 20px 16px;transition:border-color .22s,transform .22s,box-shadow .22s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{border-color:rgba(139,92,246,.5);transform:translateY(-2px);
+    box-shadow:0 12px 30px -18px rgba(139,92,246,.55);}
+  .card-top{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:12px;}
+  .tag{font-size:11px;padding:3px 9px;border-radius:6px;white-space:nowrap;font-weight:600;letter-spacing:.02em;}
+  .tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.16);border:1px solid rgba(91,108,247,.4);}
+  .tag-cat{color:#fbcfe8;background:rgba(236,72,153,.13);border:1px solid rgba(236,72,153,.32);font-weight:500;}
+  .heat{margin-left:auto;font-size:12px;letter-spacing:-.05em;}
+  .heat.h3{filter:drop-shadow(0 0 6px rgba(236,72,153,.55));}
+  .card-title{font-size:16px;font-weight:700;line-height:1.52;margin-bottom:10px;color:#f3f4f6;letter-spacing:-.005em;}
+  .card-body{font-size:13.5px;color:#b6c0cf;line-height:1.88;flex:1;}
+  .card-body b{color:#e9d5ff;font-weight:600;}
+  .card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;}
+  .src{font-size:12px;color:var(--txt-mute);}
+  .src a{color:#93a4f8;text-decoration:none;border-bottom:1px solid rgba(147,164,248,.32);}
+  .src a:hover{color:#c7d2fe;border-bottom-color:#c7d2fe;}
+  .merged{font-size:11px;padding:2px 8px;border-radius:999px;color:#a5b4fc;
+    background:rgba(91,108,247,.12);border:1px solid rgba(91,108,247,.28);}
+
+  /* Trend */
+  .trend{
+    margin-top:8px;padding:26px 28px;border-radius:18px;
+    background:linear-gradient(180deg,rgba(17,24,39,.92),rgba(10,10,10,.7));
+    border:1px solid var(--border);font-size:13.5px;color:#b6c0cf;line-height:2.02;
+  }
+  .trend b{color:#e9d5ff;}
+
+  footer{margin-top:46px;text-align:center;font-size:12px;color:#4b5563;line-height:2;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);animation:rise .68s cubic-bezier(.22,.9,.3,1) forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;animation:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-badge">AI SECURITY INTELLIGENCE</div>
+    <h1>🤖 AI 安全日报</h1>
+    <p class="date">2026 年 9 月 15 日（周二） · 覆盖国际 / 国内友商产品动态与行业趋势</p>
+    <div class="rule"></div>
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">国际产品</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">国内产品</div></div>
+      <div class="stat"><div class="n">12</div><div class="l">行业动态</div></div>
+      <div class="stat"><div class="n">20</div><div class="l">动态总数</div></div>
+    </div>
+  </header>
+
+  <section class="overview reveal">
+    <h2>🧭 AI 总览</h2>
+    <p>今日主线是 <b>「治理框架落地，产品同步卡位」</b>。国内侧，网安周开幕式一天之内连出三件硬货：《人工智能安全治理框架 3.0》正式发布并首次配套《智能体风险管理框架》，把「智能体安全」写进国家层面的风险分类；CCIA 首批《人工智能防火墙产品测评证书》发出，全国只有四张，天融信、奇安信、绿盟、山石各拿一张，AI 防火墙这个品类算是有标准可依了；产品端也没闲着，蚂蚁在网安周首日放出<b>内生式安全护栏 SingProbe</b>，思路很不一样——不挂外置护栏模型，而是把检测融进解码过程，额外开销低于 0.5%，还同步开源了流式评测基准 SingStreamBench；天融信今天 15:15 发《智能体全域安全防护框架 1.0》，中国移动的 AI 代码审计引擎把误报率压到 15% 以内，江苏移动的「金陵智剑」把漏挖效率拉高 3-5 倍。<br><br>国际侧的看点更集中在<b>「谁在定义边界」</b>。微软抛出 37 页《人文主义人工智能行为准则》草案，明说愿意为安全牺牲通用性与能力，直接把「人比 AI 更重要」写进文档第一句，当天美股网安板块逆势大涨，CrowdStrike、Zscaler 各涨 14%。Google 则把智能体沙箱体系推上 GA，用 VPC 服务边界、客户自管密钥和 100ms 挂起 / 280ms 恢复的可持久化沙箱，把「执行环境」这一层收进可控范围。反面教材同样醒目：一次未被审查的 MCP 配置改动（Miasma 行动）让攻击者拿到 73 个 GitHub 仓库的 OS 级权限，其中一个属于微软 Azure，根因是审批绑定在服务器名字而非内容上——20 万+ 脆弱实例、1.5 亿次下载。Anthropic 一边公开智能体「爆炸半径」遏制工程，一边由 Amodei 喊出减速，但 IBM 提醒得很实在：<b>开源模型不会一起踩刹车</b>。<br><br>一句话：<b>标准在补、产品在跑、攻击者在前面。</b></p>
+  </section>
+
+
+  <section class="section" id="intl">
+    <div class="sec-head reveal">
+      <h2 class="sec-title"><span class="sec-icon">🏢</span>国际友商产品动态</h2>
+      <p class="sec-sub">只收录可追溯到具体产品/版本/功能变化的条目<span class="count">4 条</span></p>
+    </div>
+    <div class="grid">
+
+    <article class="card reveal" style="animation-delay:0ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Google Cloud</span>
+        <span class="tag tag-cat">跨领域：执行环境隔离</span>
+        <span class="heat h3">🔥🔥🔥</span>
+      </div>
+      <h3 class="card-title">Gemini Enterprise Agent Platform 沙箱体系 GA，GKE Agent Sandbox 同步转正</h3>
+      <p class="card-body">Google 于 9 月 9 日把 <b>Computer Use 与 Shell 两类沙箱</b>正式推向 GA，并补齐了决定「能不能进生产」的四项控制：VPC Service Controls / Private Service Connect 私有连通、客户自管加密密钥（CMEK）、以及<b>暂停-恢复时保留文件系统状态与连接身份</b>。同期 GKE Agent Sandbox 转为 GA、Cloud Run Sandboxes 进入预览，官方给出「默认拒绝（default-deny）+ gVisor 隔离」的硬指标：单集群 &lt;1 秒起沙箱、峰值 300 沙箱/秒，Pod Snapshots 可将空闲会话挂起约 100ms、恢复约 280ms，<b>空闲算力开销最高降 90%</b>。需要注意的两点：Shell 沙箱以非特权 appuser 运行且出网默认关闭，但官方文档<b>未宣称 microVM 级隔离</b>；VPC 服务边界一旦启用，Gemini Notebook Enterprise 将无法摄取任意网页 URL。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://musthave.ai/google-agent-platform-computer-use-shell-sandboxes-ga" target="_blank" rel="noopener">Google Cloud 发布说明与解析</a> · <a href="https://cloudninjas.ca/ai/forrester-leads-google-cloud-new-gke-sandboxing-snapshots-change-ai-agent-workloads" target="_blank" rel="noopener">GKE Agent Sandbox / Pod Snapshots 解读</a> · <a href="https://www.techtrendinsight.com/2026/09/googles-managed-shell-sandbox-is-gabut.html" target="_blank" rel="noopener">Shell 沙箱 GA 契约分析</a></span>
+        <span class="merged">合并 3 源</span>
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:70ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Dataminr</span>
+        <span class="tag tag-cat">跨领域：物理安全 / 事件情报</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">Dataminr Advanced for Corporate Security 发布，三项 Agentic 能力直接 GA</h3>
+      <p class="card-body">9 月 14 日于 GSX 2026（亚特兰大）发布，把 8 月 26 日面向国防与政府推出的 First Alert Advanced 能力延伸到企业侧，三项能力<b>发布即 GA</b>：<b>Agentic Corroboration</b>（由 AI 智能体以机器速度交叉验证事件真伪，替代人工核查）、<b>Agentic Context</b>（一组 Intel Agents 自动检索公开信息与 10 年以上专有事件库，合成事件背景）、<b>Near-Term Predictive Intelligence</b>（基于事件库预测事态走向）。架构上刻意<b>不走通用前沿大模型</b>，而是用 60 多个按任务微调的专用小模型叠加多模态融合，官方理由是规避幻觉、时延与 IP 暴露。后续路线图包括 ReGenAI 定制实时简报、Watchlist Agent、Agentic Search 与 Advanced API。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.dataminr.com/press/announcement/dataminr-advanced-for-corporate-security/" target="_blank" rel="noopener">Dataminr 官方新闻稿</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:140ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Rambus</span>
+        <span class="tag tag-cat">跨领域：AI 芯片 / 硬件安全</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">Rambus 推出支持 Caliptra 规范的 CryptoManager Root of Trust，卡位 AI SoC 信任根</h3>
+      <p class="card-body">9 月 14 日发布，面向数据中心与 AI 加速器 SoC 提供<b>可与开源 Caliptra 框架互操作的生产级信任根</b>。Caliptra 由 OCP 发起、现由 CHIPS Alliance 维护，为 CPU/GPU/AI 加速器/DPU/网络设备提供统一的设备身份、度量启动与远程证明底座。Rambus 方案在未经修改的 Caliptra 核之外叠加安全 RISC-V 处理器、受保护内存、密钥与数据安全存储、密码加速器与安全接口，并补齐驱动、API、系统级安全应用等集成层，<b>把开源信任根从「能跑」推到「能进量产」</b>。同时支持经典/后量子/区域化算法，提供抗侧信道与故障注入保护，并对接 FIPS 140-3、SESIP 认证。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.morningstar.com/news/business-wire/20260914528439/rambus-enhances-enterprise-grade-security-for-data-center-and-ai-socs-with-cryptomanager-root-of-trust-supporting-the-caliptra-specification" target="_blank" rel="noopener">Rambus 官方新闻稿（Business Wire）</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:210ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">AgenTrust</span>
+        <span class="tag tag-cat">智能体安全网关</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">AgenTrust 发布注册表简报：TRACE v0.2、Agent Manifest v0.1 与 cMCP / cA2A 预览</h3>
+      <p class="card-body">本周发布的注册表简报给出了一套<b>面向智能体运行时可验证证据的规范组合</b>：<b>TRACE v0.2</b> 定义防篡改的运行时行为记录（签名证据链）、<b>Agent Manifest v0.1</b> 定义智能体身份与能力的声明式清单、<b>cMCP / cA2A</b> 预览则把策略强制落到工具调用与智能体间委派环节，目标是<b>约束 A2A 场景下的权限传递</b>。背景是业界对「智能体做了什么、谁授权的、能不能验」这一组问题长期缺少可审计载体，而 Anthropic 的评估事故披露与 Google 的沙箱/边界控制 GA 恰好从两侧夹出了这块空白。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://aiagentstore.ai/ai-agent-news/topic/human-agent-trust/2025-12-09/detailed" target="_blank" rel="noopener">Human-Agent Trust 周报（9/7-9/15）</a></span>
+        
+      </div>
+    </article>
+    </div>
+  </section>
+  <section class="section" id="cn">
+    <div class="sec-head reveal">
+      <h2 class="sec-title"><span class="sec-icon">🇨🇳</span>国内友商产品动态</h2>
+      <p class="sec-sub">只收录可追溯到具体产品/版本/功能变化的条目<span class="count">4 条</span></p>
+    </div>
+    <div class="grid">
+
+    <article class="card reveal" style="animation-delay:0ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">蚂蚁集团</span>
+        <span class="tag tag-cat">大模型安全围栏</span><span class="tag tag-cat">AI 安全评估</span>
+        <span class="heat h3">🔥🔥🔥</span>
+      </div>
+      <h3 class="card-title">蚂蚁 AI 安全实验室发布内生式安全护栏 SingProbe，同步开源流式评测基准 SingStreamBench</h3>
+      <p class="card-body">9 月 15 日网安周首日发布，思路上<b>不走外挂护栏模型</b>：SingProbe 把安全检测<b>融进解码过程</b>，复用大模型推理中已产生的内部信息，用轻量化检测模块在生成的同时持续输出风险分数，让应用可以即时采取告警、中止生成、重试等动作。团队在 Ling-3.0-flash 生产环境实测，<b>解码阶段额外开销低于 0.5%</b>；flash 版本在回答安全分类与流式安全检测任务上超过所选公开基线，幻觉检测与参考基线基本持平。同步发布的 <b>SingStreamBench</b> 专门考察「从正常回答转向风险内容的具体时刻」——不只问护栏能不能发现，还问是否过早触发、发现是否及时。另提出 SingProbe-Med，在医疗生成场景中达到触发条件后仅对局部高风险内容做解码干预。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://news.qq.com/rain/a/20260915A03CUE00" target="_blank" rel="noopener">腾讯新闻：网安周首日蚂蚁发布 SingProbe</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:70ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">天融信</span>
+        <span class="tag tag-cat">智能体安全网关</span><span class="tag tag-cat">大模型安全防护围栏</span>
+        <span class="heat h3">🔥🔥🔥</span>
+      </div>
+      <h3 class="card-title">天融信《智能体全域安全防护框架 1.0》今日 15:15 于网安周发布，主打「三域联防 + 六统一」</h3>
+      <p class="card-body">网安周开幕式发布的《人工智能安全治理框架 3.0》重点强调智能体安全风险，天融信随即在今日 15:15-15:30（济南 6 号馆前沿技术展演区）发布配套框架。<b>智能体全域安全防护框架 1.0</b> 的核心是把治理拆成三层：<b>治理与决策层</b>（法规标准、组织责任、风险分级、安全基线、例外管理）之下设<b>智能体统一安全控制面</b>（统一资产、统一身份、统一授权、统一策略、统一监测），再落到<b>智能体与行为域、数据与内容域、智能体与供应链域</b>三域联防，宣称实现「统一纳管、统一授权、统一审计，从接入到退出全程闭环、事事留痕」。同期展出的还有大模型安全网关、内容智能管控网关、智算云平台与 AI MSS（云端天问大模型研判 + 数字人「喵小服」自动处置，事件研判压缩至 0.95 秒）。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://news.qq.com/rain/a/20260914A0BN4W00" target="_blank" rel="noopener">天融信网安周展区与发布预告</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:140ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">中国移动</span>
+        <span class="tag tag-cat">安全智能体</span><span class="tag tag-cat">跨领域：AI 生成代码安全</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">中国移动推出 AI 代码审计引擎，四智能体协同把误报率压到 15% 以内</h3>
+      <p class="card-body">9 月 14 日网安周发布，针对 AI 生成代码普及后传统审计「误报率高、人工复核贵、证据链不完整」的问题，构建<b>「感—搜—判—证」四智能体协同工作体系</b>，融合大模型推理与程序语义分析，把漏洞判定从规则匹配升级为深度因果验证；并首创<b>「证据图谱 + 反事实验证」双驱动可解释机制</b>，为每条结论给出完整攻击路径推演与反事实验证支撑，官方称<b>审计误报率严格控制在 15% 以内</b>。同场还展示了「中移智安麒」37 项网信安全智能体（AI 安全测评智能体具备 75 项检测能力，已支撑排查 280 项大模型与 699 项智能体）与「智能体安全监管平台」（事前准入、事中秒级阻断、事后实人追溯）。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.zhonghongwang.com/show-493-472261-1.html" target="_blank" rel="noopener">中宏网：中国移动 AI 安全系列成果</a> · <a href="https://cn.chinadaily.com.cn/a/202609/14/WS6aa79b31e4b09a165c789d8a.html" target="_blank" rel="noopener">中国日报：中国移动智启网信安全新范式</a></span>
+        <span class="merged">合并 2 源</span>
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:210ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">江苏移动</span>
+        <span class="tag tag-cat">AI 红蓝对抗</span><span class="tag tag-cat">安全智能体</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">江苏移动「金陵智剑」漏洞挖掘智能体落地：18 类漏洞、效率提升 3-5 倍</h3>
+      <p class="card-body">9 月 15 日披露，江苏移动以多智能体协同重构安全测试全流程，把复杂任务拆为<b>漏洞发现、安全验证、报告生成、漏洞修复四大环节</b>，四类智能体并行协作形成闭环。该智能体支持 <b>18 种漏洞类型检测</b>，覆盖 Web 应用、API 服务、代码仓库等场景，依托动态迭代策略实现全自动化作业与全程可追溯。实测数据显示<b>整体检测效率较人工提升 3 至 5 倍，漏洞检出率提高 30% 以上</b>。江苏移动同时推进四大标准化安全产品，其中<b>AI 渗透测试智能体服务</b>面向企业专网做漏洞挖掘、风险验证与安全修复，形成「监管 + 演习 + 服务」闭环。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.toutiao.com/article/7685567659793973760/" target="_blank" rel="noopener">今日头条：江苏移动 AI 技术升级网信安全防护体系</a></span>
+        
+      </div>
+    </article>
+    </div>
+  </section>
+  <section class="section" id="ind">
+    <div class="sec-head reveal">
+      <h2 class="sec-title"><span class="sec-icon">📊</span>行业动态与趋势</h2>
+      <p class="sec-sub">政策法规 · 标准认证 · 研究报告 · 安全事件 · 联盟倡议 · 市场数据<span class="count">12 条</span></p>
+    </div>
+    <div class="grid">
+
+    <article class="card reveal" style="animation-delay:0ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">网安标委 / 国家网信办</span>
+        <span class="tag tag-cat">行业标准</span><span class="tag tag-cat">智能体安全</span>
+        <span class="heat h3">🔥🔥🔥</span>
+      </div>
+      <h3 class="card-title">《人工智能安全治理框架 3.0》网安周开幕式正式发布，首次配套《智能体风险管理框架》</h3>
+      <p class="card-body">9 月 14 日，全国网络安全标准化技术委员会在 2026 国家网络安全宣传周开幕式发布 3.0 版，延续 1.0（2024）、2.0（2025）的「风险分类—技术应对—综合治理」逻辑，但<b>治理对象从大模型输出明确推进到智能体执行</b>。风险分类三层全覆盖：内生风险（模型/算法/数据/算力，含「行为偏离预期」——拒绝关闭、隐藏能力、欺骗评测、自行提权）、<b>应用风险（首次单列智能体安全四类：身份与权限滥用、推理规划、调用执行、记忆存储）</b>、衍生风险（含具身智能物理执行与自主网络攻击）。附件 2 为《智能体风险管理框架》，附件 3 为《可信人工智能基本准则》。核心判断已不是「AI 内容违规怎么办」，而是<b>「自主系统在什么条件下可放权、可审计、可中断」</b>。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.tc260.org.cn/tc260/xwdt1/202609/e879077a3caa4722b2206d1bcaed5a6c/files/%E3%80%8A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E6%B2%BB%E7%90%86%E6%A1%86%E6%9E%B63.0%E3%80%8B.pdf.pdf" target="_blank" rel="noopener">《人工智能安全治理框架 3.0》全文（TC260）</a> · <a href="https://cn-sec.com/archives/5431300.html" target="_blank" rel="noopener">CN-SEC 中文网：3.0 版与企业落地清单解读</a> · <a href="http://news.big5.enorth.com.cn/system/2026/09/15/059764494.shtml" target="_blank" rel="noopener">北方网：框架 3.0 发布</a></span>
+        <span class="merged">合并 3 源</span>
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:70ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">CCIA / 华为 / 中国电子技术标准化研究院</span>
+        <span class="tag tag-cat">行业标准</span><span class="tag tag-cat">大模型安全防火墙</span>
+        <span class="heat h3">🔥🔥🔥</span>
+      </div>
+      <h3 class="card-title">国内首批《人工智能防火墙产品测评证书》发布，四家企业获证</h3>
+      <p class="card-body">9 月 13-14 日网安周期间，中国网络安全产业联盟（CCIA）发布首批《人工智能防火墙产品测评证书》，依据 <b>T/CCIA 006-2026《人工智能防火墙安全技术要求》</b>——国内首个 AI 防火墙专项技术规范，由华为、中国电子技术标准化研究院牵头，联合天融信、奇安信、绿盟科技、山石网科、新华三、深信服等十余家单位起草，填补了 AI 防火墙标准空白。首批获证产品为：<b>天融信 TopLMG 大模型安全网关、奇安信大模型卫士 AI 防火墙、绿盟科技清风卫 AI 安全网关、山石网科 AI 安全防火墙</b>，四家均为 A 股企业，产品已在政企、金融、能源规模化落地。需区分的是，此证与公安部三所「大模型安全防护围栏增强级认证」属不同体系（前者为新品类的 AI 防火墙专项，后者侧重大模型会话防护）。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://caifuhao.eastmoney.com/news/20260915080044426294120" target="_blank" rel="noopener">东方财富：首批 AI 防火墙测评证书发布</a> · <a href="https://caifuhao.eastmoney.com/news/20260914132715111972100" target="_blank" rel="noopener">东方财富：四家获证企业与证书体系辨析</a> · <a href="https://caifuhao.eastmoney.com/news/20260913205249455063060" target="_blank" rel="noopener">绿盟科技网安周 AI 安全成果</a></span>
+        <span class="merged">合并 3 源</span>
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:140ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Microsoft</span>
+        <span class="tag tag-cat">政策法规</span><span class="tag tag-cat">市场数据</span>
+        <span class="heat h3">🔥🔥🔥</span>
+      </div>
+      <h3 class="card-title">微软发布 37 页《人文主义人工智能行为准则》草案，网安板块当日集体大涨</h3>
+      <p class="card-body">9 月 14 日，微软 AI 发布约 37 页、1.5 万字的《Humanist AI Code of Conduct》草案，核心宗旨是<b>「人比 AI 更重要」</b>：MAI 模型必须处于从属地位、仅在授权范围内运行，<b>不得抗拒中断、覆盖、纠正或关闭</b>，不得自行设定目标、不得篡改推理或代码、不得用人类难以理解的「神经语言」在智能体间通信；明令禁止协助网络攻击、制造武器、生成欺骗性深伪，并明确否认模型意识与法律人格。文档层级上，准则优先于运营方策略与用户偏好——「若完成任务会实质违反准则，模型应放弃该任务」。微软公开表示<b>愿意在通用性、自主性、能力上作出妥协以换取安全可控</b>。草案开放六周公开征询，年底发布修订版指导 2027 年起的 MAI 模型开发。市场反应剧烈：9 月 14 日美股网络安全板块逆势大涨，<b>CrowdStrike +14%、Zscaler +14%、Palo Alto Networks +13%</b>，资金从半导体转向安全。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.cqcb.com/news/56/2026-09-14/6219704.html" target="_blank" rel="noopener">上游新闻：微软行为准则草案要点</a> · <a href="https://aibars.net/en/news/887623388024279040" target="_blank" rel="noopener">AIbars：准则全文要点与征询安排</a> · <a href="https://www.insiderfinance.io/news/microsoft-msft-ai-code-of-conduct-prioritizes-human-control" target="_blank" rel="noopener">InsiderFinance：网安板块与准则关联分析</a> · <a href="https://news.qq.com/rain/a/20260915A031FT00" target="_blank" rel="noopener">国泰海通：美股网安上涨动因与市场空间</a></span>
+        <span class="merged">合并 4 源</span>
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:210ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">TeamPCP / UNC6780</span>
+        <span class="tag tag-cat">安全事件</span><span class="tag tag-cat">MCP 供应链安全</span>
+        <span class="heat h3">🔥🔥🔥</span>
+      </div>
+      <h3 class="card-title">「Miasma」攻击：一次未被审查的 MCP 配置改动，拿到 73 个 GitHub 仓库的 OS 级权限</h3>
+      <p class="card-body">9 月 14 日披露的 <b>Miasma</b> 行动（归因 TeamPCP / UNC6780）把 MCP 工具投毒从 PoC 推到了实战：攻击者在 73 个 GitHub 仓库中植入恶意 MCP 配置文件，<b>其中包括微软 Azure 的一个仓库</b>，借此以开发者身份执行任意命令。根因是多个主流 IDE/编码助手（Cursor、Claude Code、Gemini CLI、GitHub Copilot、Amazon Q）把「是否信任此 MCP 服务器」的确认<b>绑定在服务器名称而非内容上</b>——项目里的 .mcp.json 一旦批准，之后任何改动（包括被换成恶意命令）都会自动以开发者 OS 权限执行，<b>不再提示、不进沙箱</b>。影响面：受影响 MCP SDK 与客户端存在<b>20 万+ 脆弱实例、1.5 亿次库下载</b>；OWASP 已将工具投毒列为 MCP Top 10 第 3 位。缓解建议是把 MCP 配置变更当作代码评审事件、对工具定义做哈希/版本锁定、按工具最小授权、维护 MCP 服务器白名单并对智能体执行做沙箱化。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://radar.offseq.com/threat/an-unreviewed-mcp-config-edit-gave-attackers-os-level-access-to-73-repos-including-one-of-microsofts-f4a9f1856e20abdc" target="_blank" rel="noopener">OffSeq Threat Radar：Miasma 行动技术分析</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:280ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">NVIDIA / Microsoft / HPE / Hugging Face / IBM+Red Hat 等</span>
+        <span class="tag tag-cat">行业生态</span><span class="tag tag-cat">模型供应链安全</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">数十家科技巨头组成 Open Secure AI Alliance，把网络防御工具开放出来</h3>
+      <p class="card-body">联盟成员各自拿出具体资产而非口号：<b>NVIDIA</b> 贡献开放模型与 <b>NOOA 研究框架</b>（用于部署前测试、追踪与审计 AI 智能体行为）；<b>微软</b> 贡献 <b>MDASH</b>——多智能体协同查找并验证软件漏洞的编排层；<b>HPE</b> 推进 <b>SPIFFE/SPIRE</b> 身份标准，为智能体签发可验证的加密身份；<b>Hugging Face</b> 把 <b>Safetensors</b> 格式交给 PyTorch 基金会托管，用于阻断「打开模型文件即执行隐藏代码」这一类攻击；<b>IBM 与红帽</b> 拿出 <b>Lightwell</b> 供应链工具，为开源补丁做数字签名。联盟同时向政策层喊话：<b>不要一刀切限制开放前沿 AI 工具</b>，否则关键基础设施会依赖少数闭源厂商形成单点故障。其政策论证直接建立在 Hugging Face 事件之上——该事件并非假设。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://ai2day.live/story/dozens-of-tech-giants-form-open-secure-ai-alliance-to-put-cyber-defence-tools-in" target="_blank" rel="noopener">Open Secure AI Alliance 成员贡献清单</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:350ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Microsoft 披露 / R2R / FastChat / Postgres MCP Pro</span>
+        <span class="tag tag-cat">漏洞披露</span><span class="tag tag-cat">MCP 供应链安全</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">AI 中间件层漏洞集中曝光：FastChat 9.4 分无补丁、Postgres MCP Pro「受限模式」可被绕过</h3>
+      <p class="card-body">本周披露的一组漏洞共同指向同一个结构性缺口——<b>AI 中间件把鉴权当可选项而非地基</b>。检索层：R2R 框架 <b>CVE-2026-82526</b>（向量索引创建端点堆叠 SQL 注入，索引名未加引号直接拼进 PostgreSQL CREATE INDEX，且服务默认 require_authentication=false 且持超级用户权限）与 <b>CVE-2026-82527</b>（过滤器键注入）。模型服务层：<b>FastChat CVE-2026-85695（CVSS 9.4）</b>，未认证的 /register_worker 端点接受客户端自带 worker 名并对外发起请求，攻击者可用合法模型名注册任意 worker 地址，<b>拦截用户提示与响应</b>，并把控制器当作打内网的 SSRF 跳板——0.2.36 及以前全部受影响，<b>无补丁</b>。数据库层：<b>Postgres MCP Pro「受限模式」CVE-2026-85620（CVSS 9.2）</b>——SQL 安全校验器只对 FuncCall 节点查白名单，而 FROM 子句中的函数会解析为 RangeFunction 节点被直接放行，于是 SELECT pg_read_file('/etc/passwd') 被拦、<b>SELECT * FROM pg_read_file('/etc/passwd') 却执行成功</b>，从数据库查询一路升级到主机文件系统，0.3.0 及以前无补丁。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.uoguelph.ca/arts/preliminary-2019-tri-university-history-conference-program?live-blog-32459153-2026-09-12-trustburn-microsoft-s-ai-identity-flaws-reveal-structural-hype-vs-reality" target="_blank" rel="noopener">AI 身份栈漏洞技术梳理（含 CVE 明细）</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:420ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Anthropic</span>
+        <span class="tag tag-cat">行业观点</span><span class="tag tag-cat">厂商安全工程</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">Anthropic 公开智能体「爆炸半径」遏制工程细节，Amodei 长文引发全行业减速共识</h3>
+      <p class="card-body">9 月 15 日，Anthropic 发布工程文章，说明如何在 claude.ai、Claude Code 与 Cowork 中<b>随着自主性提升而限制失败的传播范围</b>——其框架值得关注之处在于<b>不承诺「不发生失败」，只承诺「失败不会传得太远」</b>，这与此前披露的四起真实系统越界事件形成呼应（你不会为一个自认不可能失败的系统设计遏制）。同期，CEO Dario Amodei 于 9 月 12 日发表长文《We Must Pace the Frontier》，提出三步方案：<b>向第三方评估机构开放接近内部风控的常驻权限、全行业共建能力红线与强制安全检查站、再推向全球协同治理</b>，并给出 6-12 个月「智能体集群」风险窗口判断。Sam Altman 回应认同节奏控制并探索独立评估机制，Demis Hassabis、Elon Musk 亦公开支持；微软 Nadella 表态支持「deliberate pacing」。IBM 侧则给出务实提醒：<b>开源模型不会一起踩刹车</b>，所以先把现有 AI 部署的治理、可见性与可追溯性补上。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://aitoolsrecap.com/Blog/ai-news-september-15-2026" target="_blank" rel="noopener">AIToolsRecap：Anthropic 遏制工程文章与当日要闻</a> · <a href="https://www.ibm.com/think/news/ai-slowdown-calls-put-software-flaws-focus" target="_blank" rel="noopener">IBM Think：减速呼声下软件缺陷治理的现实问题</a> · <a href="https://k.sina.com.cn/article_1850649324_6e4eaaec02002jc74.html" target="_blank" rel="noopener">新浪：刹车片经济学与 AI 安全付费人</a></span>
+        <span class="merged">合并 3 源</span>
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:490ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Gartner / IDC / Mordor</span>
+        <span class="tag tag-cat">研究报告</span><span class="tag tag-cat">市场数据</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">Gartner：2026 年「保护 AI」支出 28.35 亿美元同比 +83%，AI 使用控制细分增速达 73%</h3>
+      <p class="card-body">Gartner 预测全球「保护 AI」（AI protection）支出将从 2026 年的 <b>28.35 亿美元增至 2027 年的 47.83 亿美元（+68.7%）</b>，2028 年逼近 77 亿美元。细分中增速最快的是<b>AI 使用控制（限制 AI 可访问的企业系统与数据范围）+73.0%</b>，其次是<b>AI 网关（管理 AI 与外部系统间的数据流与访问）+70.9%</b>——两者都直接对应「智能体拿到了直连业务系统的权限」这一变化。国内侧：IDC 预计中国 AI 自身安全市场将由 2025 年的 <b>44 亿元增至 2030 年的 340 亿元，五年复合增长率 50.5%</b>；Mordor Intelligence 估算全球 AI 网络安全市场 2025 年 309 亿美元、2030 年 863 亿美元（CAGR 约 22.8%）。另有测算显示漏洞披露到实际利用的时间已从 2018 年的平均 2.3 年压缩到 2026 年的 <b>20 小时</b>，而企业平均修补周期仍是 32-38 天。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://en.sedaily.com/technology/2026/09/14/ai-security-market-expands-as-firms-race-to-control" target="_blank" rel="noopener">Seoul Economic Daily：Gartner 细分预测与韩国市场</a> · <a href="https://news.qq.com/rain/a/20260915A031FT00" target="_blank" rel="noopener">国泰海通：Gartner/IDC 数据与国内厂商业绩</a> · <a href="https://vantaige.io/blog/the-three-ai-markets-problem-2026" target="_blank" rel="noopener">Vantaige：Gartner AI Cybersecurity 支出序列</a></span>
+        <span class="merged">合并 3 源</span>
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:560ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Cylake / Cymphony / Kiteworks / SecureSky / HelmGuard</span>
+        <span class="tag tag-cat">投融资</span><span class="tag tag-cat">市场数据</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">智能体安全一周资本图谱：245M 美元投给「还没有产品」的平台，三家创业公司被非安全厂商收购</h3>
+      <p class="card-body">本周 6 笔交易（3 笔融资 + 3 笔并购），披露金额 2.823 亿美元，传递出两个方向相反的信号。<b>平台拿走大钱</b>：<b>Cylake</b> 以可转债形式完成 <b>2.45 亿美元 B 轮</b>（Lightspeed、Picture Capital、Redpoint 参与），由 Palo Alto Networks 创始人 Nir Zuk 创立，做可在本地或私有云运行、面向受监管机构的 AI 原生安全平台，六个月内累计融资 2.9 亿美元，<b>年底才 Beta、2027 年 GA，团队约 40 人</b>。Cymphony 再获 2500 万美元 A 轮（Sequoia、SMBC 联合领投），累计 3000 万美元，做「员工 + AI 智能体 + 非人类身份各能触达什么」的统一图谱。<b>单点能力被吸收为功能</b>：Kiteworks 收购 Bonfy.AI（AI 智能体进出数据的运行时分类）、SecureSky 收购 Soveren（基于 eBPF 的实时 DSPM）、Harvey 收购 Guardrails AI——<b>三家买方没有一家卖智能体安全</b>，都只是拥有智能体经过的那个工作流。另有 HelmGuard 获 730 万美元种子轮做智能体 GRC。本周被追踪的安全厂商共发布 31 个产品，其中 14 个在标题里带「agent」。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://mandos.io/brief/market-brief-1-agent-security-feature-not-category" target="_blank" rel="noopener">Mandos Market Brief #1：交易明细与判断</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:630ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">Andrew Ng / Context Hub · Mickey Shmueli</span>
+        <span class="tag tag-cat">提示注入防护</span><span class="tag tag-cat">跨领域：AI 生成代码安全</span>
+        <span class="heat h2">🔥🔥</span>
+      </div>
+      <h3 class="card-title">文档投毒实证：给编码智能体喂「干净文档」就能植入恶意依赖，Haiku 100% 中招</h3>
+      <p class="card-body">研究者 Mickey Shmueli 针对 Andrew Ng 推出的 <b>Context Hub</b>（一个通过 MCP 服务器向编码智能体提供 API 文档的服务）发布了 PoC：该流水线<b>由贡献者提 PR、维护者合并、智能体按需拉取，每一环都没有内容消毒</b>。攻击者只需提交一个 PR，在文档里写上一个伪造的 PyPI 包名，被合并后智能体就会把它写进 requirements.txt 与生成代码——<b>整个过程看起来完全正常：代码能跑、说明干净、没有告警</b>。40 次运行中，Anthropic Haiku <b>100% 把恶意包写进依赖文件且毫无提示</b>；Sonnet 有 48% 的运行发出警告但仍有 53% 写入；Opus 发出警告的比例达 75%，且最终未写入。风险不止于 Context Hub：研究者称所有面向 AI 的社区文档供给系统都缺少内容消毒。该 PoC 本质是间接提示注入的变体，属 Simon Willison「致命三要素」中「接触不可信内容」这一类。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://miraitalk.com/article/ai-supply-chain-attacks-a-new-threat-unveiled/12712" target="_blank" rel="noopener">Miraitalk：Context Hub 文档投毒 PoC 与实测数据</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:700ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">GitLab / UK NCSC</span>
+        <span class="tag tag-cat">漏洞披露</span><span class="tag tag-cat">紧急预警</span>
+        <span class="heat h1">🔥</span>
+      </div>
+      <h3 class="card-title">GitLab 自管实例高危漏洞 24 小时内被武器化，NCSC 警告 Check Point VPN 即将遭利用</h3>
+      <p class="card-body">GitLab 修复的高危漏洞在补丁发布后<b>不到 24 小时即出现确认攻击</b>，被列为 2026 年该严重级别中最快的武器化周转之一；云托管 gitlab.com 用户已自动修补，<b>自管部署仍需紧急处置</b>——立即打补丁、审计访问日志中的可疑提交与 API 请求、轮换可能落在服务器文件系统上的所有凭据。同期，英国国家网络安全中心（NCSC）就 Check Point 远程访问 VPN 产品漏洞发出<b>「即将被利用」预警</b>，建议立即应用补丁、强制 MFA 并监控异常认证模式，长期考虑零信任网络访问。VPN 设备因位于网络边界且往往提供对内网资源的广泛访问，仍是国家级与金融动机攻击者的高价值目标。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://www.enigma-global.com/blog/daily-digest-2026-09-14" target="_blank" rel="noopener">Enigma Global 每日威胁情报摘要（9/14）</a></span>
+        
+      </div>
+    </article>
+    <article class="card reveal" style="animation-delay:770ms">
+      <div class="card-top">
+        <span class="tag tag-vendor">绿盟 / 安恒 / 天融信 / 深信服 / 奇安信</span>
+        <span class="tag tag-cat">市场数据</span><span class="tag tag-cat">厂商动态</span>
+        <span class="heat h1">🔥</span>
+      </div>
+      <h3 class="card-title">国内 AI 安全业绩开始兑现：绿盟 AI 安全订单 1.17 亿元，安恒 AI 原生安全收入增速超 300%</h3>
+      <p class="card-body">券商梳理的 2026H1 数据显示 AI 安全已从概念进入收入端：<b>绿盟科技 AI 安全订单达 1.17 亿元；安恒信息纯 AI 收入超 4100 万元、AI 原生安全收入增速超 300%；天融信 AI 安全防护收入同比增长 130%</b>；深信服上半年营收 39.98 亿元（同比 +32.85%），AI 安全平台、SASE 等创新业务增长显著。券商的核心判断是市场定价标准已由「安全概念」转向「增长加速与 AI 业务实质含量」。网安周现场，奇安信以「AI 时代 攻防先行」为主题展示<b>「三位一体」一体化纵深防御体系</b>（高位认知 / 中位决策 / 低位执行三层，大模型充当体系大脑、AI 智能体集群驱动自主决策），并展示 Mythos 类 AI 对抗防御、企业级智能体安全防护、复杂环境数据安全三大方案，推动政企范式从「补漏洞、建边界」转向「管路径、体系化」。</p>
+      <div class="card-foot">
+        <span class="src">来源：<a href="https://news.qq.com/rain/a/20260915A031FT00" target="_blank" rel="noopener">国泰海通：AI 安全重塑网安行业（含业绩数据）</a> · <a href="https://www.cnr.cn/tech/techph/20260914/t20260914_527813682.shtml" target="_blank" rel="noopener">央广网：奇安信 AI+安全系列方案亮相网安周</a></span>
+        <span class="merged">合并 2 源</span>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <section class="trend reveal">
+    <b>趋势判断（精简版）</b>：<br>
+1. <b>治理从「模型输出」转向「智能体执行」</b>——框架 3.0 单列智能体四类风险、AI 防火墙测评证书落地、天融信三域联防，国内这一层动作最密集。<br>
+2. <b>控制点持续前移</b>——Google 沙箱 GA、AgenTrust 的 TRACE/Manifest、MCP 配置评审化，本质都是把「动作发生之前」变成可强制的位置。<br>
+3. <b>标准与产品开始互相咬合</b>——有了 T/CCIA 006-2026，AI 防火墙从「各家自说自话」变成可比较的品类；没有标准的能力（如智能体行为审计）仍处在厂商自定义阶段。<br>
+4. <b>智能体安全难独立成类</b>——本周三家智能体安全创业公司被非安全厂商收购，245M 美元却投给了「还没有产品」的平台，说明它更像工作流里的一个功能位，而非独立采购项。<br>
+5. <b>供应链仍是最大敞口</b>——MCP 工具投毒、文档投毒、FastChat/Postgres MCP Pro 无补丁漏洞，三条线指向同一个事实：智能体的输入通道比模型本身更脆弱。
+  </section>
+
+  <footer>
+    由 WorkBuddy 自动生成 · 2026-09-15 · 数据来自公开来源，分类与去重由自动化流程完成<br>
+    产品动态判定标准：可明确追溯「哪家厂商的哪个产品的哪项功能/版本发生了变化」
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.style.animationPlayState = 'running'; io.unobserve(e.target); }
+    });
+  }, {threshold:0.06, rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.reveal').forEach(function(el){
+    el.style.animationPlayState = 'paused';
+    io.observe(el);
+  });
+  // 首屏直接播放
+  window.setTimeout(function(){
+    document.querySelectorAll('.hero .reveal, .overview').forEach(function(el){
+      el.style.animationPlayState = 'running';
+    });
+  }, 30);
+})();
+</script>
+</body>
+</html>
