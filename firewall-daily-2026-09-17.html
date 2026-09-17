@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🛡️ 中国防火墙厂商日报 · 2026-09-17</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --surface:#111113; --surface2:#16161a; --line:#26262c;
+  --text:#f4f4f5; --text2:#a1a1aa; --text3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Inter,system-ui,sans-serif;
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+             radial-gradient(760px 460px at 92% 4%,rgba(236,72,153,.10),transparent 62%),
+             radial-gradient(700px 420px at 50% 100%,rgba(139,92,246,.08),transparent 65%)}
+
+/* 顶栏 */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,10,.72);backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1240px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;font-weight:650;font-size:15px;letter-spacing:-.01em}
+.brand .dot{width:9px;height:9px;border-radius:50%;
+  background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.85)}
+.nav-links{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:13px;padding:6px 12px;border-radius:8px;
+  transition:.22s;border:1px solid transparent}
+.nav-links a:hover{color:#fff;background:rgba(139,92,246,.13);border-color:rgba(139,92,246,.32)}
+.nav-date{font-size:12px;color:var(--text3);font-variant-numeric:tabular-nums}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+
+/* Hero */
+.hero{padding:130px 0 44px;text-align:center}
+.hero h1{font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.18;
+  background:linear-gradient(115deg,#fff 8%,var(--g1) 42%,var(--g2) 64%,var(--g3) 92%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{margin-top:16px;color:var(--text2);font-size:14.5px;display:flex;gap:10px;
+  justify-content:center;align-items:center;flex-wrap:wrap}
+.hero .sub .pill{padding:5px 13px;border-radius:999px;background:rgba(139,92,246,.11);
+  border:1px solid rgba(139,92,246,.28);color:#c4b5fd;font-size:13px;font-variant-numeric:tabular-nums}
+.stats{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:15px 26px;min-width:112px;transition:.28s}
+.stat:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.45)}
+.stat .n{font-size:27px;font-weight:750;letter-spacing:-.02em;
+  background:linear-gradient(135deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent}
+.stat .l{font-size:11.5px;color:var(--text3);margin-top:3px;letter-spacing:.06em}
+
+/* AI 解读 */
+.ai{margin:38px 0 8px;background:linear-gradient(140deg,rgba(91,108,247,.10),rgba(236,72,153,.06));
+  border:1px solid rgba(139,92,246,.30);border-radius:18px;padding:26px 28px;position:relative;overflow:hidden}
+.ai::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3))}
+.ai h2{font-size:15px;font-weight:650;margin-bottom:13px;display:flex;align-items:center;gap:9px;color:#e9d5ff}
+.ai h2 .badge{font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;
+  background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;letter-spacing:.05em}
+.ai p{color:#d4d4d8;font-size:14.5px}
+.ai b{color:#fff;font-weight:600}
+
+/* 版块 */
+.sec{margin-top:56px}
+.sec-head{display:flex;align-items:center;gap:13px;margin-bottom:24px;
+  padding-bottom:15px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;letter-spacing:-.02em}
+.sec-head .count{font-size:12px;color:var(--text3);padding:3px 11px;border-radius:999px;
+  background:var(--surface2);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+
+/* 卡片网格 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:18px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:22px 23px;transition:.3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;
+  display:flex;flex-direction:column}
+.card::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(139,92,246,.55),transparent);
+  opacity:0;transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);
+  box-shadow:0 14px 40px rgba(0,0,0,.55),0 0 0 1px rgba(139,92,246,.12)}
+.card:hover::after{opacity:1}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-bottom:12px;flex-wrap:wrap}
+.tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.tag{font-size:11.5px;font-weight:600;padding:3.5px 10px;border-radius:7px;letter-spacing:.02em;
+  color:var(--tc);background:color-mix(in srgb,var(--tc) 15%,transparent);
+  border:1px solid color-mix(in srgb,var(--tc) 38%,transparent)}
+.imp{font-size:10.5px;font-weight:600;padding:3.5px 9px;border-radius:7px;
+  background:linear-gradient(135deg,rgba(91,108,247,.22),rgba(236,72,153,.22));
+  border:1px solid rgba(236,72,153,.42);color:#fbcfe8}
+.card h3{font-size:16px;font-weight:650;line-height:1.5;letter-spacing:-.012em;margin-bottom:11px;color:#fafafa}
+.summary{font-size:13.6px;color:var(--text2);flex:1}
+.summary b{color:#e4e4e7;font-weight:600}
+.sources{margin-top:15px;padding-top:13px;border-top:1px dashed var(--line);
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.src-label{font-size:11px;color:var(--text3);letter-spacing:.07em}
+a.src{font-size:12.5px;color:#8B5CF6;text-decoration:none;padding:3.5px 10px;border-radius:7px;
+  background:rgba(139,92,246,.10);border:1px solid rgba(139,92,246,.26);transition:.22s}
+a.src:hover{color:#c4b5fd;background:rgba(139,92,246,.22);border-color:rgba(139,92,246,.55);
+  text-decoration:underline;text-underline-offset:3px}
+
+/* 滚动渐入 */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+.reveal.on{opacity:1;transform:none}
+
+footer{margin:72px 0 46px;padding-top:26px;border-top:1px solid var(--line);
+  text-align:center;color:var(--text3);font-size:12.5px;line-height:2}
+footer b{color:var(--text2)}
+@media(max-width:640px){
+  .hero{padding:110px 0 30px}
+  .wrap{padding:0 17px}
+  .nav-in{padding:11px 17px}
+  .card{padding:18px 17px}
+  .ai{padding:20px 19px}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <div class="brand"><span class="dot"></span>防火墙厂商日报</div>
+  <span class="nav-date">2026-09-17</span>
+  <div class="nav-links">
+    <a href="#vendor">🏢 厂商动态</a>
+    <a href="#industry">🏭 行业动态</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="sub">
+      <span class="pill">2026-09-17 · 星期四</span>
+      <span>覆盖 深信服 / 奇安信 / 华为 / H3C / 山石网科 / 天融信 / 绿盟科技 / 启明星辰</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">20</div><div class="l">总动态</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">厂商动态</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">行业动态</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">重点关注</div></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2><span class="badge">AI 解读</span>今日看点</h2>
+    <p>今天动作最大的是<b>华为</b>——一天之内两条硬货：在济南网安标委「标准周」发布《面向人工智能的网络安全技术与产品标准化研究》课题报告，把新一代 AI 防火墙（自研安全引擎 + NPU 加速）、AIDR、AI SOC 一次性摊开，并牵头标准研究；同日在上海坤灵发布会甩出 20 款新品，把「网络 + 安防」塞进一台 AR281。<b>趋势判断</b>：网安周的叙事主轴已经从「大模型围栏」切到<b>智能体（Agent）安全</b>——体验区里联通 AI 内生安全、移动智能体安全监管平台、阿里云智能体基础设施安全、蚂蚁可信智能体网络、腾讯安全中心、深信服 AI 安全运营同台，论坛同步发布「人工智能应用安全指引」系列标准指南与 AI 大模型安全众测结果。<b>最该关注的两点</b>：一是 Cisco 9/16 一次性加固修复 8 个 CVE（含两个在野利用，官方称无缓解措施），FMC 作为防火墙舰队管理中枢必须尽快升级；二是 Gartner HMF 报告里新华三连续两年入选，说明「混合式部署防火墙」这个新品类已经站稳，国内厂商的叙事重心正从单机性能转向统一管理平台。</p>
+  </section>
+
+  <section class="sec" id="vendor">
+    <div class="sec-head">
+      <h2>🏢 厂商动态</h2>
+      <span class="count">10 条</span>
+    </div>
+    <div class="grid">
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#EF4444">华为</span><span class="imp">🔥 重点</span></div></div>
+      <h3>华为发布《面向人工智能的网络安全技术与产品标准化研究》课题报告，新一代 AI 防火墙亮相</h3>
+      <p class="summary">在济南召开的全国网安标委 2026 年第二次「标准周」全体成员会议上，华为数据通信产品线安全产品领域总裁吴家兴发布该课题报告。新一代 AI 防火墙采用<b>自研安全引擎 + NPU 算力加速架构</b>，实现从「检测应用」到「感知 Agent 意图」、从被动防护到主动防护的跨越，具备 Agent 与 GenAI 应用识别、数字身份零信任访问控制能力；配套 AIDR（AI 端点检测响应，轻量化容器沙箱 + eBPF 内核探针，CPU 占用 &lt;1%）与 AI SOC（人-资产-Agent-LLM 四维关联，威胁发现速度提升 10 倍）。华为援引数据：<b>90% 企业已拥抱大模型，仅 5% 组织对 AI 安全准备充满信心</b>。华为并牵头该标准研究、联合 20 余家厂商参编《人工智能防火墙安全技术要求》。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://field.10jqka.com.cn/20260916/c679984013.shtml" target="_blank" rel="noopener">同花顺·行业频道 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#EF4444">华为</span></div></div>
+      <h3>华为坤灵发布 20 款新品，升级「4+10+N」场景化方案，网络安防融合一体机 AR281 首发</h3>
+      <p class="summary">9 月 16 日华为坤灵新品发布会在上海举行，常务董事、ICT BG CEO 杨超斌宣布全面升级「4+10+N」一站式场景化方案，发布 <b>20 款新品</b>并推出面向分销伙伴的「经纬计划」和 50 个样板点。安全侧亮点：业界首个<b>网络安防融合一体机 AR281</b>（一台顶五台，集成路由 / NVR / WAC / 专线接入 / 上网行为管理，视频存储压缩率最高 85%）、酒店宝 F1004（节省 66% 机柜空间、功耗降 42%、交付时间缩短 70%）。经纬计划目标覆盖 300 个城市、1 万+ 网格、1.5 万+ 工程商，打造「3 公里直达」上门服务圈。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://xinsanban.10jqka.com.cn/20260916/c679984156.shtml" target="_blank" rel="noopener">同花顺·新三板 ↗</a> <a class="src" href="https://www.163.com/dy/article/L6UMEKU7051191D6.html" target="_blank" rel="noopener">网易科技 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#06B6D4">H3C</span><span class="imp">🔥 重点</span></div></div>
+      <h3>新华三连续两年入选 Gartner《混合式部署防火墙魔力象限》</h3>
+      <p class="summary">Gartner 发布 2026 年《混合式部署防火墙魔力象限》（Magic Quadrant for Hybrid Mesh Firewalls）报告，紫光股份旗下新华三集团凭借 HMF 解决方案<b>连续两年入选</b>，是全球少数进入该评估的厂商。新华三解读 HMF 三大演进方向：<b>统一管理</b>（基于云的统一平台跨环境策略协同）、<b>多形态融合</b>（硬件 / 虚拟化 / 云原生统一执行）、<b>智能化运营</b>。对国内厂商而言，这是「防火墙从单点边界设备 → 平台化安全运营」的权威背书。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.toutiao.com/article/7685638232138121738" target="_blank" rel="noopener">今日头条·新华三 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#F59E0B">启明星辰</span></div></div>
+      <h3>启明星辰蝉联第十一届 CNCERT 网络安全应急服务甲级支撑单位，斩获 CNVD 三项荣誉</h3>
+      <p class="summary">在 CNCERT 相关会议上，启明星辰收获多项权威认定：<b>蝉联第十一届 CNCERT 网络安全应急服务甲级支撑单位</b>；国家信息安全漏洞共享平台（CNVD）三项荣誉——2025 年度漏洞信息报送突出贡献单位、原创漏洞发现贡献单位、漏洞应急工作突出贡献单位；同时获评 CCTGA 优秀成员单位、中国反网络病毒联盟杰出工作单位。此外在《2026 年人工智能技术赋能网络安全应用测试结果》中，启明星辰在<b>场景 1（AI 驱动攻击的网络安全智能防御）</b>取得佳绩，验证「AI 大模型 + 智能体」在攻击检测与攻击链还原中的实战价值。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://stock.10jqka.com.cn/20260916/c679974291.shtml" target="_blank" rel="noopener">同花顺 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#A855F7">中孚信息</span></div></div>
+      <h3>中孚信息在 2026 网安周发布 AI 安全产品矩阵，「1+2+3」智能安全新体系亮相</h3>
+      <p class="summary">中孚信息发布 AI 安全产品矩阵与「1+2+3」智能安全新体系：<b>1</b> 个统一底座（中孚智能服务平台，「乐高式组件、灵活插拔、纵向解耦、按需取用」）；<b>2</b> 大能力体系（AI 技术赋能 + AI 安全治理，后者以「大模型可信、智能体可控、全链路可溯」为目标）；<b>3</b> 层产品架构——终端侧（终端大模型智栏系统 + 终端智能体安全卫士）、网络侧（<b>大模型安全防护系统</b>，在用户与大模型之间建立屏障）、平台侧（大模型与智能体安全防护平台，强身份认证 / 细粒度访问控制 / 数据保护 / 应用层安全 / 持续检测响应的「五道门卫」）。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://m.10jqka.com.cn/20260916/c679973378.shtml" target="_blank" rel="noopener">同花顺 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#EC4899">深信服</span><span class="tag" style="--tc:#64748B">其他</span><span class="imp">🔥 重点</span></div></div>
+      <h3>2026 网安周 AI 安全成果集中亮相：联通 / 移动 / 阿里云 / 腾讯 / 蚂蚁 / 深信服 智能体安全方案同台</h3>
+      <p class="summary">网络安全技术应用体验区（9/13-17，山东国际会展中心）设置 AI 赋能网络安全专区，40 余家单位参与，<b>AI 成为贯穿全场的核心关键词</b>。已披露的展项包括：中国联通<b>AI 内生安全一体化解决方案</b>、中国移动<b>智能体安全监管平台</b>、阿里云<b>智能体基础设施安全</b>展区、腾讯 WorkBuddy 安全中心（让数据可守护、行为可掌控、技能可信任）、蚂蚁集团<b>可信智能体网络</b>、深信服<b>AI 安全运营方案</b>、中孚信息大模型与智能体安全防护平台。产业信号清晰：竞争焦点已从「大模型围栏」转向<b>智能体（Agent）全生命周期安全</b>。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.toutiao.com/article/7686112744160788998/" target="_blank" rel="noopener">中国经济网 / 环球网 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#3B82F6">蚂蚁</span></div></div>
+      <h3>蚂蚁 AI 安全实验室发布大模型内生式安全护栏 SingProbe，解码阶段额外开销低于 0.5%</h3>
+      <p class="summary">网安周期间蚂蚁 AI 安全实验室发布<b>大模型内生式安全护栏 SingProbe</b>，把安全检测融入模型生成过程：复用大模型推理过程已产生的内部信息，通过轻量化安全检测模块持续输出风险分数，让 AI「边生成边识别风险」。实测在 Ling-3.0-flash 生产环境中<b>解码阶段额外开销低于 0.5%</b>，flash 版本在安全分类与流式安全检测任务上超过所选公开基线。同步发布流式生成场景评测基准 <b>SingStreamBench</b>，并探索 SingProbe-Med（医疗场景局部高风险内容解码干预）。这条路线的意义在于：外置护栏模型的「事后审核 + 高算力成本」困局有了替代方案。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://3w.huanqiu.com/a/c36dc8/4TCyfdCTfo7" target="_blank" rel="noopener">环球网 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#64748B">其他</span><span class="imp">🔥 重点</span></div></div>
+      <h3>Cisco 发布 Secure Firewall ASA / FTD / FMC 九月加固版本，一次性修复 8 个 CVE（含在野利用）</h3>
+      <p class="summary">Cisco 于 2026-09-16 发布 Secure Firewall ASA、FTD、FMC 的软件加固版本，共修复 <b>CVE-2026-20329 ~ CVE-2026-20336 八个漏洞</b>，安全影响等级 <b>Critical</b>，其中两个已确认在野利用（FMC 静态凭据漏洞 + FMC 认证绕过漏洞）。Cisco 按 CWE 类别分组并统一分配 CVE，官方明确<b>「无缓解措施」</b>，必须升级。同期 CSIRTS 还更新了 CVE-2024-20260（ASA/FTD SSL VPN 拒绝服务，影响范围已扩大到全部 ASA/FTD 平台）。运维提示：FMC 是防火墙舰队的管理中枢，一旦失守等于交出全部策略与凭据。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.csirts.com/advisory/cisco-secure-firewall-adaptive-security-2731550" target="_blank" rel="noopener">CSIRTS 统一通告源 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#64748B">其他</span></div></div>
+      <h3>SUPERWISE 发布企业 AI 网关 Sentinel：在网络边缘治理 LLM 流量，数据不出内网</h3>
+      <p class="summary">SUPERWISE 发布企业 AI 网关 <b>Sentinel</b>，以轻量网关形式部署在网络边缘或用户 PC 本地，实时对 LLM 交互流量中的密钥、PII、有害内容做脱敏，且<b>原始数据始终不离开客户边界</b>。产品对标 OWASP LLM Top 10（提示词注入、数据泄露、越狱、不安全输出），兼容 OpenAI / Claude / Gemini，支持 Docker、CLI 或容器集群部署，无需改动任何应用代码。架构上采用<b>分离平面设计</b>——原始 prompt / 响应留在客户侧，实时活动日志仅流出脱敏后的交互记录。这与国内「AI 防火墙 / 大模型安全网关」是同一赛道的海外解法。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.prnewswire.com/news-releases/superwise-launches-sentinel-an-enterprise-ai-gateway-to-govern-llm-traffic-at-the-network-edge-302879767.html" target="_blank" rel="noopener">PR Newswire ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#64748B">其他</span></div></div>
+      <h3>安全 AI 专用模型路线分化：CrowdStrike SafeMind 对垒 Google Gemini 3.8 Flash Cyber</h3>
+      <p class="summary">VentureBeat 梳理了四家厂商的「安全 AI」架构分歧：<b>CrowdStrike</b> 9/1 发布 SafeMind（Red Tempest + Blue Solano 双模型跑在 NVIDIA Nemotron 上，用 Falcon 遥测 + 15 年运营数据后训练，内部评测称检测率 +29%、修复快 6 倍）；<b>Google</b> 9/2 发布 Gemini 3.8 Flash Cyber（CyberGym 漏洞发现 86.2%、CWE-Bench pass@1 47.2%）；<b>Palo Alto</b> 走平台化 + 第三方模型集成路线；<b>Microsoft</b> 维持混合。同时披露攻击侧速度：CrowdStrike 称最快 AI 攻击 <b>27 秒</b>完成，亚马逊 MadPot 蜜网捕获 AI Agent <b>12 分 42 秒</b>自主完成全流程攻击（94 个事件、0 语法错误）。真正的分歧点是：<b>谁拥有「安全专用适配层」的控制权</b>。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://venturebeat.com/security/nobody-can-compare-the-security-ai-numbers-crowdstrike-google-palo-alto-and-microsoft-published-including-the-cisos-who-are-stuck-with-the-results" target="_blank" rel="noopener">VentureBeat ↗</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec" id="industry">
+    <div class="sec-head">
+      <h2>🏭 行业动态</h2>
+      <span class="count">10 条</span>
+    </div>
+    <div class="grid">
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#3B82F6">政府</span><span class="imp">🔥 重点</span></div></div>
+      <h3>2026 网安周「人工智能安全治理论坛」在济南举办，发布「人工智能应用安全指引」系列标准实践指南</h3>
+      <p class="summary">9 月 15 日，2026 年国家网络安全宣传周人工智能安全治理论坛在济南举办，主题「智能之治 向上向善」，中央网信办副主任、国家网信办副主任王京涛出席致辞，提出三点建议：包容审慎敏捷治理、夯实人工智能内生安全根基、联防联控共治共享。论坛发布三项成果：<b>「人工智能应用安全指引」系列网络安全标准实践指南</b>、<b>2026 年人工智能大模型安全众测结果</b>、<b>基础语料库</b>。议题聚焦智能体风险防控、AI 全周期安全治理、重点行业 AI 应用安全。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://about.gmw.cn/2026-09/16/content_39003699.htm" target="_blank" rel="noopener">光明网 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#EC4899">医疗</span></div></div>
+      <h3>广东省卫生健康委政务信息系统安全运营及安全产品租赁（2026）159 万元，奇安信网神中标</h3>
+      <p class="summary">中国政府采购网 9 月 14 日公告，广东省卫生健康委员会「政务信息系统安全运营及安全产品租赁（2026 年）项目」由<b>奇安信网神信息技术（北京）股份有限公司</b>中标，金额 <b>159 万元</b>，服务内容为安全运维服务。同场竞标方包括亚信科技（成都）、广东中科网新、广州融服。省级卫健委以「安全运营 + 安全产品租赁」打包采购，是医疗行业从「买设备」转向「买服务」的典型样本。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260914_27324070.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#3B82F6">政府</span></div></div>
+      <h3>丽江市公安局社会资源数据接入安全边界平台 108.8 万元中标，网御星云万兆防火墙 / IPS 入围</h3>
+      <p class="summary">丽江市公安局视频智能解析系统建设项目「社会资源数据接入安全边界平台」由中国电信股份有限公司丽江分公司以 <b>108.8 万元</b>中标（评审得分 86.77）。设备清单含<b>网御星云万兆边界防火墙 Power V6000-FWG7210Z（9.72 万）</b>、万兆边界 IPS（9.3 万）、天行网安万兆数据交换系统 / 单向光闸 / 抗 DDoS 系统 / 准入控制、华为万兆接入交换机、中宇万通身份认证网关，以及 3 年特征库升级服务。公安视频专网「数据接入边界」是等保与公安网安全接入的双重合规刚需。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260914_27322198.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#10B981">金融</span></div></div>
+      <h3>国家开发银行厦门市分行网络升级改造中标 77.19 万元：35 台信创设备含内外层防火墙与 IPS</h3>
+      <p class="summary">国家开发银行采购网 9 月 15 日公示，厦门市分行网络升级改造项目由北京金信润天信息技术股份有限公司中标，金额 <b>77.19 万元</b>。采购内容为一批信创设备共 <b>35 台</b>：外层防火墙 2 套、内层防火墙 2 套、IPS 4 套、全流量监测 2 套、上网行为管理 2 套，以及堡垒机、日志审计、接入认证、核心 / 互联网接入 / 运维区 / 楼层交换机等。<b>值得注意</b>：该项目招标阶段预算 146 万，最终以 77.19 万定标，价格腰斩，反映金融信创安全设备集采竞争烈度。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://cg.cdb.cn/cmsjieguo/dccfd053f50644f4b08a1c7f79fed8f0.html" target="_blank" rel="noopener">国家开发银行采购网 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#8B5CF6">运营商</span><span class="imp">🔥 重点</span></div></div>
+      <h3>中国电信天翼安全「2026 年云剑安全服务能力采购项目」7 标包候选人公示：安恒 1915 万、亿迅 1091 万、国信网联 851 万、迪普 350 万</h3>
+      <p class="summary">天翼安全科技有限公司 9 月 14 日公示「2026 年云剑安全服务能力采购项目」中标候选人，项目按地域划分 <b>7 个标包</b>（华南 / 上海 / 华中 / 华东 / 东北 / 西北+西南 / 华北+北京）。已披露结果：标包 1 广东亿迅科技 <b>1090.77 万</b>、标包 2 杭州安恒信息 <b>807.93 万</b>、标包 3 杭州迪普科技 <b>349.8 万</b>，整体盘子安恒约 1915 万、亿迅 1091 万、国信网联 851 万、迪普 350 万、中国电信 387 万。运营商安全服务「按地域分标包 + 多厂商分食」已成标准打法，对安全厂商而言是稳定的规模性收入来源。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://finance.sina.com.cn/roll/2026-09-15/doc-inirwwmu8621212.shtml" target="_blank" rel="noopener">新浪财经 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#10B981">金融</span></div></div>
+      <h3>江苏农村商业联合银行安全运营驻场服务 222 万元，绿盟科技列第一中标候选人</h3>
+      <p class="summary">江苏国企阳光交易平台公示，江苏农村商业联合银行「安全运营驻场服务项目」（招标编号 JSRCUB2026140）中标候选人：第一 <b>北京神州绿盟科技有限公司 222 万元</b>，第二 亚信科技（成都）240 万元，第三 杭州安恒信息 258 万元。服务内容为 3 名安全工程师 5×8 小时驻场 + 非工作时段重大变更窗口 / 重要时间节点 / 突发安全事件现场值守，服务期 2 年（2026.12.13-2028.12.12）。省级农信系统「安全运营外包」常态化，2 年期长约正在变多。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://yg.jsygjy.cn/cmshouxuanrengs/bea47e9df4f64939b7314ac1f7c846ff.html" target="_blank" rel="noopener">江苏国企阳光交易平台 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#10B981">金融</span></div></div>
+      <h3>四川银行互联网系统应用安全开发测试服务 195 万元，安恒信息中标</h3>
+      <p class="summary">根据《四川银行 2026 年度互联网系统应用安全开发测试服务采购项目成交结果公示》，杭州安恒信息技术股份有限公司于 2026 年 9 月 10 日公告中标，金额 <b>195 万元</b>。这是安恒在金融行业的又一单——其 2025 年报主营构成中网络信息安全服务占 37.96%、平台占 35.7%、基础产品占 18.52%，服务化转型特征明显。银行「安全开发测试（SDL / DevSecOps）」采购常态化，是应用安全需求从「上线前渗透」前移到「开发过程」的信号。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://m.sohu.com/a/1074600463_122014422" target="_blank" rel="noopener">搜狐·同壁财经 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#EF4444">军队</span></div></div>
+      <h3>军队「服务器、数据中心接入交换机、防火墙等设备采购项目」招标（2026-JQ02-W1250）</h3>
+      <p class="summary">军队采购网发布 2026-JQ02-W1250 招标公告，采购内容为服务器、数据中心接入交换机、<b>防火墙等设备</b>，采用全流程电子化采购方式（不接受纸质投标），开标地点为广州市天河区甘园路广营大厦，需通过军队采购网物资服务招投标系统报名并办理数字证书。军队信息化采购对安全设备的需求持续释放，但投标门槛（涉密资质、军采平台注册）显著高于政府采购。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.ebnew.com/businessShow/709920875.html" target="_blank" rel="noopener">必联网 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#FACC15">电力</span></div></div>
+      <h3>南方电网数字电网集团（广东）网络链路安全防护设备框架采购中标：一档 / 二档应用防火墙 + IPS / IDS 分标包</h3>
+      <p class="summary">南方电网供应链统一服务平台 9 月 15 日公告，2026 年南方电网数字电网集团（广东）有限公司<b>网络链路安全防护设备框架采购</b>（采购编号 CG2100022002340369）中标结果：一档应用防火墙（一）/（三）分别由广州皓邦信息科技、广州中软信息技术中标；二档应用防火墙（二）/（三）同样由皓邦、中软信息中标；入侵防御系统（一档）广州汇通国信、入侵检测系统广州中电通、入侵防御系统（二档）广州中电通。电力行业以「档位分标 + 框架协议」方式采购安全设备，渠道商中标为主，原厂品牌需通过集成商落地。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.bidding.csg.cn/zbhxrgs/1200442671.jhtml" target="_blank" rel="noopener">南方电网供应链统一服务平台 ↗</a></div>
+    </article>
+<article class="card reveal">
+      <div class="card-head"><div class="tags"><span class="tag" style="--tc:#F59E0B">教育</span></div></div>
+      <h3>武汉警官职业学院数据中心硬件采购 46.5 万元：山石网科智能安全出口防火墙单台 35.5 万</h3>
+      <p class="summary">武汉警官职业学院数据中心硬件采购项目（二次）由悠锋科技有限公司以 <b>46.5 万元</b>中标，核心设备为一台 <b>山石网科 SG-6000-K6680-B 智能安全出口防火墙，单价 35.5 万元</b>。单台出口防火墙占项目总额 76%，属于典型的「高端机型单点采购」——院校数据中心出口对吞吐与并发会话数的要求正在向企业级看齐。</p>
+      <div class="sources"><span class="src-label">来源</span><a class="src" href="https://www.whpa.cn/documents/8412.html" target="_blank" rel="noopener">武汉警官职业学院 ↗</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    <b>中国防火墙厂商日报</b> · 2026-09-17<br>
+    数据来源：公开招标公告、厂商官方发布、行业媒体 · 仅保留最近 30 天内动态<br>
+    由自动化任务生成 · 已通过三重去重（URL / 标题 / 字符频次）
+  </footer>
+</div>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  },{threshold:.08, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el,i){
+    el.style.transitionDelay = (i%4)*55 + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
