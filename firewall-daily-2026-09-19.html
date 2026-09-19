@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🛡️ 中国防火墙厂商日报 · 2026-09-19</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161b; --line:#232329;
+  --tx:#EDEEF0; --tx2:#A1A6B0; --tx3:#6E7480;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+  --grad:linear-gradient(100deg,#5B6CF7 0%,#8B5CF6 52%,#EC4899 100%);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65; letter-spacing:.01em;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(760px 420px at 12% -6%, rgba(91,108,247,.16), transparent 62%),
+    radial-gradient(680px 400px at 92% 4%, rgba(236,72,153,.11), transparent 60%);
+}
+/* ===== 顶栏 ===== */
+.nav{
+  position:sticky; top:0; z-index:50; backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1220px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:15.5px;letter-spacing:.02em;display:flex;align-items:center;gap:9px}
+.logo .dot{width:8px;height:8px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px rgba(139,92,246,.9)}
+.nav-sp{flex:1}
+.nav-links{display:flex;gap:6px}
+.nav-links a{color:var(--tx2);text-decoration:none;font-size:13px;padding:6px 13px;border-radius:8px;transition:.18s}
+.nav-links a:hover{color:var(--tx);background:var(--panel2)}
+/* ===== 容器 ===== */
+.wrap{max-width:1220px;margin:0 auto;padding:0 26px 90px;position:relative;z-index:1}
+/* ===== Hero ===== */
+.hero{padding:70px 0 44px;border-bottom:1px solid var(--line)}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--tx2);
+  border:1px solid var(--line);background:var(--panel);padding:6px 13px;border-radius:100px;margin-bottom:22px
+}
+.hero .eyebrow i{width:6px;height:6px;border-radius:50%;background:#3FBF7F;display:block;box-shadow:0 0 8px #3FBF7F}
+h1{
+  font-size:clamp(30px,4.4vw,50px);font-weight:800;line-height:1.14;letter-spacing:-.02em;margin-bottom:18px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p.sub{color:var(--tx2);font-size:15.5px;max-width:760px}
+.hero .meta{margin-top:26px;display:flex;gap:34px;flex-wrap:wrap}
+.hero .meta div b{display:block;font-size:27px;font-weight:800;letter-spacing:-.01em}
+.hero .meta div span{font-size:12.5px;color:var(--tx3)}
+/* ===== AI 解读 ===== */
+.ai{
+  margin:38px 0 8px;border:1px solid var(--line);border-radius:16px;padding:26px 28px;
+  background:linear-gradient(135deg,rgba(91,108,247,.10),rgba(236,72,153,.05) 60%,transparent);
+  position:relative;overflow:hidden;
+}
+.ai::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+.ai h2{font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--tx2);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.ai p{font-size:15.5px;color:#DCDEE3}
+.ai p+p{margin-top:12px}
+.ai b{color:#fff;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+/* ===== 版块 ===== */
+.sec{margin-top:58px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;flex-wrap:wrap}
+.sec-head h2{font-size:23px;font-weight:750;letter-spacing:-.01em}
+.sec-head .cnt{font-size:12.5px;color:var(--tx3);border:1px solid var(--line);padding:3px 10px;border-radius:100px}
+.sec-head .line{flex:1;height:1px;background:var(--line);min-width:30px}
+.sec-desc{color:var(--tx3);font-size:13.5px;margin-bottom:24px}
+/* ===== 卡片 ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 21px 18px;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),border-color .22s,background .22s;
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--grad);opacity:0;transition:.25s}
+.card:hover{transform:translateY(-3px);border-color:#33333c;background:var(--panel2)}
+.card:hover::before{opacity:1}
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.idx{font-size:11px;font-weight:700;color:var(--tx3);font-variant-numeric:tabular-nums;letter-spacing:.05em}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{
+  font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;letter-spacing:.02em;
+  color:var(--tc);background:color-mix(in srgb,var(--tc) 15%,transparent);
+  border:1px solid color-mix(in srgb,var(--tc) 34%,transparent);
+}
+.date{margin-left:auto;font-size:11.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.card h3{font-size:15.5px;font-weight:680;line-height:1.45;margin-bottom:10px;letter-spacing:-.005em}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.card p b{color:#D9DBE1;font-weight:650}
+.card p i{color:var(--tx3);font-style:normal;font-size:12.4px}
+.src{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:12.3px;color:var(--tx3)}
+.src a{color:#8B5CF6;text-decoration:none;border-bottom:1px solid transparent;transition:.16s}
+.src a:hover{color:#C4B5FD;border-bottom-color:#C4B5FD}
+/* ===== 动画 ===== */
+[data-anim]{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1)}
+[data-anim].in{opacity:1;transform:none}
+/* ===== 页脚 ===== */
+footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:var(--tx3);font-size:12.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:640px){
+  .wrap,.nav-in{padding-left:18px;padding-right:18px}
+  .grid{grid-template-columns:1fr}
+  .hero{padding:46px 0 32px}
+  .hero .meta{gap:22px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="logo"><span class="dot"></span>防火墙厂商日报</div>
+    <div class="nav-sp"></div>
+    <div class="nav-links">
+      <a href="#ai">AI 解读</a>
+      <a href="#vendor">厂商动态</a>
+      <a href="#industry">行业动态</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow"><i></i>2026-09-19 · 星期六 · 网安周收官日</div>
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <p class="sub">覆盖深信服、奇安信、华为、新华三、山石网科、天融信、绿盟科技、启明星辰等主流厂商，聚合新品发布、功能更新、中标项目、市场动态、安全漏洞与行业合规六大维度。</p>
+    <div class="meta">
+      <div><b>23</b><span>今日动态总数</span></div>
+      <div><b>7</b><span>厂商动态</span></div>
+      <div><b>16</b><span>行业动态</span></div>
+      <div><b>30<span style="font-size:14px">天</span></b><span>时效窗口</span></div>
+    </div>
+  </header>
+
+  <section class="ai" id="ai">
+    <h2>🤖 AI 解读</h2>
+    <p>今天最大的看点还是<b>华为</b>——HC2026 一天之内连发《AIFW 技术白皮书》和《M-Trust 信任范式白皮书》，把 AI 防火墙的定义从「防提示词注入」正式推进到<b>「意图感知 + 策略自治」</b>：99.999% 电信级可靠性、抗量子解密、规则匹配与 AI 推理性能数量级提升，这些是硬件底座话术；真正值得记的是「防护重心从流量防护转向行为治理」这句，等于把防火墙的竞争维度从吞吐/规则库挪到了语义理解能力上。</p>
+    <p>第二个信号是<b>智能体安全的「执行前拦截」竞赛已经国际化</b>：F5 和 Netskope 在同一天（9/15）发布同类能力——在 Agent 动作真正落到生产系统之前就分类、判定、阻断，Netskope 甚至给出「91% 的组织无法在风险动作执行前阻止它」这个数字。对照国内，深信服「保护 AI」方案拿下创新创业大赛一等奖、天融信提出「三域联防」、绿盟打「模型+工具+Agent+Skills」四层——<b>国内外厂商在智能体治理上的技术路径高度趋同，差的是工程验证的深度</b>。</p>
+    <p>对做防火墙产品的人，今天最该关注的其实是<b>行业侧的采购结构变化</b>：宁波银行一次性挂出 40G/10G/千兆三档防火墙 + IPS + WAF 多标段、贵州银行 A 包把防火墙/IPS/抗D/全流量/零信任打成组合包、南山区 1548 万大单和西城区 928 万运营中心——<b>单卖盒子越来越难，卖「安全能力组合包 + 运营服务」才是主流</b>。叠加工信部第 26 批网络关键设备检测名录和三份信息清除标准实践指南落地，合规侧的门槛还在往上抬。</p>
+  </section>
+
+  <section class="sec" id="vendor">
+    <div class="sec-head">
+      <h2>🏢 厂商动态</h2><span class="cnt">7 条</span><span class="line"></span>
+    </div>
+    <p class="sec-desc">厂商产品发布、技术突破、荣誉认证与战略合作</p>
+    <div class="grid">
+    <article class="card v" data-anim>
+      <div class="card-top">
+        <span class="idx">01</span>
+        <div class="tags"><span class="tag" style="--tc:#E64545">华为</span></div>
+        <span class="date">09-17</span>
+      </div>
+      <h3>华为云发布 Agentic 安全系列新品，大模型防火墙一键接入</h3>
+      <p>华为全联接大会 2026 期间，华为云正式发布 Agentic 安全系列新品，构建 AI 原生智能安全体系，含四大核心能力：意图驱动的内生安全、可控的系统、纵深防御的安全护栏、智能共治的全域安全。针对算力恶意消耗、敏感信息泄露与合规风险推出<b>大模型防火墙</b>，安全能力一键接入、统一治理；策略层通过沙箱安全守护进程实现 Agent 行为全链路可视与高危操作拦截，并以最小权限精细化管控约束 Agent 授权边界，结合 DPU 硬件级可信防护与硬件级安全域隔离形成软硬一体内生安全。</p>
+      <div class="src">来源：<a href="https://www.toutiao.com/article/7686797450039804451" target="_blank" rel="noopener">今日头条·华为云</a></div>
+    </article>
+    <article class="card v" data-anim>
+      <div class="card-top">
+        <span class="idx">02</span>
+        <div class="tags"><span class="tag" style="--tc:#E64545">华为</span></div>
+        <span class="date">09-17</span>
+      </div>
+      <h3>华为 HC2026 发布《AIFW 技术白皮书》与《M-Trust》信任范式白皮书</h3>
+      <p>华为全联接大会 2026 网络安全论坛上，华为发布《华为 AIFW 技术白皮书》，提出新一代 AI 防火墙从「规则驱动」到「意图感知」的代际升级路径：以 AI 原生硬件、大模型与安全知识库融合，推动防护重心从流量防护向<b>行为治理</b>演进，可识别 DGA 域名、提示词注入、非法内容外发等 AI 场景特有风险；产品采用 99.999% 电信级可靠性设计，抗量子安全解密与 AI 推理性能数量级提升，并实现策略自治的「类人化」闭环。同场还发布《M-Trust：面向未来智能体网络的信任范式演进》白皮书，提出多维信任、智主信任、可扩展信任三个维度。<i>（合并 2 源）</i></p>
+      <div class="src">来源：<a href="https://it.gmw.cn/2026-09/18/content_39008567.htm" target="_blank" rel="noopener">光明网</a> · <a href="https://tech.ifeng.com/c/8wWINLIKPAf" target="_blank" rel="noopener">凤凰网科技</a></div>
+    </article>
+    <article class="card v" data-anim>
+      <div class="card-top">
+        <span class="idx">03</span>
+        <div class="tags"><span class="tag" style="--tc:#2E7CF6">深信服</span></div>
+        <span class="date">09-17</span>
+      </div>
+      <h3>深信服保护 AI 方案获 2026 中国网络安全创新创业大赛一等奖</h3>
+      <p>国家网络安全宣传周期间，2026 年中国网络安全创新创业大赛总决赛上，深信服<b>保护 AI 解决方案</b>获评一等奖。大赛由中国网络安全产业联盟与教育部网络空间安全教指委联合主办，今年进入复赛的方案超半数涉及智能体安全，且要求参评方案<b>已实际部署应用</b>。该方案将大模型内容安全与智能体的身份、权限、行动治理纳入整体框架，覆盖上线前风险评估、身份授权到运行中的意图识别与控制。此外深信服在《2026 年人工智能技术赋能网络安全应用测试结果》中于场景 1（AI 驱动攻击的网络安全智能防御）获一等奖，形成「双料第一」。</p>
+      <div class="src">来源：<a href="https://www.sangfor.com.cn/news/e3b9cab1856444c495511cac505311bf" target="_blank" rel="noopener">深信服官网</a> · <a href="https://www.jiemian.com/article/15111618.html" target="_blank" rel="noopener">界面新闻</a></div>
+    </article>
+    <article class="card v" data-anim>
+      <div class="card-top">
+        <span class="idx">04</span>
+        <div class="tags"><span class="tag" style="--tc:#2E7CF6">深信服</span></div>
+        <span class="date">09-14</span>
+      </div>
+      <h3>深信服亮相 MAIC 2026 医学人工智能大会，展示 AI 安全全链路方案</h3>
+      <p>9 月 14—17 日第二届医学人工智能大会（MAIC 2nd 2026）在重庆举行，深信服从「AI 构建」「AI 承载」「AI 安全」三个维度展示医疗 AI 全旅程解决方案。AI 安全展区基于「<b>AI 保护 AI</b>」理念，提供 AI 安全运营中心与保护 AI 方案，覆盖智能体从上线检测到运营管理的安全闭环；AI 承载侧以 AI 算力管理平台纳管多元算力与模型服务，配合 AI 时代超融合与统一存储双引擎承载传统及 AI 业务。</p>
+      <div class="src">来源：<a href="https://www.sangfor.com.cn/news/029eae8ba96047b9940283023a976d83" target="_blank" rel="noopener">深信服官网</a></div>
+    </article>
+    <article class="card v" data-anim>
+      <div class="card-top">
+        <span class="idx">05</span>
+        <div class="tags"><span class="tag" style="--tc:#00A9A5">奇安信</span></div>
+        <span class="date">09-11</span>
+      </div>
+      <h3>奇安信与北京数据集团签署战略合作，共筑数据要素安全底座</h3>
+      <p>2026 年中国国际服务贸易交易会期间，奇安信与北京数据集团正式达成战略合作，北京数据集团与奇安信、华为、腾讯云、海天瑞声等 11 家企业集中签署协议，覆盖<b>数据安全、算力基建、人工智能</b>等关键领域。双方将围绕数据安全治理体系建设、数据要素安全流通、可信数据空间、隐私计算等方向开展合作，把数据安全治理能力与国家重大活动安全保障经验融入北京数据要素产业生态建设。</p>
+      <div class="src">来源：<a href="https://www.qianxin.com/news/detail?news_id=15349" target="_blank" rel="noopener">奇安信官网</a></div>
+    </article>
+    <article class="card v" data-anim>
+      <div class="card-top">
+        <span class="idx">06</span>
+        <div class="tags"><span class="tag" style="--tc:#3FBF7F">绿盟</span></div>
+        <span class="date">09-16</span>
+      </div>
+      <h3>绿盟科技网安周斩获多项权威荣誉，智秩战队获大模型安全众测优秀团队</h3>
+      <p>网安周期间绿盟科技多项权威荣誉落地：获授<b>第十一届 CNCERT 网络安全应急服务甲级支撑单位</b>；在漏洞治理领域获 2026 年度 CNNVD 基础软硬件漏洞报送优秀企业、CNNVD 协同软硬件漏洞管理优秀企业，并获评 CNVD 2025 年度漏洞信息报送突出贡献单位与漏洞应急工作突出贡献单位、CCTGA 优秀成员单位、中国反网络病毒联盟杰出工作单位。在 CNCERT「2026 年人工智能大模型安全众测」中（含 15 个开源大模型、24 个大模型应用、19 个智能体应用），绿盟「<b>智秩战队</b>」获优秀测试团队，安全研究员顾佳伟获优秀白帽子；公司还深度参与《网络安全数据集 1.0》编撰。<i>（合并 2 源）</i></p>
+      <div class="src">来源：<a href="https://www.toutiao.com/article/7686120039509983784/" target="_blank" rel="noopener">今日头条·绿盟科技</a> · <a href="https://www.toutiao.com/article/7685932813962478080/" target="_blank" rel="noopener">今日头条·绿盟科技</a></div>
+    </article>
+    <article class="card v" data-anim>
+      <div class="card-top">
+        <span class="idx">07</span>
+        <div class="tags"><span class="tag" style="--tc:#8A8F98">其他</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>F5 与 Netskope 同日发布 AI 智能体安全新品，治理焦点转向「执行前拦截」</h3>
+      <p>国际厂商在同一天加码智能体安全：<b>F5</b> 发布 Workforce AI Security，在 F5 AI 安全平台内以无端点客户端方式，对员工 AI 使用与 Agent 代表用户执行的动作提供可见性与策略控制，可在执行前检查并分类跨 MCP 服务器的工具调用；<b>Netskope</b> 发布 Skylight Agent Action Control，将每个 Agent 动作在执行前分类为九类意图（访问控制变更、配置变更、凭证操作、数据销毁、基础设施置备、潜在数据外泄、远程代码执行、源码变更等），并按风险等级阻断。Netskope 引用数据称 91% 的组织无法在风险动作执行前阻止它，54% 在过去一年报告过 AI 智能体安全事件。<i>（合并 2 源）</i></p>
+      <div class="src">来源：<a href="https://finance.yahoo.com/technology/ai/articles/f5-expands-ai-security-platform-031800745.html" target="_blank" rel="noopener">Yahoo Finance·F5</a> · <a href="https://www.netskope.com/pt/press-releases/netskope-enables-security-teams-to-stop-risky-ai-agent-actions-before-they-execute" target="_blank" rel="noopener">Netskope 官网</a></div>
+    </article></div>
+  </section>
+
+  <section class="sec" id="industry">
+    <div class="sec-head">
+      <h2>🏭 行业动态</h2><span class="cnt">16 条</span><span class="line"></span>
+    </div>
+    <p class="sec-desc">政府 / 金融 / 运营商 / 军队 / 教育 / 医疗等行业防火墙相关采购中标、合规与标准动态</p>
+    <div class="grid">
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">01</span>
+        <div class="tags"><span class="tag" style="--tc:#5B6CF7">政府</span></div>
+        <span class="date">09-17</span>
+      </div>
+      <h3>北京西城区网络安全运营与指挥中心项目 928.16 万元：奇安信网神中标</h3>
+      <p>北京市西城区数据局「2026 年西城区网络安全运营与指挥中心项目」公示中标结果，<b>奇安信网神信息技术（北京）股份有限公司</b>以 928.16 万元中标，综合评分 91.69 分，合同履行期限 8 个月。</p>
+      <div class="src">来源：<a href="https://ggzyfw.beijing.gov.cn/jyxxzbjggg/20260917/5716310.html" target="_blank" rel="noopener">北京市公共资源交易服务平台</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">02</span>
+        <div class="tags"><span class="tag" style="--tc:#5B6CF7">政府</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>深圳南山区网络安全基础设施提升工程 1548.245 万元：联通深圳中标</h3>
+      <p>深圳市南山区政务服务和数据管理局「南山区网络安全基础设施提升工程」公布中标结果，<b>中国联合网络通信有限公司深圳市分公司</b>以 1548.245 万元中标，主要标的含深信服 AD-1000-GA118 反向代理设备等。</p>
+      <div class="src">来源：<a href="http://zfcg.szggzy.com:8081/gsgg/002001/002001004/002001004001/20260915/b878c9dc-2af5-4754-a15c-0a256b9d6b28.html" target="_blank" rel="noopener">深圳政府采购</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">03</span>
+        <div class="tags"><span class="tag" style="--tc:#5B6CF7">政府</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>平凉公安交管数据跨网传输边界及安全加固项目 428.29 万元：网御星云设备为主</h3>
+      <p>甘肃平凉公安交管数据跨网传输边界及安全加固项目（二次）中标结果公布，联通数字科技有限公司甘肃省分公司以 <b>428.29 万元</b>中标。清单含网御星云万兆防火墙 Power V6000-FWG7000A、千兆入侵防御/入侵检测、视频安全接入系统、网络隔离与信息交换系统、吉大正元可信边界网关、海康威视综合安防管理平台等。</p>
+      <div class="src">来源：<a href="http://125.74.7.179/upload/article/0490ca52-dc53-4a67-8b47-ca61b28f6ed6.pdf" target="_blank" rel="noopener">平凉公共资源交易</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">04</span>
+        <div class="tags"><span class="tag" style="--tc:#5B6CF7">政府</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>泰兴市人民法院「一张网」国产化网络安全设备替代升级 209.8 万元成交</h3>
+      <p>泰兴市人民法院（机关）「一张网」国产化网络安全设备替代升级项目成交，江苏微讯达网络科技有限公司以 <b>209.8 万元</b>中标（评审报价 167.84 万元），品目为防火墙类设备，属政法系统国产化替代典型项目。</p>
+      <div class="src">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg//cjgg/202609/t20260915_27331790.htm" target="_blank" rel="noopener">中国政府采购网</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">05</span>
+        <div class="tags"><span class="tag" style="--tc:#EC4899">金融</span></div>
+        <span class="date">09-14</span>
+      </div>
+      <h3>宁波银行 2026 年第五批设备（网络设备）采购：防火墙/IPS/WAF 多标段公开招标</h3>
+      <p>宁波银行启动 2026 年第五批设备（网络设备）采购公开招标，防火墙类含：40G 防火墙 4 套（限价 147.66 万，华为/华三/迪普/天融信）、10G 防火墙 6 套（86.24 万）、千兆防火墙 4 套（36.08 万，华三/天融信）、IPS 2 套（绿盟/天融信）、WAF 4 套（安恒/绿盟）、国产负载 12 套（深信服/迪普/弘积），另有华为、华三交换机及模块标段。要求 2023 年以来有金融机构同类案例。</p>
+      <div class="src">来源：<a href="https://ygcg.nbcqjy.org/detail?bulletinId=0289f870-e3b3-4818-9488-d27585b43472" target="_blank" rel="noopener">宁波阳光采购服务平台</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">06</span>
+        <div class="tags"><span class="tag" style="--tc:#EC4899">金融</span></div>
+        <span class="date">09-16</span>
+      </div>
+      <h3>贵州银行 2026—2027 年生产网信息安全设备采购 A 包中标：神州新桥拿下安全防护类</h3>
+      <p>贵州银行信息安全设备采购项目 A 包（安全防护类）中标结果公示，<b>北京神州新桥科技有限公司</b>中标，明细为：防火墙 01 29.48 万元、防火墙 02 14.24 万元、入侵防御 25.86 万元、入侵检测 28.49 万元、抗拒绝服务攻击 27.33 万元、全流量威胁检测 99.25 万元、零信任安全 20.68 万元。</p>
+      <div class="src">来源：<a href="https://ggzy.guizhou.gov.cn/tradeInfo/detailHtml?metaId=1260081279261609984" target="_blank" rel="noopener">贵州省公共资源交易云</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">07</span>
+        <div class="tags"><span class="tag" style="--tc:#EC4899">金融</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>合肥科技农村商业银行网络安全设备采购 47.8 万元公开招标</h3>
+      <p>合肥科技农村商业银行网络安全设备采购公开招标，合同估算价 <b>47.8 万元</b>，招标范围含路由器、交换机、<b>防火墙</b>产品，投标截止 2026 年 10 月 9 日。</p>
+      <div class="src">来源：<a href="https://www.huiyicai.cn/qybfront/jyxx/001005/001005002/001005002006/20260915/6413e335-b02c-482f-a02b-c59dc6c47094.html" target="_blank" rel="noopener">徽易采</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">08</span>
+        <div class="tags"><span class="tag" style="--tc:#3FBF7F">教育</span></div>
+        <span class="date">09-18</span>
+      </div>
+      <h3>宁波北仑区教育城域网安全设备升级改造 121.56 万元：移动联合体中标</h3>
+      <p>宁波市北仑区教育局「北仑区教育城域网安全设备升级和改造项目（2026 年电子政务项目）」中标结果公布，中国移动浙江宁波分公司与北仑区数据投资发展有限公司组成的联合体以 <b>121.56 万元</b>中标。主要标的含<b>深信服</b>网络安全防火墙与终端安全管理系统、新华三跨境 VPN 监控系统、派网互联网应用交付网关与上网行为日志平台。</p>
+      <div class="src">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260918_27355363.htm" target="_blank" rel="noopener">中国政府采购网</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">09</span>
+        <div class="tags"><span class="tag" style="--tc:#3FBF7F">教育</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>河套学院教学科研设备更新（人工智能方向）583.05 万元：深信服+华为+新华三组合</h3>
+      <p>河套学院教学科研设备更新项目（人工智能方向）中标，内蒙古世和智能科技有限公司以 <b>583.05 万元</b>中标。安全与网络清单含<b>深信服</b> AF-2000-FH3220B-F5 防火墙、OSM 堡垒机、aTrust 零信任、数据库审计与风险控制，<b>华为</b> NetEngine 8000E M8 路由器与 S12700H-8 核心交换机，<b>新华三</b> UniStor 备份一体机、S10506X-G 核心交换机与 9 台超融合一体机。</p>
+      <div class="src">来源：<a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260915_27331104.htm" target="_blank" rel="noopener">中国政府采购网</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">10</span>
+        <div class="tags"><span class="tag" style="--tc:#00A9A5">医疗</span></div>
+        <span class="date">09-14</span>
+      </div>
+      <h3>简阳市人民医院内网防火墙及边界防火墙采购 109.8 万元</h3>
+      <p>四川简阳市人民医院内网防火墙及边界防火墙采购项目中标结果公布，中标金额 <b>109.8 万元</b>（预算 116 万元、最高限价 114 万元），共 4 家投标人递交投标文件。</p>
+      <div class="src">来源：<a href="https://bid.10huan.com/2026/zb/0914/zb1789374298333591.html" target="_blank" rel="noopener">十环招标网</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">11</span>
+        <div class="tags"><span class="tag" style="--tc:#00A9A5">医疗</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>宁夏宁东医院信息化建设硬件设备采购 205.8 万元：联通银川中标</h3>
+      <p>宁夏回族自治区宁东医院信息化建设硬件设备采购项目中标公告发布，中国联合网络通信有限公司银川市分公司以 <b>205.8 万元</b>中标。</p>
+      <div class="src">来源：<a href="http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202609/t20260915_27329393.htm" target="_blank" rel="noopener">中国政府采购网</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">12</span>
+        <div class="tags"><span class="tag" style="--tc:#F5A623">运营商</span></div>
+        <span class="date">09-17</span>
+      </div>
+      <h3>中国联通兰州榆中县融媒体中心机房网络安全集成服务 21.96 万元（第二次）</h3>
+      <p>中国联通兰州市分公司榆中县融媒体中心白虎山机房网络安全集成服务项目发布第二次询比公告，预算 21.96 万元（不含税），设备含<b>防火墙 2 台</b>、日志审计 1 台、终端杀毒 1 套、主机 1 台，并含物理环境整改与二级等保测评服务 2 套，最高限价 20.86 万元。</p>
+      <div class="src">来源：<a href="https://www.gsei.com.cn/html/1336/2026-09-17/content-702761.html" target="_blank" rel="noopener">甘肃经济信息网</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">13</span>
+        <div class="tags"><span class="tag" style="--tc:#8A8F98">其他</span></div>
+        <span class="date">09-15</span>
+      </div>
+      <h3>中国科学院计算机网络信息中心数据通信网络安全设备采购 835.76 万元</h3>
+      <p>中国科学院计算机网络信息中心「人机物融合信息基础设施创新与试验平台」数据通信网络安全设备采购中标，北京中科辰极系统有限公司以 <b>835.76 万元</b>中标。清单含远江盛邦 RayFW-Q9105A 防火墙 6 台（单价 76.4 万）、安恒 DAS-APT-80000/50000 入侵检测、<b>华为</b> HiSecEngine IPS12000-H6 交流主机 2 台与 SecoManager 安全控制器。</p>
+      <div class="src">来源：<a href="https://www.sohu.com/a/1077370703_122434053" target="_blank" rel="noopener">搜狐</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">14</span>
+        <div class="tags"><span class="tag" style="--tc:#8A8F98">其他</span></div>
+        <span class="date">09-17</span>
+      </div>
+      <h3>工信部公布网络关键设备安全检测结果（第 26 批）</h3>
+      <p>工业和信息化部网络安全管理局公布《网络关键设备安全检测结果（第 26 批）》，依据 GB 40050-2021《网络关键设备安全通用要求》强制性国家标准，经具备资格的机构检测符合要求的核心路由器等设备予以公布，涉及瞻博网络、<b>华为</b> NetEngine 8000E M1D、中兴 ZXR10 6800-10X、思科 8101-32FH-O 等型号及其检测报告编号与有效期。</p>
+      <div class="src">来源：<a href="https://www.miit.gov.cn/xwfb/gxdt/sjdt/art/2026/art_f05cd19e57c04478affadfc16f2cacca.html" target="_blank" rel="noopener">工业和信息化部</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">15</span>
+        <div class="tags"><span class="tag" style="--tc:#8A8F98">其他</span></div>
+        <span class="date">09-17</span>
+      </div>
+      <h3>三项网络安全标准实践指南发布：配套电子产品信息清除强制性国标</h3>
+      <p>9 月 15 日在济南举办的 2026 年国家网络安全宣传周电子产品信息清除分论坛上，《半导体存储介质块擦除技术指引》《电子产品回收过程中的信息清除管理指引》《移动智能终端信息清除技术指引》3 项网络安全标准实践指南正式发布，用于配套 <b>GB 46864-2025《数据安全技术 电子产品信息清除技术要求》强制性国家标准</b>落地实施。指南由全国网安标委秘书处组织 30 余家存储芯片厂商、电子产品制造商、回收经营者及第三方机构编制，分别明确块擦除实现方法与操作指令、信息清除日志格式与标识样式、移动终端清除方法与验证要求。</p>
+      <div class="src">来源：<a href="https://www.cac.gov.cn/2026-09/17/c_1791397055656100.htm" target="_blank" rel="noopener">中央网信办</a></div>
+    </article>
+    <article class="card i" data-anim>
+      <div class="card-top">
+        <span class="idx">16</span>
+        <div class="tags"><span class="tag" style="--tc:#E64545">军队</span></div>
+        <span class="date">09-16</span>
+      </div>
+      <h3>外科大楼网络设备更换（二次）2026-JQ06-W1089：荣联科技预中标</h3>
+      <p>军队采购网发布「外科大楼网络设备更换（二次）」中标（成交）结果公示，项目编号 2026-JQ06-W1089，预中标供应商为<b>荣联科技集团股份有限公司</b>，第二、三名为万泽时代科技与北京博瑞创通科技，采购机构位于北京海淀。</p>
+      <div class="src">来源：<a href="https://www.ebnew.com/businessShow/709938641.html" target="_blank" rel="noopener">必联网</a></div>
+    </article></div>
+  </section>
+
+  <footer>
+    <span>数据来源：公开招标公告、厂商官方发布与主流媒体报道 · 时效窗口 30 天</span>
+    <span>生成时间 2026-09-19 · 自动日报系统</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('[data-anim]');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        var el=en.target;
+        var i=Array.prototype.indexOf.call(el.parentNode.children,el);
+        setTimeout(function(){el.classList.add('in')},Math.min(i,10)*55);
+        io.unobserve(el);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
