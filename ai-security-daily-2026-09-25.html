@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-09-25</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --line:#1f2937; --line2:#26334a;
+  --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--txt); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; letter-spacing:.01em;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+                   radial-gradient(800px 460px at 88% 2%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+
+/* Hero */
+.hero{padding:66px 0 34px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c7d2fe;background:rgba(91,108,247,.12);
+  border:1px solid rgba(139,92,246,.34);border-radius:999px;
+  padding:6px 15px;margin-bottom:20px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--g3);display:block;
+  box-shadow:0 0 0 4px rgba(236,72,153,.18)}
+h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.hero .date{color:var(--txt2);font-size:15px}
+.hero .date b{color:var(--txt);font-weight:600}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{
+  min-width:132px;padding:16px 20px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.6));
+  border:1px solid var(--line);
+}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.25}
+.stat .l{font-size:12.5px;color:var(--txt2);margin-top:2px}
+
+/* Overview */
+.overview{
+  margin:34px 0 8px;padding:26px 28px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(91,108,247,.13),rgba(139,92,246,.07) 45%,rgba(236,72,153,.07));
+  border:1px solid var(--line2);
+}
+.overview h2{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.overview h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--g2);
+  box-shadow:0 0 12px rgba(139,92,246,.9)}
+.overview p{color:#d1d5db;font-size:15px}
+.overview b{color:#fff;font-weight:600}
+
+/* Sections */
+.sec{margin-top:56px}
+.sec-head{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sec-icon{font-size:22px}
+.count{font-size:12px;font-weight:600;color:#a5b4fc;background:rgba(91,108,247,.14);
+  border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:2px 10px}
+.sec-sub{color:var(--txt3);font-size:13px;margin-top:7px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 21px 17px;position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-3px);border-color:#334155;
+  box-shadow:0 16px 34px -18px rgba(0,0,0,.85)}
+.card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:7px;white-space:nowrap;line-height:1.5}
+.tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.34);
+  font-weight:600}
+.tag-cat{color:#a7f3d0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.26)}
+.level{margin-left:auto;font-size:12.5px;letter-spacing:1px;flex-shrink:0}
+.merged{font-size:11px;color:var(--txt3);border:1px solid var(--line);border-radius:6px;
+  padding:2px 7px;white-space:nowrap}
+
+.card-title{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:11px;color:#f3f4f6;
+  letter-spacing:-.005em}
+.card-body{font-size:14px;color:#b6bec9;line-height:1.85}
+.card-body b{color:#f0f2f5;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(139,92,246,.22) 62%);padding:0 1px}
+
+.card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src{font-size:12px;color:var(--txt3);line-height:1.9}
+.src a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.32);
+  transition:color .2s,border-color .2s}
+.src a:hover{color:#e9d5ff;border-color:#e9d5ff}
+
+/* Trend */
+.trend{margin-top:58px;padding:28px 30px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(17,24,39,.9),rgba(10,10,10,.6));
+  border:1px solid var(--line2)}
+.trend h2{font-size:19px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.trend-item{padding:15px 0;border-bottom:1px dashed var(--line)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-item h4{font-size:15px;color:#e9d5ff;margin-bottom:6px;font-weight:600}
+.trend-item p{font-size:13.5px;color:#a9b1bd;line-height:1.85}
+.trend-item b{color:#f0f2f5}
+
+footer{margin-top:46px;text-align:center;color:var(--txt3);font-size:12.5px;line-height:2}
+footer .sep{display:inline-block;width:34px;height:2px;border-radius:2px;margin:0 8px;
+  background:linear-gradient(90deg,var(--g1),var(--g3));vertical-align:middle}
+
+/* Animation */
+.anim{opacity:0;transform:translateY(26px)}
+.anim.in{opacity:1;transform:none;
+  transition:opacity .72s cubic-bezier(.2,.7,.3,1),transform .72s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d,0ms)}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px}
+  .hero{padding:44px 0 24px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .overview,.trend{padding:20px 18px}
+  .card{padding:17px 16px 14px}
+  .stat{min-width:calc(50% - 6px);padding:13px 14px}
+  .stat .n{font-size:23px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="badge"><i></i>AI Security Daily</div>
+    <h1>🤖 AI 安全日报</h1>
+    <div class="date">2026年9月25日 · 星期五 · 覆盖国际友商 / 国内友商 / 行业动态</div>
+    <div class="stats">
+      <div class="stat"><span class="n">7</span><div class="l">🏢 国际产品动态</div></div>
+      <div class="stat"><span class="n">3</span><div class="l">🇨🇳 国内产品动态</div></div>
+      <div class="stat"><span class="n">13</span><div class="l">📊 行业动态与趋势</div></div>
+      <div class="stat"><span class="n">23</span><div class="l">📌 今日动态总数</div></div>
+    </div>
+  </header>
+
+  <section class="overview anim">
+    <h2><span class="dot"></span>AI 总览</h2>
+    <p>今天最值得记住的一条是<b>行业标准开始由厂商自己写</b>：Google、OpenAI、Anthropic 正联手筹建 SAFA「前沿人工智能标准管理局」，目标年底或 2027 年初启动——因为原计划「行业自律 + 政府监督」在特朗普政府内部受阻、国会中期选举前又难成 AI 立法，三家索性转向<b>独立于政府运作</b>，把第三方部署前测试、事件报告规则、自愿承诺转化为执行标准、审计机构资格认定这四件事自己定下来。与之配套的另一条暗线是<b>「管智能体做错事」成为共识</b>：奇安信齐向东说「智能体自主攻击已经发生，要划红线设笼子」，而产品侧同一天就有 Abnormal AI 把「AI Agent Security」做进套件、SentinelOne 把狩猎推到云控制面、Gurucul 的检测覆盖全部 16 个 MITRE ATLAS 战术、PANW 把模型扫描做成可被其他 Agent 调用的 A2A Agent。第二个主线是<b>攻击面继续从模型搬到管道</b>：ServiceNow AI Platform 两个授权绕过（最高 CVSS 9.3）与 Langflow CVE-2026-9198 未认证 RCE（CVSS 9.8，已进 CISA KEV）的触发条件都是<b>出厂默认配置</b>——前者是管理平台授权缺失，后者是 auto_login 默认开着、代码直接进 exec() 无沙箱；同时 MemTensor 的 npm/PyPI 恶意包把窃取点设在「记忆召回」和「日志 hook」这种最不容易被察觉的位置。产品侧还有一条清流：<b>SecEdge 给模型发密码学「护照」</b>，把模型来源与完整性验证做成可流转、可离线校验的凭证。资本层面，<b>Island 以 64 亿美元估值完成 4 亿美元 F 轮</b>，Gartner 则把「securing AI」认定为唯一在 2030 年前持续加速的安全品类、2029 年将成企业安全最大单项支出。一句话：<b>标准在被厂商抢先写，攻击在被默认配置养大，而钱正在从传统安全重新分配到 AI 安全。</b></p>
+  </section>
+
+  <section class="sec"><div class="sec-head anim"><h2><span class="sec-icon">🏢</span>国际友商产品动态<span class="count">7 条</span></h2><div class="sec-sub">只收录可明确追溯到「某厂商某产品的某功能/版本变化」的条目</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Abnormal AI</span><span class="tag tag-cat">AI 安全治理 / 智能体安全</span><span class="level">🔥🔥🔥</span><span class="merged">合并 2 源</span></div><h3 class="card-title">Abnormal AI 扩展 AI Security 套件：治理正式可用，四款新品补齐智能体与云</h3><div class="card-body">9 月 24 日，Abnormal AI 发布其 AI Security 套件的完整版图，围绕企业 AI 落地衍生的五类安全需求组织：<b>AI Governance 即日全面可用</b>（发现并理解全企业范围内的 AI 使用，含合规与非合规应用，评估应用、掌握采用率、建立策略、看清 AI 相关支出、留存治理与审计证据），<b>AI Cloud Security</b> 把行为检测延伸到云环境以阻断 AI 驱动的云泄露，另有三款新品：<b>AI Employee Guardrails</b>（在使用点施加策略、实时引导或阻断有安全与数据风险的行为）、<b>AI Agent Security</b>（识别并监控一方与第三方 AI 智能体，把智能体与身份、系统、权限、资源关联后监控其异常行为）、<b>AI Security Workbench</b>（面向安全工程师的调查环境，AI 辅助调查分析、发现值得深挖的模式、开发新的检测与响应流程）。核心主张是「<b>不只管智能体被允许做什么，而看它实际怎么做</b>」——CEO Evan Reiser 称企业需要「一个同时看懂员工、智能体与云基础设施行为的平台」。可用性：AI Governance 即日 GA，可通过 Abnormal AI App Store 激活；其余四款处于私有预览，计划 2026 年 Q4 GA。Abnormal 称其客户覆盖 30% 的《财富》500 强。</div><div class="card-foot"><div class="src">🔗 <a href="https://abnormal.ai/newsroom/press-releases/abnormal-ai-expands-its-ai-security-suite" target="_blank" rel="noopener">Abnormal AI 官方新闻稿</a> · <a href="https://cyber.netsecops.io/stix-viz/cybersecurity-vendors-launch-tools-to-combat-shadow-ai" target="_blank" rel="noopener">NetSecOps 综述</a></div></div></article><article class="card anim" style="--d:55ms"><div class="card-top"><span class="tag tag-vendor">SentinelOne</span><span class="tag tag-cat">AI+人威胁狩猎 / 云控制面</span><span class="level">🔥🔥</span></div><h3 class="card-title">SentinelOne Wayfinder 威胁狩猎延伸至 AWS、Azure、Google Cloud 控制面</h3><div class="card-body">9 月 24 日，SentinelOne 宣布把 <b>Wayfinder Threat Hunting</b> 从端点、身份（Okta / Microsoft Entra ID）进一步扩展到三大公有云的控制面，即日面向所有现有 Wayfinder 客户开放。覆盖范围包括<b>云控制面滥用、IAM 提权、未授权访问与数据外泄</b>；具体狩猎项含 IAM 用户枚举、S3 桶侦察、root 账户登录、AKS cluster-admin 凭据访问、可疑 IAM 策略变更、AMI 注销、遥测销毁、跨租户委派变更。每项狩猎都使用 SentinelOne 与 Google Threat Intelligence 双方的威胁情报与入侵发现，指标与行为规则映射到 MITRE ATT&amp;CK，发现结果附 Purple AI 摘要便于分诊。SentinelOne 首席客户官 Steve Stone 指出攻击者已经学会「通往组织数据最快、最容易的路往往是云控制面」，而云上横向移动常常不留传统日志痕迹。启用方式沿用各云厂商既有的 Singularity Marketplace 插件；已用 Wayfinder 覆盖 Entra ID 的客户在 Azure 侧无需额外配置。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.sentinelone.com/press/sentinelone-extends-wayfinder-threat-huntings-continuous-coverage-to-aws-azure-and-google-cloud/" target="_blank" rel="noopener">SentinelOne 官方新闻稿</a></div></div></article><article class="card anim" style="--d:110ms"><div class="card-top"><span class="tag tag-vendor">Gurucul</span><span class="tag tag-cat">AI 风险检测响应 / UEBA</span><span class="level">🔥🔥</span></div><h3 class="card-title">Gurucul AI Risk and Response 正式可用：检测覆盖全部 16 个 MITRE ATLAS 战术</h3><div class="card-body">9 月 24 日，Gurucul 宣布 <b>AI Risk and Response</b> 全面可用，把行为 AI 用到「AI 从助手变成行为主体」所产生的新攻击面上；同时 <b>AI Prevention</b> 进入预览，可在使用点阻断选定的高风险 AI 交互。产品提供数百条 AI 检测，映射到<b>全部 16 个 MITRE ATLAS 战术与 OWASP LLM Top 10</b>，把 AI 平台数据（Anthropic Claude、Gemini Enterprise Agent Platform、Google Gemini、OpenAI ChatGPT、Azure AI Foundry Inventory、Microsoft 365 Copilot）与既有的代理、EDR、身份、操作系统与云遥测合并，回答「谁或什么在行动、用了什么身份与权限、碰到了哪些数据与系统、行为如何随时间变化」。Gurucul 把用户与自主智能体都当作持久化实体分析，用于揭示影子 AI、过度授权与新兴行为风险，并配套现成的 playbook 与既有控制措施。官方还提供基于真实数据的免费 AI 风险评估报告。定位差异是「不同于孤立的 AI 网关等点状方案，提供更广的企业级 AI 风险行为视图」。</div><div class="card-foot"><div class="src">🔗 <a href="https://techintelpro.com/pressreleases/gurucul-launches-ai-risk-and-response-to-detect-and-stop-risky-ai-behavior-before-it-escalates" target="_blank" rel="noopener">TechIntelPro 新闻稿</a></div></div></article><article class="card anim" style="--d:165ms"><div class="card-top"><span class="tag tag-vendor">Submersion AI</span><span class="tag tag-cat">安全专用模型 / 漏洞发现</span><span class="level">🔥🔥</span></div><h3 class="card-title">Submersion AI 发布 Basin：CyberGym 全球前十的专用网络安全模型</h3><div class="card-body">9 月 24 日，美国 Submersion AI 发布 <b>Basin</b>——一个在 CyberGym（公认的 AI 漏洞发现基准）上进入<b>全球前十</b>的专用网络安全模型，与来自 OpenAI、Anthropic、DeepSeek、智谱、xAI 的模型同列，但<b>体量与成本只有它们的零头</b>。Basin 已被用于发现并验证广泛使用软件中此前未知的高危与中危漏洞，其中数个已公开分配 CVE 并署名 Submersion.ai 安全研究团队。官方给出的现实动因很直白：前沿托管模型<b>以使用政策限制安全测试工作流</b>，也无法部署在最敏感系统所在的位置；与此同时，把开源模型安全控制剥离的工具广泛流传——结果就是<b>资源充足的攻击者拿得到的能力，防守方反而拿不到</b>。Basin 由自研的 cyber reasoning 基础设施驱动，采用先进预训练与后训练加定制数据管线，定位是「让防守方获得与攻击者同等的能力」，并设计为可快速迭代提升。</div><div class="card-foot"><div class="src">🔗 <a href="https://vuink.com/post/fhozrefvba-d-dnv/news/basin-cybergym-ranking" target="_blank" rel="noopener">Vuink 新闻稿转载</a></div></div></article><article class="card anim" style="--d:220ms"><div class="card-top"><span class="tag tag-vendor">SecEdge</span><span class="tag tag-cat">模型供应链安全 / 模型来源验证</span><span class="level">🔥🔥</span></div><h3 class="card-title">SecEdge 发布 AI-PASSPORT：给每个 AI 模型一张可验证的密码学「护照」</h3><div class="card-body">9 月 23 日，SecEdge 在 Embedded World North America 2026 上发布 <b>AI-PASSPORT</b>，为 AI 模型提供可验证的<b>身份、来源与完整性</b>凭证，用以对抗后门模型、投毒模型与被仿冒后重新分发的模型。凭证随模型一同流转，<b>验证过程无需暴露或检查模型内容</b>，开发者、部署方与审计方可快速确认「这是不是被批准的那个版本、是否来自预期来源、签名之后有没有被改过」。官方把开源 AI 称作「AI 时代的软件供应链难题」：缺少可信来源信息时，攻击者可修改、投毒或冒充分发广泛的模型并以「正版发布」的名义重新分发，产生难以察觉的伪造 AI。演示在 NVIDIA Jetson Thor 上使用 NVIDIA Nemotron 系列开源模型、于 NVIDIA Robotics Lab 现场进行；SecEdge 是面向 Physical AI 的全栈功能安全架构的一部分，该架构核心是 NVIDIA Halos AI Systems Inspection Lab（全球首个经 ANAB 认可的 AI 与功能安全检验项目）。CEO Sami Nassar 称「AI 模型从数据中心走向边缘算力与边缘设备后，知道自己在跑哪个模型、从哪来、有没有被动过，已经从加分项变成安全与合规要求」。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.secedge.com/news/secedge-launches-ai-passport-to-combat-the-growing-threat-of-backdoored-ai-models" target="_blank" rel="noopener">SecEdge 官方新闻稿</a></div></div></article><article class="card anim" style="--d:275ms"><div class="card-top"><span class="tag tag-vendor">Palo Alto Networks</span><span class="tag tag-cat">AI 运行时安全 / AI-SPM / 模型治理</span><span class="level">🔥🔥</span></div><h3 class="card-title">PANW Prisma AIRS 接入 Google Cloud Agent Gateway，模型扫描 Agent 上架云市场</h3><div class="card-body">9 月 24 日，Palo Alto Networks 披露其 <b>Prisma AIRS 运行时安全</b>与 <b>Google Cloud Agent Gateway</b>（Gemini Enterprise Agent Platform 组件）的集成：通过在网关上添加一个 service extension，即可把<b>全部 MCP 工具调用与响应</b>送往 Prisma AIRS API 检查，官方称秋季将进一步扩展到扫描 Gemini Enterprise Agent Platform 智能体的全部用户输入与输出。产品负责人 Spencer Thellmann 强调 MCP 连接是双向暴露——敏感凭据可能随智能体请求外泄，被攻陷的 MCP 服务器也可能在工具描述里返回恶意链接、恶意软件或间接提示注入，「<b>今天合法的服务器，明天可能就不合法了</b>」。另一条动作是把模型扫描服务打包成 <b>Agent 上架 Google Cloud Marketplace</b>：基于 A2A card 构建，其他智能体可直接与它对话——如果某个智能体负责从互联网拉取模型并送进推理服务，它可以<b>先把模型送去扫描 Agent 取回策略裁决，再继续工作流</b>，把安全从事后人工审查变成机器对机器的自动化环节。Thellmann 的核心判断是「不能把智能体当聊天机器人对待：自主性、记忆与工具调用让它们强大，也让它们危险」。</div><div class="card-foot"><div class="src">🔗 <a href="https://aventure.vc/news/2026-09-24-palo-alto-networks-tackles-the-risks-of-autonomous-ai-agents" target="_blank" rel="noopener">aVenture / theCUBE 专访</a></div></div></article><article class="card anim" style="--d:330ms"><div class="card-top"><span class="tag tag-vendor">Airties</span><span class="tag tag-cat">边缘 / IoT AI 安全</span><span class="level">🔥</span></div><h3 class="card-title">Airties 把 AI 驱动网络安全塞进路由器，并预告 Agentic Shield</h3><div class="card-body">9 月 24 日，Airties 在其 Connectivity Experience Management Platform 中集成网络安全能力，<b>把路由器变成一层额外的安全防线</b>，让 ISP 无需用户安装任何软件即可为全部联网设备提供保护。分两层：<b>大众市场基线安全</b>（路由器级恶意网站拦截、内容过滤、家长控制、广告与追踪器拦截，跨 Wi-Fi 与移动网络一致生效）与<b>高级安全</b>（路由器与 Smart IoT 保护、AI 驱动威胁检测与修复、端口扫描检测、暴力破解防护、面向无头设备的流量异常与 Botnet C&amp;C 检测、感染设备阻断或隔离、面向 SMB 的以太网口封锁与按 SSID 的网络分段）。Airties 给出的背景数据是：家庭平均每天遭遇 <b>29 次网络攻击，接近 2024 年的三倍</b>；80% 消费者期待 ISP 提供防护服务；86% 的中小企业把网络安全风险列为重大关切。官方还预告 <b>Airties Agentic Shield</b>，专门针对家庭与企业中使用 AI 智能体所产生的新边界做加固——即把「智能体带来的攻击面」提前纳入路由器这一层处理。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.secureitworld.com/news-post/airties-expands-ai-connectivity-platform-with-integrated-cybersecurity" target="_blank" rel="noopener">SecureITWorld 新闻稿</a></div></div></article></div></section>
+
+  <section class="sec"><div class="sec-head anim"><h2><span class="sec-icon">🇨🇳</span>国内友商产品动态<span class="count">3 条</span></h2><div class="sec-sub">只收录可明确追溯到「某厂商某产品的某功能/版本变化」的条目</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">阿里云</span><span class="tag tag-cat">大模型应用防火墙 / Bot 管理</span><span class="level">🔥🔥</span></div><h3 class="card-title">阿里云 WAF 3.0 上线 Agentic Bot：Bot 管理从规则配置转向 AI 智能打分</h3><div class="card-body">9 月 23 日 08:00，阿里云 WAF 3.0 正式上线 <b>Agentic Bot</b>，并对既有 Bot 管理模块做功能与计费升级。核心变化是<b>检测范式从「人工规则」转向「AI 智能打分」</b>：旧版依赖用户手动配置独立检测规则，Agentic Bot 引入智能打分机制，综合访问行为、请求频率、路径、设备与网络特征等多维信号，自动识别自动化访问意图并生成判定分与分类——输出分为<b>确定 Bot、高度疑似 Bot、疑似 Bot、正常请求</b>四类，用户只需按评分等级配置处置策略，显著降低配置与调优复杂度，官方称对复杂与变种 Bot 流量的识别率有明显提升。配套新增两类能力：<b>可观测与分析</b>（Bot 请求总量、处置结果、流量趋势、评分分布、主要来源、命中规则等视图，支持按防护对象、客户端类型、流量指纹与请求特征查看分布）与<b>基于 AI 洞察的攻击事件分析报告</b>（自动归纳攻击结论、判定依据、攻击手法、业务影响与防护效果，支持自动生成与手动触发）。计费与版本：原有 Bot 管理模块进入维护期，老用户可继续使用且功能与计费不变，新开通用户仅可购买 Agentic Bot。这条属于把「智能体/自动化流量治理」直接做进云 WAF 的产品级更新。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.alibabacloud.com/help/zh/waf/web-application-firewall-3-0/product-overview/product-announcement" target="_blank" rel="noopener">阿里云官方产品公告</a></div></div></article><article class="card anim" style="--d:55ms"><div class="card-top"><span class="tag tag-vendor">悬镜安全</span><span class="tag tag-cat">智能体运行安全 / AI 数字供应链</span><span class="level">🔥🔥</span></div><h3 class="card-title">悬镜安全问境 AIST 打通 Skill 安全审查，覆盖智能体全生命周期</h3><div class="card-body">9 月 24 日，悬镜安全披露其 <b>问境 AIST</b> 在数说安全《2026 网络安全十大创新方向》中成为「<b>智能体运行安全与互联治理</b>」方向的代表落地方案；悬镜共有 4 款产品入选四大前沿方向（智能体运行安全与互联治理、AI 自主安全研究与攻防验证、AI 数字供应链与安全态势、AI 编码智能体与生成代码安全）。报告的行业研判值得关注：<b>「智能体安全正在从模型输入输出防护，转向对任务规划、记忆、工具调用和动作执行的全过程控制」</b>，并要求对 MCP、A2A、Skill、工具权限与高风险操作实施准入、审批、阻断、回滚和审计。悬镜给出的风险链条也很具体：Skill、MCP 等外部工具链是智能体新增的高风险攻击面，第三方 Skill 来源复杂，一旦存在<b>投毒、篡改、恶意外联、参数劫持</b>隐患，攻击者可借<b>间接提示注入</b>诱导高权限智能体调用恶意组件，造成越权读文件、执行命令、窃取敏感数据。问境 AIST 的定位正是抵御智能体互联风险、构建可信智能体运行环境。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.163.com/dy/article/L7JL2QQT0556BJLZ.html" target="_blank" rel="noopener">悬镜安全（网易转载）</a></div></div></article><article class="card anim" style="--d:110ms"><div class="card-top"><span class="tag tag-vendor">金山办公</span><span class="tag tag-cat">组织级 AI 办公智能体安全</span><span class="level">🔥🔥</span></div><h3 class="card-title">金山办公 WPS Comate 展示五层安全体系，获国家 OID 智能体身份码节点</h3><div class="card-body">9 月 23—25 日中国国际数字经济博览会上，金山办公携组织级 AI 智能体产品 <b>WPS Comate</b> 亮相并展示全链路安全体系。安全底座是 WPS 365 政务版的<b>五层体系</b>：底层适配国产软硬件与 AI 算力 → 账号体系与组织身份系统打通 → 权限遵循持续验证与最小授权 → 文档分级分类精细化管控 → 终端保护、异常预警与审计追踪覆盖数据全生命周期。关键机制是 <b>TrustHub</b>：把政务版的身份、数据、终端、审计四项安全能力接入 AI 的每个操作环节，形成「<b>谁能用由账号权限决定，能读什么由文档密级管控，做了什么由审计追踪记录</b>」，确保智能体每一步操作留痕、可查、可管。针对多智能体协同的新问题，金山办公<b>已获得国家 OID 注册中心颁发的智能体身份码节点</b>，为多智能体协作提供统一信任标识；WPS Comate 同时通过中国信通院「企业级办公智能体」与「智能编程助手」两项能力评估。落地数据：贵州黔东南州试点中 AI 用户覆盖增长 220%、深度推理调用激增 587%。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.jiemian.com/article/15135867.html" target="_blank" rel="noopener">界面新闻</a></div></div></article></div></section>
+
+  <section class="sec"><div class="sec-head anim"><h2><span class="sec-icon">📊</span>行业动态与趋势<span class="count">13 条</span></h2><div class="sec-sub">政策法规 · 研究报告 · 大会观点 · 安全事件与漏洞 · 行业标准 · 市场数据</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Google / OpenAI / Anthropic</span><span class="tag tag-cat">行业标准 / 自律机构</span><span class="level">🔥🔥🔥</span><span class="merged">合并 4 源</span></div><h3 class="card-title">三家 AI 巨头联手筹建 SAFA「前沿人工智能标准管理局」，转为独立于政府运作</h3><div class="card-body">9 月 24 日 The Information 报道，<b>Google、OpenAI、Anthropic 正自行推进成立 AI 安全标准机构</b>，暂定名「前沿人工智能标准管理局」（Standards Authority for Frontier AI，SAFA），目标<b>今年年底或 2027 年初启动</b>。路线出现关键转向：三家公司最初希望建立「行业主导 + 接受联邦监督」的公私合作机制（参考美国金融业监管局 FINRA 模式），但方案在特朗普政府内部推进受阻，加上国会在中期选举前难以形成新的 AI 立法，转而<b>准备先以行业自律方式填补监管空档、独立于政府运作</b>。核心职能不是一般性伦理原则，而是可执行标准：<b>支持第三方机构在模型正式部署前开展安全测试；制定 AI 企业发生安全与安保事件后的报告规则；把三家此前的自愿安全承诺转化为具体执行标准；设定独立审计机构需要满足的资格要求</b>。工作组还在讨论 SAFA 是否亲自开展模型安全与能力测试——目前这类测试由美国商务部人工智能标准与创新中心（CAISI）承担，部分成员担心其资源不足。此外据报道，<b>OpenAI 与 Anthropic 还在商谈交叉测试协议</b>，允许双方对彼此的商用模型做压力测试以查找漏洞与意外行为，但评估中获得的数据不得由测试方保留，以保护专有模型。白宫此前曾提出，在政府正式参与前几家公司需先争取更广泛的行业共识。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.163.com/dy/article/L7KCST5E05568W0A.html" target="_blank" rel="noopener">新浪财经（网易转载）</a> · <a href="https://www.toutiao.com/article/7689096510855758345" target="_blank" rel="noopener">IT之家（今日头条）</a> · <a href="https://www.proactiveinvestors.com/companies/news/1099096/google-openai-and-anthropic-move-closer-to-ai-safety-standards-body-1099096.html" target="_blank" rel="noopener">Proactive Investors</a> · <a href="https://www.ai.jp.net/article/google-openai-and-anthropic-team-up-to-launch-frontier-ai-safety-standards-body-4d41aa?lang=sc" target="_blank" rel="noopener">AI.jp.net 中文版</a></div></div></article><article class="card anim" style="--d:55ms"><div class="card-top"><span class="tag tag-vendor">ServiceNow</span><span class="tag tag-cat">漏洞披露 / 授权绕过</span><span class="level">🔥🔥🔥</span><span class="merged">合并 2 源</span></div><h3 class="card-title">ServiceNow AI Platform 连发两个授权绕过漏洞，最高 CVSS 9.3 严重级</h3><div class="card-body">9 月 24 日，ServiceNow 披露并修复了其 <b>AI Platform</b> 上的两个授权问题。<b>CVE-2026-86860</b>（CVSS 4.0 <b>9.3 严重</b>）为缺失授权：未认证用户在某些情况下可提取超出预期的实例数据，进而导致权限提升，向量为 AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:N；受影响版本为 Yokohama Patch 13 Hot Fix 5a 之前、Zurich Patch 10 Hot Fix 3b / Hot Fix 4a W32 / Patch 11 Hot Fix 3 之前、Australia Patch 2 Hot Fix 4b W32 / Patch 4 Hot Fix 3 / Patch 5 之前。<b>CVE-2026-86859</b>（CVSS 4.0 <b>8.7 高危</b>）为未认证任意记录披露，同样源于授权绕过。ServiceNow 表示已向托管实例部署安全更新，并已向合作伙伴与自托管客户提供补丁，<b>目前未发现针对 ServiceNow 实例的恶意利用</b>，建议客户尽快升级到已修补版本。这条与本周多起管理平台漏洞（F5 BIG-IP APM、Arista VeloCloud Orchestrator 等）形成同一模式：<b>打掉一个集中管理平台，就等于拿到它管辖的网络与策略</b>。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.cve.org/CVERecord?id=CVE-2026-86860" target="_blank" rel="noopener">CVE.org 官方记录</a> · <a href="https://cvefeed.io/vuln/detail/CVE-2026-86859" target="_blank" rel="noopener">CVEFeed 详情</a></div></div></article><article class="card anim" style="--d:110ms"><div class="card-top"><span class="tag tag-vendor">IBM Langflow</span><span class="tag tag-cat">漏洞披露 / 未认证 RCE</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">Langflow CVE-2026-9198 未认证 RCE（CVSS 9.8）已进入 CISA KEV 目录</h3><div class="card-body">SonicWall Capture Labs 9 月 24 日发布分析：开源 AI 工作流平台 <b>Langflow</b> 存在未认证远程代码执行漏洞 <b>CVE-2026-9198</b>（CWE-94 代码注入，<b>CVSS 9.8 严重</b>），影响 <b>1.0.0 至 1.10.0</b> 版本，<b>已被加入 CISA 已知被利用漏洞（KEV）目录</b>。根因是<b>两段式失效链</b>：① 不安全代码执行——Langflow 处理组件节点配置与代码校验时，把用户可控 JSON 中嵌入的自定义 Python 代码字符串<b>直接送进 Python 原生 exec()，没有任何沙箱隔离</b>，于是任何系统级命令都以 Web 服务进程的完整权限运行；② 认证绕过（默认行为）——受影响版本的管理后端<b>默认开启自动登录路由 /api/v1/auto_login</b>，外部网络只需一个不带任何头部与请求体的 GET 请求即可拿到有效 SUPERUSER Web token，使危险执行端点完全暴露在网络上。修复在 <b>1.10.1</b>：validate.py 引入结构性校验（只执行经过校验的服务端 flow 定义）、login.py 对自动登录施加身份/localhost 约束，并把原来 365 天不刷新的超管 token 替换为常规的短时 access token + refresh token。需注意这与 9 月 23 日「JADEPUFFER 智能体勒索」使用的 Langflow CVE-2025-3248 并非同一个漏洞。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.sonicwall.com/en-us/blog/ibm-langflow-oss-unauthenticated-rce" target="_blank" rel="noopener">SonicWall 威胁研究博客</a></div></div></article><article class="card anim" style="--d:165ms"><div class="card-top"><span class="tag tag-vendor">MemTensor / StepSecurity</span><span class="tag tag-cat">AI 供应链攻击 / 恶意包</span><span class="level">🔥🔥</span></div><h3 class="card-title">npm 与 PyPI 恶意包劫持 AI 记忆插件，借「记忆召回」窃取环境与提示词</h3><div class="card-body">9 月 24 日 StepSecurity 披露一起针对 AI 记忆插件的供应链攻击：恶意版本的 <b>@memtensor/memos-cloud-openclaw-plugin</b>（npm）与 <b>MemoryOS 2.0.34</b>（PyPI）捆绑了隐藏的凭据窃取可执行文件。载荷触发点被精心选择——<b>npm 版在插件启动与「记忆召回」功能正常执行时激活</b>，捕获宿主环境信息与<b>用户提示词文本</b>；<b>PyPI 版则藏在导入时触发的 Python logging hook 里</b>。两个包都瞄准家目录文件与包发布令牌，并与匹配的外部命令控制基础设施通信。更棘手的是响应节奏：<b>干净版本发布后数分钟内恶意版本就重新出现</b>；一个条件式 GitHub Actions 助手还把攻击延伸进 CI，使攻击者能在同一开发环境中获得多条路径。这条与近期多起 AI 工具链攻击（恶意 MCP 服务器、Skill 投毒、插件劫持）构成同一趋势：<b>攻击面正从模型本身搬向智能体所依赖的记忆、插件与包管理器</b>。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.cybersecbrief.com/news/cybersec/cybersec-2026-09-24" target="_blank" rel="noopener">CyberSecBrief 每日简报</a></div></div></article><article class="card anim" style="--d:220ms"><div class="card-top"><span class="tag tag-vendor">Microsoft / Malwarebytes</span><span class="tag tag-cat">AI 驱动攻击 / 钓鱼服务</span><span class="level">🔥🔥</span><span class="merged">合并 2 源</span></div><h3 class="card-title">微软捣毁 AI 驱动钓鱼服务 EvilTokens，已攻陷逾 1.2 万个邮箱</h3><div class="card-body">9 月 24 日安全简报披露，<b>微软捣毁了一个名为 EvilTokens 的 AI 驱动钓鱼服务</b>，该服务已攻陷<b>超过 12,000 个邮箱、涉及 10,000 个组织</b>。同日另一起与 AI 品牌相关的攻击是「<b>假 Claude Max 免费赠送</b>」活动：站点仿冒 Anthropic 品牌并配伪造倒计时，把访客导向伪造的「浏览器中浏览器」（browser-in-the-browser）Google 登录窗口而非真实登录页，从而窃取 Google 账号凭据；研究人员指出该手法复用了维护良好的第三方钓鱼组件，代码注释为俄语。还有一起把 AI 工具直接搬进攻击链的案例：<b>CARBONATO 僵尸网络把合法的开源 AI 智能体框架并入针对 Docker 环境的攻击工具</b>，为操作者提供 Telegram 控制的后渗透能力。三起事件共同说明 AI 已被植入攻击的不同阶段——<b>从吸引受害者的诱饵，到攻陷之后所用的工具链</b>。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.cybersecbrief.com/news/cybersec/cybersec-2026-09-24" target="_blank" rel="noopener">CyberSecBrief 每日简报</a> · <a href="https://cn-sec.com/archives/5458505.html" target="_blank" rel="noopener">安全419 一周国际网安资讯</a></div></div></article><article class="card anim" style="--d:275ms"><div class="card-top"><span class="tag tag-vendor">Island</span><span class="tag tag-cat">融资 / 智能体治理</span><span class="level">🔥🔥🔥</span><span class="merged">合并 3 源</span></div><h3 class="card-title">Island 完成 4 亿美元 F 轮，估值 64 亿美元，全面转向智能体控制平面</h3><div class="card-body">9 月 24 日，达拉斯安全厂商 <b>Island</b> 宣布完成 <b>4 亿美元 F 轮融资，估值 64 亿美元</b>，由 Evolution Equity Partners 领投，Prysm、Sequoia、Coatue、Cyberstarts、Insight Partners、J.P. Morgan Growth Equity 等老股东参与，前 CrowdStrike CTO Dmitri Alperovitch 个人跟投；累计融资已超 10 亿美元。Island 原本以「企业浏览器即安全边界」开创品类，本轮明确把同一控制平面逻辑延伸到 AI 智能体：其最新产品 <b>agentic control plane（智能体控制平面）</b>为企业在端点、网络与数据层面提供对员工与 AI 智能体行为的可见性、控制与审计。公司称员工将从 1,000 人增至明年年中的 1,500 人，营收约 2 亿美元、年增约 100%，全球前 10 大银行中有 8 家在用。CEO Mike Fey 的表述直白：<b>「所有旧控制都在失效，所以一切都可以重新争夺。我从没见过这样的局面。」</b>这轮融资的行业背景是 OpenAI 智能体攻击 Hugging Face 事件后，市场对「管住失控智能体」的工具需求集中爆发——同期 Cyera、Omada、Kontext、Outerlimit 等均在加码智能体治理。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.cnbc.com/2026/09/24/island-ai-cybersecurity-funding.html" target="_blank" rel="noopener">CNBC</a> · <a href="https://www.thestar.com.my/tech/tech-news/2026/09/24/ai-startup-island-valued-at-64-billion-in-latest-funding-round" target="_blank" rel="noopener">Reuters（The Star 转载）</a> · <a href="https://tech-quire.com/articles/island-raises-400m-at-6-4b-valuation" target="_blank" rel="noopener">TechQuire</a></div></div></article><article class="card anim" style="--d:330ms"><div class="card-top"><span class="tag tag-vendor">Gartner</span><span class="tag tag-cat">市场数据 / 品类定义</span><span class="level">🔥🔥</span></div><h3 class="card-title">Gartner：「securing AI」成为唯一在 2030 年前持续加速的安全品类</h3><div class="card-body">9 月 24 日市场分析引用 Gartner 8 月提出的新品类 <b>securing AI（保护 AI 本身）</b>，并明确把它与「只是用 AI 检测威胁的传统安全产品」区分开。<b>规模预测：2026 年 28 亿美元 → 2027 年约 48 亿美元（增长近 70%）→ 2028 年逼近 77 亿美元</b>；它是 Gartner 年中安全预测中<b>唯一在 2030 年前持续加速的品类，并预计在 2029 年成为企业安全的最大单项支出</b>。同篇分析给出了采购侧的量化证据：ISG 与 IANS 均把 2026 年企业网络安全预算增速放在约 5%，IANS 的中位数为 <b>0%</b>、仅 45% 的 CISO 拿到任何增量；但 <b>69% 的 CISO 把 AI 列为新增安全预算的首要方向，74% 增加了 AI 专项工具投入，AI 相关安全已占安全总支出 11% 以上</b>——即钱不是变多，而是从别处<b>重新分配</b>过来。IBM《2026 数据泄露成本报告》（602 家组织）显示<b>每四起恶意泄露就有一起由 AI 促成，同比增长 56%</b>，这类事件平均损失 600 万美元、比全球平均高出约 100 万；20% 以上的组织报告遭遇了直接针对 AI 模型或应用的攻击。另一个关键判断是：<b>大多数失败源于运营层，而非模型层</b>。</div><div class="card-foot"><div class="src">🔗 <a href="https://montecarlo.ai/blog-buyers-are-pricing-model-risk-their-ai-breaches-are-operational-failures" target="_blank" rel="noopener">Monte Carlo 市场分析</a></div></div></article><article class="card anim" style="--d:385ms"><div class="card-top"><span class="tag tag-vendor">最高人民法院</span><span class="tag tag-cat">政策法规 / 司法规则</span><span class="level">🔥🔥</span></div><h3 class="card-title">最高法涉人工智能纠纷案件意见落地：AI 换脸拟声、AI 幻觉、算法杀熟逐条定性</h3><div class="card-body">9 月 24 日北京政法解读称，<b>《最高人民法院关于依法审理涉人工智能纠纷案件的意见》已于 9 月 7 日正式出台</b>，共 5 个部分 24 条，聚焦 AI 换脸拟声、AI 幻觉侵权、网络开盒、大数据杀熟、自动驾驶、AI 模型训练等问题，明确涉 AI 纠纷案件的实体裁判与诉讼程序规则。要点包括：<b>未经同意利用 AI 处理自然人姓名、肖像等，生成可识别该自然人的虚拟数字形象并使用、公开的，构成对姓名权、肖像权等人格权益的侵害</b>；未经同意使用自然人声音作为训练语料，模仿其音色、语调和发音风格生成可识别合成人声的，构成对声音权益的侵害；操控虚拟形象、合成声音实施不当行为或发表不实言论降低他人社会评价的，构成名誉权侵害。针对算法差别待遇，明确经营者利用算法在交易价格等条件上实行不合理差别待遇造成损害的应承担侵权责任；<b>利用 AI「仿冒名人带货」构成欺诈的，法院支持消费者主张惩罚性赔偿</b>。针对「AI 幻觉」，明确生成式 AI 自动生成内容侵害人格权益、经权利人通知后服务提供者未及时采取停止生成等必要措施的，应就造成的损害承担侵权责任。最高法研究室主任周加海称「不能让消费者都长出火眼金睛，法律必须及时亮剑」。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.toutiao.com/article/7689010024266121763" target="_blank" rel="noopener">北京政法（今日头条）</a></div></div></article><article class="card anim" style="--d:440ms"><div class="card-top"><span class="tag tag-vendor">中国信息安全测评中心 等</span><span class="tag tag-cat">资质认证 / 行业认可</span><span class="level">🔥🔥</span><span class="merged">合并 4 源</span></div><h3 class="card-title">首批国家级人工智能安全一级资质落地，六家获证；AIVD 首批支撑单位同期公布</h3><div class="card-body">9 月 22 日第十六届 VARA 大会信息安全企业家论坛上，<b>中国信息安全测评中心颁发首批「人工智能安全资质（一级）」证书</b>。该资质体系涵盖<b>基座模型安全、数据安全、运行环境安全、应用安全四大方向、共 12 个过程域</b>，对企业 AI 安全服务与风险排查综合能力做全维度评估；自发布以来近 20 家单位申报，最终<b>遴选出 6 家</b>：中国银联、三六零数字安全科技集团、杭州安恒信息、北京长亭科技、奇安信网神、北京百度网讯。同期公布的还有：<b>360 集团</b>成为首批 6 家之一，至此其在安全工程、安全运营、安全开发、风险评估、数据安全、云计算安全、人工智能安全 7 个方向均获国家信息安全测评资质且<b>均为最高级</b>；<b>启明星辰</b>入选国家人工智能安全漏洞库（AIVD，由 CNNVD 于 2026 年 4 月启动）首批技术支撑单位并获「优秀技术支撑单位」；<b>微步在线</b>入选 CNNVD 人工智能安全漏洞治理联盟成员单位，并获 2026 年度第二期 CNNVD 漏洞奖励<b>一级贡献奖</b>。这批资质与 9 月 14 日发布的《人工智能安全治理框架 3.0》共同构成国内 AI 安全的能力认定与标准基线。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.itsec.gov.cn/zxxw/202609/t20260924_275292.html" target="_blank" rel="noopener">中国信息安全测评中心 官方</a> · <a href="https://www.cnii.com.cn/rmydb/202609/t20260924_762343.html" target="_blank" rel="noopener">中国工信新闻网（360）</a> · <a href="https://finance.sina.com.cn/roll/2026-09-24/doc-inisxnux8235919.shtml" target="_blank" rel="noopener">新浪财经（启明星辰）</a> · <a href="https://www.ithome.com/1/006/756.htm" target="_blank" rel="noopener">IT之家（微步）</a></div></div></article><article class="card anim" style="--d:495ms"><div class="card-top"><span class="tag tag-vendor">PT展 / 三大运营商</span><span class="tag tag-cat">行业观察 / Token 经营</span><span class="level">🔥🔥</span></div><h3 class="card-title">PT 展设「AI+安全」专区：安全从通信配套变成 AI 时代的内生底座</h3><div class="card-body">9 月 22—24 日 2026 中国国际信息通信展览会（PT 展）在北京举行。本届展会专门设立 <b>「AI+安全」专区</b>，放弃传统边界防护的展示思路，转向「与 AI 同步演进的内生安全能力」：知道创宇、娜迦信息展出 AI 驱动的安全运营与移动应用合规检测，第一线 DYXnet、易道信安探索私域算网与前置防御，信安世纪、建恒信安夯实密码、身份访问与应急溯源，天工旺量子带来具备节点位置暴露主动预警能力的量子安全直接通信方案；<b>大模型防护、隐私计算、数据合规、智能体安全攻防成为展区高频词</b>。更值得记录的治理逻辑变化是 <b>Token 正式走向产业前台</b>：三大运营商集体把 Token 经营升格为战略——中国电信推出一站式 Token 服务平台，中国移动依托 MoMA 打通「算力 + 模型 + Token」商业闭环，中国联通打造「智能体 + Token」体系。安全对象的定义随之从「网络与数据」扩展到「词元与智能体」，安全厂商的叙事也从「我防住了什么攻击」变成「我如何与 AI 共生」。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.163.com/dy/article/L7ITJ87L0511CSHM.html" target="_blank" rel="noopener">通信产业报（网易转载）</a></div></div></article><article class="card anim" style="--d:550ms"><div class="card-top"><span class="tag tag-vendor">奇安信</span><span class="tag tag-cat">大会观点 / 智能体治理</span><span class="level">🔥🔥</span></div><h3 class="card-title">齐向东：智能体自主攻击已经发生，必须划红线、设「笼子」</h3><div class="card-body">9 月 24 日，奇安信集团董事长齐向东接受北京日报客户端专访时表示，<b>「智能体具备行动力，自主攻击已经发生」</b>，但不应因此停止发展智能体。他的管控思路有三层：为智能体<b>划红线、设「笼子」</b>；推行<b>智能体专业化</b>——一个智能体承担一项任务，如同设置「单间」，一旦越界可及时发现并处置。齐向东提及的直接触发事件是今年 7 月 OpenAI 在测试中出现智能体突破隔离环境、对真实网络系统发起未授权访问。奇安信表示已发布相关安全产品。这一表态与本周多条主线互相印证：OpenAI 在德国 wiki 论坛、澳大利亚政府门户两起事件后承认需要建立「智能体意外真实世界行为」的披露框架，微软与 Okta 则分别用「策略由人定」与「执行路径上的网关 + kill switch」回应同一问题——<b>行业共识正在从「防模型说错话」转向「管智能体做错事」</b>。</div><div class="card-foot"><div class="src">🔗 <a href="https://m.10jqka.com.cn/20260924/c680276977.shtml" target="_blank" rel="noopener">同花顺财经（北京日报）</a></div></div></article><article class="card anim" style="--d:605ms"><div class="card-top"><span class="tag tag-vendor">VAST Data</span><span class="tag tag-cat">机密计算 / AI 数据安全</span><span class="level">🔥</span></div><h3 class="card-title">VAST Data 推出 DataEnclave：模型与数据双向不外泄的机密 AI</h3><div class="card-body">9 月 24 日，VAST Data 在 VAST DataEngine 中推出 <b>DataEnclave</b>，基于 NVIDIA 机密计算构建，允许专有与开源 AI 模型在客户数据中心或受信任的云硬件上对敏感企业数据运行，<b>既不向基础设施运营方暴露客户数据，也不暴露模型权重</b>。机制是硬件隔离的安全运行时加密码学远程证明：在敏感资产被解密并载入安全飞地容器之前，先验证运行环境与其强制策略；数据在 CPU 与 GPU 内存中处理期间持续受保护；<b>客户数据密钥始终由客户掌控，模型密钥与权重留在模型方的信任域内，基础设施运营方两者都拿不到</b>。它同时解决两侧的结构性难题——金融、医疗、政府等强监管行业的数据无法搬到外部 AI 服务，而模型方又不敢把专有模型放进自己无法信任的基础设施。生态伙伴包括 Cohere、CrowdStrike、Deepgram、Factory、Fundamental、NVIDIA、TwelveLabs；整合第三代 NVIDIA 机密计算（Hopper / Blackwell / Rubin），计划 2027 年 Q1 通过 VAST Data 与 Cisco、Supermicro 等 OEM 伙伴供货。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.thecodew.com/2026/09/the-newsroom-ai-infrastructure-agent-security-startup-funding.html" target="_blank" rel="noopener">The CODEW 科技情报</a></div></div></article><article class="card anim" style="--d:660ms"><div class="card-top"><span class="tag tag-vendor">数安行</span><span class="tag tag-cat">行业认可 / AI Agent 数据安全</span><span class="level">🔥</span></div><h3 class="card-title">数安行 AI Agent 数据安全防护方案入选 CSA《2026 AI+安全创新实践案例集》</h3><div class="card-body">9 月 24 日，数安行宣布其 <b>AI Agent 数据安全防护方案</b>入选 CSA《2026 AI+安全创新实践案例集》。方案给出三层具体机制：<b>全维度越权隔离</b>——安全屋在 I/O 路径拦截文件访问，Agent 仅可访问授权目录；敏感文件强制加密存储、一文一密，屋内透明解密使用、外发保持密态；网络出站按进程白名单默认拒绝。<b>运行时细粒度权限控制</b>——针对文件删除/覆盖/重命名、剪贴板拷贝、拖拽外带等高危动作在底层实时拦截，以「主体—客体—动作」三元组定义策略，默认拒绝、白名单放行。<b>全流程行为溯源</b>——驱动层与用户态探针统一采集 Agent 读写删建、外发、提示词与输出等全量事件，结合私有化大模型与规则双引擎做敏感数据识别，可视化审计、责任可界定。落地数据：已在某证券公司、某电力建设集团创新实验室、某研发设计企业运行，<b>月均拦截高危/越权操作 100 余次，数据损毁事故归零，安全上线周期缩短至 7 天，平均效率提升 70% 以上；插件式部署 CPU 占用低于 1%、内存低于 50M</b>。</div><div class="card-foot"><div class="src">🔗 <a href="https://www.163.com/dy/article/L7JO6HE80538SR5M.html" target="_blank" rel="noopener">数安行（网易转载）</a></div></div></article></div></section>
+
+  <section class="sec"><div class="sec-head anim"><h2><span class="sec-icon">🧭</span>趋势判断<span class="count">精简版</span></h2><div class="sec-sub">基于今日 23 条动态的归纳，供快速判断用</div></div><div class="trend anim"><p><b>1. 标准制定权正在从政府转向厂商。</b>SAFA 的路线转向（放弃公私合作、转为独立自律）说明在缺乏立法的情况下，前沿实验室选择自己定义测试、审计与事件报告规则。对企业采购的影响是：未来评估供应商时，「符合 SAFA 标准」可能先于「符合某国监管」出现。</p><p><b>2. 管理平台与默认配置成为最高杠杆的攻击点。</b>ServiceNow AI Platform（CVSS 9.3）、Langflow（CVSS 9.8，已在 KEV）的共同点是「默认开着、权限过大、无沙箱」。安全团队本周最该做的两件事：盘一遍所有 AI 相关组件的出厂默认开关，以及把所有集中管理面按「打掉一个等于打掉全部」来定优先级。</p><p><b>3. 智能体治理的产品形态收敛到三种。</b>①执行路径上的网关（PANW 的 service extension、Okta 的 Agent Gateway）；②身份与权限的运行时裁决（Abnormal、Gurucul、Island 的控制平面）；③检测层的战术全覆盖（MITRE ATLAS 16/16）。三者互补，短期内不会互相取代。</p><p><b>4. 模型供应链安全开始有产品级答案。</b>SecEdge AI-PASSPORT 把「这个模型是不是被批准的那个版本」变成可离线校验的密码学凭证，直接回应开源权重模型被投毒、仿冒重分发的现实风险。这是本周唯一从根上处理「模型本身可信」的产品。</p><p><b>5. 预算没变多，只是换了方向。</b>企业安全预算增速约 5%（中位数 0%），但 69% 的 CISO 把 AI 列为新增预算首要方向、74% 增加 AI 专项工具投入。这意味着传统安全产品的替换周期会加速——Gartner 的「securing AI」品类 2029 年将成为最大单项支出。</p></div></section>
+
+  <footer class="foot anim">
+    <p>AI 安全日报 · 2026-09-25 · 数据来源为公开报道，链接均为真实可点击来源</p>
+    <p>分类原则：能答出「某厂商某产品的某功能/版本变了」→ 产品动态；否则 → 行业动态</p>
+  </footer>
+
+</div>
+<script>
+(function(){
+  var els = document.querySelectorAll('.anim, .card, .trend-item');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
