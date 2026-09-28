@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-09-28</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.src{
+  display:inline-block;margin-top:14px;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>防火墙厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-09-28 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="sub">2026-09-28 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>20</b><span>总动态</span></div>
+      <div class="stat"><b>12</b><span>厂商动态</span></div>
+      <div class="stat"><b>8</b><span>行业动态</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p>今天最值得记的一条是<b>华为在网安周云南电信日发布的「面向路由器 APT 的内生安全主动防御体系」</b>。它和常规的边界防火墙叙事不同：安全能力不是外挂在网络旁边，而是做成<b>专属独立硬件单板</b>，在网络设备内部划出物理级隔离域，再用深度学习 + 全网行为基线做毫秒级研判，宣称未知异常检出率 100%，并在某省运营商 2 台城域核心路由器上部署当天就报出 6 处暴露面风险和 3 轮 400 余次暴力破解。<b>「安全能力下沉进转发设备本体」这条路一旦走通，边界防火墙的定位会被重新定义——从「网络出口的一台设备」变成「网络自身的一种属性」</b>，这是 NF 在做竞品叙事时必须正面回答的问题。<br><br>
+第二条是<b>「安全即订阅」在运营商侧同时被两件事印证</b>：华为联合苏州移动的「专线卫士」拿下 ICT 中国行业解决方案一等奖，用轻量化订阅式为中小制造企业提供入侵防御与威胁可视；上海联通 2026—2027 安全运营服务则直接按「折扣率」定标、整体外包。同日安恒中标河南联通政企专线安全监测 162.24 万元，也是同一个逻辑的下游配套。<b>运营商正在把安全从「采购设备」改成「采购服务」，中标方的角色也随之从设备商变成服务供应商</b>。<br><br>
+第三条是<b>「安全产品自身是攻击面」这周被反复证明</b>：研究者公开 CrowdStrike Falcon 的本地提权零日 FalconFlank（在已打全补丁的 Windows 上可借传感器进程拿到 SYSTEM，且无补丁），Zscaler 9 月集中披露 4 枚 Client Connector 漏洞（最高 9.1 分 RCE），山石网科主动披露 WAF 的 HSVD-2026-0036 认证后 Root 代码执行并给出修复版本。<b>前两者是「被披露」、后者是「主动披露」，客户对二者的容忍度完全不同</b>——EDR、SASE 客户端、WAF 这些「装在客户侧的安全组件」，正在成为攻击者绕过防线的首选跳板，产品安全响应速度已经成为可比参数。<br><br>
+行业侧延续月末 + 季末形态，<b>无全国性大包，但有一个罕见结构</b>：宁波奉化全域智慧感知二期 2967.8 万元由<b>电信与联通组成联合体</b>中标，核心产品是公安网防火墙与网闸——两家基础电信运营商不再互相压价，而是联手拿盘子，这对靠运营商渠道分销的安全厂商意味着议价关系的变化。金融侧则呈现<b>「拆包定价」的清晰分化</b>：深证云把通用防火墙（2 台 22.6 万）与国密设备（10 台 268 万）拆成两个标段，单台价差近 12 倍，国密改造是独立且更高毛利的科目；徽商银行数据中心网络设备二次招标 152.9 万元定标，则是城商行存量更新的常规节奏。</p></p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">12 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">奇安信</span><span class="date">2026-09-09</span></div>
+      <h3>奇安信与苏服云签署战略合作，共建江苏算力安全生态</h3>
+      <p>9 月 9 日，奇安信与苏服云（江苏）科技在南京签署战略合作协议，以「算力 + 安全」融合为核心，推动安全组件出厂预配置、大模型安全防护与算力场景安全运营，共建江苏算力安全生态。安全厂商正从「事后加装」转向「随算力出厂预置」，把安全能力前移到算力交付环节。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qianxin.com/news/detail?news_id=15344" target="_blank" rel="noopener">奇安信官网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EC4899;background:#EC489924;border-color:#EC489933">安恒信息</span><span class="date">2026-09-02</span></div>
+      <h3>安恒信息中标河南联通政企互联网专线安全监测项目 162.24 万元</h3>
+      <p>安恒信息中标中国联通河南省分公司「2026 年河南政企互联网专线安全监测新建工程项目」，金额 162.24 万元。项目面向政企互联网专线场景做边界安全防护与威胁监测，属运营商省侧安全监测类新建工程——运营商把「专线 + 安全」做成可售产品后，配套的监测能力正在被逐省采购。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://finance.sina.com.cn/stock/relnews/cn/2026-09-02/doc-iniqnawq1311038.shtml" target="_blank" rel="noopener">新浪财经 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">华为</span><span class="date">2026-09-22</span></div>
+      <h3>华为携手苏州移动「专线卫士」获 ICT 中国行业解决方案一等奖</h3>
+      <p>2026 PT 展期间，ICT 中国（2026）优秀案例评选揭晓，华为联合中国移动苏州分公司申报的「专线卫士」制造业安全实践案例获行业解决方案一等奖。方案以轻量化、订阅式「专线 + 安全」模式，为中小制造企业专线边界提供入侵防御、病毒防护、威胁可视与态势报告，无需大规模改造内网，已在苏州多家制造企业落地。安全能力正在被运营商包装成按月订阅的服务，而非一次性设备交付。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://news.10jqka.com.cn/field/20260922/680180998.shtml" target="_blank" rel="noopener">同花顺财经 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">华为</span><span class="date">2026-09-16</span></div>
+      <h3>华为发布面向路由器 APT 的「内生安全」主动防御体系：未知威胁检出率 100%</h3>
+      <p>2026 国家网络安全宣传周云南省电信日，华为发布面向路由器高级持续性威胁（APT）的内生安全主动防御体系：以专属独立硬件单板构建物理级安全隔离域，基于深度学习与全网行为基线做毫秒级建模研判，未知异常检出率 100%，分钟级上报并可用 AI 还原完整攻击链路。已在某省运营商 2 台城域核心路由器落地，部署当天即报出 6 处暴露面风险与 3 轮 400 余次暴力破解尝试。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://tech.ifeng.com/c/8wZMJGMi3bk" target="_blank" rel="noopener">凤凰网科技 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">华为</span><span class="date">2026-09-10</span></div>
+      <h3>华为与中国联通深化战略合作：围绕连接、算力、服务、安全四大赛道</h3>
+      <p>2026 中国联通合作伙伴大会上，华为表示将围绕联通「连接、算力、服务、安全」四大赛道，在算力、连接与业务创新三方面深化合作，支撑昇腾算力规模部署与 5G-A 大上行网络建设。安全被列为运营商四大赛道之一，意味着安全已从配套能力升级为运营商与设备商共同经营的主航道。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.huawei.com/cn/news/2026/9/chinaunicom-partner-ai-carrier" target="_blank" rel="noopener">华为官网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">华为</span><span class="date">2026-09-17</span></div>
+      <h3>华为发布运营商 B2B 高质量 ICT 解决方案：HiSec 与 NCE 协同做一体化防护</h3>
+      <p>华为全联接大会 2026 运营商 CEB 论坛上，华为发布覆盖高质量安全连接、托管服务与全域 AI 基础设施的 B2B 高质量 ICT 解决方案，安全侧依托 HiSec Endpoint 与 iMaster NCE-HisecInsight 实现网络与终端一体化智能防护。运营商 B2B 业务的竞争焦点正从带宽与资费转向「连接 + 安全 + 运维」的打包能力。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://e.huawei.com/cn/news/2026/industries/isp/high-quality-ict-solutions" target="_blank" rel="noopener">华为企业业务 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-09-22</span></div>
+      <h3>山石网科连中汉口银行数据中心防火墙替换等项目</h3>
+      <p>山石网科官网中标栏显示，9 月公司在金融与能源行业连续中标：9 月 22 日中标汉口银行数据中心防火墙替换项目，9 月 15 日中标陕西延长石油横山魏墙煤业，9 月 8 日中标宁夏银行网络安全服务项目，9 月 1 日中标青海省农商银行（农信社）系统采购项目。数据中心防火墙「替换」类需求正成为信创周期内最稳定的存量盘子。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.hillstonenet.com.cn/aboutus/hs-honor/" target="_blank" rel="noopener">山石网科官网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-09-04</span></div>
+      <h3>山石网科披露 WAF 高危漏洞 HSVD-2026-0036：认证后 Root 代码执行</h3>
+      <p>山石网科安全公告 HSVD-2026-0036（9 月 4 日）：其 VWAF 的 OpenAPI 文件导入功能存在认证后 Root 代码执行漏洞（高危）。攻击者获得已认证 Web 会话后，可上传恶意构造文件，后端因不安全反序列化在业务校验前即以 Root 身份执行任意命令。影响 WAF 2.7 起全部版本，修复版本 WAF 3.6.15 / WAF 4.1.2。厂商主动披露并给出明确修复版本，是漏洞治理可信度的一部分。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.hillstonenet.com.cn/security-notification/2026/09/04/sswkwafwafd_openapi_fileyamlfxlhrzhrootdmzxld" target="_blank" rel="noopener">山石网科安全公告 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-09-20</span></div>
+      <h3>山石网科与天津信创适配测评中心达成生态共建意向</h3>
+      <p>2026 第三届教育信创大赛天津决赛期间，山石网科以信创优秀企业身份参展，展示面向教育行业的信创安全方案与网安实训平台，并与天津信创适配测评中心达成生态共建合作意向。信创适配测评中心正在成为安全厂商进入区域政企市场的前置入口。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://caifuhao.eastmoney.com/news/20260922141412617541970" target="_blank" rel="noopener">东方财富财富号 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">深信服</span><span class="date">2026-09-20</span></div>
+      <h3>深信服与华中师范大学签署产学研战略合作</h3>
+      <p>9 月 20 日，华中师范大学与深信服科技举行产学研战略合作签约，聚焦网络安全与数字安全人才培养、学科建设与产教融合。厂商与高校共建安全人才通道，正成为安全厂商在教育行业建立长期客户关系的常规动作。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://cs.ccnu.edu.cn/info/1055/13746.htm" target="_blank" rel="noopener">华中师范大学 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#0EA5E9;background:#0EA5E924;border-color:#0EA5E933">Zscaler</span><span class="date">2026-09-14</span></div>
+      <h3>Zscaler 9 月集中披露多枚客户端高危漏洞，最高 CVSS 9.1</h3>
+      <p>据 CVE 追踪库 CVETodo，Zscaler 在 9 月集中披露 Client Connector 系列漏洞：CVE-2026-59570（7.5，可被预装对等应用拆断隧道并强制登出）、CVE-2026-59569（8.1，Android/ChromeOS 上可绕过控制策略）、CVE-2026-25687（8.1，ZPA 隧道竞态致堆破坏与客户端崩溃）、CVE-2026-25684（9 月 18 日）。另 8 月披露的 CVE-2026-59568 为 9.1 分远程代码执行。SASE / 零信任客户端正在成为「终端侧边界」的新攻击面。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://cvetodo.com/vendors/zscaler" target="_blank" rel="noopener">CVETodo →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">CrowdStrike</span><span class="date">2026-09-04</span></div>
+      <h3>研究者公开 CrowdStrike Falcon 本地提权零日 FalconFlank</h3>
+      <p>9 月 4 日，研究者 Nightmare Eclipse 公开针对 CrowdStrike Falcon 传感器的本地提权零日「FalconFlank」：利用传感器对恶意 Office 宏的处置逻辑，本地低权限用户可借 CSFalconService 进程以 SYSTEM 权限拉起命令行，在已完全打补丁的 Windows 11 / Server 上同样有效，厂商尚未发布补丁。EDR 自身成为提权跳板，再次说明「安全产品本身就是攻击面的一部分」。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://cyber.netsecops.io/articles/researcher-discloses-falconflank-zero-day-exploit-for-crowdstrike-falcon" target="_blank" rel="noopener">CyberNetSec →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">8 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">运营商</span><span class="date">2026-09-26</span></div>
+      <h3>电信 + 联通罕见联合体 2967.8 万元中标宁波奉化全域智慧感知二期</h3>
+      <p>宁波市奉化区全域智慧感知系统基础设施更新提升项目（二期）定标：中国电信宁波分公司与联通宁波分公司组成联合体，以 2967.8 万元中标（预算 3328 万元、最高限价 2995.2 万元）。项目含 804 路前端新建、210 路改建、302 路优化及交通前端改造、网络与安全设备升级、公安算法算力扩容，核心产品锁定公安网防火墙与网闸。两家基础电信运营商组联合体投标同一项目，是运营商在智慧城市盘子里的合作新形态。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.163.com/dy/article/L7H7334I05562ANN.html" target="_blank" rel="noopener">网易 / ICT 标局 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-09-24</span></div>
+      <h3>深证云安全设备采购：防火墙 2 台 22.6 万元、国密设备 10 台 268 万元</h3>
+      <p>深圳证券通信有限公司「深证云安全设备采购项目」中标候选人公示：标段 1 防火墙设备 2 台由广东骏思信息科技以含税 22.6 万元列第一候选，标段 2 国密设备 10 台由尚阳科技以含税 268 万元列第一候选，公示期 9 月 24 日至 30 日。交易所体系把「通用防火墙」与「国密设备」拆成两个标段、金额相差 12 倍，反映金融基础设施中国密改造的单独立项与更高单价。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://ebs.szse.cn/cmschengjiaogg/aa9a2e9c8e9e43f084bac3f8cd8aab81.html" target="_blank" rel="noopener">深圳证券交易所 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-09-22</span></div>
+      <h3>徽商银行数据中心网络设备采购（第二次）评标：152.9 万元列第一候选</h3>
+      <p>徽商银行数据中心网络设备采购项目（第二次）评标结果公示：第一中标候选人云南南天电子信息产业股份有限公司，报价 152.9 万元；第二安徽晓强科技 163.9 万元、第三合肥汇英科技 164 万元，公示期 9 月 22 日至 28 日。项目 9 月 2 日发布招标、9 月 22 日开标，是城商行数据中心网络与安全设备批量更新的典型节奏。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://hxsh.hsbank.com.cn:20300/cggl/cms/cmspbjggs/d4be9c00257c4ac08248c4f44de54422.html" target="_blank" rel="noopener">徽商银行 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">运营商</span><span class="date">2026-09-08</span></div>
+      <h3>上海联通 2026—2027 年安全运营服务项目中选候选人公示</h3>
+      <p>中国联通上海市分公司 2026—2027 年安全运营服务项目中选候选人公示：第一候选上海谋乐网络科技（折扣 73.54%），第二深圳天源迪科（折扣 74.41%）。运营商省侧把安全运营整体外包、以「折扣率」而非固定金额定标，是安全服务化采购在运营商体系内的成熟形态。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://sh.zhiliaobiaoxun.com/article/112193910" target="_blank" rel="noopener">知了标讯 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#84CC16;background:#84CC1624;border-color:#84CC1633">能源</span><span class="date">2026-09-01</span></div>
+      <h3>海南电网 2026 年第二批数字化非云平台安全软硬件专项采购中标</h3>
+      <p>海南电网 2026 年第二批数字化非云平台安全软硬件专项公开询比采购结果公告：Web 应用防火墙购置标包由广州安海信息安全技术成交，同批另含主机防护软件、安全设备授权、网络数据防泄漏等标包。电网侧把安全软硬件按品类拆包询比、由区域集成商分食，是电力行业安全采购的常态结构。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.bidding.csg.cn/zbhxrgs/1200441067.jhtml" target="_blank" rel="noopener">南方电网供应链统一服务平台 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">军队</span><span class="date">2026-09-14</span></div>
+      <h3>军队信息网络安防升级建设项目竞争性谈判：预算 48.2 万元</h3>
+      <p>军队采购网 9 月 14 日发布信息网络安防升级建设项目竞争性谈判公告（2026-JLDJCG-W3031），预算 48.2 万元，采购漏洞扫描设备 4 台、路由器 1 台，地点广东汕头，投标截止 9 月 24 日。军队中小额安防项目以「检测类设备 + 网络设备」组合挂网，是基层单位补短板的标准形态。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.xinecai.com/markerswebnotice/359135141055092791.html" target="_blank" rel="noopener">安天 e 采 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-09-04</span></div>
+      <h3>贵阳市第三人民医院网络安全建设项目（二次）成交 43.86 万元</h3>
+      <p>贵阳市第三人民医院网络安全建设项目（二次）成交公告：贵州中科紫龙科技有限公司以 43.86 万元成交，主要标的为数据中心下一代防火墙与互联网下一代防火墙等。项目 8 月 5 日发布采购公告、8 月 28 日磋商、9 月 4 日定标，二次挂网后成交是医院类中小额项目的常见路径。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="http://ztb.guizhou.gov.cn/api/upload/preview/ae13837b-66c1-4616-8bf7-2bd990659ff3" target="_blank" rel="noopener">贵州省公共资源交易 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#84CC16;background:#84CC1624;border-color:#84CC1633">能源</span><span class="date">2026-09-03</span></div>
+      <h3>上海石化炼油部控制系统隐患整改项目防火墙询比采购</h3>
+      <p>中国石化上海石油化工股份有限公司 9 月 3 日发布 sp3-炼油部 3# 炼油控制系统隐患整改项目防火墙公开询比公告（XB20260903-2480-03497），采购 IFW2400-12 型防火墙 1 台，交货期 2026 年 11 月 30 日，限制造商投标。工控系统隐患整改配套的防火墙采购，正在成为石化行业安全投入的固定科目。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://m.ccement.com/xm/bcon-688498184511426.html" target="_blank" rel="noopener">水泥网（标讯汇总） →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-09-28 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
