@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国防火墙厂商日报 · 2026-10-04</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.src{
+  display:inline-block;margin-top:14px;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>防火墙厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-04 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国防火墙厂商日报</h1>
+    <div class="sub">2026-10-04 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>22</b><span>总动态</span></div>
+      <div class="stat"><b>11</b><span>厂商动态</span></div>
+      <div class="stat"><b>5</b><span>行业动态</span></div>
+      <div class="stat"><b>6</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>国庆假期第二天，厂商侧几乎停摆，唯一还在出单的是奇安信。</b>今天 5 条厂商动态里有 4 条是奇安信——渤海银行天眼分析平台扩容、安徽省农信社协防服务第一候选人、仲恺农工 84.8 万信息安全服务、北京工业大学战略合作，外加一条盘古石手机取证 R8.8.0 发布（适配 Android 17、支持微信已删除多媒体碎片重组）。<b>天融信和启明星辰各落两单，方向高度一致：都是「安全运营服务化」</b>——城银清算 2027-2029 年网络安全运营平台驻场服务、中国移动黑龙江重要基础设施风险防护与远程检测、移动四川/福建/广东多省平台建设，说明银行和运营商正在从"买盒子"转向"买持续运营能力"。<br><br>
+安全态势这边明显比厂商侧更值得看。韩国五大银行四天内遭疑似 AI 驱动协同攻击，三家确认客户信息泄露，安全分析师在相关服务器上发现了开源自主渗透系统 <b>ARTEX AI</b> 的痕迹——AI 自主渗透第一次出现在真实入侵链里，不再是报告里的趋势描述。国内关联 APT（Longlegs/Storm-2603）同时利用 SharePoint、FortiMail、Citrix 三类零日，在一次事件中关掉至少 40 台主机安全软件、通过 SYSVOL 在 33 台主机部署 Warlock 勒索；华硕路由器两个高危漏洞（9.4/8.9）也可通过导入恶意 VPN 配置文件直接拿到 root。<b>边界设备和安全软件自己成了最大突破口，建议把「边界设备自身加固 + 勒索横向阻断」作为下阶段方案重点</b>。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">11 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">奇安信</span><span class="date">2026-10-01</span></div>
+      <h3>奇安信盘古石手机取证R8.8.0发布：适配Android 17，支持微信已删除多媒体碎片重组</h3>
+      <p>奇安信旗下盘古石取证团队发布盘古石手机取证R8.8.0，围绕提取、解析、安全管控三大方向升级。完成Android 17系统提权适配，新增三星、小米Android 16提权提取，并针对微信多媒体资源散落、删除后关联断裂问题，支持定位并重组已删除的图片、语音、视频碎片，重建聊天上下文关系。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.163.com/dy/article/L86KBAQG0511B8LM.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">深信服</span><span class="date">2026-09-30</span></div>
+      <h3>深信服中标深圳市新华医院超融合服务器和分布式存储设备采购项目</h3>
+      <p>深圳市新华医院超融合服务器和分布式存储设备采购项目公布中标结果，中标金额104.68万元，主要标的中包含深信服aServer-W-2405超融合服务器2台（单价20.5万元）。公示期2026年9月30日至10月8日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="http://zfcg.szggzy.com:8081/gsgg/002001/002001004/002001004001/20260930/f546346e-0e61-4f26-8087-bda0e429dcdf.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">奇安信</span><span class="date">2026-09-30</span></div>
+      <h3>奇安信网神中标渤海银行天眼分析平台扩容采购项目</h3>
+      <p>渤海银行以单一来源谈判方式确定奇安信天眼分析平台扩容采购项目成交供应商，成交方为奇安信网神信息技术（北京）股份有限公司。公示期2026年9月30日至10月9日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://app.bhypt.cbhb.com.cn/cms/channel/ywgg4hw/790.htm" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">奇安信</span><span class="date">2026-09-30</span></div>
+      <h3>奇安信网神入围安徽省农信社2026年度网络安全防护体系防守服务第一候选人</h3>
+      <p>安徽省农村信用社联合社2026年度网络安全防护体系防守服务（二次）中标候选人公示。奇安信网神在02包协防服务商中位列第一中标候选人，01包主防服务商中位列第二候选人。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.ahrcu.com/anhuinongxin/xwzx/tzgg/cggs/2026093015303617366/index.shtml" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">奇安信</span><span class="date">2026-09-30</span></div>
+      <h3>奇安信网神中标仲恺农业工程学院2026年信息安全服务84.80万元</h3>
+      <p>仲恺农业工程学院2026年信息安全服务成交公告显示，供应商为奇安信网神信息技术（北京）股份有限公司，中标金额84.80万元，服务期为合同签订之日起2年。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://cg.zhku.edu.cn/portalwebController.do?goArticleDetail&id=ff808081a083c78501a0f140396918b5" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">天融信</span><span class="date">2026-09-30</span></div>
+      <h3>天融信中标城银清算2027-2029年网络安全运营平台驻场服务项目</h3>
+      <p>据企业工商动态，天融信于2026年9月30日新增中标“城银清算服务有限责任公司2027-2029年网络安全运营平台驻场服务项目”中标候选人。同期还参与中电信数智河南分公司私有云网信安保服务项目投标。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qcc.com/cmainmember/d9d6a2dc002740d1440a098dfd0f2311" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">天融信</span><span class="date">2026-09-28</span></div>
+      <h3>天融信中标中国移动黑龙江2026年重要基础设施系统风险防护与远程检测服务</h3>
+      <p>据企业工商动态，天融信2026年9月28日新增中标“中国移动通信集团黑龙江有限公司黑龙江2026年移动重要基础设施系统风险防护与远程检测服务项目”中选候选人。同日还新增东航金控2026年度开发测试防火墙采购项目评审结果公示。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qcc.com/cmainmember/d9d6a2dc002740d1440a098dfd0f2311" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">奇安信</span><span class="date">2026-09-20</span></div>
+      <h3>北京工业大学与奇安信签署战略合作协议</h3>
+      <p>9月20日，北京工业大学与奇安信科技集团等签署战略合作协议。双方将打通高校科研与产业实践协作通道，围绕网络安全科研攻关、产教融合人才培育、技术成果落地转化、网络空间安全研究等方向开展多元协作。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://gu.qq.com/resources/shy/news/detail-v2/index.html?t=1#/index?_tentrees_trans=0&id=SN20260924194147a45691b4" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">启明星辰</span><span class="date">2026-10-02</span></div>
+      <h3>启明星辰安星数字员工中标某政府单位信息系统渗透测试服务，并成为AI安全漏洞治理联盟首批成员</h3>
+      <p>启明星辰安星数字员工以综合比测成绩中标某政府单位信息系统渗透测试服务项目，采用大模型自动化渗透测试与人工核验协同模式，实现政务安全领域落地；同期公司成为人工智能安全漏洞治理联盟首批成员单位，参与AI安全漏洞协同治理。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qcc.com/cfengxian/080ffd62d7245dac23ef27dcd59bda2e.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">启明星辰</span><span class="date">2026-09-24</span></div>
+      <h3>启明星辰连续中标中国移动四川、福建、广东等多省网络安全项目</h3>
+      <p>9月下旬启明星辰密集中标：中国移动四川公司2026年网络安全漏洞管理平台应用软件开发、中国移动福建公司网络安全态势感知系统建设软件采购、中国移动广东公司2026—2028年O域通信网络安全攻防测试，以及中国电信广州分公司网信安全防护项目等。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qcc.com/cmainmember/7670701a39a664379dc6979fbeb19b46" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">华为</span><span class="date">2026-09-30</span></div>
+      <h3>华为中标中国联通山西和顺县县级政务外网改造项目设备采购</h3>
+      <p>中国联合网络通信有限公司山西省分公司2026年中国联通山西晋中和顺县县级政务外网改造项目——华为设备采购直接采购评审结果公示，华为成为中标候选人；同期华为还中标中国移动江西公司2026年智慧网格平台委托开发项目、甘肃公司融网格系统研发包项目等。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qcc.com/creport/6b242b475738f45a4dd180564d029aa9.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">5 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#84CC16;background:#84CC1624;border-color:#84CC1633">能源</span><span class="date">2026-09-30</span></div>
+      <h3>长扬科技连获能源央企及国企网络安全订单（国家管网、国家能源集团等）</h3>
+      <p>据合创投资9月动态盘点，工业互联网安全企业长扬科技先后中标国家管网集团西气东输分公司科数中心工业控制网络安全设备采购项目、国家能源集团宁夏煤业信息技术中心网络安全设备采购项目、大唐国际保定供热公司供热管网数智化管控项目，电力、油气、供热行业商业化落地提速。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://m.163.com/dy/article/L851EUEK0531NA57.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-09-29</span></div>
+      <h3>中国银联2026年第一批PC服务器采购，证通股份1.93亿元中标</h3>
+      <p>知了标讯披露，中国银联2026年第一批PC服务器采购项目（包件一）由证通股份有限公司以1.935亿元中标，采购标的物含PC服务器、数据库审计系统、服务器密码机等安全产品，公告日期2026-09-29。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://js.zhiliaobiaoxun.com/article/114781474" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">教育</span><span class="date">2026-09-24</span></div>
+      <h3>青海师范大学信息系统等保测评服务成交8.28万元</h3>
+      <p>青海师范大学信息系统等保测评服务采购项目以竞争性谈判方式完成，采购预算12万元，青海玉仑信息科技有限公司以8.28万元成交，服务期自合同签订起30个工作日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qhnu.edu.cn/info/1039/22714.htm" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-09-20</span></div>
+      <h3>数字广西核心设备及配套服务采购，中国移动广西7180万元中标</h3>
+      <p>数字广西集团有限公司核心设备及配套服务采购项目公布结果，中国移动通信集团广西有限公司以7180.02万元中标，工期18个月；同期信创云技术路线配套软硬件及机柜租赁项目由中国移动广西以4939.99万元中标。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://xunbiaobao.baidu.com/company?matchFieldsType=tender&id=NTQ1OTg0NTMyNzM4NzMy&source=self" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">教育</span><span class="date">2026-09-18</span></div>
+      <h3>太原学院网络安全靶场实训平台项目，永信至诚中标</h3>
+      <p>永信至诚科技集团中标太原学院公开招标的太原学院网络安全靶场实训平台项目并公布结果；同期该公司还中标青海民族大学网络安全赛训一体化教学平台建设项目（09-25合同公告）。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.qcc.com/cproductinfo/687960231581fd75f34cb60f4d58b660" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与行业资讯</h2><span class="cnt">6 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">漏洞</span><span class="date">2026-10-04</span></div>
+      <h3>华硕路由器曝两高危漏洞：恶意VPN配置文件可执行任意命令</h3>
+      <p>CVE-2026-14157（CVSS 4.0 9.4）为外部可控格式字符串漏洞，已认证攻击者经路由器Web管理界面上传恶意VPN客户端配置文件即可绕过校验执行任意系统命令；CVE-2026-13313（8.9）为残留调试代码缺陷，可开启Telnet服务并获root。华硕已在3.0.0.6_102等固件系列修复。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://news.qq.com/rain/a/20261004A0067800" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">攻击</span><span class="date">2026-10-03</span></div>
+      <h3>韩国五大银行四天内遭疑似AI驱动协同攻击，三家发生客户信息泄露</h3>
+      <p>新韩银行（约2.5万客户）、KB国民银行（119人）、韩亚银行（89人）及BNK釜山银行相继确认数据泄露，友利银行与NH农协银行发现同源攻击迹象。攻击入口高度一致，均瞄准外部可访问、安全投入较低的辅助系统，多地域IP轮番接入、持续试探，安全分析师在相关服务器上发现开源自主渗透系统ARTEX AI痕迹。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://news.qq.com/rain/a/20261003A08D2D00" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">攻击</span><span class="date">2026-10-02</span></div>
+      <h3>中国关联APT组织持续利用SharePoint/FortiMail/Citrix零日攻击关键基础设施</h3>
+      <p>Symantec追踪的Longlegs/Storm-2603（Warlock勒索软件）持续利用本地部署Microsoft SharePoint漏洞攻击，已入侵至少四家机构（水厂、电信商、地方政府、大学），在一次事件中关闭至少40台主机安全软件、通过SYSVOL复制在至少33台主机部署Warlock勒索软件。同期该组织还利用FortiMail与Citrix NetScaler零日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="http://accendum.com/news/china-linked-apt-exploits-sharepoint-fortimail-and-citrix-zero-days-thales-unveils-ai-cybe" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">攻击</span><span class="date">2026-10-03</span></div>
+      <h3>UAT-11587利用Antino后门，借Outlook/OneDrive隐藏间谍通信</h3>
+      <p>Cisco Talos追踪的UAT-11587自2025年9月起针对亚洲公共部门，至2026年7月已波及8个亚洲国家至少16个政府与政策机构，涉及国防部、立法机构、外交与边境内政机构、智库等。其Antino后门以Microsoft Graph经Outlook/OneDrive传递指令与结果，无独立C2服务器，约350个终端受影响。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://cyberworldops.eu/en/antino-hides-espionage-traffic-inside-outlook-and-onedrive" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">攻击</span><span class="date">2026-10-03</span></div>
+      <h3>Wallstreet勒索组织声称从中国铁建沙特分公司窃取17TB数据</h3>
+      <p>勒索组织Wallstreet声称攻破中国铁建沙特分公司/Sama Construction财团网络，该实体为2034世界杯吉达中央体育场主承包商。据称窃取约17TB（约150万个文件）数据，含主合同、临时付款证书、业主索赔、IFC设计文档，以及超15万名员工个人信息，暴露关键基建与大规模个人数据双重风险。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://qpulse.quasarcybertech.com/news/6292/wallstreet-ransomware-group-exfiltrates-17tb-from-china-railway-construction-corporation-saudi-branch" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">攻击</span><span class="date">2026-10-01</span></div>
+      <h3>美国国防人力数据中心泄露事件：276万在世人员社保号与军籍信息外泄</h3>
+      <p>美国国防人力数据中心（DMDC）在2025年10月至2026年7月间遭攻击，攻击者利用文件共享系统漏洞访问未加密记录，泄露276万名在世人员及29.4万名已故人员的社保号、姓名、出生日期与服役信息。受影响者被建议注册信用监控、冻结信用并申请IRS身份保护PIN。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.cybermaterial.com/p/cyber-briefing-20261001" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-04 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
