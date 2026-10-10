@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-10-10</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.src{
+  display:inline-block;margin-top:14px;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-10 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-10-10 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>17</b><span>总动态</span></div>
+      <div class="stat"><b>4</b><span>厂商动态</span></div>
+      <div class="stat"><b>13</b><span>行业动态</span></div>
+      <div class="stat"><b>0</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>今天国内厂商几乎没有新品发布，行业侧却是一整排「换防火墙」的公告</b>——税务、监狱、法院、证券、邮政、电建、钢铁同时开动。<b>福建税务一次买 16 台深信服 AF-2000</b>（14 台 L2600 + 2 台 L2800 高性能），<b>北新泾监狱 120.14 万整包安恒</b>（含下一代防火墙 2 台 + 业务区/管理区防火墙 + WAF + 数据库审计），四川税务 6 台迈普，上海政务网公安网边界迪普。<b>这批标的关键词不是「新增」而是「替换」</b>：等保合规到期、老设备退役、信创国产化三条线叠在一起。<b>产品经理更该盯的是门槛变化</b>——惠州公共资源交易中心明确要求提供 CMA/CNAS/ilac-MRA <b>三标齐全的第三方性能检测报告</b>，仙游法院直接指定「国产化防火墙」，华龙证券要求国产 CPU + 国产 OS 且吞吐 ≥13Gbps、时延 ≤0.8μs。<b>资质与性能指标正在从评分项变成资格项。</b><br><br>
+国际侧今天三件事指向同一个方向：<b>防火墙正在换形态</b>。<b>Sophos 启动 Firewall v23 Early Access</b>，把 AI 辅助策略与运维做进主版本、重写 REST API；<b>Fortinet 把 FortiGate VM 搬上 IBM Cloud VPC</b>，按量付费、跨区双活，是 NGFW 的云原生形态落地；<b>东芝联合 SpeQtral、HPE 把 QKD/PQC 注入 SRX 的 IPsec VPN</b>，让抗量子密钥直接进现有边界设备。<b>AI 化、云化、抗量子，三条线同时推进</b>——这也是 NF 在竞品矩阵里最该单独跟踪的三个维度。<br><br>
+最后一条是迪普的自我披露：<b>防火墙连续六年国内前四、UTM 防火墙硬件份额超 10%</b>，2026 上半年运营商收入占比 28.05%、政府 17.87%。<b>在运营商与金融这类高端场景，迪普已经从「跟随者」变成稳定的份额持有者</b>——这一点比单笔中标更值得记录。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">4 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#3B82F6;background:#3B82F624;border-color:#3B82F633">迪普</span><span class="date">2026-10-04</span></div>
+      <h3>迪普科技：防火墙连续六年国内前四，UTM防火墙硬件份额超10%</h3>
+      <p>迪普科技（300768.SZ）披露其防火墙产品连续六年名列国内前四，UTM防火墙硬件市场份额超10%，为首家通过公安部高性能国产化防火墙认证的安全厂商；自研软硬件平台推出国产机框式架构，最大可实现TB级处理能力与微秒级时延，2026上半年运营商收入占比28.05%。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://caifuhao.eastmoney.com/news/20261004173722003812610" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F97316;background:#F9731624;border-color:#F9731633">Sophos</span><span class="date">2026-09-30</span></div>
+      <h3>Sophos Firewall v23 Early Access 发布：AI 辅助策略、30+ 项新特性</h3>
+      <p>Sophos 启动 Firewall v23 Early Access，为近年最大功能版本：新增 AI 驱动的策略辅助与日常运维能力、现代化 REST API、规则管理简化、高可用增强与身份集成扩展，覆盖 XGS 系列全系硬件，主打中端企业边界防护的可管理性提升。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://community.sophos.com/sophos-xg-firewall/sfos-v23-early-access-program/b/announcements/posts/sophos-firewall-v23-early-access" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-06</span></div>
+      <h3>IBM Cloud VPC 上线 Fortinet FortiGate VM 下一代防火墙</h3>
+      <p>IBM Cloud 在 VPC 中引入 Fortinet FortiGate VM 下一代防火墙，基于 FortiOS 与 FortiGuard AI 威胁情报，提供 IPS、Web 过滤、反恶意软件、应用控制、VPN 与意图式分段，支持单区及跨区主备/双活高可用，按量付费授权，属 NGFW 的云原生形态落地。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://community.ibm.com/community/user/blogs/stephanie-wing1/2026/10/06/secure-critical-workloads-with-fortinet-fortigate-vm-next-generation-firewall-on-ibm-cloud-vpc" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#10B981;background:#10B98124;border-color:#10B98133">HPE</span><span class="date">2026-10-06</span></div>
+      <h3>东芝联合 SpeQtral、HPE 展示抗量子 SRX 下一代防火墙方案</h3>
+      <p>东芝亚太联合 SpeQtral、HPE 验证抗量子通信方案，将量子安全网络平台与 HPE Networking SRX 下一代防火墙集成，融合后量子密码（PQC）与量子密钥分发（QKD）为现有 IPsec VPN 注入抗量子密钥，面向关键基础设施与政府网络的边界防护升级。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="http://www.asiapacificnews.net/news/279354308/toshiba-showcases-quantum-safe-protection-for-critical-infrastructure-and-government-networks-with-speqtral-and-hpe" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">13 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-08</span></div>
+      <h3>福建税务2026年网络安全设备优化更新项目：深信服AF-2000-L2600×14台、L2800×2台</h3>
+      <p>国家税务总局福建省税务局2026年网络安全设备优化更新项目，采购边界防火墙深信服AF-2000-L2600共14台（单价4.88万元）、高性能边界防火墙AF-2000-L2800共2台（单价17.8万元），另含奇安信网神SecIPS3600入侵防御2套、长亭下一代Web应用防火墙2套、安恒日志审计2套。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://fujian.chinatax.gov.cn/zfxxgkzl/zfxxgkml/zsjs/zfcg_142/202609/t20260908_646322.htm" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-09</span></div>
+      <h3>上海市北新泾监狱网络安全等级保护建设项目中标：安恒下一代防火墙DAS-TGFW-A1280-FU×2台</h3>
+      <p>上海市北新泾监狱网络安全等级保护建设项目中标金额120.14万元，采购安恒下一代防火墙DAS-TGFW-A1280-FU两台（单价6.6万元）、业务应用区防火墙A1200-FU、管理区及安全监控区防火墙A400-FU，并配套WAF、数据库审计、堡垒机、漏洞扫描等。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.sizebid.com/002/shanghai/shanghai/2026/2fa14d767ce77caf4bd684e63446da71.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-09</span></div>
+      <h3>上海政务网公安网边界设备采购项目中标：迪普FW1000-GA-GE防火墙</h3>
+      <p>上海政务网公安网边界设备采购项目中标金额109.066万元，标的含迪普科技FW1000-GA-GE防火墙，以及入侵防御、可信边界网关、光闸等设备，用于政务网与公安网之间的边界安全隔离与访问控制。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.china-zbservice.com/zhaobiao/t20260910_27301104.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-08</span></div>
+      <h3>四川税务2026年网络及安全设备采购：迈普防火墙MPSec NSFW4000-X8 Ultra×6台</h3>
+      <p>国家税务总局四川省税务局2026年网络及安全设备采购项目中标185万元，采购迈普防火墙MPSec NSFW4000-X8 Ultra共6台（单价11.79万元），并含万兆/千兆接入及汇聚交换机，为税务系统网络边界提供国产化防火墙防护。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://sichuan.jianyu360.cn/jybx/20260829_26082881621467.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-07</span></div>
+      <h3>大同市公安局交管支队公安专网安全设备购置招标：采购防火墙2套（预算129.5万元）</h3>
+      <p>大同市公安局交通管理支队公安专网安全设备购置项目公开招标，预算及最高限价129.5万元，采购防火墙2套，另含主机安全管理平台、数据库审计、漏洞扫描、感知一体机、堡垒机、日志审计等设备，10月28日开标。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://prec.sxzwfw.gov.cn/jyxxzcgg/1101775.jhtml" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-09</span></div>
+      <h3>惠州市公共资源交易中心防火墙设备国产化替代采购项目（二次）</h3>
+      <p>惠州市公共资源交易中心对使用多年的防火墙开展国产化替代采购（二次），最高限价11.39万元，要求供应商为防火墙生产厂家或授权经销商，并提供CMA、CNAS、ilac-MRA三标齐全的第三方性能检测报告，报价截止10月16日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://zyjy.huizhou.gov.cn/ywdt/zxdt/tzgg/content/post_5865941.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-08</span></div>
+      <h3>仙游县人民法院2026年国产化防火墙询价采购（2台）</h3>
+      <p>仙游县人民法院因工作需要拟采购国产化防火墙2台并公开询价，要求供应商提供营业执照、法人身份证复印件及参数报价单并加盖公章，询价截止日期2026年10月14日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="http://fy.fjxyxfy.gov.cn/article/detail/2026/10/id/9516499.shtml" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-10-09</span></div>
+      <h3>华龙证券测试环境细化隔离防火墙（XC）更换改造项目招标</h3>
+      <p>华龙证券对测试环境细化隔离防火墙实施XC信创更换改造公开招标，采购2台国产处理器+国产操作系统防火墙，要求吞吐≥13Gbps、并发≥550万、时延≤0.8微秒，支持OSPFv3/BGP4+/ISIS及BFD联动，11月4日开标。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.gsei.com.cn/html/1336/2026-10-09/content-706758.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-09-28</span></div>
+      <h3>东吴证券存储、服务器及网络设备采购招标：标段四为防火墙2台（预算36万元）</h3>
+      <p>东吴证券存储、服务器及网络设备采购公开招标，标段四为防火墙设备，采购2台、预算36万元，要求投标时提供生产制造企业针对本项目的授权书原件及原厂代理证书，投标截止2026年10月19日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.ulilink.com/newDetailsView?id=681edd402bdadba87db086e863270ba0367ec24d5eb178166a083d803e670e91" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-08</span></div>
+      <h3>中国邮政新疆区分公司机房安全设备更新招标：含5台防火墙（预算30万元）</h3>
+      <p>中国邮政新疆区分公司招标更新区中心机房安全设备，拟采购上联集团互联网区防火墙2台、城域网区防火墙2台、区公司互联网防火墙1台（合计5台防火墙预算30万元），另含4台路由器，项目最高限价48万元。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.chinapost.com.cn/cn/report/2610/0777-1.htm" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">教育</span><span class="date">2026-09-30</span></div>
+      <h3>郑州财税金融职业学院网络安全攻防实训室建设项目中标（含网络防护防火墙）</h3>
+      <p>郑州财税金融职业学院战略新兴专业网络安全攻防实训室建设项目中标，河南尔享科技以37.9万元中标，采购内容含网络防护防火墙、Web应用防火墙、上网行为管理等，属教学实训场景的防火墙采购。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://hnzbcg.cn/zhaobiao/190885.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#84CC16;background:#84CC1624;border-color:#84CC1633">能源</span><span class="date">2026-10-05</span></div>
+      <h3>中国电建山东电建三公司颐杰鸿利网络安全防火墙采购询比公告</h3>
+      <p>中国电建山东电建三公司颐杰鸿利以公开询比方式采购网络安全防火墙设备，交货时间2026年11月30日，质保期6年，采用一轮报价并选最低价供方为首选供应商，投标截止10月13日。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://sd.qianlima.com/zbcontent-636224920.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-07</span></div>
+      <h3>酒钢集团职工培训分公司2026年防火墙等零固集中采购：锐捷RG-WALL 1600-Z5000-G10</h3>
+      <p>酒钢集团职工培训分公司2026年防火墙等零固集中采购成交，采购锐捷网络RG-WALL 1600-Z5000-G10防火墙1台（单价7.7万元），另含教育综合安防平台及模块化数据中心等设备。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://eps.jiugangbid.com/jyxx/001002/001002005/20261007/5ef85304-2c66-46ab-87cf-4328854ea15d.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与行业资讯</h2><span class="cnt">0 条</span></div>
+    <div class="grid">
+    <div class="empty reveal">今日无新增防火墙漏洞与政策动态，行业持续平稳</div>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-10 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
