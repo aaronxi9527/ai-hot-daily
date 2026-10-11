@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-10-11</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.src{
+  display:inline-block;margin-top:14px;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-11 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-10-11 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>12</b><span>总动态</span></div>
+      <div class="stat"><b>2</b><span>厂商动态</span></div>
+      <div class="stat"><b>8</b><span>行业动态</span></div>
+      <div class="stat"><b>2</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>今天的增量很薄，但薄得有信息量</b>——厂商侧只有两条硬料：<b>深信服下一代防火墙 AF 以 22.8% 份额稳居国内第一</b>（零信任 VPN 23.1%、上网行为管理 AC 19.2% 同样第一，安全业务毛利率 79.43%），以及 <b>Fortinet 把 FortiGate G 系列扩到 3500G / 400G</b>：400Gb 接口打超大规模与 AI 基础设施、400G 打企业边缘，NP7 + SP5 自研 ASIC 加持，CP10 内容处理器把 IPSA 吞吐推到 20Gbps（CP9 的两倍）、规则库容量 6 倍，同时新增影子 AI 检测与 AI 辅助威胁防护。<b>值得 NF 记一笔的是：Fortinet 把「自研 ASIC + AI 流量治理」打包成同一台设备卖，这正是竞品矩阵里最需要对照的一栏。</b><br><br>
+行业侧延续了昨天那条主线——<b>不是新增，是替换</b>。贵州税务 130 万买 2 台防火墙（明确把防火墙列为「核心产品」）、平顶山妇幼买 2 台深信服 AF-1000-L1600、肇东市第一医院询价防火墙、丰台区环卫 14.8 万配 1 套硬件防火墙、朔州城区物业做「国产化下一代防火墙升级」。<b>更该盯的是门槛怎么写的</b>：吉林省等保整改直接把 <b>防火墙吞吐 ≥35Gbps、并发 ≥2000 万、新建 ≥50 万</b> 写进技术要求；肇东一院要 <b>吞吐 ≥5Gbps、并发 ≥150 万</b>；淮南考场项目更是硬性要求「<b>防火墙芯片须为国产品牌</b>」且「<b>须支持 BFD 协议</b>」，两家投标人分别因 FT-1500 芯片无法证明国产、无法提供 BFD 支持证明被<b>直接否决</b>。<b>资质与硬件参数正在从评分项变成否决项——投标前置材料包（国产芯片证明 + 协议支持证明 + 性能实测）必须提前备齐。</b><br><br>
+安全态势这一块，Cisco 一天贡献两条，指向同一个结论：<b>防火墙的「门」和「钥匙柜」同时在被撬</b>。<b>CVE-2026-20349</b> 打的是 ASA / FTD 的 Remote Access SSL VPN 服务（CVSS 8.6，未认证单包即可让设备重启，CISA 已列 KEV）；<b>CVE-2026-20242</b> 打的是 FMC 管理面——启用外部数据库访问后，未认证攻击者可投递 Java 序列化字节流拿到 root；配套的 <b>CVE-2026-20324</b> 则利用默认启用的 sftunnel 协议冒用合法对端身份写入恶意文件。<b>边界设备自身的管理面与远程接入模块，已经是最稳定的攻击入口</b>——这也是 NF 在客户侧最该主动做体检的两块：SSL VPN 是否必须暴露公网、FMC 类管理平面是否隔离。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">2 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">深信服</span><span class="date">2026-10-03</span></div>
+      <h3>深信服下一代防火墙AF市场份额22.8%稳居国内第一（对比迪普科技）</h3>
+      <p>行业对比数据显示，深信服下一代防火墙AF以22.8%的市场份额稳居国内第一，零信任VPN（23.1%）、全网行为管理AC（19.2%）同样位列第一；深信服安全业务毛利率79.43%，拥有10万+存量企业客户。对比方迪普科技防火墙业务在运营商（28.05%）、政府（17.87%）、金融（12.34%）行业占比突出。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://caifuhao.eastmoney.com/news/20261003082134523045210" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-01</span></div>
+      <h3>Fortinet扩展FortiGate G系列：3500G与400G搭载NP7/SP5自研ASIC，运行FortiOS 8.0（合并2源）</h3>
+      <p>Fortinet 2026年推出FortiGate 3500G（400Gb接口，面向超大规模数据中心与AI基础设施）与FortiGate 400G（面向企业边缘），均搭载NP7网络处理器与SP5/SOC5安全处理器并运行FortiOS 8.0。NP7负责IPv4/IPv6转发、IPsec、NAT、VXLAN与策略执行，CP10内容处理器提供最高20Gbps IPSA吞吐（CP9的两倍）、规则库容量6倍。G系列新增影子AI检测与AI辅助威胁防护能力，用于应对加密流量与AI工作负载。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://bitcoinversus.tech/2026/10/01/fortinet-asic-hardware-inside-the-security-processors-powering-fortigate-firewalls" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">8 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">教育</span><span class="date">2026-10-10</span></div>
+      <h3>淮南市区计算机化考试标准化考场建设项目成交：华为USG6000F-S150下一代防火墙9台</h3>
+      <p>项目编号2026CG0221，竞争性谈判，成交供应商合肥源节科技发展有限公司，成交金额94.8万元。主要标的：下一代防火墙，品牌华为，型号USG6000F-S150，数量9台，单价23856元。两家投标人被否决：安徽观止因防火墙芯片型号FT-1500无法证明为国产品牌；合肥共创达亿因无法提供防火墙支持BFD协议证明。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://jy.ggj.huainan.gov.cn/jyxx/012002/012002004/012002004001/20261010/a7b968e6-7492-45f2-ba5e-2496b8394fb1.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-09</span></div>
+      <h3>国家税务总局贵州省税务局贵州税务2026年网络和数据安全设备采购需求公示：2台防火墙为核心产品</h3>
+      <p>采购人国家税务总局贵州省税务局，预算金额130万元，公示期2026-10-09至10-12。采购内容：2台堡垒机、2台防火墙、1套数据库执行平台，核心产品为防火墙（政府采购品目编码A02010301）。属税务系统网络与数据安全设备更新。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://guizhou.chinatax.gov.cn/xxgk/zfcg/qtgg/202610/t20261009_90968434.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-10-09</span></div>
+      <h3>平顶山市妇幼保健院防火墙设备采购结果公告：深信服AF-1000-L1600×2台</h3>
+      <p>询价采购，成交供应商平顶山市万广悦商贸有限公司，成交金额9.89万元。成交清单：防火墙设备2台，品牌深信服，型号AF-1000-L1600-sk，单价49450元，质保期3年。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.pdsfybj.cn/article/714/22.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-10-09</span></div>
+      <h3>平顶山市妇幼保健院网御星云防火墙授权服务采购结果公告</h3>
+      <p>竞争性谈判采购，成交金额5.413万元，采购内容为网御星云防火墙授权服务，数量3年。同一采购人同期另采购深信服AF-1000-L1600防火墙2台。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.pdsfybj.cn/article/712/22.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-09</span></div>
+      <h3>丰台区环卫中心网络安全管理优化提升项目比选公告：防火墙1套（硬件）</h3>
+      <p>采购人北京市丰台区环境卫生服务中心，采购预算14.80万元。采购清单：防火墙1套（硬件）、入侵防御1套、日志审计1套、网络架构调整安全服务1项。材料递交截止2026-10-12。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.bjft.gov.cn/xxfb/zfgg/202610/t20261009_226840.shtml" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-10-09</span></div>
+      <h3>肇东市第一医院网络防火墙采购公告：要求吞吐≥5Gbps、并发≥150万</h3>
+      <p>采购人肇东市第一医院，询价采购。技术要求：标准1U增强千兆硬件平台，千兆电口≥10个、千兆光口≥2个，最大吞吐量≥5Gbps，最大并发连接数≥150万，每秒新建连接数≥4万。报名截止2026-10-16。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.zdsdyyy.org.cn/index.php?m=home&c=View&a=index&aid=968" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-09</span></div>
+      <h3>吉林省公共资源交易中心等保整改项目成交：要求防火墙吞吐量≥35Gbps、并发≥2000万</h3>
+      <p>信息系统安全等级保护整改及安全保障服务项目。第一包等保整改中标人吉林泰谷信合科技有限公司，报价77.7万元，技术要求含防火墙吞吐量≥35Gbps、最大并发连接数≥2000万、每秒新建连接数≥50万；第二包安全保障服务中标人吉林省泛在科技有限公司，报价57.55万元。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.jl.gov.cn/ggzy/zfcg/zbgg/202610/t20261009_9727292.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-09</span></div>
+      <h3>朔州市朔城区物业管理服务中心智慧平台运维项目成交：含国产化下一代防火墙升级</h3>
+      <p>成交供应商中电信数智科技有限公司山西分公司，成交金额29万元。服务范围含国产化下一代防火墙升级、国产化全网行为管理升级、终端防病毒系统升级、网络改造等，合同期一年。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://prec.sxzwfw.gov.cn/jyxxzczb/1102326.jhtml" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与行业资讯</h2><span class="cnt">2 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#0EA5E9;background:#0EA5E924;border-color:#0EA5E933">Cisco</span><span class="date">2026-10-03</span></div>
+      <h3>CVE-2026-20349：Cisco Secure Firewall ASA/FTD远程访问SSL VPN高危DoS漏洞在野利用</h3>
+      <p>CVE-2026-20349位于Cisco Secure Firewall ASA与FTD的Remote Access SSL VPN服务中，属堆检查类缺陷（CVSS 8.6）。未认证攻击者向互联网暴露设备发送特制HTTP请求即可触发意外重启，造成拒绝服务；勒索团伙常借此制造横向移动窗口。受影响版本：ASA 9.16–9.24、FTD 7.0–10.0（需启用SSL VPN或IKEv2远程接入）。CISA已于2026-08-11列入KEV，Cisco已发布修复版本且无变通方案。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://systemforce.co.uk/blog/2026/10/03/cisco-asa-ftd-cve-2026-20349-actively-exploited/" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#0EA5E9;background:#0EA5E924;border-color:#0EA5E933">Cisco</span><span class="date">2026-10-04</span></div>
+      <h3>Cisco Secure FMC两个高危漏洞：CVE-2026-20242不安全反序列化（root RCE）与CVE-2026-20324不当访问控制</h3>
+      <p>CVE-2026-20242：当FMC启用External Database Access且访问清单已配置主机时，未认证远程攻击者可从清单内主机向特定TCP端口发送特制Java序列化字节流，以root权限执行任意指令。CVE-2026-20324：当sftunnel协议启用（系统默认启用）时，已认证攻击者可劫持sftunnel连接或冒用合法对端身份，将恶意文件写入任意位置并以root执行代码。影响FMC 7.0.0–7.0.9、7.2.0–7.2.11、7.3.0–7.3.1.2、7.4.0–7.4.7、7.6.0–7.6.5、7.7.0–7.7.12、10.0.0–10.0.1。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://advisories.checkpoint.com/defense/advisories/public/2026/cpai-2026-13040.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-11 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
