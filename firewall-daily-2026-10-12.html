@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-10-12</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.src{
+  display:inline-block;margin-top:14px;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-12 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-10-12 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>12</b><span>总动态</span></div>
+      <div class="stat"><b>2</b><span>厂商动态</span></div>
+      <div class="stat"><b>8</b><span>行业动态</span></div>
+      <div class="stat"><b>2</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>今天真正的信号在运营商侧，而且很大</b>——<b>中国电信 2026 年云网信息安全产品集采（防火墙 D 档 / E 档标包）中标候选人公示：预估采购 3230 台防火墙，较 2024 年同类项目 1806 台增长约 79%</b>。报价上新华三约 3272 万（最低）拿第一、华为约 3758 万第二、安博通约 3374 万第三、迪普约 3831 万第四，四家报价咬得很紧（均值约 3559 万）。<b>更值得记的是名单洗牌</b>：2024 年这个包的第一名是迪普，这次掉到第四；<b>山石网科直接掉出候选人名单，安博通顶了进来</b>。运营商集采规模近乎翻倍 + 座次重排，是本期最该带进竞品矩阵的一页。<br><br>
+<b>行业侧延续了前几期的主线——不是新增，是替换，而且门槛越写越硬</b>。郑州市财政局外网 23.3 万买 1 台下一代防火墙 + 1 台上网行为管理；<b>华泰证券做信创四层防火墙框架协议采购</b>；<b>招商证券职场防火墙采购已经做到「四次采购」</b>，资格条件直接要求《网络安全专用产品安全检测证书》或《网络关键设备和网络安全专用产品安全认证证书》+ 近 3 年同类业绩 + 年度审计报告；舟山公交 19.3 万买 1 台国产化 NGFW；<b>军队那条最典型</b>——6 台国产化防火墙，★项写明「产品须入围《某名录》」且吞吐 ≥20G、新建 ≥15 万、并发 ≥4000 万，带星参数任一条不响应即投标无效。<b>资格关已经下沉到「名录 + 证书 + 性能实测」三层，投标前置材料包缺一项就出局。</b><br><br>
+<b>国际侧这一期的主题是「门」和「寿命」</b>。SonicWall 一天披露 SMA1000 四个漏洞，其中最严重的 <b>CVE-2026-102255 是 WorkPlace 门户的预认证 SSRF，CVSS 满分 10.0</b>，且没有任何变通方案——<b>这是 2026 年第三个打在同一界面的预认证 SSRF</b>，前两个（CVE-2026-15409、CVE-2026-83548）都被在野利用并进了 CISA KEV。<b>同一个登录页一年被打穿三次，说明「远程接入面是否必须暴露公网」已经不是加固建议而是架构问题。</b>另一条容易被忽略但商业含义更直接：<b>FortiOS 7.2 已在 2026 年 9 月 30 日到达停止支持</b>，当前仅 8.0 / 7.6 / 7.4 三条线还在维护，而 FortiOS 在 CISA KEV 上累计有 20 个已被在野利用的条目——<b>存量 7.2 及更早的 FortiGate 客户，正面临「不升级就没补丁」的硬约束，这是国产替代最标准的切入点。</b><br><br>
+厂商版块本期偏薄：天融信把 AI 融入防火墙、VPN、入侵检测等系列产品线并同步铺了 15 款工业安全专用产品（含工业防火墙），启明星辰把 AI 安全能力灌进原有防火墙与安全运营平台、重点布局 AI 防火墙与安全代理。<b>国内厂商的 AI 化路径正在趋同——都是「在既有边界产品线上加 AI 能力」，而不是另起一条产品线。这对 NF 的含义是：AI 能力要按「防火墙本体功能升级」来组织卖点，而不是当成一个新品类去讲。</b></p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">2 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">天融信</span><span class="date">2026-10-10</span></div>
+      <h3>天融信：发布融入 AI 技术的防火墙等系列产品，增强加密流量识别与未知威胁检测；工业防火墙等 15 款专用产品全栈国产化</h3>
+      <p>天融信披露 AI 赋能安全进展：发布融入 AI 技术的防火墙、VPN、WAF、入侵检测/防御、抗DDoS、APT 安全监测、智能网络审计、网络准入等系列产品，增强加密流量识别与防护、未知威胁检测能力，覆盖边界安全、安全检测、接入安全等；工业安全方面发布工业防火墙、工业入侵检测、工业网闸等 15 款专用产品，构建全栈国产化工业安全产品矩阵。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.xueqiu.com/3354551909/411422959" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">启明星辰</span><span class="date">2026-10-09</span></div>
+      <h3>启明星辰重点布局 AI 防火墙与安全代理，将 AI 安全能力融入原有防火墙、入侵检测与安全运营平台</h3>
+      <p>行业梳理指出，启明星辰重点布局 AI 防火墙、安全代理及全套安全评估体系，依托政企渠道资源将 AI 安全能力融入原有防火墙、入侵检测、安全运营平台；自研智能体检测系统实现 Agent 身份识别、调用行为记录与越权行为阻断，适配大型央企、政府机构大模型与 Agent 私有化部署场景。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://m.10jqka.com.cn/20261009/c680537798.shtml" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">8 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#10B981;background:#10B98124;border-color:#10B98133">H3C</span><span class="date">2026-10-06</span></div>
+      <h3>中国电信 2026 年云网信息安全产品集采（防火墙 D/E 档标包）中标候选人公示：新华三第一，华为、安博通、迪普随后，预估采购 3230 台</h3>
+      <p>中国电信 2026 年云网信息安全产品集中采购项目（防火墙 D 档、E 档标包）于 2026 年 7 月 2 日公示中标候选人（本条为 10 月新披露）：第一候选人新华三技术有限公司，投标报价约 3272.14 万元（含税，报价最低）；第二华为技术有限公司约 3757.94 万元；第三北京安博通科技约 3373.66 万元；第四杭州迪普科技约 3830.56 万元。预估采购数量 3230 台防火墙，较 2024 年同类项目（1806 台）增长约 79%。对比 2024 年：迪普第一、新华三第二、华为第三、山石网科第四；本次山石未入围，安博通新进。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://aiqicha.baidu.com/details/ugknowledge?id=8d56f1a39aa274a43e56199d3f0bc44b" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">深信服</span><span class="date">2026-10-09</span></div>
+      <h3>昆明市妇幼保健院信息化机房设备采购中标：深信服下一代防火墙 AF-1000-L2200-AK 2 台，项目总额 392.8 万元</h3>
+      <p>昆明市妇幼保健院信息化机房设备采购项目中标金额 392.8 万元（中标人云南南天电子信息产业股份有限公司）。主要标的信息：下一代防火墙 深信服 AF-1000-L2200-AK 共 2 台（单价 133,100 元）、Web 防火墙 深信服 WAF-2000-L2250-AK 1 台（178,500 元）、全网行为管理 深信服 AC-1000-L2150-AK 1 台（158,300 元），另含迪普 IPS 与负载均衡、微步网盾、超融合一体机等。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.ahzb.net/info/china/133076698.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">未知</span><span class="date">2026-10-10</span></div>
+      <h3>郑州市财政局外网安全加固项目中标：下一代防火墙 1 台 + 上网行为管理 1 台，中标价 23.3 万元</h3>
+      <p>郑州市财政局外网安全加固项目（编号 XDEC-A20260945）公开招标，评审日期 2026 年 10 月 10 日，中标人河南威帆信息技术股份有限公司，中标价 233,000 元。项目为外网部署下一代防火墙 1 台、上网行为管理 1 台，含设备安装调试、与现网 WIFI 认证对接、整体网络优化及一年专职工程师驻场服务；要求硬件及软件（含特征库）质保与升级不低于 3 年。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://hnzbcg.cn/zhaobiao/191261.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">未知</span><span class="date">2026-10-07</span></div>
+      <h3>华泰证券 2026 年度信创四层防火墙框架协议采购项目中标结果公示，供应商为南京行者无疆电子科技</h3>
+      <p>华泰证券股份有限公司 10 月 7 日发布《华泰证券 2026 年度信创四层防火墙框架协议采购项目中标结果公示》，中标供应商为南京行者无疆电子科技有限公司，项目地区江苏省。采购标的为信创四层防火墙框架协议。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://stock.stockstar.com/RB2026101000005468.shtml" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">未知</span><span class="date">2026-10-08</span></div>
+      <h3>招商证券 2026 年职场防火墙设备采购（四次采购）招标公告：须提供《网络安全专用产品安全检测证书》及近 3 年同类业绩</h3>
+      <p>招商证券 2026 年职场防火墙设备采购（四次采购）公开招标，投标截止 2026-10-19 09:10，开标同日。资格要求：投标人须为所投产品制造商或授权代理商（同一制造商仅能授权一家代理商）；须提供所投品牌设备的《网络安全专用产品安全检测证书》或《网络关键设备和网络安全专用产品安全认证证书》；近 3 年同类业绩至少 1 个；须提供 2025 年度审计报告及财务报表关键页。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.ulilink.com/newDetailsView?id=d067b69a7f8c57948fffbf3be1b2721399d384c4578ce59fa5c57f2606ba9b8a" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">未知</span><span class="date">2026-10-09</span></div>
+      <h3>舟山市公共交通有限责任公司防火墙专项升级与服务器主机安全防护项目：1 台国产化下一代防火墙 + EDR，预算 19.3 万元</h3>
+      <p>舟山市公共交通有限责任公司公开采购「防火墙专项升级与服务器主机安全防护项目」（编号 A3301020001002469），预算 193,000 元，采购 1 台国产化下一代防火墙及服务器 EDR 主机安全防护系统，供货期 30 天，投标截止 2026-10-16 09:00，通过浙企采平台线上投标；不接受联合体投标、不允许转包分包。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://zj.zhaobiao.lanyancloud.com/notice/b399bf05cd8a4b06" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">未知</span><span class="date">2026-10-08</span></div>
+      <h3>国产化防火墙采购（第二次）招标公告：6 台防火墙，吞吐≥20G、并发≥4000 万，金额 48 万元</h3>
+      <p>项目编号 2026-JLDJBH-W3245，发布于江苏无锡，金额 48 万元，国内竞争性谈判采购。采购防火墙 6 台，★关键参数：产品须入围《某名录》（最新版）；性能要求防火墙吞吐≥20G、新建连接≥15 万、并发连接≥4000 万；配置 12 个 GE 接口 + 12 个 SFP 接口 + 2 个扩展槽位、双电源 1+1 AC/DC 冗余、支持双硬盘、HA 主备切换；综合集成网络防火墙/入侵防御/防病毒/上网行为管理，含≥3 年 IPS/AV/ACG 特征库升级服务。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.china0001.com.cn/biddingdetail/index/93362a4f803c4e2b84c8c14a110398a3.html" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-06</span></div>
+      <h3>國票證券網路設備採購作業招標（第三次）：投標廠商須提供金融業 Fortinet 防火牆建置或維護經驗證明及原廠經銷授權</h3>
+      <p>國票綜合證券股份有限公司網路設備採購作業招標（第三次），公告期間 2026/10/6 至 10/12，開標 10/12 15:00，最低價決標。投標資格明确要求：投標廠商須提供金融業 Fortinet 防火牆建置或維護經驗證明、Fortinet Certified Professional Network Security 證照，以及 Fortinet 原廠經銷授權證明。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://www.ibf.com.tw/tender_detail/259" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与行业资讯</h2><span class="cnt">2 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#38BDF8;background:#38BDF824;border-color:#38BDF833">SonicWall</span><span class="date">2026-10-06</span></div>
+      <h3>SonicWall SMA1000 曝 CVSS 10.0 预认证 SSRF（CVE-2026-102255）等 4 个漏洞，为今年第三个同界面高危 SSRF</h3>
+      <p>SonicWall 于 10 月 6 日披露 SMA1000 系列（6210/7210/8200v）4 个漏洞，最严重的 CVE-2026-102255 为 WorkPlace 门户预认证 SSRF，CVSS 满分 10.0，未认证攻击者可借设备访问内部功能。另含 CVE-2026-102256（OS 命令注入，CVSS 7.8）、CVE-2026-102257（Zip Slip，7.2）、CVE-2026-102258（存储型 XSS，6.1）。受影响版本 12.4.3-03526 及更早、12.5.0-02952 及更早；厂商未提供变通方案，仅能升级至 12.4.3-03670 / 12.5.0-03082 或更新。这是 2026 年第三个打在同一界面的预认证 SSRF（前两个 CVE-2026-15409、CVE-2026-83548 均已被在野利用并列入 CISA KEV）。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://aviatrix.ai/threat-research-center/sonicwall-sma1000-cve-2026-102255-ssrf-pre-authentication" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-09-30</span></div>
+      <h3>Fortinet FortiOS 7.2 于 2026 年 9 月 30 日到达停止支持（EOL），存量 FortiGate 需升级至 8.0/7.6/7.4</h3>
+      <p>Fortinet FortiOS 7.2 发布线于 2026 年 9 月 30 日停止支持（EOL），此后不再接收安全更新；当前仍受支持的发布线为 FortiOS 8.0（EOL 2030-10-21）、7.6（2030-01-25）、7.4（2028-11-11），下一条到期的为 7.4。已 EOL 的发布线还包括 7.0、6.4、6.2、6.0。FortiOS 目前在 CISA KEV 上共有 20 个已被在野利用的漏洞条目，运行已停止支持的版本意味着新漏洞不再获得补丁。</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center"><a class="src" href="https://isitpatched.com/eol/fortinet-fortios" target="_blank" rel="noopener">查看来源 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-12 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
