@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-10-13</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --line:#1f2937; --line2:#26334a;
+  --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--txt); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; letter-spacing:.01em;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+                   radial-gradient(800px 460px at 88% 2%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+
+.hero{padding:66px 0 34px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c7d2fe;background:rgba(91,108,247,.12);
+  border:1px solid rgba(139,92,246,.34);border-radius:999px;
+  padding:6px 15px;margin-bottom:20px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--g3);display:block;
+  box-shadow:0 0 0 4px rgba(236,72,153,.18)}
+h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.hero .date{color:var(--txt2);font-size:15px}
+.hero .date b{color:var(--txt);font-weight:600}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{
+  min-width:132px;padding:16px 20px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.6));
+  border:1px solid var(--line);
+}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.25}
+.stat .l{font-size:12.5px;color:var(--txt2);margin-top:2px}
+
+.overview{
+  margin:34px 0 8px;padding:26px 28px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(91,108,247,.13),rgba(139,92,246,.07) 45%,rgba(236,72,153,.07));
+  border:1px solid var(--line2);
+}
+.overview h2{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.overview h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--g2);
+  box-shadow:0 0 12px rgba(139,92,246,.9)}
+.overview p{color:#d1d5db;font-size:15px}
+.overview b{color:#fff;font-weight:600}
+
+.sec{margin-top:56px}
+.sec-head{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sec-icon{font-size:22px}
+.count{font-size:12px;font-weight:600;color:#a5b4fc;background:rgba(91,108,247,.14);
+  border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:2px 10px}
+.sec-sub{color:var(--txt3);font-size:13px;margin-top:7px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 21px 17px;position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-3px);border-color:#334155;
+  box-shadow:0 16px 34px -18px rgba(0,0,0,.85)}
+.card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:7px;white-space:nowrap;line-height:1.5}
+.tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.34);
+  font-weight:600}
+.tag-cat{color:#a7f3d0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.26)}
+.level{margin-left:auto;font-size:12.5px;letter-spacing:1px;flex-shrink:0}
+.merged{font-size:11px;color:var(--txt3);border:1px solid var(--line);border-radius:6px;
+  padding:2px 7px;white-space:nowrap}
+
+.card-title{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:11px;color:#f3f4f6;
+  letter-spacing:-.005em}
+.card-body{font-size:14px;color:#b6bec9;line-height:1.85}
+.card-body b{color:#f0f2f5;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(139,92,246,.22) 62%);padding:0 1px}
+
+.card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src{font-size:12px;color:var(--txt3);line-height:1.9}
+.src a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.32);
+  transition:color .2s,border-color .2s}
+.src a:hover{color:#e9d5ff;border-color:#e9d5ff}
+
+.trend{margin-top:58px;padding:28px 30px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(17,24,39,.9),rgba(10,10,10,.6));
+  border:1px solid var(--line2)}
+.trend h2{font-size:19px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.trend-item{padding:15px 0;border-bottom:1px dashed var(--line)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-item h4{font-size:15px;color:#e9d5ff;margin-bottom:6px;font-weight:600}
+.trend-item p{font-size:13.5px;color:#a9b1bd;line-height:1.85}
+.trend-item b{color:#f0f2f5}
+
+footer{margin-top:46px;text-align:center;color:var(--txt3);font-size:12.5px;line-height:2}
+footer .sep{display:inline-block;width:34px;height:2px;border-radius:2px;margin:0 8px;
+  background:linear-gradient(90deg,var(--g1),var(--g3));vertical-align:middle}
+
+.anim{opacity:0;transform:translateY(26px)}
+.anim.in{opacity:1;transform:none;
+  transition:opacity .72s cubic-bezier(.2,.7,.3,1),transform .72s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d,0ms)}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px}
+  .hero{padding:44px 0 24px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .overview,.trend{padding:20px 18px}
+  .card{padding:17px 16px 14px}
+  .stat{min-width:calc(50% - 6px);padding:13px 14px}
+  .stat .n{font-size:23px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero anim">
+    <div class="badge"><i></i>AI SECURITY INTELLIGENCE · DAILY</div>
+    <h1>🤖 AI 安全日报</h1>
+    <p class="date"><b>2026-10-13</b> · 星期二 · 北京时间 · 覆盖国际 / 国内友商产品动态与行业趋势</p>
+    <div class="stats">
+      <div class="stat"><span class="n">7</span><span class="l">🏢 国际友商产品</span></div>
+      <div class="stat"><span class="n">4</span><span class="l">🇨🇳 国内友商产品</span></div>
+      <div class="stat"><span class="n">19</span><span class="l">📊 行业动态</span></div>
+      <div class="stat"><span class="n">30</span><span class="l">📌 今日总条数</span></div>
+    </div>
+  </header>
+<div class="overview anim">
+    <h2><span class="dot"></span>AI 总览 · 今日看点</h2>
+    <p><b>今天最该记住的一件事是：智能体安全的控制点被正式搬到了模型外面——而且今天有四家厂商从四个层次同时动手。</b>微软把 <b>MCP 工具调用塞进 Azure API Management</b>，由 Agent 365 出清单与访问决策、网关负责执行，AI Gateway 层还能单独阻断某个工具；Google 在 Gemini Enterprise 里给智能体加<b>归属转移与 Workforce Identity Federation</b>，把「谁拥有这个智能体、员工离职后它归谁」做成目录里的字段；GitHub 把 Copilot 本地沙箱转正（底层是 MXC，在<b>操作系统层</b>限制文件、网络与凭据）；火山引擎在 AgentKit 里补上<b>用户池 + OIDC + 出站 OAuth 凭证托管（Token Vault）</b>。四条路径互不相干，却给出同一个答案：<b>提示词层面的护栏不是安全边界，可执行的策略点才是。</b></p>
+    <p><b>今天披露的四条漏洞把「沙箱为什么防不住」讲得非常干净。</b>Network-AI 的 PreToolUse 钩子<b>只匹配第一个候选字段</b>——把危险载荷放进 <code>Write</code> 的 content、旁边配一个良性 file_path，拒绝规则就被绕过了（CVSS 7.4）；seo-crawler-mcp <b>完全没有目标允许列表</b>，对刚抓取文本作出反应的模型即可发起 SSRF 并读回内部响应，而<b>利用已公开、厂商未响应、无修复版本</b>；mistral.rs <b>检查了路径字符串，却让另一个进程去解析它</b>，父服务用跟随符号链接的读操作读出子进程无权访问的文件；agno <b>什么都不检查</b>，立即执行模型请求的每一次工具调用，人工确认开关默认关闭。<b>四类失效、一个母题：都只判断智能体「请求了什么」，没有一个去看调用「执行时发生了什么」。</b>同一天，GhostAction 用反向代理真实 GitHub 登录页 + 静默授权 OAuth device flow 做钓鱼，是同一个母题在「人」身上的版本。</p>
+    <p><b>国内今日 4 条产品级动作，恰好覆盖「上线前—运行时—交互层—身份层」。</b>绿盟科技把智能体安全拆成两段：<b>天元智衡 AI 红队智能体</b>（「攻击方法库 × 风险插件库」正交矩阵，覆盖 Skill 白盒审计，形成测评—整改—复测闭环，把红队做成上线前置门槛）与<b>清风卫 AI-DR</b>（全链路行为审计 + 文件安检 + AI/MCP 网关权限与用量管控，让数字员工「有身份、有边界、有记录」），并给出类 Claw 智能体的三类风险分类；天融信以<b>大模型安全评估为前置、大模型安全网关为运行时中枢</b>，贯通终端 DLP（本地 50 毫秒阻断）与智算云，口径细到 5 大类 31 子类内容风险、25 子类攻击模拟；瑞数信息从应用访问治理、Agent 生命周期与交互数据流三维切入，并主动把内容安全让出去；火山引擎在 AgentKit 补齐智能体身份与出站凭证托管。<b>配套信号是新华三 AI 安全网关成为首批通过中国信通院「智能体安全网关技术能力评估」的产品</b>——「智能体安全网关」在国内开始有可对照的能力基准。</p>
+    <p><b>最后给两个数字和一条必须标注边界的证据。</b>数字一：IBM《2026 年数据泄露成本报告》显示<b>每 4 起恶意泄露就有 1 起涉及 AI 驱动攻击，占比同比上升 56%</b>；Gartner 预计 2026 年全球信息安全支出达 <b>2440 亿美元</b>，而 Kaspersky 对 18 国 1800 名决策者的调查显示 <b>82% 担忧 AI 风险、超四分之三已遭遇事件、57% 已划拨专项预算</b>。数字二：Booz Allen 的 OT 测试中，两个前沿模型完成了<b>全部 8 个工控攻击场景</b>，其中一次从边界突破到工控网内动作只用了<b>刚过 16 分钟</b>，且模型没有拿到任何源码或工程文档、利用与物理动作前均需人工批准。一条边界：<b>Anthropic 称新防护「大幅」降低蒸馏攻击，但未公开技术机制、也无第三方验证</b>——「大幅」不是「完全」，这类厂商自述应等到技术文档或外部审计出现后再作为选型依据。</p>
+  </div>
+<section class="sec">
+    <div class="sec-head anim">
+      <h2><span class="sec-icon">🏢</span>国际友商产品动态<span class="count">7 条</span></h2>
+      <div class="sec-sub">仅收录可追溯到「某厂商某产品的某功能 / 版本变化」的具名发布；政策、报告、大会观点一律归入行业版块</div>
+    </div>
+    <div class="grid">
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">F5</span><span class="tag tag-cat">员工 AI 使用治理 / 运行时策略执行</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">F5 推出 Workforce AI Security 并进入 GA：把「员工用 AI」与「智能体代员工行事」纳入同一策略面</h3>
+      <div class="card-body">F5 宣布 <b>Workforce AI Security 自 2026 年 10 月起进入 GA</b>，为组织提供对员工 AI 使用、以及智能体代表用户执行的动作的可见性与策略控制，属于厂商内置的、面向员工侧的 AI 使用治理与执行工具。同期 F5 把 AI 安全能力收进 <b>F5 应用交付与安全平台（ADSP）</b>：平台一侧承接<b>用户、模型与推理、智能体、API、应用与集成、数据流六个方向</b>的 AI 流量，另一侧连接企业数字资产（应用、数据、AI 模型与基础设施），在统一策略框架内对<b>人类用户、机器人、可信 AI 智能体、可疑 AI 智能体与恶意机器人</b>分类管理；另有独立 AI 安全平台提供 AI 安全治理、资产探测与安全风险测试，并给出运行时防护。F5 产品侧的表述点出治理核心矛盾：「<b>一旦上了更多的管控手段，执行效率和部署效率就会受到约束</b>」——如何确定管控程度，是智能体安全治理最实际的问题。<br>另注：Gartner 2026 年 9 月首次发布 AI 应用安全新兴市场象限图，F5 与 Palo Alto Networks 同列「市场塑造者」。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://aiagentstore.ai/ai-agent-news/topic/workforce-impact-business-side/2026-08-11" target="_blank" rel="noopener">AI Agent Store（F5 Workforce AI Security）</a> · <a href="https://www.163.com/dy/article/L9280KBF05316FM3.html" target="_blank" rel="noopener">网易（F5 ADSP 深度报道）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">Microsoft</span><span class="tag tag-cat">AI-MCP 网关治理 / 智能体风险策略</span><span class="level">🔥🔥🔥</span></div>
+      <h3 class="card-title">微软把 MCP 工具调用塞进 API 网关：Agent 365 × Azure API Management 进入公测，Purview 同步预览「风险智能体」策略</h3>
+      <div class="card-body">微软于 10 月 9 日宣布 <b>Agent 365 与 Azure API Management 的公测集成</b>，把「AI 工具访问的决策」与「工具被调用时的强制执行」连成一条链路。分工清晰：Agent 365 负责清单与访问决策，Azure API Management 对受支持的网关流量执行这些决策——<b>v2 层提供服务器级控制，AI Gateway 层增加单工具阻断、活动可见性与威胁防护</b>；并在工具运行前后接入 Microsoft Defender 与 Microsoft Purview 做威胁防护与数据治理。实质变化是<b>把工具调用当成普通 API 来管</b>：在网关集中施加认证授权、限流与路由策略，而不是在每个智能体里各写一套检查。<br>同期微软预览了 Purview / Insider Risk Management 的「<b>风险智能体（Risky Agents）</b>」策略——在符合许可的组织中默认存在，检测高风险提示、敏感响应、对敏感数据的访问与高风险网站，支持 Copilot Studio 智能体、Microsoft Foundry 智能体与 P4AI SDK 构建的智能体，风险评分同步给 DSPM for AI 与 M365 管理中心；该策略与 Agent 365 的清单、Entra 智能体身份、Purview 数据丢失防护与 Defender 的实时工具调用阻断构成同一套控制面。纳德拉同时把原则写明：<b>必须假定模型已被攻破，并从一开始就对其加以限制</b>，把控制点放在 harness 与基础设施层。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://theinsiderweekly.com/microsoft-links-agent-365-to-azure-gateways-to-govern-ai-tool-access-october-2026/" target="_blank" rel="noopener">Insider Weekly（Agent 365 × APIM）</a> · <a href="https://tech.hub.ms/all/roundups/weekly-security-roundup-2026-10-12" target="_blank" rel="noopener">Tech Hub（周报：治理型智能体）</a> · <a href="https://ccleaks.com/news/nadella-models-insider-risks-oct-2026" target="_blank" rel="noopener">CC Leaks（Nadella 与 Purview Risky Agents）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">GitHub</span><span class="tag tag-cat">AI 编码智能体沙箱 / 密钥泄露检测</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">GitHub Copilot 本地沙箱进入 GA（基于 MXC），并上线上下文感知的泄露密钥检测模型</h3>
+      <div class="card-body">GitHub 上周把 <b>Copilot 本地沙箱从预览转为 GA</b>，覆盖 Copilot CLI、Copilot 应用与使用 Agent Host 的 VS Code 会话，用 <b>Microsoft eXecution Container（MXC）</b>限制智能体能触碰的范围（文件目录、互联网与本地网络连接、Git 与 GitHub CLI 凭据），且不限模型、不额外收费。GitHub 对它的定位是「开发者本机智能体工作流的安全边界」——这与一周前进入公开预览的 Computer Use（让智能体读取辅助功能树、点击与输入来操作本地桌面应用，默认关闭、企业策略可阻止）方向相反：<b>Computer Use 拓宽智能体可触达的范围，沙箱收窄它</b>；两者几乎同时发布，说明 GitHub 把权限控制视为「让更宽访问变得可被买家接受」的前提。<br>同期另一条：GitHub 上线<b>专门微调的上下文感知泄露密钥检测模型</b>，贯穿密钥扫描告警、推送保护与 Copilot CLI 的 /security-review——在 AI 拉高代码产出量的前提下，让密钥检测本身变得更具适应性。<br>需要注意的边界：远程 MCP 服务器仍位于本地沙箱之外，远程提供方在 CLI 离线模式下依然可能收到提示词与代码上下文；内置文件工具依赖智能体 harness 内部的检查，而非 OS 级限制。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://tech.hub.ms/all/roundups/weekly-security-roundup-2026-10-12" target="_blank" rel="noopener">Tech Hub（周报：Copilot 本地沙箱 GA）</a> · <a href="https://for.you.com/posts/ai-coding-agents-push-dev-tools-toward-sandboxes-and-local-94bde838" target="_blank" rel="noopener">For You（开发工具转向沙箱与本地模型）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">Google Cloud</span><span class="tag tag-cat">智能体归属与身份联合 / 企业治理</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">Google Cloud 在 Gemini Enterprise 中加入智能体归属转移与 Workforce Identity Federation 管控</h3>
+      <div class="card-body">Google Cloud 的 <b>Gemini Enterprise 版本说明</b>新增了面向企业目录体系的智能体治理控制：<b>智能体归属（agent ownership）与转移规则</b>——所有权可转移、但仅限管理员执行转移；以及 <b>Workforce Identity Federation（WIF）</b>支持。这些变化让 IT 与 HR 更容易在企业目录系统中落地智能体的<b>归属、问责与身份映射</b>：谁拥有这个智能体、员工离职后智能体归谁、智能体以什么身份访问企业资源，都有了可执行的入口。<br>把它与 Google 主推的「Gemini agent」定位放在一起看更清楚：Google 把智能体描述为<b>持久化的「同事」</b>——能跑长周期任务、能创建子智能体、<b>拥有自己的身份与审计轨迹</b>，并通过企业身份与策略控制来治理，在主题演讲里被明确定位为「团队中的同事型智能体（coworker agents）」而非单纯工具。这条与微软 Agent 365、RSA Agent ID、Elisity 的访问策略主体化共同说明：<b>「智能体是身份」这件事正在从概念变成产品里的一个字段。</b></div>
+      <div class="card-foot"><div class="src">来源：<a href="https://aiagentstore.ai/ai-agent-news/topic/workforce-impact-employee-side/2026-06-30" target="_blank" rel="noopener">AI Agent Store（员工侧周报：Gemini 智能体归属与 WIF）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">Google</span><span class="tag tag-cat">终端 AI 自动化管控 / Android Enterprise</span><span class="level">🔥</span></div>
+      <h3 class="card-title">Google 更新 Android Enterprise 管理策略：给 IT 提供设备级 AI 自动化与工作资料的分级管控</h3>
+      <div class="card-body">Google 推出更新后的 <b>Android Enterprise 管理策略</b>，让 IT 团队获得对<b>设备级 AI 自动化与工作资料（work profile）</b>的细粒度控制。在端侧 AI 能力快速下沉到手机与平板的背景下，这条的意义在于把「企业数据通过设备上的 AI 自动化能力外流」纳入可管可控范围：企业可区分个人侧与企业侧的 AI 自动化行为，并按资料边界施加策略，而不是只能依赖应用级管控或一刀切禁用。<br>同期值得并置的一条实践观察：HP 的 Work Relationship Index 发现<b>近一半员工已在工作中使用 AI 智能体</b>，且使用智能体的员工更可能担心角色定义与被替代；采用率与信任、管理层的支持程度相关。设备侧管控与「员工已在用」这个事实之间的落差，正是这类产品要解决的空间。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.itsecuritynews.info/it-security-news-roundup-2026-10-12-evening" target="_blank" rel="noopener">IT Security News（10-12 晚报汇总）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">Anthropic</span><span class="tag tag-cat">模型知识产权保护 / 蒸馏攻击防护</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">Anthropic 部署新防护，官方称「大幅降低」蒸馏攻击</h3>
+      <div class="card-body">Anthropic 于 10 月 13 日宣布已部署新的防护措施，官方称可<b>大幅降低针对其 AI 系统的蒸馏攻击</b>（distillation attack）——这类攻击通过反复查询目标模型、用输出训练一个更便宜的独立模型，从而未授权地提取专有模型的知识或能力。据路透社及另外两家媒体的报道，Anthropic 未公开新防护的具体技术机制，但把这次部署定性为该类威胁的显著削减。<br>这条之所以值得单列，是因为蒸馏攻击同时踩在两个不同关切上：<b>商业层面</b>，前沿模型的竞争优势可能被低成本复刻而侵蚀；<b>安全层面</b>，如果原模型带有特定的对齐属性与护栏，被蒸馏出来的副本可能完全不具备这些属性，等于把开发者辛苦移除的风险重新引入。需要标注的边界是：官方用词是「大幅（sharply）」而非「完全」，说明仍留有残余脆弱性；且这属于厂商自述，<b>尚无第三方验证</b>。可观察的下一步是 Anthropic 是否发布或分享该防护的技术文档，或交由外部审计方验证。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.splitfeed.ai/story/anthropic-says-new-safeguards-sharply-reduce-ai-distillation-attacks-columbus-le" target="_blank" rel="noopener">Splitfeed（多源汇总）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">GitLab</span><span class="tag tag-cat">软件供应链治理 / 作业级密钥</span><span class="level">🔥</span></div>
+      <h3 class="card-title">GitLab 发布 Governed Software Factory：Secrets Manager 作业级密钥 + Dependency Firewall</h3>
+      <div class="card-body">GitLab 于 10 月 6 日宣布 <b>Governed Software Factory</b>，其中与智能体时代直接相关的两块是 <b>Secrets Manager</b>（<b>作业级（job-scoped）密钥</b>，把密钥作用域收窄到单次作业而非整条流水线或整个项目）与 <b>Dependency Firewall</b>，加上其他控制项，明确目标是<b>压缩智能体时代的爆炸半径</b>——无论是泄露的凭据还是恶意包。<br>把它与本周另外几条放在一起看，逻辑是连贯的：CloudSEK 披露 NEBULA（伪装 AI SDK 的 npm 包安装即植入 RAT）与 GHAPPIER（合法 MCP 包被投毒 35 分钟，攻击者拿到开发者凭据后推送到其可写的 65 个仓库）——两条攻击链的公共前提都是<b>开发者凭据作用域过宽、生命周期过长</b>。作业级密钥 + 依赖防火墙正是对这个前提的产品化回应。配套建议仍是老三条：强制 MFA 与短期令牌、轮换可能受影响的开发者凭据、在流水线与 CI runner 上审计出站流量。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://aiagentstore.ai/ai-agent-news/topic/data-privacy-security/2026-04-14/detailed" target="_blank" rel="noopener">AI Agent Store（数据隐私与安全周报）</a></div></div>
+    </article>
+    </div>
+  </section>
+<section class="sec">
+    <div class="sec-head anim">
+      <h2><span class="sec-icon">🇨🇳</span>国内友商产品动态<span class="count">4 条</span></h2>
+      <div class="sec-sub">仅收录可追溯到「某厂商某产品的某功能 / 版本变化」的具名发布；市场数据、认证与报告类归入行业版块</div>
+    </div>
+    <div class="grid">
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">绿盟科技</span><span class="tag tag-cat">AI 红队 · 智能体检测与响应</span><span class="level">🔥🔥🔥</span></div>
+      <h3 class="card-title">绿盟科技发布天元智衡 AI 红队智能体与清风卫 AI-DR：把智能体安全拆成「上线前红队 + 运行时检测响应」</h3>
+      <div class="card-body">10 月 12 日，绿盟科技举办以「<b>清风拂境·智御全域</b>」为主题的 2026 年秋季大模型安全创新成果发布会，发布<b>天元智衡 AI 红队智能体</b>与<b>清风卫 AI-DR 智能体安全产品及方案</b>，分别面向 AI 应用<b>上线前的安全评估</b>与<b>部署后的运行防护</b>。<br><b>天元智衡</b>以自然语言驱动、自研 Harness 编排，构建「<b>攻击方法库 × 风险插件库</b>」正交矩阵，覆盖测评、风险挖掘、<b>Skill 白盒审计</b>等全攻击面，量化攻击成功率并形成「测评—整改—复测」闭环，把 AI 红队从可选项变成大模型与智能体上线的<b>前置门槛</b>。<br><b>清风卫 AI-DR</b> 的定位是「让每一位 AI 数字员工<b>有身份、有边界、有记录</b>」：对智能体从接到任务到每一步操作做全链路记录与实时审计，能查清「哪个智能体、谁的授权、干了什么」；对智能体读取与外发的文件先做安检，敏感数据自动拦截或脱敏放行；员工下载的 AI 插件在安装前先做安全检查；并通过 <b>AI 安全网关与 MCP 安全网关</b>统一管控企业调用大模型的入口与智能体访问内部系统的权限，做到每个部门、每个智能体的用量与花费可计量、超额自动「踩刹车」。<br>技术判断层面，绿盟给出类 Claw 智能体的<b>三类风险</b>（跨形态共有安全风险、Skills 安全风险、沙箱逃逸风险），并指出指令与数据不可区分、优化目标错位、概率性幻觉、上下文遗忘等大模型内生缺陷在智能体环境下会被进一步放大，难以单纯依靠算法升级彻底消除；安全监管重点需调整为「<b>可授权、可约束、可追责</b>」。背景参照：TC260 秘书处《网络安全标准实践指南——智能体部署使用安全指引》为智能体从评估、部署到停用划出安全红线，绿盟为该指南起草单位之一。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.jjckb.cn/20261012/b5febc9e6b024c3eac0b06c5991dcfbb/c.html" target="_blank" rel="noopener">经济参考网</a> · <a href="https://www.cet.com.cn/wzsy/kjzx/cygdzx/10605207.shtml" target="_blank" rel="noopener">中国经济新闻网（发布会全文）</a> · <a href="https://www.163.com/dy/article/L92D2AK705199NHJ.html" target="_blank" rel="noopener">网易（中国经营报）</a> · <a href="https://www.stdaily.com/web/gdxw/2026-10/12/content_594556.html" target="_blank" rel="noopener">科技日报</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">天融信</span><span class="tag tag-cat">大模型安全网关 · 智能体全链路防护</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">天融信发布 AI Agent 安全防护方案：以评估为前置、以网关为运行时中枢，贯通终端与智算云</h3>
+      <div class="card-body">天融信于 10 月 12 日发布面向 AI Agent 的安全防护方案，核心设计是<b>把大模型安全评估作为前置与周期能力贯穿全程</b>：模型选型时建立安全基线，Agent 上线前开展内容安全、对抗安全与系统安全验证，模型、提示模板、知识库或工具链发生重大变更后触发回归复测；评估结果联动大模型安全网关与 AI 安全管理平台，转化为<b>准入门槛、风险分级与策略基线</b>。<br>产品矩阵细节：<b>大模型安全网关</b>作为运行时控制中枢，提供提示词注入防护、价值观过滤、敏感数据防泄漏、多模态安全检测、代码安全检测、API 资产防护与细粒度访问控制，覆盖监管、内容、用户、服务、站点五层风险，并以<b>双 Key 凭据托管实现真实密钥不下发</b>；<b>大模型安全评估系统</b>以模测模，从内容安全、对抗安全与系统安全三维穿透，覆盖 <b>5 大类 31 子类内容风险、25 子类攻击模拟与 16 种模型文件格式</b>的序列化检测，对标 GB/T 45654—2025；<b>终端数据防泄漏系统</b>以清点、通道、内容、语义、替代管控五级检测覆盖剪贴板、文件上传、截屏、打印、外设、网盘与 IM 等外发通道，<b>阻断决策在本地 50 毫秒内完成</b>。之上还有 API 审计系统（API 资产梳理与访问审计）、容器安全检测系统（镜像准入、逃逸拦截与微隔离）与智算云（16 类安全组件池化供给，随算力统一编排、按需加载）。<br>方案宣称三大优势：不改代码、不动业务即可在最难管控的场景建立控制点；形成「上线评估—运行时控制—持续监测—策略优化」闭环；安全能力可随业务规模弹性编排。其结论性表述是：当 Agent 从工具走向执行主体，安全建设的答案不在于堆叠检测点，而在于把评估、防护、监测与响应放到它们真正能发挥作用的位置。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://finance.sina.com.cn/roll/2026-10-12/doc-iniuyarh0470683.shtml" target="_blank" rel="noopener">新浪财经（方案全文）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">瑞数信息</span><span class="tag tag-cat">AI 安全网关 · Agent 生命周期可信管理</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">瑞数信息推出 AI 交互安全解决方案：用三款产品覆盖「应用访问治理—Agent 可信—交互数据流」</h3>
+      <div class="card-body">瑞数信息发布 AI 交互安全解决方案，从<b>企业应用动态访问治理、Agent 生命周期可信管理与 AI 交互数据流控制</b>三个维度建立持续安全治理能力，通过三款产品协同，并以主体识别、风险评估与策略协同降低未授权访问、恶意指令诱导与敏感数据外泄风险，按<b>动态信任状态</b>实施差异化控制与响应。<br>对第三方 Agent 与 Agent Skill，瑞数通过<b>静态扫描、行为分析、LLM 语义分析与沙箱动态执行</b>做多维度分析，并结合<b>签名验签与运行时权限控制</b>，形成覆盖 Agent 接入评估、运行监测与持续治理的生命周期安全管理能力。<b>AI 安全网关</b>负责 AI 交互与数据流安全管控：当 Agent 与大模型、MCP 工具、其他 Agent（A2A）及各类 API 服务交互时，通过统一接入与路由把不同类型的 AI 交互纳入统一管控，覆盖 <b>Prompt 注入防护、输入输出内容合规、敏感数据双向检测</b>与受管 AI 交互的全链路可观测；对运行在员工终端的 Agent，可结合终端管控、网络流量引导与网关接入策略把受管 AI 交互流量纳入统一治理范围，提升对异常外联与敏感数据传输行为的可见性与控制能力。<br>产品定位的变化值得注意：关注点不再是「某一个 Agent 的单点安全」，而是企业 AI 交互环境中的<b>整体可见性与可控性</b>——持续识别人与 Agent、模型、工具及业务应用之间的交互关系，发现并治理未授权的<b>影子 Agent</b>，并让可信 Agent 在明确边界内获得与业务需求匹配的内容与数字服务。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://g.pconline.com.cn/x/2183/21834483.html" target="_blank" rel="noopener">太平洋科技（方案全文）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-vendor">火山引擎</span><span class="tag tag-cat">智能体身份治理 · 凭证托管</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">火山引擎 AgentKit 新增智能体身份与权限管理：用户池 + OIDC 单点登录 + 出站 OAuth 凭证托管</h3>
+      <div class="card-body">火山引擎 AgentKit 平台新近公开<b>智能体身份和权限管理</b>能力，公开文档显示其包含：<b>用户池</b>（集中管理应用认证配置，支持 Web 应用、SPA、移动应用与 M2M 机器服务四类客户端，通过回调 URL 白名单与 Token 有效期限制防伪造身份）、<b>企业 OIDC 单点登录</b>、<b>入站授权</b>与<b>出站 OAuth 凭证托管</b>（凭证由 Token Vault 托管），并支持 Agent 代表用户访问资源。官方教程以「读取飞书文档」「操作 GitHub 仓库」为例，强调在访问敏感操作前获取用户即时授权，审计接入 ActionTrail；同一批公开资料里，<b>工作负载访问令牌可同时封装 Agent 与最终用户信息</b>。<br>把它与同期公开的云厂商方案并置，可以看清国内当前的落点：华为云 AgentArts 智能体运行时入站支持 IAM / OAuth 2.0 / API Key，并提供 IAM 委托、版本管理、运行时日志与安全沙箱；腾讯云 AI Agent 安全网关提供身份鉴权与凭据管理，并对模型与 API 访问做控制，同时覆盖 Token 限流、数据脱敏与行为审计。共同特征是<b>偏「运行时认证 + 网关准入」</b>——公开页面尚未展示与 Entra / Google 同形态的独立 Agent 身份目录、用户—Agent 双重身份委托链与 Agent 生命周期目录。这也与一份学术预印本综述的结论一致：工作负载认证最成熟、单跳委托已有 OAuth 等可用方案，<b>多智能体跨域、跨层委托仍缺少被广泛部署的统一协议</b>。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.volcengine.com/docs/AgentKit/create-client-side" target="_blank" rel="noopener">火山引擎官方文档（AgentKit 身份与权限）</a></div></div>
+    </article>
+    </div>
+  </section>
+<section class="sec">
+    <div class="sec-head anim">
+      <h2><span class="sec-icon">📊</span>行业动态与趋势<span class="count">19 条</span></h2>
+      <div class="sec-sub">政策法规、监管动态、研究报告、安全事件与漏洞披露、标准与认证、市场数据、研报观点</div>
+    </div>
+    <div class="grid">
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">政策与全球治理</span><span class="level">🔥🔥🔥</span></div>
+      <h3 class="card-title">人民日报海外版：国际社会探索给 AI 设「护栏」——白宫自愿承诺、欧盟严法、中国场景化治理三条路径并行</h3>
+      <div class="card-body">《人民日报海外版》10 月 13 日刊文梳理各国 AI 安全治理路径：美国政策存在摆动效应，拜登政府时期强调建立监管联盟，特朗普阵营则主张「轻监管」以优先鼓励技术创新；欧盟通过《人工智能法案》实施严苛的风险分级与禁止性规定；中国坚持「发展与安全并重」，通过<b>备案机制、内容标识、溯源要求与「清朗」专项行动</b>实现场景化治理与技术创新发展的平衡。<br>文中提到，谷歌、Anthropic、OpenAI 与英伟达等美国科技企业负责人近日在白宫签署《<b>白宫超级智能协议：前沿责任联合承诺</b>》，要求训练与部署前沿模型的企业建立内部流程与管控机制，重点监测模型在网络安全、生物安全与化学威胁等领域的能力与风险，并防止模型以非预期方式入侵或访问技术系统——但美国媒体指出该承诺<b>属自愿性质、不具法律约束力</b>。<br>中国侧，全国网络安全标准化技术委员会 9 月发布《<b>人工智能安全治理框架 3.0</b>》，设置「自主实施网络攻击威胁」专栏与专门的「智能体风险管理框架」；9 月下旬中美达成 8 点成果共识，包括建立中美人工智能对话。专家建议包括：探索成立全球公认的前沿模型<b>第三方独立评估机构与互认机制</b>、建立<b>国际安全事故通报与披露机制</b>（明确实验室及企业在发现风险时的通报义务、对象与内容），以及完善模型分类分级标准——改变单纯依靠参数量级评判风险的做法，重点考察<b>自主迭代优化、自主实施网络攻击、多智能体协同开展高危操作</b>等实质性风险特征。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://news.qq.com/rain/a/20261013A02O1500" target="_blank" rel="noopener">腾讯新闻（人民日报海外版转载）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">立法与标准</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">美国参议员提出《2026 年人工智能风险管理与安全法案》：要求 NIST 在 18 个月内建成智能体专项治理框架</h3>
+      <div class="card-body">该法案以人工智能前沿模型为规制核心，依托专门委员会、强制标准、安全计划、事件报告数据库、智能体专项治理框架与国际协调机制搭建完整制度体系。其中与 AI 安全产品直接相关的两条：<br><b>一、代理式人工智能信任与验证框架。</b>要求 NIST 院长在法案生效后 <b>18 个月内</b>搭建人工智能智能体专项治理框架，编制「代理式人工智能概况」作为 NIST AI 风险管理框架的配套资源，定义 AI 代理新产生或加剧的风险，建立<b>自主性水平分类框架</b>，并处理代理身份、认证与授权等网络安全风险；同时要求 NIST 启动制定通用模板，记录 AI 智能体的<b>身份版本、预期用途、权限边界、数据系统工具访问、评估情况、独立评估者身份及已知限制</b>等要素。<br><b>二、事件报告数据库。</b>要求数据库填充优先纳入涉及关键基础设施、高严重性或灾难性影响、广泛商业或公共部门使用及强制提交的案件，并规定匿名化、披露豁免及与开发者协商等保护机制。<br>法案还要求商务部长与国务卿协商开展国际合作，包括联合测试环境、竞争性研究项目、联合咨询意见、安全信息共享及评估协议标准化；并要求国家情报总监确保委员会具备访问相关情报的权限（含闭门或机密简报）。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.secrss.com/articles/94608" target="_blank" rel="noopener">安全内参（法案全文梳理）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">监管与产品责任</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">英国一周三路并进：ICO 拿到十家模型厂商数据保护承诺、启动智能体 AI 证据征集，法律委员会拟把软件与 AI 纳入严格产品责任</h3>
+      <div class="card-body">10 月 8 日，英国信息专员办公室（ICO）公布<b>十家领先 AI 基础模型开发者</b>已作出或承诺作出数据保护整改，并启动为期六周（<b>10 月 8 日至 11 月 20 日</b>）的<b>智能体（自主）AI 数据保护风险证据征集</b>，同时表示对近期智能体测试的问询仍在进行。同日，英格兰与威尔士法律委员会开启咨询，提议把<b>软件与 AI 系统正式归类为《1987 年消费者保护法》第 1 部分下的「产品」</b>——若落地，软件与 AI 将进入<b>严格责任</b>制度，意味着开发者与部署方可能不再享有传统合同保护，对安全缺陷承担直接责任，<b>不论是否有过错</b>。监管关注的焦点集中在防止失控与建立强制事件报告框架。<br>同期另一条独立线索：IETF 有一份提出五层「<b>智能体身份框架</b>」（身份、授权、证明、证据、信任）的草案在推进，被视为智能体行为可追溯与不可否认的技术路径。<br>三条放在一起的含义是：监管正在<b>同时从「审计厂商」与「改造责任法」两个方向收紧</b>——前者要求企业拿出测试控制、通知实践、同意/合同与数据最小化记录，后者把「合理步骤」的技术标准（智能体身份、签名审计轨迹、限时凭据）从最佳实践推向责任抗辩的必需品。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.opsintel.io/blog/global-ai-compliance-briefing-strict-liability-data-localisation-and-the-shift-toward-mandatory-incident-reporting" target="_blank" rel="noopener">Ops Intel（全球 AI 合规简报）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">数据合规</span><span class="level">🔥</span></div>
+      <h3 class="card-title">沙特 PDPL 修订草案：个人数据本地化存储 + 取消泄露通报危害门槛（72 小时内报 SDAIA）</h3>
+      <div class="card-body">中东司法辖区正把快速的 AI 采用与严格的数据本地治理配对。修订提案引入<b>严格的数据本地化要求</b>，强制数据控制者将个人数据存储在沙特境内，跨境传输仅在严格符合 PDPL 的前提下允许。更具实操冲击力的一条是<b>取消数据泄露通报的危害门槛</b>——控制者须在 <b>72 小时内</b>就任何泄露、损害或未授权访问通知 SDAIA，不再以「造成危害」为前置条件。<br>其他措施包括：撤回同意后强制销毁营销处理产生的数据、扩大国际传输的登记要求，以及 SDAIA 实施请求的 <b>20 个工作日响应窗口</b>。设计意图是随着自主智能体系统进入更广泛的商业部署，统一实施与治理口径。对在该辖区处理个人数据的跨国企业而言，这意味着架构层面的本地化改造与零门槛通报机制需要提前准备。阿联酋侧，部署自主智能体的组织也被要求对齐新建立的国家框架。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.opsintel.io/blog/global-ai-compliance-briefing-strict-liability-data-localisation-and-the-shift-toward-mandatory-incident-reporting" target="_blank" rel="noopener">Ops Intel（全球 AI 合规简报）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">并购</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">IonQ 以最高 13 亿美元全股票收购 Elisity：零信任平台已把 AI 智能体当作访问策略主体</h3>
+      <div class="card-body">IonQ 于 10 月 12 日宣布以最高 <b>13 亿美元</b>全股票交易收购零信任厂商 Elisity，含最高 1.5 亿美元业绩对赌，预计第四季度完成（尚待监管批准）。Elisity 成立于 2019 年，销售一层<b>独立于底层网络设备的软件策略层</b>，决定哪些用户、设备、工作负载与 <b>AI 智能体</b>被允许在企业网络内通信——落到实操就是阻断攻击者与勒索软件进入后的横向移动，在医院与医疗机构落地最多。<br><b>AI 那部分不是愿景</b>：Elisity 平台已把 AI 智能体与其他<b>非人类身份</b>作为访问策略主体，公司已加入 Open Secure AI Alliance，优先级包括对已批准智能体施加最小权限、遏制智能体威胁与控制未授权 AI 使用；路线图将扩展 IdentityGraph 产品，加入密码学资产清单与风险数据，让客户按业务风险排序后量子升级。IonQ 给出的数字（100+ 全球部署、收入与客户数同比翻倍、已部署客户零流失）<b>来自收购方与被收购方，未经独立验证</b>。<br>商业背景是迁移期限：特朗普政府行政令要求联邦机构支持国内量子产业，并把内部后量子密码迁移时间表从 2035 年提前到 2030 年，Google 等自定目标为 2029 年。IonQ 自身安全业务此前围绕后量子密码与量子密钥分发，已在瑞士、波兰、罗马尼亚与斯洛伐克交付量子安全国家级网络。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://pivotnews.ai/security/ionq-to-buy-zero-trust-security-firm-elisity-for-up-to-1-3" target="_blank" rel="noopener">Pivot News</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">融资</span><span class="level">🔥</span></div>
+      <h3 class="card-title">Kontext 获 400 万美元种子轮：在本地守护进程里拦截智能体的工具调用</h3>
+      <div class="card-body">慕尼黑网络安全初创公司 <b>Kontext</b> 完成 400 万美元种子轮，由 42CAP 领投，a16z CSX 与 High-Tech Gründerfonds（HTGF）参投。技术路线是<b>本地守护进程</b>：在自主智能体执行任何动作之前先评估其工具调用，运行在执行环境内部、<b>不需要外部网络连接、也不需要修改代码</b>，监控 Claude Code、Codex、Cowork 等编码智能体，初期以观察模式记录策略违规。团队目前 4 人，主打本地部署以避免数据外泄与外部依赖。<br>创始人 Jens Ernstberger 的判断是：「软件正在发生一次重大变化：当大量工作被委派给智能体时，底层协议必须改变，因为基本安全假设不再成立——<b>现在有 3 个行为主体而不是 2 个</b>。」42CAP 普通合伙人 Julian von Fischer 点出结构性差异：「过去 20 年建的身份与访问工具假定另一端是人，一次点一下；而 <b>AI 智能体认证一次，然后在一打系统上自主行动，执行一个没人逐步盯着的任务</b>。这是一个结构性不同的问题，今年的实际事件已经说明它不是理论。」<br>竞品与市场规模：Zenity 累计融资 1.25 亿美元、Noma Security 1.32 亿美元、NeuralTrust 2000 万美元种子轮；机构口径是智能体 AI 安全市场从今年 16.5 亿美元增至 2032 年 135.2 亿美元（复合年增 42%）。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://n24.com.tr/en/technology/kontext-secures-4m-to-control-ai-agents-in-finance-268" target="_blank" rel="noopener">N24（土耳其）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">攻击事件</span><span class="level">🔥🔥🔥</span></div>
+      <h3 class="card-title">CloudSEK 披露「Caught in 4K」：攻击者把反向 shell 注册成 MCP 工具，用 AI 编码助手做 C2</h3>
+      <div class="card-body">CloudSEK 发布「Caught in 4K: The Gentlemen Files」，记录一名代号 <b>Azazel</b> 的运营者<b>把模型上下文协议（MCP）当作命令通道</b>：在 AI 编码助手内把一个<b>反向 shell 注册为 MCP 工具</b>，据此实施入侵，导致多国数据失窃（含一家医学影像服务商）。<br>这是已确认的、<b>在生产环境中把智能体工具访问用于 C2 与数据外泄</b>的案例——此前 MCP 相关风险多停留在研究性 PoC 层面。它把以下动作从建议变为必做项：把 <b>MCP 端点当作高权限基础设施</b>对待，清点 MCP 端点、强制 mTLS 与最小权限、轮换令牌、监控<b>工具注册事件与异常工具调用</b>。<br>CloudSEK 同批还披露了 <b>NEBULA</b>（伪装 AI SDK 的 npm 包投毒，见下条）与 <b>GHAPPIER</b> JavaScript 加载器。三条合看，攻击者的公共思路已经很清晰：<b>用 AI 的名义做诱饵，用 MCP 做通道，用开发者凭据做放大器。</b></div>
+      <div class="card-foot"><div class="src">来源：<a href="https://aiagentstore.ai/ai-agent-news/topic/data-privacy-security/2026-04-14/detailed" target="_blank" rel="noopener">AI Agent Store（数据隐私与安全周报）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">供应链攻击</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">CloudSEK 披露 NEBULA：7 个伪装成 AI SDK 的 npm 包，安装即植入 Windows 远控木马</h3>
+      <div class="card-body">CloudSEK 在 9 月 25 日至 27 日扫描 <b>16 万余个 npm 包</b>时发现 <b>7 个包伪装成名为 NebulaAI 的 AI 服务 SDK</b>，安装即触发隐藏脚本，向 Windows 目录释放名为 <code>conhost.exe</code> 的程序——借用真实 Windows 组件名以免在进程列表里显眼。该程序是远控木马 <b>KNTRAT</b> 的修改版，可运行隐藏远程桌面会话、执行命令、开启摄像头与麦克风，并设置为每次登录自启动；同时避开 Windows 常规监控路径以降低被发现概率。<br>包通过 nebulallms 到 nebulallms4 四个账号发布，其中 <b>api-nebula 与 llm-nebula 两个包在 8 日仍可下载</b>（api-nebula 早在 10 月 5 日就被公开通告标记为恶意软件）。CloudSEK 的原话点出这类攻击的关键：「<b>包是诱饵，执行藏在安装钩子里</b>」——恶意代码在安装时运行，开发者不需要真正用它，只要试一下。CloudSEK 在测试环境运行木马 12 分钟未观察到外联，研究者推测是木马内置了规避分析的反检测；KNTRAT 源码于 10 月 6 日公开。CloudSEK 未确认是否有人被感染，也未给出下载量，<b>暴露规模未知</b>。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://morningtick.com/post/fake-ai-sdks-npm-hid-windows-trojan-install" target="_blank" rel="noopener">Morning Tick</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">供应链攻击</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">朝鲜关联 Graphalo 行动扩至 Terraform Registry 与 Go Modules；npm 包 @dforge-core/dforge-mcp 被投毒 35 分钟</h3>
+      <div class="card-body">与朝鲜关联的 <b>Graphalo</b> 供应链行动扩展到 <b>Terraform Registry 与 Go 模块</b>，多个包使用 dependency-confusion 式诱饵，伪装成内部「btree」工具。Socket 的 Karlo Zanki 表示 Graphalo 仍以<b>虚假面试</b>为主要初始访问向量，执行由前端组件的基础检查把关——这种模式既提高了沙箱分析门槛，也与原始 Graphalgo 行动一致；初始接触仍通过 LinkedIn、Facebook 与论坛上虚构的 Web3 公司招聘贴，以一个良性 GitHub 仓库通过发布依赖引入恶意行为。<br>另一条：CloudSEK 披露此前未报道的 JavaScript 加载器 <b>GHAPPIER</b>，经由合法 npm 包 <b>@dforge-core/dforge-mcp</b> 分发——恶意版本 <b>0.2.21 于 2026 年 9 月 9 日在 npm 上存活 35 分 38 秒</b>，随后被原维护者回退到干净的 0.2.22。该加载器在运行时从运营者控制的 host 拉取并执行代码，同一加载器已在 <b>22 个账号的 65 个公开仓库</b>中出现——每次都是攻击者拿到开发者已存凭据后，推送到该账号可写的每一个仓库。另一变体复用相同暂存基础设施，通过攻击者控制的钱包用 NullReceiver 技术解析 C2 地址，尾部字节序列与长期活跃的朝鲜关联 PolinRider 集群重叠。<br>此外，SentinelOne 把其追踪的 <b>TraderTraitor</b> 集群归因于朝鲜运营者<b>武器化 Terraform 锁文件</b>，从攻击者控制的 Terraform provider registry 投递 Rust 后门。两个独立的朝鲜关联行动在短时间内都用上 Terraform 基础设施，研究者提示 Terraform registry 可能成为下一个被规模化采用的供应链渠道。防御优先级：轮换可能接触过相关 Go 模块、Terraform provider 或 npm 包的开发者凭据；审计开发机与 CI runner 的出站流量；对 crate、npm、PyPI 与 Terraform Registry 发布账号强制 MFA 与短期令牌。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://secnews.in/article/article-dprk-graphalgo-terraform-go-modules-supply-chain" target="_blank" rel="noopener">SecNews</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">漏洞披露</span><span class="level">🔥🔥🔥</span></div>
+      <h3 class="card-title">10 月 12 日集中披露的 AI 生态漏洞：一个比较了名字的错误形式，一个让别的进程去解析路径，还有一个什么都没检查</h3>
+      <div class="card-body">当日集中披露的一批漏洞，失效模式恰好覆盖「只判断请求、不看执行」的三种变体：<br><b>Network-AI（npm）CVE-2026-109331，CVSS 7.4</b>：5.14.0 至 5.15.2 之前的版本在 <b>ClaudeHookBridge PreToolUse 钩子</b>中存在安全控制绕过——钩子只对<b>第一个出现的候选字段</b>匹配 denyPatterns，被提示词注入的智能体可以把危险载荷放进 <code>Write</code> 的 content 或 MCP 脚本参数里，同时配一个良性的 <code>file_path</code> 或命令，绕过拒绝规则写入 web shell 或执行脚本；NVD 未列出修复版本（MITRE ATLAS 归类 AML.T0051，CWE-436）。同产品另有 <b>CVE-2026-109332</b>（CVSS 4.0 2.3）：McpSseServer 把 localhost Origin 反射进 Access-Control-Allow-Origin，与服务绑定接口无关，已在 5.15.2 修复。<br><b>seo-crawler-mcp CVE-2026-108786（GHSA-fcpg-mvxf-m2gh）</b>：houtini-ai 的该 MCP 服务器 <code>run_seo_audit</code> 无目标允许列表，调用方（<b>包括对刚抓取文本作出反应的模型</b>）可指向 link-local 元数据端点或任意内部主机名，并把响应读回工具结果——<b>利用已公开、厂商未响应、无修复版本</b>，建议直接从 MCP 客户端配置中移除该服务器，或改为在网络层限制出站。<br><b>agno 3.0.0–3.1.1</b>：操纵 Agent 编排层中 exec 的 code 参数可让远程攻击者在无人工确认下运行代码，公开利用已存在，CVE 发布时修复仍是未合并的 PR；不同评分口径差异极大（CVSS 4.0 为 5.5、CVSS 3.1 为 7.3、研究者自评 9.8）——研究者的说法是 agno 会<b>立即执行模型请求的每一次工具调用</b>，所有人工确认开关默认关闭。<br><b>mistral.rs 0.9.0–0.9.4（CVSS 4.0 7.6）</b>：沙箱只把输出名当文本检查、拒绝绝对路径与 <code>..</code>，但子进程退出后父服务用 <code>std::fs::read</code> 读取该文件，而该调用会<b>跟随符号链接</b>——若输出名是指向子进程无权读取文件的符号链接，服务会以自己的权限读出内容并返回。<br>归纳：三个都只判断了智能体「请求了什么」，<b>没有一个去看调用「执行时发生了什么」</b>。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://aisecwatch.com/issues/6747a458-9b4d-4da6-ad84-20909e39d94d" target="_blank" rel="noopener">AI Sec Watch（CVE-2026-109331）</a> · <a href="https://radar.offseq.com/threat/cve-2026-109332-origin-validation-error-in-jovancoding-network-ai-91282a973d07aba4" target="_blank" rel="noopener">OffSeq Threat Radar（CVE-2026-109332）</a> · <a href="https://mindpattern.ai/s/2026-10-12-agent-sandboxes-that-compare-strings-keep-failing-and-two-new-ones-check-every-action" target="_blank" rel="noopener">MindPattern（沙箱与 agno / mistral.rs 分析）</a> · <a href="https://oday-bakkour.com/blog/seo-note-october-12-2026" target="_blank" rel="noopener">Oday Bakkour（seo-crawler-mcp SSRF）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">研究与实验</span><span class="level">🔥🔥🔥</span></div>
+      <h3 class="card-title">Booz Allen 测试：两个前沿模型完成全部 8 个工控攻击场景，16 分钟从边界突破到工控网动作</h3>
+      <div class="card-body">Booz Allen 的运营技术（OT）测试发现，两个未具名的前沿模型完成了<b>全部 8 个场景</b>——从资产发现到<b>移动协作机械臂</b>。其中一次测试中，智能体从边界突破到在工业控制网络内采取行动只用了<b>刚过 16 分钟</b>。<br>测试前提值得注意：利用与物理动作前需<b>人工批准</b>，模型<b>没有拿到任何源码或工程文档</b>。当最初的 SCADA 方案失败时，智能体通过<b>为另一个版本的 HMI 客户端重建载荷</b>完成适配；其中一个还<b>在没有提示的情况下</b>识别出一个孤立保护继电器正在为不存在的对端广播 ARP 请求。结果提示智能体可以快速研究陌生协议并适配工业设备。<br>边界需要说明：测试使用的是厂商建模的工厂，真实环境表现可能不同；但结论对 OT 环境仍有指向性——<b>设备缺乏认证、冷门设备可能成为入口</b>。<br>跨两份报告（Booz Allen 与 Anthropic 的内部评估披露）的共同点是：<b>遏制依赖智能体周围的控制</b>——Anthropic 在收紧内部评估环境，Booz Allen 的测试要求对后果性动作人工批准；而<b>两份报告都没有证明模型能可靠识别自己何时该停下</b>。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.cybersecbrief.com/news/cybersec/cybersec-2026-10-12" target="_blank" rel="noopener">CyberSecBrief（每日简报）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">攻击事件</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">GhostAction：my-github.com 反向代理 GitHub 窃取密码与验证码，并静默授权 OAuth device flow</h3>
+      <div class="card-body">OpenSourceMalware 发现域名 <b>my-github.com</b>（解析到 GhostAction 收集器 193[.]32[.]204[.]199）被用于一封伪装成 GitHub 登录提醒的个性化钓鱼邮件。该站点<b>反向代理 GitHub</b> 以捕获密码与验证器验证码，并注入脚本<b>静默授权一个 OAuth device flow</b>，请求 <code>repo</code>、<code>workflow</code> 与 <code>read:org</code> 权限范围。在其中一例中，一道额外的 MFA 挑战阻止了攻击者提权。<br>这条与 GhostApproval、以及同日披露的「沙箱只校验名字不校验文件」类缺陷指向同一类问题：<b>用户（或智能体）看到的信息与系统实际执行的动作不一致</b>。防御侧的可操作项是：对企业内解析到非 GitHub 官方 IP 的 github 类域名做检测，并对 OAuth 授权的 scope 变化做告警。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.cybersecbrief.com/news/cybersec/cybersec-2026-10-12" target="_blank" rel="noopener">CyberSecBrief（每日简报）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">市场数据</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">Gartner：2026 年全球信息安全支出将达 2440 亿美元；IBM 报告显示四分之一恶意泄露事件涉及 AI 攻击</h3>
+      <div class="card-body">据行业消息，IBM《2026 年数据泄露成本报告》显示<b>每 4 起恶意泄露事件中就有 1 起涉及 AI 驱动的攻击</b>，AI 攻击占比同比上升 <b>56%</b>；IBM 的判断是 AI 驱动攻击正在快速改变网络攻击的经济结构。Gartner 在本年度《全球信息安全 2026》洞察中预计<b>全球信息安全支出今年将达到 2440 亿美元</b>，企业为应对网络威胁与强化韧性而增加安全支出。<br>业绩侧佐证：Fortinet 上一财年营收创纪录达 68 亿美元，CrowdStrike 财年营收 48.1 亿美元，Palo Alto Networks 与 Cloudflare 亦录得增长；截至 10 月 9 日，Fortinet 触及 52 周新高 194.75 美元，CrowdStrike 收于 275.04 美元，Cloudflare 达 360.93 美元，Palo Alto Networks 升至 418.78 美元。韩国市场侧，近期金融领域连续黑客事件推升了对国内安全厂商的关注，Genians、AhnLab、Raon Secure、MonitorLab、Xgate 等相关个股走强，行业普遍预期需求驱动的增长仍将延续。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://bizcru.sh/en/news/article/20261012-6151" target="_blank" rel="noopener">BizCrush（韩媒汇总）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">标准与认证</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">新华三 AI 安全网关成为首批通过中国信通院「智能体安全网关技术能力评估」的产品</h3>
+      <div class="card-body">紫光股份旗下新华三集团 AI 安全网关通过中国信息通信研究院「<b>智能体互联网治理——智能体安全网关技术能力评估</b>」，成为业内首批获此认证的产品。评估聚焦<b>连接调度与安全治理</b>两大能力域，以「<b>身份可验、权限最小、风险可察、行为可控、全程可溯</b>」为核心原则，构建涵盖统一接入与路由、流量管理与调度、服务编排与治理、运维可观测性、零信任准入管控、AI 攻击防护、内容安全合规、数据隐私保护、资源消耗治理、全链路审计追溯的<b>十大能力模块</b>评估体系。<br>产品侧，新华三 AI 安全网关是面向大语言模型、智能体与 MCP 场景的软件中间件，部署于用户、业务应用与大模型服务之间，五大能力包括：<b>统一接入</b>（统一纳管大模型、智能体与 MCP 工具，依托 MCP 协议转换引擎让存量业务系统无侵入接入智能体生态）、<b>智能调度</b>（双层智能缓存、三层智能路由、多维度 Token 配额与并发管理）、<b>身份权限管控</b>（打通用户、AI 智能体、MCP 工具三方身份体系，集中托管 API 密钥与访问凭证，结合细粒度权限控制）、<b>全链路防护</b>（围绕输入、模型调用、工具访问、输出构建防护体系，覆盖 OWASP LLM Top 10）与<b>全景运营看板</b>（算力 ROI、应用效能、安全态势、合规管理，支持调用日志全链路调阅）。<br>这条的意义在于：<b>「智能体安全网关」在国内已经开始有可对照的能力基准与评估口径</b>，采购方从「听厂商讲架构」转向「看有没有过评估」。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://news.10jqka.com.cn/20261012/c680600334.shtml" target="_blank" rel="noopener">同花顺财经（紫光股份官微）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">市场调研</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">Kaspersky 调查：82% 组织担忧 AI 风险、超四分之三已遭遇 AI 相关安全事件、57% 已划拨专项预算</h3>
+      <div class="card-body">据 Kaspersky 等机构对全球 <b>18 个国家、1800 名 IT 与安全决策者</b>的调查，<b>82% 的组织对 AI 带来的风险表示担忧</b>，<b>超过四分之三的企业已经遇到过 AI 相关安全事件或漏洞</b>，其中 <b>57% 已经为 AI 安全划拨了专项预算</b>。这些数字说明 AI 安全正在从「万一出事怎么办」的假设性讨论变成「已经出事了怎么管」的现实命题。<br>预算结构的变化更关键：IDC 调查显示企业现在平均将 <b>16.7% 的总 AI 支出</b>分配给 AI 与 Agent 安全治理，这一比例已与其他 AI 核心技术栈投入相当，比 2025 年明显提升。市场规模口径方面：Gartner 预计全球 AI 安全防护市场从 2026 年 <b>28 亿美元</b>增至 2030 年 <b>164 亿美元</b>（复合增速约 60%）；IDC 对中国市场的预测是 AI 自身安全市场从 2025 年 <b>44 亿元</b>增至 2030 年 <b>340 亿元</b>（五年复合约 50.5%）；摩根大通更激进，认为 AI 驱动的增量安全支出对应三年总市场规模可能超过 4300 亿美元。作为参照，中国网络安全整体市场 2024 至 2029 年复合增速仅约 8.9%——<b>AI 安全赛道的增速是传统安全的五倍以上</b>。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://news.qq.com/rain/a/20261011A07IAK00" target="_blank" rel="noopener">腾讯新闻（AI 安全赛道分析）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">威胁态势</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">英国 NCSC CTO 周报：AI 不是入侵的起因，而是「潜在漏洞暴露的放大器」</h3>
+      <div class="card-body">英国国家网络安全中心（NCSC）CTO Ollie Whitehouse 在截至 10 月 11 日的周报中，就韩国银行遭 AI 攻击事件明确<b>反对过度归因于「使能者」</b>：AI 不是这些入侵的起因，而是<b>潜在漏洞暴露的放大器</b>，让有意图的对手得以利用；紧迫性在于组织理解自身攻击面、并确信其已被最小化、具备韧性与可检测性。<br>同周要点：NCSC 正式点名中国 Integrity Technology Group 使用「AI 使能工具、大规模僵尸网络与人工利用技术」，同时美国 DOJ / FBI 查封 Microscan 与 FishHub；「Putin Tax」研究量化 2022 年以来 300 多起俄罗斯关联网络事件影响英国公司；英德建立联合伙伴关系应对破坏与网络攻击。<br>技术侧值得关注的两条：<b>Apple 更新 macOS 完整磁盘访问控制，明确用于限制 AI 智能体访问</b>；<b>NSA 要求所有新的国家安全系统在 2027 年前采用后量子密码、2030 年前淘汰旧算法</b>。此外荷兰 AIVD / MIVD 关于「中国行为体获取西方产品源代码」的联合预警被重点处理——其含义是这些不只是 n-day 利用行动，<b>深度产品知识 + AI 工具 + 协调的国家支持</b>意味着边缘设备利用问题不会仅靠补丁速度解决，<b>架构决策才是关键</b>。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://apjone.uk/weekly-security-roundup-2026-10-11" target="_blank" rel="noopener">APJ One（周度安全综述）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">市场调研</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">ArmorCode 调查：40% 安全负责人把「AI 生成代码待人工审查量」列为首要软件安全挑战</h3>
+      <div class="card-body">ArmorCode 委托的一项覆盖 <b>200 名高级安全与技术负责人</b>（多数来自员工数超 1 万人的公司）的调查显示：<b>40% 把「等待人工审查的 AI 生成代码量」列为主要软件安全挑战</b>，<b>44% 把「AI 辅助漏洞发现的分层策略」列为最大的转型需求</b>。ArmorCode 的 Rob Chapman 提出三层分工：<b>自动化</b>处理确定性工作（规范化、富化、归属路由、工单、SLA 跟踪与复扫验证）；<b>智能体</b>处理更深的可达性与可利用性调查；<b>人</b>做决策——「人拥有决策及其后果，包括风险接受与例外」。<br>同期一条相关信号：IDC 的 Sakshi Grover 就 Google 暂停 OSS 漏洞奖励计划一事提醒漏洞报告的经济学——「<b>更大的发现看板本身不是更好安全的证据</b>」，并警告恶意报告可能携带针对 AI 分诊工具的<b>提示词注入指令</b>；内部团队的建议是一致的：要求可复现证据、合并重复项、在人工查看前先对可达性打分并自动过滤，并把提交的文本与代码当作<b>不可信输入</b>。<br>SentinelOne 工程师从构建方角度补充评测口径：端到端测试应测量告警消化量、对标专家真值的<b>处置准确率</b>、出结论时间、稳定性、一致性与<b>每条告警成本</b>，用二值判定取代质量打分，并在上线前与分析师并行跑一段——专家在不看智能体结论的前提下盲查被标记案例。「<b>在安全响应里，不可测量的能力就是不可交付的能力。</b>」</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.cybersecurityinstitute.com/blog?p=6059" target="_blank" rel="noopener">CyberSecurity Institute（安全运营周报）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">研报观点</span><span class="level">🔥🔥</span></div>
+      <h3 class="card-title">机构：AI 逆向破解让闭源软件防护成为新刚需，四季度财政支出提速利好安全预算</h3>
+      <div class="card-body">一份计算机行业研报指出，近期 AI 自动化逆向与二进制反编译工具快速开源普及，攻击者可低成本完成闭源软件逆向解析与私有协议破解，绕过授权校验、篡改程序功能；AI 显著缩短逆向周期、降低技术门槛，同时可自动化探测漏洞、绕过防护并迭代攻击手段，<b>催生闭源软件防逆向与授权校验加固等新需求</b>。<br>预算侧，2026 年全国一般公共预算支出目标 <b>30.01 万亿元</b>、同比增速 4.4%，但 1—8 月支出增速仅 1.2%、进度明显偏慢，9—12 月需完成 11.86 万亿元支出，支出同比需抬升至 9.8% 才能达标；网络安全、信创、政务信息化等经费均纳入一般公共预算核心盘子，且安全合规类项目具备刚性优先级——<b>四季度财政预算集中落地窗口期有望驱动安全支出加速</b>。<br>另一份深度报告从海外视角给出结构判断：Gartner 数据显示全球安全软件支出从 2024 年 949.6 亿美元增至 2025 年 1059.4 亿美元，2026 年预计达 <b>1211.5 亿美元</b>、同比增长 14.4%，软件与服务两类合计占全球信息安全支出比重接近九成，硬件已退居次要位置；Gartner 同时预测到 2027 年全球 <b>17% 的网络攻击或数据泄露事件将涉及生成式 AI</b>。国内公司层面口径：绿盟科技 2026 上半年 AI 安全相关订单额达 <b>1.17 亿元</b>；深信服 2026 上半年营业收入 39.98 亿元（同比 +32.85%），其安全 GPT 可替代 80% 以上人工研判。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://m.10jqka.com.cn/20261012/c680600126.shtml" target="_blank" rel="noopener">同花顺财经（国联民生深度报告）</a></div></div>
+    </article>
+<article class="card anim" style="--d:0ms">
+      <div class="card-top"><span class="tag tag-cat">监管与技术评估</span><span class="level">🔥</span></div>
+      <h3 class="card-title">欧盟机构在隔离基础设施中评估中国 AI 模型；AWS 发布后量子迁移与供应链签名指南</h3>
+      <div class="card-body">欧洲机构正在<b>隔离的安全基础设施</b>中评估中国人工智能模型，在潜在的企业部署之前审查数据隐私与监督机制——与欧盟 AI Office 的协调检查、英国 ICO 的模型厂商问询形成同一趋势：<b>监管方不再只依赖厂商自述，而是进入受控环境做实测</b>。<br>同期另一条值得记录的技术治理动作：AWS 发布指南说明管理员如何通过 <b>Service Control Policies 与 IAM 在各云账户间强制执行抗量子 ML-DSA 算法策略</b>，防止后量子迁移期间出现不合规的密码学选择；并说明如何用 <b>ML-DSA 后量子数字签名保护软件供应链</b>免受构建系统篡改，保护软件分发渠道免受未来的量子解密风险。这条与 NSA「2027 年前新国家安全系统采用后量子密码」的期限要求同向，说明<b>后量子迁移已经进入「用策略强制」而非「用建议推动」的阶段</b>。</div>
+      <div class="card-foot"><div class="src">来源：<a href="https://www.itsecuritynews.info/it-security-news-roundup-2026-10-12-evening" target="_blank" rel="noopener">IT Security News（10-12 晚报汇总）</a></div></div>
+    </article>
+    </div>
+  </section>
+  <div class="trend">
+    <div class="sec-head anim">
+      <h2><span class="sec-icon">🧭</span>趋势判断<span class="count">精简版</span></h2>
+      <div class="sec-sub">基于今日全部条目的归纳，标注了尚未被独立验证的部分</div>
+    </div>
+    <div class="trend-item anim" style="--d:0ms"><h4>1. 智能体安全的控制点正在从「模型内部」迁到「网关 + 身份 + OS 沙箱」，今天四条独立路径同时落地</h4><p>微软把 MCP 工具调用放进 Azure API Management 做网关级策略执行，Agent 365 负责清单与访问决策；Google 在 Gemini Enterprise 里给智能体加归属与 Workforce Identity Federation；GitHub 用 MXC 在操作系统层给 Copilot 划边界；火山引擎在 AgentKit 里做用户池 + OIDC + 出站 OAuth 凭证托管。<br>四条路径分属四家厂商、四个层次，但指向同一个判断：<b>提示词层面的护栏不是安全边界，可执行的策略点才是。</b>更值得注意的是各家的措辞已经趋同——纳德拉的「假定模型已被攻破并从一开始限制它」、F5 的「在应用与数字资产之间建控制层」、Kontext 的「现在有 3 个行为主体而不是 2 个」，本质都是把智能体当作<b>需要登记、授权、审计与注销的第三方主体</b>，而不是当作程序的一部分。<br>采购视角的落地建议：先问「策略在哪里执行」，再问「执行失败时默认放行还是默认拒绝」，最后问「注销一个智能体需要几步」。</p></div>
+    <div class="trend-item anim" style="--d:70ms"><h4>2. 「只判断请求、不看执行」是当前沙箱与钩子的系统性失效模式，且三种变体同时出现</h4><p>今天披露的四条漏洞把失效模式拆得很干净：Network-AI 的 PreToolUse 钩子<b>只匹配第一个候选字段</b>（把危险载荷放进 content、配一个良性 file_path 即可绕过）；seo-crawler-mcp <b>完全没有目标允许列表</b>（对刚抓取文本作出反应的模型即可发起 SSRF 读回内部响应）；mistral.rs <b>检查了路径字符串，却让另一个进程去解析它</b>（父服务用跟随符号链接的读操作，以自己的权限读出子进程无权访问的文件）；agno <b>什么都不检查</b>（立即执行模型请求的每一次工具调用，人工确认开关默认关闭）。<br>这四类在 GhostApproval（审批框显示假文件名、实际写入 authorized_keys）与 GhostAction（反向代理真实登录页、静默授权 OAuth device flow）身上是同一个母题的变体：<b>表示层（人/模型看到什么）与执行层（系统真正做了什么）之间的不一致。</b><br>可立即加入测试集的负向用例：把危险内容放在非首个字段、用符号链接指向无权读取的文件、把目标地址写成 link-local 元数据端点、用大小写变体绕过拒绝名单。<b>「校验请求」永远只是第一道，第二道必须是「执行后复核实际发生了什么」。</b></p></div>
+    <div class="trend-item anim" style="--d:140ms"><h4>3. 供应链攻击已经完成 AI 化：诱饵是 AI SDK，通道是 MCP 工具，目标是开发者凭据</h4><p>NEBULA 用 7 个伪装成 NebulaAI SDK 的 npm 包安装即植入 RAT（包是诱饵，执行藏在安装钩子里）；GHAPPIER 借合法 MCP 包 @dforge-core/dforge-mcp 的 35 分钟窗口投毒，随后用拿到的开发者凭据推送到 22 个账号的 65 个仓库；Graphalo 把战场扩到 Terraform Registry 与 Go 模块，而 TraderTraitor 直接武器化 Terraform 锁文件；CloudSEK 的「Caught in 4K」则把 MCP 本身当成 C2 通道。<br>四条的公共结构是：<b>攻击者不再需要攻破你的系统，只需要你「试一下」某个包、或让某个智能体调一次工具。</b>而放大器的宽度取决于凭据的作用域——这正是 GitLab 把密钥收到「作业级」、AWS 用 SCP 强制算法策略的动因。<br>落地动作清单：清点并收窄开发者凭据作用域与生命周期；对 MCP 端点做资产登记与 mTLS；监控工具注册事件；对 npm/PyPI/crate/Terraform 发布账号强制 MFA 与短期令牌；把「安装钩子」纳入依赖审查范围（很多团队只看源码不看 postinstall）。</p></div>
+    <div class="trend-item anim" style="--d:210ms"><h4>4. 监管从「自愿承诺 + 事后通报」转向「受控实测 + 严格责任 + 零门槛通报」</h4><p>三件事在 72 小时内同时发生：英国 ICO 一边公布十家基础模型厂商的数据保护承诺、一边启动智能体 AI 证据征集；英格兰与威尔士法律委员会提议把软件与 AI 归类为《1987 年消费者保护法》下的「产品」，一旦落地即进入<b>严格责任</b>（不论是否有过错）；沙特 PDPL 修订草案取消泄露通报的危害门槛，要求 72 小时内通报任何泄露。<br>同时，美国参议员的《2026 年人工智能风险管理与安全法案》把 NIST 的智能体治理框架写进 18 个月期限，并要求记录智能体的身份版本、权限边界、评估情况与<b>独立评估者身份</b>；欧盟机构则进入隔离基础设施实测中国模型。<br>共同信号是：<b>「厂商自述」正在失去监管效力。</b>白宫那份由谷歌、Anthropic、OpenAI、英伟达签署的前沿责任联合承诺被明确指为自愿、无法律约束力，而与之并行的是进入受控环境实测、要求独立评估者署名、把责任从合同转移到法律。<br>对厂商的直接含义：现在就需要保留可交差的证据链——测试控制记录、通知时间线、同意与数据最小化记录、以及智能体行为的签名审计轨迹。</p></div>
+    <div class="trend-item anim" style="--d:280ms"><h4>5. 国内 AI 安全进入「拿认证、出订单、被审计」的兑现考核期，产品数量不再构成说服力</h4><p>今天国内 4 条产品级动作分别落在不同层：绿盟科技把智能体安全拆成「上线前红队（天元智衡）+ 运行时检测响应（清风卫 AI-DR）」两段，并给出三类风险的可复现分类；天融信以评估为前置、以网关为运行时中枢，贯通终端 DLP 与智算云，并给出 5 大类 31 子类、25 子类攻击模拟、16 种模型格式、本地 50 毫秒阻断等可核对口径；瑞数信息从应用访问治理、Agent 生命周期与交互数据流三维切入；火山引擎在 AgentKit 里补上智能体身份与出站凭证托管。<br>行业侧的配套信号同样明确：新华三 AI 安全网关成为首批通过中国信通院「智能体安全网关技术能力评估」的产品，评估口径细到十大能力模块；机构口径给出 2026 上半年订单与收入（绿盟 AI 安全订单 1.17 亿元、深信服营收 39.98 亿元同比 +32.85%）；四季度财政支出需在 9—12 月完成 11.86 万亿元、同比抬升至 9.8% 才能达标，安全合规类项目具备刚性优先级。<br>可以给出的判断是：<b>这一轮的胜负不取决于谁能讲出更完整的架构，而取决于谁能拿出可核验的落地证据——评估证书、订单金额、客户名称、上线周期，以及被审计时能否交得出日志。</b>「智能体安全网关」开始有可对照的能力基准，是这一轮里最容易被低估的变化。</p></div>
+  </div>
+  <footer>
+    <div class="sep"></div> AI 安全日报 · 2026-10-13 <div class="sep"></div><br>
+    覆盖国际 / 国内友商产品动态与行业动态 · 产品版块仅收录可追溯到具名产品的功能与版本变化<br>
+    来源链接均经双通道可达性校验 · 同主题多源已合并
+  </footer>
+
+</div>
+<script>
+(function(){
+  var els = document.querySelectorAll('.anim, .card, .trend-item');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
