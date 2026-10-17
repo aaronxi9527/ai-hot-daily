@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-10-17</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.srcs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px}
+.src{
+  display:inline-block;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-17 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-10-17 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>10</b><span>总动态</span></div>
+      <div class="stat"><b>3</b><span>厂商动态</span></div>
+      <div class="stat"><b>6</b><span>行业动态</span></div>
+      <div class="stat"><b>1</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>今天厂商侧的主线只有一个词：ASIC。</b>山石网科在同一天抛出两条互补材料——一是自研安全专用芯片的硬参数（9mm×9mm、100G 规格整机 15W、较传统多硬件组合降耗 30%–40%、单位 G 成本减半、<b>原生支持 PQC 后量子密码隧道加速</b>、满载 200G 时整机 CPU 占用仅 7%），二是把这块芯片装进某银行数据中心、<b>以「转发时延低于 5μs + 小包吞吐」为卖点替换境外存量防火墙</b>，并在竞争分析里直接点名「某友商」接口多、会话新建好但小包吞吐偏低、时延偏高。<b>这两条合起来说明一件事：国产防火墙的竞争标尺正在从「功能清单长度」切到「专用芯片带来的确定性时延 + 单位成本」，而且已经被拿去做金融数据中心的全量替换论证。</b>对 NF 的含义很直接——<b>如果对标的仍是「谁的功能多」，就会在银行/券商这类「低时延 + 高小包」场景里被 ASIC 路线正面压制；建议把「转发时延、小包吞吐、单位 G 成本、PQC 就绪度」四项做成对标页的第一屏，而不是放在参数表末尾。</b><br><br>
+<b>第二条必须今天看的是「边界设备自身成为入口」在继续兑现。</b>FortiOS 的 CVE-2025-61624（CVSS 仅 5.4）被用来投递 <b>PEERSTITCH 内存驻留植入体</b>——先拿下 FortiManager 集中管理面，再把植入体藏进 FortiOS 正常进程，<b>绕过对被特殊标记 VPN 会话的检查，让加密隧道变成隐蔽 C2 通道，且不落盘、传统杀软难检出</b>；Ivanti Connect Secure 的零日链 CVE-2026-104935 更典型，<b>「认证绕过 + RCE + 提权」三个环节里厂商只补了两个，剩下的提权漏洞至今未修复，攻击者能在完全打过补丁的设备上以未认证身份拿到 root</b>。<b>这两条共同的启示：低 CVSS 不等于低风险（5.4 被拿去当投放通道），「已打补丁」也不等于「已安全」（链条只要缺一环就仍然成立）。建议把「管理面是否独立于业务域、是否暴露在非可信网段」和「VPN 证书/会话解析路径是否做过模糊测试」做成客户侧边界设备体检的固定两问。</b><br><br>
+<b>行业侧今天是「金融 + 政府」的精细化立项日，防火墙的立项层级继续上抬。</b>①<b>兴业证券把分支机构防火墙与上网行为管理打包成 2026-2028 三年期框架</b>——<b>券商侧的边界设备正在从「单次采购」转向「三年框架 + 分支机构统配」</b>。②<b>中原银行 DMZ 外层防火墙单列 12 台、二次招标</b>，并把「两家 2023 年以来金融机构同品牌案例 + 原厂唯一授权书」写死为资格条件——<b>金融项目的门槛已从「有没有产品」变成「有没有同品牌金融落地案例」，代理商与厂商不能同时投标</b>。③<b>兰州市数据局把「电子政务外网防火墙升级维护」单列成一个 74 万元的子包</b>，占该项目 143 万总预算的一半以上，超过同项目的安全检查（46 万）与流量监测（23 万）——<b>说明在政务外网这类存量场景里，「防火墙的升级与维护」本身的预算体量已经大于新增检测能力</b>。④中国电信柳州融安县把防火墙与 IPS、上网行为管理打包询比且<b>已挂网三次</b>、中国邮政江苏把 5 台防火墙拆成 A/B/C 三档限价——<b>中小标里「按档位拆包 + 反复挂网」是常态，投标方要习惯多轮次的资格消耗</b>。<br><br>
+<b>给 NF 的三条今天就能落地的动作：</b>①把「ASIC 确定性时延 + 小包吞吐 + PQC」做成金融/券商场景的对标首屏；②在客户侧边界设备体检清单里加入「管理面暴露面 + VPN 会话解析链」两项；③针对「三年框架 + 分支机构统配」类标的，提前准备可复用的同品牌金融落地案例包。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">3 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-10-16</span></div>
+      <h3>山石网科披露自研安全专用 ASIC 芯片：28nm 成熟工艺、原生支持 PQC 隧道加速</h3>
+      <p>山石网科在网安圆桌派披露自研安全专用 ASIC 进展：芯片融合交换与安全加速双重能力，无需独立交换芯片与冗余通用 CPU，尺寸仅 9mm×9mm，100G 处理规格整机功耗 15W，较传统多硬件组合方案降耗 30%–40%，单位 G 交换硬件成本减半。加解密硬件内置，原生兼容 SSL/IPSec，并支持 PQC 后量子密码隧道加速；实测满载 200G 流量下整机 CPU 占用仅 7%，剩余算力可全部承接 AI 威胁检测与行为分析。研发上先从千万行防火墙核心代码提取高频数据包处理逻辑，FPGA 全场景校验后流片，2024 年 10 月一次性点亮，后续规划集成 RISC-V 内核。</p>
+      <div class="srcs"><a class="src" href="https://www.cet.com.cn/wzsy/kjzx/cygdzx/10616736.shtml" target="_blank" rel="noopener">中国经济新闻网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-10-15</span></div>
+      <h3>山石网科发布某银行数据中心 ASIC 防火墙替换境外设备案例，转发时延低于 5μs</h3>
+      <p>山石网科发布某银行数据中心存量防火墙国产化全量替代案例：搭载自研 ASIC 芯片，防火墙转发时延低于 5μs，小包吞吐性能突出，在吞吐、新建会话、并发连接、转发时延等核心指标上可全面替代原境外设备，实现无感平滑替换。竞争分析中直接点出「某友商」物理接口数量占优、会话新建能力好，但小包吞吐偏低、转发时延偏高，难以适配数据中心高并发低时延场景。方案同时强调 Restful API 对接行内自动化运维平台、策略可视化逐行展开。</p>
+      <div class="srcs"><a class="src" href="https://m.10jqka.com.cn/20261015/c680724560.shtml" target="_blank" rel="noopener">同花顺财经 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-16</span></div>
+      <h3>FortiOS 漏洞被用于投递 PEERSTITCH 内存驻留植入体，藏在 VPN 流量中</h3>
+      <p>研究披露攻击者先攻陷 FortiManager 集中管理平台，再利用 FortiOS CLI 路径穿越漏洞 CVE-2025-61624（CVSS 5.4，同时影响 FortiPAM / FortiProxy / FortiSwitchManager）部署内存驻留 ARM64 植入体 PEERSTITCH。该植入体隐藏于 FortiOS 正常进程中，可绕过对被特殊标记 VPN 会话的检查，把加密隧道变成隐蔽 C2 通道；因仅驻留内存、不落盘，传统杀软难以检出。攻击者若保留对 FortiManager 的访问，可对同一管理面下的整批设备重新投递或推送恶意变更。</p>
+      <div class="srcs"><a class="src" href="https://hamerintel.com/data/articles/20690" target="_blank" rel="noopener">Hamer Intelligence →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">6 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-10-11</span></div>
+      <h3>兴业证券 2026-2028 年度分支机构防火墙及上网行为管理设备框架采购结果公示</h3>
+      <p>兴业证券 10 月 11 日发布《2026-2028 年度分支机构防火墙及上网行为管理设备框架采购项目采购结果公示》，供应商为福建明道泰和信息技术有限公司。属券商分支机构边界设备的三年期框架采购，防火墙与上网行为管理打包立项。</p>
+      <div class="srcs"><a class="src" href="https://stock.stockstar.com/RB2026101400019243.shtml" target="_blank" rel="noopener">证券之星 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-10</span></div>
+      <h3>中原银行 DMZ 外层防火墙采购 12 台（二次招标），要求两家金融机构同品牌案例</h3>
+      <p>中原银行 2026 年第一期信息系统基础软硬件扩容采购项目之「DMZ 外层防火墙采购项目（二次）」公开招标：采购 12 台数据中心 DMZ 区外层防火墙，建设期 6 个月（含供货期 30 个自然日内），原厂商免费维保不少于 5 年，中标人数量 1 家。要求代理商提供原厂唯一授权书（原厂与代理商不得同时投标），并提供至少两份 2023 年 1 月 1 日以来在金融机构实施的同品牌型号项目案例，同一甲方仅计总行案例且只计一次。</p>
+      <div class="srcs"><a class="src" href="https://www.365trade.com.cn/zfwzb/882673.jhtml" target="_blank" rel="noopener">中招联合招标采购平台 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">运营商</span><span class="date">2026-10</span></div>
+      <h3>中国电信柳州分公司融安县电子政务外网安全设备采购（第三次）询比：明确含防火墙</h3>
+      <p>中国电信柳州分公司「2026 年融安县电子政务外网安全设备采购项目（第三次）」询比：采购一批安全设备，明确包含防火墙、入侵防御系统、上网行为管理，项目预算 395,154.87 元（不含增值税），质保期 36 个月，成交人 1 名，投标截止 10-20。该项目已挂网三次。</p>
+      <div class="srcs"><a class="src" href="https://jx.zhaobiao.lanyancloud.com/notice/97708c6a14794082" target="_blank" rel="noopener">蓝燕云招标 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10</span></div>
+      <h3>中国邮政江苏省分公司信息化设备项目询比：防火墙 5 台分 A/B/C 三档限价</h3>
+      <p>中国邮政江苏省分公司 2026 年江苏邮政信息化设备项目公开询比：南京邮区中心、常州、宿迁、无锡市分公司需更新防火墙等设备共 15 台，总预算 35 万元。防火墙按三档拆分：防火墙 A 2 台（单台限价 1.15 万）、防火墙 B 3 台（单台 3 万）、防火墙 C 2 台（单台 5 万）。要求代理商提供制造厂商针对本项目的唯一授权书，厂商不得与其授权代理商同时投标。</p>
+      <div class="srcs"><a class="src" href="https://www.chinapost.com.cn/cn/report/2610/2180-1.htm" target="_blank" rel="noopener">中国邮政网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-16</span></div>
+      <h3>中国自然资源经济研究院询价：深信服防火墙 AF2000/AF1520/AF1300 一年期规则库升级</h3>
+      <p>中国自然资源经济研究院网安设备规则库升级服务采购询价：采购深信服防火墙 AF2000、AF1520、AF1300 一年期规则库升级及硬件质保服务，另含深信服上网行为审计 NC130 与天融信入侵检测 TS-5428-Y 的规则库升级。要求全包干价（含服务费、质保费、税费、技术支持费），并提交厂商针对本项目的售后服务承诺书，10-21 17:00 前提交。</p>
+      <div class="srcs"><a class="src" href="http://www.canre.org.cn/info/1027/89002.htm" target="_blank" rel="noopener">中国自然资源经济网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-13</span></div>
+      <h3>兰州市数据局电子政务外网安全服务项目：防火墙升级维护单独列包 74 万元</h3>
+      <p>兰州市数据局「市电子政务外网安全服务项目」竞争性磋商（10-13，总预算 143 万元），拆为三个子包，其中第二包为「市电子政务外网防火墙升级维护服务项目」，预算 74 万元——占项目总预算过半，为最大子包；另两包分别为电子政务系统安全检查保障服务（46 万）与安全流量监测（23 万）。10-27 09:30 截止提交响应文件。</p>
+      <div class="srcs"><a class="src" href="https://lzggzyjy.lanzhou.gov.cn/jygk/002002/002002001/20261013/7f362e16-eb97-49c5-ac4a-aea49d5bbb8d.html" target="_blank" rel="noopener">兰州市公共资源交易中心 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与行业资讯</h2><span class="cnt">1 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-16</span></div>
+      <h3>Ivanti Connect Secure 零日链 CVE-2026-104935 被 APT 利用，提权环节至今未修复</h3>
+      <p>CISA KEV 本周（10-10 至 10-16）新增 7 个在野利用漏洞，边界设备条目含 Ivanti Connect Secure CVE-2026-104935。威胁组织 UTA0576 以「认证绕过 + 远程代码执行 + 提权」三漏洞链攻击 Ivanti Connect Secure SSL VPN：Ivanti 已修复其中两个，关键提权漏洞截至 10 月仍未修补，攻击者可在完全打过补丁的设备上以未认证身份远程执行 root 命令，绕过 MFA。已观察到窃取含 Active Directory 数据的存储凭据并做密码喷洒，采用内存执行规避完整性校验、删除日志以隐藏活动。</p>
+      <div class="srcs"><a class="src" href="https://datawater.com/cisa-kev-weekly-roundup-october-16-2026" target="_blank" rel="noopener">DataWater →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-17 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
