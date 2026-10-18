@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-10-18</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.srcs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px}
+.src{
+  display:inline-block;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-18 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-10-18 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>12</b><span>总动态</span></div>
+      <div class="stat"><b>3</b><span>厂商动态</span></div>
+      <div class="stat"><b>8</b><span>行业动态</span></div>
+      <div class="stat"><b>1</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>今天最值得盯的一条不是产品参数，而是「谁在定义什么叫 AI 防火墙」。</b>华为把 AIFW 摆上台面，三层差异说得清楚——<b>防护对象第一次把模型、Agent、自动化工作流这些「非人类身份」纳入统一身份管理；专用检测模型与 NPU 算力直接做进单板，本地低时延推理去识别 Agent「想干什么」；策略自治，目标 99% 事件自动处置</b>。但真正有杀伤力的是配套的那把尺子：<b>T/CCIA 006—2026《人工智能防火墙安全技术要求》由华为牵头、21 家政产研机构参与，以 GB/T 20281—2020 为底座新增了 AI 模型、智能体、工具调用三类指标</b>。<b>对 NF 的含义：AI 能力仍应按「防火墙本体功能升级」组织卖点（10-12 天融信、启明星辰都是这个路线），但如果「非人类身份管理」「单板本地推理」被写成团标指标，后续招标参数表会跟着走——现在就该把这三项能力对照自家产品做一次差距盘点，而不是等参数表出来再补。</b><br><br>
+<b>第二条是「高端与低端同时在动，中间档位反而安静」。</b>人保财险一口气公示两个标包：<b>标包4 数据中心防火墙 34 台（50G×22 + 200G×12）、标包5 异构防火墙 32 台（50G×22 + 200G×10），合计 66 台、约 1460 万，且把同构与异构拆开分别定标</b>；另一端是上海外国语大学「一台数据中心防火墙 + 一台 WAF」、南京大学档案馆 199 万整包里的「网络防火墙」、九江学院边界防火墙询价——<b>都是单台到数台的替换型需求</b>。<b>对照 10-14 已推的人保健康五网一体化整包流标：同一集团，防火墙单列标包能跑通、混在 SD-WAN/APT 大包里就流标。这条对照建议直接进销售话术——推动客户把防火墙从整包里拆出来立项，比在整包里跟集成商杀价更有效。</b><br><br>
+<b>第三条是军队口径的「点位化 + 资质前置」。</b>一边是 2026-JQ02-W1260 把服务器、防火墙、交换机打包 193.6 万，<b>要求武器装备科研生产二级（含）以上保密资质且须线下密封提交</b>；另一边是某通信系统建设意向——<b>9 个机房铺开大中小型防火墙约 21 个、443.6 万、建设周期仅 1 个月</b>。<b>这类项目比的是型号齐全度与一个月交付能力，不是单机性能峰值；而资质是硬门槛，不在名录里连报价机会都没有。</b><br><br>
+<b>安全侧今天只有一条，但信息量很足。</b>OPNsense 的 CVE-2026-57155（CVSS 9.9）被打穿的位置不是主转发面，而是<b>「防火墙别名 GeoIP 导入」这个辅助功能</b>——用未校验的 CSV country_code 拼文件名做路径穿越、以 root 写任意文件，再借默认每小时的 root cron 落地命令执行。<b>结论很直白：防火墙的攻击面正在从「转发/管理两大面」扩散到「所有以 root 运行的辅助模块」，而这类模块通常没人做输入校验、也没人做模糊测试。</b>建议把「辅助功能（GeoIP/地址簿/证书导入/日志外发）是否以最小权限运行、是否做输入校验」补进客户侧边界设备体检清单——这是过去几期都没覆盖到的一栏。<br><br>
+<b>给 NF 的三条今天就能落地的动作：</b>①按 T/CCIA 006—2026 的三类新增指标（AI 模型、智能体、工具调用）做一次产品差距盘点；②推动客户把防火墙从大整包里拆成独立标包立项，用「人保双标包跑通 vs 整包流标」做论据；③体检清单新增「辅助功能最小权限 + 输入校验」一栏。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">3 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">华为</span><span class="date">2026-10-17</span></div>
+      <h3>华为把 AIFW 摆成「防火墙的下一代」：非人类身份纳入统一管控、NPU 单板本地推理、目标 99% 事件自动处置</h3>
+      <p>华为明确把 AIFW 与「在老防火墙上外挂一个 AI 模块」划清界限，给出三层差异：①防护对象从人与应用扩展到用户、应用、模型、Agent、自动化工作流，<b>首次把非人类身份（自己调 API 的模型与 Agent）纳入统一身份管理</b>；②专用检测模型与 NPU 算力直接做进单板，本地完成低时延推理，目标是「看见流量背后的意图」而非匹配特征；③策略自治，基于意图自动生成与优化策略，<b>目标 99% 安全事件自动化处置</b>。配套的 T/CCIA 006—2026《人工智能防火墙安全技术要求》以 GB/T 20281—2020 为底座，新增 AI 模型、智能体、工具调用等专属指标，由华为牵头、21 家政产研机构参与起草。</p>
+      <div class="srcs"><a class="src" href="https://www.admin5.com/article/20261017/16703223.shtml" target="_blank" rel="noopener">A5站长网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-13</span></div>
+      <h3>Fortinet FortiOS 产品族整体通过 IEC 62443 认证：四类防火墙形态、三条版本线共用一张证，4-2 达 SL4</h3>
+      <p>认证覆盖 FortiGate、FortiGate Rugged、FortiWiFi、FortiGate VM 四类形态与 FortiOS v7.4.x / v7.6.x / v8.x.x 三条版本线，<b>IEC 62443-4-2 达 SL4（组件最高级）、IEC 62443-4-1 达 ML2</b>。Fortinet 同时披露近半年 FortiOS 代码库中易致命令执行、内存安全、输入处理缺陷的函数使用<b>下降 95%</b>，2025 年披露漏洞中 <b>60% 为内部发现</b>。<b>对国产厂商的含义：工业/OT 场景的「一张证书覆盖全形态、跨版本线」正在变成投标资格材料，而不是加分项</b>——客户不必再按站点、按型号逐台验证合规证据。</p>
+      <div class="srcs"><a class="src" href="https://www.fortinet.com/blog/operational-technology/fortinet-achieves-iec-62443-certification-across-the-fortios-product-family" target="_blank" rel="noopener">Fortinet Blog →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#10B981;background:#10B98124;border-color:#10B98133">H3C</span><span class="date">2026-10-16</span></div>
+      <h3>新华三 SecPath F1000-AI 系列防火墙产品文档升版至 6W102</h3>
+      <p>新华三文档中心将 SecPath F1000-AI 系列防火墙产品文档更新至 6W102。该系列定位行业市场高性能多千兆与超万兆防火墙 VPN 集成网关，硬件为<b>多核多线程 MIPS/ARM 处理器 + ASIC 硬件架构、1U 独立盒式</b>，支持 Telemetry 与 Netconf、双硬盘 RAID0/RAID1，安全特性含 IPS / AV / ACG / WAF / 威胁情报 / URL，强调 IPv6 与一体化 DPI 深度安全。<b>属「既有产品线版本迭代」而非新品类发布</b>，是国内厂商在 AI 消化期继续打磨主力型号的又一个信号。</p>
+      <div class="srcs"><a class="src" href="https://www.h3c.com/cn/Service/Document_Software/Document_Center/IP_Security/FW_VPN/F1000-AI-X0/Doc_Sets/Doc_Packages/F1000-AI_CPWD/" target="_blank" rel="noopener">新华三官网文档中心 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">8 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-10-16</span></div>
+      <h3>人保财险数据中心防火墙双标包候选人公示：标包4 34 台 + 标包5 异构 32 台，合计 66 台、约 1460 万</h3>
+      <p>人保集团网络设备采购项目（人保财险数据中心网络及防火墙）同日公示两个标包候选人：<b>标包4「数据中心防火墙」34 台（50G 22 台 + 200G 12 台）</b>，中科软 752.12 万第一、紫光软件 818.39 万第二、天一恩华 870.60 万第三；<b>标包5「数据中心异构防火墙」32 台（50G 22 台 + 200G 10 台）</b>，紫光软件 708.54 万第一、天一恩华 770.60 万第二、华讯 786.24 万第三。合计 66 台、约 1460 万元，<b>全部为 50G / 200G 高端档，且把「同构」与「异构」拆成两个标包分别定标</b>；公示期 10-16 至 10-19。与 10-14 已推的「人保健康五网一体化整包流标」形成对照：同一集团，防火墙单列标包能跑通，混在整包里就流标。</p>
+      <div class="srcs"><a class="src" href="https://ec.picc.com/cms/default/webfile/ywgg4/20261016/1295780527780921344.html" target="_blank" rel="noopener">人保e采·标包4 →</a><a class="src" href="https://ec.picc.com/cms/default/webfile/ywgg4/20261016/1295757847363059712.html" target="_blank" rel="noopener">人保e采·标包5 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">军队</span><span class="date">2026-10-14</span></div>
+      <h3>军队服务器/防火墙/交换机打包采购 2026-JQ02-W1260：预算 193.6 万，须武器装备科研生产二级保密资质</h3>
+      <p>军队采购网发布「服务器、防火墙、网络交换机等物资采购项目」（2026-JQ02-W1260）公开招标，<b>预算与最高限价均为 193.6 万元，整包只定 1 家供应商，不接受联合体</b>。资格条件中除常规要求外，<b>明确要求武器装备科研生产单位二级（含）以上保密资质，且须线下密封提交证书复印件</b>；同时限定国有企业、事业单位、军队单位或成立三年以上的非外资（含港澳台）独资/控股企业。属「多品类打包 + 资质前置」的典型军队口径。</p>
+      <div class="srcs"><a class="src" href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d0025a12ef9f701a132cfda5d464e.html" target="_blank" rel="noopener">军队采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">军队</span><span class="date">2026-10-13</span></div>
+      <h3>军队某通信系统建设采购意向：9 个机房部署大中小型防火墙约 21 个，443.6 万，预计 12 月采购</h3>
+      <p>军队采购网公开「某通信系统建设」采购意向：从 3-4 个指定行政区租赁共 9 处房产建机房，<b>每机房安装不超过 5 条 ADSL 线路、每条带宽不低于 500M，并在指定区域部署大、中、小型防火墙约 21 个</b>及监控设备（摄像头、硬盘录像机、安装布线、集成服务）。预算 443.6 万元，<b>建设周期仅 1 个月</b>，预计 2026 年 12 月采购。属「多点位小机房 + 防火墙按数量铺开」的形态——与数据中心大单不同，这类项目比的是<b>型号齐全度与 1 个月交付能力</b>，而非单机性能峰值。</p>
+      <div class="srcs"><a class="src" href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d0342a08ad1f301a12df5a1686405.html" target="_blank" rel="noopener">军队采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">教育</span><span class="date">2026-10-12</span></div>
+      <h3>上海外国语大学网络安全设备更新 125 万：数据中心防火墙 + WAF 替换老旧设备，11-02 开标</h3>
+      <p>上海外国语大学网络安全设备更新项目公开招标，预算 125 万元，<b>采购一台数据中心防火墙 + 一台 Web 应用防火墙以替换现有老旧设备</b>，同时建设零信任访问控制平台（双因子认证 + 单包授权）并为师生终端部署终端安全软件。11-02 09:30 开标，合同签订后 30 天到货、20 天内完工。<b>「一台数据中心防火墙 + 一台 WAF + 零信任 + 终端」是高校边界改造的标准四件套，防火墙在这里是入口项而非利润项</b>，投标方需具备把四类能力打包交付的能力。</p>
+      <div class="srcs"><a class="src" href="https://www.gxxszb.com/Html/3352569.html" target="_blank" rel="noopener">招标采购投标服务平台 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">教育</span><span class="date">2026-10-15</span></div>
+      <h3>南京大学苏州校区档案馆信息化设备 199 万：采购清单含网络防火墙，11-05 开标</h3>
+      <p>中央国家机关政府采购中心发布南京大学苏州校区档案馆信息化设备与集成服务采购（GC-HGX261136），<b>预算与最高限价均为 199 万元</b>，采购需求为应用服务器一、算力服务器、存储系统、<b>网络防火墙</b>、应用服务器二、网络交换机，<b>11-05 09:00 截止并同步开标</b>，不接受联合体。防火墙在此类「档案馆/机房集成」项目里通常只占很小金额，但<b>是整包里唯一的安全边界设备，容易被集成商以低配低价拿下</b>——属于需要提前介入参数（吞吐、并发、接口形态）的标。</p>
+      <div class="srcs"><a class="src" href="https://www.zycg.gov.cn/freecms/site/zygjjgzfcgzx/ggxx/info/2026/2afd2c14-aa18-4bcd-b3cb-ad222b202649.html?id=1342a675-c83c-11f1-9615-fa163ee0ead6" target="_blank" rel="noopener">中央政府采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">教育</span><span class="date">2026-10-16</span></div>
+      <h3>九江学院 WEB 应用防护及边界防火墙预算公开询价：10-23 前报价，仅作最高限价测算依据</h3>
+      <p>九江学院资产管理处对「WEB 应用防护及边界防火墙」项目开展预算价格公开市场询价，<b>要求 10-23 17:30 前提交报价材料，询价结果仅作为项目最高限价测算依据、且征集情况不予公开</b>，参与报价不影响后续投标资格。这是<b>介入参数窗口的最早期节点</b>——此时采购需求仍是「初稿」（公告附件明确标注），供应商提出的需求修改建议有可能被吸收进正式采购文件；等到招标公告发布，吞吐、并发、接口形态基本已经写死。</p>
+      <div class="srcs"><a class="src" href="https://jwc1.jju.edu.cn/info/1227/93327.htm" target="_blank" rel="noopener">九江学院资产管理处 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-10-12</span></div>
+      <h3>淮安市第三人民医院 2026 年度信创安全设备招标计划 114.37 万：含防火墙 1 台，11-12 发公告</h3>
+      <p>淮安市第三人民医院 2026 年度信创安全设备、国产服务器操作系统、国产数据库及信创应用采购项目发布招标计划，<b>合同预估金额 114.37 万元，计划 11-12 发布招标公告</b>。标的内容为数据库审计 1 台、<b>防火墙 1 台</b>、上网行为管理 1 台、现有 IPS 与 WAF 三年升级许可、现有 CDP 一体机增加信创功能许可、违规外联监测 1 套、国产服务器操作系统 5 套、国产数据库 2 套及三个业务系统的信创适配改造。<b>典型的「信创改造包」：防火墙只 1 台，但整包强制国产 OS/数据库配套，防火墙必须能证明信创适配</b>。</p>
+      <div class="srcs"><a class="src" href="https://ggzy.huaian.gov.cn/jyxx/001007/001007007/20261012/e2bb5a53-1603-408f-9782-862b4d1d222f.html" target="_blank" rel="noopener">淮安市公共资源交易中心 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-16</span></div>
+      <h3>重庆川仪信创防火墙询比采购：品牌直接指定深信服，要求 3 个同类业绩</h3>
+      <p>国机集团电子采购平台发布「2026 年设备更新项目信创防火墙询比采购」（GJZB20261015048），采购人为重庆川仪分析仪器有限公司，<b>采购信创防火墙一套，品牌直接指定深信服</b>；资格要求 2023-01-01 起至少 3 个同类成功业绩（合同 + 验收证明或发票），不接受联合体，报价人经营范围须含软件服务。<b>「品牌前置指定」在制造业集团的信创替换里已相当普遍——这类单子实际上不招标产品，只招标供货与实施资格</b>，对未被指定的厂商而言，真正要争的是下一轮的品牌入围而不是这一单。</p>
+      <div class="srcs"><a class="src" href="https://epp.sinomach.com.cn/cgzq/002001/20261016/cae07215-0310-4f32-9795-b26957854983.html" target="_blank" rel="noopener">国机集团电子采购平台 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与行业资讯</h2><span class="cnt">1 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-15</span></div>
+      <h3>OPNsense CVE-2026-57155（CVSS 9.9）：GeoIP 别名导入路径遍历写 root 文件，借每小时 cron 提权到完整防火墙沦陷</h3>
+      <p>OPNsense（FreeBSD 防火墙/路由平台）26.1.11 之前版本，防火墙别名 GeoIP 导入器的 process_zip()/process_gzip() 用<b>未校验的 CSV country_code 拼接 /usr/local/share/GeoIP/alias 下的输出文件名</b>；具备 Firewall Alias Edit 权限者可配置攻击者控制的 GeoIP 源，上传 country_code 含路径穿越的压缩包，<b>以 root 身份把任意内容写入其他已存在目录（带 -IPv4/-IPv6 后缀）</b>；再配合伪造的 newsyslog 片段与超大日志文件，借<b>默认每小时执行的 root cron</b> 落地命令执行，最终完整控制防火墙。CVSS 3.1 = 9.9（AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H），已在 26.1.11 修复。<b>攻击面不在主转发面，而在「GeoIP 导入」这类辅助功能——这类模块通常不做输入校验，却是 root 权限运行的。</b></p>
+      <div class="srcs"><a class="src" href="https://www.rapid7.com/db/vulnerabilities/cve-2026-57155/" target="_blank" rel="noopener">Rapid7 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-18 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
