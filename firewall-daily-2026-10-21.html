@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-10-21</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.srcs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px}
+.src{
+  display:inline-block;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-21 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-10-21 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>10</b><span>总动态</span></div>
+      <div class="stat"><b>2</b><span>厂商动态</span></div>
+      <div class="stat"><b>7</b><span>行业动态</span></div>
+      <div class="stat"><b>1</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>今天厂商侧只有山石网科一家有动作，但两条凑在一起恰好构成一个闭环：芯片路线第一次同时兑现成「份额」和「利润」。</b>一条是 IDC《2026 年第二季度中国安全硬件市场跟踪报告》——山石上半年在中国 UTM 市场以 <b>16.5%</b> 排第三，单看二季度则以 <b>18.2% 升至第二，创历史新高</b>；另一条是 10 月 19 日的业绩说明会，公司口径明确「搭载自研 SIC 安全芯片的防火墙已<b>规模化商用落地</b>」「快速切入国产替代赛道，成为<b>拉动经营改善的核心驱动力</b>」。<b>把这两条并起来读：过去两年国内厂商讲自研芯片都停在参数层（吞吐、时延、功耗），山石第一次把「芯片 → 份额 → 毛利」三件事串成一条可以对外讲的因果链。对 NF 的含义很直接——在标书和汇报里继续比「功能条数」已经无效，需要给出「单位 G 成本、转发时延、整机功耗」三列硬指标，并说明这三列怎么换算成客户的 TCO。</b><br><br>
+<b>第二条是今天最值得抄进报价模板的发现：同一周内，防火墙成交单价横跨 5.5 万到 42.1 万，相差 7.6 倍，而且差异几乎全部来自「场景档位」而不是品牌。</b>最高的是南京市江宁医院江宁老年医院网络建设项目：领信 SEC6000-FW-HG10015-H <b>2 台、单价 42.1 万</b>，占 309.8 万整包的 27%，同包另一项只有华为 SDN 控制器 43.68 万；最低的是临汾市应急广播，绿盟 NF 防火墙 NX3（千兆）<b>1 台 5.5 万</b>，作为「下一代防火墙（含入侵防御）」整机采购。中间档是金融监管总局重庆监管局的天融信 NGFW4000-M <b>9.91 万/台</b>。<b>对 NF 的含义：报价体系必须按「互联网出口 / 外联区 / 服务器区 / 数据中心核心 / 分支单点」分档，而不是按型号序列报价。烟台市奇山医院已经把这件事写进标书了——801.42 万的机房里，防火墙被拆成患者互联网、职工互联网、外联区、高性能服务器区四类各 1 台分别列项。</b><br><br>
+<b>第三条是「存量续许可」正在变成一个独立的、可预测的生意，而且举证门槛已经被量化到条数。</b>广西-东盟经开区续购管委会防火墙许可，标的是神州数码 2 台 DCFW-1800E-N7210 加 1 台 N6008 的特征库升级包，参数把病毒库、URL 分类库、IPS 特征库、应用特征库四项逐条设为星号，并给出硬门槛：<b>病毒库不少于 356 万条、应用协议库不少于 3300 条、IPS 特征库不少于 3000 条、URL 分类库不少于 2 千万条</b>，且明确「中标后保留测试权利」。<b>这意味着续费标也会被现场验库——NF 需要提前准备好各库的实际条数、命令行/WEB 查询路径的截图与录屏，把「可被验证」做成标准材料，而不是等甲方来测。</b><br><br>
+<b>第四条是安全侧：PAN-OS 的 GlobalProtect 认证绕过已经从「在野利用」升级为「勒索团伙产业化利用」，并且明确打穿了 MFA。</b>Unit 42 在 10 月 19 日更新 CVE-2026-0257 简报，点名 Spikey Scorpius（Qilin）、Tarnished Scorpius（Inc）以及使用 Settra 的攻击者正在利用该漏洞取得初始立足点、<b>绕过 MFA 建立 VPN 会话</b>；同时点名一个在 Lunar Peak 事件中反复出现的配置错误——把 GlobalProtect 配置档映射到管理面的 HTTP/HTTPS 服务，导致管理接口在 <b>4443、3879 端口</b>被动暴露到公网。<b>这条对 NF 的产品含义比漏洞本身更重要：SSL VPN 与「管理面」在配置上天然容易被绑在一起，NF 若不能在界面上硬性隔离 VPN 门户与管理端口、并对这类映射给出风险提示，客户侧的同类错误一定会重演。</b><br><br>
+<b>给 NF 的三条今天能落地的动作：</b>①把「单位 G 成本 / 转发时延 / 整机功耗」做成对标页第一屏，直接回应山石 ASIC 的叙事，而不是继续列功能；②出一版「按区域分档」的报价模板（互联网出口 / 外联区 / 服务器区 / 数据中心核心 / 分支单点），对齐奇山医院与江宁医院两类极端场景；③整理四类特征库的实际条数与查询路径截图，作为续费标的常备举证包。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">2 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-09-23</span></div>
+      <h3>山石网科 IDC 2026Q2 中国 UTM 单季份额 18.2% 升至第二，上半年 16.5% 居第三</h3>
+      <p>IDC《2026 年第二季度中国安全硬件市场跟踪报告》显示，山石网科 2026 年上半年在中国 UTM 市场以 16.5% 份额排名第三，单看第二季度则以 18.2% 升至第二，创历史新高。官方把份额跃升归因于自研 ASIC 芯片底座上的「ASIC+CPU」异构协同：ASIC 承担主要转发、CPU 专注深度威胁检测，官方口径为吞吐提升约 200%、新建连接数提升约 150%、IPsec VPN 性能提升约 100%、转发时延稳定在 4.8μs 以内、整机功耗降低超 40%。低中高全档位 ASIC 防火墙均已规模上市。</p>
+      <div class="srcs"><a class="src" href="https://zone.ci/secarticles/wx/584459.html" target="_blank" rel="noopener">ZONE.CI 全球网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-10-19</span></div>
+      <h3>山石网科业绩说明会：自研 SIC 芯片防火墙已规模化商用，切入国产替代拉动盈利修复</h3>
+      <p>山石网科 10 月 19 日在上证路演中心召开业绩说明会，投资者关系口径明确：2026 年以来陆续发布多款搭载自研 SIC 安全芯片的防火墙系列产品，现阶段已实现规模化商用落地，在多个项目招投标与交付中体现竞争力；SIC 安全产品快速切入国产替代赛道，成为拉动经营改善的核心驱动力，后续将扩大覆盖、深耕高毛利重点行业。官方对标维度为「高性能、低延时、多接口、低能耗、高稳定」与更高性价比。同场也提到 AI 网关与边界安全产品协同识别「影子 AI」流量（该部分属 AI 安全，非防火墙本体）。</p>
+      <div class="srcs"><a class="src" href="https://stock.10jqka.com.cn/20261020/c680893439.shtml" target="_blank" rel="noopener">同花顺财经 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">7 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-10-16</span></div>
+      <h3>南京市江宁医院江宁老年医院网络建设 309.8 万落定：领信 SEC6000 下一代防火墙 2 台，单价 42.1 万</h3>
+      <p>江宁老年医院网络建设项目（JSZC-320115-ZHXD-G2026-0001）中标金额 309.8 万元，中标人中电鸿信信息科技有限公司，评审得分 98.3。主要标的仅两项：SDN 控制器（灾备）华为 iMaster NCE-Fabric 1 套 43.68 万元；下一代防火墙领信 SEC6000-FW-HG10015-H 2 台，单价 42.1 万元、合计 84.2 万元，占整包约 27%。这是本期单价最高的防火墙条目，与政务侧 5 万–13 万/台的成交价差拉开近 3–8 倍。</p>
+      <div class="srcs"><a class="src" href="https://js.zhiliaobiaoxun.com/article/115818200" target="_blank" rel="noopener">知了标讯江苏站 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-10-19</span></div>
+      <h3>国家金融监督管理总局重庆监管局机房设备 179.59 万：天融信 NGFW4000-M 防火墙 2 台，单价 9.91 万</h3>
+      <p>国家金融监督管理总局重庆监管局机房网络设备及动环监控软件项目（GC-HGX261061，中央国家机关政府采购中心组织）预算 189.8 万元，中标金额 179.59 万元，中标人重庆铭韵科技有限公司。公示的主要标的只有一项：防火墙天融信 NGFW4000-M 2 台，单价 99128 元、合计 19.83 万元；其余预算落在机房网络设备与动环监控软件。金融监管系统把防火墙作为独立品目单列报价。</p>
+      <div class="srcs"><a class="src" href="https://www.dav01.com/bid/2026/10/b905728.html" target="_blank" rel="noopener">DAV 数字音视工程网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-20</span></div>
+      <h3>临汾市应急广播 393 万落定：绿盟 NF 防火墙 NX3（千兆）1 台 5.5 万，与日志/数据库审计同包</h3>
+      <p>临汾市应急广播项目建设（1410992026AGK00309）中标金额 393 万元，中标人中电信数智科技有限公司山西分公司。清单中「下一代防火墙（含入侵防御）」为绿盟 NF 防火墙 NX3（千兆）V6.0，1U 形态、1 台、单价 5.5 万元；同包另有绿盟综合日志审计 5.8 万元、数据库审计 6.2 万元、终端安全授权扩容 2 万元，国密 VPN 与国密安全网关分别由国领、中电科承担。广电应急广播场景把「防火墙含 IPS」作为一个整机品目采购，未拆 IPS 单列。</p>
+      <div class="srcs"><a class="src" href="https://prec.sxzwfw.gov.cn/jyxxzczb/1106387.jhtml" target="_blank" rel="noopener">山西省公共资源交易平台 →</a><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261020_27528831.htm" target="_blank" rel="noopener">中国政府采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-10-16</span></div>
+      <h3>烟台市奇山医院机房设备 801.42 万招标：患者/职工/外联区/服务器区四类防火墙各 1 台</h3>
+      <p>烟台市奇山医院信息数据机房设备采购（SDGP370600000202602000922）预算 801.42 万元，单一采购包、不接受联合体、不允许进口，11 月 6 日开标。采购清单把防火墙按区域拆成四类分别列项：患者互联网防火墙 1 台、医院职工互联网防火墙 1 台、外联区防火墙 1 台、高性能服务器区防火墙 1 台，合计 4 台；同包另有网闸 1 台、安全态势感知平台 1 台、潜伏威胁探针 2 台、数据库审计与数据库安全运维各 1 台。医院侧已按「区域 + 性能档」而非「一台边界墙」组织防火墙预算。</p>
+      <div class="srcs"><a class="src" href="http://ggzyjy.yantai.gov.cn:9095/jyxx/003002/003002002/20261016/730b569a-cc13-42ff-a119-23eeeb5dfb2a.html" target="_blank" rel="noopener">烟台市公共资源交易网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-16</span></div>
+      <h3>舟山「防火墙专项升级与服务器主机安全防护」开标：4 家报价 9.8 万至 19 万，最高与最低相差近一倍</h3>
+      <p>舟山「防火墙专项升级与服务器主机安全防护项目」（A3301020001002469001001）10 月 16 日双信封开标，4 家全部缴纳保证金。第二信封报价：宁波广知电子科技 9.8 万元、舟山市翎航电子科技 17 万元、舟山市锦承信息技术 18.76 万元、中国电信舟山分公司 19 万元，供货期统一为合同签订后 30 天内。同一标的最低价与最高价相差 9.2 万元、接近一倍，且电信系报价落在最高位。</p>
+      <div class="srcs"><a class="src" href="https://www.z7cai.com/jyxx/001001/001001001/001001001006/20261016/8f60cfdd-db36-4dcd-b50a-4d655523972cJ085.html" target="_blank" rel="noopener">浙企采 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-15</span></div>
+      <h3>广西-东盟经开区续购管委会防火墙许可：神州数码 DCFW-1800E-N7210 2 台 + N6008 1 台特征库续费</h3>
+      <p>广西-东盟经济技术开发区党群侨务局在广西政府采购在线询价平台发起「续购管委会网络防火墙安全许可证」竞价（62026101590373932），标的为神州数码 2 台 DCFW-1800E-N7210 与 1 台 DCFW-1800E-N6008 的许可升级包，即 2 套 USG-N7210-LIC + 1 套 USG-N6008-LIC。参数把「1 年病毒库/URL 分类库/IPS 特征库/应用特征库」四项升级逐条设为星号，并给出量化门槛：病毒库不少于 356 万条、应用协议库不少于 3300 条、IPS 特征库不少于 3000 条、URL 分类库不少于 2 千万条，且要求中标后保留测试权。这是纯「存量设备续许可」而非新增整机的采购形态。</p>
+      <div class="srcs"><a class="src" href="https://zxxj.gcy.zfcg.gxzf.gov.cn/bidding/detail?requisitionId=62026101590373932&type=BIDDING_INVITATION" target="_blank" rel="noopener">广西政府采购在线询价平台 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">运营商</span><span class="date">2026-10-16</span></div>
+      <h3>广安电信 148.69 万天网升级：含防火墙与入侵防御，投标须附安全认证或检测证书</h3>
+      <p>中国电信广安分公司 2026 年升级改造 285 套「天网」视频监控点平台及硬件采购，预估含税 148.69 万元，10 月 26 日 9 时响应截止。采购对象含存储系统、视频综合管控平台、电子地图模块、国标对接网关、数据交换机、视频汇聚管理服务器节点、流媒体节点、防火墙与入侵防御系统。资格条款明确：防火墙、入侵防御设备须提供《承担网络关键设备和网络安全专用产品安全认证和安全检测任务机构名录》内机构的安全认证证书或检测证书；并要求 2024 年 1 月 1 日以来类似业绩累计不低于 75 万元。</p>
+      <div class="srcs"><a class="src" href="https://sc.zhaobiao.lanyancloud.com/notice/22801aed35fc4e1b" target="_blank" rel="noopener">蓝燕云招标四川站 →</a><a class="src" href="https://shaanxi.infochina.cn/zhaobiao-20261016175041777207.html" target="_blank" rel="noopener">谛听招标网 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与标准合规</h2><span class="cnt">1 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-10-19</span></div>
+      <h3>Unit 42 10-19 更新：PAN-OS CVE-2026-0257 已被 Qilin/Inc/Settra 三家勒索团伙用于绕过 MFA 建 GlobalProtect 隧道</h3>
+      <p>Palo Alto Unit 42 在 10 月 19 日更新威胁简报：PAN-OS GlobalProtect 认证绕过漏洞 CVE-2026-0257（5 月 13 日进 CISA KEV）的在野利用方已从「不明攻击者」明确为勒索运营方 Spikey Scorpius（Qilin）与 Tarnished Scorpius（Inc），公开报告另指向使用 Settra 勒索软件的攻击者。攻击者利用该漏洞取得初始立足点后绕过 MFA 建立 VPN 会话，目前未观测到后续横向移动，仅少部分被探测设备真正建立了 VPN 连接。Unit 42 同时点名一个在 Lunar Peak 事件中反复出现的配置错误：把 GlobalProtect 配置档映射到管理面的 HTTP/HTTPS 服务，导致管理接口在 4443、3879 端口被动暴露到互联网。核查方式为从外部浏览器对管理 IP 的这两个端口发起带外 HTTPS 连接。</p>
+      <div class="srcs"><a class="src" href="https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/" target="_blank" rel="noopener">Palo Alto Unit 42 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-21 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
