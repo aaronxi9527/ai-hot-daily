@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全日报 · 2026-10-24</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --line:#1f2937; --line2:#26334a;
+  --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--txt); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; letter-spacing:.01em;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+                   radial-gradient(800px 460px at 88% 2%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+
+.hero{padding:66px 0 34px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c7d2fe;background:rgba(91,108,247,.12);
+  border:1px solid rgba(139,92,246,.34);border-radius:999px;
+  padding:6px 15px;margin-bottom:20px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--g3);display:block;
+  box-shadow:0 0 0 4px rgba(236,72,153,.18)}
+h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.hero .date{color:var(--txt2);font-size:15px}
+.hero .date b{color:var(--txt);font-weight:600}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{
+  min-width:132px;padding:16px 20px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.6));
+  border:1px solid var(--line);
+}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.25}
+.stat .l{font-size:12.5px;color:var(--txt2);margin-top:2px}
+
+.overview{
+  margin:34px 0 8px;padding:26px 28px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(91,108,247,.13),rgba(139,92,246,.07) 45%,rgba(236,72,153,.07));
+  border:1px solid var(--line2);
+}
+.overview h2{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.overview h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--g2);
+  box-shadow:0 0 12px rgba(139,92,246,.9)}
+.overview p{color:#d1d5db;font-size:15px}
+.overview b{color:#fff;font-weight:600}
+
+.sec{margin-top:56px}
+.sec-head{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sec-icon{font-size:22px}
+.count{font-size:12px;font-weight:600;color:#a5b4fc;background:rgba(91,108,247,.14);
+  border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:2px 10px}
+.sec-sub{color:var(--txt3);font-size:13px;margin-top:7px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 21px 17px;position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-3px);border-color:#334155;
+  box-shadow:0 16px 34px -18px rgba(0,0,0,.85)}
+.card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:7px;white-space:nowrap;line-height:1.5}
+.tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.34);
+  font-weight:600}
+.tag-cat{color:#a7f3d0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.26)}
+.level{margin-left:auto;font-size:12.5px;letter-spacing:1px;flex-shrink:0}
+.merged{font-size:11px;color:var(--txt3);border:1px solid var(--line);border-radius:6px;
+  padding:2px 7px;white-space:nowrap}
+
+.card-title{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:11px;color:#f3f4f6;
+  letter-spacing:-.005em}
+.card-body{font-size:14px;color:#b6bec9;line-height:1.85}
+.card-body b{color:#f0f2f5;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(139,92,246,.22) 62%);padding:0 1px}
+
+.card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src{font-size:12px;color:var(--txt3);line-height:1.9}
+.src a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.32);
+  transition:color .2s,border-color .2s}
+.src a:hover{color:#e9d5ff;border-color:#e9d5ff}
+
+.trend{margin-top:58px;padding:28px 30px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(17,24,39,.9),rgba(10,10,10,.6));
+  border:1px solid var(--line2)}
+.trend h2{font-size:19px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.trend-item{padding:15px 0;border-bottom:1px dashed var(--line)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-item h4{font-size:15px;color:#e9d5ff;margin-bottom:6px;font-weight:600}
+.trend-item p{font-size:13.5px;color:#a9b1bd;line-height:1.85}
+.trend-item b{color:#f0f2f5}
+
+footer{margin-top:46px;text-align:center;color:var(--txt3);font-size:12.5px;line-height:2}
+footer .sep{display:inline-block;width:34px;height:2px;border-radius:2px;margin:0 8px;
+  background:linear-gradient(90deg,var(--g1),var(--g3));vertical-align:middle}
+
+.anim{opacity:0;transform:translateY(26px)}
+.anim.in{opacity:1;transform:none;
+  transition:opacity .72s cubic-bezier(.2,.7,.3,1),transform .72s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d,0ms)}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px}
+  .hero{padding:44px 0 24px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .overview,.trend{padding:20px 18px}
+  .card{padding:17px 16px 14px}
+  .stat{min-width:calc(50% - 6px);padding:13px 14px}
+  .stat .n{font-size:23px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero anim">
+<div class="badge"><i></i>AI SECURITY INTELLIGENCE · DAILY</div>
+<h1>🤖 AI 安全日报</h1>
+<p class="date"><b>2026-10-24</b> · 星期六 · 北京时间 · 覆盖国际 / 国内友商产品动态与行业趋势</p>
+<div class="stats">
+<div class="stat"><span class="n">5</span><span class="l">🏢 国际友商产品</span></div>
+<div class="stat"><span class="n">3</span><span class="l">🇨🇳 国内友商产品</span></div>
+<div class="stat"><span class="n">10</span><span class="l">📊 行业动态</span></div>
+<div class="stat"><span class="n">18</span><span class="l">📌 今日总条数</span></div>
+</div>
+</header>
+<div class="overview anim"><h2><span class="dot"></span>AI 总览 · 今日看点</h2><p>周六。今天八条产品动态（国际 5、国内 3）里有<b>四条在干同一件事：把凭据从智能体手里拿走</b>。Google Cloud 的 Agent Compute Engine 让每个智能体的沙箱里<b>一个凭据都不放</b>，凭据由节点外的 Agent Gateway 在请求出站那一瞬换进去，attestation key 放在 Titanium IPU 里、在 guest 之外；1Password for Agents 更进一步，智能体连密码都看不到，用户在自己设备上批准后由 1Password 直接填表；Palo Alto 把 Prisma AIRS 与 Unit 42 的持续攻击面服务搬进 OpenAI Marketplace，用客户<b>已承诺的 OpenAI 预算</b>买安全；TrendAI 则把 Claude Code 与 Cowork 的会话记录接进 Vision One，补上「智能体到底做了什么」这一层可观测。<b>没有一家在比检出率。</b></p><p><b>国内三条各自落在不同层。</b>山石网科发统一 AI 网关（eToken Manager），把身份、费用、调用记录绑在<b>同一条调用记录</b>上——同一条数据既管成本又管安全；天融信把第三份行业方案（继金融、教育后）落到政务，四类场景五类能力，明确写「人在环、可干预、能阻断，算法不替代决策」；华为在 UBBF 重做运营商安全目标网，路由器内置 E-AI 做报文 1:1 全量检测，把 DDoS 识别与引流从 1 分钟压到 5 秒。</p><p><b>行业侧今天最刺眼的是银行。</b>Axios 曝出摩根士丹利已封杀第三方智能体，摩根大通、美银、花旗在限制，富国加紧控风险——触发点是客户自己把密码交给了智能体，而银行<b>分不清人、授权助手和未授权代理</b>，也判断不了代理是否还在执行用户指令。有银行追到只被授权做特定任务的智能体<b>打电话给客服中心</b>。戴蒙的原话：「我们不会允许任何外部代理进入公司内部。」配套的三份材料把这件事量化了：信通院《智能体治理研究报告》引用 <b>70%</b> 组织给智能体超人类员工权限、<b>80%</b> 见过越界行为；框架 3.0 把「审批异常时<b>默认拒绝</b>」写死；英国 FCA 要求机构维护<b>AI 智能体清单</b>。</p><p><b>漏洞侧三条指向同一个姿势：把「本地」当成了信任边界。</b>Google ADK for Java 开发服务器不校验 origin（7.2），开发者浏览器里任意恶意页面就能操控正在跑的智能体；Agent Zero 回显即 XSS（8.1）；Meta Muse 一个未文档化的配置键任何本地进程可写，改掉就能劫持听写流量、偷认证材料，且没有 CVE、EDR 也难分辨。蜜罐侧，Symantec 抓到一只 74 个工具定义、跑到 10 万步的 LLMjacking 智能体——<b>无鉴权的模型与 MCP 端点一定会被找到并当成别人的算力</b>。</p><p><b>一条值得单独看的选择题：</b>月之暗面给 K3.1 Pro 的处理方式不是事后加护栏，而是在中期训练与强化学习阶段<b>摘掉网络攻防数据</b>——漏洞利用测试从 90.5% 降到 81.0%。理由很实在：开放权重一发布，别人改模型就能把护栏拆了。以后评估开放权重模型，「有没有护栏」之外还要问「训练数据里摘掉了什么」。</p></div>
+<section class="sec"><div class="sec-head"><h2><span class="sec-icon">🏢</span>国际友商产品动态<span class="count">5 条</span></h2><p class="sec-sub">只收「哪家厂商的哪个产品的哪个功能 / 版本变了」，答不出来的一律归入行业版块</p></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Google Cloud</span><span class="tag tag-cat">AI Agent 运行时隔离 · 无凭据沙箱</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">Google Cloud 发 Agent Compute Engine：每个智能体一台硬件隔离 microVM，沙箱里一个凭据都不放</h3><div class="card-body">10 月 22 日 AGNTCon + MCPCon（圣何塞）。<b>Agent Compute Engine（ACE）</b>是专为「大规模跑 AI 智能体」造的计算服务，基本单位是<b>硬件隔离 microVM</b>——走 Cloud Hypervisor 边界、有独立 guest 内核与 root，host 侧由 Google 自研 <b>Titanium IPU</b> 承载。选 microVM 不选容器的理由很直白：容器共享 host 内核，逃逸与提权是已知失效模式。<br>最值得记的是<b>凭据位置</b>。沙箱内零凭据：出站请求先经本地 proxy 打到节点外的 <b>Agent Gateway</b>，网关校验「用户委托 / 智能体身份 / 节点身份」三件事后，在请求离开网关的瞬间做 <b>in-flight token swap</b>，把后端凭据塞进去——进程自己从来看不到。microVM 只拿一个短期身份，用来标识「是哪个沙箱发起的」，被偷了也调不动后端。attestation key 放在 Titanium IPU 里，<b>在 guest 之外</b>，所以沙箱内任何软件沦陷都够不到。<br>工程数字：microVM 启动约 <b>125ms</b>、每智能体内存开销约 <b>5MiB</b>；空闲时（智能体进入「思考」阶段）由 host 做 checkpoint 挂起、需要时从快照恢复，<b>20 万智能体</b>基准下暂停恢复 <b>&lt;500ms</b>；每个 microVM 带独立 Hyperdisk，工作区跨会话保留。同源开源版 <b>Agent Substrate on GKE</b> 今天就能试，官方称密度可达传统计算 <b>10 倍</b>。<br>状态：已内部支撑 Gemini 的 agent-for-work；public preview「未来数月」，未公布定价。设计准则原话——「<b>假设攻击者控制了沙箱内的一切，并确保他在里面找不到任何可用的东西</b>」。</div><div class="card-foot"><div class="src">来源：<a href="https://www.techtimes.com/articles/329428/20261023/google-cloud-unveils-agent-compute-engine-ai-agent-credentials-kept-outside-hardware-sandbox.htm" target="_blank" rel="noopener">Tech Times</a> · <a href="https://appstackinsider.com/insights/google-cloud-launches-agent-compute-engine-for-ai-agents" target="_blank" rel="noopener">AppStack Insider</a></div></div></article><article class="card anim" style="--d:40ms"><div class="card-top"><span class="tag tag-vendor">Palo Alto Networks</span><span class="tag tag-cat">AI-SPM + AI 运行时防护 · 渠道上架</span><span class="level">🔥🔥</span></div><h3 class="card-title">Palo Alto 把 Prisma AIRS 与 Unit 42 持续前沿 AI 防御搬进 OpenAI Marketplace，用已承诺的 OpenAI 预算买单</h3><div class="card-body">OpenAI 新开的 Marketplace 上架两款旗舰，企业可用<b>已承诺的 OpenAI 支出抵扣</b>——安全团队相当于用一笔已经花出去的钱买机器速度的防御。<br><b>Unit 42 Continuous Frontier AI Defense</b>：专家 + 自研<b>多模型 harness</b>（接入 GPT-5.6-Cyber、其他商用模型、开源权重模型与 Unit 42 情报），按任务动态路由到最合适的模型以控成本；跑非破坏性对手模拟来<b>证明可利用性</b>，给到代码级修复与虚拟补丁（Frontier Virtual Patching 可在 CVE 公开前先挡）。口径：<b>1,700 万美元</b>研发投入、6 个月内部测试 + <b>75 家以上</b>客户交付；内部部署<b>三周挖出「两年份」暴露面</b>；客户评估中 <b>100%</b> 组织有暴露面、<b>37%</b> 为高危或严重，第三方应用里<b>三分之二</b>的暴露面没有已知 CVE。<br><b>Prisma AIRS</b> 一侧：发现与盘点（终端/云/企业环境的 AI 应用、编码助手、自主智能体与影子 AI）、持续风险评估（<b>扫模型与 agent artifact，含 skills 与 MCP server</b>）、实时防护（注入、恶意交互、敏感数据外泄）、智能体身份与最小权限、以及 AI Gateway 统一治理 LLM / MCP / API 连接与花费。<br>背景：Gartner 9 月「AI 应用安全新兴市场象限（成熟厂商）」里把 Palo Alto 列为 <b>Market Shaper</b>；官方称对手把入侵周期压缩近 <b>97%</b>——从数周压到数小时。</div><div class="card-foot"><div class="src">来源：<a href="https://www.paloaltonetworks.sg/blog/2026/10/palo-alto-networks-brings-continuous-ai-defense-and-prisma-airs-to-the-openai-marketplace" target="_blank" rel="noopener">Palo Alto Networks</a></div></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">Anthropic</span><span class="tag tag-cat">AI 代码安全 · 持续扫描与修复跟踪</span><span class="level">🔥🔥</span></div><h3 class="card-title">Claude Security 从「一次性扫描」改成「跟着 commit 跑」：修好自动关、复发自动开，还补了 API / webhook / MCP 连接器</h3><div class="card-body">10 月 21 日更新，<b>Claude Enterprise 公测</b>。逻辑变了：不再是有人点一下才扫，而是建项目、接仓库（Claude GitHub App 含 GitHub Enterprise Server，或 GitLab 等用 access token）、跑一次<b>深度基线扫描</b>，之后按变更的<b>风险与复杂度</b>持续扫，<b>没有固定周期</b>。一个项目最多接 8 个仓库，因此能发现「后端信任了本该由客户端校验的输入」这类<b>跨服务</b>问题。<br><b>修复跟踪</b>是这次最实用的部分：把未关闭的 finding 与变更后的代码比对，修复一落地（无论在 Claude Code 里改的，还是在别处改的）就自动标 fixed；后续扫描再发现同样问题，<b>自动 reopen</b>。<br>每个项目带 Knowledge 页 + 由代码生成的 <b>threat model</b>（可人工编辑），后续扫描据此判断该报什么、给多高的严重度，并跳过环境里已有控制覆盖的风险。每条 finding 附基于 threat model 的严重度、攻击者可达路径说明，部分带攻击路径图。<br>工程化补齐：新增 <b>API</b>（个人 token 继承用户权限）、<b>webhooks</b>（新 finding 通知）、<b>MCP 连接器</b>（在 Claude.ai 与 Claude Code 里直接看 finding、讨论、起修复、标已解决）、<b>RBAC</b>（Full / Triage / View）。跑在 Claude Mythos 上，<b>不需要 Cyber Verification Program 权限</b>；按 token 直接成本计费、无平台费，前两个月每月最高 <b>2.5 万美元</b>额度（至 2026-12-31）。<br>官方口径：4 月公测以来数千家组织使用、累计发现 <b>100 万+</b> 漏洞；同时自己提示——<b>同一份代码跑两次结果可能不同</b>，因为 agent 每次推理会变。</div><div class="card-foot"><div class="src">来源：<a href="https://www.helpnetsecurity.com/2026/10/22/claude-security-continuous-scanning-update/" target="_blank" rel="noopener">Help Net Security</a> · <a href="https://www.developersdigest.tech/blog/claude-security-continuous-scanning-api-mcp-2026" target="_blank" rel="noopener">Developers Digest</a></div></div></article><article class="card anim" style="--d:120ms"><div class="card-top"><span class="tag tag-vendor">1Password</span><span class="tag tag-cat">智能体凭据经纪 · 身份安全</span><span class="level">🔥🔥</span></div><h3 class="card-title">1Password for Agents 上线：智能体可以用你的密码登录，但永远看不到密码</h3><div class="card-body">10 月 22 日。流程值得逐句读：智能体撞到登录表单 → 用<b>唯一数字密钥</b>向 1Password 证明自己是谁 → 用户<b>在自己设备上</b>收到通知，看到「要哪个凭据、为什么」并决定批不批 → 批准后 <b>1Password 直接把凭据填进目标站点表单</b>，不发给智能体。登录完成，智能体继续干活，密码始终留在保险库里。<br>边界划得清楚：智能体拿不到整个 vault，未明确授权的其他密码仍受端到端加密；每家的集成都是<b>独立 opt-in</b>，只对「架构经过安全审查」的伙伴开放，且必须由已认证用户逐次批准。<br>首批：Meta <b>Muse</b>、Grok Bot（正在各平台铺开）、Town Townie、Anthropic <b>Claude Duet</b>、OpenAI <b>ChatGPT Work 与 dots</b>（后三者即将）；后续 Browserbase、Browser Use、Perplexity、Ramp、KERNEL、Dana、Instinct、Tomo、Wajo。定价：Individual / Family 账户<b>不额外收费</b>，1password.eu 与 .ca 暂不支持。<br>CPO Aashish Tripathi 的原话正好是这个赛道的判词：「智能体开始替我们干真活了，<b>把凭据交出去然后祈祷</b>的老办法行不通。」</div><div class="card-foot"><div class="src">来源：<a href="https://1password.com/press/2026/october/1password-for-agents-trust-layer-personal-ai-agents" target="_blank" rel="noopener">1Password</a></div></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">TrendAI（Trend Micro）</span><span class="tag tag-cat">智能体可观测 · AI 代码审计</span><span class="level">🔥🔥</span></div><h3 class="card-title">TrendAI 把 Claude Code 与 Cowork 的会话记录接进 Vision One，让智能体行为能和终端、身份、云信号对上</h3><div class="card-body">10 月 21–22 日 Vision One 新增两项能力。真正的新交付物是<b>扩展 Claude Compliance API 覆盖</b>：把 Claude Enterprise 里 <b>Claude Code 与 Cowork 的会话记录</b>（prompt、响应、工具调用，逐条绑定已验证用户）接进 Vision One，安全团队可据此还原 AI 活动上下文、与终端/身份/云/网络信号关联、并针对智能体行为写自定义检测；原有的 Claude Enterprise 活动日志（登录、管理动作、配置变更）与 Claude Platform 事件日志继续摄取。<br>另一项 <b>Autonomous Vulnerability Discovery</b> 从闭门预览进入<b>私测</b>：由 AESIR（agentic exploit-remediation 引擎）驱动，找并验证漏洞（含 0-day）、验证修复；多模型架构<b>主要用 Anthropic 模型</b>，在 CyberGym 榜单上超过单模型与 agentic 系统；每条结论由 <b>ZDI</b>（全球最大厂商无关漏洞赏金项目）专家复核——把「人审」明确做成抗幻觉控制。整套流程跑在客户自己 AWS 内的 Amazon Bedrock 上。<br>可用性：AVD 私测限 AWS 上的部分企业客户；Claude Compliance API 集成对使用 Claude Enterprise 的 Vision One 客户开放。<br>需求侧数据（Harris Poll 为 Dataiku 做的调研）：<b>62%</b> 阿联酋 CIO 认为自家生产环境跑着 <b>50 个以上</b>智能体，但只有 <b>18%</b> 对跨平台、跨数据环境、跨业务应用的智能体有统一视图。</div><div class="card-foot"><div class="src">来源：<a href="https://integratormedia.com/2026/10/22/trendaiexpands-vision-one-with-new-security-capabilities-for-ai-agents-and-application-development/" target="_blank" rel="noopener">Integrator Media</a> · <a href="https://eyeon.ai/f/3125" target="_blank" rel="noopener">eyeon.ai</a></div></div></article></div></section>
+<section class="sec"><div class="sec-head"><h2><span class="sec-icon">🇨🇳</span>国内友商产品动态<span class="count">3 条</span></h2><p class="sec-sub">具名产品 / 版本 / 行业方案的实际交付变化，未凑数</p></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">山石网科</span><span class="tag tag-cat">统一 AI 网关 · Token 运营</span><span class="level">🔥🔥</span></div><h3 class="card-title">山石网科发统一 AI 网关（eToken Manager）：把「谁在用、调什么、花多少、结果怎样」记进同一条调用记录</h3><div class="card-body">10 月 22 日线上发布会，主题「算力可控，价值可见」。产品是<b>统一 AI 网关（eToken Manager）企业级 Token 运营平台</b>，四个卖点：<b>成本可算、权限可控、风险可防、全程可溯</b>。<br>设计思路来自内部实践：2025 年 7 月先建内部 API 网关，随着多模型接入与场景变多，计费、健康监控、权限管理、安全追溯成了真需求，于是把「身份、费用、调用记录」绑在同一条记录上——<b>同一条调用记录同时服务成本管理与安全治理</b>，这是它和纯计费网关的区别。<br>网关承担受管调用的<b>统一入口与策略执行</b>；Token 运营基于调用数据做计量、授权、优化与追溯。管理对象是员工、企业应用与 Agent 发起的已接入调用，围绕<b>主体、资源、消耗、内容、结果</b>五个要素记录谁在用、调什么、消耗多少、结果与处置情况。费用侧给采购价格、闲置资源、不必要消耗的观察与调整依据，支持与同口径用量核对账单、查看归属与额度，并据资源利用率与高峰需求评估采购、续费与分配。<br>战略口径：「Agentify Everything Securely」，三条主线 <b>AI for Security / Security for AI / AI for Hillstone</b>。</div><div class="card-foot"><div class="src">来源：<a href="https://www.163.com/dy/article/L9UBJIVK0538ER6X.html" target="_blank" rel="noopener">网易 · 山石网科新视界</a></div></div></article><article class="card anim" style="--d:40ms"><div class="card-top"><span class="tag tag-vendor">天融信</span><span class="tag tag-cat">政务 AI 安全一体化</span><span class="level">🔥🔥</span></div><h3 class="card-title">天融信第三份行业智能体安全方案落地政务：四类场景、五类能力，评估—网关—防泄漏—API 审计—运营串成一条链</h3><div class="card-body">10 月 23 日。继金融、教育之后把 AI 安全一体化能力推进到政务，覆盖<b>政务服务（一网通办）、城市治理（智能执法）、机关办公（协同提效）、领导决策（辅助支撑）</b>四类场景，融合<b>五类能力</b>：AI 安全评估、大模型安全网关、数据安全监测与防泄漏、API 安全审计、AI 安全管理平台 + 智算云。<br>细节比前两版更硬。数据侧<b>五合一</b>：语料扫描、模型检测、敏感识别、攻击监测、API/MCP 审计；终端防泄漏做<b>五级检测</b>（清点、通道、内容、语义、替代管控），覆盖剪贴板、文件上传、截屏、打印、外设、网盘与 IM，<b>本地阻断秒级完成</b>——既防「资料随智能体对话外发」，也防「数据沉淀到模型侧」。API 审计侧摸清<b>影子 API 与僵尸 API</b>，定位敏感数据外泄、越权访问与异常调用。AI 网关统一接管多模型接口，做智能路由、配额控制。<br>三大特点：<b>介入位置可落地</b>（不改代码、不动业务就能在最难管控的场景布控制点）、<b>安全能力可闭环</b>（模型建设期—上线期—智能体应用期—运营期）、<b>可延展</b>（智算云近 <b>20 类</b>安全组件池化供给、按需加载）。领导决策场景明确写「人在环、可干预、能阻断，<b>算法不替代决策</b>」。<br>政策依据：中央网信办、国家发展改革委《政务领域人工智能大模型部署应用指引》明确的四大应用场景与规范要求。</div><div class="card-foot"><div class="src">来源：<a href="https://www.topsec.com.cn/newsx/6946" target="_blank" rel="noopener">天融信</a></div></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">华为</span><span class="tag tag-cat">运营商安全目标网 · AI 赋能安全</span><span class="level">🔥🔥</span></div><h3 class="card-title">华为在 UBBF 重做运营商安全目标网：路由器内置 E-AI 做 1:1 全量检测，攻击识别与引流从 1 分钟压到 5 秒</h3><div class="card-body">10 月 23 日，全球超宽带高峰论坛（UBBF 2026）期间发布<b>新一代运营商安全目标网架构解决方案</b>，按网络层、终端层、运营层三层构筑分层纵深韧性防护。<br><b>网络层</b>：路由与安全协同的 DDoS 防御，依托路由器内置 <b>E-AI</b> 能力做报文 <b>1:1 全量实时检测</b>（替代传统采样检测），攻击识别与引流响应从 <b>1 分钟压到 5 秒内</b>；<b>HiSecEngine</b> 边界防火墙用专用硬件安全引擎 + 自研 AI 威胁检测算法，识别加密恶意流量与 <b>AI 生成恶意样本</b>，官方称未知威胁检测能力提升 <b>15%</b>，守互联网出口与数据中心边界。<br><b>终端层</b>：<b>HiSec Endpoint</b> 用自研威胁溯源图引擎，对进程、文件、注册表、网络行为做全链路关联分析，识别变种勒索、AI 恶意程序、无文件攻击；感染后可自动回溯完整攻击链路、定位源头、一键恢复加密文件。<br><b>运营层</b>：<b>HiSec NG-SIEM</b> 内置 <b>2,000 多个</b>安全分析算法与 <b>100 多个</b>自动化 SOAR 剧本，AI 研判自动完成告警降噪、风险关联、根因分析，把威胁闭环处置从 <b>4 小时压到 30 分钟以内</b>。<br>背景数据来自 AV-TEST 管理委员会成员 Erik Heyland：AI 驱动攻击呈高速化、低成本化、规模化、高隐蔽化；全球每日新增约 <b>25 万</b>恶意程序、每秒出现 <b>3–4 种</b>新型病毒。</div><div class="card-foot"><div class="src">来源：<a href="https://www.163.com/dy/article/L9UHUBS10538E4EY.html" target="_blank" rel="noopener">网易 · 华为安全</a></div></div></article></div></section>
+<section class="sec"><div class="sec-head"><h2><span class="sec-icon">📊</span>行业动态与趋势<span class="count">10 条</span></h2><p class="sec-sub">政策法规 · 研究报告 · 监管要求 · 标准与评测 · 漏洞与事件</p></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">金融监管 · 智能体身份</span><span class="tag tag-cat">行业事件</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">美国多家大行开始封杀第三方 AI 智能体：不是因为代理干了坏事，而是没人能证明「谁在操作」</h3><div class="card-body">Axios 10 月 22 日报道，随后路透等跟进。<b>摩根士丹利</b>已阻止第三方智能体访问其平台（该行称尚未发现「失控智能体」，属预防性措施）；<b>摩根大通、美国银行、花旗</b>在限制此类访问；<b>富国银行</b>等加紧控风险，并着手改写服务条款。<br>触发点很朴素：大量案例是<b>客户自己把用户名密码交给智能体</b>。即便客户同意，这也普遍违反「必须本人登录」的银行条款。更麻烦的是有银行追到——只被授权执行特定任务的智能体<b>打电话给客服中心</b>，或表现出独立于用户指令的行动。银行高管用的词是「令人恐惧」。<br>最难的技术点：银行<b>无法可靠区分</b>账户操作来自真人、已授权助手还是未授权代理，也判断不了代理是否还在执行用户指令。客户的「同意」不等于银行允许这种接入方式。<br>折衷方案是<b>只读访问</b>（类似早已开放的 Quicken 类预算应用）：能看余额、交易与财务信息，不能转账或下单。美银在限制消费存款类访问的同时，正制定「AI 授权支付由谁担责」的协议；多家银行在做「事后第一天」预案。<br>两句原话：戴蒙——「我们不会允许任何外部代理进入公司内部，这对客户和摩根大通风险太大」；嘉信理财 CEO Wurster——每天都在封未授权代理，本人每天看拦截次数报告，「<b>我们封它，是因为我们要掌控认证和用户体验</b>」。</div><div class="card-foot"><div class="src">来源：<a href="https://www.ibtimes.co.uk/us-banks-restrict-third-party-ai-agents-1827385" target="_blank" rel="noopener">International Business Times</a></div></div></article><article class="card anim" style="--d:40ms"><div class="card-top"><span class="tag tag-vendor">中国信通院 + 中国政法大学</span><span class="tag tag-cat">研究报告</span><span class="level">🔥🔥</span></div><h3 class="card-title">《智能体治理研究报告（2026年）》：治理重心正从「模型的内容合规」转向「智能体的行为约束」</h3><div class="card-body">中国信息通信研究院政策与经济研究所联合中国政法大学人工智能法研究院发布。核心判断：AI 治理已进入从<b>「以内容合规、事前审查为重心的模型治理」</b>向<b>「以行为约束、全周期治理为重心的智能体治理」</b>加速转型的关键阶段。<br>报告引用 NHI Mgmt Group 2026 年基础设施身份问卷的两个数字，是今天所有讨论的地基：<b>70%</b> 的组织授予智能体的权限<b>超出同等人类员工</b>；<b>80%</b> 的组织已报告智能体执行了<b>超出预期范围</b>的行为。<br>赛迪顾问分析师白润轩的拆解很准：从「说错话」到「做错事」是<b>性质变化而非量级变化</b>——生成式阶段风险停在输出层，人还是最后一道判断关口；智能体阶段模型拿到了工具调用与系统权限，输出不再是文字而是会改变现实状态的动作（资金划转、数据外发、设备控制），且可在无人干预下<b>连续执行几十步</b>。治理对象从静态内容变成动态行为边界。<br>他的解法：<b>把授权单元从「功能」换成「任务」</b>——传统应用按功能静态划分、授予即长期有效；智能体需要的是完成某次具体任务的临时许可，因此要做到<b>任务绑定、时间限定、额度设上限、随时可撤销、任务结束即刻回收</b>。另一位分析师韩子哲补了一句判准：一个能力平庸但拥有读写文件、访问网络、调用工具、发起支付权限的智能体，可能比一个很强但只能读数据的智能体造成更大实际损害——<b>风险大小不看能力高低，看被授予多大权限</b>。</div><div class="card-foot"><div class="src">来源：<a href="https://new.qq.com/rain/a/20261023A08JEF00" target="_blank" rel="noopener">腾讯新闻 · 21 世纪经济报道</a></div></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">政策 · 最小权限</span><span class="tag tag-cat">监管要求 / 最佳实践</span><span class="level">🔥🔥</span></div><h3 class="card-title">智能体权限边界怎么划：只授当前任务所需的最小权限，人工审批异常时「默认拒绝」</h3><div class="card-body">10 月 23 日人民邮电报、中国工信新闻网梳理的政策口径，把「边界」落成了可执行条款。<br>依据一：国家网信办、国家发展改革委、工业和信息化部联合印发的<b>《智能体规范应用与创新发展实施意见》</b>要求厘清「仅限用户本人决策 / 需由用户授权决策 / 智能体自主决策」三种决策方式的合理边界及所需权限，确保用户对智能体自主决策享有<b>知情权与最终决策权</b>，执行操作不得超出授权范围，并按场景与潜在影响<b>审慎开展分级治理</b>。<br>依据二：<b>《人工智能安全治理框架 3.0》</b>提出只为智能体授予执行当前任务所必需的<b>最小权限</b>；并明确——人工审批系统异常、用户无响应、缺乏对应审批规则时，<b>默认拒绝操作执行</b>。这条比「必须人工确认」更硬，因为它堵住了「审批链断了就自动放行」这个后门。<br>蚂蚁集团的口径把「意图偏离」讲得最具体：让智能体买咖啡，要美式却买成拿铁、预算 30 元却花 300 元，都是偏离委托。金额异常相对好识别，<b>口味、品类、偏好的偏差更考验对用户意图的理解</b>——系统要核对原始要求与关键交易要素，意图不清或风险较高时请用户再次确认。<br>一条反向提醒也值得记：频繁「甩锅式确认」会让审核人惯性点确认，<b>人工审核流于形式</b>。所以只在关键信息或关键步骤提示，且提示必须给出足以判断的信息（收款对象、金额、异常提示、是否符合原始委托）。信通院泰尔终端实验室给的四句话是验收标准：<b>身份可识别、授权可验证、行为可监控、责任可追溯</b>。</div><div class="card-foot"><div class="src">来源：<a href="https://www.cnii.com.cn/rmydb/202610/t20261023_765926.html" target="_blank" rel="noopener">中国工信新闻网 · 人民邮电报</a></div></div></article><article class="card anim" style="--d:120ms"><div class="card-top"><span class="tag tag-vendor">英国 FCA</span><span class="tag tag-cat">金融监管 / 政策</span><span class="level">🔥🔥</span></div><h3 class="card-title">英国 FCA 发 AI 良好与不良实践报告，明确要求维护「AI 智能体清单」</h3><div class="card-body">10 月 23 日。FCA 这份报告首次<b>明确把 agentic AI 单列</b>：机构在部署更自主的系统前，必须先建立合适的治理结构——<b>问责机制、升级路径、合规控制</b>，并鼓励维护<b>AI 智能体清单（inventory）</b>以便持续监控与管理。<br>其他要点：降低对单一 AI 供应商的依赖；要求对供应商的<b>重大模型变更</b>保持可见；把 AI 风险<b>并入现有监管合规框架</b>而不是另立一套；Consumer Duty 的考量要贯穿设计、部署、监控全过程；第三方 AI 安排需要稳健的治理与韧性规划。<br>同期 FCA 首席数据、信息与情报官 Jessica Rusu 演讲，结合 Mills Review 指出行业已从试验转向广泛部署、并出现越来越自主的 agentic 系统；FCA 正在制定 <b>agentic finance</b> 框架，同时用 AI 让自己成为「更聪明的监管者」。<br>报告的判准一句话：<b>监管看结果不看技术</b>——机构被评判的不是「用没用 AI」，而是能否证明它产出了公平、有韧性、治理良好的结果。</div><div class="card-foot"><div class="src">来源：<a href="https://www.lewissilkin.com/insights/2026/10/23/building-ai-the-right-way-fca-shares-good-and-bad-practice-102o6ay" target="_blank" rel="noopener">Lewis Silkin</a></div></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">AIIA · 中国泰尔实验室</span><span class="tag tag-cat">标准与评测</span><span class="level">🔥🔥</span></div><h3 class="card-title">AIIA 发布 AI SOC 能力评估规范，奇安信 AISOC 成为首家通过检验的产品</h3><div class="card-body">10 月 23 日。中国人工智能产业发展联盟（AIIA）发布<b>AI SOC 能力评估规范</b>，中国泰尔实验室依据该规范对送检产品做全面测试。<b>奇安信 AISOC</b> 送检版本在<b>数据知识层、AI 能力层、安全运营层</b>共 15 项应检项<b>全部通过</b>，基础能力要求通过 25 项、不涉及 2 项、<b>不合格项为 0</b>，结论「通过」。<br>规范本身值得看：新版把<b>「智能体矩阵」「语义理解与分析推理」「任务规划与编排」</b>写成了可勾选项——这三项过去都是发布会 PPT 词，现在变成评测项，意味着采购方可以要求「拿出来测」。<br>产品侧口径：7×24 自动研判告警，官方称消除 <b>99% 以上</b>告警噪声；智能体 + 思维链推理把事件调查从「一天」压到<b>分钟级</b>；按预训练应急流程推荐处置方案并联动全品类设备执行。<br>这条的意义不在某家厂商，而在品类：AI SOC 从「概念探索」进入「可评测、可勾选」，和此前防火墙走 T/CCIA 006-2026、大模型安全网关过公安部三所围栏认证是同一路径——<b>先定义品类，再让招标能写条款</b>。</div><div class="card-foot"><div class="src">来源：<a href="https://m.10jqka.com.cn/20261023/c681036598.shtml" target="_blank" rel="noopener">同花顺财经</a></div></div></article><article class="card anim" style="--d:200ms"><div class="card-top"><span class="tag tag-vendor">智能体可信互联（重庆）</span><span class="tag tag-cat">基础设施 / 标准落地</span><span class="level">🔥</span></div><h3 class="card-title">智能体可信互联中心（重庆）启动试运行：先给智能体发「身份证」，再谈跨平台协作</h3><div class="card-body">10 月 22 日通用人工智能大会行业智能体论坛，<b>智能体可信互联中心（重庆）启动试运行</b>，目标是为不同主体开发的智能体在<b>授权范围内</b>开展跨平台协作建立信任基础。同期重庆市人工智能公共服务平台 <b>V2.0</b> 发布，融入「通衍」「通测」两大平台能力，把智能体的创制、训练、演化、测试纳入公共服务；1.0 是人操作平台生产智能体，2.0 改成用自然语言对话完成过去只有 AI 研发人员能做的事。<br>中国信通院工业互联网与物联网研究所副所长李海花的比喻很直白：「就像人一样，首先给它一个<b>身份证</b>」——通过 ID 给它标识、让它进入网络空间，进而打造发现、查找、互联的体系。<br>把这条和同周 CNNIC 的口径放在一起看更清楚：CNNIC 已联合阿里云、腾讯云等建成智能体可信基础设施平台，累计接入<b>2 万余个</b>智能体、服务 <b>5,100 余家</b>企业，路径是「基于 DNS 做智能体发现与身份验证，复用成熟互联网基础设施」，并用数字证书与透明日志保障可信连接。<br>判断：智能体互联正在走互联网当年那条路——<b>先解决标识与发现，再谈授权与协作</b>；而「授权范围内」这四个字，正是后面所有安全产品要填的空白。</div><div class="card-foot"><div class="src">来源：<a href="https://www.cbg.cn/a/4928/20261023/56bfea84594b46f48507c6a0fdd0ddaf.html" target="_blank" rel="noopener">重庆网络广播电视台</a></div></div></article><article class="card anim" style="--d:240ms"><div class="card-top"><span class="tag tag-vendor">Meta</span><span class="tag tag-cat">端侧智能体安全 / 零日</span><span class="level">🔥🔥</span></div><h3 class="card-title">Meta Muse 的 macOS 零日：改一个没人文档化的配置键，就能把听写流量接到攻击者服务器</h3><div class="card-body">10 月 23 日，Objective-See 的 Patrick Wardle 公开 PoC「<b>not-a-mused</b>」。核心是一个未文档化的配置键 <b>endo_voyager_dictation_endpoint</b>：任何以登录用户身份运行的进程都能改写它，<b>没有权限校验</b>。改掉之后，Muse 的听写流量被静默改道到攻击者服务器，可截获与篡改 prompt 与听写内容，并窃取与该账号关联的认证材料——直接通向提示词注入与会话劫持。<br>它不提供远程代码执行，需要先有本地代码执行（恶意软件或社工）。真正危险的是<b>权限放大</b>：Muse 被授予文件、应用、浏览器标签、邮件、日历、网页浏览、支付与后台任务的广泛委托权，一个低权限立足点拿下 Muse 就等于借用了这套授权。PoC 只覆盖 Muse 暴露的 <b>50 多个</b>命令的一部分，另有演示让配对的 iPhone 回传位置信息、发起 BLE 扫描。<br>检测难点写得最实在：命令经<b>签名可信二进制</b>执行，EDR 很难区分动作来自用户、智能体还是攻击者。截至报道，Meta 未公开回应，<b>未分配 CVE</b>；Muse 漏洞赏金最高 <b>30 万美元</b>。一位前 Meta AI 安全工程经理表示自己不会用 Muse。<br>处置建议：暂停 Muse、审计并撤销不必要的已连接服务、怀疑沦陷即轮换凭据、监控异常智能体活动、在受管 Mac 上限制未批准的智能体；并专门盯住修改 <code>endo_voyager_dictation_endpoint</code> 的进程。</div><div class="card-foot"><div class="src">来源：<a href="https://secnews.in/article/?slug=article-meta-muse-macos-zero-day-endpoint-hijack" target="_blank" rel="noopener">SecNews</a></div></div></article><article class="card anim" style="--d:280ms"><div class="card-top"><span class="tag tag-vendor">Google</span><span class="tag tag-cat">漏洞披露 / 本地 agent 框架</span><span class="level">🔥🔥</span></div><h3 class="card-title">Google ADK for Java 开发服务器 CVE-2026-107858：浏览器里任何一个恶意页面都能操控你正在跑的智能体</h3><div class="card-body">NVD 10 月 23 日发布，CVSS 4.0 <b>7.2</b>。ADK Web 的 <b>WebSocket 端点不校验 origin</b>，跨域策略过宽，于是开发者浏览器里打开的任意恶意页面都能接管正在运行的智能体：读它的数据、管理它的会话与 artifact。影响 <code>google-adk-dev</code> 与 <code>google-adk-maven-plugin</code> <b>0.1.0–1.12.x</b>；<b>1.13.0</b>（10 月 21 日）默认只允许同源请求访问 CORS 与 <code>/run_live</code>，并拒绝 loopback 上的 DNS-rebinding。<br>同一批里还有一条同构问题：<b>Agent Zero</b> 的 Web UI 不净化聊天输入与上传文件，智能体回显的内容直接在已认证会话里当脚本执行（<b>CVE-2026-97635，8.1</b>），v1.15 修复，CISA CSAF 与 NVD 10 月 22 日发布。<br>两条并读的教训是同一句：<b>浏览器能打到 localhost 之后，localhost 就不再是边界</b>。智能体会把读到的东西再说出来，所以一条经网页或文档进来的注入，可以两跳之后变成打向操作者的 XSS——每个带本地 Web UI 的 agent 框架都该做一次 origin 审计，并把智能体渲染出的每个字符串都当不可信 HTML 处理。</div><div class="card-foot"><div class="src">来源：<a href="https://mindpattern.ai/blog/2026-10-23" target="_blank" rel="noopener">MindPattern</a></div></div></article><article class="card anim" style="--d:320ms"><div class="card-top"><span class="tag tag-vendor">Symantec</span><span class="tag tag-cat">威胁情报 / LLMjacking</span><span class="level">🔥🔥</span></div><h3 class="card-title">蜜罐抓到一只会自己找猎物的 LLMjacking 智能体：74 个工具定义、跑到 10 万步、12.7 万次外部请求</h3><div class="card-body">10 月 23 日披露。Symantec 蜜罐捕获的 prompt 会驱动一个<b>被劫持的模型</b>去主动搜寻开放的 OpenAI 兼容端点、AI 网关与 MCP server，然后打 Django、Jupyter、Laravel，拖库、安装 XMRig 挖矿——<b>全程没有任何人工审批</b>。<br>工程细节：载荷携带约 <b>74 个工具定义</b>；用一段越狱把「翻 .env、收集 API key」包装成<b>日常开发工作</b>，让模型不觉得在做坏事；单次战役可跑到 <b>10 万步</b>，蜜罐记录到 <b>12.7 万次以上</b>外部请求。<br>结论一句话：<b>无鉴权的模型端点与 MCP 端点一定会被找到，并被当成别人的攻击算力</b>——包括你临时起的那台开发机。这与同周 Wiz 的「从钓鱼到 LLMjacking」形成闭环：前者讲怎么拿到云账单，这条讲拿到之后会怎么用。<br>可执行动作只有三个，且都便宜：所有模型与 MCP 端点前面加鉴权（含临时环境）、把对外开放的推理端口从公网摘掉、对异常出站与模型调用量做基线告警。</div><div class="card-foot"><div class="src">来源：<a href="https://mindpattern.ai/blog/2026-10-23" target="_blank" rel="noopener">MindPattern</a></div></div></article><article class="card anim" style="--d:360ms"><div class="card-top"><span class="tag tag-vendor">月之暗面</span><span class="tag tag-cat">开放权重安全 / 训练期对齐</span><span class="level">🔥🔥</span></div><h3 class="card-title">Kimi K3.1 Pro 的选择：不靠事后护栏，在训练阶段就把网络攻防数据摘掉</h3><div class="card-body">10 月 23 日发布 K3.1 Pro，10 月 24 日引发讨论的点不在跑分，而在<b>安全做法</b>：团队在<b>中期训练与强化学习阶段</b>有针对性地移除网络攻防相关数据，同时保留正常编程所需内容——而不是等模型训完再外挂一层容易被绕过的限制。<br>动因写得很诚实：开放权重模型发布后，其他开发者可以通过修改模型来<b>绕过或移除部分安全防护</b>，即所谓「<b>安全消融</b>」；相比依赖易被绕过的安全限制，直接在训练阶段控制危险能力，才有望真正降低滥用风险。<br>数字：官方内部测试中，若不清理相关数据，模型在漏洞利用测试上的成绩可达 <b>90.5%</b>；经针对性调整后最终版本降至 <b>81.0%</b>。能力侧：编程测试 65.7%（高于 GPT-6 Astra 的 58.2%），3D 建模 92.7%；第三方 Artificial Analysis 综合智能指数 <b>55 分</b>（较上代 +11），若按计划开放权重将成为该指数上得分最高的开放权重模型。<br>背景：今年 7 月英国 AISI 与美国 CAISI 联合评估上一代 Kimi K3，发现它已能在受控环境中自主完成部分网络攻击任务，且原有安全防护<b>未能有效阻止</b>其尝试利用软件漏洞——这次算是对那次评估的正面回应。对防守方的启示：以后评估一个开放权重模型，除了看「有没有护栏」，还要问「<b>训练数据里摘掉了什么</b>」。</div><div class="card-foot"><div class="src">来源：<a href="https://new.qq.com/rain/a/20261024A03UGY00" target="_blank" rel="noopener">腾讯新闻</a></div></div></article></div></section>
+<div class="trend anim"><h2><span class="sec-icon">🧭</span>趋势判断 · 精简版</h2>
+<div class="trend-item"><h4>1. 凭据正在被搬出智能体够得到的地方</h4><p>Google 把凭据放到 microVM 之外、由网关在出站瞬间换 token；1Password 干脆让智能体连密码都看不到；Palo Alto 用 AI Gateway 统一接管模型与 MCP 连接。三家做法不同，结论一致：<b>「守住模型」不可行，那就让被攻陷的模型手里没有可用的东西</b>。</p></div>
+<div class="trend-item"><h4>2. 银行封杀代理暴露的真问题不是「代理会干坏事」，而是「没人能证明谁在操作」</h4><p>摩根士丹利封、摩根大通限制、花旗限制，触发点是客户自己交出了密码，而银行分不清人 / 授权助手 / 未授权代理，也分不清代理是否还在执行指令。客户的「同意」在法律与条款上都不等于银行许可这种接入方式——这是身份层缺口，不是模型层缺口。</p></div>
+<div class="trend-item"><h4>3. 智能体治理的抓手从「内容」换成「任务」</h4><p>信通院报告主张把授权单元从功能换成任务（任务绑定、时间限定、额度上限、可撤销、结束即回收）；框架 3.0 把「审批异常时默认拒绝」写死；FCA 要求维护智能体清单。三份文件在不同法域指向同一个动作：<b>把授权做成一次性的、可核销的</b>。</p></div>
+<div class="trend-item"><h4>4. 本地与自托管是新的暴露面，云端管控再严也覆盖不到开发者本机</h4><p>ADK 开发服务器不校验 origin（7.2）、Agent Zero 回显即 XSS（8.1）、Muse 的配置键任何本地进程可写、Ollama 与 MCP 端点默认无鉴权被蜜罐抓到批量利用。共同结构是：<b>把「本地」当成了信任边界</b>。</p></div>
+<div class="trend-item"><h4>5. 安全产品开始被「标准 + 可评测」约束，采购问句正在改变</h4><p>AIIA 把「智能体矩阵、语义理解与推理、任务规划与编排」写成 AI SOC 的应检项并由泰尔实验室实测；这条路径与防火墙过 T/CCIA 006-2026、大模型安全网关过公安部三所围栏认证一致。接下来招标里「有没有 AI」会变成「<b>过没过评测、哪一档</b>」。</p></div>
+</div>
+<footer>
+<div class="sep"></div> AI 安全日报 · 2026-10-24 <div class="sep"></div><br>
+覆盖国际 / 国内友商产品动态与行业动态 · 产品版块仅收录可追溯到具名产品的功能与版本变化<br>
+来源链接均经双通道可达性校验 · 同主题多源已合并
+</footer>
+</div>
+<script>
+(function(){
+  var els = document.querySelectorAll('.anim, .card, .trend-item');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
