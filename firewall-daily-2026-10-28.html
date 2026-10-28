@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-10-28</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.srcs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px}
+.src{
+  display:inline-block;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-10-28 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-10-28 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>12</b><span>总动态</span></div>
+      <div class="stat"><b>3</b><span>厂商动态</span></div>
+      <div class="stat"><b>7</b><span>行业动态</span></div>
+<div class="stat"><b>2</b><span>安全态势</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p><b>今天最该记的一件事，是 Fortinet 在 48 小时里做了两个方向完全相反的动作。</b>10-26 它把 AI 检测塞进防火墙——<b>FortiGuard Inline AI Security Service</b> 以云服务形式下发给存量 FortiGate，检查对象从 IP、签名、载荷扩到 prompt、模型响应、MCP 工具调用和智能体动作，DLP 认 35 类 PII，还能设模型预算、拦 Denial-of-Wallet；客户不用另建 AI 安全栈。10-27 它又把防火墙从分支拿掉——<b>FortiLink SASE Service</b> 让本地 LAN 经 Forti AP / 交换机直连 FortiSASE，官方原话是「无需在每个点位部署专用防火墙」，专打那批跑不了 agent 的打印机、摄像头和 IoT。<b>同一家公司，对「边界到底在哪」给出了两套答案：总部和园区继续买盒子并且往上加能力，微型分支干脆不买盒子。</b>对 NF 的含义很直接——分支市场的竞争对手不再是另一台防火墙，而是「不用买设备」这三个字。如果报价单还在按台数×型号算，遇到这类方案时连比价的机会都没有。<br><br>
+<b>第二条是价格锚点今天被三组对照同时拉爆。</b>海淀医院 1169.58 万整包里，<b>同一型号网御星云 Power V6000-FWG7810Z 挂在「无线防火墙（万兆/互联网）」是 24.4 万，挂在「政务网防火墙（万兆）」是 9.93 万，差 2.46 倍</b>——这是本月「品目命名影响报价」最极端的一例，远超 10-26 黑龙江福彩同型号 7.87 万 vs 9.34 万（18.7%）。同一包里的边界防火墙是天融信 NGFW4000-UF 2 台 @12.36 万，正好落在 10-22 卫健委 8.9 万、10-24 生态环境部 9.37 万之上。第二组是汕头海关：同一采购单位、同一天、同为 2 台，<b>深信服 AF-1000-L1600B 折 2.68 万/台，奇安信网神 NSG6150-D15 折 4.88 万/台，差 1.82 倍</b>——而年初的采购意向只写了「万兆防火墙 2 台/套」，意向阶段根本看不出档位。第三组是北江监狱：4 家密封报价 54985 / 64200 / 64460 / 64888 元，<b>全部挤在 5.5–6.5 万窄带，极差 9993 元（18.2%）</b>，最低价成交。<b>把三组并读，价格带的分层就非常干净了：2–5 万档拼渠道与本地关系，产品力不参与；9–12 万档是「万兆标配」的稳定锚点；24 万以上靠品目名和清单口径讲故事。</b><br><br>
+<b>第三条是两笔「二次」同一天冒出来，指向同一个问题。</b>联通数科道研中心 88.39 万那个标，指定绿盟 NFNX5-HHC6000 两台，10-16 首次询比公告发出后，<b>到标书售卖截止潜在应答人不足三个，第一次询比直接失败</b>，10-26 重新挂二次询比，应答截止 11-03。同一天，某部 290 万「系统安全保密建设与物联网数据联通」也是二次招标，防火墙侧是万兆网络防火墙 1 台 + UTM 安全网关 1 台，门槛写着涉密集成乙级或武器装备保密二级、只收国企/事业单位/军队单位或成立三年以上非外资企业。<b>过去我们默认「指定品牌 + 指定型号 + 高资质」的标最稳，今天这两笔说明另一面：条件越窄，愿意来买标书的越少，连开标条件都凑不齐。</b>对 NF 是双向的——指定型号的标要提前把授权链和应答主体铺好，否则连三家都凑不到；反过来，凡是能凑齐三家的场次，入围就等于自动进入。<br><br>
+<b>第四条是边界设备的攻防，重点已经从「打洞」挪到「开门」。</b>WatchGuard 10-27 一次性发了 18 条 Fireware OS 公告，7 个 CVSS 9.1+，最狠的 CVE-2026-103594 到 9.5（WireGuard 配置栈溢出可 RCE），<b>但细看利用条件——多数要 FireCluster 开集群、Access Portal 开 WebSocket、SIP 代理被策略引用、或者攻击者站在 Firebox 与云之间的 TLS 解密路径上</b>；18 个里 13 个是 WatchGuard 自家 AI 安全研究团队挖出来的。另一边，k0t 行动被 Group-IB / NyxLab 在 10-21 披露：用公开搜索引擎批量收集暴露在公网的 FortiGate、FortiWeb、GlobalProtect 端点，再叠已知漏洞、凭据复用、爆破与弱口令拿权限，<b>拿到 7 万余条凭据，并从设备配置里抽出网络设备口令与 LDAP 记录</b>。<b>两件事的共同点是没有 0day，只有「管理面/SSL VPN 口暴露在公网 + 弱口令 + 补丁后没清会话」。</b>这恰好是国内客户体检时最常被跳过的一步——设备买了、策略配了、界面还挂在公网上。<br><br>
+<b>给 NF 今天能落地的三件事：</b>①把海淀医院那条做成一张「同型号不同品目」的价差表（24.4 万 / 9.93 万，2.46 倍），销售拿去谈清单口径，比讲一百条功能有用；②针对 FortiLink SASE 这种「分支不买盒子」的打法，出一页「分支防火墙 vs 云交付」的三年 TCO 对照——重点不是设备价，是本地运维人力与专线回传成本，否则在微型分支场景会被直接绕开；③把 k0t 与 WatchGuard 两条合成一份客户自查清单（管理面是否公网可达、SSL VPN 门户与管理口是否共用端口、补丁后是否强制全员重登、集群同步口是否独立），这比漏洞通报本身更容易被客户接受。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">3 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-26</span></div>
+      <h3>Fortinet 把 AI 检测下沉进 FortiGate：FortiGuard Inline AI Security Service 云交付上线</h3>
+      <p>10-26 发布，以云服务形式向存量 FortiGate 下发 AI 专项检测与护栏（底层 FortiAIGate + 8 月收购的 Virtue AI 技术）。检查对象从「IP/签名/载荷」扩到 prompt、模型响应、MCP 工具调用与智能体动作，覆盖文本/图像/音频/视频/代码；DLP 识别 35 类 PII 并可告警/阻断/脱敏；可设模型权限、预算、消费上限与速率，拦截 Denial-of-Wallet 类恶意 prompt；内置 50+ 合规策略一键启用，全量 prompt/输出/工具调用留痕供审计。对隐私与主权要求高的客户可自建 FortiAIGate（Kubernetes + NVIDIA GPU），数据与日志不出域。关键点：客户不需要另建 AI 安全栈，能力直接长在既有防火墙上。</p>
+      <div class="srcs"><a class="src" href="https://www.nasdaq.com/press-release/fortinet-expands-ai-security-fortiguard-inline-ai-security-service-2026-10-26" target="_blank" rel="noopener">Fortinet 新闻稿（Nasdaq） →</a><a class="src" href="https://siliconangle.com/2026/10/26/fortinet-extends-fortigate-firewalls-into-ai-security-and-adds-new-fortiaigate-features/" target="_blank" rel="noopener">SiliconANGLE →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-27</span></div>
+      <h3>Fortinet 推出 FortiLink SASE：微型分支不再需要一台本地 FortiGate 防火墙</h3>
+      <p>10-27 发布 FortiLink SASE Service，把本地局域网经支持的 Forti WiFi AP / 以太网交换机直连 FortiSASE，由云端做流量检测、策略执行与集中管理。官方原话是「无需在每个点位部署专用防火墙」，指向的是分支、临时站点、无人值守设施里那批跑不了 FortiClient 的打印机、摄像头与 IoT。三条卖点：可保护不能装 agent 的设备、整段 LAN 接入不用逐台装 agent、单控制台统管网络与安全策略。与 10-26 的 Inline AI 形成对照——一边把能力加进防火墙，一边把防火墙从分支拿掉。</p>
+      <div class="srcs"><a class="src" href="https://www.fortinet.com/corporate/about-us/newsroom/press-releases/2026/fortinet-expands-unified-sase-to-simplify-microbranch-security" target="_blank" rel="noopener">Fortinet 新闻稿 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-27</span></div>
+      <h3>Fortinet 补齐 FIPS 认证分支的前沿 AI 加固固件：7.2 / 7.4 两条 FIPS-CC 线到位，7.0 FIPS 已无补丁</h3>
+      <p>10-22 那轮由前沿 AI 辅助自查挖出的安全加固版本只覆盖 GA 分支，10-27 官方社区补发 FIPS 认证分支：FortiOS 7.2 为 FIPS-CC-72-8（b9883）、7.4 为 FIPS-CC-74-15（b9481），下载目录均位于 FIPS-CC-Certification-Pending 下的 CVE-Patched 子目录。同时明确 FortiOS 7.0 已过 EOS（2025-09-30）、FIPS 分支扩展支持同步结束，不会再出加固版本，只能升到 7.2 FIPS 或 7.4 FIPS。对跑 FIPS/国密合规场景的金融与政企客户，这条比 GA 补丁更关键——合规模式下的防火墙此前处在「补丁不可用」状态。</p>
+      <div class="srcs"><a class="src" href="https://community.fortinet.com/fortigate-3/frontier-ai-assisted-firmware-updates-for-fips-enabled-fortigates-october-2026-230877" target="_blank" rel="noopener">Fortinet 社区公告 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">7 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-10-27</span></div>
+      <h3>海淀医院信息化升级改造 1169.58 万：边界防火墙 NGFW4000-UF 2 台 @12.36 万，同一型号 Power V6000 因品目不同差出 2.46 倍</h3>
+      <p>北京鑫博腾飞中标，整包 1169.58 万（综合评分 86.9），防火墙合计 83.45 万占整包 7.1%。四台防火墙分三个品目列价：边界防火墙 天融信 NGFW4000-UF 2 台 @12.36 万；无线防火墙（万兆/互联网）网御星云 Power V6000-FWG7810Z 1 台 24.4 万；无线防火墙（万兆/业务内网）同型号 1 台 24.4 万；政务网防火墙（万兆）同型号 1 台 9.93 万。同型号 Power V6000-FWG7810Z 在「无线防火墙」品目 24.4 万、在「政务网防火墙」品目 9.93 万，差 2.46 倍，是本月「品目命名影响报价」最极端的一例。整包另含 IPS 14.32 万、上网行为 17.7 万、零信任网关 17.8 万、隔离网闸 12.45 万、负载均衡 30.58 万、入网规范 55.04 万。</p>
+      <div class="srcs"><a class="src" href="http://www.ccgp-beijing.gov.cn/xxgg/qjxxgg/qjzbggs/2026/10/2531defac1834c1cbce727170ac78913.htm" target="_blank" rel="noopener">北京市政府采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-10-23</span></div>
+      <h3>江苏银行应用系统国产化改造「高性能防火墙」采购 301.26 万：前两名集成商报价只差 1.93%</h3>
+      <p>项目编号 JSTCC26005106822，标的即「高性能防火墙」单一品类，未披露品牌型号与台数。第一中标候选人南京盛佳建业：不含税 266.60 万 / 含税 301.26 万；第二南京路邦远大：不含税 271.75 万 / 含税 307.08 万，两家含税差 5.82 万（1.93%）。公示期 10-23 至 10-26。这是本月继新华人寿 1389 万双包、网联清算之后第三笔由集成商包揽前位的银行防火墙采购，原厂继续退到幕后。</p>
+      <div class="srcs"><a class="src" href="https://js.zhiliaobiaoxun.com/article/116642530" target="_blank" rel="noopener">知了标讯江苏站 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-23</span></div>
+      <h3>汕头海关年度意向「万兆防火墙 2 台」落地成两张反拍单：深信服 2 台 5.36 万 vs 奇安信 2 台 9.76 万，单价差 1.82 倍</h3>
+      <p>此前采购意向只写「万兆防火墙 2 台/套」，10-23 落地为两张同日反拍单，报价均截止 10-29 00:00、均 20 个日历日到货。(合并2源) FP26102310027020：网络防火墙 2 台、预算 5.36 万，指定深信服 AF-1000-L1600B，折 2.68 万/台；FP26102310037020：网络防火墙 2 台、预算 9.76 万，指定奇安信网神 SecGate3600 NSG6150-D15，折 4.88 万/台。同一采购单位、同一时点、同为 2 台，仅品牌型号不同就分出 2.68 万与 4.88 万两档；反拍规则下有效报价不足三家自动废标、满足三家自动最低价成交。意向阶段的「万兆」二字无法判断档位，到反拍单才看见真实价格带。</p>
+      <div class="srcs"><a class="src" href="https://mkt.zycg.gov.cn/mall-view/information/detail?noticeId=816715" target="_blank" rel="noopener">中央政采 深信服单 →</a><a class="src" href="https://mkt.zycg.gov.cn/mall-view/information/detail?noticeId=816717" target="_blank" rel="noopener">中央政采 奇安信单 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-27</span></div>
+      <h3>广东北江监狱防火墙项目成交 5.4985 万：4 家密封报价极差 9993 元（18.2%），最低价成交</h3>
+      <p>10-19 至 10-23 报名，10-23 现场拆封评审，4 家全部符合性通过：广州鸿德 54985 元、韶关科盛达 64200 元、韶关红科 64460 元、韶关诚毅 64888 元，推荐最低价广州鸿德成交，公示 10-27 至 10-28。预算 6.5 万、成交 5.4985 万，折 84.6%。这是 10-25 那笔「6.5 万 1 台深信服 AF-1000-L1600B-5H 国产化」的结果阶段：4 家报价全落在 5.5–6.5 万窄带内，最高最低差 9993 元，本地集成商之间的价格空间已被压到 18%。</p>
+      <div class="srcs"><a class="src" href="http://bjjy.gd.gov.cn/zwgk/zfcg/content/post_4971453.html" target="_blank" rel="noopener">广东省北江监狱 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">运营商</span><span class="date">2026-10-26</span></div>
+      <h3>联通数科道研中心 88.39 万绿盟防火墙标二次询比：第一次因买标书不足三家而流标</h3>
+      <p>采购代理编号 XHTC-HW-2026-1368，预算不含税 88.39 万、税率 13%，不划分采购包，30 天到货、36 个月保修。标的为绿盟 NFNX5-HHC6000 防火墙 2 台：2U、8 千兆电（4 路 bypass）+8 千兆光+8 万兆光满配光模块、冗余电源、64G 内存、256G SSD 系统盘 + 4T 数据盘，含 Web 应用防火墙与入侵防御功能模块、3 年特征库升级。10-16 首次询比公告发布后，至标书售卖截止潜在应答人不足三个，第一次询比失败，本次为二次询比，标书获取截止 10-28、应答截止 11-03。同包另有华为 OceanStor 5310 磁盘阵列 1 台、交换机 4 台、虚拟化平台 1 套（含 12 个套件许可）。</p>
+      <div class="srcs"><a class="src" href="https://www.zhiliaobiaoxun.com/detail/606153215b1FF4B6E6Fc.html" target="_blank" rel="noopener">知了标讯 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#EF4444;background:#EF444424;border-color:#EF444433">军队</span><span class="date">2026-10-22</span></div>
+      <h3>某部 290 万「系统安全保密建设与物联网数据联通」二次招标：万兆网络防火墙 1 台 + UTM 安全网关 1 台，须涉密集成乙级</h3>
+      <p>项目编号 2026-JQ05-W1151-1，天津，预算 290 万，二次招标（首次招标未成）。防火墙侧为万兆网络防火墙 1 台、UTM 安全网关 1 台，与漏洞扫描、网络安全监测探针 A 型、双单向跨网跨域隔离交换系统、网络攻击监测分析软件、数据库审计、一体化网络安全防护设备、交换机、机柜、UPS、笔记本、物联网数据联通与安全保密集成费打成一个包，各分项单价在公开页被遮蔽。资格硬门槛：涉密信息系统集成乙级及以上，或武器装备科研生产单位保密资格二级及以上；且须为国企/事业单位/军队单位或成立三年以上非外资独资或控股企业；不接受联合体；招标文件现场申领（10-23 至 10-29），11-12 09:00 开标。</p>
+      <div class="srcs"><a class="src" href="https://www.ebnew.com/businessShow/710398018.html" target="_blank" rel="noopener">必联网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-10-23</span></div>
+      <h3>秦皇岛公安开发区分局「公安防火墙、机柜等政法专用设备」成交 21.331 万：预算 26.635 万打 80 折，启明星辰 USG-FW-N-G1220-DNR 与机柜同包</h3>
+      <p>询价阶段预算 26.635 万，结果阶段中标秦皇岛飞桐科技 21.331 万（折 80.1%），项目编号 Z1303252600932401 / HB2026093120010012。主要标的为「防火墙 1、机柜等」，品牌启明星辰、金能等，型号 USG-FW-N-G1220-DNR、42U 落地型机柜 2000×600×1000mm，数量 1 批、单价 21.331 万，代理服务费 3199 元（100 万以下按 1.5% 计）。防火墙与机柜、政法专用设备打成一个包，防火墙金额不可单独拆分——这是公安系统「政法专用设备」口径下的典型混包写法，询价预算与实际成交之间留出约 20% 的让价空间。</p>
+      <div class="srcs"><a class="src" href="https://qhdggzy.cn/qhdggzy/jydt/001002/001002003/20261023/325f6dfb-003a-4dd5-a721-39873a3f2b09.html" target="_blank" rel="noopener">秦皇岛市公共资源交易网 →</a><a class="src" href="https://szj.hebei.gov.cn/hbggfwpt/jydt/003001/003001001/003001001005/20261023/325f6dfb-003a-4dd5-a721-39873a3f2b09.html" target="_blank" rel="noopener">河北省数据和政务服务局 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🌐 安全态势与标准合规</h2><span class="cnt">2 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F97316;background:#F9731624;border-color:#F9731633">WatchGuard</span><span class="date">2026-10-27</span></div>
+      <h3>WatchGuard Firebox 一次性披露 18 个 Fireware OS 漏洞，7 个 CVSS 9.1+，最严重 9.5 可远程执行代码</h3>
+      <p>10-27 集中发布 18 条公告：7 严重 / 7 高危 / 4 中危，官方称暂无在野利用。最严重的 CVE-2026-103594（9.5）为 WireGuard 配置的栈溢出，可远程执行代码，但需攻击者处在 Firebox 与 WatchGuard Cloud 之间的 TLS 解密路径上。其余高危：CVE-2026-93865（9.2）FireCluster 同步守护进程缺失认证、可注入特权系统级管理动作；CVE-2026-93866（9.2）Access Portal WebSocket 预认证整数溢出越界写；CVE-2026-93857（9.2）SIP 代理预认证栈溢出可 RCE；CVE-2026-112709 / 112710（均 9.2）AD 认证服务堆溢出、预认证可 RCE；CVE-2026-103593（9.1）日志服务栈溢出。修复版本 Fireware OS 2026.4 / 12.12.4 / 12.5.22。18 个里 13 个由 WatchGuard 自家 AI 安全研究团队挖出，其余来自 CODE WHITE 与 secorizon.com。CISA KEV 已收录过 WatchGuard 早期漏洞，这批需快速处置。</p>
+      <div class="srcs"><a class="src" href="https://securityonline.info/watchguard-fireware-os-vulnerabilities-2" target="_blank" rel="noopener">securityonline.info →</a><a class="src" href="https://radar.offseq.com/threat/cve-2026-112710-cwe-122-heap-based-buffer-overflow-in-watchguard-fireware-os-b088f665404f2b93" target="_blank" rel="noopener">OffSeq Threat Radar（CVE-2026-112710） →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-10-21</span></div>
+      <h3>k0t 行动横扫边界设备：FortiGate / FortiWeb / GlobalProtect 被批量打点，7 万余条凭据外泄</h3>
+      <p>Group-IB 与 NyxLab 10-21 披露，Check Point Research 10-26 周报跟进。攻击者用公开搜索引擎批量收集暴露在互联网的 FortiGate、FortiWeb、GlobalProtect 端点（识别产品 banner、开放端口、可外部访问的管理口与 VPN 口），再叠加已知漏洞、凭据复用、暴力破解与弱口令拿权限，而非依赖单一 0day。得手后从设备配置里抽取密码与密钥，包括网络设备凭据与 LDAP 记录，可直接打开内网服务与用户目录。已识别 7 万余条凭据及相关记录，跨多个行业与地区，并与勒索团伙存在可能关联。三条利用链：FortiWeb CVE-2025-64446（路径穿越，未认证执行管理命令含新建管理员账号，已在野利用且有 PoC 与工具）；FortiGate 侧为凭据攻击（对应 FortiBleed，10-06/10-07 官方仍称活跃、可能导致合法管理员被锁死）；GlobalProtect 侧对应 PAN-OS CVE-2026-0257 认证绕过（认证覆盖 cookie 开启且证书配置特定时，可不带有效凭据取得 VPN 访问；Panorama 与 Cloud NGFW 不受影响）。</p>
+      <div class="srcs"><a class="src" href="https://research.checkpoint.com/2026/26th-october-threat-intelligence-report" target="_blank" rel="noopener">Check Point Research 周报 →</a><a class="src" href="https://cypro.co.uk/insights/cyber-bulletins/k0t-campaign-targets-fortigate-and-globalprotect" target="_blank" rel="noopener">CyPro 通报 →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-10-28 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
