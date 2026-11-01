@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防火墙竞品情报月报 · 2026-10 · NGFW MONTHLY · 2026-10 · 2026-10-01 ~ 2026-10-31</title>
+<style>
+:root{
+  --bg:#0B0E14; --surface:#121722; --surface2:#181F2C; --line:#232B3C;
+  --text:#E6EAF2; --dim:#8B95A8; --dim2:#5F6B80;
+  --blue:#4D7CFE; --red:#F2554D; --amber:#F5A524; --green:#2DBE8D; --purple:#9B6DFF; --cyan:#25C2D8;
+  --r:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text); line-height:1.72;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:15px; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue);text-decoration:none}
+.wrap{display:flex;max-width:1400px;margin:0 auto}
+/* 左侧导航 */
+.side{
+  width:220px;flex:0 0 220px;position:sticky;top:0;height:100vh;
+  padding:32px 0 32px 24px;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:2px;overflow-y:auto;
+}
+.side-t{font-size:11px;letter-spacing:.14em;color:var(--dim2);margin-bottom:14px;text-transform:uppercase}
+.side a{
+  color:var(--dim);font-size:13.5px;padding:7px 10px;border-radius:7px;border-left:2px solid transparent;
+  transition:.15s;display:block
+}
+.side a:hover{color:var(--text);background:var(--surface2)}
+.side a.on{color:var(--blue);background:#4D7CFE14;border-left-color:var(--blue)}
+.side .badge{margin-top:auto;font-size:11px;color:var(--dim2);padding:12px 10px;border-top:1px solid var(--line);line-height:1.6}
+/* 主体 */
+.main{flex:1;min-width:0;padding:0 44px 100px}
+.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);margin-bottom:44px}
+.hero .kicker{font-size:12px;letter-spacing:.2em;color:var(--blue);margin-bottom:18px}
+.hero h1{font-size:42px;line-height:1.22;letter-spacing:-1.2px;font-weight:800;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lead{color:var(--dim);font-size:15.5px;max-width:820px}
+.hero .meta{margin-top:22px;font-size:12.5px;color:var(--dim2);display:flex;gap:22px;flex-wrap:wrap}
+.hero .meta b{color:var(--dim);font-weight:600}
+/* 章节 */
+section{margin-bottom:64px;scroll-margin-top:24px}
+h2.sec{
+  font-size:25px;font-weight:700;letter-spacing:-.4px;margin-bottom:8px;
+  display:flex;align-items:baseline;gap:12px
+}
+h2.sec .no{
+  font-size:13px;color:var(--blue);font-weight:700;letter-spacing:.08em;
+  padding:2px 8px;border:1px solid #4D7CFE44;border-radius:5px;background:#4D7CFE12
+}
+.sec-sub{color:var(--dim);font-size:14px;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+h3{font-size:17px;font-weight:650;margin:32px 0 14px;color:#fff}
+h3 .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-right:9px;vertical-align:3px}
+h4{font-size:14.5px;font-weight:650;margin:20px 0 8px;color:#D8DEEA}
+p{margin-bottom:14px;color:#C9D1E0}
+p b,li b{color:#fff;font-weight:650}
+p .hl{color:var(--amber);font-weight:650}
+.dim{color:var(--dim)}
+/* 卡片 */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.grid.g3{grid-template-columns:repeat(3,1fr)}
+.grid.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.card .ck{font-size:11px;letter-spacing:.1em;color:var(--dim2);margin-bottom:8px}
+.card .cv{font-size:27px;font-weight:800;letter-spacing:-.5px;line-height:1.1}
+.card .cv small{font-size:13px;font-weight:500;color:var(--dim);margin-left:4px;letter-spacing:0}
+.card .cd{font-size:12.5px;color:var(--dim);margin-top:6px}
+.card.red .cv{color:var(--red)} .card.blue .cv{color:var(--blue)}
+.card.amber .cv{color:var(--amber)} .card.green .cv{color:var(--green)}
+.card.purple .cv{color:var(--purple)}
+/* 表格 */
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+th{
+  text-align:left;padding:10px 12px;font-size:11.5px;letter-spacing:.06em;color:var(--dim2);
+  border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap
+}
+td{padding:11px 12px;border-bottom:1px solid #1B2231;vertical-align:top;color:#C2CBDC}
+tr:hover td{background:#161D29}
+td.k{color:#fff;font-weight:600;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;color:#fff;font-weight:600}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:4px;font-weight:600;white-space:nowrap}
+.t-red{background:#F2554D1A;color:#FF8078;border:1px solid #F2554D33}
+.t-blue{background:#4D7CFE1A;color:#7EA0FF;border:1px solid #4D7CFE33}
+.t-amber{background:#F5A5241A;color:#FFC55C;border:1px solid #F5A52433}
+.t-green{background:#2DBE8D1A;color:#4FD9A8;border:1px solid #2DBE8D33}
+.t-purple{background:#9B6DFF1A;color:#B693FF;border:1px solid #9B6DFF33}
+.t-gray{background:#8B95A814;color:#9AA5B8;border:1px solid #8B95A82B}
+/* 条形图 */
+.bars{margin:20px 0}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:9px;font-size:13px}
+.bar .lb{width:96px;flex:0 0 96px;color:#D5DCEA;text-align:right;font-weight:600}
+.bar .tr{flex:1;height:22px;background:#161D29;border-radius:4px;overflow:hidden;position:relative;display:flex}
+.bar .fl{height:100%;border-radius:4px 0 0 4px;transition:.3s}
+.bar .fl.a{background:linear-gradient(90deg,#4D7CFE,#6E93FF)}
+.bar .fl.b{background:linear-gradient(90deg,#9B6DFF,#B693FF)}
+.bar .fl.c{background:linear-gradient(90deg,#F5A524,#FFC55C)}
+.bar .fl.d{background:linear-gradient(90deg,#2DBE8D,#4FD9A8)}
+.bar .fl.e{background:linear-gradient(90deg,#F2554D,#FF8078)}
+.bar .vl{width:44px;flex:0 0 44px;text-align:right;color:#fff;font-weight:700;font-variant-numeric:tabular-nums;font-size:12.5px}
+/* 堆叠 */
+.stack{display:flex;height:20px;border-radius:4px;overflow:hidden;background:#161D29;flex:1}
+.stack span{height:100%;display:block}
+.lg{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--dim);margin:14px 0 0}
+.lg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+/* 时间线 */
+.tl{position:relative;padding-left:26px;margin:22px 0}
+.tl:before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl .ev{position:relative;margin-bottom:18px}
+.tl .ev:before{
+  content:'';position:absolute;left:-24px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--blue)
+}
+.tl .ev.warn:before{border-color:var(--red)}
+.tl .ev.ok:before{border-color:var(--green)}
+.tl .d{font-size:11.5px;color:var(--dim2);letter-spacing:.04em;margin-bottom:2px}
+.tl .h{font-size:14px;color:#fff;font-weight:600;margin-bottom:3px}
+.tl .b{font-size:13px;color:var(--dim);line-height:1.65}
+/* 引述块 */
+.quote{
+  background:linear-gradient(90deg,#4D7CFE10,transparent);border-left:2px solid var(--blue);
+  padding:14px 18px;margin:18px 0;border-radius:0 8px 8px 0;font-size:13.8px;color:#C9D1E0
+}
+.quote b{color:#fff}
+.callout{
+  background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--amber);
+  border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0;font-size:13.8px
+}
+.note{font-size:12.5px;color:var(--dim2);margin-top:10px;line-height:1.65}
+/* 结论列表 */
+.find{display:grid;gap:12px;margin:22px 0}
+.find .it{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.find .n{
+  flex:0 0 26px;height:26px;border-radius:6px;background:#4D7CFE1A;color:var(--blue);
+  font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px
+}
+.find .tx{font-size:13.8px;color:#C9D1E0;line-height:1.7}
+.find .tx b{color:#fff}
+/* 能力矩阵 */
+.matrix{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;margin:20px 0}
+.matrix th{position:sticky;top:0;background:#0E1420;z-index:2}
+.matrix td,.matrix th{padding:9px 10px;border-bottom:1px solid #1B2231;text-align:center}
+.matrix td:first-child,.matrix th:first-child{text-align:left;color:#fff;font-weight:600;white-space:nowrap}
+.matrix .y{color:var(--green);font-weight:700}
+.matrix .n{color:#3A4356}
+.matrix .p{color:var(--amber);font-weight:700}
+/* 页脚 */
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:12.5px;color:var(--dim2);line-height:1.9}
+@media (max-width:1100px){
+  .side{display:none} .main{padding:0 20px 60px}
+  .grid,.grid.g3,.grid.g4{grid-template-columns:1fr}
+  .hero h1{font-size:30px}
+}
+
+
+/* 主题色覆盖 */
+.side a.on{color:#4D7CFE;background:#4D7CFE14;border-left-color:#4D7CFE}
+h2.sec .no{color:#4D7CFE;border:1px solid #4D7CFE44;background:#4D7CFE12}
+h3 .dot{background:#4D7CFE}
+.quote{background:linear-gradient(90deg,#4D7CFE14,transparent);border-left:2px solid #4D7CFE}
+.find .n{background:#4D7CFE14;color:#4D7CFE}
+.tl .ev:before{border-color:#4D7CFE}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="side">
+  <div class="side-t">目录</div>
+  <a href="#top" class="on">封面</a>
+  <a href="#s1">区间概览</a>
+  <a href="#s2">竞品声量</a>
+  <a href="#s3">产品与动作</a>
+  <a href="#s4">标准与合规</a>
+  <a href="#s5">需求侧</a>
+  <a href="#s6">对 NF 的判断</a>
+  <div class="badge">
+    NGFW 月报<br>2026-10
+  </div>
+</nav>
+<main class="main" id="top">
+<header class="hero">
+  <div class="kicker">NGFW MONTHLY · 2026-10 · 2026-10-01 ~ 2026-10-31</div>
+  <h1>防火墙竞品情报月报<em>2026 年 10 月</em></h1>
+  <p class="lead">384 条条目、26 期日报、33 家厂商。本月同时发生了三件事：预算在大规模落地（中标采购占 66.9%）、架构在重新分层（ASIC / FPGA / NPU 三条路线摊牌）、门槛在从「报参数」转向「能举证」（4 例否决全部因为证明不了）。</p>
+  <div class="meta">
+    <span>区间 <b>2026-10-01~10-31</b></span>
+    <span>条目 <b>384</b></span>
+    <span>覆盖 <b>26/31 天</b></span>
+    <span>单价中位 <b>8.9 万</b></span>
+  </div>
+</header>
+<section id="s1">
+  <h2 class="sec"><span class="no">01</span>区间概览与数据完整度</h2>
+  <p class="sec-sub">2026-10-01 00:00 — 2026-10-31 23:59 · 26 期日报归集 · 全部数字来自 stats_firewall.json 与 brief_firewall.md</p>
+
+  <div class="grid g4">
+    <div class="card blue"><div class="ck">区间条目总数</div><div class="cv">384 <small>条</small></div><div class="cd">日均 14.8 条，峰值 10-08 的 39 条</div></div>
+    <div class="card green"><div class="ck">覆盖天数</div><div class="cv">26 <small>/ 31 天</small></div><div class="cd">覆盖率 83.9%，高于 50% 阈值</div></div>
+    <div class="card amber"><div class="ck">涉及厂商</div><div class="cv">33 <small>家</small></div><div class="cd">国内 13 家 + 国际 18 家 + 云/运营商 6 家（有重叠）</div></div>
+    <div class="card purple"><div class="ck">单价中位（样本 79）</div><div class="cv">8.9 <small>万元</small></div><div class="cd">区间 1.9 — 104.8 万，反映档位跨度过大</div></div>
+  </div>
+
+  <h3><span class="dot"></span>数据完整度说明</h3>
+  <p>区间内共缺失 <b>5 天</b>日报：<b>10-01、10-02、10-05、10-15、10-31</b>。其中 10-01/02 处于国庆假期前段、10-05 为假期内、10-15 与 10-31 为单日断档。缺失主要集中在月初与月尾两端，对「月内趋势判断」影响有限，但<b>月初与月末各有一批招标节点未被覆盖</b>，因此在统计「当月新增招标数」时会偏低。</p>
+  <p>另有 <b>193 条（50.3%）</b>条目带有明确金额，其余为意向公告、需求公示、漏洞与评测类，不构成价格样本。本期为该项目首次生成月度报告，<b>无同口径上月数据可比</b>，故不适用「条目数骤降 60%」的告警条件；后续月报将以本期 384 条为基线。</p>
+
+  <div class="callout">
+    <b>口径提示：</b>厂商「声量」按<b>事件命中口径</b>统计——一条新闻命中多个厂商则各计一次，故厂商条目数之和大于 384。动作类型的 8 个分类之间同样存在重叠（一条中标公告常同时命中「中标采购」与「评测荣誉」），因此各分类占比之和大于 100%，<b>只用于比较相对强弱，不可相加</b>。
+  </div>
+</section>
+
+<section id="s2">
+  <h2 class="sec"><span class="no">02</span>竞品声量排名与动作结构</h2>
+  <p class="sec-sub">谁在说话、说什么、说的方式是否一致</p>
+
+  <h3><span class="dot"></span>厂商声量 TOP 14（事件口径）</h3>
+  <div class="bars">
+    <div class="bar"><div class="lb">深信服</div><div class="tr"><div class="fl a" style="width:100%"></div></div><div class="vl">43</div></div>
+    <div class="bar"><div class="lb">天融信</div><div class="tr"><div class="fl a" style="width:79%"></div></div><div class="vl">34</div></div>
+    <div class="bar"><div class="lb">华为</div><div class="tr"><div class="fl a" style="width:65%"></div></div><div class="vl">28</div></div>
+    <div class="bar"><div class="lb">启明星辰</div><div class="tr"><div class="fl a" style="width:60%"></div></div><div class="vl">26</div></div>
+    <div class="bar"><div class="lb">奇安信</div><div class="tr"><div class="fl a" style="width:51%"></div></div><div class="vl">22</div></div>
+    <div class="bar"><div class="lb">山石网科</div><div class="tr"><div class="fl a" style="width:47%"></div></div><div class="vl">20</div></div>
+    <div class="bar"><div class="lb">Fortinet</div><div class="tr"><div class="fl b" style="width:47%"></div></div><div class="vl">20</div></div>
+    <div class="bar"><div class="lb">新华三</div><div class="tr"><div class="fl a" style="width:44%"></div></div><div class="vl">19</div></div>
+    <div class="bar"><div class="lb">中国电信</div><div class="tr"><div class="fl d" style="width:44%"></div></div><div class="vl">19</div></div>
+    <div class="bar"><div class="lb">迪普科技</div><div class="tr"><div class="fl a" style="width:42%"></div></div><div class="vl">18</div></div>
+    <div class="bar"><div class="lb">中国移动</div><div class="tr"><div class="fl d" style="width:42%"></div></div><div class="vl">18</div></div>
+    <div class="bar"><div class="lb">绿盟科技</div><div class="tr"><div class="fl c" style="width:37%"></div></div><div class="vl">16</div></div>
+    <div class="bar"><div class="lb">Palo Alto</div><div class="tr"><div class="fl b" style="width:28%"></div></div><div class="vl">12</div></div>
+    <div class="bar"><div class="lb">安恒信息</div><div class="tr"><div class="fl a" style="width:28%"></div></div><div class="vl">12</div></div>
+  </div>
+  <div class="lg"><span><i style="background:#4D7CFE"></i>国内安全厂商</span><span><i style="background:#9B6DFF"></i>国际安全厂商</span><span><i style="background:#2DBE8D"></i>运营商系 / 云</span><span><i style="background:#F5A524"></i>绿盟（本公司）</span></div>
+
+  <h3><span class="dot"></span>动作结构（8 类，存在重叠）</h3>
+  <div class="bars">
+    <div class="bar"><div class="lb">中标采购</div><div class="tr"><div class="fl a" style="width:100%"></div></div><div class="vl">257</div></div>
+    <div class="bar"><div class="lb">产品发布</div><div class="tr"><div class="fl a" style="width:51%"></div></div><div class="vl">131</div></div>
+    <div class="bar"><div class="lb">评测荣誉</div><div class="tr"><div class="fl a" style="width:33%"></div></div><div class="vl">85</div></div>
+    <div class="bar"><div class="lb">漏洞事件</div><div class="tr"><div class="fl e" style="width:28%"></div></div><div class="vl">72</div></div>
+    <div class="bar"><div class="lb">标准合规</div><div class="tr"><div class="fl d" style="width:25%"></div></div><div class="vl">65</div></div>
+    <div class="bar"><div class="lb">生态合作</div><div class="tr"><div class="fl b" style="width:13%"></div></div><div class="vl">34</div></div>
+    <div class="bar"><div class="lb">资本动作</div><div class="tr"><div class="fl c" style="width:6%"></div></div><div class="vl">15</div></div>
+    <div class="bar"><div class="lb">财报经营</div><div class="tr"><div class="fl c" style="width:4%"></div></div><div class="vl">10</div></div>
+  </div>
+
+  <div class="quote">
+    <b>结构性判断一：这是一个「预算落地月」，不是「产品发布月」。</b>中标采购 257 条占全部条目的 66.9%，而财报经营仅 10 条（2.6%）。这个比例说明十月的信息来源高度集中在政府采购与国企招标平台，<b>厂商侧的主动发声反而被稀释</b>——384 条里真正由厂商自己披露的产品与战略动作不足 40 条。
+  </div>
+
+  <div class="quote">
+    <b>结构性判断二：声量第一名与声量第三名的「说话方式」完全不同。</b>深信服 43 条中<b>中标采购 34 条、漏洞事件 7 条</b>，是典型的「渠道铺量 + 应急响应」双线；华为 28 条中中标采购 20 条、产品发布 16 条，是「集采卡位 + 旗舰型号发布」组合；天融信 34 条里中标 27、产品发布 12、评测荣誉 10，三条线最均衡。反过来看，<b>Fortinet 20 条里漏洞事件 9 条、Palo Alto 12 条里漏洞事件 8 条</b>——两家国际厂商在本月的声量有近一半来自自身产品的安全问题，而非商业进展。
+  </div>
+
+  <div class="quote">
+    <b>结构性判断三：绿盟 16 条落在第 12 位，结构偏「项目型」。</b>11 条中标采购、5 条产品发布、3 条评测荣誉、2 条标准合规、2 条漏洞事件、1 条生态合作。<b>没有一条财报经营、没有一条资本动作</b>——意味着本月绿盟在公开信息面上没有主动的资本市场叙事，声量完全由具体项目支撑。这与山石（ASIC 芯片 + ASIC 收入占比 5%→20%→37% 的三段式叙事）形成鲜明对照。
+  </div>
+</section>
+
+<section id="s3">
+  <h2 class="sec"><span class="no">03</span>产品与动作</h2>
+  <p class="sec-sub">新品、型号、指标、财报、生态 —— 逐条落名落数</p>
+
+  <h3><span class="dot"></span>国产厂商：三条技术路线在本月同时摊牌</h3>
+  <table>
+    <tr><th>厂商</th><th>动作 / 产品</th><th>型号</th><th>关键指标（厂商口径）</th><th>时间</th></tr>
+    <tr><td class="k">华为</td><td>明确 AIFW 与「外挂 AI 模块」的界限</td><td>—</td><td>三层差异：①防护对象扩到用户/应用/模型/Agent/自动化工作流，<b>首次把非人类身份纳入统一身份管理</b>；②专用检测模型 + NPU 算力做进单板，本地低时延推理；③策略自治，目标 <b>99% 安全事件自动化处置</b></td><td>10-18</td></tr>
+    <tr><td class="k">华为</td><td>首批通过「人工智能防火墙」测评</td><td>USG6855G</td><td>依据 T/CCIA 006-2026，考核安全功能/自身安全/集中管理/安全保障四维；内置 AI Core 专用算力引擎 + Inline AI 检测，未知威胁检出率约 <b>95%</b>、提示词注入识别率 <b>95%+</b></td><td>10-23</td></tr>
+    <tr><td class="k">华为</td><td>HNS 2026 欧洲站 星河 AI Secure SD-WAN</td><td>USG6885G / USG6500G</td><td>总部侧 USG6885G 威胁防护 <b>135Gbps</b>，称约为同类 2 倍；分支侧 USG6500G 融合路由/交换/防火墙/5G-LTE/PoE/IPS-AV-URL；iMaster NCE 宣称自动化处置率 99%</td><td>10-23 / 10-25</td></tr>
+    <tr><td class="k">山石网科</td><td>自研安全专用 ASIC 芯片披露</td><td>—</td><td>融合交换 + 安全加速，无需独立交换芯片与冗余通用 CPU；尺寸 <b>9mm×9mm</b>；100G 处理规格整机功耗 <b>15W</b>，较传统多硬件组合降耗 <b>30%–40%</b>；单位 G 交换硬件成本减半；原生兼容 SSL/IPSec 并支持 <b>PQC 后量子隧道加速</b>；满载 200G 时 CPU 占用仅 7%</td><td>10-17</td></tr>
+    <tr><td class="k">山石网科</td><td>某银行数据中心全量替代案例</td><td>ASIC 平台</td><td>转发时延 <b>&lt;5μs</b>；在吞吐/新建会话/并发/转发时延四项核心指标上替代境外设备，无感平滑替换；竞争分析中点名「某友商」物理接口多、新建会话好，但小包吞吐偏低、时延偏高</td><td>10-17</td></tr>
+    <tr><td class="k">山石网科</td><td>份额与收入结构（官方口径）</td><td>—</td><td>IDC 2026Q2 中国 UTM <b>单季 18.2% 升至第二</b>（上半年 16.5% 第三）；ASIC 安全产品收入占比 <b>Q1 5% → Q2 20% → Q3 37%</b>，Q3 单季 <b>破亿元、环比翻倍</b>；即将推出 ASIC 高端分布式防火墙</td><td>10-21 / 10-29</td></tr>
+    <tr><td class="k">安恒信息</td><td>明御防火墙新一代 AI+FPGA 架构</td><td>明御系列</td><td>FPGA+CPU 异构；转发逻辑可编程直下硬件，时延从毫秒级降至<b>微秒级</b>；策略全开时性能损失极小；DGA 域名模型经 <b>INT8 量化剪枝在片上直接推理</b>，每个 DNS 请求逐包检测、判定即在流水线丢弃或重置</td><td>10-26</td></tr>
+    <tr><td class="k">锐捷网络</td><td>防火墙 2.0 系列</td><td>2.0 系列</td><td>开启 SSL 代理解密 + 七层策略后，<b>加密流量威胁检出量达老品 6.77 倍</b>——国内首次把「解密之后还剩多少检测能力」而非裸吞吐当作新品主指标</td><td>10-23</td></tr>
+    <tr><td class="k">天融信</td><td>AI 技术融入全系列 + 工业全栈国产化</td><td>—</td><td>发布融入 AI 的防火墙/VPN/WAF/IDS-IPS/抗 DDoS/APT 监测等系列，增强加密流量识别与未知威胁检测；工业侧发布工业防火墙、工业入侵检测、工业网闸等 <b>15 款</b>专用产品，全栈国产化</td><td>10-12</td></tr>
+    <tr><td class="k">天融信</td><td>三季报 AI 防火墙认证</td><td>AI 防火墙</td><td><b>首批取得《人工智能防火墙产品测评》证书</b>；同期推出 AI 网关（统一接入/智能路由/成本治理/大模型安全防护）、AI 安全评估系统与大模型与智能体安全评估服务</td><td>10-28</td></tr>
+    <tr><td class="k">深信服</td><td>AF 版本迭代 + 漏洞响应</td><td>AF（AF8.0.50~8.0.108）</td><td>云威胁情报网关新增支持 <b>AF 送检 URL</b>——AF 本地 SSL 解密后提取 URL 送云端识别加密流量恶意访问；PHP2Shell 核查结论为<b>仅 WebUI 控制台受影响</b>，核心转发/检测基于自研 Sangfor OS 不依赖 PHP，补丁包 SP_AF_OS_JG_php</td><td>10-16 / 10-29</td></tr>
+    <tr><td class="k">深信服</td><td>份额与财务结构</td><td>AF</td><td>下一代防火墙 AF <b>市场份额 22.8% 国内第一</b>；零信任 VPN 23.1%、全网行为管理 AC 19.2% 亦第一；安全业务毛利率 <b>79.43%</b>，10 万+ 存量企业客户；2026H1 营收 39.98 亿元 +32.85%，云计算及 AI 基础设施 22.12 亿元 +58.6%（占 55.34%）</td><td>10-06 / 10-11</td></tr>
+    <tr><td class="k">迪普科技</td><td>份额与认证</td><td>—</td><td>防火墙连续六年国内前四，<b>UTM 硬件份额超 10%</b>；<b>首家通过公安部高性能国产化防火墙认证</b>；自研软硬件平台支持国产机框式架构，最大 TB 级处理能力与微秒级时延；2026H1 运营商收入占比 28.05%</td><td>10-10</td></tr>
+    <tr><td class="k">启明星辰</td><td>AI 防火墙方向</td><td>—</td><td>重点布局 AI 防火墙、安全代理及全套安全评估体系；自研智能体检测系统实现 Agent 身份识别、调用行为记录与越权行为阻断；10-06 注册新商标「安星天枢」</td><td>10-07 / 10-12</td></tr>
+    <tr><td class="k">新华三</td><td>文档升版 + 集团并表</td><td>SecPath F1000-AI</td><td>产品文档升至 <b>6W102</b>；多核多线程 MIPS/ARM + ASIC 架构、1U 独立盒式、支持 Telemetry/Netconf、双硬盘 RAID0/1；紫光股份对新华三并表持股升至 <b>87.98%</b>（HPE 退出），H1 营收 635.16 亿元 +33.93%、归母净利 21.67 亿元 +108.18%</td><td>10-09 / 10-18</td></tr>
+    <tr><td class="k">绿盟科技</td><td>战略与技术主张</td><td>—</td><td>CTO 叶晓虎提出 AI 时代安全运营需具备<b>自主规划、自主决策、自主演进</b>三项能力；以「模型+工具+Agent+Skills」四层叠加构建防御体系，延展出智能渗透测试、智能代码审计、智能蓝军平台、定向漏洞挖掘四项「根能力」</td><td>10-03 / 10-08</td></tr>
+  </table>
+
+  <div class="note">说明：上表指标均为厂商公开口径，未经第三方复现。「ASIC 收入占比 5%→20%→37%」为山石三季报披露口径，与「UTM 单季 18.2%」属不同统计对象（前者为自身收入结构，后者为市场份额），不可互相印证。</div>
+
+  <h3><span class="dot"></span>国际厂商：财报强、产品线向 PQC 与订阅迁移</h3>
+  <table>
+    <tr><th>厂商</th><th>动作</th><th>型号 / 版本</th><th>关键指标</th><th>时间</th></tr>
+    <tr><td class="k">Fortinet</td><td>Q3 财报（第 3 次上调全年指引）</td><td>—</td><td>营收 <b>20.8 亿美元 +20%</b>；产品收入 <b>7.65 亿 +37%</b>（快于整体）；账单 23.4 亿 +29%；GAAP 营业利润率 34%、non-GAAP 38%；经营现金流 9.46 亿、自由现金流 8.65 亿；全年指引上调至 <b>81.25~82.15 亿美元</b>，账单指引 <b>95.68~97 亿</b></td><td>10-29</td></tr>
+    <tr><td class="k">Fortinet</td><td>G 系列新硬件</td><td>FortiGate 3500G / 400G</td><td>3500G 为 <b>400Gb</b> 接口面向超大规模数据中心与 AI 基础设施；均搭载 <b>NP7</b> 网络处理器 + <b>SP5/SOC5</b> 安全处理器、运行 <b>FortiOS 8.0</b>；CP10 内容处理器 IPSA 吞吐最高 20Gbps（CP9 的 2 倍）、规则库容量 6 倍；新增影子 AI 检测</td><td>10-11</td></tr>
+    <tr><td class="k">Fortinet</td><td>安全硬化版本（AI 辅助自查）</td><td>FortiOS 8.0.2 / 7.6.8 / 7.4.13 / 7.2.14</td><td>先出固件、CVE 与公告延至 11-10；漏洞由 Anthropic / OpenAI / Google / SpaceX 前沿模型辅助挖出；10-27 补发 FIPS 分支 7.2（FIPS-CC-72-8 b9883）与 7.4（FIPS-CC-74-15 b9481）；<b>FortiOS 7.2 已于 2026-09-30 EOL</b></td><td>10-22 / 10-27 / 10-28</td></tr>
+    <tr><td class="k">Fortinet</td><td>认证 + AI 检测下沉 + SASE</td><td>FortiOS v7.4.x/7.6.x/8.x.x</td><td>产品族整体通过 <b>IEC 62443</b>：4-2 达 <b>SL4</b>、4-1 达 <b>ML2</b>，覆盖 FortiGate / Rugged / FortiWiFi / VM 四类形态；FortiGuard Inline AI Security Service 云交付，检查对象扩到 prompt、模型响应、MCP 工具调用与智能体动作，DLP 识别 35 类 PII；FortiLink SASE 让微型分支不再需要本地 FortiGate</td><td>10-18 / 10-26 / 10-27</td></tr>
+    <tr><td class="k">Palo Alto</td><td>PQC 商业化 + 生命周期调整</td><td>PAN-OS 12.1 / PA-400</td><td>Cipher Translation Proxy 以在线代理在 PQC 与传统密码间翻译会话，让无法改造的遗留系统升到 <b>ML-KEM</b>；同版本引入 <b>14 款</b>第五代硬件；经 <b>AT&amp;T</b> 塞进 Dynamic Defense 与 SASE，对齐 NSA CNSA 2.0；<b>非加固型 PA-400 系列 2027-03-22 停售</b>，PA-220 EOL 2028-01-31（软件封顶 PAN-OS 10.2）</td><td>10-13 / 10-22</td></tr>
+    <tr><td class="k">Palo Alto</td><td>Q4 财报</td><td>—</td><td>营收 <b>34.1 亿美元 +34%</b>；下一代安全（NGS）ARR 达 <b>91.0 亿美元</b></td><td>10-14</td></tr>
+    <tr><td class="k">Check Point</td><td>防火墙改订阅制（赛道首例）</td><td>R82.20 AI Network Firewall</td><td><b>Firewall-as-a-Subscription</b>：按月或按年订阅交付，底层是 7 月 R82.20 的 AI Network Firewall 功能；11-01 起经合作伙伴提供。采购方从 CAPEX 转 OPEX——这是防火墙赛道第一次由一线国际厂商把「产品买断」改成「订阅接入」</td><td>10-26</td></tr>
+    <tr><td class="k">Sophos</td><td>版本节奏</td><td>Firewall v23 EA / v22 MR3</td><td>v23 为近年最大功能版本：AI 驱动策略辅助、现代化 REST API、规则管理简化、HA 与身份集成增强，覆盖 XGS 全系；v22 MR3 修 15 项以上问题，新增 IPsec VPN 多子网共享 SA 的严格策略开关。MR 小步快跑 + 一年一大版本</td><td>10-10 / 10-23</td></tr>
+    <tr><td class="k">WatchGuard</td><td>IMPACT 2026 发布</td><td>Firebox T175</td><td>桌面防火墙 T175 + Prime Security Suite + Wi-Fi 7 AP340；扩展 Rai 智能体 AI 数字劳动力与<b>影子 AI 发现</b>能力</td><td>10-05</td></tr>
+    <tr><td class="k">东芝 + SpeQtral + HPE</td><td>抗量子边界方案验证</td><td>HPE Networking SRX</td><td>把 <b>PQC 与 QKD 双轨密钥</b>同时注入既有 IPsec，不依赖单一技术，主打 crypto-agility；已在 GovWare 2026（10-13~15，新加坡）展出</td><td>10-10 / 10-19</td></tr>
+    <tr><td class="k">IBM Cloud</td><td>云原生 NGFW 上架</td><td>FortiGate VM</td><td>VPC 内提供 IPS / Web 过滤 / 反恶意软件 / 应用控制 / VPN / 意图式分段，支持单区与跨区主备或双活，按量付费</td><td>10-10</td></tr>
+  </table>
+
+  <h3><span class="dot"></span>生态与合作</h3>
+  <ul>
+    <li><b>安恒信息 × 中兴通讯</b>战略合作，覆盖 AI 安全、企业数字化、智算安全、具身智能、隐私计算；另与五八智能签约，围绕安全加固型机器人、具身智能安全技术与数据安全。同期成为长春 2027 第 33 届世界大学生冬季运动会官方赞助商（10-08）。</li>
+    <li><b>长亭科技</b>战略投资<b>边界无限</b>（RASP/ADR 运行时防护），并联合发布「网络安全数据集 1.0」（10-09）。</li>
+    <li><b>亚信安全</b>海外品牌 <b>AIStorm</b> 以新加坡为运营管理核心，以港澳及东南亚为战略重心，海外事业部持续推进产品验证（10-08）。</li>
+    <li><b>紫光股份 / 新华三</b>「AI in ALL」战略落地工业智能体集群：灵犀运维智能体基于 <b>1.2 亿台</b>在网设备运维经验、100 万+ ICT 知识库、5000 万+ 真实运维数据（10-08）。</li>
+    <li><b>迪普科技</b>入围国家石油天然气管网集团 2026 年国产化负载均衡框架采购，为框架内<b>仅有的两家</b>入围厂商之一（10-08）。</li>
+  </ul>
+
+  <div class="quote">
+    <b>产品线的结构性判断：国产三家把「架构」当成主战场，国际两家把「商业模式」当成主战场。</b>华为（NPU 单板推理）、山石（自研 ASIC）、安恒（FPGA+CPU）在十月分别亮出了三条不同的硬件加速路线，共同点是都<b>否定纯 CPU 逐包处理与纯 ASIC 固化转发这两条极端路线中的一条</b>——华为与山石押专用硬件 + 保留 CPU 算力做 AI 检测，安恒明确说「CPU 逐包处理与 ASIC 固化转发并列为两条走不通的路」。而 Fortinet 与 Check Point 的动作都在<b>交付形态</b>上：一个把 AI 检测做成云订阅下发到存量设备，一个把整台防火墙改成月付订阅。
+  </div>
+</section>
+
+<section id="s4">
+  <h2 class="sec"><span class="no">04</span>标准与合规</h2>
+  <p class="sec-sub">新规落地、认证卡位、以及这些条款最后如何变成标书里的否决项</p>
+
+  <h3><span class="dot"></span>本月最关键的新规：T/CCIA 006-2026 让「AI 防火墙」第一次有了准入线</h3>
+  <p>10 月 22 日，中国电子技术标准化研究院<b>赛西实验室</b>在济南（2026 中国网络安全创新创业大赛总决赛现场）发布<b>首批人工智能防火墙测试结果</b>，依据为 <b>T/CCIA 006-2026《人工智能防火墙安全技术要求》</b>，考核覆盖安全功能、自身安全、集中管理、安全保障四大维度。已确认在首批名单内的产品：</p>
+  <table>
+    <tr><th>厂商</th><th>产品型号</th><th>认证 / 依据</th><th>披露口径</th></tr>
+    <tr><td class="k">华为</td><td>USG6855G</td><td>首批通过 T/CCIA 006-2026 人工智能防火墙测评</td><td>未知威胁检出率约 95%、提示词注入识别率 95%+（厂商口径）</td></tr>
+    <tr><td class="k">天融信</td><td>AI 防火墙</td><td>首批取得《人工智能防火墙产品测评》证书</td><td>三季报披露，未公开具体型号与指标</td></tr>
+    <tr><td class="k">山石网科</td><td>SG-6000 千兆版 / 万兆版 V5.5</td><td>中国信息安全测评中心 <b>EAL4+</b>，证书 CNITSEC2026PRD1363/1364</td><td>有效期至 <b>2029-09-08</b>（2026 年第 3 号测评公告）</td></tr>
+    <tr><td class="k">Fortinet</td><td>FortiOS v7.4.x / 7.6.x / 8.x.x</td><td><b>IEC 62443-4-2 达 SL4</b>（组件最高级）、<b>4-1 达 ML2</b></td><td>覆盖 FortiGate / Rugged / FortiWiFi / VM 四类形态，三条版本线共用一张证</td></tr>
+    <tr><td class="k">天融信 / 绿盟 等 15 家</td><td>大模型应用防火墙</td><td>IDC 首份《中国大模型应用防火墙技术评估，2026》</td><td>六维度评估；IDC 判定「中国大模型应用防火墙仍处发展初期，多数产品聚焦输入输出防护」</td></tr>
+  </table>
+  <div class="callout">
+    <b>为什么这条比普通认证重要：</b>EAL4+ 是通用安全保证等级，IEC 62443 是工控体系认证，两者都不评价「AI 检测能力」。T/CCIA 006-2026 是<b>第一个把「AI 防火墙」作为独立品类、并给出可测试条款的团体标准</b>——它一旦被写进省级框架协议或央企集采的技术分表，「是否通过首批测评」会从加分项变成<b>准入项</b>。本月已有 2 家确认在首批名单内，头部国产厂商已成建制。
+  </div>
+
+  <h3><span class="dot"></span>标书转化实例：合规条款如何变成否决项</h3>
+  <p>这是本月最值得归档的一章——合规不是背景，是<b>谁被淘汰的直接原因</b>。</p>
+  <table>
+    <tr><th>门槛类型</th><th>具体条款</th><th>项目实例</th><th>实际结果</th></tr>
+    <tr><td class="k">国产芯片举证</td><td>须证明所投防火墙芯片为国产品牌</td><td>淮南市考试标准化考场 94.8 万（2026CG0221）</td><td><b>安徽观止因芯片型号 FT-1500 无法证明为国产品牌被否决</b>；最终华为 USG6000F-S150 9 台 @2.386 万成交</td></tr>
+    <tr><td class="k">协议能力举证</td><td>须提供防火墙支持 BFD 协议的证明</td><td>同上</td><td><b>合肥共创达亿因缺 BFD 证明被否决</b>——BFD 这类网络级协议正被写进防火墙硬性条款</td></tr>
+    <tr><td class="k">检测报告资质</td><td>须 CMA + CNAS + ilac-MRA 三标齐全的第三方性能检测报告</td><td>惠州市公共资源交易中心国产化替代（二次）11.39 万</td><td>11 万的小单把检测资质卡到<b>国际互认级</b>；满足三家即取最低价</td></tr>
+    <tr><td class="k">市占率 + 等级证书</td><td>近三年市场占有率行业前 3 + EAL4+ 级国家信息安全测评证书</td><td>昌吉州政务云迁移改造二期</td><td>「市占率前 3 + EAL4+」组合门槛<b>已写入合同条款</b>；绿盟 WAF NX5-HH4000 中标</td></tr>
+    <tr><td class="k">安全可靠评测</td><td>CPU 与操作系统均须通过中国信息安全测评中心安全可靠评测</td><td>长庆石化数字化转型 117.5 万</td><td>另需具备中石油云梦泽平台 A 类资质；防火墙按「生产区 / 广域网」两场景分列共 4 台</td></tr>
+    <tr><td class="k">厂商本部资质</td><td>CCRC 软件安全开发一级 + CNCERT 威胁情报甲级，<b>仅认厂商本部资质</b></td><td>三沙市信息中心网络安全设备询价</td><td>明确「不接受分支机构、代理资质」——<b>直接排除集成商投标路径</b></td></tr>
+    <tr><td class="k">国密改造</td><td>国密高性能防火墙 / 须符合国密测评要求</td><td>河北税务 232 万预算；中国电信和田皮山县 ZFW 防火墙 3 台 13.5 万</td><td>河北税务落地为网御星云 Power V6000-FWG9010Z 3 台 @6.18 万 + SSL 卸载 VPN 4 台 @12.87 万（河北信通 144.3 万）</td></tr>
+    <tr><td class="k">信创星号条款</td><td>防火墙 / WAF / 三类交换机<b>均为国产化信创版本</b>，且不允许只投个别品目</td><td>大连水务集团自来水公司 105 万</td><td>11 项清单全包；民生国企已把信创要求写成整包约束</td></tr>
+    <tr><td class="k">涉密资质</td><td>武器装备科研生产单位<b>二级及以上</b>保密资质</td><td>军队服务器/防火墙/交换机打包 2026-JQ02-W1260，193.6 万</td><td>整包只定 1 家、不接受联合体、须线下密封提交证书复印件</td></tr>
+    <tr><td class="k">涉密集成</td><td>涉密信息系统集成<b>乙级及以上</b></td><td>某部系统安全保密建设 2026-JQ05-W1151-1，290 万</td><td>万兆防火墙 1 台 + UTM 网关 1 台，与物联网数据联通打成一包</td></tr>
+    <tr><td class="k">参数举证（反例）</td><td>「原厂标配 vs 原厂选配」的举证责任</td><td>安顺市财政局投诉处理（2026-10-13）</td><td>投诉人指 H3C SecPath F1000-AI-25 标配万兆光口 2 个、实供 4 个；厂家回函 4 个属<b>原厂原装选配</b>，<b>投诉被驳回</b>——举证责任在采购人与厂家一侧</td></tr>
+    <tr><td class="k">参数举证（正例）</td><td>投标材料须证明满足数据中心防火墙第 8、10 条技术参数</td><td>甘肃建筑职院 166.86 万（甘财采处〔2026〕95 号）</td><td><b>中标结果无效、撤销已签合同、重新采购</b>，并认定评标委员会「应扣未扣」——本月第一例已签约后被推翻的项目</td></tr>
+    <tr><td class="k">混包资格（反例）</td><td>防火墙 + 交换机混包时两个品牌池不一致</td><td>凤阳县政务外网改造 30.9 万</td><td>中标公示期内被质疑，<b>经核查质疑属实、中标无效</b>，10-26 终止并重新采购</td></tr>
+  </table>
+
+  <div class="quote">
+    <b>标准合规的核心变化：门槛正在从「参数高低」转向「能不能举证」。</b>本月 3 例被否决/被推翻的案例（淮南 2 家、甘肃 1 例、凤阳 1 例）没有一例是因为性能不达标，全部是<b>证明不了</b>——证明不了芯片国产、证明不了支持 BFD、证明不了满足第 8/10 条参数。同时反向的举证压力也在生效：安顺案例里厂家一纸回函就保住了中标。这意味着投标侧的准备工作重心，已经从「报什么参数」前移到「留什么证据」。
+  </div>
+
+  <h3><span class="dot"></span>其他合规动向</h3>
+  <ul>
+    <li><b>商用密码认证口径</b>：认证对象为《商用密码产品认证目录》中的 <b>32 类</b>产品，证书有效期五年并需年度监督；等保三级及以上密评依据 <b>GB/T 39786-2021</b>，采用「技术要求 70 分 + 管理要求 30 分」模式，需 60 分以上且无高风险项方可通过——<b>防火墙国密改造是主要落点</b>（10-03）。</li>
+    <li><b>湖南省级框架协议参数口径修正</b>：2026-2027 年度防火墙框架协议采购发布第二次更正，采购包 14「最大并发连接数」由「≥150G」修正为「≥150 万」、包 18「延迟」由「≤20G」修正为「≤20」，开标延至 10-27（10-16）。这是省级框架协议把计量单位从「G」纠正为标准口径的典型情形。</li>
+    <li><b>NIST SP 800-82 Rev.4</b> OT 安全指南首次公开草案：围绕 CSF 2.0 重构、将 OT 风险纳入 Govern 职能，新增零信任、资产管理与网络监测指引，意见征集至 11-30（10-07）。</li>
+    <li><b>奥地利 NISG 2026</b> 于 10-01 生效并设立联邦网络安全局，核心安全与事件报告义务即刻适用，注册最迟 2027-01-01 前完成（10-07）。</li>
+  </ul>
+</section>
+
+<section id="s5">
+  <h2 class="sec"><span class="no">05</span>需求侧</h2>
+  <p class="sec-sub">钱从哪来、按什么形态花、单价落在哪一档</p>
+
+  <h3><span class="dot"></span>行业分布（按标题命中口径）</h3>
+  <div class="bars">
+    <div class="bar"><div class="lb">金融</div><div class="tr"><div class="fl a" style="width:100%"></div></div><div class="vl">38</div></div>
+    <div class="bar"><div class="lb">政府</div><div class="tr"><div class="fl a" style="width:97%"></div></div><div class="vl">37</div></div>
+    <div class="bar"><div class="lb">教育</div><div class="tr"><div class="fl a" style="width:87%"></div></div><div class="vl">33</div></div>
+    <div class="bar"><div class="lb">运营商</div><div class="tr"><div class="fl d" style="width:47%"></div></div><div class="vl">18</div></div>
+    <div class="bar"><div class="lb">能源</div><div class="tr"><div class="fl d" style="width:42%"></div></div><div class="vl">16</div></div>
+    <div class="bar"><div class="lb">医疗</div><div class="tr"><div class="fl d" style="width:42%"></div></div><div class="vl">16</div></div>
+    <div class="bar"><div class="lb">军队</div><div class="tr"><div class="fl e" style="width:26%"></div></div><div class="vl">10</div></div>
+    <div class="bar"><div class="lb">制造</div><div class="tr"><div class="fl b" style="width:11%"></div></div><div class="vl">4</div></div>
+    <div class="bar"><div class="lb">交通</div><div class="tr"><div class="fl b" style="width:8%"></div></div><div class="vl">3</div></div>
+  </div>
+  <p class="note">口径说明：行业仅按条目标题关键词命中，一条命中多个行业时只计第一个，因此该分布偏低估计、只用于排序。医疗 16 条与教育 33 条的实际占比可能更高——正文中出现医院/高校但标题未含关键词的条目未被计入。</p>
+
+  <div class="quote">
+    <b>「金融 + 政府 + 教育」三家占 108 条，接近总量三成，但三者的采购逻辑完全不同。</b>金融是<b>性能驱动</b>——本月保险与银行出现了 200G 异构防火墙、40G 数据中心防火墙、900G 整机吞吐的框式设备；政府是<b>品目驱动</b>——防火墙被要求单列成独立品目、独立定标；教育是<b>预算驱动</b>——20 万、18 万、36.5 万这类纯防火墙小标密集出现，竞争要素几乎只剩品牌与折扣。
+  </div>
+
+  <h3><span class="dot"></span>价格锚点：本月形成的四档分层</h3>
+  <table>
+    <tr><th>档位</th><th>成交单价</th><th>代表型号（含项目）</th><th>观察</th></tr>
+    <tr><td class="k">百兆 / 千兆入门</td><td class="num">1.77 – 2.39 万</td><td>天融信 NGFW4000(LX-D02) 1.7699 万（青岛边检反拍，三家报价差 201 元）；华为 USG6525F 1.9 万（中国船级社，单一来源）；华为 USG6000F-S150 2.386 万（淮南考场 9 台）</td><td>2 万以下档位<b>完全由型号目录价 + 渠道折扣决定</b>，产品差异化不被计价</td></tr>
+    <tr><td class="k">千兆主流</td><td class="num">3.0 – 8.0 万</td><td>迪普 FW1000-GA-GF 3.365 万（网联清算 31 台）；绿盟 NFNX5-HH2050 3.5 万（铜川政务云）；网御 Power V6000-FWG9010Z 6.18 万（河北税务 3 台）；深信服 AF-1000-L2100 6 万 vs 山石 SG-6000-K2380-A 6.2/6.5 万（陕西烟草，三家分报两品牌）</td><td>量最大的档位。同一标包内<b>品牌间价差通常在 5%–10%</b>，胜负点几乎全在折扣</td></tr>
+    <tr><td class="k">万兆</td><td class="num">8.5 – 16.5 万</td><td>天融信 NGFW4000-UF(FT-A20)(万兆)V3 <b>8.9 万</b>（卫健委 6 台）↔ 同型号 <b>9.37 万</b>（生态环境部反拍单台预算）；天融信 NGFW4000-UF(FT-A50) 12.18 万（深圳职教园）；同系列 12.36 万（海淀医院）、13.8 万（威海法院）；启明星辰天清汉马 USG-FW V2.6 16.5 万（湖北税务 2 台）</td><td><b>同一万兆型号在中央部委层面的价格锚点稳定在 8.9~9.4 万区间</b>；超过 12 万的部分主要来自区域拆分与整包结构差异</td></tr>
+    <tr><td class="k">高端框式</td><td class="num">24.4 – 89.98 万</td><td>网御 Power V6000-FWG7810Z 24.4 万（海淀医院无线防火墙）；山石 SG-6000-K5680-B 34 万（常州工学院单台）；领信 SEC6000 42.1 万（江宁医院 2 台）；H3C M9000-CN04 74.66 万（协和医院 4 台）；华为 USG12004-F 76.8 万（北理工 1 台）；迪普 FW1000-TA-A10 <b>89.98 万</b>（人大 2 台，900Gbps 整机吞吐 / 150Gbps 应用层 / 2.8 亿并发 / 1200 万新建）</td><td>高端档位单价已进入「与框式核心交换机同量级」。<b>沈阳道路运输 81 万整包只有「防火墙系统」一个品目、迪普 FW1000-MA-G 1 台</b>——防火墙借品目立项的极端形态</td></tr>
+  </table>
+
+  <h3><span class="dot"></span>采购形态的六个变化</h3>
+  <div class="find">
+    <div class="it"><div class="n">1</div><div class="tx"><b>防火墙被要求单列成独立品目、独立定标。</b>江西省政务外网城域网改造 1753.38 万，边界防火墙 <b>30 台单列</b>（奇安信网神 NSG6300-FT35），同包内交换机与路由器由华为、H3C 承担——这是本月防火墙台数最多、且单列品目的政务项目。同类还有沈阳道路运输（整包只挂「防火墙系统」一个品目）、湖南信息职院（标的名即「下一代防火墙采购项目」20 万）、中邮数智信创二期（唯一以「下一代防火墙」独立成包）。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">2</div><div class="tx"><b>「异构防火墙」成为正式招标口径。</b>人保财险标包 5 直接写作「数据中心异构防火墙」32 台（50G 22 台 + 200G 10 台），要求同一项目里并存两个以上品牌做冗余；下级市场同步下沉——蚌埠消防把「下一代防火墙一/二/三」拆成三个独立品目，迪普 FW1000-GC-N 5 万 + 启明星辰 USG-FW-8000-T2300 5 万 + T2600 5.7 万，三个品牌并存；宁波银行把防火墙单列品目二、天融信 10 台单独定标。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">3</div><div class="tx"><b>防火墙正在被「服务化」并绑定云商。</b>宁夏教育信息化管理中心政务云安全防护服务 65 万走<b>单一来源</b>，论证理由写明项目分设在电信（一标段）与移动（二标段）政务云，安全资源「具有独占性」——产品厂商只能通过云商间接进入。兰州市政务外网把「防火墙升级维护服务」单独成包 74 万预算、65 万成交（折 87.8%），折让率明显高于同项目另两包（99.7% / 99.3%）。邢台公积金 46.84 万整体延保一年、天津高院 69.9 万只买原厂六库续期。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">4</div><div class="tx"><b>「品目命名」直接影响报价。</b>黑龙江福彩同型号深信服 AF-2000-L2250，在「防火墙」品目下 7.87 万/台，另挂一个「WAF 防火墙」品目 <b>9.34 万</b>，同硬件差 <b>18.7%</b>；海淀医院同型号网御 Power V6000，作为「无线防火墙」24.4 万/台、作为「政务网防火墙」<b>9.93 万</b>/台，差 <b>2.46 倍</b>。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">5</div><div class="tx"><b>集成商包揽前位，原厂退到幕后。</b>新华人寿双包合计近 1390 万，三家候选<b>全部为集成商</b>（思锐联 674.2 万 / 虹信万达 715.2 万 / 中电信数智 774.92 万）；江苏银行高性能防火墙 301.26 万，前两名均为集成商且报价只差 <b>1.93%</b>；网联清算包一中亦安图 104.315 万；绍兴银行 40G 防火墙预算 117 万→云南南天 <b>79.8 万</b>（68 折）。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">6</div><div class="tx"><b>折扣深度与报价离散度同时放大。</b>首都博物馆 IPv6 改造：奇安信 SecGate3600 清单价 25.4 万 ×2 + 上网行为管理 35.8 万 ×2，清单合计 122.4 万，<b>实际成交 61.2 万（约 5 折）</b>；舟山防火墙专项 4 家报价 9.8 万 / 17 万 / 18.76 万 / 19 万，<b>最高与最低相差近一倍</b>且电信系报在最高位；而深圳市眼科医院三家报价只差 1.3 万、技术分却差 <b>28.6 分</b>（94.02 / 66.20 / 65.37）——价格分几乎同分时胜负完全由技术分决定。 <span class="tag t-blue">中</span></div></div>
+  </div>
+
+  <h3><span class="dot"></span>本月大单（按金额）</h3>
+  <table>
+    <tr><th>日期</th><th>项目</th><th>金额</th><th>防火墙侧要点</th></tr>
+    <tr><td>10-20</td><td>江西省数字政府云网数基础设施 · 省级政务外网城域网改造</td><td class="num">1753.38 万</td><td>边界防火墙 <b>30 台</b>奇安信网神 NSG6300-FT35 + 山石 SG-6000-K20803-B 互联网出口网关 2 台</td></tr>
+    <tr><td>10-18 / 10-23</td><td>人保财险数据中心网络及防火墙（标包 4 + 标包 5）</td><td class="num">≈1460 万</td><td>标包 4 <b>34 台</b>（50G 22 + 200G 12）中科软 752.12 万；标包 5 <b>32 台异构</b>（50G 22 + 200G 10）紫光软件 708.54 万；两包三家报价差 77.7 万</td></tr>
+    <tr><td>10-25</td><td>新华人寿 2026 年防火墙设备更新（包一 + 包二）</td><td class="num">≈1389.4 万</td><td>包一 674.2 万 / 包二 715.2 万；三家候选全为集成商，未披露品牌与型号</td></tr>
+    <tr><td>10-28</td><td>海淀医院信息化升级改造</td><td class="num">1169.58 万</td><td>防火墙合计 83.45 万占整包 <b>7.1%</b>，四台分三个品目、两个品牌</td></tr>
+    <tr><td>10-16</td><td>广州市增城区中心医院二期信息化（二次）</td><td class="num">1200 万</td><td>整包含下一代防火墙、网闸、IPSec/SSL VPN 网关、堡垒机、漏扫、国密浏览器、服务器密码机</td></tr>
+    <tr><td>10-12</td><td>中国电信 2026 年云网信息安全产品集采（防火墙 D/E 档）</td><td class="num">3230 台</td><td>新华三第一 3272.14 万（报价最低）、华为 3757.94 万、安博通 3373.66 万、迪普 3830.56 万；采购量较 2024 年同类项目（1806 台）大幅上升</td></tr>
+    <tr><td>10-17</td><td>湖南银行 2026 年度网络设备采购（分项一）</td><td class="num">653 万</td><td>国产防火墙 <b>5 台</b> + 生产汇聚 2 台 + 25G 接入 30 台 + 物理网闸 4 台，整包</td></tr>
+    <tr><td>10-14</td><td>福建税务 2026 年网络安全设备优化更新</td><td class="num">479.72 万</td><td>含边界防火墙（高性能）、下一代 WAF、出口 IPS、全流量管控等</td></tr>
+    <tr><td>10-24</td><td>中国人民大学校园核心网络改善（第 2 包）</td><td class="num">179.96 万</td><td>迪普 FW1000-TA-A10 <b>2 台 @89.98 万</b>，单台 900Gbps 整机吞吐 / 6 年七层授权</td></tr>
+    <tr><td>10-16</td><td>华中科技大学同济医学院附属协和医院出口及核心防火墙</td><td class="num">298.65 万</td><td>H3C NS-SECPATH M9000-CN04 <b>4 台 @74.66 万</b>，6 年原厂质保 + 1 人 1 年驻场</td></tr>
+    <tr><td>10-28</td><td>江苏银行应用系统国产化改造「高性能防火墙」</td><td class="num">301.26 万</td><td>标的即「高性能防火墙」单一品类，未披露品牌型号；前两名集成商含税差 1.93%</td></tr>
+    <tr><td>10-13</td><td>湖南银行 / 绍兴银行数据中心</td><td class="num">117 万 → 79.8 万</td><td>绍兴银行群贤路「防火墙(40G)」单列标段，云南南天 <b>68 折</b>中标</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>风险面信号（并入需求侧观察）：</b>本期 72 条漏洞事件中，与防火墙本体直接相关的至少 12 条——<b>FortiBleed</b>（FBI 与特勤局联合预警，194 国逾 <b>86,644 台</b> FortiGate 与 SSL VPN 网关凭据被窃，后续调查显示实际瞄准规模或达 40–45 万台）、<b>k0t 行动</b>（FortiGate / FortiWeb / GlobalProtect 被批量打点，7 万余条凭据外泄）、<b>PHP2Shell</b>（CVE-2026-109618/109619，CVSS 9.2，受影响厂商含 Palo Alto PAN-OS 与深信服 AF——深信服核查结论为仅 WebUI 控制台受影响）、<b>Cisco CVE-2026-76418</b>（ASA/FTD SSL VPN 二次认证逻辑错误，未登录即可打停设备，已确认在野）、<b>WatchGuard 一次性 18 个 Fireware OS 漏洞</b>（7 个 CVSS 9.1+）。Eclypsium 10 月 InfraTrust Pulse 统计：18 家厂商 133 份公告覆盖 <b>2813 个漏洞</b>，其中 37 份严重级、5 份 CVSS 满分、58 个可未认证远程利用、16 份公告发布时其漏洞已在 CISA KEV 中。<b>甲方对「管理面是否暴露公网」的追问正在变成技术条款</b>——三沙市要求「仅认可厂商本部资质」、多地把管理面收敛写进交付要求，都是同一条线的反应。
+  </div>
+</section>
+
+<section id="s6">
+  <h2 class="sec"><span class="no">06</span>对 NF 的判断</h2>
+  <p class="sec-sub">6 条，每条标注证据强度：<span class="tag t-green">强</span> 硬数据/合同/财报 · <span class="tag t-blue">中</span> 多源一致但无硬数据 · <span class="tag t-red">弱</span> 单源或推断</p>
+
+  <div class="find">
+    <div class="it"><div class="n">1</div><div class="tx"><b>「高性能」的定义权正在被自研芯片夺走，NF 需要尽快把「解密后还剩多少检测能力」做成可举证的指标。</b>山石 ASIC 收入占比 Q1 5% → Q3 37%、单季破亿，且明说「盈利水平显著优于传统架构产品」；迪普拿到首家公安部高性能国产化防火墙认证；安恒用 FPGA+CPU 打出微秒级时延。<b>更值得警惕的是锐捷把主指标换成了「加密流量威胁检出量达老品 6.77 倍」</b>——这是国内第一次有厂商不在比裸吞吐。若 NF 仍以整机吞吐/并发作为主打，会在下一轮 POC 中被拉到对方定义的度量体系里。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">2</div><div class="tx"><b>T/CCIA 006-2026 首批名单是未来 12 个月最硬的一张入场券，NF 必须确认自己在名单内或给出明确时间表。</b>本期已确认华为 USG6855G 与天融信在首批名单内，且 IDC 首份《中国大模型应用防火墙技术评估》已列出 15 家（绿盟在列，但那是大模型应用防火墙品类，不等于 AI 防火墙测评）。<b>两个名单不是一回事</b>——前者是硬件防火墙的 AI 能力测评，后者是应用层 WAF 形态。目前的信息面里，NF 在 T/CCIA 006-2026 首批名单中的位置未见披露，这是本周最需要内部澄清的一件事。 <span class="tag t-blue">中</span></div></div>
+    <div class="it"><div class="n">3</div><div class="tx"><b>金融侧的 200G / 40G 异构档已经开标，NF 缺的是这一档的公开价格锚点与案例。</b>人保财险标包 5 明确要求「异构防火墙」32 台、含 200G 10 台；绍兴银行单独列「防火墙(40G)」标段并最终 68 折成交；人大单台 900Gbps、协和 M9000 四台 298.65 万。<b>本月 NF 拿到的金融侧条目是「临汾应急广播绿盟 NF NX3 千兆 1 台 5.5 万」「联通数科道研中心 NFNX5-HHC6000 2 台 88.39 万（二次询比，首次因买标书不足三家流标）」「铜川政务云 NFNX5-HH2050 1 台 3.5 万」</b>——集中在千兆与中端，40G 以上档位没有出现 NF 的成交记录。这个缺口在 2027 招标季前必须补。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">4</div><div class="tx"><b>「防火墙单列品目」对 NF 是净利好，但前提是能单独报出有竞争力的单价。</b>江西政务外网 30 台单列、沈阳整包只有防火墙一个品目 81 万、湖南信息职院标的名即防火墙、中邮数智信创二期 NGFW 独立成包。单列意味着<b>不再需要用交换机/服务器的大包折扣去补贴防火墙</b>，也不再被集成商以整包低配低价吃掉。但本月单列品的单价区间是 3.365 万（迪普 31 台）到 89.98 万（迪普 900G）——<b>同一厂商在两端的跨度说明「单列能否赢」取决于能不能拿出对应档位的型号</b>。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">5</div><div class="tx"><b>合规举证能力已成为投标的硬约束，NF 应把「证据包」当成产品交付物的一部分。</b>本月 4 例被否决/被推翻全部源于「证明不了」：芯片国产证明、BFD 协议证明、第 8/10 条参数满足证明、CMA+CNAS+ilac-MRA 三标检测报告。反向的安顺案例证明厂家回函可以救回中标。<b>建议把「投标证据包」标准化：芯片国产链路证明、BFD/OSPFv3/BGP4+/ISIS 协议互通证明、EAL4+ 与国密认证、三标性能检测报告、同型号近三年金融/政务案例清单</b>——这套东西每缺一项，就是一个具体的失标风险点。 <span class="tag t-green">强</span></div></div>
+    <div class="it"><div class="n">6</div><div class="tx"><b>竞争叙事上，NF 本月缺一个「架构故事」，而对手都讲了。</b>华为讲 NPU 单板 + 非人类身份 + 99% 自动处置，山石讲 ASIC 三代收入结构，安恒讲 FPGA+CPU，锐捷讲解密后检出率，Check Point 讲订阅化。绿盟本月最完整的一次公开发声是 CTO 的「模型+工具+Agent+Skills 四层叠加」——<b>那是 AI 安全运营体系的故事，不是 NF 的硬件故事</b>。NF 需要的是一条能把「硬件性能 + 加密流量检测 + AI 检测能力」串起来的架构主张，且这条主张必须能落到一个可测指标上。 <span class="tag t-blue">中</span></div></div>
+  </div>
+
+  <div class="quote">
+    <b>一句话总结本月：</b>十月的防火墙市场同时发生了三件事——<b>预算在大规模落地</b>（中标采购 66.9%）、<b>架构在重新分层</b>（ASIC / FPGA / NPU 三条路线摊牌）、<b>门槛在从参数转向举证</b>（4 例否决全部因为证明不了）。三件事叠加的结果是：<b>能拿出「可举证的差异化指标 + 覆盖全档位的型号 + 完整证据包」的厂商会赢，只靠品牌与折扣的厂商会被压缩到 2 万以下的入门档和纯服务包里。</b>
+  </div>
+</section>
+
+<footer>
+数据源：26 期防火墙厂商日报（2026-10-03 ~ 2026-10-30），共 384 条。缺失日报：10-01、10-02、10-05、10-15、10-31。<br>全部统计数字来自 stats_firewall.json 与 brief_firewall.md；厂商指标均为公开口径，未经第三方复现。本报告由自动化任务生成，仅供内部参考。
+</footer>
+</main>
+</div>
+<script>
+const links=[...document.querySelectorAll('.side a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('on'));
+      const t=links.find(l=>l.getAttribute('href')==='#'+e.target.id);
+      if(t)t.classList.add('on');
+    }
+  });
+},{rootMargin:'-15% 0px -70% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
