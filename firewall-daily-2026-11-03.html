@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-11-03</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --bg2:#111114; --card:#141419; --card2:#181820;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --t1:#f4f4f6; --t2:#a5a5b3; --t3:#6f6f80;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-font-smoothing:antialiased}
+body{
+  background:var(--bg); color:var(--t1);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Inter,sans-serif;
+  line-height:1.7; padding-bottom:80px;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 60%),
+                   radial-gradient(760px 460px at 88% -4%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.topbar{
+  position:fixed;top:0;left:0;right:0;height:58px;z-index:100;display:flex;align-items:center;
+  justify-content:space-between;padding:0 26px;
+  background:rgba(10,10,10,.72);backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.02em}
+.dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));
+  box-shadow:0 0 12px rgba(139,92,246,.85)}
+.topbar .meta{font-size:12px;color:var(--t3);font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+.hero{padding:112px 0 44px}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--t3);border:1px solid var(--line);
+  padding:5px 12px;border-radius:999px;margin-bottom:22px;background:rgba(255,255,255,.02);
+}
+h1{
+  font-size:clamp(30px,5.2vw,50px);line-height:1.14;letter-spacing:-.022em;font-weight:700;
+  background:linear-gradient(96deg,#fff 18%,var(--g2) 56%,var(--g3) 92%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px;
+}
+.sub{color:var(--t2);font-size:14.5px;max-width:760px}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.stat{
+  border:1px solid var(--line);border-radius:14px;padding:14px 20px;min-width:118px;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.008));
+}
+.stat b{display:block;font-size:25px;font-weight:700;letter-spacing:-.02em;
+  background:linear-gradient(120deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat span{font-size:11.5px;color:var(--t3);letter-spacing:.06em}
+.ai{
+  margin:46px 0 8px;border:1px solid var(--line2);border-radius:18px;padding:26px 28px;position:relative;
+  background:linear-gradient(150deg,rgba(91,108,247,.11),rgba(236,72,153,.06) 62%,rgba(255,255,255,.014));
+  overflow:hidden;
+}
+.ai:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3))}
+.ai h2{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);
+  margin-bottom:14px;font-weight:600;display:flex;align-items:center;gap:9px}
+.ai p{font-size:15px;color:#dedee6;line-height:1.95}
+.ai b{color:#fff;font-weight:600}
+section{padding:46px 0 6px}
+.shead{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;
+  padding-bottom:14px;border-bottom:1px solid var(--line)}
+.shead h2{font-size:21px;font-weight:650;letter-spacing:-.01em}
+.shead .n{font-size:12px;color:var(--t3);font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{
+  border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:var(--card);
+  transition:border-color .25s,transform .25s,background .25s;display:flex;flex-direction:column;
+}
+.card:hover{border-color:rgba(139,92,246,.42);transform:translateY(-2px);background:var(--card2)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}
+.tag{font-size:11px;font-weight:600;letter-spacing:.05em;padding:3.5px 10px;border-radius:6px;white-space:nowrap}
+.tag-vendor{color:#c9c2ff;background:rgba(91,108,247,.16);border:1px solid rgba(91,108,247,.32)}
+.tag-industry{color:#ffc2e4;background:rgba(236,72,153,.14);border:1px solid rgba(236,72,153,.3)}
+.src{font-size:11px;color:var(--t3);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card h3{font-size:16.5px;line-height:1.5;font-weight:640;letter-spacing:-.008em;margin-bottom:12px}
+.card p{font-size:13.8px;color:var(--t2);line-height:1.85;flex:1}
+.card p b{color:#e7e7ee;font-weight:600}
+.link{display:inline-block;margin-top:16px;font-size:12.5px;color:#8B5CF6;text-decoration:none;
+  border-bottom:1px solid transparent;transition:color .2s,border-color .2s;align-self:flex-start}
+.link:hover{color:#b48cff;border-bottom-color:#b48cff}
+.empty{border:1px dashed var(--line2);border-radius:14px;padding:30px;text-align:center;
+  color:var(--t3);font-size:13.5px}
+.foot{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--t3);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand"><span class="dot"></span>NGFW 厂商日报</div>
+  <div class="meta">2026-11-03 · 周二 · 共 7 条</div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">China NGFW Vendor Daily</div>
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <p class="sub">2026-11-03（周二）· 只收与下一代防火墙强相关的产品迭代、份额价格、中标采购与边界攻防；非防火墙产品线一律不进。</p>
+    <div class="stats">
+      <div class="stat"><b>7</b><span>今日动态</span></div>
+      <div class="stat"><b>3</b><span>厂商动态</span></div>
+      <div class="stat"><b>4</b><span>行业动态</span></div>
+    </div>
+  </header>
+
+  <div class="ai reveal">
+    <h2>◆ AI 解读 · NGFW 视角</h2>
+    <p>今天真正值得停下手里活看一眼的只有一条：<b>山石把「智能下一代防火墙」直接写成「所有版本受影响」</b>，并且给出了 5.5R8P34 / 5.5R10P19.1 / 5.5R11P11.1 三个分支的补丁号，5.5R12P4.x 还要等到 11-06——这是国内第二家承认防火墙本体被 PHP2Shell 打到的厂商（第一家是 10-27 的深信服 AF）。把它和今天另外两条放在一起看会更有意思：Check Point 承认「传统防火墙更新周期延后」把产品收入拖成同比 -1%，Fortinet 产品业务毛利率从 Q2 的 69.9% 掉到 Q3 的 64.5%——<b>防火墙的竞争重心正在从「加功能」转向「可信度 + 交付形态 + 毛利结构」</b>，而国内八家在防火墙体上到今天已是连续第四周零新型号发布。所以产品经理今天该做的不是追新品，而是把「管理面默认不暴露 / 补丁 SLA / 补丁后强制全员重登 / 第三方组件清单可查」这四件事，做成标书里能直接交出去的表。</p>
+  </div>
+
+  <section>
+    <div class="shead"><h2>🏢 厂商动态</h2><span class="n">3 条</span></div>
+    <div class="grid">
+      <article class="card reveal" style="--d:0ms">
+        <div class="card-top">
+          <span class="tag tag-vendor">山石网科</span>
+          <span class="src">山石网科 PSIRT</span>
+        </div>
+        <h3>山石网科：智能下一代防火墙「所有版本」受 PHP2Shell 影响，三档分支已修复、5.5R12 要等到 11-06</h3>
+        <p>11-02 山石 PSIRT 发布 HSVD-2026-0113，归因 PHP 组件漏洞 CVE-2026-109618 / CVE-2026-109619（远程代码执行，CVSS 3.1 = 8.1，AV:N/AC:H/PR:N/UI:N），利用条件只有一条——攻击者可网络访问设备 Web 管理页面。受影响矩阵里「智能下一代防火墙（NGFW）」被明确标注为「<b>所有版本</b>」，已发布修复为 <b>5.5R8P34 / 5.5R10P19.1 / 5.5R11P11.1</b>，<b>5.5R12P4.x 定于 11-06 发布</b>。同批受影响的还有 WAF（W-5.5R12-4.1.3 已发）、工业防火墙 IFW 4.4.2 已发、NIPS/NIDS（11-06）、ADC AX 系列（11-15）、智感 BDS 6.4.1（11-06）、云格 CloudHive 与 LMS（均 11-09）、ICM 2.0R3P3。规避与处理方案收敛在一个 KB 页（kb.hillstonenet.com「php-vuln-fix-for-stoneos」）。这是继 10-27 深信服 AF 之后，<b>国内第二家公开确认防火墙本体受 PHP2Shell 影响的厂商</b>，且这次没有把范围限缩到「仅控制台」。</p>
+        <a class="link" href="https://www.hillstonenet.com.cn/security-notification/2026/11/02/sswkcve2026109618109619/" target="_blank" rel="noopener">查看来源 →</a>
+      </article>
+      <article class="card reveal" style="--d:40ms">
+        <div class="card-top">
+          <span class="tag tag-vendor">其他</span>
+          <span class="src">优分析</span>
+        </div>
+        <h3>Check Point Q3：传统防火墙更新延后把产品收入拖成负增长，转身押注 AI 网络防火墙 + 新一代 Maestro</h3>
+        <p>11-03 披露的 Q3 口径：营收 6.70 亿美元同比 <b>-1%</b>，管理层直说「<b>传统防火墙更新周期延后</b>拖累产品收入」，同时判断本季已是谷底、Q4 起逐季改善。结构性变化在订阅——邮件安全、持续威胁暴露管理（CTEM）与 AI 安全 ARR 同比 <b>+38%</b>、相关计费额 <b>+47%</b>，订阅已占总营收 51%。产品侧已推出<b>AI 网络防火墙</b>与<b>新一代 Maestro 超大规模协调器</b>，目标客群是新兴云服务商、电信运营商、政府与大型企业，卖点是「不牺牲性能地检查 AI 流量」；生态上与 NVIDIA、OpenAI、Anthropic 合作，近期拿下 8 万员工规模的七位数 AI 安全合约和能源企业八位数网络现代化 + 暴露管理项目。管理层给的口径是 2027 订阅收入接近 15 亿美元，并强调<b>AI 防火墙升级收入不计入既有涨价效益</b>——即把它当成净增量。</p>
+        <a class="link" href="https://uanalyze.com.tw/articles/2083558205" target="_blank" rel="noopener">查看来源 →</a>
+      </article>
+      <article class="card reveal" style="--d:80ms">
+        <div class="card-top">
+          <span class="tag tag-vendor">其他</span>
+          <span class="src">格隆汇 / 网易财经</span>
+        </div>
+        <h3>Fortinet：产品业务毛利率由 69.9% 降至 64.5%，涨价贡献约 10%，增速从 52% 回落到 37%</h3>
+        <p>Q3 产品收入 7.65 亿美元同比 <b>+37%</b>，但增速较 Q2 的 52% <b>回落 15 个百分点</b>、收入环比还略有下滑；更关键的是<b>产品毛利率从 Q2 的 69.9% 降到 Q3 的 64.5%</b>——上半年吃的是低成本库存，Q3 起新采购零部件成本开始进表。管理层自述涨价贡献约 10% 的收入，客户也在往更高型号迁移。往前看，Q4 账单额指引中点对应同比约 20%，低于 Q3 的 29%；服务收入占 63%、毛利率约 87%，远高于产品的 64%。<b>对报价的直接含义：卖得更贵了，但单笔留下的毛利比例在下降，硬件毛利必须靠订阅与服务补回来</b>。</p>
+        <a class="link" href="https://www.163.com/dy/article/LALQPIP305568W0A.html" target="_blank" rel="noopener">查看来源 →</a>
+      </article></div>
+  </section>
+
+  <section>
+    <div class="shead"><h2>🏭 行业动态</h2><span class="n">4 条</span></div>
+    <div class="grid">
+      <article class="card reveal" style="--d:0ms">
+        <div class="card-top">
+          <span class="tag tag-industry">政府</span>
+          <span class="src">正福易找标</span>
+        </div>
+        <h3>湖南防火墙框架协议 42 包结构首次完整摊开：通用 13 包 + 国产化 13 包 + WAF 16 包，国产化档位从 2.4 万一路排到 97 万</h3>
+        <p>10-27/28 开评标、11-02 公示细目，42 包按三分区落定：<b>通用网络安全防火墙（包 1-13）／国产化网络安全防火墙（包 14-26）／WEB 应用防火墙（包 27-42）</b>，包 1 的门槛价在万元级、包 26 的上限已到 97 万级，形成 13 级阶梯。国产化 13 个档位几乎把国内主力型号目录全录了一遍：华为 <b>USG6525F / 6555F / 6635F / 6655F / 6700F / 6725F</b> 六款全系在列；H3C F1000-AI-25-G ~ 90-G 加 M9000-CN04 系列；天融信 NGFW4000-UF 十余个后缀（LX-B02/B12、FT-E08、FT-A20、HG-A40/A80/X450、KP-A200）；绿盟 NFNX3-HF/HH 与 NFNX5-HH/HHC；深信服 AF-1000-L / AF-2000-L；奇安信 NSG2600-DG40 → NSG8300-HN40；安恒 DAS-TGFW-A200 ~ G30000；亚信 AISFW G1080S ~ G04；网御星云 Power V6000-FWG 全梯次；锐捷 RG-WALL 1600-Z5000/Z8600；紫光恒越 UNIS F5000；海康 DS-SG100-HS；中科网威 NSFW-6000/12000/20000；惠而特 HET-NGFW-S84xxXC-VD；元脉 TQ-2000-G/B/D/E。<b>单一档位最多 14 个品牌同池（包 16「国产化防火墙 3」）</b>。入围价格在公示页被星号大面积打码，仅少数档位可读（包 2 上限 54,533 元、包 6 275,240 元、包 8 258,020 元、包 16 80,000 元）。</p>
+        <a class="link" href="https://yzb.caigou2003.com/detail/2115431149978255360" target="_blank" rel="noopener">查看来源 →</a>
+      </article>
+      <article class="card reveal" style="--d:40ms">
+        <div class="card-top">
+          <span class="tag tag-industry">金融</span>
+          <span class="src">中信国际招标</span>
+        </div>
+        <h3>人保财险数据中心防火墙标包 4 定标：中科软 752.12 万，34 台按「50G 22 台 + 200G 12 台」配置</h3>
+        <p>11-02 中信国际招标发布结果公告，人保集团网络设备采购（人保财险数据中心网络及防火墙）<b>标包 4「数据中心防火墙」（二次）</b>由中科软科技以 <b>752.12 万元（含税）</b>中标，采购 1 家供应商、共 <b>34 台</b>，其中 <b>50G 防火墙 22 台、200G 防火墙 12 台</b>，折算均价约 <b>22.1 万元/台</b>。项目 9-23 发标、公开招标。同项目标包 5 为异构 32 台（50G 22 台 + 200G 10 台），二次招标由紫光软件 708.5 万居首，<b>两包合计 66 台</b>。这是本月金融行业最大的单体防火墙硬件包，也是「高规格数据中心边框式机 + 集成商整包」的典型形态。</p>
+        <a class="link" href="https://bidding.citic/jhwzb/27400.jhtml" target="_blank" rel="noopener">查看来源 →</a>
+      </article>
+      <article class="card reveal" style="--d:80ms">
+        <div class="card-top">
+          <span class="tag tag-industry">教育</span>
+          <span class="src">中国政府采购网</span>
+        </div>
+        <h3>宣威市体育中学：锐捷 RG-WALL 1600-Z5100 单台 8.783 万，占整包 3%</h3>
+        <p>11-02 云南中标公告，整包 45 项信息化设备合计 <b>289.877 万元</b>，宣威博美以 99.5 分中标。防火墙只有 <b>1 台锐捷 RG-WALL 1600-Z5100，单价 87,830 元</b>，占整包 3.0%；同包综合业务网关 RG-CMG6000-09 5.479 万、核心交换机 RG-SG7512L 13.886 万、无线控制器 RG-WS7110 4.338 万。<b>普教场景的单台防火墙价格与近期 8.3 万~9.0 万的窄带完全重合</b>，说明中学出口这一档已经形成稳定锚点，拼的不是价格而是「同一品牌全包交付」。</p>
+        <a class="link" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261102_27600905.htm" target="_blank" rel="noopener">查看来源 →</a>
+      </article>
+      <article class="card reveal" style="--d:120ms">
+        <div class="card-top">
+          <span class="tag tag-industry">教育</span>
+          <span class="src">中国政府采购网（新疆分网）</span>
+        </div>
+        <h3>吐鲁番职业技术学院：山石 SG-6000-K5180-B 出口防火墙 8.3 万，却被自家同包的上网行为管理反超 60%</h3>
+        <p>11-02 新疆中标结果（二次），整包 <b>398.97 万元</b>，新疆亿网 96.12 分。出口防火墙 <b>1 台山石网科 SG-6000-K5180-B，单价 83,000 元</b>，仅占整包 2.1%。值得记的是同包对比：<b>深信服上网行为管理 AC-1000-L2500B 单价 13.304 万元，比防火墙贵 60%</b>；超融合节点 aServer-GH4-2605 3 台 29.17 万/台、核心交换机锐捷 RG-S7808C 18.359 万、机柜 19 台 3,721 元/台、漏扫 4.02 万、堡垒机 4.13 万。<b>「出口防火墙 ≪ 上网行为管理」在校园场景已不是个例</b>——出口侧的行为审计与实名管控被单独给了更高预算，而防火墙被当成通道设备定价。</p>
+        <a class="link" href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261102_27605497.htm" target="_blank" rel="noopener">查看来源 →</a>
+      </article></div>
+  </section>
+
+  <div class="foot">
+    <span>数据来源：厂商 PSIRT / 中国政府采购网 / 中信国际招标 / 正福易找标 / 公开财报与媒体</span>
+    <span>生成于 2026-11-03 · 自动化任务</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var d=en.target.style.getPropertyValue('--d')||'0ms';
+        en.target.style.transitionDelay=d;
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
