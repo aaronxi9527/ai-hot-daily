@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI 安全日报 2026-11-03</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --line:#1f2937; --line2:#26334a;
+  --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--txt); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; letter-spacing:.01em;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+                   radial-gradient(800px 460px at 88% 2%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+
+.hero{padding:66px 0 34px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c7d2fe;background:rgba(91,108,247,.12);
+  border:1px solid rgba(139,92,246,.34);border-radius:999px;
+  padding:6px 15px;margin-bottom:20px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--g3);display:block;
+  box-shadow:0 0 0 4px rgba(236,72,153,.18)}
+h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.hero .date{color:var(--txt2);font-size:15px}
+.hero .date b{color:var(--txt);font-weight:600}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{
+  min-width:132px;padding:16px 20px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.6));
+  border:1px solid var(--line);
+}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.25}
+.stat .l{font-size:12.5px;color:var(--txt2);margin-top:2px}
+
+.overview{
+  margin:34px 0 8px;padding:26px 28px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(91,108,247,.13),rgba(139,92,246,.07) 45%,rgba(236,72,153,.07));
+  border:1px solid var(--line2);
+}
+.overview h2{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.overview h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--g2);
+  box-shadow:0 0 12px rgba(139,92,246,.9)}
+.overview p{color:#d1d5db;font-size:15px}
+.overview b{color:#fff;font-weight:600}
+
+.sec{margin-top:56px}
+.sec-head{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sec-icon{font-size:22px}
+.count{font-size:12px;font-weight:600;color:#a5b4fc;background:rgba(91,108,247,.14);
+  border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:2px 10px}
+.sec-sub{color:var(--txt3);font-size:13px;margin-top:7px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 21px 17px;position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-3px);border-color:#334155;
+  box-shadow:0 16px 34px -18px rgba(0,0,0,.85)}
+.card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:7px;white-space:nowrap;line-height:1.5}
+.tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.34);
+  font-weight:600}
+.tag-cat{color:#a7f3d0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.26)}
+.level{margin-left:auto;font-size:12.5px;letter-spacing:1px;flex-shrink:0}
+.merged{font-size:11px;color:var(--txt3);border:1px solid var(--line);border-radius:6px;
+  padding:2px 7px;white-space:nowrap}
+
+.card-title{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:11px;color:#f3f4f6;
+  letter-spacing:-.005em}
+.card-body{font-size:14px;color:#b6bec9;line-height:1.85}
+.card-body b{color:#f0f2f5;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(139,92,246,.22) 62%);padding:0 1px}
+
+.card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src{font-size:12px;color:var(--txt3);line-height:1.9}
+.src a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.32);
+  transition:color .2s,border-color .2s}
+.src a:hover{color:#e9d5ff;border-color:#e9d5ff}
+
+.trend{margin-top:58px;padding:28px 30px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(17,24,39,.9),rgba(10,10,10,.6));
+  border:1px solid var(--line2)}
+.trend h2{font-size:19px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.trend-item{padding:15px 0;border-bottom:1px dashed var(--line)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-item h4{font-size:15px;color:#e9d5ff;margin-bottom:6px;font-weight:600}
+.trend-item p{font-size:13.5px;color:#a9b1bd;line-height:1.85}
+.trend-item b{color:#f0f2f5}
+
+footer{margin-top:46px;text-align:center;color:var(--txt3);font-size:12.5px;line-height:2}
+footer .sep{display:inline-block;width:34px;height:2px;border-radius:2px;margin:0 8px;
+  background:linear-gradient(90deg,var(--g1),var(--g3));vertical-align:middle}
+
+.anim{opacity:0;transform:translateY(26px)}
+.anim.in{opacity:1;transform:none;
+  transition:opacity .72s cubic-bezier(.2,.7,.3,1),transform .72s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d,0ms)}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px}
+  .hero{padding:44px 0 24px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .overview,.trend{padding:20px 18px}
+  .card{padding:17px 16px 14px}
+  .stat{min-width:calc(50% - 6px);padding:13px 14px}
+  .stat .n{font-size:23px}
+}
+</style></head><body><div class="wrap"><header class="hero"><span class="badge"><i></i>AI SECURITY DAILY</span><h1>🤖 AI 安全日报</h1><div class="date"><b>2026-11-03</b> · 星期二 · 北京时间 10:00</div><div class="stats"><div class="stat"><span class="n">3</span><span class="l">国际产品动态</span></div><div class="stat"><span class="n">3</span><span class="l">国内产品动态</span></div><div class="stat"><span class="n">8</span><span class="l">行业动态</span></div><div class="stat"><span class="n">14</span><span class="l">合计条目</span></div></div></header><section class="overview anim"><h2><span class="dot"></span>AI 总览</h2><p>今天的主线一句话：<b>攻击者已经不打漏洞了，打的是「一个能发请求的账号」和「一句能骗过护栏的话术」。</b></p><p>三件最硬的新闻指向同一个位置。Mandiant 的 LLMjacking 报告说，劫持企业 LLM 访问的攻击者单日能刷出 <b>10 万美元</b>云账单，有人累计烧到 100 万才被吊销——最狠的一句是「受害组织从未启用过 LLM 服务」，攻击者用盗来的 Key 替你把 Bedrock 和 Gemini API 打开了。Cisco Talos 的 VOLTA 窃密器把偷来的数据打包发给 OpenRouter，让模型扮演取证分析师，按「变现容易程度」给受害者资产排序，默认用 Claude Opus 4.6，被拒就换 Kimi K2、再换 Gemini 2.5 Flash。Sophos 的 Aur0ra 案更直接：操作者把 VPN、代理、目标交给 Cursor 里的 agent，让它自己测绘 AD、自己找密码、自己走到域管，日志里还留着一句「别再暴力破解了，换点不吵的方法」。</p><p>产品侧六条动作出奇一致：<b>把「谁允许的」变成可验证的东西</b>。Salesforce 把评估失败接到 kill switch 上，明确 11 月 beta、明年 1 月 GA；Guardz 把浏览器事件回接邮件与 M365 身份，让 MDR 按单一事件处置；Byoky 让应用只拿会话 token、密钥留在本地钱包。国内三条更彻底——蚂蚁给每个进生产系统的智能体发密码学数字工牌，决策依据实时上链；天泽把每个动作绑到一次具体审批上，讲「五种确定性」；天融信今天下午发的 RHP 渗透测试智能体，主打的是「证据可追溯」。<b>没有一家在承诺「防住」，全在承诺「查得到」。</b></p><p>两个数字把这件事的成本讲清楚了。Armadin 实测：<b>88%</b> 的严重漏洞靠厂商公告根本发现不了，<b>82%</b> 的攻击链不带凭据起步，<b>70%</b> 三步以内拿到关键结果，而 <b>93%</b> 的修复不需要第三方动手——按公告打补丁，只覆盖那 12%。另一头，启明星辰上半年大模型应用防火墙收入同比 <b>+238.15%</b>，第一批真实收入出现了，但研报自己补了一句冷水：单纯接入大模型不等于新增收入。</p><p>规则侧两条同向：四大巨头共推 robots.txt 里的统一退出信号（IETF AIPREF），解决的是「表达」不是「授权」，且默认允许；Anthropic 官网源码漏出 Fable 5.5 与 Mythos 5.5，同一套权重按护栏松紧拆成两个产品、定价一致——<b>护栏第一次被明确标价，卖的不是能力，是「谁敢解除限制」。</b></p></section><section class="sec"><div class="sec-head"><h2><span class="sec-icon">🏢</span>国际友商产品动态<span class="count">3 条</span></h2><div class="sec-sub">只收可追溯到具名产品的新功能、新版本、新上线；政策、报告、排名不放这里。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Salesforce / MuleSoft</span><span class="tag tag-cat">智能体治理 · 评估与熔断</span><span class="level">🔥🔥</span></div><h3 class="card-title">Agent Fabric 把「评估失败」接到 kill switch 上：Agent Evals 与 API Evals 定档 11 月 beta</h3><div class="card-body"><p>10 月 27 日，Salesforce 公布 MuleSoft <b>Agent Fabric</b> 的下一阶段能力，并给出明确时间表。<b>Agent Evals</b> 与 <b>API Evals</b> 于 <b>11 月进入 beta、2027 年 1 月 GA</b>；前者不只测上线前，还在生产里持续测 agent、模型与 MCP server，一旦行为超出组织阈值就触发响应，按策略该走审批的走审批；后者从 API 规格直接生成功能与性能测试。<b>Custom Agent Scanner</b> 当日进入 beta，把发现范围扩到内网、防火墙之后与其他平台，GA 同样定在 2027 年 1 月，注册表只拉指针、不搬 agent。</p><p style="margin-top:9px">真正的新东西是 <b>Triggered-Agent Kill Switch</b>（2027 年 1 月）：把评估结果接到策略化干预上。基础 kill switch 9 月已 GA，按请求、会话、agent、租户四个粒度阻断受治理流量，之后可恢复——但它阻断的是<b>网关上的流量</b>，不等于终止宿主平台上跑着的进程，这条边界是采购时最该问的一句。配套还有按提供商与模型设美元或 token 预算的 <b>Model Wallet</b>、FinOps 面板，以及跨 Azure、Apigee、Kong 的 <b>Open Policies</b>；官方称语义缓存与载荷压缩在测试场景下可降最多 75% 的 token。MuleSoft 组合公开起价每月 2,000 美元，Agent Fabric 具体配置需询价，另有 5 万美元年最低预承诺。</p><p style="margin-top:9px;color:#9aa3b2">「发现→测试→限流→熔断」四段终于被串成一条链，但每一段的可信度不一样：评估会误判，kill switch 只到网关，预算只管得到走网关的调用。<b>越是把闭环讲得完整的产品，越要问它闭环的出口在哪里断开。</b></p></div><div class="card-foot"><span class="src">来源：<a href="https://venturebeat.com/orchestration/salesforce-details-cost-controls-and-kill-switch" target="_blank" rel="noopener">VentureBeat</a> · <a href="https://www.salesforce.com/news/stories/agent-fabric-catch-failures-control-ai-costs/" target="_blank" rel="noopener">Salesforce 官方新闻稿</a></span></div></article><article class="card anim" style="--d:70ms"><div class="card-top"><span class="tag tag-vendor">Palo Alto Networks × Guardz</span><span class="tag tag-cat">企业浏览器 · MSP 分发</span><span class="level">🔥🔥</span></div><h3 class="card-title">Guardz 把 Prisma Browser for Business 装进小企业 MSP 平台，浏览器事件回接邮件与身份</h3><div class="card-body"><p>11 月 2 日，Guardz 将 Palo Alto Networks 的 <b>Prisma Browser for Business</b> 加入其面向小企业 MSP 的安全平台。浏览器侧检测全部来自 PANW：内联机器学习模型筛钓鱼页，Advanced URL Filtering 拦假登录页与专门窃取活会话令牌的攻击，WildFire 分析可疑文件，上传下载在浏览器内即扫，并识别高风险扩展。Guardz 负责把浏览器事件与原始邮件、相关 Microsoft 365 活动、同一身份的终端遥测对齐，交给 7×24 MDR 团队按<b>单一事件</b>处置——这是集成的真正价值所在：过去这三段证据在三个工具里，谁都不肯认领。</p><p style="margin-top:9px">同期上线的 <b>AI Usage and Control</b> 让技术员按客户分别设策略，按站点或类别限制复制、粘贴、文件传输，并提供按客户维度的 AI 工具使用报表。开通与默认配置由 Guardz 承担，早期接入方称几分钟内扩展就铺到每一个 Chrome 与 Edge 配置文件上。PANW 2023 年收购 Talon 进入企业浏览器，小企业版 2026 年 3 月在美国开卖；Guardz 累计融资 8,400 万美元。</p><p style="margin-top:9px;color:#9aa3b2">小企业的「办公室」就是浏览器，所以这条不奇怪。值得记的是它的分工：<b>检测交给做浏览器的人，串证据交给做 MDR 的人</b>。国内做终端与上网行为管理的厂商，同一件事的难点不在加一个浏览器扩展，而在能不能把「谁点了哪封邮件」和「谁登了哪个账号」用同一个身份对上。</p></div><div class="card-foot"><span class="src">来源：<a href="https://siliconangle.com/2026/11/02/exclusive-guardz-brings-palo-alto-networks-browser-protection-to-msps-serving-small-businesses/" target="_blank" rel="noopener">SiliconANGLE</a></span></div></article><article class="card anim" style="--d:140ms"><div class="card-top"><span class="tag tag-vendor">Byoky</span><span class="tag tag-cat">密钥管理 · 开源工具</span><span class="level">🔥</span></div><h3 class="card-title">Byoky：把 AI API Key 从「设置页里的一串字符」搬进一个本地加密钱包</h3><div class="card-body"><p>11 月 2 日，开源项目 Byoky 发布 Chrome 与 Firefox 扩展、iOS 与 Android 应用。思路直接照搬 MetaMask：密钥用 <b>AES-256-GCM</b> 加密存在本机，密钥材料经 <b>PBKDF2 60 万轮</b>从主密码派生（主密码至少 12 位）；应用向钱包申请访问，钱包自己把请求发给模型厂商，应用只拿到一个会话 token，一键即可撤销。支持 13 家云厂商加本地 Ollama、LM Studio，还能在 Anthropic、OpenAI、Gemini、Cohere 的请求格式之间互转。</p><p style="margin-top:9px">命令行 agent（OpenClaw、Claude Code、Hermes）通过本地 bridge 代理接入；bridge 拒绝不带 token 的请求，防止同机其他程序白嫖额度；可按应用设消费上限，并在本地记录每次请求的来源、厂商与状态。项目自己也承认了一件不太宣传的事：当第三方 agent 用 Claude Pro/Max 订阅 token 运行时，bridge 会<b>重命名该 agent 的工具并移动 system prompt</b>，以通过 Anthropic 的一方可疑性检测。GitHub 免费（MichaelLod/byoky）。</p><p style="margin-top:9px;color:#9aa3b2">「粘贴到设置页的 key，就不再是你能控制的 key」——这句话值得国内每一个做 AI 应用接入的团队抄在墙上。但那个「改名过检测」的默认行为，会让它在任何合规审查里先扣一分：<b>一个安全工具顺手帮你绕过另一家的风控，它的威胁模型就已经不干净了。</b></p></div><div class="card-foot"><span class="src">来源：<a href="https://www.helpnetsecurity.com/2026/11/02/byoky-open-source-ai-api-key-wallet/" target="_blank" rel="noopener">Help Net Security</a></span></div></article></div></section><section class="sec"><div class="sec-head"><h2><span class="sec-icon">🇨🇳</span>国内友商产品动态<span class="count">3 条</span></h2><div class="sec-sub">国内本周产品级动态偏少，按「宁缺毋滥」只保留可追溯到具名产品与明确时点的三条，未用方案稿凑数。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">蚂蚁数科 ZOLOZ</span><span class="tag tag-cat">智能体身份 · 密码学存证</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">ZOLOZ 从 KYC、KYB 延伸到 KYA：给每个进生产系统的智能体发一张密码学数字工牌</h3><div class="card-body"><p>11 月 2 日香港金融科技周，蚂蚁数科宣布旗下安全品牌 <b>ZOLOZ 升级</b>，推出面向智能体时代的身份可信治理方案 <b>KYA（Know Your Agent）</b>，把能力从「识人」（KYC）、「识企」（KYB）推到「识智能体」。同场带出 <b>Agentar</b> 智能体超级工厂，已有通用版与金融、能源、医疗三个行业版。ZOLOZ 目前服务全球 25 个以上国家和地区。</p><p style="margin-top:9px">技术上是「AI + 区块链」双底盘：每个被送进金融生产系统的模型与智能体，上线即持有<b>基于密码学签名的数字工牌</b>；数据读取密级与操作授权额度锁在智能合约里；模型做出风控决策所依据的原始快照数据、推理链条与最终指令，实时哈希签名并上链存证。官方口径是让每一次决策「有据可查、可还原、可全流程审计」。底座侧，IDC 数据显示其在中国智能体开发平台私有化市场位列非云厂商第一、整体第四，区块链 BaaS 以 32.4% 份额连续六年第一；客户覆盖全部国有大行、全部股份制银行与 60% 以上城商行，金融核心业务累计落地智能体超过 300 个。</p><p style="margin-top:9px;color:#9aa3b2">这条路线在国内是独一份：它不承诺「防住」，而是承诺「出事时能证明谁批的、依据是什么」。对金融客户，可取证的责任链比多拦几个注入更值钱——<b>合规部门要的从来不是更强的护栏，是一份能交上去的材料。</b></p></div><div class="card-foot"><span class="src">来源：<a href="https://www.ithome.com/1/021/338.htm" target="_blank" rel="noopener">IT之家</a> · <a href="https://news.aibase.com/tw/news/32038" target="_blank" rel="noopener">AIBase</a></span></div></article><article class="card anim" style="--d:70ms"><div class="card-top"><span class="tag tag-vendor">天泽智联 × 清华合肥院</span><span class="tag tag-cat">智能体平台 · 审批绑定</span><span class="level">🔥🔥</span></div><h3 class="card-title">联榕 Lianvor 高可信企业级智能体平台：四道网关策略中心 + 审批绑定 + 持久化执行</h3><div class="card-body"><p>10 月 30 日，天泽智联联合清华大学合肥公共安全研究院在合肥发布 <b>联榕（Lianvor）高可信 AI 技术体系</b>。核心是「联榕高可信企业级智能体平台」，三大支柱为<b>元 Harness 引擎、智能治理、自进化企业上下文</b>，路线表述是「稳定内核 + 可进化智能体」；通过四道网关策略中心、审批绑定与持久化执行等机制，宣称提供事实、行动、过程、交付、能力<b>五种确定性</b>。底座含蓝塔安全行业大模型与 AI Ready 原子能力。</p><p style="margin-top:9px">同场还发布 AI 原生大安全平台、AI 运营管理平台，以及基于前两者、覆盖<b>安全生产、消防安全、结构安全</b>三个领域的 9 款场景化产品，并完成一批生态伙伴签约。官方对「高可信」的注解是三句话：看得准、追得回、兜得住。</p><p style="margin-top:9px;color:#9aa3b2">看点在「审批绑定」——不是给 agent 一个总开关，而是把每个具体动作绑到一次具体审批上。公共安全场景对可追溯的要求本来就比一般企业高一个量级，<b>这条产品线的真正客户不是 IT 部门，是出事时要签字的那个部门。</b></p></div><div class="card-foot"><span class="src">来源：<a href="http://www.csteelnews.com/qypd/qydt/202611/t20261102_114504.html" target="_blank" rel="noopener">中国钢铁新闻网</a></span></div></article><article class="card anim" style="--d:140ms"><div class="card-top"><span class="tag tag-vendor">天融信</span><span class="tag tag-cat">渗透测试智能体 · 全域安全框架</span><span class="level">🔥🔥</span></div><h3 class="card-title">乌镇今日 13:30 发布 RHP 渗透测试智能体系统与「三域联防」智能体全域安全框架</h3><div class="card-body"><p>11 月 2–5 日世界互联网大会乌镇峰会期间，天融信在「互联网之光」博览会展出四大方向，并定于<b>今日（11 月 3 日）13:30 在红亭发布区</b>发布两项成果。其一是<b>基于 RHP 架构的渗透测试智能体系统</b>：大模型加多智能体协作，搭载智能与控制双引擎，构建渗透测试全流程自动化闭环，主打风险早发现、漏洞真验证、<b>证据可追溯</b>、安全又可控。其二是「<b>三域联防、统一控制</b>」智能体全域安全框架，打通资产与供应链域、数据与内容流转域、运行与行为交互域，以统一控制面贯通智能体全生命周期，做到对象可管、权限可控、行为可断、数据可追。</p><p style="margin-top:9px">同场，天融信<b>大模型安全网关</b>获「新光」产品奖，「智能安全运营一体化协助方案」获「新耀」场景奖；<b>AI 安全网关首次展出</b>，定位为企业级 AI 应用的统一模型服务入口与算力治理中枢，主打把「看不见、管不住、算不清」的算力黑盒变成「看得清、管得住、省得下」。展会现场另设沉浸式体验区，用 LED 大屏内容管控、蓝牙泄露隐私信息、位置授权泄露行程轨迹三个演示讲风险。</p><p style="margin-top:9px;color:#9aa3b2">国内厂商开始把渗透测试从「服务」做成「产品」，而且强调证据可追溯——这个措辞和蚂蚁的「上链存证」是同一个方向：<b>AI 干的活，必须能被人在事后复核</b>。注意本次为会前预告口径，正式细节以今日下午发布为准。</p></div><div class="card-foot"><span class="src">来源：<a href="https://ex.chinadaily.com.cn/exchange/partners/82/rss/channel/cn/columns/sz8srm/stories//WS6ae85387e4b09a165c7930a3.html" target="_blank" rel="noopener">中国日报网</a> · <a href="https://mtz.china.com/touzi/2026/1102/267233.html" target="_blank" rel="noopener">中华网</a></span></div></article></div></section><section class="sec"><div class="sec-head"><h2><span class="sec-icon">📊</span>行业动态与趋势<span class="count">8 条</span></h2><div class="sec-sub">政策法规、研究报告、大会观点、安全事件与漏洞披露、标准与白皮书、市场数据。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Google Mandiant / GTIG</span><span class="tag tag-cat">研究报告 · LLMjacking</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">LLMjacking：单日刷掉 10 万美元云账单，有人累计烧到 100 万才被吊销</h3><div class="card-body"><p>11 月 2 日，Mandiant 与 Google 威胁情报组（GTIG）发布《The Rise of LLMJacking》，汇总今年多起响应案例：劫持企业 LLM 访问的攻击者，<b>单日</b>就能刷出超过 10 万美元的欺诈云账单；有的组织在被吊销前累计到 <b>100 万美元</b>。与挖矿的区别在于斜率——挖矿慢慢放血，LLMjacking 几小时内就能冲上去。受害者在北美、南美、亚太，含金融、零售、科技与运输。</p><p style="margin-top:9px">入口几乎都不是模型本身：被盗或暴露的云身份凭据（服务账号密钥、GitHub PAT），以及对公网开放的 LLM 端点（例如裸奔的 Ollama）。组织 UNC6993 用配置错误的服务账号密钥进入云实例，摸到 LLM API，再架一个假的 LLM 注册页——访客被引到真实服务，并被要求回贴一段含有效 access token 的 JSON，拿到 token 后密码与 MFA 都不再拦路。另一路从公开 GitHub 仓库刮 API Key，每个只用<b>单 token 输出</b>试探，恰好低于基于调用量的告警阈值。路由层也被打了：下游组织拿到预验证的 virtual key 后，利用 LiteLLM 密钥再生端点的 user ID rebind 缺陷（<code>CVE-2026-40217</code>），把普通 virtual key 提成网关的 master admin 凭据。</p><p style="margin-top:9px">变现走「LLM Mixers」：把盗来的凭据塞进开源网关与自建中继，计量并隐藏来源。其中 Jet Night 一个路由服务，有行为者 8 小时内打了 <b>50 万次</b> LLM API 调用，用盗来的第三方 Key 供血，某受害组织因此背上近 100 万美元 token 成本；Jet Night 卖「无限量前沿模型」约 <b>60 美元/月</b>，同类消费级方案要 100–250 美元，GTIG 判断这个价只有盗 Key 才撑得住。还有一路在受害主机上种了基于 Manus agent 框架的容器化后门，让上游模型推理出指令再在本地执行。</p><p style="margin-top:9px;color:#9aa3b2">最狠的一句是「受害组织从未启用过 LLM 服务」——攻击者用盗来的 Key 替你把 Bedrock 和 Gemini API 打开，账单从几分钟内开始膨胀。<b>「未授权启用云服务」应当被当成关键安全事件处理</b>，这句话建议直接写进云上告警规则。</p></div><div class="card-foot"><span class="src">来源：<a href="https://siliconangle.com/2026/11/02/google-finds-llmjacking-attackers-running-up-100k-a-day-in-fraudulent-cloud-charges/" target="_blank" rel="noopener">SiliconANGLE</a> · <a href="https://cloud.google.com/blog/topics/threat-intelligence/llmjacking-monetizing-compromised-cloud-models" target="_blank" rel="noopener">Google Cloud 威胁情报原文</a></span></div></article><article class="card anim" style="--d:70ms"><div class="card-top"><span class="tag tag-vendor">Sophos</span><span class="tag tag-cat">勒索团伙 · 智能体滥用</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">Aur0ra 团伙把 Cursor 的 agent 当雇员用：自己测绘 AD、自己找密码，一路走到域管</h3><div class="card-body"><p>11 月 2 日，Sophos 披露其追踪的 <b>GOLD OGRE</b>（即 Aur0ra 勒索团伙）使用 AI agent 在受害网络中移动、收集凭据并爬升到域管理员。8 月底从 <b>Cursor</b> AI 编码助手恢复出的痕迹显示，操作者把 VPN 登录、代理访问、目标与目的交给 agent；agent 随后自己测绘网络与 Active Directory、在网络共享与文档与备份里翻密码、以很少的人工干预横向移动。部分网络拿到域管理权限，其中三个受害者后来出现在 Aur0ra 的数据泄露站。入侵与投勒索仍由人控制。</p><p style="margin-top:9px">拿到的操作者指令很具体：一条说 Windows AD 网络需要测试，愿意给 agent 配 SOCKS5 代理和用户账号；一条明确要求「<b>别再暴力破解域管了，换点不吵的方法和向量</b>」；第三条让它去找备份服务器、NAS 与虚拟化系统。操作日志里留下西里尔字母的键盘误触，据此判断操作者为俄语使用者。绕过模型护栏的办法也简单：把入侵描述成「授权红队活动」或「诊断测试」。用过的模型包括 Cursor 的 Composer，以及 Anthropic、xAI、Moonshot 的模型——初期几乎只用 Anthropic，转向实际入侵后引入其他模型。Gambit Security 与 CloudSEK 各自基于同一个暴露的开放目录出了分析，Gambit 提到部署了 Claude 4.5-Sonnet agent 做半自动攻击。</p><p style="margin-top:9px;color:#9aa3b2">最重要的细节不是「用了 AI」，而是「用红队身份骗过了护栏」。任何靠模型自我判断「这是不是合法安全测试」的机制，在真实攻击者面前只是一道话术题。<b>把授权做成密码学凭据（谁授权、授到哪、到什么时候），而不是做成一句自然语言声明</b>——这是今天唯一真正有效的分界线。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.helpnetsecurity.com/2026/11/02/aur0ra-ransomware-ai-agents/" target="_blank" rel="noopener">Help Net Security</a></span></div></article><article class="card anim" style="--d:140ms"><div class="card-top"><span class="tag tag-vendor">OpenAI / Google / Microsoft / Anthropic</span><span class="tag tag-cat">行业标准 · IETF AIPREF</span><span class="level">🔥🔥</span></div><h3 class="card-title">四大巨头共推 robots.txt 里的 AI 抓取退出信号：一次写入，多家读取</h3><div class="card-body"><p>11 月 1 日，OpenAI、谷歌、微软与 Anthropic 宣布将采用一项新的 AI 数据抓取退出标准。该标准由 Anthropic 标准技术负责人 <b>Kevin Kelley</b> 向 IETF 提出（归属 <b>AIPREF</b> 工作组），直接集成在网站的 robots.txt 里——内容发布方<b>一次写入</b>即可向多家 AI 企业表达「是否可用于模型训练」，不必再逐家配置。Anthropic 已率先采纳，OpenAI 计划未来数月落实，谷歌与微软预计 2027 年支持；Meta 表态支持建立通用信号，但未明确落地计划。微软另提供更细粒度选项：可只拒训练，或单独管控 grounding（把模型指向可信来源以缓解幻觉）；无论怎么设，内容仍会出现在必应搜索结果里。</p><p style="margin-top:9px">必须写清边界：这套机制解决的是<b>「表达」，不是「授权」</b>——表达退出偏好不等于与 AI 企业达成许可合同，也不自动产生收益分配；对已经被抓走的存量内容<b>没有追诉力</b>。它也不与已有路线冲突：RSL 允许网站向爬虫收费，Cloudflare 提供 AI 爬虫默认拦截。</p><p style="margin-top:9px;color:#9aa3b2">治理接口正从「企业间双边规则」迁移到「机器可读的公共协议层」，这一步的意义大于标准本身。但要看清默认值：<b>默认允许、选择拒绝</b>——不表态视为同意。这个默认值决定了它最终保护的是内容方，还是抓取方。</p></div><div class="card-foot"><span class="src">来源：<a href="https://siliconangle.com/2026/10/30/google-anthropic-and-others-to-support-new-ai-crawling-opt-out-standard/" target="_blank" rel="noopener">SiliconANGLE</a> · <a href="https://news.qq.com/rain/a/20261102A01RHF00" target="_blank" rel="noopener">腾讯新闻（含 IETF 细节）</a></span></div></article><article class="card anim" style="--d:210ms"><div class="card-top"><span class="tag tag-vendor">Anthropic</span><span class="tag tag-cat">护栏分层 · 源码泄露</span><span class="level">🔥🔥</span></div><h3 class="card-title">官网源码露出 Fable 5.5 与 Mythos 5.5：同一套权重，按护栏松紧拆成两个产品</h3><div class="card-body"><p>11 月 1 日深夜，anthropic.com/claude/mythos 页面的 HTML 源码里被发现 6 处「Claude Mythos 5.5」（前端显示仍是 9 月发布的 5.1），说明新版本已预埋进生产环境。按目前流传的拆解，<b>Fable 5.5 与 Mythos 5.5 底层是同一套模型、API 定价一致</b>，差别只在护栏：Fable 5.5 带完整安全护栏，作为通用商业旗舰向全球开发者全量开放；Mythos 5.5 解除常规拒答限制，是「特种科研版」，只向受信任的顶尖网络安全团队与科研机构定向开放。规格为 100 万 token 输入上下文、12.8 万 token 最大输出，已同步出现在 MLflow 与 Azure 官方目录。</p><p style="margin-top:9px">这个拆法解释了两件此前说不通的事：一是「某未发布内部模型 53 分钟独立攻破 Linux 内核拿到最高权限」，而研究员用现有的 Mythos 5.1 死磕 3 天、烧掉约 2,000 美元都没能复现；二是一篇全篇无人类作者、署名只有 CLAUDE 的数学论文，全程生成约 1,400 万 token。<b>需注明：以上均为源码泄露与第三方爆料，Anthropic 尚未正式发布。</b></p><p style="margin-top:9px;color:#9aa3b2">这是「护栏即产品分层」最直白的一次示范：同一个权重，卖出两种风险等级，真正被分级的不是能力，而是<b>「谁能拿到无护栏版本」</b>。国内厂商做「行业版/科研版」时若只改提示词不改交付边界，学到的只是形式。</p></div><div class="card-foot"><span class="src">来源：<a href="https://news.qiniu.com/archives/1793582746917" target="_blank" rel="noopener">七牛云技术博客</a> · <a href="https://wallstreetcn.com/articles/3784958" target="_blank" rel="noopener">华尔街见闻</a></span></div></article><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">奇安信</span><span class="tag tag-cat">行业观点 · 攻防代差</span><span class="level">🔥🔥</span></div><h3 class="card-title">奇安信在乌镇给出两个数字：挖一个高危漏洞从 3–7 天压到分钟级，把漏洞变成武器从数月压到几小时</h3><div class="card-body"><p>11 月 2 日乌镇峰会期间，奇安信对《环球时报》给出判断：今年以来 Mythos 这类 AI 挖洞大模型震动业界——<b>挖一个高危漏洞，过去资深工程师要 3 至 7 天，现在压缩到分钟级；把漏洞变成攻击武器，过去要数周数月，现在只要几个小时</b>。结论是网络攻击进入「工业化时代」，而传统「堆设备、拼盒子」的防护存在三重失效：静态化跑不赢动态攻击、人工化扛不住高频攻击、单点化挡不住全域攻击。</p><p style="margin-top:9px">给出的应对方向是加快安全升级改造，建设<b>内生安全的一体化纵深防御体系</b>，形成高、中、低三位协同联动的有机整体。同一场大会上，奇安信另有九大领域入选《中国AI赋能的网络安全软件技术发展路线图》，覆盖 Agentic Code Security（Qcode Agents）、Agentic EDR 与 MDR、Autonomous Exposure Management（CTEM）、Agentic NDR（AI 天眼）等类别。</p><p style="margin-top:9px;color:#9aa3b2">这段最有价值的不是「分钟级」这个数字，而是它承认了一个采购后果：<b>补丁窗口的单位从周变成小时之后，买盒子解决的是覆盖，解决不了速度。</b>速度只能靠「自己先发现」，这也是为什么国内厂商今年集体把漏洞挖掘智能体当成门面产品。</p></div><div class="card-foot"><span class="src">来源：<a href="https://news.ifeng.com/c/8xjzWL2vqmU" target="_blank" rel="noopener">凤凰网（环球时报报道）</a> · <a href="https://field.10jqka.com.cn/20261102/c681367920.shtml" target="_blank" rel="noopener">同花顺（路线图入选）</a></span></div></article><article class="card anim" style="--d:70ms"><div class="card-top"><span class="tag tag-vendor">启明星辰 / 券商研报</span><span class="tag tag-cat">市场数据 · 收入结构</span><span class="level">🔥🔥</span></div><h3 class="card-title">大模型应用防火墙收入同比增长 238.15%：AI 安全的第一批真实收入出现了</h3><div class="card-body"><p>11 月 3 日一份 AI 安全行业深度研报给出国内第一个可核对的品类数字：<b>启明星辰 2026 年上半年大模型应用防火墙收入同比增长 238.15%</b>，国内 AI 安全已出现实际收入增长，且传统业务与新业务的景气分化明显。需求沿三阶段加深：办公辅助（内容合规、敏感信息保护）→ 业务协同（跨系统身份认证、权限控制、操作审计）→ 核心生产（高风险操作审批、运行隔离、异常中止与恢复）。</p><p style="margin-top:9px">竞争壁垒被归结为三条：<b>数据连接、执行权限、行业交付</b>——模型能提升分析效率，但要看懂「同一次数据库访问在不同账号、设备、业务背景下分别意味着什么」，仍要靠长期部署形成的数据与业务上下文；能隔离主机、撤销凭证、终止进程，才能把「发现」变成「处置」。产业分层也写得很直白：模型原生安全归模型厂商，应用与智能体安全归第三方（跨模型、跨应用统一策略，并与身份、数据治理、SOC 联动），独立评估机构做验证。风险提示同样明确：企业采购不及预期、传统需求承压、模型厂商内置安全功能替代通用检测、防护效果不及预期、盈利与现金流修复不及预期。</p><p style="margin-top:9px;color:#9aa3b2">238% 要放在基数上看：它证明「大模型应用防火墙」这个品类开始有真实采购，但体量还远不足以对冲传统业务下滑。研报里那句「<b>单纯接入大模型不等于新增收入，客户付费和交付成本变化才是商业化的最终结果</b>」，是今年最该被产品经理记住的一句。</p></div><div class="card-foot"><span class="src">来源：<a href="https://finance.sina.com.cn/stock/stockzmt/2026-11-03/doc-inixmhhe6754213.shtml" target="_blank" rel="noopener">新浪财经（研报全文）</a></span></div></article><article class="card anim" style="--d:140ms"><div class="card-top"><span class="tag tag-vendor">Armadin</span><span class="tag tag-cat">攻防实测 · 暴露面</span><span class="level">🔥</span></div><h3 class="card-title">88% 的严重漏洞不在厂商公告里：82% 的攻击链不带凭据起步，70% 三步内拿到关键结果</h3><div class="card-body"><p>11 月 2 日，由 Mandiant 创始人 Kevin Mandia 创办的攻击性安全公司 <b>Armadin</b> 发布报告：今年对客户真实系统做 AI 驱动攻击测试，<b>88% 的严重与高危发现，靠厂商公告或其他外部来源根本发现不了</b>。客户横跨近十个行业，但公司未披露组织数与发现总数。拆开看：客户自研软件的缺陷占公告覆盖不到的严重发现的 <b>67%</b>、高危的 <b>78%</b>；厂商产品以公告从未描述的方式部署（例如管理控制台直接暴露在公网）占 24% 与 22%；剩下 9% 的严重发现是 Armadin 自己挖的 0-day，其中一个在身份治理平台，厂商近四个月才出公告。</p><p style="margin-top:9px">攻击面结构更刺眼：近 <b>70%</b> 的严重与高危发现位于未认证攻击面；有记录的链里 <b>82% 不带凭据起步</b>，其中 56% 全程没出现过密码或密钥；超过 <b>70%</b> 的客户环境中，Armadin 三步以内就拿到关键结果。不带认证起步的链中近一半靠暴露的凭据，其中 <b>71% 属于应用或服务账号而非人</b>，近 90% 无需「提取」即可获得，常在仓库、配置文件、备份、日志、云设置里。修复动作：51% 要改应用代码，43% 改配置权限或策略，32% 轮换暴露凭据；<b>93% 的严重发现不需要第三方动手</b>，修不修全在自己。</p><p style="margin-top:9px;color:#9aa3b2">AI 在这里的作用不是「发现更多漏洞」，而是「把三步走完」。88% 的真正含义是：漏洞管理的输入（公告）和真实风险（配置 + 自研代码 + 服务账号凭据）几乎是两张不相交的表。<b>按公告打补丁，只能覆盖那 12%。</b></p></div><div class="card-foot"><span class="src">来源：<a href="https://www.infosecurity-magazine.com/news/armadin-severe-exposures-missed/" target="_blank" rel="noopener">Infosecurity Magazine</a></span></div></article><article class="card anim" style="--d:210ms"><div class="card-top"><span class="tag tag-vendor">Cisco Talos</span><span class="tag tag-cat">AI 恶意软件 · 受害者定价</span><span class="level">🔥</span></div><h3 class="card-title">VOLTA 窃密器让模型给受害者「定价」：按变现容易程度排序，默认用 Claude Opus 4.6</h3><div class="card-body"><p>11 月 2 日，Cisco Talos 披露一款 Windows 信息窃取器 <b>VOLTA-AUTODOXER</b>，出自其跟踪「用 AI 的恶意软件」的 CAIRN 研究。前半段很常规：浏览器密码、cookie、支付卡、加密钱包助记词、Microsoft OAuth token、SSH 与云厂商密钥、截图、Discord/Telegram/Steam/Roblox 会话，把本机所有 Wi-Fi 密码明文导出，还自带加密钱包库爆破。后半段才是新东西：它组一个「证据包」——地理位置与家庭住址、雇主与雇主域名、推断出生年、卡号后四位、Slack 工作区、文档作者元数据、iPhone 备份痕迹、Roblox 账号估值；再用窃来的会话去 Gmail 搜购物收据核对住址、拉 UberEats 与 DoorDash 订单史、用 Discord token 补全账号。</p><p style="margin-top:9px">然后打包成 JSON POST 给 <b>OpenRouter</b>，system prompt 让模型扮演取证情报分析师，按「变现容易程度」给资产排序并打低/中/高，评判受害者的安全习惯与密码卫生，还要在姓名、住址、学校与所选密码之间找关联。默认模型是 <b>Claude Opus 4.6</b>；一旦检测到拒答措辞就转 Moonshot 的 Kimi K2，再转 Gemini 2.5 Flash。结果落成 Identity_Report.txt 与 AI_Analysis.txt，一起打进 volta_dox.zip 外传。运行后自删，所有通信端点都属第三方，没有攻击者自有基础设施可打。配置写在模板六个槽位里、编译时填入——典型的「builder 模式」：作者卖访问权，买家填值，作者为其编译定制二进制。</p><p style="margin-top:9px;color:#9aa3b2">这是「以模制模」的镜像。我们讨论用 AI 检测 AI 攻击时，攻击者已经用 AI 做完了「这份数据值多少钱」的判断——而那一步过去是最费人的。<b>Talos 的总结值得抄进每一份威胁模型：找出最需要人持续注意的那一步，把它换成一次模型调用。</b></p></div><div class="card-foot"><span class="src">来源：<a href="https://www.helpnetsecurity.com/2026/11/02/ai-powered-infostealer-volta-victim-profiling/" target="_blank" rel="noopener">Help Net Security</a> · <a href="https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/" target="_blank" rel="noopener">Cisco Talos 原文</a></span></div></article></div></section><section class="trend anim"><h2><span class="sec-icon">🧭</span>趋势判断 · 精简版</h2><div class="trend-item"><h4>一、攻击者已经不需要漏洞，需要的是「一个能发请求的账号」</h4><p>今天三条最硬的新闻讲的是同一件事：LLMjacking 打的是账单而不是系统，入口是服务账号密钥和一个裸奔的 Ollama；VOLTA 打的是「这个人的价格」，靠的是浏览器里存着的会话与 OAuth token；Aur0ra 打的是 EDR 的信任判断，靠的是一句「这是授权红队测试」。三条链里，只有 Armadin 那 9% 涉及真正的 0-day，而它自己也承认 <b>82% 的链不带凭据起步</b>。攻击面的重心已经从「软件有没有洞」挪到「凭据躺在哪里、谁能替它说话」。</p></div><div class="trend-item"><h4>二、授权正在取代检测，成为唯一能写进合同的那一层</h4><p>Aur0ra 用「红队」两个字骗过护栏，直接说明护栏的判定依据如果是自然语言，它就只是话术题。对照今天的产品侧：Salesforce 把评估失败接到 kill switch，蚂蚁把授权额度锁进智能合约并上链存证，天泽把每个动作绑到一次审批上，Byoky 让应用只拿会话 token 而密钥留在钱包里——四条动作的共同点是<b>把「谁允许的」变成可验证的凭据，而不是可解释的声明</b>。这也是为什么「智能体身份证」会成为接下来一年最拥挤的赛道。</p></div><div class="trend-item"><h4>三、护栏开始被当成产品分层的维度来卖</h4><p>Anthropic 把同一套权重拆成带护栏的 Fable 5.5 与解限的 Mythos 5.5，定价一致、差别只在拒答边界与交付对象。这是护栏第一次被明确标价——不是按能力收费，而是按<b>「你敢不敢解除限制」</b>收费。国内的对应版本是「行业版/科研版」，但目前多数只改提示词、不改交付边界，学到的只是形式。真正的分层必须包含三件事：谁能拿到、拿到后能做什么、出事谁负责。</p></div><div class="trend-item"><h4>四、治理接口向协议层迁移，但默认值决定它保护谁</h4><p>robots.txt 的统一退出信号是好事：把「逐家谈判」变成「一次表达」，降低了中小站点的合规成本。但它默认允许、选择拒绝，不产生合同、不产生分成、不追诉存量——<b>它降低的是表达门槛，不是议价能力</b>。同一周的另一面是 RSL 允许收费、Cloudflare 默认拦截，三条路线并存说明内容方还没找到统一的杠杆。对做 AI 数据合规的厂商，机会不在写规则，而在做「谁在什么时候用了我的什么」的可核对账本。</p></div><div class="trend-item"><h4>五、修复的瓶颈不在技术，在「这活归谁」</h4><p>Armadin 的 93% 是今天最值得抄的一个数字：绝大多数严重问题不需要第三方动手，修不修完全取决于自己。但同一份报告里，51% 要改代码、43% 要改配置、32% 要轮换凭据——三个动作分属三个部门，没有一个部门能独立完成。这解释了为什么「暴露面管理」在国内一直卖不动：<b>它不是产品缺口，是责任缺口</b>。谁能把「发现→派单→验证→关闭」的归属关系做成产品的一部分，谁才真正卖得出去。</p></div></section><footer>AI 安全日报 · 2026-11-03<br><span class="sep"></span>数据来源：厂商官方博客 / 新闻稿 / 监管与标准机构 / 行业媒体<span class="sep"></span><br>分类口径：产品动态 = 某厂商某具名产品的某功能或版本发生变化；其余归行业动态。</footer></div><script>
+(function(){
+  var els = document.querySelectorAll('.anim, .card, .trend-item');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script></body></html>
