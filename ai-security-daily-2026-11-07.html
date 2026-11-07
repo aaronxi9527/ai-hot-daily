@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 安全日报 · 2026-11-07</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --line:#1f2937; --line2:#26334a;
+  --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--txt); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; letter-spacing:.01em;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+                   radial-gradient(800px 460px at 88% 2%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+
+.hero{padding:66px 0 34px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c7d2fe;background:rgba(91,108,247,.12);
+  border:1px solid rgba(139,92,246,.34);border-radius:999px;
+  padding:6px 15px;margin-bottom:20px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--g3);display:block;
+  box-shadow:0 0 0 4px rgba(236,72,153,.18)}
+h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.hero .date{color:var(--txt2);font-size:15px}
+.hero .date b{color:var(--txt);font-weight:600}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{
+  min-width:132px;padding:16px 20px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.6));
+  border:1px solid var(--line);
+}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.25}
+.stat .l{font-size:12.5px;color:var(--txt2);margin-top:2px}
+
+.overview{
+  margin:34px 0 8px;padding:26px 28px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(91,108,247,.13),rgba(139,92,246,.07) 45%,rgba(236,72,153,.07));
+  border:1px solid var(--line2);
+}
+.overview h2{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.overview h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--g2);
+  box-shadow:0 0 12px rgba(139,92,246,.9)}
+.overview p{color:#d1d5db;font-size:15px}
+.overview b{color:#fff;font-weight:600}
+
+.sec{margin-top:56px}
+.sec-head{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sec-icon{font-size:22px}
+.count{font-size:12px;font-weight:600;color:#a5b4fc;background:rgba(91,108,247,.14);
+  border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:2px 10px}
+.sec-sub{color:var(--txt3);font-size:13px;margin-top:7px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 21px 17px;position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-3px);border-color:#334155;
+  box-shadow:0 16px 34px -18px rgba(0,0,0,.85)}
+.card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:7px;white-space:nowrap;line-height:1.5}
+.tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.34);
+  font-weight:600}
+.tag-cat{color:#a7f3d0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.26)}
+.level{margin-left:auto;font-size:12.5px;letter-spacing:1px;flex-shrink:0}
+.merged{font-size:11px;color:var(--txt3);border:1px solid var(--line);border-radius:6px;
+  padding:2px 7px;white-space:nowrap}
+
+.card-title{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:11px;color:#f3f4f6;
+  letter-spacing:-.005em}
+.card-body{font-size:14px;color:#b6bec9;line-height:1.85}
+.card-body b{color:#f0f2f5;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(139,92,246,.22) 62%);padding:0 1px}
+
+.card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src{font-size:12px;color:var(--txt3);line-height:1.9}
+.src a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.32);
+  transition:color .2s,border-color .2s}
+.src a:hover{color:#e9d5ff;border-color:#e9d5ff}
+
+.trend{margin-top:58px;padding:28px 30px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(17,24,39,.9),rgba(10,10,10,.6));
+  border:1px solid var(--line2)}
+.trend h2{font-size:19px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.trend-item{padding:15px 0;border-bottom:1px dashed var(--line)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-item h4{font-size:15px;color:#e9d5ff;margin-bottom:6px;font-weight:600}
+.trend-item p{font-size:13.5px;color:#a9b1bd;line-height:1.85}
+.trend-item b{color:#f0f2f5}
+
+footer{margin-top:46px;text-align:center;color:var(--txt3);font-size:12.5px;line-height:2}
+footer .sep{display:inline-block;width:34px;height:2px;border-radius:2px;margin:0 8px;
+  background:linear-gradient(90deg,var(--g1),var(--g3));vertical-align:middle}
+
+.anim{opacity:0;transform:translateY(26px)}
+.anim.in{opacity:1;transform:none;
+  transition:opacity .72s cubic-bezier(.2,.7,.3,1),transform .72s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d,0ms)}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px}
+  .hero{padding:44px 0 24px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .overview,.trend{padding:20px 18px}
+  .card{padding:17px 16px 14px}
+  .stat{min-width:calc(50% - 6px);padding:13px 14px}
+  .stat .n{font-size:23px}
+}
+</style></head>
+<body><div class="wrap"><header class="hero"><span class="badge"><i></i>AI SECURITY DAILY</span>
+<h1>🤖 AI 安全日报</h1>
+<div class="date"><b>2026-11-07</b> · 星期六 · 北京时间 10:00</div>
+<div class="stats"><div class="stat"><span class="n">5</span><span class="l">国际产品动态</span></div>
+<div class="stat"><span class="n">3</span><span class="l">国内产品动态</span></div>
+<div class="stat"><span class="n">8</span><span class="l">行业动态</span></div>
+<div class="stat"><span class="n">16</span><span class="l">合计条目</span></div></div></header>
+<section class="overview anim"><h2><span class="dot"></span>AI 总览</h2><p>今天最硬的一条不是产品，是监管。<b>工信部把「智能体」当成电信设备来管了</b>：预置智能体的手机、平板、可穿戴设备，进网检测里必须做智能体适配验证、必须配<b>唯一身份码</b>，OTA 升级要先交方案（含网络和数据安全措施）经专家评估才能上线，应用分发平台还要推动开发者<b>用电子签名主动声明是否同意智能体调用</b>。这份文件顺带替所有做边界设备的人回答了那个最难的问题——<b>agent 清单从哪来</b>：身份码加分发声明。</p>
+<p>产品侧八条动作，全部围绕「把判定点挪到一个可核的地方」。Sophos 把 AI 服务治理直接做进防火墙 v23 的策略表，AI 助手只<b>起草</b>规则、签发权留给人；Fortinet 的 FortiAIGate 把 <b>MCP 流量</b>也纳入集中策略并按 token 计成本；Cisco 承认自己没有 agent 清单，靠 CrowdStrike 与微软的 EDR 凑；Google 把 agent 安全态势搬进云治理控制台并支持「用 Gemini 修复」；Cloudflare 给 AI Gateway 加了<b>密钥账本</b>，把「这把 key 还在不在用」变成 90 天可查。国内三家更像在换叙事：腾讯云把沙箱、出向管控、身份凭据三件安全能力包装成「主权 AI」的运行时层，启明星辰把 Token 安全运营挂进<b>计费链路</b>，奇安信把 AI Agent 行为管控与 Prompt 留痕做进鸿蒙内核。</p>
+<p>证据侧今天给了三个很贵的教训，共性都是<b>破口在实现细节，不在模型</b>。Check Point 绕过 ChatGPT Lockdown Mode，靠的是嵌套沙箱里<b>弹窗权限没跟着收紧</b>，一个零点击弹窗就逃出沙箱；OASIS 的「Claudy Day」把 Claude 对 <b>api.anthropic.com 的白名单访问</b>直接当成外泄通道，配上 claude.com 的开放重定向和 Google Ads 只校验主机名，三段链全程只用开箱能力；Censys 更直白——<b>800 多个 Artex 攻击工具实例裸奔在公网、密码都不用</b>，而它们打进去的方式大多只是弱口令加没开 MFA。</p>
+<p>钱与平台的坐标也同向。Cloudflare CEO 在财报电话会上说 AI 引发的漏洞浪潮<b>还要持续两年</b>，CISO 在抢签大单，而企业会越来越多地买<b>一体化平台</b>而不是单点方案——这句话对只做 LLM 防火墙的产品是坏消息。另一头，标准的口径正在变：天融信承办的标准化研究项目提出对传统产品的 <b>AI 能力增量做分层定义</b>，如果进标准，「AI 能力」就会从形容词变成可打分的档位。国内基础设施侧也补上了一块：智能体身份注册与解析平台在乌镇亮相，监管的表态是治理对象从<b>内容安全、模型安全</b>转向<b>主体可信、行为可控、责任可溯</b>。</p></section>
+<section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">🏢</span>国际友商产品动态<span class="count">5 条</span></h2><div class="sec-sub">只收可追溯到具名产品的新功能、新版本、新上线；政策、报告、排名、并购、联盟、订阅模式变更均不放这里。本轮五条均能答出「哪家、哪个产品、哪个功能或版本变了」。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Sophos</span><span class="tag tag-cat">防火墙 v23 · AI 治理</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">Sophos Firewall v23 发布：把「AI 服务治理」做进防火墙，AI 助手起草规则，HA 切换从 4 秒压到 300 毫秒</h3><div class="card-body"><p>11 月 5—6 日，Sophos 发布 <b>Sophos Firewall v23</b>，同批推出 4 款 XGS 1U 新硬件、独立的 <b>Sophos NDR</b> 产品线，并把整套动作挂在其 AI 原生防御体系 <b>Sophos Fusion</b> 之下。v23 的版本级变化有四项：①与 <b>Sophos AI Defense</b> 集成，在网络层提供对 AI 服务使用的可见性、报表与<b>策略执行</b>——既能放行已批准的生成式 AI 工具，也能拦掉未批准的服务；②新增 <b>AI Assistant</b>，帮管理员读懂现有防火墙配置并<b>起草规则供人工审核</b>；③提供现代 REST API 支撑自动化（面向 IT 团队、合作伙伴与 MSP）；④硬件感知高可用把故障切换检测窗口从 <b>4 秒缩到 300 毫秒（13 倍）</b>，另加 DoH、DNSSEC、已应用 CVE 热修补的可见性。</p><p style="margin-top:9px">硬件侧四款新机 XGS 2380 / 3380 / 4580 / 5580 均为 1U，威胁防护吞吐最高 <b>59 Gbps</b>、TLS 检查吞吐最高 <b>16 Gbps</b>、3380 及以上端口速率到 <b>25 Gbps</b>，官方口径是较前代 1U 机型受保护吞吐最高提升 <b>4 倍</b>。独立 <b>Sophos NDR</b> 把行为检测、深度包检测与 IDS/IPS 合在一起，其 <b>Active Inline 模式</b>可在识别出的恶意包到达目的地之前直接丢弃——这是 NDR 从「看得见」走到「拦得住」的关键一步，配套还有 NDR 5500 硬件。</p><p style="margin-top:9px">支撑这套说法的数据来自其《2026 勒索软件状况报告》：在 <b>61%</b> 的勒索攻击事件中，防火墙在数据被加密之前就先发出了告警，并把这一早期信号共享给其他控制点；印度口径更差，60% 的受害组织数据被加密（全球 56%）。</p><p style="margin-top:9px">对我们做边界设备的人，这条的可读之处在于<b>AI 治理没有被做成一个独立产品，而是被塞进了防火墙的策略表</b>：AI 服务的放行/拦截、AI 助手起草规则、AI 流量在日志里的归类，全在同一个控制台。它同时也暴露了一个取舍——AI Assistant 只负责<b>起草</b>，签发权仍然留给人。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.itvoice.in/sophos-helps-organizations-secure-the-ai-era-network-as-demands-on-performance-and-protection-grow" target="_blank" rel="noopener">IT Voice · 官方新闻稿</a> · <a href="https://www.themasthead.in/post/sophos-helps-organizations-secure-the-ai-era-network-as-demands-on-performance-and-protection-grow" target="_blank" rel="noopener">The MastHead</a></span></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">Fortinet</span><span class="tag tag-cat">AI 护栏 · MCP 流量</span><span class="level">🔥🔥</span></div><h3 class="card-title">FortiAIGate 上到 Equinix 分布式 AI Hub：护栏开始管 MCP 流量，按 token 计成本，检查用 GPU 跑</h3><div class="card-body"><p>11 月 5 日，Fortinet 宣布 <b>FortiAIGate</b> 在 <b>Equinix Distributed AI Hub</b> 上可用，形态是「已验证参考架构」——把 AI 安全护栏直接嵌进 Equinix 的互联基础设施里。能力清单有五项：<b>双向检查 prompt 与 response</b>；对已批准的 LLM <b>与 MCP 流量</b>执行集中策略；<b>按 token 追踪 LLM 成本</b>并设预算上限与告警；把控制、管理与检查全部留在客户基础设施内、<b>数据不出环境</b>（满足数据驻留与区域治理）；借助 GPU（含 NVIDIA）承担网络层安全检查，对 AI 负载做到零性能影响。</p><p style="margin-top:9px">职责切分写得很明确：<b>FortiAIGate 管已批准的交互，FortiGate 负责发现网络上未批准的影子 AI</b>。两家此前已有 FortiGate VM on Equinix Network Edge 的合作基础。</p><p style="margin-top:9px">值得注意的是 MCP 被写进了策略对象。此前大多数「LLM 防火墙」的拦截对象是 prompt/response，而 MCP 是模型与外部工具之间的调用通道——把它纳入集中策略，等于承认<b>风险已经从「说什么」挪到了「调什么」</b>。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.morningstar.com/news/globe-newswire/9870670/fortinet-and-equinix-secure-distributed-ai-at-scale" target="_blank" rel="noopener">Morningstar · GlobeNewswire 官方稿</a> · <a href="https://www.el-fondo.com/en/news/fortinet-launches-fortiaigate-on-equinix-distributed-ai-hub" target="_blank" rel="noopener">el fondo</a></span></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">Cisco</span><span class="tag tag-cat">AI-SPM · 智能体发现</span><span class="level">🔥🔥</span></div><h3 class="card-title">Cisco Identity Intelligence 新增 AI Agent Discovery：靠别人的 EDR 把 agent 清单凑出来，目前仅限受控可用</h3><div class="card-body"><p>11 月 6 日的 Duo <b>D351 版本说明</b>里，Cisco 给 Identity Intelligence 加了一项新功能：<b>AI Agent Discovery and Security Posture</b>，让安全团队查看、评估并调查通过已接入 EDR 与被监控集成<b>发现</b>的 AI agent，并看到归属信息、发现来源与安全发现（findings）。</p><p style="margin-top:9px">当前支持的平台只有四个：<b>CrowdStrike Falcon EDR、Microsoft Defender for Endpoint、Microsoft Copilot、ChatGPT</b>。状态是 <b>controlled availability</b>（受控可用），需要联系 Support 或销售开通。</p><p style="margin-top:9px">这四个来源恰好说明了问题：Cisco 自己没有终端侧 agent 清单，得靠两家竞争对手的 EDR 和两家模型厂商的客户端来补。这与微软 Defender 扩展「本地 agent 与其 MCP 配置」发现是同一路线——<b>agent 资产表正在变成 EDR 的新战场</b>，而不是身份产品的独占能力。</p></div><div class="card-foot"><span class="src">来源：<a href="https://community.cisco.com/t5/duo-release-notes/d351-duo-release-notes-for-november-6-2026/ta-p/5586155" target="_blank" rel="noopener">Cisco Community · Duo D351 Release Notes</a></span></div></article><article class="card anim" style="--d:240ms"><div class="card-top"><span class="tag tag-vendor">Google Cloud</span><span class="tag tag-cat">AI-SPM · 控制台 GA</span><span class="level">🔥🔥</span></div><h3 class="card-title">Gemini Enterprise Agent Platform 的 Security 页转 GA：把 agent 安全态势搬进云治理控制台</h3><div class="card-body"><p>Google Cloud 的 <b>Gemini Enterprise Agent Platform</b> 在 11 月 4 日的文档与 release notes 里把 <b>Security 页转为正式可用（GA）</b>：AI 安全发现与态势管理摘要不再需要单独申请。页面聚合 AI 风险指标与合规状态，提供「按严重度分的 AI 风险」与「AI 威胁」两个组件、<b>「权限过大的 agent」</b>视图，以及按资源（agent / gateway / MCP server）拆分的风险；对 Terraform 管理的发现还提供 <b>Remediate with Gemini</b> 一键修复。</p><p style="margin-top:9px">底层由四件已有能力拼起来：Security Command Center 的 <b>AI Protection</b>、Agent Platform 的 <b>Vulnerability Assessment</b>、<b>Model Armor</b>、<b>AI Discovery</b>。</p><p style="margin-top:9px">这条与 11 月 6 日 Google Cloud Security Summit 那批发布不是同一件事：那批是模型、身份（Auth Manager GA、Agent Identity 令牌）与网络层（VPC-SC、Cloud NGFW WildFire），这条是把<b>agent 安全态势搬进治理控制台</b>，属于把散落的扫描器收进同一个账单与权限体系。买方要问的是：这些发现能不能导出到自己的 SOC，而不是只在 Google 的页面里好看。</p></div><div class="card-foot"><span class="src">来源：<a href="https://eyeon.ai/f/3509" target="_blank" rel="noopener">AI Security Intelligence · 逐项拆解</a></span></div></article><article class="card anim" style="--d:320ms"><div class="card-top"><span class="tag tag-vendor">Cloudflare</span><span class="tag tag-cat">AI Gateway · 密钥账本</span><span class="level">🔥</span></div><h3 class="card-title">AI Gateway 新增 Provider Key 活动视图：把「这把 key 还在不在用」变成可查的账</h3><div class="card-body"><p>11 月 6 日 Cloudflare 的 changelog 给 <b>AI Gateway</b> 加了一项小功能：<b>Provider Keys</b> 页面开始展示存储的厂商密钥的<b>使用活动</b>。密钥按 provider 分组，显示掩码预览、别名、最后使用时间与最后更新时间；新增的 <b>Key security</b> 区块专门挑出「记录到的活动已超过 <b>90 天</b>」的密钥，供管理员核对依赖后轮换或删除。用量追踪自 2026 年 11 月开始。</p><p style="margin-top:9px">功能很小，方向很清楚：<b>LLM 网关正在长成密钥的账本</b>。过去一年里最贵的几起 AI 相关事故——LLMJacking 打账单、302.ai 22.7TB 泄露、Railway 环境变量事件——根因都是「一把没人管的 key 还在生效」。90 天阈值是这类账本最朴素也最有效的判据。</p></div><div class="card-foot"><span class="src">来源：<a href="https://developers.cloudflare.com/changelog/post/2026-11-06-provider-key-security/" target="_blank" rel="noopener">Cloudflare Docs · Changelog 2026-11-06</a></span></div></article></div></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">🇨🇳</span>国内友商产品动态<span class="count">3 条</span></h2><div class="sec-sub">同上口径。本轮三条均可答出具体产品与具体变化；奇安信条目同时含行业奖项，卡内已标注产品层面的实质变化为天擎 V10.0 与鸿蒙内核耦合。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">腾讯云 TCE</span><span class="tag tag-cat">私有云 · 智能体运行时</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">腾讯云 TCE 发布 Full-Stack Intelligent AI Suite：agent 运行时层自带沙箱、出向管控与身份凭据，8 台服务器起交付全栈云</h3><div class="card-body"><p>11 月 6 日，腾讯云企业版（TCE）在 2026 腾讯全球数字生态大会「面向全球市场的 AI 私有云」专场发布两套方案：旗舰级 <b>Full-Stack Intelligent AI Suite</b> 与 <b>Lite Deployment</b>，同时宣布与 Gartner、Omdia 的联合研究。整套方案分<b>四层可选</b>：融合算力/存储/网络底座 → 模型服务层（<b>TokenHub</b>，私有 MaaS）→ <b>agent 运行时层</b> → agent 应用层，客户可从任一层进入并向上扩展。</p><p style="margin-top:9px">安全能力全在第三层：<b>云原生沙箱 + 出向流量控制（egress control）+ 身份凭据</b>，配合「agent 行为全审计、运行时环境分钟级开通」。TokenHub 则把算力变成可调用、可计量、可运营的 token 服务，统一推理 API、多租户隔离、<b>token 级计量下到单个用户与单个 API key</b>；内置推理加速实测单加速卡 <b>25 万 TPM</b>、缓存命中率 <b>超 90%</b>、异构芯片吞吐最高提升 <b>220%</b>。训推统一调度把异构算力利用率最高提 <b>60%</b>。</p><p style="margin-top:9px">主权口径写得很硬：数据、模型权重与推理流量<b>不出客户主权边界</b>；兼容 x86 与 ARM、多厂商加速卡，已在 <b>万卡规模</b>验证，金融级韧性 <b>RTO ≤ 2 分钟、RPO = 0</b>。Lite Deployment 则解决「多小的起步才算可信」——<b>8 台服务器</b>（3 主 + 3 块存储 + 2 网络功能节点）交付完整全栈云且不削核心 IaaS，纯 AI 入口 <b>3 台</b>起，同一架构可从单可用区扩到同城双活再到跨地域容灾。</p><p style="margin-top:9px">与 Gartner 联合发布的《A Practical Guide to Building Sovereign AI Cloud Platforms》把主权拆成数据、运营、技术三根支柱；引述的 Gartner 判断是：到 2028 年，严格的数据主权与隐私法规将迫使<b>超过 25%</b> 的受监管行业企业把主要 GenAI 负载迁回本地，而到 2029 年依赖专有基础模型会让<b>超过 50%</b> 的 GenAI 采用者被锁在单一公有云生态里。</p><p style="margin-top:9px">这条最值得记的是<b>安全被卖成了主权</b>：沙箱、出向管控、身份凭据三件本来属于安全产品的东西，在这里是「主权 AI」的技术前提。国内 AI 安全预算难批、算力预算好批，这个包装不是话术，是路径。</p></div><div class="card-foot"><span class="src">来源：<a href="https://macaubusiness.com/tencent-cloud-enterprise-unveils-full-stack-intelligent-private-cloud-for-sovereign-agentic-ai" target="_blank" rel="noopener">Macau Business · PRNewswire 官方稿</a></span></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">中国移动 × 启明星辰</span><span class="tag tag-cat">Token 安全运营</span><span class="level">🔥🔥</span></div><h3 class="card-title">中国移动联合启明星辰发布「星辰安全」统一品牌，Token 安全运营把防护挂进计费链路</h3><div class="card-body"><p>11 月 5—7 日，2026 移动网络大会（广州）期间，<b>中国移动联合启明星辰</b>正式发布网络安全统一品牌「<b>星辰安全</b>」，依托中国移动智算底座与启明星辰安全能力，以「全场景覆盖、全栈式供给、一体化运营」对外供给。同场中国移动发布 <b>磐维数据库 V4.0</b>，主打面向智能体时代的 AI 原生一体化架构（内核、数据、研产、认知、资源融合），启明星辰负责产品适配与联合创新。</p><p style="margin-top:9px">启明星辰侧的核心产品是 <b>Token 安全运营</b>：面向大模型、智能体等 AI 应用安全平台，以<b>检测、防护、计量、审计</b>四类能力为核心，解决违规内容输出、提示词注入攻击、敏感数据泄露、审计溯源缺失四类问题。官方给了三个特质——<b>原生化</b>：与中国移动 <b>MoMA 平台</b>技术融合，打通 Token 业务接入、计费与安全防护，客户不改系统、不做复杂配置，上线 AI 的同时自动获得防护；<b>智能化</b>：安全专项大小模型的<b>分级检测</b>架构，做多模态内容审核、提示注入拦截、隐私数据防护；<b>运营化</b>：不止交付工具，配套安全分析、策略编排、报告输出。</p><p style="margin-top:9px">「计量」被列进安全能力清单是这条的关键。<b>安全挂在计费链路上，意味着它不需要单独立项</b>——这和 11 月 4 日天融信把 AI 网关包装成「算力治理中枢」是同一个思路的两种写法：一个从账单进，一个从算力进。对防火墙厂商的启示是，AI 流量的识别与计量如果不在设备里，后面所有安全叙事都接不上。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.163.com/dy/article/LB4DRTTO05568W0A.html" target="_blank" rel="noopener">新浪财经 · 启明星辰集团稿</a></span></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">奇安信</span><span class="tag tag-cat">终端 · 鸿蒙适配</span><span class="level">🔥🔥</span></div><h3 class="card-title">奇安信天擎 V10.0 与鸿蒙内核深度耦合：AI Agent 行为管控 + Prompt 全程留痕进商用 PC 底座</h3><div class="card-body"><p>11 月 6 日，奇安信披露其与鸿蒙共建的<b>商用 PC 内生安全底座</b>，产品体系是「两种交付方式 + 一个入口」：<b>天擎</b>以本地部署形态提供一体化终端防护与管控，<b>V10.0 与鸿蒙内核深度耦合、杀毒引擎原生适配</b>；<b>天守</b>以 SaaS 交付，注册即用、数日上线；<b>可信浏览器</b>作为员工侧入口，统一内核 + 双核兼容，存量业务系统无需改造即可迁移。分工上，系统层由鸿蒙「星盾安全架构」原生提供设备安全、威胁防护、企业空间与数据保护，奇安信负责安全能力的工程化落地，双方联合开发安全底层框架。</p><p style="margin-top:9px">面向「一机两用」场景，方案是「一台电脑、两个空间」：企业空间独立分区、全程加密，USB、剪贴板、截屏、外发按策略管控并<b>全量留痕</b>，数据不出域、管控在端侧完成。</p><p style="margin-top:9px">AI 相关的部分给了四项：<b>影子 AI 可见、AI Agent 行为管控、敏感数据拦截、Prompt 全程留痕</b>。这四项正好对应终端侧最难的一问——agent 跑在员工机器上，边界设备看不见，只能靠端点自己记账。</p><p style="margin-top:9px">口径说明：本条同时包含「商用市场同舟奖」这一行业认可，但产品层面的实质变化是<b>天擎 V10.0 与鸿蒙内核的耦合与杀毒引擎原生适配</b>，卡内按产品动态收录。IDC 数据侧：奇安信终端安全自 2018 年起连续八年第一，信创终端安全份额接近 70%，中央政府与部委覆盖率超 80%，可信浏览器装机超 1000 万套、覆盖 26 个国家部委。</p></div><div class="card-foot"><span class="src">来源：<a href="https://m.10jqka.com.cn/20261106/c681562321.shtml" target="_blank" rel="noopener">同花顺财经</a></span></div></article></div></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">📊</span>行业动态与趋势<span class="count">8 条</span></h2><div class="sec-sub">政策法规、监管表态、漏洞与事件披露、研究报告、标准与联盟、市场数据。本轮八条均无法答出「某厂商某产品某功能变了」。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">工业和信息化部</span><span class="tag tag-cat">政策法规 · 智能体终端</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">工信部印发智能体终端进网管理通知：进网检测要做智能体适配验证、配唯一身份码，OTA 升级须报备</h3><div class="card-body"><p>11 月 6 日，工业和信息化部办公厅印发《关于加强智能体终端设备进网管理的通知》（<b>工信厅信管〔2026〕42号</b>）。文件先给了两个定义：<b>智能体</b>是具备自主感知、记忆、决策、交互与执行能力的智能系统；<b>智能体终端</b>是指预置安装智能体的手机、平板、可穿戴设备等电信终端设备。目标是「引导 AI 技术<b>为人所用、为人服务、为人所控</b>」。</p><p style="margin-top:9px">四项任务里，三条是硬约束。①<b>适配与信息披露</b>：智能体开发者须与终端做适配验证，强化权限调用、通信能力、网络与数据安全、用户权益、任务执行五方面管理；须在产品设置页公示已完成适配的终端型号与操作系统；上架应用分发平台前须提交适配验证情况。②<b>进网管理</b>：预置智能体的终端<b>必须在进网检测中依据标准开展智能体适配验证</b>，并依法做涉诈风险安全评估与反诈能力前置性评测；终端上使用的智能体<b>应参考智能体互联系列国家标准配备唯一身份码</b>；获证前后须保持一致，发生重大变化须报备并重新检测。③<b>OTA 现网升级</b>：须提交升级方案，写清时间、规模、用户群体、业务场景、服务内容、经营模式、<b>网络和数据安全措施</b>、反电信网络诈骗措施；升级后提交报告，经工信部组织专家评估、征求意见后方可正式向用户提供服务。</p><p style="margin-top:9px">④<b>分发管理</b>：应用分发平台应推动开发者<b>通过电子签名主动声明是否同意智能体调用</b>，未经声明同意的，智能体不得强制调用调取应用；分发页须公示适配验证列表，不得向用户提供不兼容机型的下载安装；对未完成适配的智能体限期整改、下架。</p><p style="margin-top:9px">专家判断是短期小幅抬升研发与量产成本，长期淘汰粗制滥造与存在安全隐患的低端产品。真正值得盯的是<b>「唯一身份码 + 电子签名声明」这两件事合起来的效果</b>：智能体第一次有了可核验的标识和可查询的调用授权。对做边界设备的人来说，这等于监管替我们回答了那个最难的问题——<b>agent 清单从哪来</b>。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.rmzxw.com.cn/c/2026-11-06/4002406.shtml" target="_blank" rel="noopener">人民政协网 · 通知全文</a> · <a href="https://www.financialnews.com.cn/2026-11/06/content_460407.html" target="_blank" rel="noopener">中国金融新闻网 · 中新社</a> · <a href="https://news.qq.com/rain/a/20261107A03VKN00" target="_blank" rel="noopener">腾讯新闻 · 21 世纪经济报道</a></span></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">Check Point Research</span><span class="tag tag-cat">漏洞披露 · 护栏绕过</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">ChatGPT Lockdown Mode 被绕过：嵌套沙箱的弹窗能逃出沙箱，实现零点击静默外泄</h3><div class="card-body"><p>11 月 5—6 日，Check Point Research（CPR）公开了 OpenAI <b>Lockdown Mode</b> 的一个绕过。该模式 2026 年 6 月上线，是可选的加固项：开启后限制外连、关闭或限制实时浏览、Deep Research、Agent Mode 与文件下载，目的是降低提示注入导致的敏感数据外泄。OpenAI 已在<b>服务端修复</b>。</p><p style="margin-top:9px">破口在<b>代码块里的 HTML 页面预览</b>。OpenAI 原本做对了大部分事：把渲染内容放进沙箱，阻止它直读 ChatGPT 的 cookie 与 localStorage，任何外连都要用户批准。但<b>弹窗被单独处理</b>——HTML 预览使用<b>嵌套沙箱 frame</b>，ChatGPT 拦住了直接开新窗口的尝试，可底层沙箱权限<b>仍然允许弹窗，并允许弹窗逃出沙箱</b>。攻击者在渲染页里再套一层 frame，就拿到了未被修改的 popup 函数，绕过原预览的全部限制；弹窗里的内容不再受沙箱规则约束。</p><p style="margin-top:9px">影响不止数据外泄：可做凭据窃取、恶意软件投递，也能变成钓鱼机器——因为弹窗内容完全可控，而它出现在用户本来就信任的环境里。最危险的是<b>零点击</b>：不需要任何用户手势，弹窗自己就弹出来。</p><p style="margin-top:9px">CPR 的结论值得抄进任何一份 AI 安全方案：<b>「AI 安全控制只和它周围的应用环境一样强」</b>，要看的不只是模型，还有应用、运行时、连接器。这条与本周另外两件事指向同一处——11 月 6 日 Cymulate 的 AGENTS.md / hooks 攻击链、Acronis 的 BOSSAI——<b>护栏的破口几乎从不在模型里，都在实现细节里</b>。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.techradar.com/pro/security/ai-security-controls-are-only-as-strong-as-the-wider-application-environment-around-them-openai-forced-to-patch-after-experts-bypass-chatgpt-lockdown-mode-to-gain-access-to-entire-chat-history" target="_blank" rel="noopener">TechRadar</a> · <a href="https://blog.redsidesecurity.com/post/chatgpt-lockdown-mode-bypassed-researchers-demonstrate-silent-chat-exfiltration" target="_blank" rel="noopener">RedSide Security</a></span></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">Censys</span><span class="tag tag-cat">威胁情报 · 配置暴露</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">800 多个 Artex 实例裸奔在公网、密码都不用：攻击工具自己也会配置错误</h3><div class="card-body"><p>11 月 6—7 日，Censys 披露其扫描结果：互联网上存在 <b>800 多个可从网络访问、且无需密码登录</b>的 <b>Artex</b> 独立部署实例。Artex 是一款开源的自主渗透测试工具，2026 年 7 月公开发布，任何人都能免费下载并跑在自己的服务器上——这让它成了接触不到 OpenAI / Anthropic 最强网络模型的人的首选。微软对它的描述是：一套能执行「从侦察到数据窃取」的 AI 智能体系统，<b>几乎不需要人工介入</b>。</p><p style="margin-top:9px">Censys 首席安全研究员 Silas Cutler 的判断比较克制：并非每个实例都被恶意运营，很多是授权测试人员在用；但<b>软件本身并不要求公网可达</b>，数百个实例为何暴露在互联网上目前不清楚。暴露的代价是双向的——外部人可能借这些系统打别人，可公开访问的系统也会<b>泄露攻击工具本身</b>，比如用于维持持久访问的植入程序。</p><p style="margin-top:9px">已关联的攻击不少：9 月针对韩国金融业的攻击，CrowdStrike 归因于一名中文黑客，其在攻击中使用了一个 Artex 实例，部分原因是留下了一个托管该系统的「开放目录」；Censys 称该实例已公开暴露数月，且包含更多攻击数据，范围「<b>远远超出韩国银行</b>」，还涉及支付与游戏公司。10 月 IT 支持巨头 ConnectWise 遭到的攻击中也用到了 Artex，与中国关联的黑客借此窥探数千家组织，数据与文件托管在微软云上，微软称黑客闯入客户云环境并窃取数据的速度快到防御方「<b>几乎没有时间检测和响应</b>」。</p><p style="margin-top:9px">这些攻击的入口大多不是什么高级手法：<b>猜出弱口令或已知口令、缺少多因素认证</b>。这条新闻的价值不在「AI 黑客多可怕」，而在于它把一件事讲透了——<b>攻击者的工具链和防守方的资产表一样烂</b>，暴露面管理这件事对双方都是基本功。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.163.com/dy/article/LB3NDOC305561FZU_pdya11y.html" target="_blank" rel="noopener">网易 · 综合报道</a></span></div></article><article class="card anim" style="--d:240ms"><div class="card-top"><span class="tag tag-vendor">OASIS Security</span><span class="tag tag-cat">漏洞披露 · 平台链式攻击</span><span class="level">🔥🔥</span></div><h3 class="card-title">「Claudy Day」：URL 参数隐形注入 + api.anthropic.com 白名单 + claude.com 开放重定向，三段链静默搬走全部会话</h3><div class="card-body"><p>11 月 6—7 日，安全研究机构 <b>OASIS Security</b> 公开了 Anthropic <b>Claude.ai</b> 上的一条三段式攻击链，可在无任何可见告警、无需用户确认的情况下静默取走历史会话数据。截至披露，Anthropic 尚未公开回应补丁时间表。</p><p style="margin-top:9px">第一段是<b>URL 参数隐形注入</b>：Claude.ai 支持 claude.ai/new?q=... 预填 prompt，研究发现在这些参数里嵌入的 HTML 标签在用户看到的输入框里<b>不可见</b>，但按回车后 Claude 会完整处理——用户以为自己只提交了屏幕上那句话，实际收到的是可见 prompt 加一段隐藏指令。</p><p style="margin-top:9px">第二段是<b>把沙箱白名单武器化</b>：Claude 的代码执行环境限制大部分外连，但为维持正常运行，<b>显式允许连 api.anthropic.com</b>。攻击者把自控的 API key 嵌进隐藏指令，让 Claude 检索该用户全部历史会话、自动摘要、写入文件，再用 Files API 上传到攻击者的 Anthropic 账号。全程只用开箱能力，不需要任何自定义集成、MCP server 或专门工具。</p><p style="margin-top:9px">第三段是<b>投递</b>：主域 claude.com 上的 <b>/redirect/ 开放重定向</b>不校验目标，可跳到任意第三方域；而 Google Ads 只校验 URL 主机名、不检查最终落地页。两者一叠加，一条显示 claude.com 的搜索广告就能把受害者静默送到恶意注入 URL——投递方式从钓鱼邮件升级成了「看起来完全正常的搜索结果」。</p><p style="margin-top:9px">三段里有两段是常规 Web 漏洞（开放重定向、参数注入），一段是架构问题：<b>模型对自己厂商 API 的白名单访问，天然就是一条外泄通道</b>。这不是 Anthropic 独有的问题——任何给模型开内部 API 特权、同时限制外连的 agent 平台，都继承同一个结构性风险：沙箱的安全上限，等于白名单里那些信任假设的安全下限。</p></div><div class="card-foot"><span class="src">来源：<a href="https://theagenttimes.com/agents/article/silent-data-exfiltration-chain-in-claude-ai-exposes-critical-35d7526e" target="_blank" rel="noopener">The Agent Times · 引 TechRadar / OASIS 披露</a></span></div></article><article class="card anim" style="--d:320ms"><div class="card-top"><span class="tag tag-vendor">Cloudflare</span><span class="tag tag-cat">行业联盟 · 智能体身份</span><span class="level">🔥🔥</span></div><h3 class="card-title">Cloudflare 发起 Trusted Agent Delegation 联盟：把 agent 身份拆成「权限、验证、归属」三层，并承认自己只覆盖了一部分</h3><div class="card-body"><p>11 月 5 日，Cloudflare 宣布成立 <b>Trusted Agent Delegation（TAD）</b>联盟。它<b>不是</b>技术标准本身——官方口径是把生态代表聚到一起审视现有协议，把定义清楚的问题提交 IETF。TAD 站点写明的核心张力是：站点需要足够上下文来识别并服务用户、同时保证可追责，而用户只应共享本次交互需要的信息、不能被跨站追踪。</p><p style="margin-top:9px">Cloudflare 把 agent 身份拆成三个<b>不能互换</b>的层，这是本条最有用的部分：①<b>访问权限</b>——站点策略（Search / Agent / Training 三类行为）决定放不放行，可对头部 Personal Agents 单独设策略，其余默认继承通用 Agent 策略，已认证与未认证 bot 都适用；②<b>agent / operator 验证</b>——<b>Web Bot Auth</b> 用密码学签名证明 agent 或 operator 的身份，<b>但它只证明工具，不证明人</b>；③<b>用户 / 账户归属</b>——<b>Account Abuse Protection</b>（Early Access）在识别到助手发起登录或注册时，把它记到一个按 zone 区分的 Hashed User ID 上，因此只能处置单个账户、不能一刀切封掉整个 agent。</p><p style="margin-top:9px">Cloudflare 自己把边界写明了：<b>Agent 策略放行不等于已验证的用户行为，那是推断，不是技术确定性</b>；Security Analytics 能把 Personal Assistants 作为单独类别看请求数、路径与错误，但同样不建立终端用户身份；多中间商场景（agent 经过多个服务）目前<b>仍未定义</b>。TAD 待解的还有撤销、跨 operator 迁移、最小数据披露、争议动作追溯。</p><p style="margin-top:9px">一个敢说「我的控制只覆盖哪一段」的厂商公告，比十份「端到端可信」的白皮书有用。这也是本周的隐性主线：微软按任务发权限、Google 给 agent 发令牌、Cisco 靠 EDR 凑 agent 清单、Cloudflare 拆三层身份——<b>没有人再假装有一个统一解</b>。</p></div><div class="card-foot"><span class="src">来源：<a href="https://tech.yahoo.com/cybersecurity/articles/cloudflare-frames-agent-identity-governance-155815743.html" target="_blank" rel="noopener">Yahoo Tech · 控制映射分析</a> · <a href="https://siexpo.bg/en/article/cloudflare-trusted-agent-delegation-coalition-2026" target="_blank" rel="noopener">SIExpo · 联盟口径与未决项</a></span></div></article><article class="card anim" style="--d:400ms"><div class="card-top"><span class="tag tag-vendor">Cloudflare</span><span class="tag tag-cat">市场判断 · 财报口径</span><span class="level">🔥🔥</span></div><h3 class="card-title">Cloudflare CEO：AI 引发的漏洞浪潮还要持续两年，CISO 在抢签大单，采购单位正在变成「一体化平台」</h3><div class="card-body"><p>11 月 5 日（美东）Cloudflare 第三季度财报电话会上，CEO <b>Matthew Prince</b> 给了两个判断。第一：「<b>预计未来两年，严重的网络安全威胁将持续出现</b>」——AI 正在挖出传统软件里隐藏的漏洞，导致新的安全威胁接连出现，最近一段时间已有 <b>6 个严重漏洞</b>被公开披露。第二：CISO 们对接连出现的漏洞披露感到担忧，<b>包括金融机构在内的众多企业正在签订大规模安全服务合同</b>来应对风险。</p><p style="margin-top:9px">配套动作是提前拿情报：Cloudflare 已与多家主要 AI 研究机构和网络安全公司建立合作，<b>提前获取尚未公开的漏洞信息</b>，据此提前保护客户。</p><p style="margin-top:9px">最值得记的是采购口径的变化：Prince 明确说，越来越多企业将选择<b>一体化平台</b>，而不是单独采购各种安全解决方案。这与 Sophos 把 AI 服务治理做进防火墙 v23、Fortinet 把护栏挂进 AI Hub 是同一件事的两面——<b>买方不再按「功能点」买，卖方就必须按「平台」卖</b>。对单点产品（包括只做 LLM 防火墙的产品）来说，这是个坏消息：要么成为平台上的一个策略表，要么被平台吞掉。</p></div><div class="card-foot"><span class="src">来源：<a href="https://news.qq.com/rain/a/20261106A08PG500" target="_blank" rel="noopener">腾讯新闻 · IT之家</a></span></div></article><article class="card anim" style="--d:480ms"><div class="card-top"><span class="tag tag-vendor">中国信通院 / 中央网信办</span><span class="tag tag-cat">基础设施 · 智能体身份</span><span class="level">🔥🔥</span></div><h3 class="card-title">智能体身份注册与解析平台在乌镇亮相：先解决「认得出」，再谈「信得过」</h3><div class="card-body"><p>11 月 4 日，2026 世界互联网大会乌镇峰会「智能体互信互联互操作全球合作创新」论坛上，<b>智能体身份注册与解析平台</b>对外亮相。该平台由国家层面共同建设，重点处理<b>身份编码、跨域解析、可信互通</b>三件事，上层再叠加运营平台承载 agent 接入与能力发布；平台仍在建设中。智能体互操作试点已连通多个运营平台与服务商。</p><p style="margin-top:9px">蚂蚁是首批参与者：已把 agent 协作基础设施接入运营平台，支付宝政务智能体、芝麻信用等早期服务已完成与其他平台 agent 的可信链路。蚂蚁集团副总裁、支付宝及大安全事业群 CTO 陈亮称 agent 时代需要「把身份、授权与责任建进每一次连接」的信任基础设施，并提到 <b>APASS</b> 统一身份账户与和 20 多家伙伴共建的 <b>ASL 协议</b>。</p><p style="margin-top:9px">监管侧的表态把治理对象的迁移讲得最清楚。中央网信办副主任<b>王京涛</b>：应健全智能体身份标识、可信互联、授权管理、合规运行等基础制度，推动网络空间治理<b>从内容安全、模型安全向主体可信、行为可控、责任可溯拓展</b>。中央网信办数据与技术保障中心副主任<b>薄兆一</b>：网络不仅要解决「连得通」，还要解决「<b>认得出</b>」「<b>信得过</b>」。中国工程院院士<b>邬贺铨</b>：智能体会自学习演变、会穿透调用其他智能体，责任认定存在难题，需要事前校验、事中行为审计、事后溯源取证，还要搭智能体态势感知平台。</p><p style="margin-top:9px">与 11 月 5 日已推的《智能体发展自律公约》区分一下：那份是 <b>20 家单位签的自律文件</b>（八条措施，含前瞻性风险评估、运行监测、行为管控、异常熔断四层技术体系），本条是<b>同期同论坛上线的身份基础设施</b>。一个立规矩，一个铺底座，不是同一件事。</p></div><div class="card-foot"><span class="src">来源：<a href="https://pandaily.com/wuzhen-ai-agent-identity-registration-resolution-platform-self-discipline-convention" target="_blank" rel="noopener">Pandaily · 英文报道</a> · <a href="http://www.senn.com.cn/ydhl/2026/11/06/25373.html" target="_blank" rel="noopener">中国证券报 · 南方企业新闻网</a></span></div></article><article class="card anim" style="--d:560ms"><div class="card-top"><span class="tag tag-vendor">天融信 / 标准研究</span><span class="tag tag-cat">标准 · 产品 AI 能力分层</span><span class="level">🔥🔥</span></div><h3 class="card-title">「面向AI的网络安全标准化研究项目」研讨会在天融信召开：首次对传统安全产品的 AI 能力增量做分层定义</h3><div class="card-body"><p>11 月 6 日，「面向 AI 的网络安全标准化研究项目」专家研讨会在天融信召开。研究报告梳理了 AI 对攻击模式与网络业务的影响及国内外标准化进展，提出面向 AI 的<b>云网端协同防护体系</b>，并对传统网络安全产品的 <b>AI 能力增量做了分层定义</b>，按云网端梳理产品演进方向，提出<b>分阶段制修订网络安全产品标准</b>的建议。</p><p style="margin-top:9px">专家组的修改意见指向四个方向：<b>人工智能核心供应链安全</b>、<b>AI 全生命周期安全</b>、标准在<b>关基行业与典型业务场景</b>中的落地应用，以及<b>「用 AI 治理 AI」</b>。天融信作为报告核心编制单位，以 AI 安全防护、AI 赋能安全、AI 安全运营、AI 基础设施建设四个方向的实践提供支撑。</p><p style="margin-top:9px">「对传统产品的 AI 能力增量做分层定义」这句话是整条的关键：它意味着标准的口径不再是「你是不是 AI 安全产品」，而是<b>在原有产品上加了哪一档 AI 能力</b>。如果这套分层最终进标准，招投标里的「AI 能力」就会从形容词变成可打分的档位——对做防火墙的人，这是比任何一次产品发布都更重要的事。</p><p style="margin-top:9px">口径说明：本条与 11 月 3—4 日已推的天融信乌镇产品发布（三域联防框架、8 款产品与服务、大模型安全网关首张围栏增强级证书）不是同一件事，本条是<b>标准研究项目的研讨会</b>，属行业动态。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.topsec.com.cn/newsx/6970" target="_blank" rel="noopener">天融信官网</a> · <a href="https://news.10jqka.com.cn/20261106/c681534153.shtml" target="_blank" rel="noopener">同花顺财经</a></span></div></article></div></section>
+<section class="trend anim"><h2><span class="sec-icon">🧭</span>趋势判断 · 精简版</h2><div class="trend-item"><h4>一、监管第一次把「智能体」当成设备来管，而不是当成内容来管</h4><p>工信部这份通知的四个抓手——进网检测里的适配验证、唯一身份码、OTA 方案报备、分发平台的电子签名同意——<b>没有一个落在「模型说了什么」上</b>，全部落在「这个 agent 是谁、被允许调什么、改了之后谁批准」。这与网信办在乌镇的表态完全一致：治理从内容安全、模型安全，转向主体可信、行为可控、责任可溯。<b>对企业的影响是合规动作变了</b>：过去交一份内容安全评估，现在要交身份编码、适配清单和升级方案。</p></div><div class="trend-item"><h4>二、护栏的破口几乎从不在模型里，都在实现细节里</h4><p>今天三条证据全部指向同一处：ChatGPT Lockdown Mode 的漏洞是<b>嵌套沙箱里的弹窗权限没跟着收紧</b>；Claude.ai 的三段链把<b>厂商 API 白名单</b>当成外泄通道，再配一个开放重定向；前一天 Cymulate 的两条链靠的是 AGENTS.md、hooks 配置与可执行文件名解析顺序。<b>没有一条是「模型被骗了」</b>，全是「模型周围那圈代码没写对」。Check Point 那句话可以直接当结论用：AI 安全控制只和它周围的应用环境一样强。<b>防守方要审的是运行时、连接器、沙箱参数，不是提示词。</b></p></div><div class="trend-item"><h4>三、攻击工具的配置错误，比攻击本身更好用</h4><p>800 多个 Artex 实例无密码暴露在公网，这件事的荒诞之处在于：<b>它们本身就是用来找别人配置错误的工具</b>。而这些实例参与的几起真实攻击（韩国金融业、ConnectWise），入口大多是弱口令与缺失的 MFA。<b>结论不是「AI 黑客多可怕」，而是暴露面管理对攻守双方都是基本功</b>——攻击者也会留下「开放目录」，也会忘记加密码。威胁情报如果只看攻击能力不看攻击者的运维水平，就会系统性高估风险。</p></div><div class="trend-item"><h4>四、产品的卖点从「防住」换成「账算得清」</h4><p>今天八条产品动态里，有四条的核心动作是<b>记账</b>：FortiAIGate 按 token 计成本并设预算上限；Cloudflare 的 AI Gateway 把密钥的最后使用时间做成 90 天预警；启明星辰的 Token 安全运营把「计量」写进安全能力清单，并与移动 MoMA 打通计费；腾讯云 TokenHub 把 token 计量下到单个 API key。<b>安全能力正在往账单旁边站</b>——因为账单好批，安全预算难批。这个趋势对防火墙厂商的直接要求是：AI 流量的识别与计量必须长在设备里，否则后面所有叙事都接不上。</p></div><div class="trend-item"><h4>五、钱在往平台走，标准在往档位走</h4><p>Cloudflare CEO 说企业将越来越多选择<b>一体化平台</b>而非单点方案，同时 CISO 在抢签大单、漏洞浪潮还要两年——买方在收缩供应商数量，卖方就必须扩品类。<b>对只做单点 AI 安全的产品，出路只有两条：成为平台上的一个策略表，或者被平台吞掉。</b>另一头，天融信承办的标准化研究项目提出对传统产品的 AI 能力增量<b>做分层定义</b>，这意味着「AI 能力」正在从宣传词变成可打分的档位。两件事合起来：<b>未来两年 AI 安全的竞争不在「谁防得住」，在「谁在平台里、谁在标准里」。</b></p></div></section>
+<footer>AI 安全日报 · 2026-11-07<br><span class="sep"></span>数据来源：厂商官方博客 / 新闻稿 / 监管与标准机构 / 行业媒体<span class="sep"></span><br>分类口径：产品动态 = 某厂商某具名产品的某功能或版本发生变化；其余归行业动态。</footer>
+</div><script>
+(function(){
+  var els = document.querySelectorAll('.anim, .card, .trend-item');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script></body></html>
