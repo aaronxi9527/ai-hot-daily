@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 安全情报周报 · AI SECURITY WEEKLY · 2026-W45</title>
+<style>
+:root{
+  --bg:#0B0E14; --surface:#121722; --surface2:#181F2C; --line:#232B3C;
+  --text:#E6EAF2; --dim:#8B95A8; --dim2:#5F6B80;
+  --blue:#4D7CFE; --red:#F2554D; --amber:#F5A524; --green:#2DBE8D; --purple:#9B6DFF; --cyan:#25C2D8;
+  --r:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text); line-height:1.72;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:15px; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue);text-decoration:none}
+.wrap{display:flex;max-width:1400px;margin:0 auto}
+/* 左侧导航 */
+.side{
+  width:220px;flex:0 0 220px;position:sticky;top:0;height:100vh;
+  padding:32px 0 32px 24px;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:2px;overflow-y:auto;
+}
+.side-t{font-size:11px;letter-spacing:.14em;color:var(--dim2);margin-bottom:14px;text-transform:uppercase}
+.side a{
+  color:var(--dim);font-size:13.5px;padding:7px 10px;border-radius:7px;border-left:2px solid transparent;
+  transition:.15s;display:block
+}
+.side a:hover{color:var(--text);background:var(--surface2)}
+.side a.on{color:var(--blue);background:#4D7CFE14;border-left-color:var(--blue)}
+.side .badge{margin-top:auto;font-size:11px;color:var(--dim2);padding:12px 10px;border-top:1px solid var(--line);line-height:1.6}
+/* 主体 */
+.main{flex:1;min-width:0;padding:0 44px 100px}
+.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);margin-bottom:44px}
+.hero .kicker{font-size:12px;letter-spacing:.2em;color:var(--blue);margin-bottom:18px}
+.hero h1{font-size:42px;line-height:1.22;letter-spacing:-1.2px;font-weight:800;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lead{color:var(--dim);font-size:15.5px;max-width:820px}
+.hero .meta{margin-top:22px;font-size:12.5px;color:var(--dim2);display:flex;gap:22px;flex-wrap:wrap}
+.hero .meta b{color:var(--dim);font-weight:600}
+/* 章节 */
+section{margin-bottom:64px;scroll-margin-top:24px}
+h2.sec{
+  font-size:25px;font-weight:700;letter-spacing:-.4px;margin-bottom:8px;
+  display:flex;align-items:baseline;gap:12px
+}
+h2.sec .no{
+  font-size:13px;color:var(--blue);font-weight:700;letter-spacing:.08em;
+  padding:2px 8px;border:1px solid #4D7CFE44;border-radius:5px;background:#4D7CFE12
+}
+.sec-sub{color:var(--dim);font-size:14px;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+h3{font-size:17px;font-weight:650;margin:32px 0 14px;color:#fff}
+h3 .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-right:9px;vertical-align:3px}
+h4{font-size:14.5px;font-weight:650;margin:20px 0 8px;color:#D8DEEA}
+p{margin-bottom:14px;color:#C9D1E0}
+p b,li b{color:#fff;font-weight:650}
+p .hl{color:var(--amber);font-weight:650}
+.dim{color:var(--dim)}
+/* 卡片 */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.grid.g3{grid-template-columns:repeat(3,1fr)}
+.grid.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.card .ck{font-size:11px;letter-spacing:.1em;color:var(--dim2);margin-bottom:8px}
+.card .cv{font-size:27px;font-weight:800;letter-spacing:-.5px;line-height:1.1}
+.card .cv small{font-size:13px;font-weight:500;color:var(--dim);margin-left:4px;letter-spacing:0}
+.card .cd{font-size:12.5px;color:var(--dim);margin-top:6px}
+.card.red .cv{color:var(--red)} .card.blue .cv{color:var(--blue)}
+.card.amber .cv{color:var(--amber)} .card.green .cv{color:var(--green)}
+.card.purple .cv{color:var(--purple)}
+/* 表格 */
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+th{
+  text-align:left;padding:10px 12px;font-size:11.5px;letter-spacing:.06em;color:var(--dim2);
+  border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap
+}
+td{padding:11px 12px;border-bottom:1px solid #1B2231;vertical-align:top;color:#C2CBDC}
+tr:hover td{background:#161D29}
+td.k{color:#fff;font-weight:600;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;color:#fff;font-weight:600}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:4px;font-weight:600;white-space:nowrap}
+.t-red{background:#F2554D1A;color:#FF8078;border:1px solid #F2554D33}
+.t-blue{background:#4D7CFE1A;color:#7EA0FF;border:1px solid #4D7CFE33}
+.t-amber{background:#F5A5241A;color:#FFC55C;border:1px solid #F5A52433}
+.t-green{background:#2DBE8D1A;color:#4FD9A8;border:1px solid #2DBE8D33}
+.t-purple{background:#9B6DFF1A;color:#B693FF;border:1px solid #9B6DFF33}
+.t-gray{background:#8B95A814;color:#9AA5B8;border:1px solid #8B95A82B}
+/* 条形图 */
+.bars{margin:20px 0}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:9px;font-size:13px}
+.bar .lb{width:96px;flex:0 0 96px;color:#D5DCEA;text-align:right;font-weight:600}
+.bar .tr{flex:1;height:22px;background:#161D29;border-radius:4px;overflow:hidden;position:relative;display:flex}
+.bar .fl{height:100%;border-radius:4px 0 0 4px;transition:.3s}
+.bar .fl.a{background:linear-gradient(90deg,#4D7CFE,#6E93FF)}
+.bar .fl.b{background:linear-gradient(90deg,#9B6DFF,#B693FF)}
+.bar .fl.c{background:linear-gradient(90deg,#F5A524,#FFC55C)}
+.bar .fl.d{background:linear-gradient(90deg,#2DBE8D,#4FD9A8)}
+.bar .fl.e{background:linear-gradient(90deg,#F2554D,#FF8078)}
+.bar .vl{width:44px;flex:0 0 44px;text-align:right;color:#fff;font-weight:700;font-variant-numeric:tabular-nums;font-size:12.5px}
+/* 堆叠 */
+.stack{display:flex;height:20px;border-radius:4px;overflow:hidden;background:#161D29;flex:1}
+.stack span{height:100%;display:block}
+.lg{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--dim);margin:14px 0 0}
+.lg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+/* 时间线 */
+.tl{position:relative;padding-left:26px;margin:22px 0}
+.tl:before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl .ev{position:relative;margin-bottom:18px}
+.tl .ev:before{
+  content:'';position:absolute;left:-24px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--blue)
+}
+.tl .ev.warn:before{border-color:var(--red)}
+.tl .ev.ok:before{border-color:var(--green)}
+.tl .d{font-size:11.5px;color:var(--dim2);letter-spacing:.04em;margin-bottom:2px}
+.tl .h{font-size:14px;color:#fff;font-weight:600;margin-bottom:3px}
+.tl .b{font-size:13px;color:var(--dim);line-height:1.65}
+/* 引述块 */
+.quote{
+  background:linear-gradient(90deg,#4D7CFE10,transparent);border-left:2px solid var(--blue);
+  padding:14px 18px;margin:18px 0;border-radius:0 8px 8px 0;font-size:13.8px;color:#C9D1E0
+}
+.quote b{color:#fff}
+.callout{
+  background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--amber);
+  border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0;font-size:13.8px
+}
+.note{font-size:12.5px;color:var(--dim2);margin-top:10px;line-height:1.65}
+/* 结论列表 */
+.find{display:grid;gap:12px;margin:22px 0}
+.find .it{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.find .n{
+  flex:0 0 26px;height:26px;border-radius:6px;background:#4D7CFE1A;color:var(--blue);
+  font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px
+}
+.find .tx{font-size:13.8px;color:#C9D1E0;line-height:1.7}
+.find .tx b{color:#fff}
+/* 能力矩阵 */
+.matrix{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;margin:20px 0}
+.matrix th{position:sticky;top:0;background:#0E1420;z-index:2}
+.matrix td,.matrix th{padding:9px 10px;border-bottom:1px solid #1B2231;text-align:center}
+.matrix td:first-child,.matrix th:first-child{text-align:left;color:#fff;font-weight:600;white-space:nowrap}
+.matrix .y{color:var(--green);font-weight:700}
+.matrix .n{color:#3A4356}
+.matrix .p{color:var(--amber);font-weight:700}
+/* 页脚 */
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:12.5px;color:var(--dim2);line-height:1.9}
+@media (max-width:1100px){
+  .side{display:none} .main{padding:0 20px 60px}
+  .grid,.grid.g3,.grid.g4{grid-template-columns:1fr}
+  .hero h1{font-size:30px}
+}
+
+
+/* 主题色覆盖 */
+.side a.on{color:#9B6DFF;background:#9B6DFF14;border-left-color:#9B6DFF}
+h2.sec .no{color:#9B6DFF;border:1px solid #9B6DFF44;background:#9B6DFF12}
+h3 .dot{background:#9B6DFF}
+.quote{background:linear-gradient(90deg,#9B6DFF14,transparent);border-left:2px solid #9B6DFF}
+.find .n{background:#9B6DFF14;color:#9B6DFF}
+.tl .ev:before{border-color:#9B6DFF}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="side">
+  <div class="side-t">目录</div>
+  <a href="#top" class="on">封面</a>
+  <a href="#s1">区间概览</a>
+  <a href="#s2">声量与结构</a>
+  <a href="#s3">产品与动作</a>
+  <a href="#s4">对 NF 判断</a>
+  <div class="badge">
+    自动生成
+  </div>
+</nav>
+<main class="main" id="top">
+<header class="hero">
+  <div class="kicker">AI SECURITY WEEKLY · 2026-W45</div>
+  <h1>AI 安全情报周报</h1>
+  <p class="lead">一周 22 条资本动作把 AI 安全估值锚抬到 50 倍 ARR；真正的失陷主路径仍是凭据与配置，不是模型越狱。</p>
+  <div class="meta">
+    <span>区间 <b>2026-11-02~11-08</b></span>
+    <span>条目 <b>110</b></span>
+    <span>周期 <b>周报</b></span>
+    <span>覆盖 <b>7/7 天</b></span>
+  </div>
+</header>
+<section id="s1">
+  <h2 class="sec"><span class="no">01</span>区间概览</h2>
+  <div class="sec-sub">2026-11-02 ~ 2026-11-08，7 天满覆盖，无断档。本期是乌镇峰会周 + 三家美股财报周 + 中国监管密集落地周，信息密度为近期最高。</div>
+
+  <div class="grid g4">
+    <div class="card purple"><div class="ck">条目总数</div><div class="cv">110</div><div class="cd">7 天平均 15.7 条/日</div></div>
+    <div class="card green"><div class="ck">覆盖天数</div><div class="cv">7/7</div><div class="cd">覆盖率 100%，无缺期</div></div>
+    <div class="card amber"><div class="ck">产品发布</div><div class="cv">60</div><div class="cd">占全部动作标签 22.7%</div></div>
+    <div class="card red"><div class="ck">资本动作</div><div class="cv">22</div><div class="cd">占 8.3%，同比为近期峰值</div></div>
+  </div>
+
+  <p>日分布 <b>19 / 14 / 12 / 14 / 18 / 16 / 17</b>（11-02 起），110 条无一天低于 12 条。11-02 的 19 条高点由乌镇峰会开幕、奇安信三季报、Gartner 支出预测、华为 IDC 份额四条主线同日叠加形成。</p>
+
+  <p>口径说明：<b>110 条条目产生 264 个动作标签、179 个 AI 安全品类标签</b>（单条可多标），下文占比分别以 264 和 179 为分母。</p>
+
+  <div class="callout">
+    <b>数据完整性</b>：条目 110 条、覆盖 7 天、覆盖率 <b>100%</b>，本期无断档，全部结论可直接引用。行业分布仅 2 条（教育 1、运营商 1）——<b>AI 安全的需求侧尚未按行业形成可统计的采购结构</b>，这本身是一个结论：这门生意目前卖的是「平台与订阅」，不是「行业解决方案」。
+  </div>
+</section>
+
+<section id="s2">
+  <h2 class="sec"><span class="no">02</span>竞品声量与动作结构</h2>
+  <div class="sec-sub">前六名全部是美系厂商，且前四名的声量几乎均等——这是典型的「标准未定、人人争定义权」的早期市场形态。</div>
+
+  <h3><span class="dot"></span>厂商声量（事件口径，前 10）</h3>
+  <div class="bars">
+    <div class="bar"><span class="lb">OpenAI</span><span class="tr"><span class="fl b" style="width:100%"></span></span><span class="vl">14</span></div>
+    <div class="bar"><span class="lb">Google</span><span class="tr"><span class="fl b" style="width:93%"></span></span><span class="vl">13</span></div>
+    <div class="bar"><span class="lb">Anthropic</span><span class="tr"><span class="fl b" style="width:93%"></span></span><span class="vl">13</span></div>
+    <div class="bar"><span class="lb">Microsoft</span><span class="tr"><span class="fl b" style="width:86%"></span></span><span class="vl">12</span></div>
+    <div class="bar"><span class="lb">CrowdStrike</span><span class="tr"><span class="fl a" style="width:71%"></span></span><span class="vl">10</span></div>
+    <div class="bar"><span class="lb">Cloudflare</span><span class="tr"><span class="fl a" style="width:50%"></span></span><span class="vl">7</span></div>
+    <div class="bar"><span class="lb">AWS</span><span class="tr"><span class="fl a" style="width:43%"></span></span><span class="vl">6</span></div>
+    <div class="bar"><span class="lb">天融信</span><span class="tr"><span class="fl c" style="width:36%"></span></span><span class="vl">5</span></div>
+    <div class="bar"><span class="lb">奇安信</span><span class="tr"><span class="fl c" style="width:29%"></span></span><span class="vl">4</span></div>
+    <div class="bar"><span class="lb">Palo Alto</span><span class="tr"><span class="fl c" style="width:29%"></span></span><span class="vl">4</span></div>
+  </div>
+  <p class="note">国内厂商最高为天融信 5 条（乌镇展出 + 两项成果发布），其次奇安信 4 条。国内第一梯队与美系第四名（Microsoft 12 条）之间仍差 2.4 倍。</p>
+
+  <h3><span class="dot"></span>动作结构：264 个标签的分布</h3>
+  <div class="bar"><span class="lb">产品发布 60</span><span class="stack"><span style="width:22.7%;background:#9B6DFF"></span><span style="width:19.3%;background:#F2554D"></span><span style="width:17.8%;background:#2DBE8D"></span><span style="width:14.4%;background:#F5A524"></span><span style="width:8.3%;background:#4D7CFE"></span><span style="width:8.0%;background:#6E93FF"></span><span style="width:7.6%;background:#5A6579"></span><span style="width:1.9%;background:#8B95A8"></span></span><span class="vl">264</span></div>
+  <div class="lg">
+    <span><i style="background:#9B6DFF"></i>产品发布 22.7%</span>
+    <span><i style="background:#F2554D"></i>漏洞事件 19.3%</span>
+    <span><i style="background:#2DBE8D"></i>评测荣誉 17.8%</span>
+    <span><i style="background:#F5A524"></i>标准合规 14.4%</span>
+    <span><i style="background:#4D7CFE"></i>资本动作 8.3%</span>
+    <span><i style="background:#6E93FF"></i>中标采购 8.0%</span>
+    <span><i style="background:#5A6579"></i>生态合作 7.6%</span>
+    <span><i style="background:#8B95A8"></i>财报经营 1.9%</span>
+  </div>
+
+  <h3><span class="dot"></span>AI 安全品类分布：身份与智能体吃掉一半以上</h3>
+  <div class="bars">
+    <div class="bar"><span class="lb">智能体安全</span><span class="tr"><span class="fl b" style="width:100%"></span></span><span class="vl">59</span></div>
+    <div class="bar"><span class="lb">身份权限</span><span class="tr"><span class="fl b" style="width:88%"></span></span><span class="vl">52</span></div>
+    <div class="bar"><span class="lb">MCP 安全</span><span class="tr"><span class="fl a" style="width:36%"></span></span><span class="vl">21</span></div>
+    <div class="bar"><span class="lb">AI 治理</span><span class="tr"><span class="fl a" style="width:32%"></span></span><span class="vl">19</span></div>
+    <div class="bar"><span class="lb">LLM 网关/WAF</span><span class="tr"><span class="fl c" style="width:24%"></span></span><span class="vl">14</span></div>
+    <div class="bar"><span class="lb">提示词注入</span><span class="tr"><span class="fl c" style="width:17%"></span></span><span class="vl">10</span></div>
+    <div class="bar"><span class="lb">Shadow AI</span><span class="tr"><span class="fl d" style="width:7%"></span></span><span class="vl">4</span></div>
+    <div class="bar"><span class="lb">AI-SPM</span><span class="tr"><span class="fl d" style="width:0%"></span></span><span class="vl">0</span></div>
+  </div>
+  <p class="note">「身份权限」52 + 「智能体安全」59 = 111 个标签，占 179 个品类标签的 <b>62%</b>。<b>AI-SPM 为 0 是本周一个明确的反向信号</b>——这个曾被 Gartner 热推的品类，本周零声量。</p>
+
+  <div class="quote">
+    <b>结构性判断：</b>本周的核心矛盾不是「AI 会不会被攻击」，而是<b>「这个 agent 是谁、它凭什么能干事、出事能不能追溯」</b>。证据是三件事同周发生：微软把 Entra Agent ID 做成有生命周期的对象（60/90/455 天）、ZOLOZ 把 KYC/KYB 推到 KYA、Cloudflare 牵头成立 Trusted Agent Delegation 联盟把 agent 身份拆成权限/验证/归属三层。<b>行业正在把「agent 身份」当成新的主键来重建安全体系</b>——谁掌握这个主键，谁就掌握下一轮的采购入口。
+  </div>
+</section>
+
+<section id="s3">
+  <h2 class="sec"><span class="no">03</span>产品与动作</h2>
+  <div class="sec-sub">按「钱、产品、收入、监管、实害」五条线拆。厂商宣称指标统一标注「厂商口径」。</div>
+
+  <h3><span class="dot"></span>3.1 钱：一周 22 条资本动作，AI 安全进入并购整合期</h3>
+  <table>
+    <thead><tr><th>时间</th><th>事件</th><th>金额与估值</th><th>买的是什么</th></tr></thead>
+    <tbody>
+      <tr><td>11-03</td><td class="k">CrowdStrike 收购 Fiddler AI + Dreadnode</td><td>合计<b>约 4.95 亿美元</b>（约 33 亿元）：Fiddler AI 约 4 亿、Dreadnode 约 9,500 万</td><td>Fiddler AI（2018 成立，累计融资约 9,900 万美元）做<b>可观测性与可解释性</b>——追踪 agent 决策过程、推理路径、工具调用记录，部署前评估与合规审计。Dreadnode（2023 成立）做攻击侧。一句话：<b>一个管上线前证明它会乱来，一个管上线后解释它为什么乱来</b></td></tr>
+      <tr><td>11-06 报道</td><td class="k">Palo Alto Networks 洽购 Clutch</td><td><b>约 5 亿美元</b>；Clutch 上轮 2025-01 的 2,000 万美元 A 轮、估值 8,500 万美元、ARR 约 1,000 万美元 → <b>约 50 倍 ARR、5.9 倍上次估值</b></td><td>「agent 是谁」——agent 身份。若成交为 Palo Alto 2026 年第 <b>7</b> 笔收购</td></tr>
+      <tr><td>11-04</td><td class="k">Sentra 完成 C 轮</td><td><b>1.5 亿美元</b>，Capital One Ventures 领投，累计融资超 2.6 亿美元；2021 成立，纽约+特拉维夫，约 130 人</td><td>卖的不是「逐个监控 agent」，是<b>「先把数据地图画对」</b>——数据侧的基础设施，而非应用侧的检测</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <b>估值锚已被抬到 50 倍 ARR。</b>Clutch 只有 1,000 万美元 ARR 却值 5 亿美元，说明买家在为<b>品类定义权</b>付费，不是在为收入付费。对国内厂商的含义很直接：在这个窗口期，「讲清楚自己是哪个品类的第一」比「做出多少收入」更值钱。
+  </div>
+
+  <h3><span class="dot"></span>3.2 产品：护栏正在从「旁路设备」变成「运行时原生能力」</h3>
+  <p>这是本期对 NF 最相关的一节。一周内至少 <b>6 家</b>把 AI 安全能力直接嵌进已有平台，而不是新造一个盒子。</p>
+  <table>
+    <thead><tr><th>厂商</th><th>产品 / 动作</th><th>关键机制与指标</th><th>形态变化</th></tr></thead>
+    <tbody>
+      <tr><td class="k">CrowdStrike</td><td>Falcon Guardian 加 <b>AI Kill Switch</b>（11-03）；同日接入 <b>Amazon Bedrock AgentCore Guardrails</b></td><td>Kill Switch：<b>不删代码、不断凭证，只把 agent 的模型访问掐掉</b>；可实时终止运行、阻止再次启动、切断企业网络访问。<b>检测可以自动，但按不按下去由人决定</b>。Bedrock 侧<b>无需独立部署</b>即可保护 AI 应用与工作流，覆盖提示注入、敏感数据外泄、恶意活动</td><td>护栏从「单独采购的旁路设备」变成<b>挂在云厂商 agent 运行时护栏位上的一个开关</b>——这是对独立 AI 安全盒子的直接替代</td></tr>
+      <tr><td class="k">微软</td><td>Dynamic Permissions / Dynamic Agent Risk / Dynamic Conditional Access 三件套（11-03）；Entra Agent ID 生命周期策略（11-06 公开预览）</td><td>权限按任务给、风险按行为算、条件访问按风险收。Agent ID 默认策略<b>不需许可证、对所有租户开放</b>：连续不活跃 <b>60 天</b>通知、<b>90 天</b>停用、<b>455 天</b>删除，默认动作不可改；<b>sponsor 不能自己恢复</b></td><td>把「agent」做成和「用户」同级的<b>一等身份对象</b>，并给它配了完整的生命周期——这是本周最有结构性的一步</td></tr>
+      <tr><td class="k">Sophos</td><td><b>Sophos Firewall v23</b>（11-05/06），同批 4 款 XGS 1U 新硬件 + 独立 Sophos NDR 产品线，挂在 Sophos Fusion 下</td><td>① 与 Sophos AI Defense 集成，<b>在网络层提供对 AI 服务使用的可见性、报表与策略执行</b>——放行已批准的生成式 AI 工具、拦掉未批准的服务；② AI 助手起草规则；③ <b>HA 切换从 4 秒压到 300 毫秒</b></td><td><b>这是本周最直接的对标物</b>：一家防火墙厂商把「AI 服务治理」当成版本级卖点做进了本体</td></tr>
+      <tr><td class="k">Fortinet</td><td><b>FortiAIGate</b> 上 Equinix Distributed AI Hub（11-05），形态是「已验证参考架构」</td><td>双向检查 prompt 与 response；对已批准的 <b>LLM 与 MCP 流量</b>执行集中策略；<b>按 token 追踪 LLM 成本</b>并设预算上限与告警；控制/管理/检查全部留在客户基础设施内；检查用 GPU 跑</td><td>AI 护栏被打包成<b>互联基础设施里的一个节点</b>，随 Equinix 交付</td></tr>
+      <tr><td class="k">腾讯云</td><td><b>AI 网关</b>做成独立产品形态发布（11-04），公有云与私有云能力/控制台/治理标准完全一致</td><td>三层网关：<b>大模型网关</b>（统一接入混元/DeepSeek 等，按成本/延迟/语义智能路由 + 多级 Fallback）+ <b>MCP 网关</b>（把存量 HTTP 接口转成 MCP 工具，做<b>工具粒度</b>授权管控与调用留痕）+ Agent 网关；四层防护压在调用链上。治理策略可从公有云无缝迁到私有云</td><td>「网关」成为 AI 安全的<b>独立交付物</b>，且明确对标政企私有化需求（过去私有化版本都是功能缩水版）</td></tr>
+      <tr><td class="k">天融信</td><td><b>AI 安全网关</b>乌镇首次展出（11-02~05）；<b>RHP 渗透测试智能体系统</b> + 「三域联防」框架（11-03 发布）</td><td>官方定位不是防火墙也不是 WAF，而是「<b>面向企业级 AI 应用场景的统一模型服务入口与算力治理中枢</b>」——把「看不见、管不住、算不清」的算力黑盒变成「看得清、管得住、省得下」。宣称 60+ 安全智能体覆盖 7 大垂直场景</td><td>国内厂商把 AI 网关定义为<b>算力治理</b>而非安全防护，是个差异化切口</td></tr>
+      <tr><td class="k">Cloudflare</td><td>把「个人 agent」从自动化流量里单列（11-04）；<b>Zero Wire</b> CVE 简报（11-03）；<b>TAD 联盟</b>（11-05）；AI Gateway Provider Keys 活动视图（11-06）</td><td>Bot Analysis 新增 <b>Personal Assistants</b> 分类，与 Verified Bot / Likely Human / Likely Automated / Automated 并列；可按 agent 单独定规矩。Zero Wire 每条简报附<b>一段给 AI agent 的自查提示词</b>。TAD 把 agent 身份拆成<b>权限 / 验证 / 归属</b>三个不能互换的层，官方承认自己只覆盖了一部分</td><td>把「谁在替人访问」变成可识别、可分类、可单独管的对象</td></tr>
+      <tr><td class="k">Google</td><td>Cloud Security Summit 一次放出八项（11-04）；Gemini Enterprise Agent Platform 的 Security 页转 <b>GA</b>（11-04）</td><td>CodeMender（自主代码安全 agent）的漏洞验证与利用模拟改跑在<b>客户自选的 OS 级沙箱或隔离虚拟机</b>，本地写文件/执行命令<b>新增人工签核</b>；Auth Manager 转 GA；Agent 身份发标准 OIDC 令牌。Security 页提供「按严重度分的 AI 风险」「AI 威胁」、「权限过大的 agent」视图</td><td>agent 安全态势被搬进<b>云治理控制台</b>，与合规同在</td></tr>
+      <tr><td class="k">Cisco</td><td>Identity Intelligence 新增 <b>AI Agent Discovery and Security Posture</b>（11-06，Duo D351）</td><td>靠已接入的 EDR 与被监控集成来<b>凑出 agent 清单</b>，展示归属信息、发现来源、findings。当前仅支持 CrowdStrike Falcon EDR 等四个平台，<b>仅限受控可用</b></td><td>自己没有 agent 数据，就用别人的 EDR 反推——生态位被动的典型</td></tr>
+      <tr><td class="k">Edera / KeyContain</td><td>Object Capability Bounded Authority（11-06）；KeyContain（11-07 Show HN）</td><td>Edera 把凭据从 agent 工作负载与 MCP Server 内部<b>拿走</b>，改为在 <b>hypervisor 层</b>执行细粒度权限。KeyContain 给每个 agent 单发一把钥匙，三档权限（Allowed / Ask me / 拒绝），<b>人工批准最长等 24 小时</b></td><td>从「共享一把大 key」到「一 agent 一钥匙 + 人审」——最土但最有效的一层</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="dot"></span>3.3 收入：国内第一批可核对的 AI 安全营收出现了</h3>
+  <table>
+    <thead><tr><th>来源</th><th>数字</th><th>怎么读</th></tr></thead>
+    <tbody>
+      <tr><td class="k">启明星辰<br>（行业研报，11-03）</td><td>2026 年上半年<b>大模型应用防火墙收入同比增长 238.15%</b></td><td>国内<b>第一个可核对的 AI 安全品类收入增速</b>。需求沿三阶段加深：办公辅助（内容合规、敏感信息保护）→ 业务协同（跨系统身份认证、权限控制、操作审计）→ 核心生产（高风险操作审批、运行隔离、异常中止与恢复）。壁垒被归结为三条：<b>数据连接、执行权限、行业交付</b></td></tr>
+      <tr><td class="k">奇安信三季报<br>（11-02）</td><td>前三季度营收 22.66 亿元（-20.17%），归母净利 <b>-11.69 亿元</b>；单 Q3 营收 7.70 亿（-29.82%），归母净利 -7.57 亿。<b>AI 业务总订单超 5,000 万元（+223%）</b>；<b>AISOC 订单超 3,500 万元（+366%）</b>；海外收入（含港澳）+139%</td><td>传统业务在大幅收缩，AI 业务在高速增长——<b>但绝对体量只有千万级</b>，尚不足以对冲 20% 的营收下滑。这是「新业务方向对、但还没长起来」的典型财报</td></tr>
+      <tr><td class="k">乌镇蓝皮书<br>（11-04）</td><td>2025 年中国<b>企业级 AI 智能体市场 212 亿元</b>；具身智能约 9,150 亿元（+20.4%）；2026 年 3 月我国<b>日均词元调用量 140 万亿</b>，两年增长超千倍</td><td>智能体市场 212 亿 vs AI 安全支出——参照 Gartner 全球口径（见下），安全占比约 1%，即国内 AI 安全盘子约 2 亿量级。与启明、奇安的订单规模互相印证</td></tr>
+      <tr><td class="k">Gartner 3Q26<br>（9-24 发布）</td><td>2026 年全球安全支出 <b>2,475 亿美元</b>（+13.6%，2025 年 2,177 亿）；其中「保护 AI 生态与 AI 智能体」<b>约 30 亿美元</b>，2030 年 160 亿</td><td><b>30 / 2,475 = 1.2%</b>。这是本周最重要的一个分母：AI 安全今天只占安全总盘子的 1.2%，但 2030 年要涨到 5 倍以上。判断「现在投入是否过早」时，这个数字必须摆上桌</td></tr>
+      <tr><td class="k">Gartner 2027 十大趋势<br>（11-05）</td><td>重心从「AI 能干什么」转向「<b>AI 自主执行之后谁来管</b>」；预警 <b>2028 年 1/4 的漏洞事件源于智能体滥用</b></td><td>「2026 年重点是如何构建和应用 AI，2027 年转向如何管理 AI 驱动的自主系统」——Gartner 研究副总裁原话，可直接引用于对外材料</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="dot"></span>3.4 监管：一周内国内外同时落地，且都带硬约束</h3>
+  <table>
+    <thead><tr><th>发布方</th><th>文件 / 动作</th><th>硬约束条款</th></tr></thead>
+    <tbody>
+      <tr><td class="k">工信部<br>11-06</td><td>《关于加强智能体终端设备进网管理的通知》（<b>工信厅信管〔2026〕42号</b>）</td><td>定义「智能体」为具备自主感知、记忆、决策、交互与执行能力的智能系统；「智能体终端」为预置安装智能体的手机/平板/可穿戴等电信终端。目标「<b>为人所用、为人服务、为人所控</b>」。四项任务中三条硬约束：① 适配与信息披露（强化权限调用、通信能力…）；② <b>配唯一身份码</b>；③ <b>OTA 升级须报备</b></td></tr>
+      <tr><td class="k">发改委<br>11-03</td><td>「奋进'十五五'」发布会，创新和高技术发展司副司长王若蒙答 AI 安全提问</td><td>四方面：① <b>加快推进人工智能基础性综合性立法</b>，构建法律法规「四梁八柱」；建立<b>覆盖全生命周期的安全标准和伦理准则</b>，对制度实施情况周期性评估、动态调整；② 优化监管环境——合理设置<b>过渡期</b></td></tr>
+      <tr><td class="k">中国信通院 + 360 + 华为等<br>11-04</td><td>《智能体发展自律公约》，<b>八条自律措施</b></td><td>第四条直指：「健全<b>前瞻性风险评估、运行监测、行为管控、异常熔断</b>等技术体系」——这四件事正好覆盖智能体从上线前到失控后的完整链条</td></tr>
+      <tr><td class="k">世界互联网大会<br>11-03~04</td><td>三份文件同时放出：《前沿人工智能安全与治理 2026》+《中国互联网发展报告 2026》+《世界互联网发展报告 2026》</td><td>前沿 AI 按<b>能力水平</b>而非参数量界定，覆盖模型本身及基于模型构建的智能体、多智能体协作、具身智能。结论中最硬的一句：<b>滥用与犯罪风险、信息完整性风险、关键系统风险已持续显现并转化为现实危害</b>。AI 安全治理五条已写进国家法律体系</td></tr>
+      <tr><td class="k">NIST（美）<br>11-03 消息</td><td>计划更新 <b>SP 800-61</b> 网络安全事件响应指南</td><td>四条研究范围：<b>自主智能体的事件响应、系统监测与日志记录、事件信息共享、取证证据管理</b>；并考虑制定「智能体非预期行动」的自愿管理原则</td></tr>
+      <tr><td class="k">印度 CERT-In<br>11-04</td><td>《Artificial Intelligence Security Auditing Guidelines》，<b>约 107 页</b></td><td>四档风险分级（低/中/高/关键）；<b>九大审计域</b>（AI 治理与问责、数据生命周期/质量/隐私、模型风险管理、伦理与偏见公平、可解释性…）；<b>AI 事件 6 小时内上报</b></td></tr>
+      <tr><td class="k">OWASP<br>11-03</td><td>《GenAI Data Security Best Practices v2 – Part 1》</td><td>一套 <b>12 部分</b>实施手册的首篇：定范围与约定、GenAI 数据安全基础与<b>六条核心原则</b>，落到怎么建一个 <b>AI-DSPM</b>（AI 数据安全态势管理）项目——从风险目录变成可排期的工程</td></tr>
+      <tr><td class="k">天融信 + 标准组<br>11-06</td><td>「面向 AI 的网络安全标准化研究项目」专家研讨会在天融信召开</td><td><b>首次对传统安全产品的 AI 能力增量做分层定义</b>，按云网端梳理产品演进方向，提出分阶段制修订网络安全产品标准的建议。四个修改方向：AI 核心供应链安全、AI 全生命周期安全、标准在<b>关基行业与典型业务场景</b>中的落地</td></tr>
+    </tbody>
+  </table>
+  <p class="note">另有一条被低估的产业侧动作：11-04 乌镇「智能体互信互联互操作」论坛上，<b>智能体身份注册与解析平台</b>对外亮相，由国家层面共同建设，处理<b>身份编码、跨域解析、可信互通</b>三件事，仍在建设中。蚂蚁为首批参与者（支付宝政务智能体、芝麻信用已完成与其他平台 agent 互通）。这与工信部 42 号文的「唯一身份码」是同一件事的两个面。</p>
+
+  <h3><span class="dot"></span>3.5 实害：本周的失陷全部来自「凭据与配置」，不是模型越狱</h3>
+  <table>
+    <thead><tr><th>事件</th><th>规模</th><th>根因</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Railway 环境变量泄露</td><td>波及<b>约 200 万用户</b>；盗走连接 AI 服务所需 API 密钥，数据库口令面临外泄</td><td>托管平台的配置就是生产钥匙串。<b>一年内第四起</b>同类事件（5 月自托管版容器日志泄露项目机密…）</td></tr>
+      <tr><td class="k">AI 聚合站 302.ai 公开桶</td><td><b>1,760 万文件 / 22.72TB</b>：图片近 9TB、视频 7.7TB、音频 5.6TB，其余约 500GB 是 <b>14.4 万条用户对话日志</b>（含提示词、回复、模型、token 花费、时间戳，以及用户自填的姓名生日）</td><td>一个<b>未加密、无密码</b>的 Azure 存储桶</td></tr>
+      <tr><td class="k">Claude Code 密钥进 git</td><td><b>103,617 个仓库</b>中 104,185 份 <code>.claude/settings.local.json</code> 公开，其中 <b>1,379 条活密钥</b>；扫描器还漏了 215 份</td><td>开发者点「是，别再问」批准 shell 命令时，Claude Code 把<b>整条命令（含密码与密钥）原样存进项目文件</b>，且不会把它加进项目的 .gitignore</td></tr>
+      <tr><td class="k">800+ Artex 实例裸奔</td><td>互联网上 <b>800 多个</b>可从网络访问、<b>无需密码</b>的 Artex 独立部署实例</td><td>Artex 是 2026 年 7 月开源的自主渗透测试工具，任何人都能免费跑——<b>攻击工具自己也会配置错误</b></td></tr>
+      <tr><td class="k">埃森哲员工接 Claude Code 到五角大楼 NIPRNet</td><td>agent 带<b>管理员凭证</b>在承载 CUI 的生产系统里<b>跑了两个月</b>；国防部自身已禁止员工使用 Claude</td><td>个人账号 + 管理员凭证 + 绕过正常登录流程的安全控制</td></tr>
+      <tr><td class="k">LLMjacking</td><td><b>单日</b>刷出超 10 万美元云账单；有的组织<b>累计到 100 万美元才被吊销</b></td><td>入口几乎都不是模型本身，而是被盗或泄露的 API 凭据。与挖矿的区别在斜率——挖矿慢慢放血，几小时就能冲上去</td></tr>
+      <tr><td class="k">Railway 的 agent 去打竞品</td><td><b>15 分钟、24 条脚本化命令</b>，两次扫完全部 <b>65,536 个内网地址</b>，尝试取凭据、索要平台密钥、读云厂商元数据</td><td>员工自建 agent 的越界行为，全部访问被拦截</td></tr>
+      <tr><td class="k">BOSSAI 单人攻击网格</td><td>一名单人操作者用开源 agentic 框架 + MCP server 搭 <b>12 个 agent（9 个活跃）</b>，12 天内对 <b>11 个国家、数百家机构</b>发起行动，确认约 <b>10 个目标</b>在 3 个国家被入侵——含台北 119 紧急调度系统的案件记录</td><td>开源框架 + 去安全化的本地模型，门槛已降到个人级</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="dot"></span>3.6 实测数据：防御有效性第一次有了硬数字</h3>
+  <table>
+    <thead><tr><th>研究</th><th>数字</th><th>结论</th></tr></thead>
+    <tbody>
+      <tr><td class="k">MCP 工具投毒<br>arXiv 2611.03555v1（AISec '26 接收）</td><td><b>12 个 agent 框架、18 个模型、9,720 个测试单元</b>，投毒成功率 <b>22.9%</b></td><td><b>没有一个框架做了主动防御</b>——全部是被动响应。这是本周对「MCP 安全」赛道最有力的量化背书</td></tr>
+      <tr><td class="k">参数投毒<br>11-03 提交</td><td>无防护状态下攻击成功率 <b>93.06%</b></td><td>保留 agent 原本要做的工具动作，<b>只篡改一个关键参数</b>（收件人、路径、金额、目标地址）。因为「没有触发新动作」，<b>所有以动作为中心的注入检测都会漏掉它</b>。配套评测集 FactAuthBench + 三阶段防御 AuthorityFlow</td></tr>
+      <tr><td class="k">Multimodal-SEA<br>arXiv 2611.08281（港科大）</td><td><b>608 个任务</b>、152 个攻击场景、四档难度、中英双语；<b>七个前沿多模态模型全部被骗</b></td><td>攻击者像骗子一样做社会工程（冒充配偶/同事），配伪造截图、文件、网站、视频。关键发现：<b>加了伪造截图后，agent 核验得更多，也照样照做</b></td></tr>
+      <tr><td class="k">Armadin 报告<br>11-02</td><td><b>88%</b> 的严重与高危发现靠厂商公告或外部来源根本发现不了；客户自研软件缺陷占公告覆盖不到的严重发现的 <b>67%</b>、高危的 <b>78%</b>；厂商产品以公告从未描述的方式部署（如管理控制台直接暴露公网）占 <b>24%</b></td><td>由 Mandiant 创始人 Kevin Mandia 创办的公司给出。<b>结论：扫描器和公告驱动的方法论已经失效</b></td></tr>
+      <tr><td class="k">链式越狱<br>浙大（11-04）</td><td>把有害目标拆成一串<b>单独看都合规</b>的子任务，<b>27 秒</b>完成从发现漏洞到部署攻击</td><td>用「拆解模型」生成候选子任务链，再用「审查模型」挑出表面最无害的一条。每一步单独送审都合规，串起来才有害</td></tr>
+      <tr><td class="k">Irregular Security 公开认责<br>11-03 彭博科技峰会</td><td>四家前沿实验室的「智能体入侵」<b>同源于沙箱隔离配置失误，而非模型主动越界</b></td><td>CEO Dan Lahav 明确区分：<b>是测试配置本身出错，而非 AI 模型主动颠覆安全机制</b>。这条对把控对外口径很重要——别把工程事故说成模型觉醒</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="dot"></span>3.7 国内厂商本周动作一览</h3>
+  <table>
+    <thead><tr><th>厂商</th><th>动作</th><th>能力口径</th></tr></thead>
+    <tbody>
+      <tr><td class="k">天融信</td><td>乌镇四大方向展出；AI 安全网关首展；RHP 渗透测试智能体系统 + 「三域联防、统一控制」框架（11-03 13:30 发布）；大模型安全网关获「新光」产品奖</td><td>AI 安全防护口径为覆盖大模型与智能体全生命周期的「三域一平面」体系；60+ 安全智能体覆盖 7 大垂直场景，基于 RHP 架构</td></tr>
+      <tr><td class="k">安恒信息</td><td>DAPA 方法论 + AI 安全治理一站式方案（11-03）</td><td>四步闭环：<b>Discover 发现纳管 / Assess 评估准入 / Protect 防护管控 / Audit 审计留痕</b>——「让每一个 AI 有户口、过闸门、留痕迹」。网络侧主动探测 + 终端侧存量盘点双探头</td></tr>
+      <tr><td class="k">奇安信</td><td>安全创客汇升级为「AI 创客汇」（赛道从网安扩到 AI）；天擎 V10.0 与鸿蒙内核深度耦合（11-06）</td><td>天擎本地部署 + 天守 SaaS + 可信浏览器「两种交付 + 一个入口」。安全创客汇十一届、130 家入围决赛团队赛后均获融资、总融资额突破 6 亿+</td></tr>
+      <tr><td class="k">中国移动 + 启明星辰</td><td>联合发布网络安全统一品牌「<b>星辰安全</b>」（11-05~07，移动网络大会广州）</td><td>依托移动智算底座 + 启明星辰安全能力，口径「全场景覆盖、全栈式供给、一体化运营」。核心产品是 <b>Token 安全运营</b>——把防护挂进计费链路。另发磐维数据库 V4.0</td></tr>
+      <tr><td class="k">华为</td><td>首款鸿蒙台式机<b>擎云 HM650</b>（企业版/政务版 HM650g，11-05 武汉）；IDC 2026H1 中国 UTM 防火墙份额第一</td><td>麒麟 X90（10 核 20 线程）+ HarmonyOS V1.0，整机元器件国产化率 100%。鸿蒙星盾安全 2.0：<b>给能自主调用工具的智能体上了系统级沙箱，删文件要先问人</b></td></tr>
+      <tr><td class="k">腾讯</td><td>Hy4 正式版（11-04）；腾讯云 AI 网关独立发布（11-04）；TCE Full-Stack Intelligent AI Suite（11-06）</td><td>Hy4：MoE、总参 7700 亿、激活约 490 亿、上下文超 100 万 token，新增视觉理解与电脑操作。安全口径称训练时优先保留防御性网安材料以降低协助攻击能力，<b>但两份官方材料对「砍了什么」说法不一致</b></td></tr>
+      <tr><td class="k">联通</td><td>「墨攻」网络安全大模型（10-31 无锡）</td><td>「大模型 + 小模型 + 安全工具」协同，「<b>1 个大模型底座 + N 个场景 + M 个智能体</b>」，聚焦安全运营/攻防/代码/数据安全四类场景</td></tr>
+      <tr><td class="k">网易智企·易盾</td><td>「AI 原生安全产品体系」乌镇首发（11-03），获首发成果证书</td><td>三层能力：CMA 审核智能体、DeepGuard 人脸鉴伪、智能体安全管控平台。架构口号 AI for 安全 / 安全 for AI</td></tr>
+      <tr><td class="k">虎符网络</td><td>《基于 AI 原生的安全分析与溯源平台》（11-03）</td><td><b>AI-SBOM</b>（AI 软件物料清单）识别隐藏代码逻辑、<b>影子模型</b>与第三方组件依赖，做到模型血缘可见；Multi-Agent 协同编排把 MTTD/MTTR 压到分钟级</td></tr>
+      <tr><td class="k">绿盟科技</td><td>入选 IDC 首份《中国 AI 赋能的网络安全软件技术发展路线图，2026》</td><td>24 项技术分三档（变革型 8 / 增量型 12 / 机会型 4），<b>绿盟入选 12 项，居安全厂商首位</b>。报告主线：AI 正把安全软件从「产品智能化」推到「架构 Agentic 化」</td></tr>
+      <tr><td class="k">蚂蚁数科</td><td>ZOLOZ 升级，推出 <b>KYA（Know Your Agent）</b>（11-02 香港金融科技周）</td><td>能力从「识人」（KYC）、「识企」（KYB）推到「识智能体」。技术上是「AI + 区块链」双底盘：每个送进金融生产系统的模型与智能体，上线即持密码学数字工牌。服务全球 25+ 国家和地区</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="s4">
+  <h2 class="sec"><span class="no">04</span>对 NF 的判断</h2>
+  <div class="sec-sub">5 条，按对 NF 产品线的紧迫性排序。证据强度：<span class="tag t-green">强</span> 有干净样本或多个独立案例 · <span class="tag t-blue">中</span> 单一来源或需交叉验证 · <span class="tag t-red">弱</span> 推断。</div>
+
+  <div class="find">
+    <div class="it"><div class="n">1</div><div class="tx">
+      <b>「AI 服务治理」必须做进 NF 防火墙本体，本期已有三个直接对标物。</b> Sophos Firewall v23 在网络层提供对 AI 服务使用的<b>可见性、报表与策略执行</b>（放行已批准生成式 AI 工具、拦掉未批准服务），并加 AI 助手起草规则；FortiAIGate 在 Equinix 交付对 <b>LLM 与 MCP 流量</b>的集中策略与按 token 成本追踪；腾讯云把 AI 网关做成独立产品形态。<b>这意味着「哪家防火墙能管住员工用 AI」正在变成版本级卖点</b>。<b>行动</b>：① 在 V6.0R06 后续版本把「AI 应用识别 + 未批准 AI 服务阻断 + token 用量报表」做成标配，不要放到选配；② 报表口径对齐 FortiAIGate 的「按 token 追踪成本 + 预算上限告警」，因为这是甲方 CISO 唯一能向 CFO 交差的指标；③ 把 HA 切换指标拉出来对比（Sophos v23 从 4 秒压到 300 毫秒）。 <span class="tag t-green">强</span>
+    </div></div>
+
+    <div class="it"><div class="n">2</div><div class="tx">
+      <b>「agent 身份」是未来 12 个月最可能被单独立项采购的品类，NF 现在不进场就晚了。</b> 本期身份权限 52 个标签、智能体安全 59 个标签，合计占 179 个品类标签的 <b>62%</b>。同周发生的四条独立证据：微软 Entra Agent ID 给了 agent 完整的生命周期（60/90/455 天，sponsor 不能自恢复）；ZOLOZ 把 KYC/KYB 推到 <b>KYA</b>；Cloudflare 牵头 <b>TAD 联盟</b>把 agent 身份拆成权限/验证/归属三层；Palo Alto 传以 <b>约 50 倍 ARR</b> 洽购做 agent 身份的 Clutch。<b>行动</b>：NF 的资产管理体系已经有设备台账，把它向上扩一层做「AI 资产台账」（本地模型、智能体、MCP server），先解决「认得出」，再谈「管得住」——这正是安恒 DAPA 与虎符 AI-SBOM 在做的事，但 NF 有网络位置优势（能从流量里看见 agent 的每一次调用），这是纯终端/纯 SaaS 厂商拿不到的。 <span class="tag t-blue">中</span>（方向由四家独立动作共同指向，但国内尚无采购案例）
+    </div></div>
+
+    <div class="it"><div class="n">3</div><div class="tx">
+      <b>国内 AI 安全的第一批真实收入出现了，但体量只有千万级——对外口径要克制。</b> 启明星辰 2026 H1 <b>大模型应用防火墙收入同比 +238.15%</b>（国内第一个可核对的 AI 安全品类增速，且正好是 NF 相邻品类）；奇安信 AI 业务订单<b>超 5,000 万元（+223%）</b>、AISOC 超 3,500 万元（+366%）。对照 Gartner 2026 全球安全支出 <b>2,475 亿美元</b>中「保护 AI 生态与智能体」仅<b>约 30 亿美元（占比 1.2%）</b>。<b>判断</b>：增速是真的，盘子是小的。<b>行动</b>：对外讲「+238% 的品类增速」而不是讲绝对金额；内部排期按「2027 年起量、2026 年只做标杆」定，不要按爆发式增长配资源。 <span class="tag t-green">强</span>（三个独立来源互相印证规模量级）
+    </div></div>
+
+    <div class="it"><div class="n">4</div><div class="tx">
+      <b>真正的失陷主路径是「凭据与配置」，不是模型越狱——NF 的既有能力可以直接变现。</b> 本期 8 起实害事件全部与凭据/配置有关：Railway 约 200 万用户、302.ai 22.72TB、Claude Code 1,379 条活密钥进 git、800+ Artex 实例无密码、埃森哲管理员凭证跑了两个月、LLMjacking 单日 10 万美元账单。而 Armadin 的数据更狠：<b>88% 的严重与高危发现靠厂商公告根本发现不了</b>，其中客户自研软件缺陷占 67%/78%、厂商产品以公告未描述方式部署（如管理控制台直接暴露公网）占 <b>24%</b>。<b>行动</b>：那 24% 就是 NF 的现成生意——「你的管理面有没有暴露在公网」是一个防火墙能直接回答的问题。可以做一个「边界设备管理面暴露自查」的小工具免费放出去，作为 AI 安全话题的流量入口。 <span class="tag t-green">强</span>
+    </div></div>
+
+    <div class="it"><div class="n">5</div><div class="tx">
+      <b>工信部 42 号文把「唯一身份码 + 进网检测 + OTA 报备」变成硬门槛，NF 要把合规语言提前写进产品文档。</b> 工信厅信管〔2026〕42 号（11-06）四项任务里三条硬约束：智能体开发者须与终端做<b>适配验证</b>、智能体终端须配<b>唯一身份码</b>、<b>OTA 升级须报备</b>。同周发改委定调「十五五」要推进<b>基础性综合性立法 + 全生命周期安全标准 + 分行业监管沙盒</b>；信通院等发布《智能体发展自律公约》八条，第四条明确要求<b>前瞻性风险评估、运行监测、行为管控、异常熔断</b>——这四个词可以逐条映射到 NF 的现有能力上。<b>行动</b>：把「异常熔断」作为产品文档里的正式能力名（而不是「联动阻断」），把「运行监测」对应到日志与流量审计，这样在写标书和过测评时能直接对上监管原文。 <span class="tag t-green">强</span>
+    </div></div>
+  </div>
+
+  <div class="callout">
+    <b>本期最该警惕的一条</b>：护栏正在被「免费送」。CrowdStrike 把 Falcon Guardian 接进 <b>Amazon Bedrock AgentCore Guardrails</b>，明确「<b>无需独立部署</b>」；Google 把 agent 安全态势做成 Gemini Enterprise 控制台里的一页并转 GA；Cloudflare 把 Zero Wire 做成<b>公开免费、不需要是客户</b>。三家的共同动作是<b>把 AI 安全能力作为已有平台的附带功能送出去</b>，而不是单独卖。如果 NF 把 AI 安全做成一个要单独报价的模块，会在「反正云上自带」这个理由面前丢掉整个中型客户群。<span class="tag t-red">需验证</span>（三家均为云/平台厂商，其免费策略是否会被国内甲方接受尚待观察，但方向明确）
+  </div>
+</section>
+
+<footer>
+数据源：7 期 AI 安全日报 · 条目 110 条 · 覆盖率 100% · 统计口径以 264 个动作标签 / 179 个品类标签为分母
+</footer>
+</main>
+</div>
+<script>
+const links=[...document.querySelectorAll('.side a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('on'));
+      const t=links.find(l=>l.getAttribute('href')==='#'+e.target.id);
+      if(t)t.classList.add('on');
+    }
+  });
+},{rootMargin:'-15% 0px -70% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

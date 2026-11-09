@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防火墙竞品情报周报 · NGFW WEEKLY · 2026-W45</title>
+<style>
+:root{
+  --bg:#0B0E14; --surface:#121722; --surface2:#181F2C; --line:#232B3C;
+  --text:#E6EAF2; --dim:#8B95A8; --dim2:#5F6B80;
+  --blue:#4D7CFE; --red:#F2554D; --amber:#F5A524; --green:#2DBE8D; --purple:#9B6DFF; --cyan:#25C2D8;
+  --r:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text); line-height:1.72;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:15px; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue);text-decoration:none}
+.wrap{display:flex;max-width:1400px;margin:0 auto}
+/* 左侧导航 */
+.side{
+  width:220px;flex:0 0 220px;position:sticky;top:0;height:100vh;
+  padding:32px 0 32px 24px;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:2px;overflow-y:auto;
+}
+.side-t{font-size:11px;letter-spacing:.14em;color:var(--dim2);margin-bottom:14px;text-transform:uppercase}
+.side a{
+  color:var(--dim);font-size:13.5px;padding:7px 10px;border-radius:7px;border-left:2px solid transparent;
+  transition:.15s;display:block
+}
+.side a:hover{color:var(--text);background:var(--surface2)}
+.side a.on{color:var(--blue);background:#4D7CFE14;border-left-color:var(--blue)}
+.side .badge{margin-top:auto;font-size:11px;color:var(--dim2);padding:12px 10px;border-top:1px solid var(--line);line-height:1.6}
+/* 主体 */
+.main{flex:1;min-width:0;padding:0 44px 100px}
+.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);margin-bottom:44px}
+.hero .kicker{font-size:12px;letter-spacing:.2em;color:var(--blue);margin-bottom:18px}
+.hero h1{font-size:42px;line-height:1.22;letter-spacing:-1.2px;font-weight:800;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lead{color:var(--dim);font-size:15.5px;max-width:820px}
+.hero .meta{margin-top:22px;font-size:12.5px;color:var(--dim2);display:flex;gap:22px;flex-wrap:wrap}
+.hero .meta b{color:var(--dim);font-weight:600}
+/* 章节 */
+section{margin-bottom:64px;scroll-margin-top:24px}
+h2.sec{
+  font-size:25px;font-weight:700;letter-spacing:-.4px;margin-bottom:8px;
+  display:flex;align-items:baseline;gap:12px
+}
+h2.sec .no{
+  font-size:13px;color:var(--blue);font-weight:700;letter-spacing:.08em;
+  padding:2px 8px;border:1px solid #4D7CFE44;border-radius:5px;background:#4D7CFE12
+}
+.sec-sub{color:var(--dim);font-size:14px;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+h3{font-size:17px;font-weight:650;margin:32px 0 14px;color:#fff}
+h3 .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-right:9px;vertical-align:3px}
+h4{font-size:14.5px;font-weight:650;margin:20px 0 8px;color:#D8DEEA}
+p{margin-bottom:14px;color:#C9D1E0}
+p b,li b{color:#fff;font-weight:650}
+p .hl{color:var(--amber);font-weight:650}
+.dim{color:var(--dim)}
+/* 卡片 */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.grid.g3{grid-template-columns:repeat(3,1fr)}
+.grid.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.card .ck{font-size:11px;letter-spacing:.1em;color:var(--dim2);margin-bottom:8px}
+.card .cv{font-size:27px;font-weight:800;letter-spacing:-.5px;line-height:1.1}
+.card .cv small{font-size:13px;font-weight:500;color:var(--dim);margin-left:4px;letter-spacing:0}
+.card .cd{font-size:12.5px;color:var(--dim);margin-top:6px}
+.card.red .cv{color:var(--red)} .card.blue .cv{color:var(--blue)}
+.card.amber .cv{color:var(--amber)} .card.green .cv{color:var(--green)}
+.card.purple .cv{color:var(--purple)}
+/* 表格 */
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+th{
+  text-align:left;padding:10px 12px;font-size:11.5px;letter-spacing:.06em;color:var(--dim2);
+  border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap
+}
+td{padding:11px 12px;border-bottom:1px solid #1B2231;vertical-align:top;color:#C2CBDC}
+tr:hover td{background:#161D29}
+td.k{color:#fff;font-weight:600;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;color:#fff;font-weight:600}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:4px;font-weight:600;white-space:nowrap}
+.t-red{background:#F2554D1A;color:#FF8078;border:1px solid #F2554D33}
+.t-blue{background:#4D7CFE1A;color:#7EA0FF;border:1px solid #4D7CFE33}
+.t-amber{background:#F5A5241A;color:#FFC55C;border:1px solid #F5A52433}
+.t-green{background:#2DBE8D1A;color:#4FD9A8;border:1px solid #2DBE8D33}
+.t-purple{background:#9B6DFF1A;color:#B693FF;border:1px solid #9B6DFF33}
+.t-gray{background:#8B95A814;color:#9AA5B8;border:1px solid #8B95A82B}
+/* 条形图 */
+.bars{margin:20px 0}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:9px;font-size:13px}
+.bar .lb{width:96px;flex:0 0 96px;color:#D5DCEA;text-align:right;font-weight:600}
+.bar .tr{flex:1;height:22px;background:#161D29;border-radius:4px;overflow:hidden;position:relative;display:flex}
+.bar .fl{height:100%;border-radius:4px 0 0 4px;transition:.3s}
+.bar .fl.a{background:linear-gradient(90deg,#4D7CFE,#6E93FF)}
+.bar .fl.b{background:linear-gradient(90deg,#9B6DFF,#B693FF)}
+.bar .fl.c{background:linear-gradient(90deg,#F5A524,#FFC55C)}
+.bar .fl.d{background:linear-gradient(90deg,#2DBE8D,#4FD9A8)}
+.bar .fl.e{background:linear-gradient(90deg,#F2554D,#FF8078)}
+.bar .vl{width:44px;flex:0 0 44px;text-align:right;color:#fff;font-weight:700;font-variant-numeric:tabular-nums;font-size:12.5px}
+/* 堆叠 */
+.stack{display:flex;height:20px;border-radius:4px;overflow:hidden;background:#161D29;flex:1}
+.stack span{height:100%;display:block}
+.lg{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--dim);margin:14px 0 0}
+.lg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+/* 时间线 */
+.tl{position:relative;padding-left:26px;margin:22px 0}
+.tl:before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl .ev{position:relative;margin-bottom:18px}
+.tl .ev:before{
+  content:'';position:absolute;left:-24px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--blue)
+}
+.tl .ev.warn:before{border-color:var(--red)}
+.tl .ev.ok:before{border-color:var(--green)}
+.tl .d{font-size:11.5px;color:var(--dim2);letter-spacing:.04em;margin-bottom:2px}
+.tl .h{font-size:14px;color:#fff;font-weight:600;margin-bottom:3px}
+.tl .b{font-size:13px;color:var(--dim);line-height:1.65}
+/* 引述块 */
+.quote{
+  background:linear-gradient(90deg,#4D7CFE10,transparent);border-left:2px solid var(--blue);
+  padding:14px 18px;margin:18px 0;border-radius:0 8px 8px 0;font-size:13.8px;color:#C9D1E0
+}
+.quote b{color:#fff}
+.callout{
+  background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--amber);
+  border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0;font-size:13.8px
+}
+.note{font-size:12.5px;color:var(--dim2);margin-top:10px;line-height:1.65}
+/* 结论列表 */
+.find{display:grid;gap:12px;margin:22px 0}
+.find .it{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.find .n{
+  flex:0 0 26px;height:26px;border-radius:6px;background:#4D7CFE1A;color:var(--blue);
+  font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px
+}
+.find .tx{font-size:13.8px;color:#C9D1E0;line-height:1.7}
+.find .tx b{color:#fff}
+/* 能力矩阵 */
+.matrix{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;margin:20px 0}
+.matrix th{position:sticky;top:0;background:#0E1420;z-index:2}
+.matrix td,.matrix th{padding:9px 10px;border-bottom:1px solid #1B2231;text-align:center}
+.matrix td:first-child,.matrix th:first-child{text-align:left;color:#fff;font-weight:600;white-space:nowrap}
+.matrix .y{color:var(--green);font-weight:700}
+.matrix .n{color:#3A4356}
+.matrix .p{color:var(--amber);font-weight:700}
+/* 页脚 */
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:12.5px;color:var(--dim2);line-height:1.9}
+@media (max-width:1100px){
+  .side{display:none} .main{padding:0 20px 60px}
+  .grid,.grid.g3,.grid.g4{grid-template-columns:1fr}
+  .hero h1{font-size:30px}
+}
+
+
+/* 主题色覆盖 */
+.side a.on{color:#4D7CFE;background:#4D7CFE14;border-left-color:#4D7CFE}
+h2.sec .no{color:#4D7CFE;border:1px solid #4D7CFE44;background:#4D7CFE12}
+h3 .dot{background:#4D7CFE}
+.quote{background:linear-gradient(90deg,#4D7CFE14,transparent);border-left:2px solid #4D7CFE}
+.find .n{background:#4D7CFE14;color:#4D7CFE}
+.tl .ev:before{border-color:#4D7CFE}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="side">
+  <div class="side-t">目录</div>
+  <a href="#top" class="on">封面</a>
+  <a href="#s1">区间概览</a>
+  <a href="#s2">声量与结构</a>
+  <a href="#s3">产品与动作</a>
+  <a href="#s4">对 NF 判断</a>
+  <div class="badge">
+    自动生成
+  </div>
+</nav>
+<main class="main" id="top">
+<header class="hero">
+  <div class="kicker">NGFW WEEKLY · 2026-W45</div>
+  <h1>防火墙竞品情报周报</h1>
+  <p class="lead">存量型号的价格战与拆包战：一周内同一品类成交单价跨度 344 倍，品目名正在取代硬件成为定价变量。</p>
+  <div class="meta">
+    <span>区间 <b>2026-11-02~11-08</b></span>
+    <span>条目 <b>59</b></span>
+    <span>周期 <b>周报</b></span>
+    <span>覆盖 <b>7/7 天</b></span>
+  </div>
+</header>
+<section id="s1">
+  <h2 class="sec"><span class="no">01</span>区间概览</h2>
+  <div class="sec-sub">2026-11-02 ~ 2026-11-08，7 天满覆盖，无断档。本期数据完整，可直接作为价格与动作基线使用。</div>
+
+  <div class="grid g4">
+    <div class="card blue"><div class="ck">条目总数</div><div class="cv">59</div><div class="cd">7 天平均 8.4 条/日</div></div>
+    <div class="card green"><div class="ck">覆盖天数</div><div class="cv">7/7</div><div class="cd">覆盖率 100%，无缺期</div></div>
+    <div class="card amber"><div class="ck">中标采购</div><div class="cv">45</div><div class="cd">占全部动作标签 37.8%</div></div>
+    <div class="card purple"><div class="ck">单价中位</div><div class="cv">11.0<small>万</small></div><div class="cd">样本 22，区间 3.12 万 ~ 189 万</div></div>
+  </div>
+
+  <p>日分布为 11-02 起 <b>7 / 7 / 11 / 9 / 8 / 7 / 10</b> 条，周中（11-04）出现单日 11 条的高点，主因是人保财险数据中心 752.12 万、天津五中心医院 268 万、西安海关 25 万等一批集中定标。周末两天合计 17 条，节假日未出现明显衰减，说明采购节奏正处在年末冲量段。</p>
+
+  <p>本期一个必须先讲清的口径问题：<b>59 条条目产生了 119 个动作标签</b>（单条可同时计入「中标采购」与「产品发布」），下文所有占比均以 119 为分母，不要与条目数混用。</p>
+
+  <div class="callout">
+    <b>数据口径说明</b>：条目 59 条覆盖 7 天，覆盖率 100%，<b>本期不存在数据不全</b>。单价统计样本 22 条（有明确单价的条目 44 条，其中 22 条可折算单台/单套价），价格结论仅适用于「可折算单价」的子集，不代表全部 44 条含金额条目。
+  </div>
+</section>
+
+<section id="s2">
+  <h2 class="sec"><span class="no">02</span>竞品声量与动作结构</h2>
+  <div class="sec-sub">深服、天融信、山石三家占据声量前三，但三家的「声量构成」完全不同——一家靠中标，一家靠中标+发布，一家靠漏洞和评测。</div>
+
+  <h3><span class="dot"></span>厂商声量（事件口径，前 10）</h3>
+  <div class="bars">
+    <div class="bar"><span class="lb">深信服</span><span class="tr"><span class="fl a" style="width:100%"></span></span><span class="vl">12</span></div>
+    <div class="bar"><span class="lb">天融信</span><span class="tr"><span class="fl a" style="width:75%"></span></span><span class="vl">9</span></div>
+    <div class="bar"><span class="lb">山石网科</span><span class="tr"><span class="fl a" style="width:75%"></span></span><span class="vl">9</span></div>
+    <div class="bar"><span class="lb">华为</span><span class="tr"><span class="fl b" style="width:67%"></span></span><span class="vl">8</span></div>
+    <div class="bar"><span class="lb">奇安信</span><span class="tr"><span class="fl b" style="width:50%"></span></span><span class="vl">6</span></div>
+    <div class="bar"><span class="lb">启明星辰</span><span class="tr"><span class="fl b" style="width:50%"></span></span><span class="vl">6</span></div>
+    <div class="bar"><span class="lb">新华三</span><span class="tr"><span class="fl c" style="width:42%"></span></span><span class="vl">5</span></div>
+    <div class="bar"><span class="lb">锐捷</span><span class="tr"><span class="fl c" style="width:42%"></span></span><span class="vl">5</span></div>
+    <div class="bar"><span class="lb">Fortinet</span><span class="tr"><span class="fl d" style="width:33%"></span></span><span class="vl">4</span></div>
+    <div class="bar"><span class="lb">绿盟科技</span><span class="tr"><span class="fl d" style="width:25%"></span></span><span class="vl">3</span></div>
+  </div>
+
+  <h3><span class="dot"></span>动作结构：119 个标签的分布</h3>
+  <div class="bar"><span class="lb">中标采购 45</span><span class="stack"><span style="width:37.8%;background:#4D7CFE"></span><span style="width:26.1%;background:#9B6DFF"></span><span style="width:10.1%;background:#2DBE8D"></span><span style="width:8.4%;background:#F5A524"></span><span style="width:7.6%;background:#F2554D"></span><span style="width:6.7%;background:#5A6579"></span><span style="width:2.5%;background:#8B95A8"></span><span style="width:0.8%;background:#3A4356"></span></span><span class="vl">119</span></div>
+  <div class="lg">
+    <span><i style="background:#4D7CFE"></i>中标采购 37.8%</span>
+    <span><i style="background:#9B6DFF"></i>产品发布 26.1%</span>
+    <span><i style="background:#2DBE8D"></i>评测荣誉 10.1%</span>
+    <span><i style="background:#F5A524"></i>标准合规 8.4%</span>
+    <span><i style="background:#F2554D"></i>漏洞事件 7.6%</span>
+    <span><i style="background:#5A6579"></i>生态合作 6.7%</span>
+    <span><i style="background:#8B95A8"></i>财报经营 2.5%</span>
+    <span><i style="background:#3A4356"></i>资本动作 0.8%</span>
+  </div>
+
+  <p>「产品发布」31 条看似是第二大项，但逐条核对后发现：<b>真正能落到新硬件型号或新版本的只有 2–3 条</b>（华为 USG6000G 系列的 USG6885G 性能口径、紫光恒越飞腾 D2000 国产化防火墙首展、山石航运国产化替换案例）。其余 28 条本质是「拿已上市型号去投具体标包」，被归入产品发布的只是标书里写了新型号。</p>
+
+  <div class="quote">
+    <b>结构性判断：</b>本周不是技术换代周，是<b>「存量型号的价格战 + 拆包战」</b>。需求侧没有催生新型号，供给侧在用同一批硬件在不同品目名下卖出 3 倍价差——竞争的主战场已经从「谁的盒子更强」移到「谁能把盒子拆成更贵的品目名」。
+  </div>
+
+  <h3><span class="dot"></span>需求侧行业分布</h3>
+  <div class="bars">
+    <div class="bar"><span class="lb">教育</span><span class="tr"><span class="fl a" style="width:100%"></span></span><span class="vl">11</span></div>
+    <div class="bar"><span class="lb">医疗</span><span class="tr"><span class="fl a" style="width:73%"></span></span><span class="vl">8</span></div>
+    <div class="bar"><span class="lb">政府</span><span class="tr"><span class="fl b" style="width:45%"></span></span><span class="vl">5</span></div>
+    <div class="bar"><span class="lb">金融</span><span class="tr"><span class="fl b" style="width:27%"></span></span><span class="vl">3</span></div>
+    <div class="bar"><span class="lb">运营商</span><span class="tr"><span class="fl c" style="width:18%"></span></span><span class="vl">2</span></div>
+    <div class="bar"><span class="lb">军队</span><span class="tr"><span class="fl c" style="width:9%"></span></span><span class="vl">1</span></div>
+    <div class="bar"><span class="lb">制造</span><span class="tr"><span class="fl d" style="width:9%"></span></span><span class="vl">1</span></div>
+  </div>
+  <p>教育与医疗合计 <b>19 条、占已标注行业的 61%</b>（31 条有行业标注）。这两个行业的共同特征是「预算来自财政、单位分散、单包金额中等、必须走公开招标」，正好解释了为什么本期中小标包（10 万 ~ 60 万）密集出现。</p>
+</section>
+
+<section id="s3">
+  <h2 class="sec"><span class="no">03</span>产品与动作</h2>
+  <div class="sec-sub">只写本期真正可核对的：新硬件、财报数字、中标型号—单价对、标准卡位、漏洞。厂商宣称指标统一标注「厂商口径」。</div>
+
+  <h3><span class="dot"></span>3.1 新硬件与新品：本期只有三件值得记</h3>
+  <table>
+    <thead><tr><th>厂商</th><th>型号 / 产品</th><th>关键指标</th><th>性质与可信度</th></tr></thead>
+    <tbody>
+      <tr><td class="k">华为</td><td>HiSecEngine USG6885G（USG6000G 盒式系列）</td><td>威胁防护性能 135Gbps、2U；内置 AI Core 专用算力做 Inline 本地在线推理；未知威胁检出率 95%（称领先业界 15pct）、业务中断风险下降 90%</td><td>随 IDC 2026H1 中国 UTM 防火墙份额第一一并披露；性能与检出率均为<b>厂商口径</b>，IDC 只背书份额位次</td></tr>
+      <tr><td class="k">紫光恒越</td><td>100% 国产化防火墙（未公布型号）</td><td>飞腾 D2000 八核；冗余电源与风扇；定位高负载 AI 数据处理与全量日志存储</td><td>11-02 乌镇「互联网之光」B3-11 <b>首次展出</b>，无型号、无性能参数、无价格——属展示级，不是可投标产品</td></tr>
+      <tr><td class="k">山石网科</td><td>SG-6000 系列（国产化替换方案，非新硬件）</td><td>自研 ASIC 硬件加速保证线速低时延；外部动态列表（EDL）统一拉取 IP/域名风险清单，支持增量或全量覆盖；提供与国外品牌功能模块/配置逻辑的延续性与迁移工具</td><td>11-05 案例披露：某头部集装箱航运企业互联网出口 + 内网服务器区两个核心边界完成国产替换。<b>这是本期唯一有明确「替换国外品牌」语义的落地案例</b></td></tr>
+    </tbody>
+  </table>
+  <p class="note">其余 28 条「产品发布」标签均为存量型号进入标包，不构成新品。本期没有出现任何国内厂商发布全新防火墙硬件平台。</p>
+
+  <h3><span class="dot"></span>3.2 外企经营面：成本在涨，需求在等</h3>
+  <table>
+    <thead><tr><th>厂商</th><th>核心数字</th><th>对国内市场的传导</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Fortinet</td><td>Q3 产品收入 7.65 亿美元、同比 +37%（Q2 为 52%，回落 15pct）；<b>产品毛利率 69.9% → 64.5%</b>；库存采购承诺 19.295 亿美元，较 2025 年底 8.106 亿增加 11.189 亿（<b>约 +138%</b>），其中 11.445 亿列在 2026 年内；为超出需求预测的承诺计提 3030 万美元负债。管理层自述涨价贡献约 10% 收入</td><td>上半年吃的是低成本库存，Q3 起新采购零部件成本进表。<b>成本压力会在 Q4 到 2027Q1 传导到中国区报价</b>；Q4 账单额指引中点对应同比约 20%，低于 Q3 的 29%，需求端在减速</td></tr>
+      <tr><td class="k">Check Point</td><td>Q3 营收 6.70 亿美元、同比 <b>-1%</b>；管理层明确「<b>传统防火墙更新周期延后</b>拖累产品收入」，判断本季为谷底；订阅占总营收 51%，邮件安全/CTEM/AI 安全 ARR 同比 <b>+38%</b>、相关计费额 +47%；已推出 AI 网络防火墙与新一代 Maestro 协调器</td><td>传统盒子业务的更新周期正在被拉长，这是全球性现象而非中国特有。两家外企同时把增长押到「订阅 + AI」，说明<b>纯硬件防火墙的单价天花板已被自己承认</b></td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="dot"></span>3.3 价格谱系：从 5,499 元到 189 万，同一周内</h3>
+  <p>这是本期最有情报价值的一张表。同一种产品品类，一周内成交单价跨度达 <b>344 倍</b>（5,499 元 vs 189 万），且高中低价位各有干净样本。</p>
+  <table>
+    <thead><tr><th>档位</th><th>项目 / 日期</th><th>型号与配置</th><th>单价</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td class="k">天花板</td><td>天津西青医院医共体第 3 包<br>11-07 合同公告</td><td>网神 SecGate3600 防火墙系统 V3.6.6.0，<b>1 套</b></td><td class="num">189 万</td><td>单套防火墙<b>刷新年内公开价格上限</b>；中标方为本地医疗产业平台公司（天津市国际医疗产业集团），非常规安全集成商</td></tr>
+      <tr><td class="k">超高端</td><td>央行清算总中心<br>11-07 中标</td><td>A 位：华为 USG6710F 万兆 <b>14 台 @17.53 万</b>（245.36 万）<br>B 位：天融信 NGFW4000-UF(HG-A40)(万) 14 台 @5.56 万</td><td class="num">17.53 万<br>5.56 万</td><td><b>同一标包内同规格 A/B 双位次，价差 3.15 倍</b>。整包 8385.61 万由上海华讯以 98.29 分中标</td></tr>
+      <tr><td class="k">高端</td><td>新疆兵团疾控 85.8 万<br>11-08</td><td>天融信 NGFW4000-UF(FT-A50)(万兆) 2U / 32G / 6 万兆光口满配 / 3 扩展槽，<b>1 台</b></td><td class="num">42.5 万</td><td>同包天融信 VPN 一体机 TopVPN6000(HG-B20) <b>43.3 万反超防火墙</b>——边界设备的定价权正在流向非防火墙品类</td></tr>
+      <tr><td class="k">高端</td><td>上海外国语大学 121.08 万<br>11-05</td><td>山石 SG-6000-K6560-B <b>1 台</b>（数据中心边界）</td><td class="num">33 万</td><td>同包零信任 aTrust-1000 44.5 万，<b>反超防火墙 34.7%</b>；高校数据中心边界单台已能报到 33 万</td></tr>
+      <tr><td class="k">高端</td><td>上海海事大学智算中心 59.78 万<br>11-07</td><td>下一代防火墙 <b>2 台</b>（等保要求，含访问控制/IPS/病毒过滤/VPN）</td><td class="num">29.89 万</td><td>把今年反复出现的「校园出口 8.3–9.3 万」锚点<b>直接抬了 3.6 倍</b>，差异全部来自「智算中心」这个场景名</td></tr>
+      <tr><td class="k">中高端</td><td>人保财险数据中心 标包 4<br>11-03 定标</td><td>34 台（50G 22 台 + 200G 12 台）</td><td class="num">均价 22.1 万</td><td>整包 752.12 万由中科软中标；同项目标包 5 异构 32 台由紫光软件承接</td></tr>
+      <tr><td class="k">中端</td><td>中日友好医院 583.52 万<br>11-06</td><td>网神 SecGate3600 V3.6.6.0-NSG6300-KP55 <b>8 台</b></td><td class="num">11.65 万</td><td>防火墙合计 93.2 万、<b>只占整包 16%</b>，其余近 490 万被集成/平台/服务吃掉</td></tr>
+      <tr><td class="k">中端</td><td>枣庄中医院 388.9 万<br>11-05</td><td>网御 Power V6000：千兆 1 台 5.2 万 / 万兆出口 4 台 @11.8 万 / 万兆数据中心 2 台 @15.35 万</td><td class="num">11.8 / 15.35 万</td><td><b>同型号「出口 vs 数据中心」差 30%</b>；7 台合计 83.1 万占整包 21.4%</td></tr>
+      <tr><td class="k">中端</td><td>天津五中心医院 267.999 万<br>11-04</td><td>AF-1000-L2200-5H 4 台 @7.231 万；AF-2000-L2250-I7 4 台 @14.643 万</td><td class="num">7.23 / 14.64 万</td><td>同品牌同包两档，<b>差 2.03 倍</b>；三家报价极差仅 1.3%，已进入贴身肉搏</td></tr>
+      <tr><td class="k">中端</td><td>国家卫健委人才中心 160.81 万<br>11-08</td><td>深信服 AF-2000-FH2150B <b>8 台</b></td><td class="num">6.78 万</td><td>中央本级集采把中端一口价压在 7 万以内，仅下浮 1.7%</td></tr>
+      <tr><td class="k">中端</td><td>中原银行 DMZ 12 台<br>11-07 二次开标</td><td>数据中心 DMZ 外层防火墙 12 台</td><td class="num">5.21–6.18 万</td><td>集成商创元 62.52 万居首（5.21 万/台），<b>天融信原厂直投 69.6 万只能排第二</b>，靠 7 年维保加码——原厂直投正在被集成商价格压制</td></tr>
+      <tr><td class="k">入门</td><td>云南省审计厅 7.12 万<br>11-04</td><td>奇安信网神 SecGate3600 <b>2 台</b></td><td class="num">3.56 万</td><td>整包只有防火墙一个品目、无任何配套，是「省级厅局最小可成交单元」的干净样本</td></tr>
+      <tr><td class="k">地板</td><td>湖北冶金地质所 9.28 万<br>11-08</td><td>华为 USG6000E-S12 <b>1 台</b></td><td class="num">5,499 元</td><td><b>刷新年内防火墙成交价下限</b>；比同包三层交换机 S620（7,520 元）还便宜 2,000 元</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="dot"></span>3.4 拆包术：品目名如何把同一台盒子卖出 3 倍价</h3>
+  <p>本期至少 <b>6 个标包</b>把防火墙拆成多个独立品目，且拆分方式高度一致——<b>按网络位置或业务系统命名</b>。这不是巧合，是可复用的定价战术。</p>
+  <table>
+    <thead><tr><th>项目</th><th>拆法</th><th>价差结果</th></tr></thead>
+    <tbody>
+      <tr><td class="k">潍坊工程职业学院 45.91 万<br>11-06</td><td>同一山石 K 系列拆成两个品目名：K5180-B 作「<b>数据防火墙</b>」、K6680-B 作「<b>综合安全网关</b>」</td><td>10.26 万 vs 35.65 万，<b>后者是前者 3.47 倍</b>。型号只差一档，真正改变定价环境的是品目名</td></tr>
+      <tr><td class="k">北京大学人民医院 395.2 万<br>11-02 发布</td><td>28 项标的中防火墙拆成 <b>7 个独立品目</b>：指挥中心边界 / 数据中心隔离 / 管理网 / 5G 网出口 / Web / 内外网隔离 / 内网核心</td><td>中央集采 GC-HGX261337，11-18 09:00 开标，预算＝最高限价 395.2 万</td></tr>
+      <tr><td class="k">深圳福彩中心 165 万<br>11-05 挂网</td><td>8 台切 <b>4 个品目</b>：核心（彩票销售）/ 出口（办公）/ 内网（中间业务）/ 内网（通用业务）</td><td>折 20.6 万/台，11-23 13:30 开标</td></tr>
+      <tr><td class="k">枣庄中医院</td><td>同型号按位置拆：出口万兆 vs 数据中心万兆</td><td>11.8 万 vs 15.35 万，<b>差 30%</b></td></tr>
+      <tr><td class="k">天津五中心医院</td><td>同品牌拆「防火墙 1 / 防火墙 2」两档</td><td>7.23 万 vs 14.64 万，<b>差 2.03 倍</b></td></tr>
+      <tr><td class="k">中国航发南方工业<br>11-02 挂网</td><td>把防火墙从「园区网络总包」里切出来，单独立项编号「<b>防火墙子项 2</b>」</td><td>要求涉密信息系统集成资质；军工央企已把边界设备独立立项</td></tr>
+    </tbody>
+  </table>
+  <div class="quote">
+    <b>可直接复用的结论：</b>在「一包一型号」的老形态里，价格由硬件决定；在「一包多品目」的新形态里，<b>价格由品目名决定</b>。潍坊那个 3.47 倍是最干净的证据——同一系列、同一供应商、同一包，只因为一个叫「防火墙」一个叫「综合安全网关」。
+  </div>
+
+  <h3><span class="dot"></span>3.5 标准与合规：省级框架协议定下了未来一年的价格阶梯</h3>
+  <table>
+    <thead><tr><th>事项</th><th>内容</th><th>对报价的影响</th></tr></thead>
+    <tbody>
+      <tr><td class="k">湖南省 2026-2027 年度防火墙框架协议<br>42 包</td><td>三分区落定：<b>通用 NGFW 13 包 / 国产化 NGFW 13 包 / WAF 16 包</b>；入围品牌池至少 15 家；包 34 因「仅 1 家响应」终止</td><td>国产化 13 个档位从 <b>2.4 万一路排到 97 万</b>，形成 13 级阶梯。华为 USG6525F/6555F/6635F/6655F/6700F/6725F 六款全系在列；奇安信 NSG2600/3800/13000 在列。<b>这是未来一年湖南全省的报价天花板</b></td></tr>
+      <tr><td class="k">国产化要求（信创 4 次、等保 4 次）</td><td>民权县法院 2 台「企业级国产化内网 NGFW」@8 万/台，参数写明全威胁 800M、并发 400 万；军队机房要求全栈国产化（整机/固件/BMC/驱动）；紫光恒越推 100% 国产化</td><td>国产化已从「加分项」变成「准入门槛」，但<b>国产化档位的价格上限（97 万）反而高于通用档</b>——信创不是压价理由，是溢价理由</td></tr>
+      <tr><td class="k">认证门槛（认证 5 次）</td><td>中国医学科学院肿瘤医院廊坊院区 4 台要求「<b>双品牌异构</b>」，且两台设备门槛不同：防火墙 1 需《网络关键设备和网络安全专用产品安全认证证书》+ 知识产权合规体系认证；防火墙 2 还需中国安全技术防范认证中心的「重要行业供应商网络安全服务认证证书」</td><td>双品牌异构 + 差异化认证 = <b>人为制造稀缺</b>，是排他性条款的新变种，需提前备证</td></tr>
+      <tr><td class="k">集采形态（集采 3 次）</td><td>中央组织部 7 台 @11 万（指定启明星辰天清汉马 USG-FW-N-G5113-YC）；汕头海关 2 台 @4.88 万（指定网神 SecGate3600 NSG6150-D15）；日照边检 1 台 @3.2 万（指定中科神威 NSFW-6000-NF8072-ZK03）</td><td>反拍/比价单<b>把品牌型号写死</b>，「有效报价满三家取最低价，不足三家废标」——型号唯一 + 只认最低价，议价空间被压到接近零</td></tr>
+      <tr><td class="k">流标与二次招标</td><td>全国海关信息中心策略梳理服务（19 万）因「供应商不足 3 家」11-02 终止、11-03 即重招；湖南信息职院 20 万 NGFW 二次招标；中原银行 12 台二次开标</td><td>服务类与低价包流标率上升，<b>供给端对低毛利标的正在用脚投票</b></td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="dot"></span>3.6 风险面：山石一周四条公告，Fortinet 全线调查</h3>
+  <table>
+    <thead><tr><th>时间</th><th>厂商</th><th>漏洞</th><th>影响面与处置</th></tr></thead>
+    <tbody>
+      <tr><td>11-02</td><td class="k">山石网科</td><td>HSVD-2026-0113：PHP 组件 CVE-2026-109618 / 109619，远程代码执行，CVSS 8.1</td><td>「智能下一代防火墙（NGFW）」标注为<b>所有版本受影响</b>；已修复 5.5R8P34 / 5.5R10P19.1 等三档，<b>5.5R12 要等到 11-06</b>。利用条件仅需网络访问 Web 管理页</td></tr>
+      <tr><td>11-04</td><td class="k">山石网科</td><td>HSVD-2026-0026/0027/0031 三条「认证后 Root 命令执行」（无 CVE）：ptf blacklist lib 把用户可控 URL 直接拼进 curl 命令；logd 日志导出接口命令注入</td><td><b>NGFW R8–R12 四个大版本全在影响面</b>；均为外部报送</td></tr>
+      <tr><td>11-06</td><td class="k">山石网科</td><td>HSVD-2026-0127：Linux 内核 IPv4 TCP 栈 use-after-free CVE-2026-98432，CVSS <b>9.8</b></td><td><b>30 条产品线全部「所有版本受影响」</b>，防火墙相关含 NGFW、工业防火墙 IFW、云界 CloudEdge、大模型应用防火墙 MAF。<b>官方不给固件补丁，只给「关管理面」缓解</b></td></tr>
+      <tr><td>11-07</td><td class="k">山石网科</td><td>OpenSSH CVE-2026-123158 密码认证绕过（CVSS 8.1）</td><td>公告「<b>不受影响</b>」——全系 glibc、不走 OpenSSH 密码认证。顺带披露了固件底座信息</td></tr>
+      <tr><td>11-04</td><td class="k">Fortinet</td><td>FortiOS / FortiManager / FortiAnalyzer / FortiMail / FortiAuthenticator 全线关键漏洞</td><td><b>静默修复</b>：修复版 10-22 已发，CVE 与公告压到 <b>11-10</b> 才公布。CERT-In 通告 CIAD-2026-0054 要求按「优先紧急变更」处理</td></tr>
+      <tr><td>11-08</td><td class="k">Fortinet</td><td>就同一条 CVE-2026-98432 开全线调查</td><td>FG-IR-26-188 把 60 余款产品列入「调查中」，<b>11-07 只补出 IPS 虚拟补丁、无固件矩阵</b></td></tr>
+      <tr><td>11-08</td><td class="k">SonicWall</td><td>CVE-2026-19868：SonicOS SSL VPN 的 SAML 可被绕过</td><td>Gen7/Gen8 全系<b>无 workaround</b>；只要开着本地账号/RADIUS/LDAP 任一种替代认证即可绕过 SAML 与 MFA。CISA 定 <b>11-20</b> 前打完</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <b>注意 CVE-2026-98432 的共性</b>：这是 Linux 内核 IPv4 TCP 握手期的 use-after-free（tcp_v4_syn_recv_sock 把 ireq_opt 所有权转移给子 socket 但未拷贝）。山石和 Fortinet 都因此全线受影响——<b>这不是某一家的问题，是「所有基于 Linux 内核的边界设备」的问题</b>。NF 需自查自有产品所用内核版本的 backport 状态，不能只看竞品热闹。
+  </div>
+</section>
+
+<section id="s4">
+  <h2 class="sec"><span class="no">04</span>对 NF 的判断</h2>
+  <div class="sec-sub">5 条，按可执行性排序。证据强度标注：<span class="tag t-green">强</span> 有干净样本或多个独立案例 · <span class="tag t-blue">中</span> 单一来源或需交叉验证 · <span class="tag t-red">弱</span> 推断。</div>
+
+  <div class="find">
+    <div class="it"><div class="n">1</div><div class="tx">
+      <b>把「品目拆分」做成标准投标战术，本周内出场景化品目报价手册。</b> 本期 6 个标包把防火墙拆成 2–7 个品目，且拆分逻辑高度一致（按网络位置/业务系统命名）。潍坊职院同系列两个品目名卖出 <b>3.47 倍价差</b>、枣庄同型号「出口 vs 数据中心」差 30%、天津五中心同品牌两档差 2.03 倍。<b>行动</b>：按「指挥中心/数据中心/管理网/5G 出口/内外网隔离/内网核心/Web」出一版品目—配置—建议价对照表，让一线在标书编制阶段就能把配置写进对的品目名里。 <span class="tag t-green">强</span>
+    </div></div>
+
+    <div class="it"><div class="n">2</div><div class="tx">
+      <b>「品牌位次」本身值 3 倍钱——央行清算总中心这个标包要反复讲。</b> 同一标包、同为万兆、同为 14 台：华为 USG6710F <b>17.53 万/台</b>，天融信 NGFW4000-UF <b>5.56 万/台</b>，<b>价差 3.15 倍</b>。买家愿意为「A 位」付三倍溢价，说明在超大型金融标里，价格不是决定性因素，<b>位次定义权才是</b>。<b>行动</b>：在金融/运营商大标里争取「A 位」命名权（如「核心区 A 类防火墙」），而不是在 B 位里拼价格——B 位的价格战没有下限。 <span class="tag t-green">强</span>
+    </div></div>
+
+    <div class="it"><div class="n">3</div><div class="tx">
+      <b>山石的四条公告是国产化替换的抢单窗口，但窗口有 60 天。</b> 山石一周内披露 4 条：NGFW <b>所有版本</b>受 PHP2Shell 影响、NGFW R8–R12 四条认证后 Root、<b>CVE-2026-98432 全线所有版本且官方只给「关管理面」不给固件补丁</b>。对正在用山石做边界的老客户，「关管理面」是不可接受的运维降级——这是明确的替换触发点。<b>行动</b>：① 锁定山石存量客户名单，主打「补丁可交、管理面不用关」；② <b>同时自查 NF 自有产品的 Linux 内核 backport 状态与 PHP/OpenSSH 组件版本</b>，同一个 CVE 打不了别人也躲不过自己。 <span class="tag t-green">强</span>
+    </div></div>
+
+    <div class="it"><div class="n">4</div><div class="tx">
+      <b>外企成本上行会在 Q4–2027Q1 打开一个价格窗口，但也意味着需求在减速。</b> Fortinet 产品毛利率 <b>69.9% → 64.5%</b>、库存采购承诺 <b>+138% 至 19.295 亿美元</b>、Q4 账单额指引同比约 20%（低于 Q3 的 29%）；Check Point 营收 <b>-1%</b> 且自认「传统防火墙更新周期延后」。两家同时把增长押到订阅与 AI。<b>判断</b>：外企在华报价的上行压力会在两个月内显现，这是 NF 的相对价格优势窗口；但「更新周期延后」是全球性的，别指望靠降价把蛋糕做大。<b>行动</b>：Q4 报价策略按「守住毛利率、抢外企替换位」定，不要跟进无底线降价。 <span class="tag t-blue">中</span>（来源为厂商财报口径，未见第三方交叉验证）
+    </div></div>
+
+    <div class="it"><div class="n">5</div><div class="tx">
+      <b>教育与医疗占 61%，且这两个行业是集成商主导——NF 该绑集成商，不该直投。</b> 31 条有行业标注的条目里教育 11、医疗 8。本期多个案例显示原厂直投已被集成商压制：中原银行 DMZ 12 台，<b>集成商创元 62.52 万居首，天融信原厂直投 69.6 万只能排第二</b>，只好靠 7 年维保加码；天津西青医院 189 万那单的中标方是本地医疗产业平台公司，不是安全集成商。<b>行动</b>：把教育/医疗的渠道政策从「原厂报备」改成「集成商联合投标 + 原厂技术背书」，并准备一套给集成商用的品目报价授权表。 <span class="tag t-blue">中</span>
+    </div></div>
+  </div>
+
+  <div class="callout">
+    <b>本期最该警惕的一条反向信号</b>：边界设备的定价权正在从防火墙流向相邻品类。新疆兵团疾控 85.8 万那单，<b>VPN 一体机 43.3 万反超防火墙 42.5 万</b>；上海外国语大学 <b>零信任 44.5 万反超山石防火墙 33 万 34.7%</b>；大宁县医联体 <b>网闸 7 万反超防火墙 4.45 万 57%</b>；吐鲁番职院 <b>上网行为管理 13.304 万反超防火墙 8.3 万 60%</b>。一周内四例同包反超，这不是偶然——如果 NF 只卖防火墙，会持续在这些标包里当「配角」。<span class="tag t-red">需验证</span>（四例均为单包观察，尚未形成统计显著性，但方向一致性值得立项跟踪）
+  </div>
+</section>
+
+<footer>
+数据源：7 期防火墙厂商日报 · 条目 59 条 · 覆盖率 100% · 统计口径以 119 个动作标签为分母 · 单价样本 22 条
+</footer>
+</main>
+</div>
+<script>
+const links=[...document.querySelectorAll('.side a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('on'));
+      const t=links.find(l=>l.getAttribute('href')==='#'+e.target.id);
+      if(t)t.classList.add('on');
+    }
+  });
+},{rootMargin:'-15% 0px -70% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
