@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ 中国 NGFW 厂商日报 · 2026-11-13</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111114; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --tx:#ededf2; --tx2:#a1a1aa; --tx3:#71717a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  background-image:radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+                   radial-gradient(800px 480px at 92% 4%, rgba(236,72,153,.12), transparent 62%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+.nav-spacer{flex:1}
+.nav-meta{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:60px 0 34px;text-align:center}
+.hero h1{
+  font-size:clamp(30px,5.2vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;
+  background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero .sub{margin-top:14px;color:var(--tx2);font-size:14.5px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:112px;
+}
+.stat b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:12px;color:var(--tx3);letter-spacing:.4px}
+.ai{
+  margin:34px 0 8px;border-radius:18px;padding:24px 26px;
+  background:linear-gradient(135deg,rgba(91,108,247,.13),rgba(139,92,246,.09) 45%,rgba(236,72,153,.09));
+  border:1px solid rgba(139,92,246,.26);
+}
+.ai h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#c9b8ff}
+.ai p{font-size:14.6px;color:#d6d6de}
+.ai b{color:#fff;font-weight:600}
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.sec-head .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:15px;padding:19px 20px 17px;
+  display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.42);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11px;font-weight:650;padding:2.5px 9px;border-radius:6px;border:1px solid transparent;letter-spacing:.2px;white-space:nowrap}
+.date{font-size:11px;color:var(--tx3);margin-left:auto;font-variant-numeric:tabular-nums}
+.card h3{font-size:15.2px;font-weight:680;line-height:1.5;letter-spacing:-.15px;margin-bottom:9px;color:#f4f4f7}
+.card p{font-size:13.4px;color:var(--tx2);flex:1}
+.srcs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px}
+.src{
+  display:inline-block;font-size:12.8px;font-weight:600;
+  color:var(--g2);text-decoration:none;transition:color .2s ease,text-decoration-color .2s ease;
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;
+}
+.src:hover{color:#c4b5fd;text-decoration-color:#c4b5fd}
+.empty{
+  grid-column:1/-1;text-align:center;color:var(--tx3);font-size:13.6px;
+  padding:34px 20px;border:1px dashed var(--line);border-radius:15px;background:rgba(255,255,255,.015);
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--tx3);font-size:12.2px;line-height:1.9}
+footer a{color:var(--g2);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:42px 0 24px}
+  .grid{grid-template-columns:1fr}
+  .stat{min-width:92px;padding:12px 16px}
+  .stat b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-logo"><span class="nav-dot"></span>NGFW 厂商日报</div>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta">2026-11-13 · 北京时间 09:00</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-11-13 · 覆盖深信服 / 奇安信 / 华为 / 新华三 / 山石网科 / 天融信 / 绿盟科技 / 启明星辰 等</div>
+    <div class="hero-stats">
+      <div class="stat"><b>20</b><span>总动态</span></div>
+      <div class="stat"><b>8</b><span>厂商动态</span></div>
+      <div class="stat"><b>12</b><span>行业动态</span></div>
+
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>🤖 AI 解读 · 今日看点</h2>
+    <p>今天国内八家仍无防火墙新型号，但国际侧三条产品线同日完成"AI 化"翻新：Sophos 把 AI 助手写进 v23 并一次补齐四款 1U 新机，Check Point 把单系统威胁防护推到 4.5Tbps，阿里云干脆把云防火墙整体改成 Agentic 形态、且明确"升级后不支持回退"——竞争焦点已经从"加个检测模型"转到"重写策略生成与运维入口"。国内唯一拿得出财务口径的是山石：ASIC 收入占比 5%、20%、37% 三个季度阶梯爬升、Q3 单季破亿翻倍，还要推分布式 ASIC 高端机型打 AIDC，这是"硬件自研"第一次兑现成财报数字，比任何参数都硬。采购侧今天最大单是黑龙江联通 1618 万 18 台、同包单台从 2.52 万到 22.22 万差 8.8 倍，叠加重庆农商 6 台、人行山东 185 万——运营商与金融的 IPv6/信创改造是同一笔预算在动，NF 真正要答的不是"单机多强"，而是"一个包能不能报齐 2.5 万到 22 万全档位"。
+</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="cnt">8 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#DC2626;background:#DC262624;border-color:#DC262633">Fortinet</span><span class="date">2026-11-11</span></div>
+      <h3>FortiOS 11-10 批次：本体还剩 BGP 9.6 / VDOM 9.1 / FGSP 9.0 三条</h3>
+      <p>11-10 公告里落在 FortiOS 本体、且此前未覆盖的三条：CVE-2026-126254（CVSS 9.6）BGP 数字截断，须从已配置的 iBGP 邻居位置发起；CVE-2026-126229（9.1）已认证管理员可越权访问其他 VDOM；CVE-2026-126259（9.0）在 FGSP 独立配置同步或自动扩缩容场景下可取得超级管理员执行命令。同批最高分 9.8 的 CVE-2026-126170（FortiManager/Analyzer 的 JSON-RPC 注入）属管理平台，不在防火墙本体口径内。修复版本 8.0.2 / 7.6.8 / 7.4.13 / 7.2.14，均无在野利用记录。</p>
+      <div class="srcs"><a class="src" href="https://www.freebuf.com/news/511896.html" target="_blank" rel="noopener">FreeBuf →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-11-09</span></div>
+      <h3>阿里云云防火墙 11 月底改 Agentic 形态，升级后不可回退</h3>
+      <p>阿里云公告：云防火墙 2026 年 11 月底正式发布 Agentic 防火墙，首期三项 AI Engine——流量洞察、智能访问控制（基于近 7 天真实业务流量日志自动生成源/目的 IP、协议、端口的 ACL 策略建议，确认后应用）、策略分析（识别无流量命中、冗余、冲突与过宽策略）。新开通用户默认使用该形态，存量包年包月与按量付费可升级，<strong>升级后不支持回退经典形态</strong>；原「安全运营 Agent」并入智能访问控制，公测 12-10 结束。</p>
+      <div class="srcs"><a class="src" href="https://www.aliyun.com/notice/118743" target="_blank" rel="noopener">阿里云公告 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#8B5CF6;background:#8B5CF624;border-color:#8B5CF633">山石网科</span><span class="date">2026-11-06</span></div>
+      <h3>山石 ASIC 收入占比 5%→20%→37%，将推分布式 ASIC 高端墙打 AIDC</h3>
+      <p>11-06 投资者调研纪要（2026-08 号）：2026 前三季度 ASIC 产品收入占主营业务比重依次为 5%、20%、37%，第三季度单季突破亿元、环比翻倍；前三季度数据中心类订单同比快速增长；近期将推出<strong>分布式 ASIC 高端防火墙</strong>切入智算中心 AIDC。公司称 ASIC 相关项目盈利水平显著优于非 ASIC 项目，并可对冲存储器件涨价，产品矩阵继续补全后以 ASIC 防火墙为入口向存量客户交叉销售端点、云安全、负载均衡。</p>
+      <div class="srcs"><a class="src" href="https://guba.eastmoney.com/news,688030,1793278403.html" target="_blank" rel="noopener">调研纪要 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-11-04</span></div>
+      <h3>Sophos Firewall v23 发布，四款 1U 新机威胁防护 59Gbps</h3>
+      <p>v23 引入 Sophos AI Defense，在防火墙侧放行可信生成式 AI 服务、阻断未授权平台；新增 AI Assistant 以自然语言理解配置并起草规则、OpenAPI 3.0 REST API；硬件感知高可用把故障切换检测从 4 秒压到 300 毫秒（13 倍），新增 DoH/DNSSEC 与 CVE 热补丁可见性。同批四款 1U 新机 XGS 2380/3380/4580/5580，受保护吞吐最高为上一代 1U 的 4 倍、威胁防护吞吐 59Gbps、TLS 解密 16Gbps，3380 起提供 25G 端口。</p>
+      <div class="srcs"><a class="src" href="https://aitimes.ph/sophos-unveils-ai-era-network-security-upgrades-with-firewall-v23" target="_blank" rel="noopener">AI Times PH →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#A855F7;background:#A855F724;border-color:#A855F733">Check Point</span><span class="date">2026-10-29</span></div>
+      <h3>Check Point 发布 MHO 200：单系统威胁防御 4.5Tbps</h3>
+      <p>Maestro Hyperscale Orchestrator 200 沿用 1RU 形态、新增 400GbE 端口，fabric 总容量从 MHO 175 的 3.2Tbps 提升至 12.8Tbps，单系统威胁防护吞吐从 1.1Tbps 提升至 4.5Tbps（均为 4 倍）。可混搭不同型号与代际网关、拆分最多 8 个独立安全域、跨两站点自动故障切换做到 99.999%；AI Factory Firewall 与 NVIDIA BlueField DPU 集成，支持无重启热补丁。</p>
+      <div class="srcs"><a class="src" href="https://www.checkpoint.com/press-releases/check-point-secures-ai-scale-traffic-for-neoclouds-sovereign-ai-and-the-enterprise/" target="_blank" rel="noopener">Check Point →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">华为</span><span class="date">2026-10-30</span></div>
+      <h3>华为 AI 防火墙拿下 2026H1 中国 UTM 防火墙份额第一</h3>
+      <p>IDC《中国安全硬件市场跟踪，2026H1》显示华为 HiSecEngine AI 防火墙取得 2026 年上半年中国 UTM 防火墙市场份额第一。官方给出的硬指标：内置 AI Core 专用算力 + Inline 检测，未知威胁检出率 95%、领先业界 15 个百分点；USG6885G 威胁防护性能 135Gbps，称业界领先的 2U 盒式；iMaster NCE 统一纳管，全网 99% 安全事件秒级自动处置、分支无需专人运维。</p>
+      <div class="srcs"><a class="src" href="https://e.huawei.com/cn/news/2026/solutions/enterprise-network/ai-firewall-secured-top-position-chinese-2026" target="_blank" rel="noopener">华为企业业务 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-11-06</span></div>
+      <h3>SonicOS 8.2.3 发布：新增 SaaS 与 AI 应用对象</h3>
+      <p>覆盖 Gen8 全系 TZ80–TZ680、NSa 2800–6800 与 NSv 虚拟防火墙。新增 SaaS 与 AI 应用对象，按目的 IP 在首包识别 Microsoft 365、AWS、GCP 等并直接用于访问规则、路由与 SD-WAN 策略；新部署默认开启 6 项安全设置（含管理双因素、SSL Control、隐身模式）；新增每 60 分钟刷新的 Security Score 与 AES-256-GCM 加密配置导出，配套 NSM 4.5.0。该版本同时修复 7 个漏洞，含已入 KEV 的 CVE-2026-19868。</p>
+      <div class="srcs"><a class="src" href="https://www.sonicwall.com/blog/sonicos-8-2-3-security-secure-from-day-one" target="_blank" rel="noopener">SonicWall →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F97316;background:#F9731624;border-color:#F9731633">WatchGuard</span><span class="date">2026-11-03</span></div>
+      <h3>WatchGuard Firebox 一次修 17 个 CVE，多项为预认证</h3>
+      <p>Fireware 2026.4 与 12.12.4 各修 17 个 CVE、12.5.22 修 14 个，涉及 SIP 代理、SSH 认证、Access Portal、AD 认证、管理界面与 FireCluster 同步，多项为预认证问题；同步更新 OpenSSH/OpenSSL，修复 Windows SSL VPN 客户端本地凭据泄露。官方建议全系 Firebox 按机型升级至对应分支最新版。</p>
+      <div class="srcs"><a class="src" href="https://www.watchguard.com/br/wgrd-blog/update-your-firebox-fireware-20264-12124-and-12522" target="_blank" rel="noopener">WatchGuard →</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="cnt">12 条</span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#06B6D4;background:#06B6D424;border-color:#06B6D433">运营商</span><span class="date">2026-11-05</span></div>
+      <h3>黑龙江联通省级政务外网 1618.48 万招 18 台，同包价差 8.8 倍</h3>
+      <p>中国联通黑龙江省分公司 2026 年省级电子政务外网项目（二次）公开招标，预算 1618.48 万元（不含税）。防火墙拆四档共 18 台：广域落地防火墙 13 台 @7.59 万、边界防火墙 2 台 @22.22 万、互联网防火墙 1 台 @13.98 万、5G 下一代防火墙 2 台 @2.52 万——同一包内单台价差 8.8 倍，只有全档位产品线才能一包报齐。</p>
+      <div class="srcs"><a class="src" href="https://heilongjiang.jianyu360.cn/jybx/20261105_261104100441160.html" target="_blank" rel="noopener">剑鱼标讯 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-11-12</span></div>
+      <h3>重庆农商行 IPv6 改造：防火墙 6 台，整包限价 361.5 万</h3>
+      <p>重庆农村商业银行广域网骨干网络 IPv6 升级改造信创设备采购公开招标，含数据同步路由器 6 台、汇聚路由器 6 台、核心路由器 6 台、防火墙 6 台，整体最高限价 361.5 万元、保证金 6 万元、自筹资金。要求路由器前三项同品牌，12-09 09:30 截止，30 天供货、90 个工作日上线。防火墙未单列预算，需与路由器分摊。</p>
+      <div class="srcs"><a class="src" href="https://www.cqggzy.com/trade/014012/4ee50bfa-fc87-4d64-920b-714662c0537b?categoryNum=004008001" target="_blank" rel="noopener">重庆公共资源交易 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#F59E0B;background:#F59E0B24;border-color:#F59E0B33">金融</span><span class="date">2026-11-11</span></div>
+      <h3>人行山东省分行 185 万招两类防火墙，12-03 截止</h3>
+      <p>中国人民银行山东省分行（国家外汇管理局山东省分局）2026 年网络和安全设备采购，预算与最高限价均为 185 万元，采购需求含防火墙 1、防火墙 2、数据中心交换机、汇聚交换机 1/2、负载均衡设备。合同签订后 30 日内到货，12-03 09:00 截止，由中央国家机关政府采购中心组织。把防火墙拆成两个独立品目而非一台一档，通常对应两个不同吞吐档位。</p>
+      <div class="srcs"><a class="src" href="http://www.ccgp.gov.cn/cggg/zygg/gkzb/202611/t20261111_27657970.htm" target="_blank" rel="noopener">中国政府采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-11-02</span></div>
+      <h3>天津第五中心医院 268 万：深信服八台，两档单台价差 2 倍</h3>
+      <p>新内科综合楼中心机房网络安全建设，天津瑞智万达 267.999 万元、得分 88.91。深信服 AF-1000-L2200-5H 4 台 @7.231 万 + AF-2000-L2250-I7 4 台 @14.643 万，同品牌两档单台价差 2.03 倍，防火墙合计 87.5 万占整包 32.7%；另含安全感知平台 SIP-1000-L500K 1 台 44.11 万。</p>
+      <div class="srcs"><a class="src" href="http://www.ccgp-tianjin.gov.cn/viewer.do?id=1094400433" target="_blank" rel="noopener">天津政采 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#5B6CF7;background:#5B6CF724;border-color:#5B6CF733">政府</span><span class="date">2026-11-11</span></div>
+      <h3>绛县公安局 127.65 万：安恒三台墙 38.9 万，整包 8 类设备 6 类同品牌</h3>
+      <p>绛县公安局信息系统等级保护设备采购，山西麒智 127.65 万元、得分 92.3。安恒 DAS-TGFW（万兆）V6：互联网防火墙 1 台 @11.3 万、专网防火墙 2 台 @13.8 万，防火墙合计 38.9 万占整包 30.5%；同包共 8 类设备里 6 类为安恒（含审计、日志、数据库审计、APT 预警、漏扫），另配深盾国密堡垒机 2 台 @19.5 万。等保包「一家供齐」是县域项目的典型形态。</p>
+      <div class="srcs"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg//zbgg/202611/t20261111_27657791.htm" target="_blank" rel="noopener">中国政府采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#64748B;background:#64748B24;border-color:#64748B33">其他</span><span class="date">2026-11-06</span></div>
+      <h3>哈局核心防火墙 90.24 万落天融信，前两名报价差 0.84%</h3>
+      <p>中国铁路哈尔滨局信息技术所综合信息网核心网络设备购置，包 1 核心防火墙由北京天融信以 902,400 元排第一，第二名西安云铁信 91 万元，两家报价差 0.84%、几乎贴身；公示期 11-06 至 11-09。铁路局综合信息网的核心墙属于「设备+在线割接」类，价格空间被第二名直接压死。</p>
+      <div class="srcs"><a class="src" href="https://caigou.91jinshu.com/zhaobiao137587.html" target="_blank" rel="noopener">金数采购 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-11-10</span></div>
+      <h3>侯马中医院 35.8 万：天清汉马千兆单台 5 万</h3>
+      <p>侯马市中医院数智四级医联体建设项目，山西艾腾 35.8 万元、评审得分 94.1。防火墙为启明星辰天清汉马 USG（千兆）V2.6，型号 USG-FW-310-T-NF1800R，1 台单价 5 万元。医联体专项的小额包通常只买一台边界墙，是低价位段（5 万档）的标准锚点。</p>
+      <div class="srcs"><a class="src" href="https://prec.sxzwfw.gov.cn/jyxxzczb/1112577.jhtml" target="_blank" rel="noopener">山西公共资源交易 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-11-06</span></div>
+      <h3>江油精卫 85.1 万分两包，绿盟单套防火墙 26.5 万占 31%</h3>
+      <p>江油市精神病医院 2026 年信息化项目分两包：包 1 灾备管理系统 58.6 万元（数腾，得分 95.30）、包 2 网络防火墙 26.5 万元（成都敏嘉，得分 90.52）。包 2 标的为绿盟 NFNX3-HH1200 防火墙 1 套、单价即合同额，整套 85.1 万里防火墙占 31.1%。把灾备与边界拆成两包、两包两家中标，是县级医院拆分风险的常见做法。</p>
+      <div class="srcs"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202611/t20261106_27631953.htm" target="_blank" rel="noopener">中国政府采购网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#84CC16;background:#84CC1624;border-color:#84CC1633">能源</span><span class="date">2026-11-02</span></div>
+      <h3>延长石油炼化招 6 台：工业级 20Gbps 占 4 台</h3>
+      <p>陕西延长石油（集团）炼化公司 2026 网络设备购置谈判采购，含企业级 50G 防火墙 1 台、企业级 6.0Gbps 防火墙 1 台、工业级 20Gbps 防火墙 4 台，分别部署炼化公司本部、榆林炼油厂、延安炼油厂。工业级占 4/6，且要求 20Gbps 档——炼化场景对工业防火墙的吞吐要求已向数据中心级靠拢。</p>
+      <div class="srcs"><a class="src" href="https://www.dlzb.com/d-zb-70951322.html" target="_blank" rel="noopener">电力招标网 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#84CC16;background:#84CC1624;border-color:#84CC1633">能源</span><span class="date">2026-11-02</span></div>
+      <h3>昆仑物流 IPv6 项目采购防火墙 4 台</h3>
+      <p>中国石油昆仑物流有限公司 IPv6 规模部署和应用项目硬件采购（二级物资）公开招标，安全系统改进部分含防火墙 4 台、上网行为管理 3 套、入侵防御系统 2 套、数据库审计 2 套，部署于新疆、北京机房，并配套 22 台 DHCP 网关。IPv6 改造正在成为央企二级物资采购的固定科目。</p>
+      <div class="srcs"><a class="src" href="https://www.chinamae.com/purchases/bd17ce1679139bd86fb581c273d72ef1.html" target="_blank" rel="noopener">中国机电设备招标 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#84CC16;background:#84CC1624;border-color:#84CC1633">能源</span><span class="date">2026-11-06</span></div>
+      <h3>粤电青溪招 2 套边界墙，捆绑 5 年运维与等保支撑</h3>
+      <p>广东粤电青溪发电核心网络安全设备高可靠性研究与应用公开招标：边界防火墙 2 套、上网行为管理 2 套、入侵防御 2 套、堡垒机 1 套，含迁移实施、安全加固、5 年运维及等保测评支撑，11-27 截止。发电侧把「设备 + 五年运维 + 等保支撑」打成一个包，卖硬件不如卖服务周期。</p>
+      <div class="srcs"><a class="src" href="http://www.gwdt.cn/g-zb-50033350.html" target="_blank" rel="noopener">广东招标 →</a></div>
+    </article>
+    <article class="card reveal">
+      <div class="card-top"><span class="tag" style="color:#22C55E;background:#22C55E24;border-color:#22C55E33">医疗</span><span class="date">2026-11-04</span></div>
+      <h3>内蒙古第四医院新楼边界墙 2 台，品目预算 15 万</h3>
+      <p>内蒙古自治区第四医院新建传染病大楼网络基础及安全建设，总预算 619 万元、分两包（336.19 万 + 282.81 万）。合同包 1 含新楼边界防火墙 2 台、品目预算 15 万元（7.5 万/台），同包核心交换机 48 万、视频监控扩容 66.2 万、213 装 AP + 261 面板 AP 共 70.6 万——防火墙在整包里只占 4.5%。不接受联合体，11-25 开标。</p>
+      <div class="srcs"><a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/gkzb/202611/t20261104_27616693.htm" target="_blank" rel="noopener">中国政府采购网 →</a></div>
+    </article>
+    </div>
+  </section>
+
+
+  <footer>
+    数据来源：WebSearch 公开检索 · 仅收录 2026-11-13 前 30 天内动态 · 已做三重去重<br>
+    本日报由自动化任务生成，内容仅供参考，不构成投资建议
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    })
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e,i){e.style.transitionDelay=(Math.min(i,12)*45)+'ms';io.observe(e)});
+})();
+</script>
+</body>
+</html>
