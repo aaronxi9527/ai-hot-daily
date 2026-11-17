@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中国 NGFW 厂商日报 · 2026-11-17</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111113; --panel2:#16161a; --line:#232329;
+  --tx:#ededf0; --tx2:#a1a1ad; --tx3:#6e6e7a;
+  --grad:linear-gradient(135deg,#5B6CF7 0%,#8B5CF6 52%,#EC4899 100%);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.7; font-size:15px;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(720px 420px at 16% -8%, rgba(91,108,247,.16), transparent 70%),
+    radial-gradient(680px 400px at 88% 4%, rgba(236,72,153,.10), transparent 72%);
+}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 22px 90px}
+.bar{
+  position:sticky;top:0;z-index:50;margin:0 -22px;padding:13px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:rgba(10,10,10,.72);backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.bar .l{display:flex;align-items:center;gap:10px;font-weight:650;font-size:14.5px;letter-spacing:.2px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px rgba(139,92,246,.85)}
+.bar .r{font-size:12.5px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.hero{padding:58px 0 34px}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;
+  letter-spacing:1.6px;text-transform:uppercase;color:#c7b6ff;
+  border:1px solid rgba(139,92,246,.34);background:rgba(139,92,246,.09);
+  padding:5px 12px;border-radius:999px;margin-bottom:20px;
+}
+h1{
+  font-size:clamp(30px,5vw,46px);font-weight:800;letter-spacing:-1.1px;line-height:1.16;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;margin-bottom:14px;
+}
+.sub{color:var(--tx2);font-size:14.5px;max-width:780px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pill{display:flex;align-items:baseline;gap:7px;background:var(--panel);
+  border:1px solid var(--line);border-radius:11px;padding:9px 15px}
+.pill b{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pill span{font-size:12px;color:var(--tx3)}
+.ai{margin-top:34px;border-radius:16px;padding:1px;
+  background:linear-gradient(135deg,rgba(91,108,247,.55),rgba(139,92,246,.30) 48%,rgba(236,72,153,.45))}
+.ai-in{background:#0d0d10;border-radius:15px;padding:26px 26px 22px}
+.ai-h{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;
+  letter-spacing:1.4px;text-transform:uppercase;color:#c7b6ff;margin-bottom:14px}
+.ai-in p{color:#d3d3dc;font-size:14.5px;margin-bottom:13px}
+.ai-in p:last-child{margin-bottom:0}
+.ai-in b{color:#fff;font-weight:650}
+.sec{margin-top:52px}
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.sec-h h2{font-size:20px;font-weight:750;letter-spacing:-.3px}
+.sec-h .cnt{font-size:12px;color:var(--tx3);border:1px solid var(--line);
+  border-radius:999px;padding:2px 10px;font-variant-numeric:tabular-nums}
+.sec-h .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;
+  padding:20px 20px 18px;position:relative;overflow:hidden;
+  transition:transform .28s cubic-bezier(.2,.7,.3,1),border-color .28s,background .28s}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--grad);
+  opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-3px);border-color:#33333c;background:var(--panel2)}
+.card:hover::before{opacity:1}
+.card-top{display:flex;align-items:center;gap:9px;margin-bottom:12px;flex-wrap:wrap}
+.idx{font-size:11px;font-weight:700;color:var(--tx3);font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.tag{font-size:11px;font-weight:600;padding:2.5px 9px;border-radius:6px;
+  letter-spacing:.3px;white-space:nowrap;border:1px solid transparent}
+.tag-date{color:var(--tx3);border-color:var(--line);background:rgba(255,255,255,.02)}
+.t-qax{color:#8fb4ff;background:rgba(59,130,246,.13);border-color:rgba(59,130,246,.28)}
+.t-sangfor{color:#7fe3d0;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.28)}
+.t-h3c{color:#ffc98a;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.28)}
+.t-topsec{color:#ff9fa8;background:rgba(244,63,94,.12);border-color:rgba(244,63,94,.28)}
+.t-other{color:#b8b8c6;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.t-ind-gov{color:#9db9ff;background:rgba(99,102,241,.14);border-color:rgba(99,102,241,.30)}
+.t-ind-fin{color:#ffd39b;background:rgba(234,179,8,.13);border-color:rgba(234,179,8,.30)}
+.t-ind-isp{color:#8ee7ff;background:rgba(6,182,212,.13);border-color:rgba(6,182,212,.30)}
+.t-ind-energy{color:#b0f0a8;background:rgba(34,197,94,.13);border-color:rgba(34,197,94,.30)}
+.t-ind-med{color:#ffb3d1;background:rgba(236,72,153,.13);border-color:rgba(236,72,153,.30)}
+.t-ind-other{color:#b8b8c6;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.hot{font-size:13px;line-height:1;filter:drop-shadow(0 0 6px rgba(236,72,153,.6))}
+.card h3{font-size:15.5px;font-weight:680;line-height:1.5;letter-spacing:-.1px;
+  margin-bottom:11px;color:#f4f4f7}
+.sum{font-size:13.5px;color:var(--tx2);line-height:1.78}
+.sum b{color:#e8e8ef;font-weight:640}
+.src{display:inline-block;margin-top:14px;font-size:12.5px;color:#8B5CF6;
+  text-decoration:none;border-bottom:1px solid transparent;transition:all .22s}
+.src:hover{color:#c4a5ff;border-bottom-color:#c4a5ff}
+.foot{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--tx3);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(16px);
+  transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:640px){
+  .wrap{padding:0 16px 70px} .bar{margin:0 -16px;padding:12px 16px}
+  .hero{padding:38px 0 24px} .ai-in{padding:20px 18px} .card{padding:17px 16px}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div class="l"><span class="dot"></span>NGFW DAILY</div>
+    <div class="r">2026-11-17 · 周二</div>
+  </div>
+
+  <header class="hero">
+    <div class="kicker">NF 产品线 · 竞品情报</div>
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <p class="sub">2026-11-17（周二）· 只收与下一代防火墙强相关的内容：产品本体、核心技术、边界场景、含防火墙的中标采购、设备自身漏洞与认证。非防火墙品类一律剔除。</p>
+    <div class="meta">
+      <div class="pill"><b>14</b><span>条动态</span></div>
+      <div class="pill"><b>2</b><span>厂商</span></div>
+      <div class="pill"><b>12</b><span>行业</span></div>
+      <div class="pill"><b>30</b><span>天时效窗口</span></div>
+    </div>
+  </header>
+
+  <section class="ai">
+    <div class="ai-in">
+      <div class="ai-h"><span>◆</span>AI 解读 · 今日 NGFW 竞争格局</div>
+      <p>今天采购侧最刺眼的一条不是金额，是<b>比例</b>：哈医大一院 70 万包里防火墙只占 10.6%（4 台共 7.4 万，1.85 万/台），广西师大 196.8 万整包里防火墙 1 台 9.32 万只占 4.7%，广西校园网 182.68 万四类设备里 NGFW 也只有 1 台。防火墙在这类「病毒库更新／教学设备／出口升级」包里越来越像<b>合规配件</b>而不是主角——赢单点在集成与服务，不在盒子。</p><p>海事局反拍给出了另一种走法：上轮 7 台 NSG6150-D06、预算 39.2 万（5.6 万/台），本轮换成 8 台 NSG6150-D15、预算 26.4 万（3.3 万/台），<b>单台降 41%</b>。同一个采购人、同一条反拍通道，只换了型号后缀就能重开一局——说明反拍池里的价格锚可以被「重新定义型号」重置，这也是低价通道里唯一还能守价的技巧。</p><p>对照昨天浙江女监「同平台四档身份四个价、最贵的是改名成 IPS 的那台」，今天延吉市医院给了反向样本：<b>同型号 AF-1000-FH2150B 两个后缀（-WY 互联网／-W3 服务器），3.2 万 vs 3.3 万，价差只有 3.1%</b>。结论很清楚——<b>改名本身不值钱，值钱的是改名后能否跳出同一个比价池</b>；同一包里换个后缀只是换标签，客户照样横向比价。</p><p>厂商侧今天真正的信号来自奇安信：船舶防火墙 ISG2000/ISG4000 拿下 LR 型式认可（证书 LR26535994TA），成为 CCS+LR 双证。防火墙正在被<b>行业准入证</b>重新分层——船级社、车规、工业 E26/E27 这类认证把「能不能进这个场景」变成硬门槛，比检出率更能挡人。对 NF 的启示：找一个绿盟有渠道优势、但还没人做完认证的垂直场景，比在通用包里拼价格划算。</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>🏢 厂商动态</h2><span class="cnt">2</span><span class="rule"></span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">01</span>
+        <div class="tags"><span class="tag t-qax">奇安信</span><span class="tag tag-date">11-13</span></div>
+        <span class="hot">🔥</span>
+      </div>
+      <h3>奇安信船舶网络防火墙 ISG2000/ISG4000 获英国劳氏船级社（LR）型式认可，形成 CCS+LR 双证</h3>
+      <p class="sum">证书编号 <b>LR26535994TA</b>，2026 年 11 月颁发。LR 型式认可把 IACS UR E10（Rev.10，高低温／湿热／振动／EMC 环境适应性）与 UR E27（Rev.1，计算机系统网络安全）合并进同一次审查——前者决定「能不能装」，后者决定「装了敢不敢用」。至此同一款产品可同时支撑 CCS 与 LR 两套入级体系，船厂/船东不必「换证、重测、再适配」。<br><br><b>两个型号的定位差异很清楚：</b>ISG2000 为导轨式，部署于船舶 CBS 系统内或系统之间，4 电口（2 对 Bypass）+1 管理口+Console+USB，全封闭被动散热、IP40、双电源，单对口吞吐 2G，并发 100 万，工作温度 <b>-40℃~+70℃</b>；ISG4000 为 1U 机架式，部署于船舶网络边界或系统/区域之间，8 电口（2 对 Bypass）+2×千兆 SFP+2×万兆 SFP+，2 个扩展槽，千兆光口单对口 2G、万兆光口单对口 10G，并发 100 万，工作温度 5℃~+55℃。<br><br>配套打法是「防火墙+ISD+IMAS」三件套：防火墙管边界隔离与访问控制，ISD 旁路镜像做工业协议合规检查与异常审计，IMAS 汇聚全量 Syslog 做 IT/OT 跨域关联并向防火墙下发阻断。整套在航行阶段<b>完全离线运行</b>，靠港后经本地介质或无线与岸端同步特征库与策略。奇安信已成立「海洋军团」专攻 E26/E27。</p>
+      <a class="src" href="https://www.qianxin.com/news/detail?news_id=15561" target="_blank" rel="noopener">来源：奇安信官网 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">02</span>
+        <div class="tags"><span class="tag t-sangfor">深信服</span><span class="tag tag-date">11-17</span></div>
+        
+      </div>
+      <h3>深信服 AF 为 Apache OFBiz 未授权 RCE（CVE-2026-83542）发布防护规则，11-17 生效</h3>
+      <p class="sum">漏洞 11-10 由深瞳实验室监测到并发布通告，深信服给出的响应链条是分级同步的：<b>AF（下一代防火墙）与 WAF 走「防护」路线</b>，规则 ID 11224854，11-17 发布；SIP／XDR／MSS 走「监测」路线，同一规则号同日发布；aES／云镜／TSS 走资产检出（指纹 0004890）已先行。<br><br>值得记的是这条产品线的<b>响应分层</b>：资产发现（端点侧）→ 流量监测（SIP/XDR）→ 边界阻断（AF）。对 NF 的直接含义是，客户在漏洞应急场景里最先问的已经不是「你库更新了没」，而是「你的墙在不在第一层阻断位上」——如果 AF 只能等 SIP 出告警再联动，处置链路就比对手多一跳。</p>
+      <a class="src" href="https://cn-sec.com/archives/5572553.html" target="_blank" rel="noopener">来源：CN-SEC 中文网 ↗</a>
+    </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>🏭 行业动态</h2><span class="cnt">12</span><span class="rule"></span></div>
+    <div class="grid">
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">01</span>
+        <div class="tags"><span class="tag t-qax">奇安信</span><span class="tag t-ind-gov">政府</span><span class="tag tag-date">11-12</span></div>
+        <span class="hot">🔥</span>
+      </div>
+      <h3>交通运输部海事局防火墙反拍二轮：8 台网神 NSG6150-D15 预算 26.4 万＝3.3 万/台，较上轮降 41%</h3>
+      <p class="sum">反拍单号 FP26111210029720，报价截止 <b>2026-11-17 12:00</b>，到货 20 个日历日，收货地为北京海淀上庄路 89 号移动卫星地面站海事机房。型号锁死 <b>网神 SecGate3600 NSG6150-D15</b>，8 台，预算总额 264,000 元，折 <b>3.3 万/台</b>。<br><br>对照上一轮：7 台 NSG6150-D06、预算 39.2 万、折 <b>5.6 万/台</b>。同一采购人、同一条反拍通道，<b>型号后缀 D06→D15、台数 7→8、单台预算 5.6 万→3.3 万（-41%）</b>。反拍规则是有效报价满三家即自动最低价成交、不足三家自动废标，所以这轮能否落地取决于是否凑够三家。</p>
+      <a class="src" href="https://buyer.zycg.gov.cn/mall-view/information/detail?noticeId=823518" target="_blank" rel="noopener">来源：中央国家机关政府采购中心 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">02</span>
+        <div class="tags"><span class="tag t-sangfor">深信服</span><span class="tag t-ind-med">医疗</span><span class="tag tag-date">11-11</span></div>
+        <span class="hot">🔥</span>
+      </div>
+      <h3>延吉市医院医共体 158 万：深信服同一型号拆「互联网防火墙／服务器防火墙」两个后缀，价差仅 3.1%</h3>
+      <p class="sum">吉林省科信 158 万中标（评分 91.25），五类标的。防火墙两项均为 <b>AF-1000-FH2150B</b>：互联网防火墙 <b>-WY</b> 2 台 @32,000 元（6.4 万）、服务器防火墙 <b>-W3</b> 2 台 @33,000 元（6.6 万），合计 13 万占整包 <b>8.2%</b>。其余为超融合一体机 aServer-GH4-2205 3 台 @21.8 万（65.4 万）、美创数据库加密 18 万、SIP-Y-1600 5.5 万。<br><br><b>与昨天浙江女监的反差值得对照：</b>那边同一 AF 平台被拆成 NGFW 7.5 万／NGFW 6.5 万／虚拟化防火墙 5 万／改名 IPS 8 万，四档差近 4 倍；这边同样按部署位置拆两个后缀，价差只有 1,000 元（3.1%）。<b>同一包里换名字只是换标签，客户照样横向比价；要拉开差价必须换品目、换评审口径或换采购人</b>。另外这台 FH2150B 落在 3.2-3.3 万档，是深信服千兆中低端在医疗口的当前锚点。</p>
+      <a class="src" href="https://www.jl.gov.cn/ggzy/ybzggzy/ybzjyxx/ybzzfcg/ccszczbgs/202611/t20261111_9742335.html" target="_blank" rel="noopener">来源：吉林省公共资源交易平台 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">03</span>
+        <div class="tags"><span class="tag t-other">其他</span><span class="tag t-ind-fin">金融</span><span class="tag tag-date">11-13</span></div>
+        
+      </div>
+      <h3>中泰证券 XC 云扩容「XC 防火墙」纯包 81.75 万：山东世纪黄河中标，无交换机服务器做掩护</h3>
+      <p class="sum">项目编号 GKZB2026090025，招标公告 09-29、评审 10-27、结果 11-13 公示，成交 <b>817,500 元</b>，中标方山东世纪黄河电子工程有限公司。标的名就叫「<b>XC 防火墙</b>」——信创云环境里的防火墙单独成包，清单里没有交换机、服务器、集成服务做价格掩护。<br><br>同一家供应商此前还拿过中泰证券「网间通信区扩容防火墙」<b>32.8 万</b>。两个包一个 32.8 万、一个 81.75 万，同采购人同供应商，说明券商侧的防火墙采购已经<b>按安全域切成若干小纯包</b>逐个走框架/招标，而不是攒一个大集成包。这种切法对原厂直投不利——单包体量小、渠道成本摊不开，通常由集成商以多品牌组合吃下。</p>
+      <a class="src" href="http://yantai.ygcgfw.com/gggs/001001/001001004/20261113/3a0eda2b-2104752566748495874.html" target="_blank" rel="noopener">来源：烟台阳光采购服务平台 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">04</span>
+        <div class="tags"><span class="tag t-other">其他</span><span class="tag t-ind-med">医疗</span><span class="tag tag-date">11-12</span></div>
+        
+      </div>
+      <h3>哈医大一院 70 万「病毒库更新包」：防火墙 4 台仅 7.4 万（1.85 万/台），占包 10.6%</h3>
+      <p class="sum">项目编号 [230001]zzgj[GK]20260084，预算 70 万，<b>12-04 09:30 开标</b>，合同期 3 年零 1 个月。三个品目：终端杀毒 7,000 点位 <b>56 万（占 80%）</b>、防火墙 <b>4 个共 7.4 万</b>（1.85 万/台）、全流量探针 1 个 6.6 万。<br><br>这是典型的「挂名包」：项目名叫「病毒库更新及网络安全防护设备」，实质是<b>终端杀毒的续费包</b>，防火墙只是为了让包看起来完整而搭进去的 4 台千元档设备。1.85 万/台的预算在当下只能落在千兆入门档，且要含 3 年特征库与质保。<b>对 NF 的含义：这类包里防火墙没有利润空间，参与的唯一理由是占住客户出口位置，为后续替换埋点。</b></p>
+      <a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg//gkzb/202611/t20261112_27669769.htm" target="_blank" rel="noopener">来源：中国政府采购网 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">05</span>
+        <div class="tags"><span class="tag t-other">其他</span><span class="tag t-ind-other">其他</span><span class="tag tag-date">11-11</span></div>
+        
+      </div>
+      <h3>广西校园网出口升级 182.68 万：NGFW 只有 1 台，与行为管理／应用交付／探针四件套混包，11-17 15:30 截止</h3>
+      <p class="sum">项目编号 GXZC2026-J1-003729-GSZX，竞争性谈判，预算＝最高限价 <b>1,826,800 元</b>，标项数量 5。采购内容写得极简：<b>下一代防火墙 1 台</b>、全网行为管理 1 台、应用交付网关 1 台、潜伏威胁探针 1 台。响应截止 <b>2026-11-17 15:30</b>（今日），谈判保证金 1.8 万，交货安装 45 个日历日内完成。<br><br>单台 NGFW 在 182.68 万的四件套里，按经验通常只占 15%-25%，剩下的钱在应用交付与行为管理上。<b>这类「出口升级」标的核心竞争力是四件套能否一家供齐</b>——深信服（AF+AC+AD+STA）与新华三／华为是天然全栈选手，单做防火墙的厂商只能做分包或贴牌。</p>
+      <a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/jzxtpgg/202611/t20261111_27665416.htm" target="_blank" rel="noopener">来源：中国政府采购网 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">06</span>
+        <div class="tags"><span class="tag t-other">其他</span><span class="tag t-ind-gov">政府</span><span class="tag tag-date">11-16</span></div>
+        
+      </div>
+      <h3>全国海关信息中心「核心局域网防火墙策略梳理服务」17.86 万成交：前次 19 万预算流标，一家补位</h3>
+      <p class="sum">项目编号 0610-2641NF052108，竞争性谈判（二次），成交方北京中起科技有限公司，金额 <b>178,600 元</b>，服务期 1 年。服务内容不是买设备，而是<b>梳理局域网防火墙策略、出策略梳理报告、辅助部署白名单策略、持续优化上线策略，并在重大安全检查期间提供保障</b>。<br><br>这条链路很完整：先以 19 万预算招，因<b>符合竞争要求的供应商不足 3 家而终止</b>；次日重招，最终 17.86 万成交——比原预算低 1.14 万，且只有一家有效响应。<b>这是「防火墙策略治理」第一次以独立标的、独立预算出现在中央级采购人清单里</b>。对 NF 的意义：策略梳理是天然的服务切入点与后续换机依据，谁先拿到这份报告，谁就掌握了下一轮替换的技术话语权。</p>
+      <a class="src" href="https://www.ccgp.gov.cn/cggg/zygg//cjgg/202611/t20261116_27689145.htm" target="_blank" rel="noopener">来源：中国政府采购网 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">07</span>
+        <div class="tags"><span class="tag t-topsec">天融信</span><span class="tag t-ind-energy">能源</span><span class="tag tag-date">11-11</span></div>
+        
+      </div>
+      <h3>内蒙古电力巴彦淖尔「天融信防火墙系统升级供货及系统集成」14.95 万，走单一来源直接采购</h3>
+      <p class="sum">内蒙古电力（集团）巴彦淖尔供电分公司 2026 年第 22 次（2）单源直接采购，<b>2 标段明确写「天融信防火墙系统升级供货及系统集成服务」，成交 149,500 元</b>。同批 14 个标段混着断路器更换、物业、电梯维保、智慧食堂等，金额从 5,900 元到 1,837 万不等。<br><br>关键在采购方式：<b>单一来源</b>。电力系统的防火墙升级一旦绑定原厂，后续每次版本升级、特征库续订都只能走单源，形成长期锁定。这也解释了为什么天融信在能源口的存量盘子难被撬——不是产品赢，是<b>采购路径被写死了</b>。NF 要进这类客户，切入点只能是新建站点或等保整改新建域，抢不到升级标。</p>
+      <a class="src" href="https://www.ulilink.com/newDetailsView?id=dffe20e374388f50c22bb7f2e54e4e17d9d50814a49683131737f3be93f3f5e2" target="_blank" rel="noopener">来源：ICT标局 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">08</span>
+        <div class="tags"><span class="tag t-h3c">H3C</span><span class="tag t-ind-other">其他</span><span class="tag tag-date">11-16</span></div>
+        
+      </div>
+      <h3>广西师范大学 196.8 万教学设备包里，H3C SecPath F1000-AK1262 单台 9.32 万</h3>
+      <p class="sum">桂林市政府集采中心成交公告，总价 1,968,200 元，中标方广西云开科技。三个品目：工作站 55 台 @18,480 元、台式机 106 台 @8,100 元、<b>防火墙 1 台 H3C SecPath F1000-AK1262 @93,200 元</b>。防火墙占整包 <b>4.7%</b>。<br><br>9.32 万/台的高校单机标，出现在「计算机教学设备」这种名目的包里，说明<b>设备采购的名义品类与实际品类可以完全不搭</b>——只要预算科目能对上，防火墙就能塞进教学设备包。对投标方来说，这类包的门票是台式机/工作站的价格，防火墙只是搭售项；对 NF 来说，单台 9.3 万的高校标要么靠型号档位，要么根本进不去。</p>
+      <a class="src" href="https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202611/t20261116_27688842.htm" target="_blank" rel="noopener">来源：中国政府采购网 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">09</span>
+        <div class="tags"><span class="tag t-other">其他</span><span class="tag t-ind-energy">能源</span><span class="tag tag-date">11-12</span></div>
+        
+      </div>
+      <h3>国电南自轨交「成都站改建辅助控制系统」采购工业防火墙 MRD GF-4（4 电口）10 台</h3>
+      <p class="sum">南京国电南自轨道交通工程有限公司公开询比采购，标的为<b>防火墙 MRD GF-4（4 电口）10 台</b>，税率 13%，预成交公示期至 11-15，备选供应商武汉英赛迪科技。用途写得很明确：成都枢纽成都站改建及相关工程 CYDJS-4 标段<b>辅助控制系统</b>。<br><br>这是典型的<b>工业／轨交防火墙</b>场景——4 电口、小规模、随工程项目走量，采购主体是系统集成商（国电南自）而非最终用户。这类单子单价低但批量稳定，且型号被工程图纸写死。<b>国内 NGFW 厂商在这一层几乎缺席</b>，被工业安全专厂与西门子／施耐德生态占住，是 NF 产品线可以考虑的补位方向。</p>
+      <a class="src" href="https://www.ulilink.com/newDetailsView?id=117e41c7ab53096fcaecfd4d9c1fd7823d2ba9ec2c2e71c0cb5b8a6fc73ecbce" target="_blank" rel="noopener">来源：ICT标局 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">10</span>
+        <div class="tags"><span class="tag t-other">其他</span><span class="tag t-ind-isp">运营商</span><span class="tag tag-date">11-12</span></div>
+        
+      </div>
+      <h3>中国电信南京 1,685.35 万信息化项目：防火墙须持「网络安全专用产品」认证或检测证书方可投标</h3>
+      <p class="sum">中国电信南京分公司公开招标，预估规模＝最高投标限价 <b>16,853,500 元（含税）</b>，<b>12-03 14:00 截止</b>。采购含交换机、路由器、防火墙、网络安全监测装置、纵向加密装置。<br><br>门槛条款值得逐条看：①交换机、路由器须持<b>电信设备进网许可证</b>；②<b>防火墙</b>、网络安全监测装置、纵向加密装置须提供列入《承担网络关键设备和网络安全专用产品安全认证和安全检测任务机构名录》机构出具的<b>认证证书或检测报告</b>；③业绩要求 2023-01-01 起类似业绩累计合同额<b>不低于 1,500 万</b>；④团队至少 6 人含项目／技术／质量三负责人，7×24 响应。<b>运营商侧的防火墙准入已收敛成「认证+业绩+团队」三件套</b>，无认证型号连报价资格都没有。</p>
+      <a class="src" href="https://js.zhaobiao.lanyancloud.com/notice/a666aec99b654d32" target="_blank" rel="noopener">来源：蓝燕云招标 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">11</span>
+        <div class="tags"><span class="tag t-other">其他</span><span class="tag t-ind-gov">政府</span><span class="tag tag-date">11-17</span></div>
+        
+      </div>
+      <h3>商丘市「三医一张网」180 万：国产化防火墙+IPS+防病毒网关+日志审计+网闸打包，先招咨询服务</h3>
+      <p class="sum">商丘市卫健委就「三医一张网」网络安全设备及配套技术服务项目的<b>咨询服务</b>询价，项目总投资 <b>180 万元</b>，建设内容明确为「购置<b>国产化防火墙</b>、入侵防御系统、防病毒网关、日志审计、物理安全隔离网闸等网络安全设备及配套技术服务」。咨询服务最高限价 2.8 万元，响应截止 <b>11-17 15:30</b>，需具备工程咨询备案（电子、信息工程）。<br><br>两点值得注意：①<b>「国产化防火墙」被写进建设内容</b>，信创不再是加分项而是前置条件；②项目走「先咨询（可研／初设／概算）→ 再招标」的两段式，<b>2.8 万的咨询方往往决定 180 万的设备清单怎么写</b>——这是防火墙厂商在县域医共体市场最该提前介入的位置。</p>
+      <a class="src" href="https://wsjkw.shangqiu.gov.cn/zwdt/tzgg/content_315041" target="_blank" rel="noopener">来源：商丘市卫生健康委员会 ↗</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-top">
+        <span class="idx">12</span>
+        <div class="tags"><span class="tag t-sangfor">深信服</span><span class="tag t-ind-other">其他</span><span class="tag tag-date">11-12</span></div>
+        
+      </div>
+      <h3>陕西烟草延安 6 万成交：深信服国产化 AF-1000-L2100，10G 网络层／1.6G 全威胁，含 3 年特征库</h3>
+      <p class="sum">中烟电子采购平台成交公示，成交方陕西云安服信息科技，含税报价 <b>60,000 元</b>，15 个日历天到货上线。型号 <b>深信服国产防火墙 AF-1000-L2100</b>，规格写得很完整：<b>国产化信创设备</b>，网络层吞吐 10G、<b>全威胁吞吐 1.6G</b>、并发 400 万、HTTP 新建 10 万、IPSec VPN 800M，128G SSD，6 个千兆电口，含 3 年原厂软件升级+硬件质保+全部规则库特征库 3 年许可。<br><br>这个价格口径值得记住：<b>6 万买 10G 网络层／1.6G 全威胁的国产化整机，且含 3 年全库</b>。对比同期哈医大 1.85 万/台、延吉 3.2 万/台，10G 信创档的真实成交价被压到 6 万——比不少厂商报价单低 30% 以上。烟草这类「预算不高但要信创合规」的行业客户，正在成为国产化防火墙的价格塌陷区。</p>
+      <a class="src" href="https://cgjy.tobacco.com.cn/hwresultjg/90275.jhtml" target="_blank" rel="noopener">来源：中烟电子采购平台 ↗</a>
+    </article>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>数据源：WebSearch 多轮检索 + 政府采购/招标平台原文核验 · 仅收录最近 30 天 · 已过三重去重</span>
+    <span>生成于 2026-11-17 09:00 CST</span>
+  </footer>
+</div>
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e,i){e.style.transitionDelay=(i%3)*70+'ms';io.observe(e);});
+})();
+</script>
+</body>
+</html>
