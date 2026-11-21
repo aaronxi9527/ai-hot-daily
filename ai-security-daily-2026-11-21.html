@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI 安全日报 · 2026-11-21</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --line:#1f2937; --line2:#26334a;
+  --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--txt); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; letter-spacing:.01em;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+                   radial-gradient(800px 460px at 88% 2%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+
+.hero{padding:66px 0 34px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c7d2fe;background:rgba(91,108,247,.12);
+  border:1px solid rgba(139,92,246,.34);border-radius:999px;
+  padding:6px 15px;margin-bottom:20px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--g3);display:block;
+  box-shadow:0 0 0 4px rgba(236,72,153,.18)}
+h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.hero .date{color:var(--txt2);font-size:15px}
+.hero .date b{color:var(--txt);font-weight:600}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{
+  min-width:132px;padding:16px 20px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.6));
+  border:1px solid var(--line);
+}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.25}
+.stat .l{font-size:12.5px;color:var(--txt2);margin-top:2px}
+
+.overview{
+  margin:34px 0 8px;padding:26px 28px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(91,108,247,.13),rgba(139,92,246,.07) 45%,rgba(236,72,153,.07));
+  border:1px solid var(--line2);
+}
+.overview h2{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.overview h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--g2);
+  box-shadow:0 0 12px rgba(139,92,246,.9)}
+.overview p{color:#d1d5db;font-size:15px}
+.overview b{color:#fff;font-weight:600}
+
+.sec{margin-top:56px}
+.sec-head{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sec-icon{font-size:22px}
+.count{font-size:12px;font-weight:600;color:#a5b4fc;background:rgba(91,108,247,.14);
+  border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:2px 10px}
+.sec-sub{color:var(--txt3);font-size:13px;margin-top:7px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 21px 17px;position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-3px);border-color:#334155;
+  box-shadow:0 16px 34px -18px rgba(0,0,0,.85)}
+.card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:7px;white-space:nowrap;line-height:1.5}
+.tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.34);
+  font-weight:600}
+.tag-cat{color:#a7f3d0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.26)}
+.level{margin-left:auto;font-size:12.5px;letter-spacing:1px;flex-shrink:0}
+.merged{font-size:11px;color:var(--txt3);border:1px solid var(--line);border-radius:6px;
+  padding:2px 7px;white-space:nowrap}
+
+.card-title{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:11px;color:#f3f4f6;
+  letter-spacing:-.005em}
+.card-body{font-size:14px;color:#b6bec9;line-height:1.85}
+.card-body b{color:#f0f2f5;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(139,92,246,.22) 62%);padding:0 1px}
+
+.card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src{font-size:12px;color:var(--txt3);line-height:1.9}
+.src a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.32);
+  transition:color .2s,border-color .2s}
+.src a:hover{color:#e9d5ff;border-color:#e9d5ff}
+
+.trend{margin-top:58px;padding:28px 30px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(17,24,39,.9),rgba(10,10,10,.6));
+  border:1px solid var(--line2)}
+.trend h2{font-size:19px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.trend-item{padding:15px 0;border-bottom:1px dashed var(--line)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-item h4{font-size:15px;color:#e9d5ff;margin-bottom:6px;font-weight:600}
+.trend-item p{font-size:13.5px;color:#a9b1bd;line-height:1.85}
+.trend-item b{color:#f0f2f5}
+
+footer{margin-top:46px;text-align:center;color:var(--txt3);font-size:12.5px;line-height:2}
+footer .sep{display:inline-block;width:34px;height:2px;border-radius:2px;margin:0 8px;
+  background:linear-gradient(90deg,var(--g1),var(--g3));vertical-align:middle}
+
+.anim{opacity:0;transform:translateY(26px)}
+.anim.in{opacity:1;transform:none;
+  transition:opacity .72s cubic-bezier(.2,.7,.3,1),transform .72s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d,0ms)}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px}
+  .hero{padding:44px 0 24px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .overview,.trend{padding:20px 18px}
+  .card{padding:17px 16px 14px}
+  .stat{min-width:calc(50% - 6px);padding:13px 14px}
+  .stat .n{font-size:23px}
+}
+</style></head><body><div class="wrap"><header class="hero"><span class="badge"><i></i>AI SECURITY DAILY</span><h1>🤖 AI 安全日报</h1><div class="date"><b>2026 年 11 月 21 日 · 周六</b> · 国际 5 / 国内 1 / 行业 8</div><div class="stats"><div class="stat"><span class="n">5</span><span class="l">国际产品</span></div><div class="stat"><span class="n">1</span><span class="l">国内产品</span></div><div class="stat"><span class="n">8</span><span class="l">行业动态</span></div><div class="stat"><span class="n">14</span><span class="l">总计</span></div></div></header><section class="overview anim"><h2><span class="dot"></span>AI 总览</h2><p>今天 <b>14</b> 条里，国际产品 <b>5</b>、国内产品 <b>1</b>、行业 <b>8</b>。最该先看的是<b>行业第一条</b>：微软自己的 agent-framework 在 PyPI 上被投毒，用的是微软发布流水线的证书，靠一个 <b>.pth</b> 启动钩子做到「装了就中、连 import 都不用」。这件事比任何一份 AI 安全报告都更能说明问题——<b>agent 的信任根在制品和工具，不在模型。</b></p><p>产品侧五条有一个共同的位移：<b>判定点从「这段话像不像攻击」挪到了「这串动作对不对」。</b>Palo Alto 把第三方 skill 丢进沙箱真跑一遍，看它会不会偷偷出网、读凭据、写启动项；Metano 用会话级上下文图判「这一串动作像不像这个 agent 被造出来要干的事」；OrcaRouter 走得更远——不做拦截，往攻击 agent 的推理上下文里灌假端点和诱饵凭据，用 <b>5 倍耗时</b>换防守方的响应窗口。三家都没有在加强「分类器」。</p><p>另外两条在改形态：TENON 把 agent 的身份、授权、审计做成一张<b>跨机构的公共网络</b>，动机直接引用大华银行那句「跨机构没有公认的核验框架」；FlowForma 则把 agent 的验收口径从「它说自己能干什么」换成「交付了什么、被人改了几次、花了多少钱」。</p><p>国内只有一条能站住，但它答的是招标里最硬的那一问：360 把本地安全大脑搬到昇腾 NPU 上，卖点从「研判多快」换成<b>「原始日志出不出域」</b>。这不是新品类，是交付形态与算力归属的变更——但在国内，算力归属往往比模型能力更早成为技术标的分水岭。</p><p>行业侧另外三件事拼成一张图：CrowdStrike 洽购 Zscaler，端点厂商在买<b>策略执行点</b>；网安标委把 AI 应用安全的口径第一次落到政务这个具体行业；网信办把智能音箱、儿童手表、智能门锁拉进三级网络安全标识。一边在定「谁执行」，一边在定「怎么查证」。</p></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">🏢</span>国际友商产品动态<span class="count">5 条</span></h2><div class="sec-sub">只收<b>具名产品</b>的版本、功能或形态变化；政策、报告、排名、大会观点一律归入行业版块。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Palo Alto Networks</span><span class="tag tag-cat">AI-SPM · AI 红队 · Skill 安全</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">Prisma AIRS 11 月版本：把 Agent Skill 丢进沙箱跑一遍，再判它能不能上线</h3><div class="card-body"><p>11 月版本给 Prisma AIRS 加了四件事，前三条是策略粒度，第四条才是实质。**三态策略** Allow / Alert / Block 统一到 AI Security Profile 的所有检测器上，好处是可以先在活流量上跑 Alert 验证误报、再切 Block——这一步把「上线前调阈值」变成「上线后调」。</p><p>**K8s IP-Tag 采集** 把公有云与混合集群的元数据映射进 Dynamic Address Groups，pod 一起来护栏就跟着更新，不再依赖人手工维护地址组。**Contextual Judge** 给 AI 红队加领域上下文：上传业务文档后，裁判不再把「本来就该这样」的行为判成问题，并且会从人工覆写里学。</p><p>**AI Skill 动态沙箱分析** 是这一版真正的新能力：把 skill 装进沙箱里的 agent 实际跑起来、观察运行时行为，七条动态规则覆盖出网活动、凭据访问、外泄暂存、进程/shell 执行、文件系统篡改、防御规避、持久化。此前的静态扫描只能看 skill「写了什么」，动态跑才能看它「真的会干什么」——这也是 10 月那版把扫描对象扩到 Skill/插件/MCP Server 之后缺的最后一块。</p><p>判断：Palo Alto 把「skill 是新的供应链单元」从口号做成了可执行的检查项。对甲方来说，验收口径可以开始写「每个第三方 skill 必须有运行时行为结论」，而不只是「有静态扫描报告」。</p></div><div class="card-foot"><span class="src">来源：<a href="https://eyeon.ai/f/3896" target="_blank" rel="noopener">AI Security Intelligence</a></span></div></article><article class="card anim" style="--d:40ms"><div class="card-top"><span class="tag tag-vendor">Metano</span><span class="tag tag-cat">AI Agent 安全 · 会话级意图</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">Metano 出隐身：1200 万美元种子轮，卖的是「这串动作像不像它该干的事」</h3><div class="card-body"><p>11 月 19 日 Metano 结束隐身，同时宣布平台 GA 与 1200 万美元种子轮（Sierra Ventures 领投，Correlation Ventures、High Alpha、360 ONE 跟投）。创始人来自 ServiceNow、Zscaler、Palo Alto、FireEye、Bromium、McAfee——典型的「老安全人做新品类」组合。</p><p>核心引擎叫 **Hive**，是一张实时上下文图：把一个会话里的任务、身份、工具、数据访问、动作串起来，判的是「这一串动作是否符合这个 agent 被造出来要干的事」，而不是给单步动作打分。覆盖端点、自建 agent、云平台、SaaS，包含 MCP server、skill 与软件包。</p><p>落地条款写得比能力清单更值得抄：**发现与监测零改造**；但自建 agent 要做 inline 阻断，得在 agent 初始化处加一行 SDK；没有开发者给的 agent spec，就先观察约一周真实行为再生成控制项；**新控制项一律先进审计模式**，逐条由安全团队决定何时转强制。数据留在客户自己的 on-prem 或客户名下 AWS/Azure/GCP，用 OCSF 喂 Splunk 或其它 SIEM，不要求改现有工具。检测映射 MITRE ATLAS 与 OWASP Agentic Top 10。</p><p>判断：这条把「可见性免费、阻断要开发参与」这个真实取舍写在了发布稿里——比宣称「一键全阻断」诚实，也意味着采购时要分开谈两件事：盘点多少钱、执行要多少工程投入。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.unite.ai/metano-raises-12m-seed-to-secure-ai-agents-across-the-enterprise" target="_blank" rel="noopener">Unite.AI</a></span></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">Terminal 3 × Affinidi</span><span class="tag tag-cat">Agent 信任层 · 机密计算</span><span class="level">🔥🔥</span></div><h3 class="card-title">TENON：把 agent 的身份、授权、策略、审计做成一张跨机构的公共网络</h3><div class="card-body"><p>11 月 19 日在新加坡金融科技节舞台上发布（20 日对外），Terminal 3 与 Affinidi 合作建 TENON，定位是「跨机构验证、治理、保护 agent 工作的公共网络」，先做金融，两家做创始节点运营方。</p><p>每次 agent 调用要过一串检查：按开放标准建的信任注册表确认身份与授权 → 可编程策略引擎执行各机构自己的策略 → 路由到合适的模型并套护栏与成本控制 → 提示词里的敏感数据被替换、需要受保护数据与密钥的流程放进加密飞地执行。每次调用与动作写进私有、不可篡改的审计轨迹，**agent 与管理员都改不了**；各机构数据互相隔离。底层是 Affinidi 的开源治理栈与可验证信任基础设施（VTI）加 Terminal 3 的硬件加固平台，首个应用是 Terminal 3 自己的 Agent Command。</p><p>动机引得很具体：大华银行 10 月《Agentic Finance》报告说金融机构「尚未形成一套跨机构、跨平台、跨法域核验自主软件的公认框架」。SFF 现场演示的是 AI 银行助手处理跨境转账与信用卡争议，**不把客户账号细节暴露给底层 agent**。</p><p>判断：这条的价值不在技术，在形态——它把「谁能证明这个 agent 有权做这件事」从单企业内部问题，变成需要第三方节点互认的公共设施。下一轮采购很可能出现新问题：「你的判定别人认不认」。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.manilatimes.net/2026/11/20/tmt-newswire/pr-newswire/terminal-3-and-affinidi-partner-to-launch-tenon-a-public-trust-layer-to-verify-and-secure-ai-agents/2474682" target="_blank" rel="noopener">PR Newswire / Manila Times</a></span></div></article><article class="card anim" style="--d:120ms"><div class="card-top"><span class="tag tag-vendor">OrcaRouter</span><span class="tag tag-cat">主动欺骗 · 反自主攻击 Agent</span><span class="level">🔥🔥</span></div><h3 class="card-title">Shield 上线：不打「识别并阻断」，打「把攻击 agent 骗进假环境里耗死」</h3><div class="card-body"><p>11 月 20 日发布。思路反过来：传统工具忙着识别与阻断，Shield 直接把应用的攻击面变成动态合成环境——假端点、假配置、假源码映射、诱饵凭据、投毒的响应，目的不是拦住，是让自主攻击 agent 的推理被污染、资源被耗尽。正常访客拿到的仍是逐字节原站；可疑探测（官方举的例子是 /.env、/.git）才会掉进为这个访客单独生成的迷宫。</p><p>诱饵凭据用 HMAC 绑到具体访客，一旦被拿去用，就能反查来源并触发阻断——这一条把「蜜罐」从静态摆设变成可归因的手段。</p><p>内部实测对五个自主攻击 agent（ARTEX、Strix、PentestAgent、CyberStrike、Cairn，测试用 DeepSeek V4.1 Flash）：87% 攻击被引向假路径、83% 被合成响应影响判断、攻击方 token 消耗 2.3 倍、耗时 5 倍。触发点是 FBI 11 月 13 日对 ARTEX 的警告——OrcaRouter 直接拿 ARTEX 打自己的生产环境做验证。</p><p>自限写得很清楚：内部测试环境数据，不保证对每一种攻击都成立。判断：当攻击方也是 agent，「让它多花时间」第一次变成了可量化的防御指标——5 倍耗时意味着防守方的响应窗口从分钟级回到小时级，这比「拦截率」更贴近真实收益。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.prnewswire.com/news-releases/orcarouter-launches-shield-active-deception-against-autonomous-agents-like-artex-strix-cyberstrike-cairn-and-pentestagent-etc-302946300.html" target="_blank" rel="noopener">PR Newswire</a></span></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">FlowForma</span><span class="tag tag-cat">Agent 治理 · 交付验收</span><span class="level">🔥</span></div><h3 class="card-title">Agent Trust：按「交付了什么、被人改了几次、花了多少钱」给 agent 打分</h3><div class="card-body"><p>11 月 18 日发布，跨平台治理枢纽：把组织里任何厂商、任何平台上的 agent 都盘出来，然后用三个口径评分——实际交付的业务结果、人工纠正的次数、运行成本。这三个口径的共同点是都由外部观测得到，agent 自己说什么不算。</p><p>负责人可以一键暂停某个 agent，或把它的活转人工复核，每个决定留痕可审计。预置连接器覆盖 Microsoft Copilot Studio、Power Automate、n8n，自建 agent 走同一接口接入。</p><p>三类角色各拿一张表：运营看谁在交付、谁需要人管；IT 看全量清单与单个 agent 的运行成本；合规看可向监管出示的人类在环证据。</p><p>判断：这条对应的是 agent 上量之后最现实的问题——不是「有没有护栏」，而是「这个月它到底值不值」。把「人工纠正次数」当指标是个聪明的选择：它同时是质量信号和成本信号。</p></div><div class="card-foot"><span class="src">来源：<a href="https://agenticexpo.ai/news/weekly-roundup-20-november-2026" target="_blank" rel="noopener">Agentic Expo</a></span></div></article></div></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">🇨🇳</span>国内友商产品动态<span class="count">1 条</span></h2><div class="sec-sub">口径同上：能答出「哪家厂商的哪个产品的哪个能力变了」才收；厂商矩阵复述与投资者问答不收。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">360</span><span class="tag tag-cat">安全运营 · 信创算力</span><span class="level">🔥🔥</span></div><h3 class="card-title">360 本地安全大脑上昇腾 NPU：卖点从「研判多快」换成「日志出不出域」</h3><div class="card-body"><p>11 月 19 日在昇腾社区上架（20 日更新），形态是一体机加昇腾 Atlas 300I A2 加速卡 / 800I A2 集群。产品叙事从「单专家 + 单点设备」改成「多智能体集群协同」：NPU 卸载告警降噪、APT 与勒索识别、攻击链路图谱与安全大模型研判，官方口径是秒级研判海量日志、大幅降低误报。</p><p>两条硬约束比能力清单有用。一是 **原始日志、资产、告警、取证数据全部留在客户本地昇腾集群**，只按需拉云端情报——「数据本地闭环」是这条的信创卖点；二是硬件可信根 + 国密加速 + 安全启动，保护模型与攻防特征不被窃取篡改。适配等保 2.0、关基保护、信创替代。</p><p>判断：这不是新品类，是把既有安全大脑换到国产算力底座上，属于「交付形态 + 算力归属」的变更。但它回答的是甲方招标里最硬的那一问——**能不能不出域**。对做 AI 安全产品的同行，这条提醒的是：在国内，算力归属往往比模型能力更早成为技术标的分水岭。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.hiascend.com/marketplace/solution/detail/2631" target="_blank" rel="noopener">昇腾社区</a></span></div></article></div></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">📊</span>行业动态与趋势<span class="count">8 条</span></h2><div class="sec-sub">政策法规、标准发布、研究报告、安全事件与漏洞披露、并购与市场数据。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Microsoft · PyPI</span><span class="tag tag-cat">供应链投毒 · Agent 框架</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">微软自己的 agent-framework 被投毒：装了就中，连 import 都不用</h3><div class="card-body"><p>11 月 17 日 20:35 UTC 与 21:08 UTC，agent-framework 的 1.26.1 与 1.26.2 两个 wheel 相隔 33 分钟上传到 PyPI，分别约 31 分钟、8 分钟后被隔离；1.26.0 是最后一个干净版本。手法最难受的地方在于：**它就在微软自己的项目下发布**——锁对包名、认对发布者、确认项目是真的，全都救不了你。</p><p>每个恶意 wheel 塞了一个 .pth 文件。Python 在解释器启动时会执行 site-packages 里 .pth 中的 import 行，所以不需要任何代码 import 这个框架，**连 pip 自己都会触发**。载荷后台起进程：抓名字含 TOKEN/SECRET/KEY/AZURE/AWS/GITHUB/OPENAI/CI 的环境变量；读最多 300 个其它进程的 /proc/*/environ；拷 60（1.26.2 为 80）个凭据文件（Azure CLI、pip.conf、.npmrc、.netrc、.git-credentials、Docker、Hugging Face、ADO agent 凭据、/app 与 /workspace 下的 .env）。更关键的是它不只「读」还「铸」：向 Azure DevOps 的 OIDC 端点、Azure 托管身份对 12 个资源的 token 端点要新凭据，1.26.2 还加了 GitHub Actions OIDC。全部 zlib 压缩 base64 后 POST 到一个 webhook.site 地址。第二个版本还改了文件名、把包自己的 __init__.py 还原成 1.26.0 内容，单看那个文件的 diff 什么都没有。</p><p>入口：Wiz 判断攻击者拿到了微软发布流水线 **ESRP** 的客户端证书与私钥（首次从 AWS 发起被 IP 过滤拒掉，第二次从微软自有 IP 段成功），证书怎么来的未知；PyPI 上多了一个 11 月 17 日当天创建、名为 vibiret 的维护者账号。微软没有发安全公告，对媒体只说「调查期间把部分仓库设为私有」；GitHub 的 GHSA-764m-3ppc-5m73 与 PyPA 的 PYSEC-2026-4388 都没给 CVE，也不在 CISA KEV 里。</p><p>外泄规模要打折看：webhook.site 免费额度只留 100 条请求，Wiz 分析存下的 50 条，其中 17 条来自 3 个不同受害者，其余是攻击者自己、沙箱与厂商扫描器。**可执行动作**：锁到 1.26.0；清那一小时内的 CI 缓存、容器镜像与内网镜像源；然后轮换受影响主机上所有可达凭据——注意托管身份与 OIDC 铸出的 token 最长 24 小时有效，**轮换静态密钥并不能吊销它们**，必须去翻登录日志。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.rescana.com/post/microsoft-agent-framework-pypi-compromise-ghsa-764m-3ppc-5m73-rotate-secrets-now" target="_blank" rel="noopener">Rescana</a> · <a href="https://newruntime.com/posts/pypi-advisory-microsoft-agent-framework-1-26-1-b07657" target="_blank" rel="noopener">New Runtime</a></span></div></article><article class="card anim" style="--d:40ms"><div class="card-top"><span class="tag tag-vendor">NVD</span><span class="tag tag-cat">MCP · 漏洞披露</span><span class="level">🔥🔥</span></div><h3 class="card-title">三个 MCP server 同日披露：都不是「模型被骗」，是「工具没做边界」</h3><div class="card-body"><p>11 月 18 日 NVD 公布三个，共同点是调用参数能跑出沙箱。**Gortex**（代码智能引擎，CVE-2026-62964，CVSS 7.8）：0.55.0 之前 write_file / edit_file / move_inline 收绝对路径但不校验是否落在索引仓库内，resolveFilePath 对绝对路径直接放行，写处理函数也没调读路径用的 guardSymlinkWithinRepo——能写 ~/.zshrc、.git/hooks/pre-commit、systemd unit，下次触发就是任意代码执行。**yt-mcp**（Claude Code 的 YouTrack 集成，CVE-2026-75612，7.5）：add_attachment 收调用方给的 file_path，只判文件存在、不判目录，能读系统口令文件、SSH 私钥、凭据文件再上传到工单。**DOMShell**（Chrome 自动化，CVE-2026-75518，4.8）：审批界面把动作描述成只读，实际能改页面。</p><p>修复版分别是 0.55.0 / 1.18.1 / 2.0.8；yt-mcp 在升级前应避开 add_attachment 的 file_path 模式。</p><p>判断：三个洞的成因都不是模型判断错了，而是工具自己没守住边界——而 MCP 恰好把这类边界缺陷直接暴露给了「会被提示词影响的调用方」。所以 MCP 的威胁模型里，第一顺位不是「模型会不会被骗」，而是「工具在参数越界时会不会拒绝」。</p></div><div class="card-foot"><span class="src">来源：<a href="https://i10x.ai/news/cve-2026-62964-cve-2026-75612-cve-2026-75518-mcp-server-tool-escapes" target="_blank" rel="noopener">i10X</a></span></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">CrowdStrike · Zscaler</span><span class="tag tag-cat">并购 · 产业格局</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">CrowdStrike 洽购 Zscaler：端点厂商在买「策略执行点」</h3><div class="card-body"><p>11 月 20 日 Bloomberg 报道 CrowdStrike 正在洽谈收购 Zscaler，消息出来后 ZS 盘后涨 18%、CRWD 跌逾 8%。双方均未确认，CrowdStrike 拒评，Zscaler 未即时回应。量级：CNBC 给的 CRWD 市值 2350 亿美元（2026 年内股价约翻倍）、ZS 约 320 亿（年内跌 13%）。若成交将是网安史上最大级别之一，可比对象是 Google 320 亿买 Wiz（2025）、Cisco 约 280 亿买 Splunk（2024）、Palo Alto 250 亿买 CyberArk（2026）。</p><p>这不是从零开始的关系：9 月 2 日双方已宣布扩大合作，计划用 OpenID Shared Signals Framework 把 Falcon 的风险上下文实时喂给 Zscaler 的 Adaptive Access Engine，还在做一个基于 Zscaler OneAPI 的原生 Falcon Foundry 应用，让 Charlotte Agentic SOAR 直接触发 Zscaler 的处置动作，并把网络事件与 AI 事件日志（含高风险提示词与策略违规）流进 Falcon Next-Gen SIEM。前置动作是 11 月 3 日已签的两笔：买 Fiddler AI（上线前评估、agent 可观测与可解释）与 Dreadnode（模型/应用/agent 的自动化上线前安全测试），预计在 FY27Q4 交割。</p><p>判断：端点厂商买 SASE，买的不是流量，是**策略执行点**——agent 的动作要在哪一层被拦住，这一层现在成了并购标的。另外注意时间：Zscaler 12 月 9 日还有一场专门讲 agentic enterprise 的发布会，收购传闻与产品路线图叠在一起，谈判筹码和叙事是同一件事。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.unite.ai/crowdstrike-reportedly-in-talks-to-acquire-ai-security-partner-zscaler" target="_blank" rel="noopener">Unite.AI</a></span></div></article><article class="card anim" style="--d:120ms"><div class="card-top"><span class="tag tag-vendor">全国网安标委</span><span class="tag tag-cat">标准 · 政务行业</span><span class="level">🔥🔥</span></div><h3 class="card-title">《网络安全技术 人工智能应用安全 政务》征求意见：AI 安全口径第一次落到具体行业</h3><div class="card-body"><p>11 月 20 日，全国网络安全标准化技术委员会挂出国家标准化指导性技术文件《网络安全技术 人工智能应用安全 政务》征求意见稿，意见截止 2026 年 12 月 20 日，同步公开编制说明与意见汇总处理表。</p><p>判断：指导性技术文件不强制，但它会成为政务云、政务大模型招标里的技术依据——比等保更贴 AI 场景，比厂商白皮书更有分量。对厂商的含义很直接：政务侧的话术要从「我们通过了某某评测」改成「我们对应第几条、怎么验」。</p><p>这条与同日网信办的两份文件（备案数据、网络安全标识目录第二批）放在一起看更清楚：合规侧正在同时做两件事——给行业定技术口径，给产品定可核对的外部标识。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.tc260.org.cn/tc260/bzzqyj/bzkdetail.shtml?id=578&type=gjbzjh" target="_blank" rel="noopener">全国网安标委</a></span></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">Picus Security</span><span class="tag tag-cat">在野攻击 · 提示词注入</span><span class="level">🔥🔥</span></div><h3 class="card-title">在野提示词注入的第一个清晰样本：往恶意脚本里塞一段「求造核武」的注释</h3><div class="card-body"><p>11 月 19 日 Picus 发布对「提示词注入到底在被怎么用」的复盘。最清晰的在野案例来自 ESET（9 月 10 日，命名 GuardBreaker）：俄关联组织 UAC-0099 在恶意 VBS 脚本里塞了一段读起来像「求帮忙造核武」的注释。这段注释在脚本运行时毫无作用，**它唯一的读者是语言模型**——目的是让被叫来分析这个文件的 AI 工具先拒答，从而根本走不到真正的代码。该脚本最终安装的是 MATCHBOIL 加载器。</p><p>要注意口径：CERT-UA 另行确认自 2026 年仲夏起 UAC-0099 用 ZIP 里的 VBS 投递带恶意插件的 Notepad++ 8.8.3 并升级到 MATCHBOIL.V2，但它的公告没提任何「针对 AI 的文字」；ESET 也没说这段注释真的让某个 AI 分析工具停下了。</p><p>其余图景：Google 与 Unit 42 在活网站上见过针对 agent 的注入（试图让它批准诈骗广告、删数据、转账），但没有确认造成损失的公开案例；真正严重的（M365 Copilot 与 GitLab Duo 数据窃取、Semantic Kernel / Gemini CLI / Codex 工作流里的代码执行）都是研究者 PoC，且厂商已修。</p><p>判断：这条最该被抄进 SOC 手册的是那句话——**模型说这个文件干净，不等于这个文件干净**。可执行的三件事：让 agent 读之前先扫隐藏指令；工具调用限量并校验；高影响动作强制人批。</p></div><div class="card-foot"><span class="src">来源：<a href="https://playciso.com/blog/prompt-injection-in-the-wild-uac-0099" target="_blank" rel="noopener">PlayCISO</a></span></div></article><article class="card anim" style="--d:200ms"><div class="card-top"><span class="tag tag-vendor">国家网信办</span><span class="tag tag-cat">备案数据 · 端侧 AI</span><span class="level">🔥</span></div><h3 class="card-title">9–10 月新增 133 款生成式 AI 服务备案，端侧与「拟人化互动」第一次被单独点出来</h3><div class="card-body"><p>11 月 20 日公告：2026 年 9 月至 10 月新增 133 款生成式 AI 服务在国家网信办完成备案，其中包含 **3 款提供手机端侧生成式 AI 服务**、**1 款提供拟人化互动生成式 AI 服务**，1 款备案信息变更；通过 API 等方式直接调用已备案模型能力的应用由地方网信办登记，新增 224 款。截至 10 月 31 日，累计 1245 款服务完成备案、955 款应用或功能完成登记。</p><p>判断：端侧与拟人化互动被单独统计，这两类恰好是「没有网络边界可看」的形态——端侧模型的流量不出设备，拟人化互动的风险在对话本身而不在内容分类。备案口径往这两处走，说明监管的关注点正从「模型有没有备案」转向「这类形态怎么核」。</p></div><div class="card-foot"><span class="src">来源：<a href="https://news.yunnan.cn/system/2026/11/20/034199569.shtml" target="_blank" rel="noopener">央视网 / 云南网</a></span></div></article><article class="card anim" style="--d:240ms"><div class="card-top"><span class="tag tag-vendor">国家网信办</span><span class="tag tag-cat">IoT · 网络安全标识</span><span class="level">🔥</span></div><h3 class="card-title">网络安全标识第二批征求意见：智能门锁、智能音箱、儿童手表进三级标识</h3><div class="card-body"><p>11 月 20 日，国家网信办就《实施网络安全标识的产品目录（第二批）》公开征求意见，反馈截止 12 月 20 日，本批纳入消费类智能门锁、智能音箱、儿童智能手表，并同步征求意见三份对应的实施规则。</p><p>按征求意见稿，三类产品的网络安全能力由低到高分基础级、增强级、领先级，分别用一星、二星、三星表示；标识上要写生产者名称、产品规格型号、网络安全能力等级、标识有效期、检测实验室名称、依据的国家标准或技术文件编号、备案信息码。</p><p>判断：这是把「会说话的入口」拉进可标识、可查证的框架——智能音箱与儿童手表正是家里最常被当作语音入口的两类设备。标识制的意义不在分级本身，在于它把安全等级变成消费者能核对的**外部信息**，而不是包装盒上的一句自述。</p></div><div class="card-foot"><span class="src">来源：<a href="https://news.youth.cn/gn/202611/t20261120_16976778.htm" target="_blank" rel="noopener">新华社 / 中国青年网</a></span></div></article><article class="card anim" style="--d:280ms"><div class="card-top"><span class="tag tag-vendor">绿盟科技</span><span class="tag tag-cat">市场数据 · 商业化</span><span class="level">🔥</span></div><h3 class="card-title">半年 1.17 亿 AI 安全订单，但订阅收入占比「非常低」——国内这个市场还是项目制</h3><div class="card-body"><p>11 月 20 日互动易回复披露：2026 年半年度 AI 安全相关订单（含清风卫系列与风云卫系列）合计 **1.17 亿元**；AI 安全产品与解决方案已在政府、运营商、金融、能源、科教文卫、企业六大行业规模化落地。另有一条容易被忽略的口径：SaaS/订阅模式收入占营业收入比例**非常低**，风云卫在中大型客户以私有化部署为主。</p><p>能力侧点名两块：智能体方向已形成资产发现与管理、身份与权限管控、多智能体协同行为监测、异常行为阻断、全链路审计；评估侧 AI-SCAN 从注入抵抗、越狱抵抗、系统提示词泄露、数据泄露倾向、内容合规五个维度做系统评估。</p><p>判断：这是本周唯一一个能拿数字说话的国内 AI 安全商业化样本。1.17 亿是半年**订单**不是收入，但它说明「评估 + 防护 + 运营」三段里，最先卖出钱的是能对着合规交付的那一段；而「订阅占比很低」意味着国内客户目前仍按项目采购——这对产品定价是个硬约束：先证明单项目能验收，再谈订阅。</p></div><div class="card-foot"><span class="src">来源：<a href="https://m.10jqka.com.cn/20261120/c682066398.shtml" target="_blank" rel="noopener">同花顺财经 / 深交所互动易</a></span></div></article></div></section><section class="trend anim"><h2><span class="dot"></span>趋势判断</h2><div class="trend-item anim"><h4>供应链成了 agent 安全里最贵的一段</h4><p>微软自己项目下的包被投毒，攻击者用发布流水线证书把恶意 wheel 送进官方项目，而 <b>.pth 让「装了就中」变成「启动就中」</b>；同日披露的三个 MCP server 洞，成因也都不是模型被骗，是工具没做边界。两件事指向同一个结论：<b>agent 的信任根在制品与工具，不在模型。</b></p></div><div class="trend-item anim"><h4>判定点继续从「说了什么」移到「这一步是从哪读来的、这一串像不像它该干的事」</h4><p>Palo Alto 用沙箱把 skill 跑起来看运行时行为；Metano 用会话级上下文图判「这串动作对不对」；OrcaRouter 干脆往攻击 agent 的上下文里喂毒。三家方法完全不同，共同点是<b>都不再依赖静态分类器</b>。</p></div><div class="trend-item anim"><h4>责任链开始往「跨机构」走</h4><p>TENON 把身份、授权、策略、审计做成一张公共网络，动机直接引用「跨机构没有公认核验框架」。这意味着下一轮采购的问题会变：<b>不是「你拦住了什么」，而是「你的判定别人认不认」。</b></p></div><div class="trend-item anim"><h4>合规侧从「能不能上线」转向「能不能查证」</h4><p>网安标委把 AI 应用安全落到政务行业（12 月 20 日截止），网信办给消费级 AI 硬件做三级标识与备案码。两者的共同点是把安全等级变成<b>可核对的外部信息</b>，而不是厂商自述——对做产品的团队，这意味着「对应第几条、怎么验」会比「通过了什么评测」更好用。</p></div><div class="trend-item anim"><h4>市场侧两件事同时发生：整合与项目制并存</h4><p>CrowdStrike 洽购 Zscaler（端点买 SASE 的策略执行点），绿盟披露半年 1.17 亿 AI 安全订单但订阅占比极低。判断：大厂靠并购补齐执行点，国内厂商靠单项目交付现金流，<b>这两条路会并存一段时间</b>。</p></div></section><footer class="foot"><p>数据窗口：2026-11-19 至 2026-11-21，仅收录可核验来源。本日 14 条中，<b>playciso.com</b> 与 <b>prnewswire.com</b> 在部分网络环境需经代理访问，浏览器可直接打开。分类原则：产品动态须能追溯到具名产品的具体功能或版本变化，其余归入行业动态。</p><p>生成于 2026-11-21 · 自动归档至 GitHub Pages</p></footer></div><script>
+(function(){
+  var els = document.querySelectorAll('.anim, .card, .trend-item');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script></body></html>
