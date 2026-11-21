@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NGFW 厂商日报 · 2026-11-21</title>
+<style>
+  :root {
+    --bg:#0a0a0a; --panel:#111114; --panel2:#16161a;
+    --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+    --tx:#ededf0; --tx2:#9a9aa4; --tx3:#6b6b76;
+    --a1:#5B6CF7; --a2:#8B5CF6; --a3:#EC4899;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--tx);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.7;
+    background-image:
+      radial-gradient(720px 380px at 12% -6%, rgba(91,108,247,.16), transparent 62%),
+      radial-gradient(680px 360px at 88% 2%, rgba(236,72,153,.11), transparent 60%);
+    background-repeat:no-repeat;
+  }
+  .nav {
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(180%) blur(18px); -webkit-backdrop-filter:saturate(180%) blur(18px);
+    background:rgba(10,10,10,.72); border-bottom:1px solid var(--line);
+  }
+  .nav-in { max-width:1180px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .brand { font-weight:700; letter-spacing:.3px; font-size:15px;
+    background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .nav-meta { margin-left:auto; font-size:12.5px; color:var(--tx3); display:flex; gap:16px; }
+  .nav-meta b { color:var(--tx2); font-weight:600; }
+
+  .wrap { max-width:1180px; margin:0 auto; padding:0 24px 80px; }
+
+  .hero { padding:76px 0 44px; }
+  .hero .eyebrow { font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--tx3); margin-bottom:18px; }
+  .hero h1 { font-size:clamp(30px,4.4vw,50px); line-height:1.16; letter-spacing:-.02em; font-weight:800; }
+  .hero h1 span {
+    background:linear-gradient(100deg,var(--a1) 0%,var(--a2) 46%,var(--a3) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero .sub { margin-top:20px; color:var(--tx2); font-size:15.5px; max-width:760px; }
+  .stats { display:flex; gap:38px; margin-top:34px; flex-wrap:wrap; }
+  .stat .n { font-size:34px; font-weight:800; letter-spacing:-.02em;
+    background:linear-gradient(120deg,var(--a1),var(--a3)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .stat .l { font-size:12.5px; color:var(--tx3); margin-top:2px; }
+
+  .ai {
+    position:relative; background:linear-gradient(180deg,rgba(22,22,26,.94),rgba(15,15,18,.94));
+    border:1px solid var(--line2); border-radius:18px; padding:28px 30px; margin:8px 0 56px;
+    overflow:hidden;
+  }
+  .ai::before { content:""; position:absolute; inset:0 0 auto 0; height:2px;
+    background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3)); }
+  .ai-head { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .ai-dot { width:8px; height:8px; border-radius:50%;
+    background:linear-gradient(135deg,var(--a1),var(--a3)); box-shadow:0 0 0 4px rgba(139,92,246,.14); }
+  .ai-head h2 { font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--tx2); font-weight:600; }
+  .ai p { font-size:15px; color:#d6d6dc; margin-bottom:13px; }
+  .ai p:last-child { margin-bottom:0; }
+  .ai strong { color:#fff; font-weight:700; }
+
+  .sec-head { display:flex; align-items:baseline; gap:14px; margin:0 0 22px; padding-bottom:14px;
+    border-bottom:1px solid var(--line); }
+  .sec-head h2 { font-size:20px; font-weight:750; letter-spacing:-.01em; }
+  .sec-head .count { font-size:12.5px; color:var(--tx3); }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px; }
+  .card {
+    background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid var(--line); border-radius:14px; padding:20px 22px 18px;
+    display:flex; flex-direction:column; gap:12px;
+    transition:border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+  }
+  .card:hover { border-color:rgba(139,92,246,.42); transform:translateY(-3px);
+    box-shadow:0 14px 34px -18px rgba(139,92,246,.55); }
+  .card-top { display:flex; align-items:center; gap:8px; }
+  .tag { font-size:11.5px; font-weight:650; padding:3px 9px; border-radius:6px; letter-spacing:.02em; }
+  .tag-vendor { color:#c9ccff; background:rgba(91,108,247,.16); border:1px solid rgba(91,108,247,.32); }
+  .tag-industry { color:#f7c6e0; background:rgba(236,72,153,.14); border:1px solid rgba(236,72,153,.28); }
+  .imp { margin-left:auto; font-size:10.5px; color:#fbbf24; border:1px solid rgba(251,191,36,.35);
+    background:rgba(251,191,36,.1); padding:2px 7px; border-radius:5px; letter-spacing:.04em; }
+  .card h3 { font-size:16px; line-height:1.45; font-weight:700; letter-spacing:-.01em; }
+  .card p { font-size:13.6px; color:#a9a9b4; line-height:1.78; flex:1; }
+  .links { display:flex; flex-wrap:wrap; gap:14px; padding-top:12px; border-top:1px dashed var(--line); }
+  .links a { font-size:12.6px; color:#8B5CF6; text-decoration:none; transition:color .16s ease; }
+  .links a:hover { color:#c4b5fd; text-decoration:underline; }
+
+  .obs-wrap { display:grid; gap:14px; }
+  .obs { background:rgba(17,17,20,.75); border:1px solid var(--line); border-left:2px solid var(--a2);
+    border-radius:12px; padding:20px 24px; }
+  .obs-no { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--a2); margin-bottom:8px; font-weight:650; }
+  .obs h4 { font-size:16px; font-weight:700; margin-bottom:9px; }
+  .obs p { font-size:13.8px; color:#a9a9b4; line-height:1.8; }
+  .obs p strong, .obs p b { color:#e6e6ea; }
+
+  .foot { margin-top:54px; padding-top:22px; border-top:1px solid var(--line);
+    font-size:12.2px; color:var(--tx3); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+
+  .reveal { opacity:0; transform:translateY(14px); }
+  .reveal.in { opacity:1; transform:none; transition:opacity .55s ease var(--d,0ms), transform .55s ease var(--d,0ms); }
+
+  @media (max-width:640px) {
+    .hero { padding:52px 0 34px; }
+    .ai { padding:22px 20px; }
+    .grid { grid-template-columns:1fr; }
+    .stats { gap:26px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="brand">NGFW DAILY</div>
+    <div class="nav-meta">
+      <span><b>2026-11-21</b> 周六</span>
+      <span>厂商 <b>2</b></span>
+      <span>行业 <b>9</b></span>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Next-Generation Firewall · China Market Watch</div>
+    <h1>🛡️ 中国 <span>NGFW 厂商日报</span></h1>
+    <p class="sub">2026-11-21（周六）｜只收防火墙主航道：产品本体、边界技术、防火墙标的采购、墙本体漏洞与厂商防火墙业务面。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">11</div><div class="l">今日动态</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">厂商动态</div></div>
+      <div class="stat"><div class="n">9</div><div class="l">行业采购</div></div>
+      <div class="stat"><div class="n">30</div><div class="l">天时效窗口</div></div>
+    </div>
+  </header>
+
+  <section class="ai">
+    <div class="ai-head"><span class="ai-dot"></span><h2>AI 解读 · 今天的防火墙赛道</h2></div>
+    <p>今天真正的新增产品动作只有两件，但方向很清楚：**新华三把防火墙当成园区的「总控台」**（网管、AC、认证全内置，30 分钟开局），**锐捷则把「全威胁吞吐」这个行业黑箱第一次摆到第三方仪表上**（关掉 CPU 资源检查防 bypass，2.1/2.7/4.5 Gbps）。前者在抢「一台墙替代一堆盒子」的入口，后者在抢「参数可信度」的话语权——两条路都不打价格。</p><p>采购侧同一天出现两个极端：华夏银行 44 台纯防火墙包（18 台 200G + 26 台区域墙）把门槛写成「仅原厂或授权代理 + 同品牌同系列案例」，深圳眼科医院则在评分法下让**报价第二高的 46.78 万中标**（比最低价贵 11.4%）；而济宁二院反拍只压了 8%。**通道决定价格弹性：评分法能溢价 10%+，反拍只能压 5–10%，纯墙包则被预算锚死。**</p><p>最该盯的一条是枣阳：**同一型号 AF-1000-FH1600BW9 以「WAF 防火墙 / 内外网防火墙 / 外网防火墙」三个名字各卖 4 万，一分不差**，换名字没换来一分钱溢价，真正差价的只有型号（FH2300BW9 核心墙 5 万）。这修正了我们 11-16 从浙江女监得出的「名字定价」判断——**决定价格的是 SKU 档位，名字只是包装；想拿溢价必须换型号或换品目结构，改标签无效。**</p>
+  </section>
+
+  <section style="margin-bottom:52px">
+    <div class="sec-head"><h2>🏢 厂商动态</h2><span class="count">2 条 · 产品本体 / 技术 / 认证</span></div>
+    <div class="grid">
+        <article class="card reveal" style="--d:0ms">
+          <div class="card-top">
+            <span class="tag tag-vendor">H3C</span>
+            <span class="imp">重点</span>
+          </div>
+          <h3>新华三发布极简园区安全方案：以防火墙为核心，把网管、AC、认证全塞进一台墙</h3>
+          <p>11-19 发布，架构为「防火墙+交换机+AP」一体化，防火墙同时承担网络管理、无线 AC 与用户认证三项职能。开局从上电自动纳管、防火墙主动发现接入交换机与 AP，到向导式下发上网/Wi-Fi/区域策略，原本 1 人天的现场开局压到 30 分钟；设备故障替换一键继承配置、远程 10 分钟上线。安全能力全部内置在防火墙内：IPS、防病毒、URL 过滤、Web 应用防护、威胁情报，依托云能力中心更新特征库，覆盖 20000+ IPS 特征、600 万+ 病毒签名，并具备 AI 语义分析。策略与用户身份绑定后，批量下发替代逐台配置，官方称重复配置量减少约 80%、运维工作量降 70% 以上。</p>
+          <div class="links"><a href="https://news.qq.com/rain/a/20261119A0FVVI00" target="_blank" rel="noopener">腾讯新闻 / 观点网 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:40ms">
+          <div class="card-top">
+            <span class="tag tag-vendor">其他</span>
+            <span class="imp">重点</span>
+          </div>
+          <h3>锐捷 RG-WALL 1600-Z 三型号过信通院泰尔实验室实测：全威胁同开，2.1 / 2.7 / 4.5 Gbps</h3>
+          <p>2026 年 10 月，中国信通院泰尔实验室依据 GB/T 20281-2020《信息安全技术 防火墙安全技术要求和测试评价方法》，用 IXIA PerfectStorm 对锐捷防火墙 2.0 的 Z3000-03、Z5000-D05、Z5000-D10 三款做委托检测。全威胁（IPS+AV 快速模式+应用识别同开）吞吐分别为 2.1 / 2.7 / 4.5 Gbps，且测试中特意关闭 CPU 资源检查以防触发 bypass——测的是真实硬件加速能力，不是「检测不过来就放行」换来的数字。另测 SSL 代理+IPS、勒索病毒防护两项。官方文中点名行业通病：标称吞吐多在裸机无功能开启下测得，全开 IPS/AV/应用识别后实际性能常只有标称值的 1/8–1/10。</p>
+          <div class="links"><a href="https://www.ruijie.com.cn/cp/xw-cp-aq/931511" target="_blank" rel="noopener">锐捷网络官网 ↗</a></div>
+        </article></div>
+  </section>
+
+  <section style="margin-bottom:52px">
+    <div class="sec-head"><h2>🏭 行业动态</h2><span class="count">9 条 · 政府 / 金融 / 运营商 / 军队 / 医疗 / 教育</span></div>
+    <div class="grid">
+        <article class="card reveal" style="--d:80ms">
+          <div class="card-top">
+            <span class="tag tag-industry">金融</span>
+            <span class="imp">重点</span>
+          </div>
+          <h3>华夏银行一次放出 44 台防火墙：18 台 200G 高端墙 + 26 台区域墙，12-07 截止</h3>
+          <p>基础软硬件采购项目拆成两个纯防火墙包。第九包「高端防火墙」：资源池防火墙 16 台 + 大数据区核心防火墙 2 台，要求双主控、≥2 电源、混合包转发 ≥200Gbps、100G 光口 ≥2 个、满配风扇。第十包「区域防火墙」：互联网接入区 4 台（≥40Gbps、万兆光 ≥8）、核心业务区 10 台（≥100Gbps、100G 光 ≥2 + 万兆光 ≥10）、外联 12 台（≥10Gbps、万兆光 ≥6）。44 台全部含五年原厂 7×24 维保。资格线卡得死：仅限原厂商或授权代理商（须原厂授权函）、2023-01-01 起至少 1 项同品牌同系列防火墙采购案例、须有备件库、不接受联合体。有效投标人不足 3 家即二次招标，2 家转竞争性磋商。投标截止 12-07 09:30。</p>
+          <div class="links"><a href="https://www.hxb.com.cn/hxb/jrhx/hxxw/zbgg/zbgg/zx/2026111611000675710/index.shtml" target="_blank" rel="noopener">华夏银行官网 · 第九包 ↗</a><a href="https://www.hxb.com.cn/hxb/jrhx/hxxw/zbgg/zbgg/zx/2026111610581011570/index.shtml" target="_blank" rel="noopener">华夏银行官网 · 第十包 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:120ms">
+          <div class="card-top">
+            <span class="tag tag-industry">金融</span>
+            
+          </div>
+          <h3>人民银行北京市分行反拍 2 台天融信万兆墙，预算 29.996 万＝15 万/台</h3>
+          <p>反拍单 FP26111710017020，采购内容「网络防火墙」2 台，预算总金额 299,960 元，折合 15 万/台。反拍商品型号已写死：天融信防火墙系统 NGFW4000-UF(FT-A50)(万兆) NG-Y8121-SC。报价截止 11-24 00:00，合同签订后 60 个日历日到货。规则照旧：有效报价不足三家自动废标，满三家自动取最低价，成交后 72 小时未确认订单可顺延至第二名。这是本行今年少见的「万兆档、两台、单价 15 万」公开预算，高于 11-19 民航局审计中心单台 7.98 万、11-19 南昌海关 D19 单台 10.16 万，构成反拍通道里偏高端的一档。</p>
+          <div class="links"><a href="https://buyer.zycg.gov.cn/mall-view/information/detail?noticeId=824913" target="_blank" rel="noopener">中央政府采购网 · 反拍公告 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:160ms">
+          <div class="card-top">
+            <span class="tag tag-industry">其他</span>
+            
+          </div>
+          <h3>民航中南空管局武汉管制能力提升 650 万，核心防火墙与下一代防火墙同包招标</h3>
+          <p>项目编号 GC-HGX261283，预算与最高限价均为 650 万元，12-09 09:00 开标（国 e 采电子开标）。采购需求 14 类设备并列，防火墙占两档：「核心防火墙」与「下一代防火墙」同时出现在清单里，另有 WAF 防火墙、网闸、堡垒机、日志审计、数据库审计、漏洞扫描、流量探针、态势感知与安全运营平台、统一服务器安全、一体化终端安全管理及配套交换机。履约要求合同签订后 2 个月内具备工厂验收条件、6 个月内完成全部安装调试。空管属于高可用性场景，核心区墙通常按双机热备配置，是国产高端墙少见的「非金融非运营商」高预算窗口。</p>
+          <div class="links"><a href="https://www.zycg.gov.cn/freecms/site/zygjjgzfcgzx/ggxx/info/2026/a40dc466-4140-4cf0-8e51-6824931600a4.html" target="_blank" rel="noopener">中央政府采购网 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:200ms">
+          <div class="card-top">
+            <span class="tag tag-industry">教育</span>
+            <span class="imp">重点</span>
+          </div>
+          <h3>福州市教育局边界防火墙单台预算 30 万：国产 CPU、40G 网络层、2000 万并发</h3>
+          <p>网络安全设备（二次）公开招标，整包 115 万，12-07 09:00 截止。四个品目全部要求国产 CPU 及操作系统：边界防火墙 1 台 30 万（网络层吞吐 40G、并发 2000 万、每秒新建 45 万）、入侵检测 1 台 20 万（混合流 3Gbps）、入侵防御 1 台 22 万（网络层 30Gbps、并发 500 万）、WEB 应用防火墙 1 台（网络吞吐 12Gbps、HTTP 吞吐 8Gbps、HTTP 新建 95000/秒）。这是把 IDS、IPS、WAF 与边界墙拆成四个品目分别限价的做法，防火墙拿到的 30 万是四项里最高的，且指标直接写网络层 40G——信创高端墙在教育局这一级已经开到 40G 档。</p>
+          <div class="links"><a href="https://fj.zhiliaobiaoxun.com/article/119563227" target="_blank" rel="noopener">知了标讯 · 福建站 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:240ms">
+          <div class="card-top">
+            <span class="tag tag-industry">医疗</span>
+            <span class="imp">重点</span>
+          </div>
+          <h3>枣阳医共体 1027 万落湖北数据集团：同一型号三个名字，全是 4 万</h3>
+          <p>枣阳市第一人民医院县域医共体机房与安全设备包，湖北数据集团 99.57 分中标，总额 1027 万。防火墙共四笔：核心防火墙 深信服 AF-1000-FH2300BW9 2 台 @5 万＝10 万；另有三台同型号 AF-1000-FH1600BW9，分别以「WAF 防火墙」「内外网防火墙」「外网防火墙」三个品目名各 1 台，单价全部 40,000 元、一分不差。防火墙合计 22 万，仅占整包 2.14%。同包里联想全闪存储 2 台 65 万/台、PACS 归档存储 110 万、核心容灾存储 100 万、等保测评 20 万、机房运维 60 万——存储与运维把预算吃干净，墙只作为合规项存在。</p>
+          <div class="links"><a href="https://ccgp-hubei.gov.cn/notice/202611/notice_bc8a84a32af098772dc967b621045c56.html" target="_blank" rel="noopener">湖北省政府采购网 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:280ms">
+          <div class="card-top">
+            <span class="tag tag-industry">医疗</span>
+            <span class="imp">重点</span>
+          </div>
+          <h3>深圳眼科医院 46.78 万「内外网隔离设备」：报价第二高的反而中标，比最低价贵 11.4%</h3>
+          <p>项目名为「内外网网络隔离设备采购」，实际标的写的是「下一代防火墙 AF AF-2000-L2250-K3」1 套，单价 46.78 万。三家报价：深圳华信鸿源 42.00 万、深圳云创友翼 46.96 万、中保车服 46.78 万。结果中保车服以综合评分 96.63 分中标，报价最低的华信鸿源只有 75.20 分、排第三——比最低价贵 11.4% 依然拿下。这是本周边界设备里少见的「评分法定价」样本，与同期反拍通道（济宁二院 13.8 万 vs 限价 15 万、压 8%）形成两个极端：方案分能撑住溢价，价格分只能往下压。</p>
+          <div class="links"><a href="https://m.yfbzb.com/winbid/detail/20261118_649036325.html" target="_blank" rel="noopener">乙方宝 · 中标公告 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:320ms">
+          <div class="card-top">
+            <span class="tag tag-industry">医疗</span>
+            
+          </div>
+          <h3>济宁二院万兆隔离防火墙 13.80 万成交：限价 15 万，只有两家报价</h3>
+          <p>网上商城电子反拍 SCFP-3708112026082148895，标的为天融信 NGFW4000-UF(FT-A22)(万兆)V3，2U、双电源、光口+电口、整机吞吐 30Gbps、并发 1000 万、新建 25 万，IPS/AV/VPN/APT 防护与联动全支持，含 3 年质保与上门安装调试。最高限价 15 万，最终铜山盛佰乐（个体工商户）13.8044 万成交，另一家济宁信业成报 14.39 万，两家报价相差 4.2%、均未触底。仅 2 家报价仍成交，说明该反拍单未按「不足三家废标」处理（网上商城反拍与央采反拍规则不同），小规模供应商在 30Gbps 档仍有价格空间。</p>
+          <div class="links"><a href="https://ggzyjyzx.shandong.gov.cn/art/2026/11/18/art_241116_11571206.html" target="_blank" rel="noopener">山东省公共资源交易中心 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:360ms">
+          <div class="card-top">
+            <span class="tag tag-industry">政府</span>
+            
+          </div>
+          <h3>广西区本级等保设备包 137 万：防火墙只拿 10.31 万，比 WAF 便宜 15 万</h3>
+          <p>「网络安全等保测评及设备采购（重）」GXZC2026-J1-003660-GXGC，广西神州安信 137.15 万成交。防火墙系统 奇安信 NSG4900-TQ55M 1 台 103,130 元，在同一张清单里排第四：铱迅 WAF-10000H 25.4 万、深信服零信任控制中心 27.48 万、奇安信 TSS10000-A82 态势感知 26 万、终端安全 11.79 万，都高于防火墙。另有零信任代理网关 9.76 万、二级等保测评服务 12 万、探针 10.4 万，以及机房消防一整套（七氟丙烷、探测器、泄压口等）。等保型包的典型结构：墙是必备项但金额垫底，钱在 WAF、态势感知、零信任与测评服务上。</p>
+          <div class="links"><a href="https://www.ccgp.gov.cn/cggg/dfgg/cjgg/202611/t20261120_27728942.htm" target="_blank" rel="noopener">中国政府采购网 ↗</a></div>
+        </article>
+        <article class="card reveal" style="--d:400ms">
+          <div class="card-top">
+            <span class="tag tag-industry">教育</span>
+            
+          </div>
+          <h3>安徽金寨技师学院 12.336 万询价「防火墙+日志审计」，11-24 开标</h3>
+          <p>项目编号 AHHR-CG-2026-0034，预算与最高限价同为 123,360 元，采购需求为防火墙及日志审计系统，履约期 7 个日历天，不接受联合体，资格后审、免投标保证金。询价文件领取截至 11-24 15:00，响应文件同日 15:00 开启。金额落在县域职校的常规档（对照 11-20 泗县二中 AF-1000-FH2100B-SX 3.23 万、11-18 潜山山石 A1600 2.10 万），属于「一台墙 + 一台日志」的标准两件套，配置空间很窄，实际竞争基本在渠道成本上。</p>
+          <div class="links"><a href="https://ggzy.luan.gov.cn/jyxx/001008/001008006/20261119/ba4ba646-cac4-4a96-9061-a200e9a0d59c.html" target="_blank" rel="noopener">六安市公共资源交易中心 ↗</a></div>
+        </article></div>
+  </section>
+
+  <section style="margin-bottom:20px">
+    <div class="sec-head"><h2>🔍 今日三点观察</h2><span class="count">给 PM 的结论</span></div>
+    <div class="obs-wrap"><div class="obs reveal">
+              <div class="obs-no">观察 1</div>
+              <h4>同型号三个名字，一分钱差价都没有</h4>
+              <p>枣阳包里 FH1600BW9 三次出场（WAF 防火墙 / 内外网防火墙 / 外网防火墙），单价全部 40,000 元；而 FH2300BW9 作「核心防火墙」就是 50,000 元。对照 11-16 浙江女监的深信服同平台四档价（7.5/6.5/5/8 万），当时的价差其实来自 L2600 / L2202 / V800 虚拟化 / L2100 四个**不同 SKU**，名字只是跟着型号走。**结论修正：改名不产生价差，改型号才产生。**对 NF 的直接含义是——想在同包里守住单价，必须准备多个型号档位，而不是把一台设备换个品目名重复报。</p>
+            </div><div class="obs reveal">
+              <div class="obs-no">观察 2</div>
+              <h4>评分法与反拍的价格弹性差出一倍</h4>
+              <p>深圳眼科医院：42.00 / 46.96 / 46.78 万三家报价，评分 96.63 / 76.93 / 75.20，**报价第二高的中标，溢价 11.4%**。济宁二院反拍：限价 15 万、两家报 13.80 / 14.39 万，**压 8% 见底**。民航审计中心单机反拍 7.98 万、南昌海关 D19 10.16 万，也都是压到成本线附近。**同一周、同一品类，通道不同价差能到 20 个百分点。**NF 报价前必须先确认通道属性：评分法要堆方案分（尤其「内外网隔离」「等保合规」这类场景化名目），反拍只能算渠道成本。</p>
+            </div><div class="obs reveal">
+              <div class="obs-no">观察 3</div>
+              <h4>金融口的纯墙包在把「档位×数量×资格」三层同时锁死</h4>
+              <p>华夏银行 44 台拆成两包：18 台 200G 高端墙（双主控、100G 光口）+ 26 台区域墙（40G/100G/10G 三档按位置分），全部五年原厂 7×24，且要求原厂或授权代理 + 2023 年起同品牌同系列案例。叠加 11-19 银联 52 台的「双品牌异构、同参数跨包单价一致、包 1 拿第一候选人即失去包 2 资格」——**金融客户正在用标书把「位置决定档位、档位决定价格、资格决定谁能报」写成硬规则。**这意味着非入围品牌连报价资格都没有，而入库品牌要靠多档 SKU + 多包策略去分配溢价位。</p>
+            </div></div>
+  </section>
+
+  <footer class="foot">
+    <span>数据来源：厂商官网 / 政府采购网 / 公共资源交易平台 / 厂商 PSIRT。已按 30 天时效与历史去重库过滤。</span>
+    <span>2026-11-21 · NGFW Daily</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
