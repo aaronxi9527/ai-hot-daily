@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国 NGFW 厂商日报 · 2026-11-22</title>
+<style>
+:root{
+  --bg:#0a0a0a; --bg-soft:#0f0f12; --card:#131318; --card-hover:#17171e;
+  --line:rgba(255,255,255,.07); --line-strong:rgba(255,255,255,.13);
+  --txt:#ececf1; --txt-2:#a1a1ad; --txt-3:#6e6e7a;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+  --grad:linear-gradient(120deg,#5B6CF7 0%,#8B5CF6 52%,#EC4899 100%);
+  --link:#8B5CF6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Inter,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.65;
+  padding-bottom:80px;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 520px at 12% -8%, rgba(91,108,247,.15), transparent 62%),
+    radial-gradient(780px 460px at 88% 4%, rgba(236,72,153,.10), transparent 60%),
+    radial-gradient(700px 500px at 50% 100%, rgba(139,92,246,.07), transparent 65%);
+}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* top bar */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
+  background:rgba(10,10,10,.72);border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:1180px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;letter-spacing:.2px}
+.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--grad);box-shadow:0 0 14px rgba(139,92,246,.85)}
+.top-nav{margin-left:auto;display:flex;gap:20px;font-size:13px;color:var(--txt-2)}
+.top-nav a{color:var(--txt-2);text-decoration:none;transition:color .2s}
+.top-nav a:hover{color:var(--txt)}
+@media(max-width:640px){.top-nav{gap:13px;font-size:12px}}
+
+/* hero */
+.hero{padding:64px 0 30px;position:relative}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--txt-3);margin-bottom:20px;
+  border:1px solid var(--line-strong);border-radius:100px;padding:5px 13px;
+}
+.hero h1{
+  font-size:clamp(33px,5.6vw,58px);font-weight:750;letter-spacing:-.9px;line-height:1.1;margin-bottom:18px;
+}
+.hero h1 .g{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-sub{font-size:15px;color:var(--txt-2);max-width:680px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pill{
+  display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--txt-2);
+  background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:100px;padding:6px 14px;
+}
+.pill b{color:var(--txt);font-weight:600}
+.pill .num{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;font-weight:750;font-size:14px;
+}
+
+/* AI block */
+.ai-block{
+  margin:34px 0 52px;border-radius:18px;padding:1px;background:var(--grad);
+  box-shadow:0 20px 60px -28px rgba(139,92,246,.55);
+}
+.ai-inner{
+  background:linear-gradient(180deg,#111116 0%,#0d0d11 100%);border-radius:17px;padding:26px 28px;
+}
+.ai-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ai-badge{
+  font-size:10.5px;font-weight:700;letter-spacing:1.3px;color:#fff;
+  background:var(--grad);border-radius:6px;padding:3px 8px;
+}
+.ai-title{font-size:13px;color:var(--txt-2);letter-spacing:.4px}
+.ai-body{font-size:15px;line-height:1.92;color:#d6d6e0}
+.ai-body b{color:#fff;font-weight:650}
+
+/* section */
+.section{margin-bottom:52px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.sec-title{font-size:20px;font-weight:680;letter-spacing:-.3px}
+.sec-count{font-size:12px;color:var(--txt-3)}
+.sec-line{flex:1}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+
+.card{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:21px 22px 19px;transition:transform .28s cubic-bezier(.2,.7,.3,1),border-color .28s,background .28s,box-shadow .28s;
+  opacity:0;transform:translateY(18px);
+}
+.card.in{opacity:1;transform:none}
+.card:hover{
+  background:var(--card-hover);border-color:var(--line-strong);transform:translateY(-3px);
+  box-shadow:0 18px 44px -24px rgba(0,0,0,.9),0 0 0 1px rgba(139,92,246,.14);
+}
+.card::after{
+  content:"";position:absolute;left:22px;right:22px;top:0;height:1px;
+  background:var(--grad);opacity:0;transition:opacity .28s;border-radius:1px;
+}
+.card:hover::after{opacity:.75}
+.card-top{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:11px}
+.tag{
+  font-size:11px;font-weight:600;letter-spacing:.3px;border-radius:5px;padding:3px 8px;
+  border:1px solid transparent;white-space:nowrap;
+}
+.tag-v{background:rgba(91,108,247,.14);color:#a3adfb;border-color:rgba(91,108,247,.28)}
+.tag-i{background:rgba(236,72,153,.12);color:#f79ac4;border-color:rgba(236,72,153,.26)}
+.tag-date{background:rgba(255,255,255,.04);color:var(--txt-3);border-color:var(--line);font-weight:500}
+.tag-hot{background:rgba(236,72,153,.16);color:#ff9ecb;border-color:rgba(236,72,153,.34)}
+.card h3{font-size:16px;font-weight:640;line-height:1.5;letter-spacing:-.15px;margin-bottom:10px}
+.card p{font-size:13.6px;color:var(--txt-2);line-height:1.8}
+.card .extra{
+  font-size:12.9px;color:#8e8e9c;line-height:1.8;margin-top:11px;
+  padding-left:12px;border-left:2px solid rgba(139,92,246,.32);
+}
+.card .src{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}
+.card .src a{
+  font-size:12.3px;color:var(--link);text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;transition:color .18s,text-decoration-color .18s;
+}
+.card .src a:hover{color:#c4b5fd;text-decoration:underline;text-underline-offset:3px}
+.card .src a::after{content:"↗";font-size:10.5px;opacity:.75}
+
+/* footer */
+.foot{
+  border-top:1px solid var(--line);padding-top:26px;font-size:12px;color:var(--txt-3);
+  display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;
+}
+.foot b{color:var(--txt-2);font-weight:500}
+@media(prefers-reduced-motion:reduce){.card{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="logo"><span class="logo-dot"></span>NGFW Daily</div>
+    <nav class="top-nav">
+      <a href="#ai">AI 解读</a>
+      <a href="#vendor">厂商动态</a>
+      <a href="#industry">行业动态</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-kicker">NGFW · 下一代防火墙赛道</div>
+    <h1>🛡️ 中国 NGFW<br><span class="g">厂商日报</span></h1>
+    <p class="hero-sub">2026 年 11 月 22 日 · 周日　只看防火墙主航道：产品迭代、份额与价格、中标与采购、设备自身漏洞与合规门槛。</p>
+    <div class="hero-meta">
+      <span class="pill">今日动态 <span class="num">10</span> 条</span>
+      <span class="pill">厂商 <b>3</b> 条</span>
+      <span class="pill">行业 <b>7</b> 条</span>
+      <span class="pill">口径 <b>NGFW 强相关</b></span>
+    </div>
+  </header>
+
+  <section class="ai-block" id="ai">
+    <div class="ai-inner">
+      <div class="ai-head">
+        <span class="ai-badge">AI</span>
+        <span class="ai-title">今日解读 · NGFW 竞争格局</span>
+      </div>
+      <div class="ai-body">今天最该看的是两条国外动作。Check Point 拿下 Forrester Wave 企业防火墙 Q4 2026 的 Leader，26 项标准里 15 项满分、current offering 并列第一，被 Forrester 点名的是 AI Network Firewall、Firewall-as-a-Subscription、Maestro 超分编排这套组合——防火墙的竞争重心已经明确从「盒子性能」迁到「订阅形态 + 统一编排 + 产品自身安全性」。另一头 PAN-OS 又出一对 9.2 分的 NGINX HTTP/2 漏洞，只要开了 HTTP/2 就能未认证打，本月第三次因管理面跑通用 Web 组件付代价。国内周末没有新型号，钱继续流向两处：税务/央企的「超期设备整改」（吉林税务 206 万，墙占 47%、单台 24.2 万）和运营商的国产化升级（玉林电信把防火墙单价上限压在 32.84 万/台）。产品经理这周真正要盯的是价格分层：纯墙包能报到 24 万/台，运营商集采上限 33 万/台，混合包里的墙只剩 2–4 万——定价权已经由「包的性质」而非「设备性能」决定。</div>
+    </div>
+  </section>
+
+  <section class="section" id="vendor">
+    <div class="sec-head">
+      <span class="sec-title">🌐 厂商动态</span>
+      <span class="sec-count">3 条</span>
+      <span class="sec-line"></span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">其他</span>
+          <span class="tag tag-v">Check Point</span>
+          <span class="tag tag-date">11-17</span>
+          <span class="tag tag-hot">🔥 重点</span>
+        </div>
+        <h3>Check Point 入选 Forrester Wave 企业防火墙 Q4 2026 领导者，26 项标准中 15 项满分</h3>
+        <p>Forrester 发布《The Forrester Wave™: Enterprise Firewall Solutions, Q4 2026》，Check Point 位列 Leader，在 current offering 维度与另一家并列最高分，26 项评估标准中拿到 15 项满分，客户反馈高于平均。报告点名的能力项集中在 Advanced Threat Prevention、Threat Intelligence、Cloud/Virtual/Containerized Enforcement、Performance &amp; Efficacy、Product Security &amp; Resilience。</p>
+        <div class="extra">战略层面被写进报告的是 Hybrid Mesh Network Security 的四件套：AI Data Center Security、AI Network Firewall、Firewall-as-a-Subscription、Maestro Hyperscale Orchestrator。Forrester 同时给了「pricing flexibility and transparency」满分，并指出弹性授权正在把客户往全线产品上带。对国内厂商的参照意义在于：这份报告的评分重心已从吞吐/并发移到「订阅形态 + 统一管理 + 产品自身安全性」三项。</div>
+        <div class="src"><a href="https://www.zawya.com/en/press-release/companies-news/check-point-named-a-leader-in-enterprise-firewall-solutions-2278266" target="_blank" rel="noopener">ZAWYA 原文</a>
+          <a href="https://it-online.co.za/2026/11/17/check-point-named-a-leader-in-enterprise-firewall-solutions" target="_blank" rel="noopener">IT-Online</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">其他</span>
+          <span class="tag tag-v">Palo Alto</span>
+          <span class="tag tag-date">11-20</span>
+          <span class="tag tag-hot">🔥 重点</span>
+        </div>
+        <h3>PAN-OS 曝双 9.2 分 NGINX HTTP/2 漏洞：CVE-2026-123633 与 CVE-2026-123007，开启 HTTP/2 即暴露</h3>
+        <p>Palo Alto 于 11-20 发布安全公告，披露 PAN-OS 与 Panorama 内置 NGINX 的两个严重漏洞：CVE-2026-123633（HTTP/2 代理 use-after-free，CWE-416）与 CVE-2026-123007（HTTP/2 流控整数下溢，CWE-191），CVSS-B 均为 9.2，未认证远程攻击者可打崩 worker 进程或以 root 执行任意代码。</p>
+        <div class="extra">受影响版本：12.2.4 及更早、12.1.7 及更早、11.2.10 及更早；仅在启用 HTTP/2 时受影响，未启用则不受影响，关闭 HTTP/2 可作临时缓解。修复版本 12.2.4-h3 / 12.1.10-h6（或 12.1.7-h15）/ 11.2.16-h3。厂商称暂未发现恶意利用，但 GitHub 上已有 PoC。值得注意的是这已是十一月内 Palo Alto 因「管理面跑通用 Web 组件」引发的第三起高危披露（前有 PHP2Shell 与 Panorama CVE-2026-0330）。</div>
+        <div class="src"><a href="https://badgersignal.com/articles/palo-alto-networks-warns-of-two-critical-nginx-http-2-vulnerabilities-cve-2026-123633-and-cve-2026-123007" target="_blank" rel="noopener">Badger Signal 分析</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">其他</span>
+          <span class="tag tag-v">兆勤 Zyxel</span>
+          <span class="tag tag-date">11-15</span>
+          
+        </div>
+        <h3>兆勤 USG FLEX H 系列防火墙原生整合 Bitdefender GravityZone，自 uOS 1.40 固件起提供</h3>
+        <p>兆勤科技宣布 USG FLEX H 系列防火墙可原生整合 Bitdefender GravityZone，网管人员在单一界面即可查看端点授权、操作系统版本与端点安全状态，减少防火墙与终端之间的安全孤岛。该能力自 uOS 1.40 固件起提供。</p>
+        <div class="extra">2027 年计划新增端点风险评分、预设防御行动与威胁情资共享，但自动隔离机制尚未公布。需注意分工边界：端点防护授权仍由 Bitdefender 管理，扫描与运算主要在端点侧完成，防火墙并不执行完整防毒扫描——这一点与「防火墙内置 AV 引擎」是两条不同路线，前者是把墙做成端点数据的汇聚面板，后者是把检测算力压在墙里。</div>
+        <div class="src"><a href="https://icsda.org.tw/security-news-vulnerability-data-breach-20261116" target="_blank" rel="noopener">ICSDA 资安日报（引 iThome）</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="industry">
+    <div class="sec-head">
+      <span class="sec-title">🏭 行业动态</span>
+      <span class="sec-count">7 条</span>
+      <span class="sec-line"></span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">政府</span>
+          <span class="tag tag-v">山石网科</span>
+          <span class="tag tag-date">11-19</span>
+          <span class="tag tag-hot">🔥 重点</span>
+        </div>
+        <h3>吉林税务 206 万网络安全整改加固：山石 SG-6000-P8568 4 台 @24.2 万，墙占整包 47%</h3>
+        <p>国家税务总局吉林省税务局 2026 年网络安全整改加固项目（JL2026-ZXGK-A0072-B00）11-19 公告成交，吉林嘉信科技中标 206 万元、综合得分 95 分。标的为防火墙 4 台 + 堡垒机 2 台 + 威胁感知 1 套，用于替换省局互联网区边界与业务专网区超期运行设备。</p>
+        <div class="extra">防火墙型号山石 SG-6000-P8568-B-AD-CN，单价 242,000 元，4 台合计 96.94 万元（含安装 1000 / 运输 200 / 其他 200），占整包 47.1%；堡垒机 22.93 万 ×2、威胁感知 63 万 ×1。同包内墙的单价高于堡垒机，是「边界设备仍值钱」的少见样本。质保三年，合同签订 15 日内到货、验收后 30 日内上线。这是「超期设备整改」类预算的典型结构——不做新购扩容，只换掉过保的边界盒子。</div>
+        <div class="src"><a href="http://jilin.chinatax.gov.cn/art/2026/11/19/art_2612_969430.html" target="_blank" rel="noopener">吉林省税务局官网</a>
+          <a href="https://www.ahzb.net/info/china/133967928.html" target="_blank" rel="noopener">安华招标网转载</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">运营商</span>
+          <span class="tag tag-v">中国电信</span>
+          <span class="tag tag-date">11-16</span>
+          <span class="tag tag-hot">🔥 重点</span>
+        </div>
+        <h3>玉林电信教育云国产化升级 200.11 万：给「业务安全网关（防火墙）」设 32.84 万/台单价上限</h3>
+        <p>中国电信玉林分公司教育云国产化升级改造项目安全设备采购（11-16 公告，12-07 09:00 开标）预算 200.11 万元（不含税），设最高投标单价限价：业务安全网关（防火墙）328,389 元/台、上网行为管理 381,329 元/台、态势感知（含流量探针）260,075 元/台、新堡垒机 129,791 元/台、数据库审计 75,169 元/台、日志审计 68,715 元/台、漏洞扫描 47,903 元/台。</p>
+        <div class="extra">资格门槛：不接受联合体；防火墙、态势感知、上网行为管理三类主产品仅允许代理唯一制造商；须提供 2023-01-01 起同类网安设备销售业绩一份；所有产品须安全认证合格或安全检测符合要求。维保 36 个月，签约后 50 日内到货安装。同一个包里，防火墙单价上限比上网行为管理低 5.3 万——运营商自建云场景里，「出口行为管控」的预算位次仍高于防火墙。</div>
+        <div class="src"><a href="https://jx.zhaobiao.lanyancloud.com/notice/18ba08e8379e47b1" target="_blank" rel="noopener">蓝燕云招标（江西站）</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">运营商</span>
+          <span class="tag tag-v">中国电信</span>
+          <span class="tag tag-date">11-17</span>
+          
+        </div>
+        <h3>镇江电信 139.82 万院校项目：防火墙须同时具备 CCRC 安全认证与网络安全专用产品检测双合格</h3>
+        <p>中国电信镇江分公司丹阳某学院 XYQGWSB 采购项目（11-17 公告，11-26 09:35 截止）最高响应限价 139.82 万元（不含税），采购防火墙等设备，签约后 30 天内完成供货安装调试，接受代理商响应、不接受联合体。</p>
+        <div class="extra">硬性门槛写得很实：防火墙须通过中国网络安全审查技术与认证中心（CCRC）网络关键设备和网络安全专用产品安全认证且结果为「合格」，并具备第三方机构的网络安全专用产品安全检测合格；主要产品防火墙仅允许代理唯一制造商响应，该制造商不得再自行响应或另委托他人；另需安全生产许可证、承装（修、试）电力设施许可三级以上、企业主要负责人 A 证、专职安全员 C 证、1 名低压电工特种作业证。这类「双证 + 唯一授权」组合正在把不具备 CCRC 目录内型号的厂商挡在报价环节之外。</div>
+        <div class="src"><a href="https://js.zhaobiao.lanyancloud.com/notice/592b77bce1a84284" target="_blank" rel="noopener">蓝燕云招标（江苏站）</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">军队</span>
+          <span class="tag tag-v">军队采购</span>
+          <span class="tag tag-date">11-20</span>
+          
+        </div>
+        <h3>某部「国产万兆防火墙」采购二次竞谈：11-25 时限，标的只有防火墙一项</h3>
+        <p>军队采购网 11-20 发布「国产万兆防火墙采购项目（二次）」（2026-JLXLDA-W3006），采购方式为竞争性谈判，信息有效时限至 11-25。这是本期唯一一个标的为单一防火墙品类、且明确限定国产万兆档的军队项目。</p>
+        <div class="extra">同批 11-20 发布的电子信息类项目里，防火墙相关还有「服务器、综管平台软件、网络安全防护系统等综合信息系统设备」（2026-JQ02-W1358，11-30 时限）与「某软件应用支撑及安全防护平台」（2026-JK13-W1097，11-27 时限）。军队口的国产万兆墙属于信创 + 高吞吐双约束，能报的型号本就不多，二次挂网通常意味着首轮有效响应不足三家。</div>
+        <div class="src"><a href="http://mp.weixin.qq.com/s?__biz=MzYzNDA0OTk0NQ==&mid=2247484903&idx=1&sn=daeea5aebc98370e5aa8bef4f5a5c340&chksm=f13503b82c1ec1961f8b0cea0f37fe2b1ae77c8ffbbe73388d202603a38649f00f3d4dd24a15#rd" target="_blank" rel="noopener">军队采购信息汇总（11-20）</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">军队</span>
+          <span class="tag tag-v">军队采购</span>
+          <span class="tag tag-date">11-19</span>
+          
+        </div>
+        <h3>军队「服务器、防火墙、网络交换机等物资」二次招标：须武器装备科研生产二级保密资质</h3>
+        <p>军队采购网 11-19 发布「服务器、防火墙、网络交换机等物资采购项目（2026-JQ02-W1260）（二次）」招标公告，招标文件申领期 11-19 至 11-26。特定资质要求：供应商须具备武器装备科研生产单位二级（含）以上保密资质，证书复印件须线下密封提交。</p>
+        <div class="extra">另需满足：近 3 年无刑事处罚、责令停产停业、吊销许可证或 200 万元以上较大数额罚款；未被列入军队采购暂停名单、失信名单及信用中国严重失信主体名单。二级保密资质是硬门槛，等于把渠道商基本排除在外——这类「装备物资包」通常由具备军工配套资质的集成方承接，防火墙作为其中一项由原厂供型号。</div>
+        <div class="src"><a href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d0066a1d908e801a1e7518b631f7b.html" target="_blank" rel="noopener">军队采购网公告</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">政府</span>
+          <span class="tag tag-v">信创</span>
+          <span class="tag tag-date">11-18</span>
+          
+        </div>
+        <h3>上海港航 15 万国产网络设备询比价：1 台信创防火墙须与现有设备组主备高可用</h3>
+        <p>上海市港航事业发展中心「国产网络设备采购项目」询比价（11-18 报名，11-23 09:30 递交截止），预算/最高限价 15 万元，采购 3 台交换机 + 1 台信创防火墙 + 1 台办公网络行为管理器，防火墙需与现有设备形成主备高可用模式，签约后 20 个工作日内完成供货安装调试。</p>
+        <div class="extra">不接受联合体、不允许分包转包。这类 15 万级的信创小包是最能反映「存量替换」真实单价的场景：一台墙要在 15 万里和 3 台交换机、1 台行为管理分食预算，实际落在墙上的钱大概率 5–7 万，且必须能和既有设备做主备——兼容性与协议对接能力比性能参数更关键。</div>
+        <div class="src"><a href="https://hongrui.sh-yuanzhu.com/yuanzhu/views/announce/StatuteD.html?id=&uuid=59981d5ae5bb4e37a3ea79795415c1e2" target="_blank" rel="noopener">上海红瑞工程造价询比价公告</a></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="tag tag-i">其他</span>
+          <span class="tag tag-v">信创/工业</span>
+          <span class="tag tag-date">11-20</span>
+          
+        </div>
+        <h3>信通院工业垂域模型平台 112 万：网络防火墙 2 台，要求国产化 + 工业协议识别 + 国密</h3>
+        <p>中国信息通信研究院「2025 年工业领域网络安全垂域模型赋能平台项目-网络防火墙等」招标，预算 112 万元，采购 6 类设备：网络防火墙 2 台、安全接入设备 1 台、堡垒主机 2 台、网络行为审计系统 1 套、信创服务器 6 台、交换机 10 台。</p>
+        <div class="extra">采购要求集中压在三点：全栈国产化、工业协议识别能力、等保合规与国密支持。同批信通院还挂了 606 万元的「网络攻击流量模拟系统等」10 类工业安全系统，同样拒绝进口。这是「工业防火墙」在国内科研口的典型采购形态——墙不是主角，但必须是能识别工控协议、能跑在信创底座上的那一款。</div>
+        <div class="src"><a href="http://mp.weixin.qq.com/s?__biz=MzkzNTk3NjA2Mw==&mid=2247487954&idx=2&sn=7d22af3f473a83b42574f27a80655858&chksm=c3fb8dd08b71967f26660e71118e6af0883d7634abaab9f54806a5b89e6022d5e78659eb23b1#rd" target="_blank" rel="noopener">网安市场重点招标汇总（11-20）</a></div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>数据来源：各厂商官网 / 政采与公共资源交易平台 / 军队采购网 / 安全厂商 PSIRT 与行业媒体</span>
+    <span><b>口径</b>：仅收 NGFW 强相关；UTM/IPS/WAF 作为防火墙一体化模块收录，独立形态剔除</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.card');
+  if(!('IntersectionObserver' in window)){
+    cards.forEach(function(c){ c.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var el = e.target;
+        var idx = parseInt(el.dataset.idx || '0', 10) % 4;
+        el.style.transitionDelay = (idx * 55) + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  cards.forEach(function(c, i){ c.dataset.idx = i; io.observe(c); });
+})();
+</script>
+</body>
+</html>
