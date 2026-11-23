@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国 NGFW 厂商日报 · 2026-11-23</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0a0a; --bg-soft:#111113; --card:#141416; --card-hover:#1a1a1e;
+    --line:#232327; --text:#ededf0; --text-dim:#a1a1aa; --text-mute:#71717a;
+    --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.65;
+    padding-bottom:80px;
+  }
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100; height:56px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 24px;
+    background:rgba(10,10,10,.72);
+    -webkit-backdrop-filter:saturate(180%) blur(18px);
+    backdrop-filter:saturate(180%) blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .nav-brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;letter-spacing:.2px}
+  .nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 12px rgba(139,92,246,.7)}
+  .nav-meta{font-size:12px;color:var(--text-mute);font-variant-numeric:tabular-nums}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  .hero{padding:112px 0 52px;position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);
+    width:760px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(91,108,247,.20),rgba(139,92,246,.10) 45%,transparent 70%);
+    filter:blur(40px);pointer-events:none;
+  }
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:7px;font-size:12px;
+    padding:5px 12px;border-radius:999px;
+    border:1px solid rgba(139,92,246,.35);
+    background:rgba(139,92,246,.10);color:#c4b5fd;
+    margin-bottom:22px;letter-spacing:.3px;
+  }
+  h1{
+    font-size:46px;line-height:1.18;font-weight:700;letter-spacing:-.8px;
+    background:linear-gradient(100deg,#fff 8%,#c4b5fd 46%,#f9a8d4 92%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero-sub{margin-top:16px;font-size:15px;color:var(--text-dim);max-width:720px}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:34px}
+  .stat-num{font-size:30px;font-weight:700;letter-spacing:-.5px;
+    background:linear-gradient(135deg,var(--g1),var(--g3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    font-variant-numeric:tabular-nums}
+  .stat-label{font-size:12px;color:var(--text-mute);margin-top:2px;letter-spacing:.4px}
+
+  .ai{
+    margin:0 0 46px;padding:26px 28px;border-radius:16px;
+    border:1px solid rgba(139,92,246,.22);
+    background:linear-gradient(135deg,rgba(91,108,247,.10),rgba(236,72,153,.06));
+    position:relative;overflow:hidden;
+  }
+  .ai::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(600px 120px at 10% 0%,rgba(139,92,246,.14),transparent 70%);
+  }
+  .ai-h{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;
+    color:#c4b5fd;letter-spacing:.5px;margin-bottom:12px}
+  .ai p{font-size:15.5px;color:#dcdce4;line-height:1.85}
+  .ai b{color:#fff;font-weight:600}
+
+  .sec{margin:0 0 44px}
+  .sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .sec-h h2{font-size:19px;font-weight:650;letter-spacing:-.2px}
+  .sec-count{font-size:12px;color:var(--text-mute);font-variant-numeric:tabular-nums}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 18px;transition:background .22s,border-color .22s,transform .22s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{background:var(--card-hover);border-color:rgba(139,92,246,.32);transform:translateY(-2px)}
+  .card-top{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  .tag{font-size:11px;padding:3px 9px;border-radius:6px;font-weight:500;letter-spacing:.3px;white-space:nowrap}
+  .tag-vendor{color:#c4b5fd;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.28)}
+  .tag-ind{color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.26)}
+  .card h3{font-size:16px;line-height:1.5;font-weight:600;letter-spacing:-.1px;margin-bottom:10px;color:#f4f4f6}
+  .card p{font-size:13.5px;color:var(--text-dim);line-height:1.78}
+  .card p b{color:#e4e4e9;font-weight:600}
+  .insight{
+    margin-top:14px;padding:11px 13px;border-radius:9px;
+    background:rgba(236,72,153,.07);border-left:2px solid rgba(236,72,153,.55);
+    font-size:12.8px;color:#e9b8d3;line-height:1.7;
+  }
+  .links{margin-top:14px;display:flex;flex-direction:column;gap:5px}
+  .links a{font-size:12.5px;color:#8B5CF6;text-decoration:none;transition:color .18s}
+  .links a:hover{color:#c4b5fd;text-decoration:underline}
+
+  .empty{padding:34px;text-align:center;color:var(--text-mute);font-size:13.5px;
+    border:1px dashed var(--line);border-radius:14px;background:rgba(255,255,255,.012)}
+
+  footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--text-mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:720px){
+    h1{font-size:31px}
+    .hero{padding:92px 0 38px}
+    .hero-stats{gap:24px}
+    .stat-num{font-size:24px}
+    .grid{grid-template-columns:1fr}
+    .nav{padding:0 16px}
+    .wrap{padding:0 16px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span class="nav-dot"></span>NGFW Daily</div>
+  <div class="nav-meta">2026-11-23 · 周一 · 9 条</div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-tag">🛡️ NGFW 主航道口径 · 非防火墙内容一律不收</div>
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <p class="hero-sub">跟踪下一代防火墙赛道的产品迭代、份额、价格与竞品动作 —— 只收 NGFW / UTM / 防火墙一体机强相关内容。</p>
+    <div class="hero-stats">
+      <div><div class="stat-num">9</div><div class="stat-label">今日动态</div></div>
+      <div><div class="stat-num">2</div><div class="stat-label">厂商动态</div></div>
+      <div><div class="stat-num">7</div><div class="stat-label">行业采购</div></div>
+      <div><div class="stat-num">11-23</div><div class="stat-label">数据日期</div></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <div class="ai-h"><span>⚡</span> AI 解读 · NGFW 视角</div>
+    <p>今天产品侧两条动作都在改「墙的外形」，而且方向一致：<b>Fortinet 把数字 I/O 塞进 rugged 墙</b>，让防火墙能直接读写现场开关量，等于把 PLC 的边界执行权接过来；<b>Check Point 把墙做成 fabric</b>，用 12.8T 容量和订阅制替代单机吞吐的话术。国内厂商的工业墙还停在「加固+宽温+导轨」这一层，还没往 IO 和编排走，这是可以抄近路的一格。价格侧信号更直接：今天四条纯墙包分别落在 <b>8 万（安恒 A 类，2 台）、7.15 万（军队，4 台）、9.1 万（陕西 16Gbps，1 台）、10.4 万（惠州，型号锁死）</b>，全部是「单一型号 + 参数写到型号级」的干净包——<b>10 万以下就是国内中端墙的真实成交带</b>，报价超过这个带只能靠「包里有别的东西」解释。最该盯的是军队这条：招标概况表把每个品目的单价和数量全列出来了，预算结构提前公开，投标剩下的空间只有「降几个点」。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>🏢 厂商动态</h2><span class="sec-count">2 条</span></div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">Fortinet</span>
+        </div>
+        <h3>Fortinet 更新 FortiGate Rugged NGFW 系列：新增 Rugged 70G / 50G-5G，墙开始带数字 I/O 端口</h3>
+        <p>11-20，Fortinet 连续第四次入选 Westlands Advisory《OT Cybersecurity Navigators 2026》Leader，同时公布 OT 产品线扩围。核心是 <b>FortiGate Rugged 70G 与 Rugged 50G-5G 两款新型号</b>：采用自研安全与网络 ASIC（SP5 系列），配备数字 I/O（DIO）端口——官方描述为「让防火墙自动执行并保护现场的数字与物理流程」，即墙可以直接驱动/读取现场开关量。同期新增面向铁路环境的 Rugged 型号（M12 连接器）、FortiOS 新增电动汽车充电桩安全功能与内置 MQTT broker、以及全新的 <b>FortiGuard Inline AI Security Service</b>（FortiGate 客户可实时检查 AI 交互并按策略处置）。FortiOS 家族持有 IEC 62443-4-2 SL4 认证，官方称可直接用于采购与合规评审。</p>
+        <div class="insight">OT 墙的竞争维度从「能扛环境」转到「能接信号」——DIO 让防火墙具备 PLC 的部分边界执行能力，这是国内工业墙几乎空白的一格。</div>
+        <div class="links"><a href="https://securitybrief.asia/story/fortinet-named-leader-in-westlands-ot-security-report" target="_blank" rel="noopener">securitybrief.asia｜Fortinet named leader in Westlands OT security report ↗</a></div>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">Check Point</span>
+        </div>
+        <h3>Check Point 发布 Maestro MHO 200：12.8Tbps Fabric、4.5Tbps 防护吞吐，约为前代四倍</h3>
+        <p>11-17 发布数据中心安全方案 <b>Maestro Hyperscale Orchestrator（MHO）200</b>，面向新型云服务商（neoclouds）、运营商、政府机构与企业，主打「以 AI 速度检测加密流量、按需扩容、故障时维持运营」。官方公布 <b>12.8 Tbps 总 Fabric 容量、最高 4.5 Tbps 威胁防护吞吐</b>，约为前代 MHO 175 的四倍。配套叙事是 7 月随 R82.20 推出的 AI Network Firewall（网络层识别 AI 流量、保护 AI 应用、治理 AI 代理）与 Firewall-as-Subscription 订阅制；同时引用 Miercom《2026 混合网状网络安全效能竞争评估》99.8% 防护有效性、连续四年第一。</p>
+        <div class="insight">高端墙的计价单位正在从「单机吞吐」变成「Fabric 容量」——这一改动会连带改掉标书里的技术评分表。</div>
+        <div class="links"><a href="https://www.netadmin.com.tw/3835" target="_blank" rel="noopener">網管人雜誌｜Check Point 推出 MHO 200 提供 AI 規模流量防護 ↗</a><a href="https://www.digitaltoday.co.kr/cn/view/126537/checkpoint-launches-maestro-mho-200-to-strengthen-ai-data-center-security" target="_blank" rel="noopener">DigitalToday｜Check Point 推出 Maestro MHO 200，瞄准 AI 数据中心安全 ↗</a></div>
+      </article></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>🏭 行业动态</h2><span class="sec-count">7 条 · 政府 / 军队 / 医疗 / 运营商</span></div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">政府</span><span class="tag tag-ind">公安</span>
+        </div>
+        <h3>公安部第三研究所 338 万中标：安恒「一类下一代防火墙」2 台、单价 8 万</h3>
+        <p>11-20 公告（JC-HG20260237），上海国际技贸联合有限公司中标，<b>总金额 338 万元、评审得分 99.48</b>。公示的主要标的只有一项：<b>安恒 DAS-TGFW-A800-FU「一类下一代防火墙」2 台、单价 80,000 元</b>，其余品目未在公示表中列出。代理机构为公安部警用装备采购中心，采用单一来源采购人员名单（5 人）。</p>
+        
+        <div class="links"><a href="https://www.ccgp.gov.cn/cggg/zygg/zbgg/202611/t20261120_27729094.htm" target="_blank" rel="noopener">中国政府采购网｜2026年某单位信息化建设项目应用信息安全设备及应用软件采购项目中标公告 ↗</a></div>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">军队</span><span class="tag tag-ind">军队</span>
+        </div>
+        <h3>军队内网网络安全采购 200 万：防火墙 4 台单价 7.15 万、WAF 2 台单价 6.17 万</h3>
+        <p>11-18 发布、12-17 09:30 在四川乐山开标（2026-JQ74-W1002），预算与最高限价均为 <b>200 万元</b>，单包定 1 家。招标概况表<b>逐品目公开了单价与数量</b>：防火墙 <b>4 台 @71,500 元</b>（28.6 万）、Web 应用防火墙 2 台 @61,670 元、安全隔离与信息单向导入系统 2 套 @187,000 元、数据交换网关 2 台 @160,000 元、安全感知管理平台 1 套 @383,900 元、漏洞扫描 14.77 万、数据库审计 11.24 万、潜伏威胁探针 7.68 万、运维管理 5.9 万、零信任平台 4.5 万、网络准入 3.6 万、杀毒软件 3.58 万。全包投同一供应商、不接受联合体，无特定资质门槛。</p>
+        
+        <div class="links"><a href="https://www.plap.mil.cn/freecms/site/juncai/ggxx/info/2026/8a1d0065a1d908e801a1e9328e6419a0.html" target="_blank" rel="noopener">军队采购网｜内网网络安全采购项目招标公告（2026-JQ74-W1002） ↗</a></div>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">深信服</span><span class="tag tag-ind">政府</span>
+        </div>
+        <h3>惠州市统计局防火墙信创替代：10.4 万锁定深信服 AF-1000-L1600B 单台，参数写到小数点</h3>
+        <p>11-21 发布、<b>11-27 16:00 截止</b>，预算 <b>10.4 万元</b>，最低价成交、不接受联合体。采购文件直接把型号写死：<b>深信服 AF-1000-L1600B 1 台</b>，含防火墙软件 V8.0、云智软件按年授权 3 套、标准版维保 3 年。技术参数逐项列明——网络层大包吞吐 4G、IPS 550M、AV 500M、最大并发 200 万、新建 3 万/秒、全威胁吞吐 400M、全威胁+WAF 200M、IPSec VPN 320M；硬件 1U、内存 8G、128G EMMC、单电源、<b>6 千兆电口 + 2 千兆光口</b>。</p>
+        
+        <div class="links"><a href="https://www.huizhou.gov.cn/bmpd/hzstjj/gzdt/content/post_5899338.html" target="_blank" rel="noopener">惠州市统计局｜防火墙信创替代项目采购公告 ↗</a></div>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">深信服</span><span class="tag tag-ind">政府</span>
+        </div>
+        <h3>陕西省教育厅 9.1 万电子卖场直购深信服复合型防火墙 1 台：2U、16Gbps、200 万并发</h3>
+        <p>11-20 合同公告（SCHT-2026-469914），供应商陕西九州星科，<b>合同金额 91,000 元、1 台</b>，采购方式为<b>电子卖场直购</b>，履约期 2026-11-20 至 2027-11-20。规格写明：复合型防火墙、机箱 2U、插槽 2、<b>整机吞吐率 16Gbps</b>、光口+电口、双电源、<b>并发 200 万、新建 9 万</b>，IPS/防病毒/VPN/APT 防护/协调联动全部要求支持。</p>
+        
+        <div class="links"><a href="https://www.ccgp-shaanxi.gov.cn/freecms/site/shaanxi/ggxx/info/2026/8a69c222a154b92201a1f811d2ae6ac4.html" target="_blank" rel="noopener">陕西省政府采购网｜省教育厅机关防火墙直接订购采购合同公告 ↗</a></div>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">其他</span><span class="tag tag-ind">医疗</span>
+        </div>
+        <h3>禹州市中心医院 34.7 万「内外网防火墙 + 正版杀毒」打包，12 月启动</h3>
+        <p>11-20 公开 11—12 月采购意向：<b>禹州市中心医院内外网防火墙及正版杀毒软件采购项目，预算 34.70 万元</b>，预计 2026 年 12 月采购。项目把「内外网两台墙」与「正版杀毒授权」打成同一包，是年内医疗口常见的「边界+终端一张单」做法——防火墙作为合规入场项、杀毒授权填充金额。</p>
+        
+        <div class="links"><a href="https://zfcg.henan.gov.cn/henan/content?infoId=2047551" target="_blank" rel="noopener">河南省政府采购网｜禹州市中心医院 2026 年 11 至 12 月政府采购意向 ↗</a></div>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">其他</span><span class="tag tag-ind">政府</span>
+        </div>
+        <h3>长丰县应急广播防火墙等设备 6.82 万：一台墙同时扛互联网与政务外网，被判定违规</h3>
+        <p>11-17 发布，预算 <b>6.82 万元</b>，30 天内供货安装、质保 1 年。采购理由是<b>典型的三保不合规场景</b>：原有互联网与电子政务外网共用<b>单台</b>防火墙承载双边界业务，物理无隔离、存在跨网跳板与横向渗透风险，「违反政务外网边界隔离管理规定」，仅靠单台设备的逻辑策略无法实现本质安全——因此换新墙并补 3 块 4T 企业级硬盘解决日志留存。</p>
+        
+        <div class="links"><a href="https://www.xiaofangzhaobiao.com/news-0525a2ec896470e944ced51309954efe" target="_blank" rel="noopener">消防招标网｜长丰县应急广播防火墙等设备采购项目招标公告 ↗</a></div>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <span class="tag tag-vendor">华为</span><span class="tag tag-ind">运营商</span>
+        </div>
+        <h3>上饶电信天翼政务云直接采购华为下一代防火墙威胁防护 TP 订阅授权包</h3>
+        <p>11-17 公示、转<b>直接采购</b>（原采购应答供应商不足）。采购内容为<b>华为原厂威胁防护 TP 订阅授权包</b>，为 IDC 边界防火墙提供持续的威胁特征库升级，覆盖网络攻击识别、恶意代码查杀、恶意站点访问管控，用于支撑<b>等保三级测评</b>。这是运营商云资源池典型的「墙已装机、订阅到期续费」单子——标的物不是设备而是授权年限。</p>
+        
+        <div class="links"><a href="https://jx.bidcenter.com.cn/zbcontent-454070553-4.html" target="_blank" rel="noopener">江西招标网｜上饶分公司 2026 年上饶天翼政务云下一代华为防火墙特征库采购项目直接采购公示 ↗</a></div>
+      </article></div>
+  </section>
+
+  <footer>
+    <span>NGFW 厂商日报 · 自动生成于 2026-11-23 09:00（北京时间）</span>
+    <span>来源：WebSearch + 官方公告 · 已过时效（30 天）与去重校验</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e,i){
+    e.style.transitionDelay = Math.min(i*45,260) + 'ms';
+    io.observe(e);
+  });
+})();
+</script>
+</body>
+</html>
