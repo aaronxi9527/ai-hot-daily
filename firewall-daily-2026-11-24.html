@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国 NGFW 厂商日报 · 2026-11-24</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --panel:#111113; --panel2:#16161a; --line:rgba(255,255,255,.08);
+  --txt:#ededf0; --dim:#8f8f9a; --dim2:#6b6b76;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"Inter","SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.65;
+  padding-bottom:80px; overflow-x:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(91,108,247,.16), transparent 60%),
+    radial-gradient(760px 420px at 88% 4%, rgba(236,72,153,.10), transparent 62%),
+    radial-gradient(700px 500px at 50% 100%, rgba(139,92,246,.08), transparent 65%);
+}
+nav{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 32px;
+  background:rgba(10,10,10,.72);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;letter-spacing:.2px}
+.dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 14px rgba(139,92,246,.7)}
+.navmeta{font-size:12px;color:var(--dim2);font-variant-numeric:tabular-nums}
+.wrap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:0 32px}
+.hero{padding:72px 0 40px}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--dim);
+  border:1px solid var(--line);border-radius:100px;padding:5px 12px;margin-bottom:22px;
+  background:rgba(255,255,255,.02);
+}
+h1{
+  font-size:clamp(30px,4.6vw,48px);line-height:1.15;font-weight:700;letter-spacing:-.02em;
+  background:linear-gradient(96deg,#fff 12%,#c9c8ff 48%,#f0a6d8 92%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.sub{margin-top:14px;color:var(--dim);font-size:14px}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.stat{
+  flex:1 1 150px;min-width:140px;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+}
+.stat b{display:block;font-size:26px;font-weight:650;letter-spacing:-.02em;
+  background:linear-gradient(120deg,var(--g1),var(--g2),var(--g3));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.stat span{font-size:11.5px;color:var(--dim2);letter-spacing:.4px}
+.ai{
+  margin:8px 0 8px;padding:26px 28px;border-radius:18px;
+  border:1px solid rgba(139,92,246,.22);
+  background:linear-gradient(135deg,rgba(91,108,247,.10),rgba(139,92,246,.07) 46%,rgba(236,72,153,.06));
+  position:relative;overflow:hidden;
+}
+.ai::after{content:"";position:absolute;left:0;top:0;width:3px;height:100%;
+  background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3))}
+.ai h2{font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:#b9b6ff;margin-bottom:12px;font-weight:600}
+.ai p{font-size:15px;color:#dcdce4;line-height:1.85}
+.ai p b{color:#fff;font-weight:600}
+.sec{display:flex;align-items:baseline;gap:12px;margin:46px 0 20px;
+  padding-bottom:12px;border-bottom:1px solid var(--line)}
+.sec h2{font-size:19px;font-weight:650;letter-spacing:-.01em}
+.sec em{font-style:normal;font-size:12px;color:var(--dim2)}
+.empty{
+  border:1px dashed rgba(255,255,255,.12);border-radius:14px;padding:24px;color:var(--dim2);font-size:13.5px;
+  background:rgba(255,255,255,.015)
+}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.038),rgba(255,255,255,.012));
+  border:1px solid var(--line);border-radius:16px;padding:20px 22px 18px;
+  transition:border-color .25s,transform .25s,background .25s;
+}
+.card:hover{border-color:rgba(139,92,246,.36);transform:translateY(-2px);
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018))}
+.meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.tag{font-size:10.5px;letter-spacing:.6px;padding:3px 9px;border-radius:6px;font-weight:600}
+.tag.v{color:#c4c0ff;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.3)}
+.idx{font-size:11px;color:var(--dim2);font-variant-numeric:tabular-nums}
+.card h3{font-size:15.5px;line-height:1.5;font-weight:620;letter-spacing:-.01em;margin-bottom:10px}
+.card p{font-size:13px;color:#a9a9b4;line-height:1.8}
+.card p b{color:#e6e6ee;font-weight:600}
+.src{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12px}
+.src a{color:var(--g2);text-decoration:none;transition:color .2s}
+.src a:hover{color:#c4b5fd;text-decoration:underline}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--dim2);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.22,.8,.3,1),transform .6s cubic-bezier(.22,.8,.3,1);transition-delay:var(--d,0ms)}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:820px){
+  nav{padding:12px 18px} .wrap{padding:0 18px}
+  .hero{padding:48px 0 28px}
+  .grid{grid-template-columns:1fr}
+  .card{padding:18px}
+  .ai{padding:20px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="brand"><span class="dot"></span>NGFW DAILY</div>
+  <div class="navmeta">2026-11-24 · 周一 · 北京时间</div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">China Next-Generation Firewall Intelligence</div>
+    <h1>🛡️ 中国 NGFW 厂商日报</h1>
+    <div class="sub">2026-11-24（周一） · 只收录与 NGFW / 下一代防火墙强相关的动态</div>
+    <div class="stats">
+      <div class="stat"><b>7</b><span>今日总条数</span></div>
+      <div class="stat"><b>0</b><span>厂商动态</span></div>
+      <div class="stat"><b>7</b><span>行业动态</span></div>
+      <div class="stat"><b>5</b><span>覆盖行业</span></div>
+    </div>
+  </header>
+
+  <section class="ai reveal">
+    <h2>AI 解读 · NGFW 视角</h2>
+    <p>今天国内八家厂商在防火墙产品线上<b>零动作</b>——厂商版块连续第 4 天为空，各家的发布都落在 AI 安全、数据安全与网关侧，没有人碰边界盒子。真正的信号在标书里：<b>北大第一医院 67.2 万买 4 套墙，第一次把「非 UTM、非板卡式，必须是专业 NGFW」写进医疗标书</b>，同一天河南人民医院 215 万的包里防火墙和 UTM 还并排买——<b>同一个品类，高端口开始切割，集采口仍在打包</b>。另一头电网系把供应链合规做成了报价门槛：南网 80G 四台连限价都要签保密函才给看，还要求出具「未使用美光产品」与「自主可控」双承诺函；贵州电网 4.91 万的一台墙也要 CCRC + EAL4 增强级 + CNVD 成员三证齐全。</p>
+  </section>
+
+  <div class="sec"><h2>🏢 厂商动态</h2><em>本期为空</em></div>
+  <div class="empty reveal">今日国内八家厂商在防火墙产品线上无新动态。按口径要求，<b>不以 AI 安全、数据安全等其他产品线内容填补</b>。</div>
+
+  <div class="sec"><h2>🏭 行业动态</h2><em>政府 / 医疗 / 能源 · 共 7 条</em></div>
+  <div class="grid">
+    <article class="card reveal" style="--d:40ms">
+      <div class="meta">
+        <span class="tag v">医疗</span>
+        <span class="idx">#01</span>
+      </div>
+      <h3>北京大学第一医院 67.2 万采购 4 套 NGFW，标书明确「非 UTM、非板卡式」</h3>
+      <p>CGZX-HW-2026-0961，11-23 发第二轮院内论证、11-27 16:00 报名截止。<b>预算 67.2 万 / 4 套 = 16.8 万/套</b>。参数：内存 ≥32G、存储 ≥500G、千兆电 ≥16、万兆 SFP+ ≥4、40G 接口 ≥2、冗余双电源；<b>网络层 ≥30G、IPS ≥2.5G、AV ≥2.5G、全威胁 ≥1G、并发 ≥1000 万、HTTP 新建 ≥11 万</b>；随设备配 3 年 WAF+IPS+AV+URL 识别授权，硬件维保与软件升级均 ≥3 年。原文写死「<b>必须是专业下一代防火墙设备，非板卡式防火墙或 UTM 设备</b>」，并要求 ≥5000 种应用识别、IPv4/IPv6 双栈。要求制造商授权函 ≥1 年、原厂售后承诺书、授权代表近 3 个月社保。</p>
+      <div class="src"><a href="https://www.pkufh.com/Html/News/Articles/72347.html" target="_blank" rel="noopener">北京大学第一医院采购中心公告</a></div>
+    </article>
+    <article class="card reveal" style="--d:80ms">
+      <div class="meta">
+        <span class="tag v">能源</span>
+        <span class="idx">#02</span>
+      </div>
+      <h3>南方电网数据平台：80G 防火墙 4 台寻源，须签保密函才看限价，禁美光+自主可控承诺</h3>
+      <p>11-20 17:21 发布，<b>11-22 20:00 响应截止</b>，11-30 前通知合作意向。标包 1「<b>防火墙（80G）4 台</b>」，另有 BAS 1 套、威胁联防阻断系统 1 台；<b>单价与总价限价均需签《保密承诺函》后邮件索取</b>，公告表格里全部写「提供保密承诺函后获取」。报价须分项单价+总价，有效期 ≥120 天，含运输/安装督导/调试/培训/验收全包，交货 ≤15 个工作日，质保 ≥3 年。资格：防火墙类业绩 ≥2 个且客户为不同法人主体；资质「CCC、销售许可证、第三方测试报告至少一项」。商务分要求制造商出具<b>「未使用美光公司产品（含含美光芯片产品）」承诺函</b>与<b>产品自主可控承诺函</b>，并须原厂唯一授权。评审为经评审最低价法，设二次报价（不得高于首报）与成交前二次议价。</p>
+      <div class="src"><a href="https://www.bidding.csg.cn/lxcggg/1200450963.jhtml" target="_blank" rel="noopener">南方电网供应链平台寻源公告</a></div>
+    </article>
+    <article class="card reveal" style="--d:120ms">
+      <div class="meta">
+        <span class="tag v">能源</span>
+        <span class="idx">#03</span>
+      </div>
+      <h3>贵州电网贵龙 4.91 万单台边界防火墙，同时要 CCRC 认证 + EAL4+ + CNVD 成员三证</h3>
+      <p>LXCG0600062002462736，11-19 17:49 发，11-22 17:49 报价截止，零星采购、货期 30 天。<b>概算＝最高限价＝4.91 万元</b>。资格条件三条并列：①设备须有 CCRC《网络关键设备和网络安全专用产品安全认证证书》；②须有中国信息安全测评中心《信息技术产品安全测评证书 <b>EAL4 增强级</b>》及以上；③<b>厂商须为 CNVD 用户组与工作组成员</b>并提供证明。另附防火墙技术规范书，响应方不得使用美光产品。</p>
+      <div class="src"><a href="https://www.bidding.csg.cn/lxcggg/1200450745.jhtml" target="_blank" rel="noopener">贵州电网零星采购公告</a></div>
+    </article>
+    <article class="card reveal" style="--d:160ms">
+      <div class="meta">
+        <span class="tag v">能源</span>
+        <span class="idx">#04</span>
+      </div>
+      <h3>国能信控山西 11 家单位打捆：防火墙被拆成内网/边界/能耗监测/监控平台四种品目</h3>
+      <p>CEZB260609592，<b>11-19 16:08 发布、11-30 09:00 开标</b>，单标段、接受代理商、不接受联合体。覆盖山西公司本部及 10 家所属单位（太一热电、太原二热、榆次热电、霍州电厂、王曲、神二、河曲热电等）。招标范围 18 类里<b>防火墙占四个独立品目：内网防火墙、边界防火墙、能耗监测防火墙、监控平台防火墙</b>，另有上网行为管理、入侵防御、自适应安全防御、态势感知、潜伏威胁探针、分布式存储等。背景是集团信创替代硬指标（网信基础设施 ≥50%、综合办公 100%、经营管理 ≥40%、生产运营 ≥30%），全部资产须接入集团统一纳管并满足 IPv6 部署与分区分域。业绩要求：2021-11 起网络安全设备供货合同 ≥2 份。</p>
+      <div class="src"><a href="https://www.chnenergybidding.com.cn/bidweb/001/001002/001002003/20261119/eed11862-3de2-491a-bba6-4d79309ae9c5.html" target="_blank" rel="noopener">国能 e 招招标公告</a></div>
+    </article>
+    <article class="card reveal" style="--d:200ms">
+      <div class="meta">
+        <span class="tag v">政府</span>
+        <span class="idx">#05</span>
+      </div>
+      <h3>国家税务总局 971.6 万设备利旧更新：防火墙与 IPsec VPN 并列进采购需求</h3>
+      <p>GC-HGX261209，中央政府采购网单独委托项目，<b>预算＝最高限价 971.6 万</b>，<b>12-14 09:00 截止并同时间开标</b>，不接受联合体、无特定资格要求。采购需求 8 类并列：「存储设备、<b>防火墙</b>、汇聚交换机、带外接入交换机、<b>IPsec VPN</b>、业务接入交换机、存储光纤交换机、负载均衡」。货期：签约 30 天到货、到货 90 日内完成上架配置，验收后进入质保。属税务系统存量设备「利旧更新」口径，即替换超期服役边界设备而非新建。</p>
+      <div class="src"><a href="https://www.zycg.gov.cn/freecms/site/zygjjgzfcgzx/ggxx/info/2026/59226e4a-0a61-4ffa-8081-ba9f68ec5386.html" target="_blank" rel="noopener">中央政府采购网招标公告</a></div>
+    </article>
+    <article class="card reveal" style="--d:240ms">
+      <div class="meta">
+        <span class="tag v">医疗</span>
+        <span class="idx">#06</span>
+      </div>
+      <h3>河南省人民医院 215 万网安设备包落河南泓淼：2 台防火墙 + 1 台 UTM 同包采购</h3>
+      <p>豫财招标采购-2026-1409，10-30 发标、<b>11-20 评审、11-23 18:25 公示</b>，河南泓淼网络科技以 <b>215 万元、90.14 分</b>中标。采购内容：<b>2 台防火墙、2 台上网行为管理、1 台统一威胁管理（UTM）、1 台 Web 应用防火墙、1 台漏洞扫描、1 台态势感知、1 台信创防翻墙安全网关、2 台威胁检测探针、1 套终端安全管理（≥18000 点授权）</b>。品牌/型号/单价栏全部写「详见附件」，公告未拆分明细。货期 30 日历天，硬件 3 年原厂质保、软件 3 年升级。项目名为「高质量数据集网络安全设备采购」，对应医院数据要素与 AI 训练语料场景的边界加固。</p>
+      <div class="src"><a href="https://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261123_27738246.htm" target="_blank" rel="noopener">中国政府采购网中标公告</a></div>
+    </article>
+    <article class="card reveal" style="--d:280ms">
+      <div class="meta">
+        <span class="tag v">政府</span>
+        <span class="idx">#07</span>
+      </div>
+      <h3>丰林县档案馆 82 万整包 49 个品目：防火墙 1 台品目预算 5.9995 万，排第三</h3>
+      <p>[230724]FCGCXM[CS]20260001，11-22 18:34 发，<b>12-04 09:00 响应截止</b>，竞争性磋商、不接受联合体、履约期仅 7 日。总预算 <b>82 万元拆成 49 个品目</b>：数字档案系统 28 万、服务器 10.74 万、<b>防火墙 1 台 5.9995 万</b>、交换机 7,140 元、数据库 4.76 万、中间件 4.01 万，其余为机房装修（防静电地板、吊顶、七氟丙烷灭火、UPS、蓄电池、防盗门窗、空调）与人脸门禁。防火墙是整包里单价第三高的信息化设备，也是唯一的安全设备。</p>
+      <div class="src"><a href="https://www.ccgp.gov.cn/cggg/dfgg/jzxcs/202611/t20261122_27731738.htm" target="_blank" rel="noopener">中国政府采购网磋商公告</a></div>
+    </article></div>
+
+  <footer>
+    <span>数据来源：中国政府采购网 · 中央政府采购网 · 南方电网供应链平台 · 国能 e 招 · 医院官网</span>
+    <span>时效窗口：近 30 天 · 已去重</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
