@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI 安全日报 · 2026 年 11 月 26 日 · 周四</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a; --card:#111827; --line:#1f2937; --line2:#26334a;
+  --txt:#e5e7eb; --txt2:#9ca3af; --txt3:#6b7280;
+  --g1:#5B6CF7; --g2:#8B5CF6; --g3:#EC4899;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--txt); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; letter-spacing:.01em;
+  background-image:radial-gradient(900px 500px at 12% -8%,rgba(91,108,247,.16),transparent 62%),
+                   radial-gradient(800px 460px at 88% 2%,rgba(236,72,153,.11),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+
+.hero{padding:66px 0 34px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c7d2fe;background:rgba(91,108,247,.12);
+  border:1px solid rgba(139,92,246,.34);border-radius:999px;
+  padding:6px 15px;margin-bottom:20px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--g3);display:block;
+  box-shadow:0 0 0 4px rgba(236,72,153,.18)}
+h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 48%,var(--g3) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.hero .date{color:var(--txt2);font-size:15px}
+.hero .date b{color:var(--txt);font-weight:600}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{
+  min-width:132px;padding:16px 20px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.6));
+  border:1px solid var(--line);
+}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--g1),var(--g3));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.25}
+.stat .l{font-size:12.5px;color:var(--txt2);margin-top:2px}
+
+.overview{
+  margin:34px 0 8px;padding:26px 28px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(91,108,247,.13),rgba(139,92,246,.07) 45%,rgba(236,72,153,.07));
+  border:1px solid var(--line2);
+}
+.overview h2{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.overview h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--g2);
+  box-shadow:0 0 12px rgba(139,92,246,.9)}
+.overview p{color:#d1d5db;font-size:15px}
+.overview b{color:#fff;font-weight:600}
+
+.sec{margin-top:56px}
+.sec-head{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sec-icon{font-size:22px}
+.count{font-size:12px;font-weight:600;color:#a5b4fc;background:rgba(91,108,247,.14);
+  border:1px solid rgba(91,108,247,.3);border-radius:999px;padding:2px 10px}
+.sec-sub{color:var(--txt3);font-size:13px;margin-top:7px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 21px 17px;position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-3px);border-color:#334155;
+  box-shadow:0 16px 34px -18px rgba(0,0,0,.85)}
+.card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:7px;white-space:nowrap;line-height:1.5}
+.tag-vendor{color:#c7d2fe;background:rgba(91,108,247,.15);border:1px solid rgba(91,108,247,.34);
+  font-weight:600}
+.tag-cat{color:#a7f3d0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.26)}
+.level{margin-left:auto;font-size:12.5px;letter-spacing:1px;flex-shrink:0}
+.merged{font-size:11px;color:var(--txt3);border:1px solid var(--line);border-radius:6px;
+  padding:2px 7px;white-space:nowrap}
+
+.card-title{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:11px;color:#f3f4f6;
+  letter-spacing:-.005em}
+.card-body{font-size:14px;color:#b6bec9;line-height:1.85}
+.card-body b{color:#f0f2f5;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(139,92,246,.22) 62%);padding:0 1px}
+
+.card-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src{font-size:12px;color:var(--txt3);line-height:1.9}
+.src a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.32);
+  transition:color .2s,border-color .2s}
+.src a:hover{color:#e9d5ff;border-color:#e9d5ff}
+
+.trend{margin-top:58px;padding:28px 30px;border-radius:18px;
+  background:linear-gradient(140deg,rgba(17,24,39,.9),rgba(10,10,10,.6));
+  border:1px solid var(--line2)}
+.trend h2{font-size:19px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.trend-item{padding:15px 0;border-bottom:1px dashed var(--line)}
+.trend-item:last-child{border-bottom:none;padding-bottom:0}
+.trend-item h4{font-size:15px;color:#e9d5ff;margin-bottom:6px;font-weight:600}
+.trend-item p{font-size:13.5px;color:#a9b1bd;line-height:1.85}
+.trend-item b{color:#f0f2f5}
+
+footer{margin-top:46px;text-align:center;color:var(--txt3);font-size:12.5px;line-height:2}
+footer .sep{display:inline-block;width:34px;height:2px;border-radius:2px;margin:0 8px;
+  background:linear-gradient(90deg,var(--g1),var(--g3));vertical-align:middle}
+
+.anim{opacity:0;transform:translateY(26px)}
+.anim.in{opacity:1;transform:none;
+  transition:opacity .72s cubic-bezier(.2,.7,.3,1),transform .72s cubic-bezier(.2,.7,.3,1);
+  transition-delay:var(--d,0ms)}
+
+@media(max-width:640px){
+  .wrap{padding:0 15px 60px}
+  .hero{padding:44px 0 24px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .overview,.trend{padding:20px 18px}
+  .card{padding:17px 16px 14px}
+  .stat{min-width:calc(50% - 6px);padding:13px 14px}
+  .stat .n{font-size:23px}
+}
+</style></head><body><div class="wrap"><header class="hero"><span class="badge"><i></i>AI SECURITY DAILY</span><h1>🤖 AI 安全日报</h1><div class="date"><b>2026 年 11 月 26 日 · 周四</b> · 国际 4 / 国内 0 / 行业 7</div><div class="stats"><div class="stat"><span class="n">4</span><span class="l">国际产品</span></div><div class="stat"><span class="n">0</span><span class="l">国内产品</span></div><div class="stat"><span class="n">7</span><span class="l">行业动态</span></div><div class="stat"><span class="n">11</span><span class="l">总计</span></div></div></header><section class="overview anim"><h2><span class="dot"></span>AI 总览</h2><p>今天最值得记的一件事，是<b>「发现」这件事本身变便宜了，于是防线的价值全部压到了「判」和「停」上</b>。Anthropic 的 OSS Scanner 几周内披露了 5,000 多个开源漏洞、覆盖 680 个项目，其中挖出的 Drupal 洞（CVE-2026-132165）在补丁发布后 <b>24 小时内</b>就被武器化，一周内 Drupal 打了<b>两次</b>补丁——第二次是因为「安装未完成」的异常状态在管理界面里看不出来，第一次修完仍有站点可被接管。这条把 AI 挖洞的成本写得很清楚：不是发现难，是分诊难、验证难、证明「我修好了」难。DXC 同一天推的托管服务卖的就是这一段，官方话术里最实的一句是「AI 找出潜在漏洞，专家验证并定级」。</p><p>产品侧四条方向一致：<b>控制点继续往「资产」和「入口」挪，而不是往「分类器」挪</b>。AWS 把 AI 端点发现做成 WAF 的前置步骤，未登记的 MCP server 会以影子 API 自己冒出来，然后才挂托管规则组——而且默认「检查调用失败时放行、但打标签计数」，这个默认值比任何检测精度都更决定它能不能在生产开；Concentric 把 DLP 的分类点从「事后扫」挪到「数据进入 AI 应用的那一刻」，覆盖到 Claude Code、Cursor、Codex 这些编码 agent；BI.Zone 更直接，把「组织里有哪些 agent 在跑」变成 EDR 的一项查询能力，给出的数字是 <b>72% 的组织</b>有痕迹。国内产品版块连续第四天空着，五类稿子被挡在外面（大会分享、认证评测、财报研报、排名图谱、无法核验发布日的社交短内容），理由写在版块里。</p><p>行业侧三条拼成一张图，都指向「时钟」：Google 捞到的 exploit_agent 是第一个从挖洞到打洞全链无人的框架，它盯着补丁改的那几行自己写 exploit 自己打，同批 PaperCut 两个洞披露 4 天开打、几分钟摸到域管；英国 NCSC 的通报更克制也更刺人——<b>「被利用的漏洞没有一个是新的」「这些工具没有提供任何威胁行为者原本没有的能力」</b>，变的是速度，成因是多年技术债。另外三个 MCP 相关漏洞（AutoGPT 8.7、Electerm DNS rebinding、GitLab SSRF）和 Claude Code 那个裸主机白名单，根因都不是「模型被骗」，而是<b>授权判断的键画粗了</b>——工具名、主机名、内网外网，三个「谁」没写进判断里。一句话收束：<b>客户的问题已经不是「你能不能发现」，而是「发现之后谁判、判完谁停、停的时候业务还活不活」。</b></p></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">🏢</span>国际友商产品动态<span class="count">4 条</span></h2><div class="sec-sub">只收<b>具名产品</b>的版本、功能或形态变化；政策、报告、排名、大会观点一律归入行业版块。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">AWS</span><span class="tag tag-cat">云 WAF · AI 端点发现与防护</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">AWS WAF 把「发现」和「拦截」放进同一个产品：LLM / MCP / A2A 端点先自己冒出来，再挂规则组挡</h3><div class="card-body"><p>11 月 23 日 AWS 宣布 AI 端点的自动发现与防护<b>正式可用（GA，不是预览）</b>，一句话概括是把过去要客户自己画的两张图合成一条产品线：先知道自家云上到底有哪些 AI 端点，再对这些端点挂托管规则。</p><p>发现侧是新的 <b>API Gateway API Portal</b>：它从流量日志与服务配置记录里识别藏在 API Gateway、应用负载均衡器（ALB）与 CloudFront 后面的 <b>LLM、MCP、A2A</b> 三类端点，覆盖整个 AWS Organization，<b>不用装 agent、不用转发日志</b>。官方举的那个例子最实用——一个没登记在案、但对公网开放的 MCP server，会以<b>影子 API</b> 的形式出现在清单里。API Portal 已在 32 个区域可用。</p><p>防护侧是新的 <b>AWS WAF AI Security 托管规则组</b>，分两段执行。第一段是<b>协议合规检查</b>：先判定流量是 LLM 还是 MCP 还是 A2A，再对 MCP 与 A2A 消息做确定性格式校验，这一段<b>不调用 Bedrock</b>，纯本地判定；规则分 baseline 与 strict 两级，baseline 是合规客户端不会踩的那一档、可以直接开，strict 默认以 <b>count 模式</b>上线，先观察自家客户端到底发了什么再转强制。第二段是<b>内容检查</b>：开启并提供 IAM 角色后，规则组调 Bedrock Guardrails 的 InvokeGuardrailsCheck，检请求里的提示注入、越狱、有害内容，以及<b>响应里</b>的敏感信息——官方特意强调「只看请求的控制永远看不到模型在输出里泄露了什么」。默认拦高严重度的提示攻击。</p><p>有一个工程细节值得单拎出来：<b>检查调用失败时，请求会被打上标签并计数，但流量继续走</b>。也就是说默认是「失败放行」，官方给了改规则改成阻断的口子。这条决定了它在生产环境里能不能开——多数企业宁可先要可用性，也不接受因为一个外部 API 抖动把业务打死。所有判定都以 label 形式落到 WAF 日志、sampled requests 与 CloudWatch 指标里，不另开控制台。</p><p>代价写在明面上：AI Security 规则组目前只在 <b>7 个区域</b>（美东弗吉尼亚与俄亥俄、美西俄勒冈、伦敦、斯德哥尔摩、东京、悉尼），发现侧 32 个区域，两边不对齐；会额外计费，Bedrock 的内容检查调用另行计费。</p><p>判断：这是目前云厂商里<b>第一个把 AI 资产发现做成 WAF 前置步骤</b>的动作，而不是让客户先买一个 AI-SPM 再回头配 WAF。影子 API 那一点最有价值——MCP server 大多是业务团队自己接的、没人登记，靠流量自己冒出来比靠人填表可靠。要挑毛病的话，7 个区域的覆盖意味着国内与欧洲多数区域暂时用不上，而内容检查的失败放行默认值，需要客户自己评估要不要改成 fail-closed。</p></div><div class="card-foot"><span class="src">来源：<a href="https://aws.amazon.com/about-aws/whats-new/2026/11/waf-ai-endpoint-discovery-protection/" target="_blank" rel="noopener">AWS What's New（GA 公告）</a> · <a href="https://aws.amazon.com/waf/features/ai-security/" target="_blank" rel="noopener">AWS WAF AI Security 产品页</a></span></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">Concentric AI</span><span class="tag tag-cat">端点 DLP · AI 应用与编码 agent</span><span class="level">🔥🔥</span></div><h3 class="card-title">把 DLP 的分类点挪到「数据进入 AI 应用的那一刻」：Semantic DLP Agent 上端点，管住 Copilot 到 Claude Code</h3><div class="card-body"><p>11 月 25 日 Concentric AI 发布 <b>Semantic DLP Agent</b>，把数据防泄漏的控制从网络与云端扩到<b>端点</b>，直接覆盖桌面 AI 应用与编码 agent：浏览器与桌面侧的 Copilot、Claude、ChatGPT、Gemini、Perplexity，编码侧的 <b>Claude Code、Cursor、Codex、GitHub Copilot</b>，以及员工设备上自建的模型。</p><p>真正的增量不是「多支持几个应用」，而是<b>分类发生的时点</b>：内容在<b>被输入或被 AI 应用读取的那一刻</b>做 inline 分类，而不是等落盘或传输之后再扫。官方说同一套数据分类法（taxonomy）同时用于静态数据、传输中数据与 AI 使用的数据——理由是企业在存储、网络、云应用上各买一套产品，三套产品对同一份数据定义不同、各写各的策略，缝里就是洞。</p><p>另加一项<b>对话意图分析</b>：不只判「这段话里有没有敏感数据」，还判「这个人用这些数据想干的事，和他的角色对不对得上」。这一层是冲着内部越权去的，不是冲着外部攻击。</p><p>落地口径给得比较实：官方称用预置功能与策略部署工具，客户可在 <b>4 周内</b>拿到 AI 使用可见性并对敏感数据施加保护。南内华达卫生区的 CIO 给了个公开证言，说他们要管的是 PHI 与 shadow AI 两条线。</p><p>判断：DLP 厂商这轮的回应不是「加一个 AI 检测器」，而是<b>把分类点从「事后扫」挪到「入口判」</b>。这条与今天 AWS 那条正好互补——AWS 在网关侧管住进出模型的流量，Concentric 在端点侧管住「员工把什么塞进了哪个应用」，两条都指向同一个结论：AI 数据安全的控制点不在模型里。要留意的是，端点 agent 对编码 agent 的覆盖目前只能做到进程与内容的可见，对「agent 用你的凭据去了哪些地方」这件事，它并没有回答。</p></div><div class="card-foot"><span class="src">来源：<a href="https://securitybrief.asia/story/concentric-ai-launches-endpoint-dlp-agent-for-ai-tools" target="_blank" rel="noopener">SecurityBrief Asia（发布）</a></span></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">BI.Zone</span><span class="tag tag-cat">EDR · 影子 AI 资产发现</span><span class="level">🔥🔥</span></div><h3 class="card-title">EDR 开始把「影子 AI」当资产盘：新版能识别基础设施里有哪些 agent 在跑，厂商给出的数字是 72% 的组织有痕迹</h3><div class="card-body"><p>11 月 25 日 BI.Zone 发布 EDR 版本更新，最值得记的不是常规的检测增强，而是它把<b>「组织里有哪些 AI agent 在跑」变成了一项可查询的 EDR 能力</b>：分析端点数据，判断存在哪些 AI 工具、用得有多频繁，从而把<b>没人登记的工具</b>列出来。厂商自己给的数字是——在 <b>72% 的组织</b>里检测到了 AI agent 存在的迹象。</p><p>这条对采购的含义比数字更大：过去「影子 AI」靠问卷和流量猜，现在有了一个从端点侧自己长出来的清单。安全负责人拿到的是「风险敞口有多大」的原始数据，而不是又一份报告。</p><p>其余更新偏工程，但方向一致。macOS 补上了<b>网络隔离</b>（发现威胁后限制失陷主机联网、同时保留管理通道继续取证）与 <b>agent 自保护</b>（文件完整性监控、服务与进程防停防替、启动时环境校验防篡改代码执行），三平台（Windows / Linux / macOS）能力对齐。</p><p><b>Cubi AI 助手接进了检测规则的例外构造器</b>：分析师用自然语言描述条件，助手自动生成排除参数——这是把「AI 写规则」落在最枯燥、也最容易写错的那一步上。数字诱饵也扩了：假 AD 账号与注册表项、批量部署工具与配置校验、自动生成诱饵名与口令、可选域控投放，Linux 诱饵支持描述字段与 Alt_OS 的口令存储方案。</p><p>还有两处细节值得抄进自家产品需求：一是<b>统一 IoC 注册表</b>，集中录入已知威胁标志并定义命中动作，从「通知分析师」到「自动响应」可选；二是<b>命令处理优化</b>——连续下发多条更新命令时，agent 直接装最新版、跳过中间版本。后者听着琐碎，但在几千台终端的运维里是实打实的带宽与失败率。</p><p>判断：EDR 厂商这轮的动作说明「影子 AI 发现」正在从独立品类（AI-SPM）被吸收进既有平台。对国内厂商的启示是，客户不会为「AI 资产盘点」单独开预算，但会为「我的 EDR 能不能告诉我谁在跑 agent」加钱——同一件事，两种卖法。</p></div><div class="card-foot"><span class="src">来源：<a href="https://tadviser.com/index.php/Product%3ABI.Zone_EDR_%28Endpoint_Detection_and_Response%29%2C_formerly_BI.Zone_Sensors" target="_blank" rel="noopener">TAdviser（版本更新明细）</a></span></div></article><article class="card anim" style="--d:240ms"><div class="card-top"><span class="tag tag-vendor">DXC</span><span class="tag tag-cat">托管服务 · AI 代码漏洞验证</span><span class="level">🔥</span></div><h3 class="card-title">DXC 用 Claude Mythos 做代码漏洞挖掘，卖的不是模型而是「AI 找出来的东西由谁签字」</h3><div class="card-body"><p>11 月 25 日 DXC Technology 推出 <b>Frontier Code Assurance</b>，一项由 Anthropic 的 Claude Mythos 驱动的托管代码安全服务。分工很清楚：<b>模型负责找，DXC 的安全专家负责验证、定级与给修复路线图</b>，全程留可审计的证据。</p><p>官方把痛点说在「发现之后」：AI 让潜在漏洞的发现量暴增，但「哪些是真风险、先修哪个」没有人替你答。服务的交付物因此是三段——识别并验证漏洞、按业务影响排优先级、给分阶段修复路径；可以从单个应用起步，逐步扩到整个软件环境。</p><p>资源侧不是空壳：DXC 的网络安全业务有 12 个 SOC、覆盖 40 多个国家；与 Anthropic 的多年全球联盟始于 2026 年 6 月，DXC 是 Claude 伙伴网络的 Global Premier 伙伴。</p><p>判断：这条单独看只是一个服务发布，但放在今天另两条新闻旁边就很有意味——Anthropic 自家的 OSS Scanner 在几周内披露了 5,000 多个开源漏洞（见行业版块 Drupal 那条），而 DXC 卖的是「把这些发现变成可签字的风险清单」。<b>AI 挖洞的成本已经趋近于零，稀缺的是分诊、优先级与责任归属</b>。对安全厂商的含义：如果你的 AI 安全产品只输出「发现了 N 个问题」，你卖的是最不值钱的那一段。</p></div><div class="card-foot"><span class="src">来源：<a href="https://karvtechinsider.com/ai/news/dxc-launches-ai-powered-code-security-service-using-anthropics-claude-mythos" target="_blank" rel="noopener">KARV Tech Insider（发布）</a></span></div></article></div></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">🇨🇳</span>国内友商产品动态<span class="count">0 条</span></h2><div class="sec-sub">今日无可追溯的产品级发布，按宁缺毋滥处理，并逐条列出被挡在外面的稿子。</div></div><div class="grid"><article class="card anim" style="--d:0ms;grid-column:1/-1"><div class="card-top"><span class="tag tag-vendor">今日无新增</span><span class="tag tag-cat">口径说明</span><span class="level">—</span></div><h3 class="card-title">国内产品版块连续第四个交易日为空：五类稿子被挡在外面</h3><div class="card-body"><p>今天国内不是没有稿子，是没有<b>能答全那一问</b>的稿子。逐条列出来，口径也就清楚了。<br><br><b>① 大会场景分享</b>——天融信在电力、5G+工业互联网类会议上的方案演讲，以及绿盟科技在信息通信业数智化转型研讨会上的「智慧安全 4.0」理念，都属于把既有能力讲给一个会场听，没有版本号、没有发布日期。<br><br><b>② 认证与评测口径</b>——数美科技「天枢-AI 安全围栏」通过中国信通院「智守安全」2026 年第二批评测的多模态大模型安全审核能力评测（六项能力，优秀级）；天融信终端安全 AIDR 获「首批最高等级」智能体安全认证。两条都能答出「产品叫什么」，但答不出「哪个功能变了」——它们证明的是达标，不是迭代。这两条已归入行业版块。<br><br><b>③ 研报与财报口径</b>——启明星辰 26Q3 券商研报（前三季营收 17.37 亿元、同比 +12.21%，MAF 大模型应用防火墙、数据绿洲、Agentic SOC 收入增速领先）、天融信前三季营收 8.50 亿元同比 -29.28%、绿盟科技半年度 AI 安全订单 1.17 亿元。这些是钱的事，不是产品的事。<br><br><b>④ 排名与图谱类</b>——阿里云在 IDC 四份 AI 安全报告中均列第一（已归行业版块）、奇安信蝉联数说安全《2026 年中国网络安全市场全景图》覆盖广度第一、国舜科技入选 CCIA《2026 年中国网络安全企业 AI 能力应用图谱》、悬镜安全入选 IDC 中国大模型安全市场报告。全部属于行业认可，不进产品位。<br><br><b>⑤ 无法核验发布日的产品稿</b>——奇安信本周在社交平台连发「AI 安全系列产品发布周」多条短内容（智能体安全平台、AI 安全网关、安全运营数字员工、QAgent Fabric 安全智能体研发框架），内容质量不差，但没有找到带日期的独立稿件、产品页或版本号，按「无法确认发布日一律不收」处理。这一条是本周最可惜的——如果后续有正式稿，值得单独成条。<br><br>结论：连续第四个交易日国内产品版块为空，是<b>发布节奏的空窗，不是判断标准的松动</b>。宁可空着，也不把认证、排名、财报、大会演讲塞进产品位——那会把整份日报的判据毁掉。</p></div><div class="card-foot"><span class="src">按「这家厂商的哪个产品的哪个功能/版本变了」逐条核对，答不上来的一律不进产品位。</span></div></article></div></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">📊</span>行业动态与趋势<span class="count">7 条</span></h2><div class="sec-sub">政策法规、研究报告、大会观点、漏洞披露、国家标准、市场数据——凡答不出「哪个产品的哪个功能变了」的，都在这里。</div></div><div class="grid"><article class="card anim" style="--d:0ms"><div class="card-top"><span class="tag tag-vendor">Google GTIG / Mandiant</span><span class="tag tag-cat">攻击框架 · 补丁差分自动化</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">第一个「挖洞到打洞」全链无人的框架被捞出来了：它盯着补丁改的那几行，自己写 exploit 自己打</h3><div class="card-body"><p>Google 威胁情报组（GTIG）与 Mandiant 在暴露于公网的一台攻击者暂存服务器上，捞到一个名为 <b>exploit_agent</b> 的多智能体框架。报告发布日为 11 月 17 日（Q4 2026 AI Threat Tracker），中文媒体本周集中转述。它接多个前沿模型与本地模型，流程是一条完整流水线：<b>持续监控热门 Web 应用的补丁公告 → 比对补丁前后的代码 → 从 diff 反推漏洞是什么 → 生成 exploit → 自动执行</b>。GTIG 说这是它第一次见到「发现与利用全链无人参与」的真实攻击者工具。</p><p>服务器上不只有框架，还有后渗透的家当：内网侦察、口令爆破、装 webshell 的脚本，以及一个很说明性格的动作——<b>删掉其他团伙留下的 webshell</b>，把机器独占。受害者遥测指向法国的媒体、娱乐与教育网站；工具注释为俄语，但 Google 未点名归属。</p><p>这套东西的价值不在「技术新」，在<b>它把补丁本身当成了地图</b>。补丁精确告诉你哪几行变了，agent 读完两个版本就能把漏洞重建出来，而防守方还在排期测试兼容性。GTIG 顺手给了三个刻度：0day 利用在 2025 年平均每月 8 起，2026 年升到 11 起，<b>8 月跳到 22 起</b>；PaperCut 的两个洞（CVE-2026-81578 与 CVE-2026-82078）被串成未认证 RCE，披露后 <b>4 天</b>开打、波及数百组织、几分钟内摸到域管；它跟踪的开源攻击框架已有 ARTEX、Cairn、PentAGI、CyberStrikeAI、HexStrike AI，其中 <b>Cairn 与 PentAGI 已确认在真实攻击中使用</b>。</p><p>值得抄的一条检测经验：GTIG 说这批 agent 是<b>拿隐蔽换速度</b>——扫描爆发、复用标识符、代码级痕迹都很吵，这恰恰是检测窗口。反过来说，指望「它打得很干净」才布防，会一直等不到。</p><p>判断：这条与下面英国 NCSC 那条互为表里，一个讲新能力，一个讲老漏洞。真正变的是时钟——<b>补丁公告这一刻，攻防双方同时起跑</b>。给客户的可执行动作只有三条：对外系统的紧急补丁路径从周压到小时；把「公告日」直接当成「在野利用开始日」；对不可逆操作预置自动化的隔离与回滚，因为一次无人值守的利用跑完，没有留给人研判的间隙。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.pconline.com.cn/focus/2185/21858561.html" target="_blank" rel="noopener">太平洋科技（中文披露与机理）</a> · <a href="https://dev.to/shakeelahmed/google-found-an-ai-agent-that-turns-your-patches-into-exploits-with-no-human-in-the-loop-3g9h" target="_blank" rel="noopener">DEV Community（Tracker 与数字口径）</a></span></div></article><article class="card anim" style="--d:80ms"><div class="card-top"><span class="tag tag-vendor">英国 NCSC</span><span class="tag tag-cat">政府通报 · agentic 攻击</span><span class="level">🔥🔥🔥</span></div><h3 class="card-title">NCSC 的原话最刺人：被利用的漏洞没有一个是新的，这些工具也没提供攻击者原本没有的能力</h3><div class="card-body"><p>11 月 24 日英国国家网络安全中心（NCSC）发布通报，称自 <b>2026 年 9 月以来 AI 辅助攻击「显著上升」</b>，已处置多起涉及自主化黑客工具的事件，造成实际入侵与业务中断。这些工具原本是防守方用来做压力测试的渗透测试框架，如今被攻击者直接拿去用，且任何人都能免费下载。</p><p>它点名了在用的框架：<b>ARTEX、Cairn、PentAGI、RedAmon、Xalgorix、Darkmoon</b>。攻击路径也不玄：先扫互联网暴露面，再批量试弱口令与易猜密码，再滥用开发者常用接口把数据取走。</p><p>整份通报里最该被记住的是两句克制的话——<b>「被利用的漏洞没有一个是新的」</b>、<b>「这些工具没有提供任何威胁行为者原本没有的能力」</b>。变的是速度与持久性：从发现到利用只要几分钟、穷举式搜索、失败即学、可低成本规模化。NCSC 把成因直接指向<b>多年技术债</b>：不是新型内存破坏，甚至不是已知未修补的漏洞，而是从来没人加固过的弱点。</p><p>结论也很干脆：AI 并没有让既有的安全控制过时，<b>打好基础反而比以往更重要</b>，多数此类入侵靠基本的安全卫生与规范操作就能避免。</p><p>判断：这条的价值在于它给「AI 攻击」祛了魅。厂商叙事喜欢讲「AI 带来全新威胁」，NCSC 说的是「你的老问题现在被更快地翻出来了」。对做 AI 安全产品的人，这句话是提醒也是机会——<b>客户买的不是「对抗 AI」的概念，是暴露面清点、弱口令清理、接口访问控制这三件在按小时计的时差里还来得及做完的事</b>。谁能把这三件事做成 AI 加速的、可度量的动作，谁就接得住这波预算。</p></div><div class="card-foot"><span class="src">来源：<a href="https://news.qq.com/rain/a/20261125A03BVD00" target="_blank" rel="noopener">腾讯新闻（IT时代网 编译）</a> · <a href="https://www.163.com/dy/article/LCJ1CHNK0511ALHJ.html" target="_blank" rel="noopener">网易（牛览，含原文链接）</a></span></div></article><article class="card anim" style="--d:160ms"><div class="card-top"><span class="tag tag-vendor">Drupal / CISA / Anthropic</span><span class="tag tag-cat">漏洞披露 · AI 挖洞与补丁节奏</span><span class="level">🔥🔥</span></div><h3 class="card-title">Anthropic 的扫描器挖出的 Drupal 洞，24 小时内被武器化，一周内打了两次补丁</h3><div class="card-body"><p>CVE-2026-132165（Drupal 社区起名 <b>Fail2Install</b>）是 Drupal core 安装器里的一个未认证 RCE。它的发现方不是人类研究员，而是 <b>Anthropic 的 OSS Scanner</b>——一个 10 月上线的免费、自愿加入、持续扫描开源项目的服务。到 11 月初，该计划已披露 <b>5,000 多个漏洞、覆盖 680 个开源项目</b>。</p><p>时间线紧到不正常：11 月 18 日发补丁（11.4.13 / 11.3.22 / 10.6.22）；Drupal 安全团队称<b>最早 11 月 19 日 19:00 UTC 就在真实站点上看到利用</b>，不到 24 小时；随后把评级上调到 highly critical（CMSS 20/25）。11 月 24 日进 CISA KEV，联邦民事机构 <b>11 月 27 日前</b>完成处置——三天。</p><p>机理由 Searchlight Cyber 的「Fail2Install」复盘补齐：先<b>耗尽数据库连接数或服务器 TCP 源端口</b>，让 install.php 的「是否已安装」检查失败，然后<b>用 SQLite 重装整个站点</b>，把 PHP 写进一个 .php 结尾的数据库文件。不需要凭据，不需要用户交互。</p><p>更值得记的是<b>第二次补丁</b>：11 月 25 日 16:43 UTC，Drupal 再发 11.4.14 / 11.3.23 / 10.6.23（SA-CORE-2026-019 / CVE-2026-136716，21/25），原因是第一次修完之后，<b>处于「安装未完成」异常状态的站点仍可被接管，而这个状态在管理界面里看不出来</b>，官方明写「正在被在野利用」。建议动作是去查 user 1 的邮箱与口令、找这个账号的异常改动。同批还移除了一个 gadget chain（CVE-2026-132166）。这是今年第三个被在野利用的 Drupal 漏洞。</p><p>判断：这条把「AI 挖洞」的真实成本写清楚了——<b>五千个漏洞、几周、免费</b>。所以稀缺的从来不是发现，是分诊与优先级；而 24 小时被武器化、一周内两次补丁，说明「公告日=起跑日」已经不是预测而是常态。给防守方的两条硬建议：对 <b>/core/install.php</b> 这类「装完就该消失却一直留着」的入口做一次全量排查（这个洞的根因是它还能被访问），以及把「补丁发完不等于修完」写进流程——第二次补丁的存在本身就说明，第一次补丁后的状态需要单独验证。</p></div><div class="card-foot"><span class="src">来源：<a href="http://securitydaily.news/article/3767" target="_blank" rel="noopener">Security Daily（时间线与 KEV）</a> · <a href="https://corgea.com/research/cve-2026-132165-132166-drupal-core-installer-reinstall-takeover-gadget-chain-november-2026" target="_blank" rel="noopener">Corgea（Fail2Install 机理与二次补丁）</a></span></div></article><article class="card anim" style="--d:240ms"><div class="card-top"><span class="tag tag-vendor">AutoGPT / Electerm / GitLab</span><span class="tag tag-cat">MCP 与 agent 工具 · 三个授权边界</span><span class="level">🔥🔥</span></div><h3 class="card-title">三个 MCP 相关漏洞同日披露，没有一个是因为「模型被骗」，全是授权边界画错了</h3><div class="card-body"><p><b>CVE-2026-133462（AutoGPT，CVSS 8.7，11 月 25 日）</b>：MCPToolBlock 的 auto-lookup 让<b>共享 agent 的作者</b>能用上<b>运行者的 MCP 凭据</b>。具体条件低得吓人——任何人只要跑过一个含该节点的共享 agent，且此前连过该节点所指的 MCP server URL，那条连接就会被用于服务器允许的任何读、写、删，<b>结果发到作者指定的主机</b>。0.6.49 起受影响，0.11.0 修复。这打破的是多用户 agent 平台的租户与凭据边界：市场里一个看起来正常的 agent，可以拿着受害者自己的凭据替攻击者干活。</p><p><b>CVE-2026-136630（Electerm，GHSA-44wm-wffw-6fq9）</b>：MCP Server widget 的 Host 与 Origin 校验不严，可被 <b>DNS rebinding</b> 绕过。攻击者页面把域名 rebind 到 127.0.0.1，然后调用 30837 端口上<b>未认证</b>的 MCP 工具，在<b>本机与已打开的 SSH 会话里</b>执行命令。5.9.0 修复。这一条的危险在于它把「终端客户端的本地 widget」变成了命令执行原语，而且杀伤范围包括你连着的所有 SSH 主机。</p><p><b>CVE-2026-135221（GitLab EE，CVSS 6.3）</b>：MCP server 的 OAuth 处理里 URL 校验不足，导致 SSRF，已认证用户可借此访问内网资源。19.4.11 / 19.5.9 / 19.6.2 修复。MCP server 的 OAuth 动态客户端注册是 19.5 才 GA 的能力，新能力上线即带洞，这在 MCP 生态里已经是常态。</p><p>判断：三个洞放在一起看，根因是同一个——<b>「谁的凭据、谁的页面、谁的 URL」这三个「谁」没有被写进授权判断里</b>。共享 agent 把运行者与作者的凭据混了，widget 把本地与远端页面混了，OAuth 把内网与外网 URL 混了。这与「模型被骗」是完全不同的一类问题，靠提示词防护一点用都没有。给采购的问题要改：不问「你的 MCP 网关支不支持护栏」，问<b>「你的 MCP 网关按什么键做授权——工具名、主机名，还是完整 URL 加调用者身份」</b>。按前两个键的，今天这三个洞的变体会继续出现。</p></div><div class="card-foot"><span class="src">来源：<a href="https://eyeon.ai/f/4104" target="_blank" rel="noopener">AI Security Intelligence（AutoGPT）</a> · <a href="https://eyeon.ai/f/4102" target="_blank" rel="noopener">AI Security Intelligence（Electerm）</a> · <a href="https://tldrdailynews.com/news/technology/technology/gitlab-patches-ssrf-flaw-in-mcp-server-oauth-handling-c4gpolzs15" target="_blank" rel="noopener">TLDR Daily（GitLab SSRF）</a></span></div></article><article class="card anim" style="--d:320ms"><div class="card-top"><span class="tag tag-vendor">Anthropic / Claude Code</span><span class="tag tag-cat">agent 工具 · 出站通道</span><span class="level">🔥🔥</span></div><h3 class="card-title">一个裸主机名的白名单，把「模型被说服」变成了「动作发生了」：20 次每请求一字节的取件全部自动放行</h3><div class="card-body"><p>Claude Code 的安全公告里，0.2.54 至 2.1.162 受影响，<b>2.1.163</b> 修复（标准自动更新安装已拿到修复）。漏洞本身不是代码执行，CVSS 里机密性评为高、完整性与可用性无影响——它是一条<b>带外数据通道</b>。</p><p>结构值得逐字理解：数据离开 agent 通常要过某个审批点（需要点同意的 shell 命令、网络调用、文件写入）。这里，<b>对一个极受欢迎的域名，审批点被拿掉了</b>——白名单写的是裸主机名（例如 huggingface.co）。于是模型可以从自己的上下文里读出秘密，拼成一个把秘密拼写出来的 URL，然后去取。<b>数据不从响应回来，而是从请求出去</b>；从用户这边看，屏幕上什么都没出现，只有一次成功的取件。</p><p>作者用一段脚本把差别量化了：拿两条白名单规则去比对 50 条合法文档 URL 与 20 条「把 20 字节秘密按每请求一字节拼进文件名」的请求（文件名落在攻击者控制的仓库里）。<b>裸主机规则：合法取件 50/50 自动批准，外泄请求 20/20 自动批准。限定前缀规则：合法取件照样 50/50 自动批准，外泄请求 0/20。</b>也就是说收窄授权对正常流量没有成本——它不需要认识攻击者，只是从来没授权过那条路径，于是默认行为（问用户）生效。</p><p>这也说明<b>速率与流量限制是弱替代品</b>：16 字节的密钥要 16 次请求，32 字节的要 32 次，小到能藏进一次普通的网页查询会话里，等「异常流量」的防御，什么异常都看不到。</p><p>判断：这是「预批准是一个面向未来的策略决定」的最好例证——你在今天对整个域名做出的判断，会作用于未来所有上下文，包括模型已经被操纵的那些。给自研 agent 的四条改法：按主机加路径前缀授权（平台有所有者概念的再按所有者）；把审批键从工具名换成完整 URL，因为数据能藏在 URL 里；记录 agent 发出的每一个请求，包括预批准的；把长期凭据挪出 agent 能打印出来的环境变量。最后加一条自检：翻一遍自家配置里的裸主机条目，逐条问「陌生人能不能在这个主机名上发布内容」——能，就等于给每个发布者发了授权。</p></div><div class="card-foot"><span class="src">来源：<a href="https://www.163.com/dy/article/LCK6HL1F05561FZF_pdya11y.html" target="_blank" rel="noopener">网易（公告解读与量化对照）</a></span></div></article><article class="card anim" style="--d:400ms"><div class="card-top"><span class="tag tag-vendor">IDC / 阿里云</span><span class="tag tag-cat">市场报告 · 品类结构</span><span class="level">🔥</span></div><h3 class="card-title">IDC 一口气发了四份 AI 安全报告：真正该记的不是名次，是「大模型应用防火墙」已经独立成一条报告线</h3><div class="card-body"><p>11 月 25 日消息，IDC 近期连发四份国内 AI 安全相关报告，阿里云在四份中均列第一：<b>《中国大模型应用防火墙技术评估 2026》</b>五个维度（内容安全检测与防护、数据安全防护、安全运营与可观测、技术创新、开放性与生态）均为五星、整体第一；<b>《中国基于安全大模型的 WAAP 2026 厂商评估》</b>获评领导者，产品能力、战略、市场份额三维第一；<b>《中国安全运营智能体 2026 厂商评估》</b>获评领导者，产品能力与市场份额两维第一；<b>《中国基于大模型的安全运营平台市场份额》</b>以 19.1% 居首。</p><p>名次本身是厂商口径，但四份报告的<b>拆分方式</b>是硬信息：大模型应用防火墙、基于安全大模型的 WAAP、安全运营智能体、基于大模型的安全运营平台——这四个已经是彼此独立的评估对象，而不是被装进一个「AI 安全」的大筐。这意味着采购侧开始按品类立项、按品类招标，供应商也要按品类准备材料。</p><p>同期阿里云给的技术路线表述是「两条腿」：用安全守护 AI（大模型应用防火墙、WAAP），用 AI 提升安全（Agentic SOC），并称基于 Qwen 对主机、网络、数据、应用到安全运营做了全面 Agentic 升级。</p><p>判断：对国内厂商最实际的含义是<b>投标材料的组织方式要改</b>。过去一份「AI 安全能力白皮书」能应付所有标；现在客户手里有四份不同口径的评估维度表，你得分别证明：防火墙看五个维度、WAAP 看产品能力与战略、安全运营智能体看产品能力与份额。同一套能力，四种写法。</p></div><div class="card-foot"><span class="src">来源：<a href="https://m.10jqka.com.cn/20261125/c682220745.shtml" target="_blank" rel="noopener">同花顺财经（四份报告明细）</a></span></div></article><article class="card anim" style="--d:480ms"><div class="card-top"><span class="tag tag-vendor">数美科技 / 天融信</span><span class="tag tag-cat">第三方评测 · 认证口径</span><span class="level">🔥</span></div><h3 class="card-title">国内 AI 安全的第二张门票：评测与认证正在替代功能清单，成为投标的入场券</h3><div class="card-body"><p>两条同期的资质消息，内容比标题有用。<b>数美科技「天枢-AI 安全围栏」</b>通过中国信通院「智守安全」2026 年第二批评测的<b>多模态大模型安全审核能力评测</b>，获优秀级。评测覆盖六项：多模态审核（含跨模态关联违规与隐蔽有害信息）、安全代答（面对敏感问题时在控风险的前提下给出合规回应）、攻击拦截（提示注入、越狱、诱导）、内容标识与溯源、人工审核、策略管理。这六项恰好是「内容安全」类产品在真实业务里会被追问的全部环节。</p><p><b>天融信终端安全 AIDR</b> 拿到「首批最高等级」智能体安全认证，随附的能力描述比认证本身更有信息量：<b>静态风险研判</b>在智能体调用 MCP 工具、Skills、插件等外部交互<b>执行前</b>完成，针对智能体自主生成的系统篡改、数据删除、越权访问等高危指令做前置筛查，并识别命令拼接与变体绕过；<b>动态行为链路分析</b>把同一会话下的工具调用、指令执行、数据读写、权限申请、网络访问聚成时序轨迹，用来抓静态规则抓不到的三类场景——多步骤联动违规、低风险行为累积演化、渐进式权限逃逸。会话全链路日志可查可导出。</p><p>判断：这两条按判断口诀都答不出「哪个功能变了」，所以归行业版块。但它们说明一件对投标很实际的事：<b>国内 AI 安全的验收口径正在从「功能清单」变成「第三方评测 + 认证等级」</b>。合规部门签字时，一张信通院优秀级证书、一张公安部三所或协会的认证等级，比技术参数表更有说服力。给厂商的动作顺序建议是先拿证、再谈能力——反过来做，会在资格审查那一关被挡在门外，能力再强也没机会讲。</p></div><div class="card-foot"><span class="src">来源：<a href="https://hainan.ifeng.com/c/8yLMRKUHMmn" target="_blank" rel="noopener">凤凰网海南（数美 信通院评测）</a> · <a href="https://www.whcsa.org.cn/portal/article/index/id/1069/cid/21.html" target="_blank" rel="noopener">武汉市网络安全协会（天融信 AIDR 认证）</a></span></div></article></div></section><section class="sec anim"><div class="sec-head"><h2><span class="sec-icon">🧭</span>趋势判断</h2><div class="sec-sub">四条，都是给动作的，不是给观点的。</div></div><div class="trend-item anim"><h4>发现成本趋零之后，卖「发现」的产品会先死</h4><p>五周 5,000 个漏洞、680 个项目、免费。这个量级下，「我们能挖出多少漏洞」不再是卖点，反而是负担——客户要的是「这 5,000 个里我该先修哪 30 个，以及修完怎么证明修好了」。产品定义要跟着改：输出从「发现清单」变成「带证据的优先级 + 可复现的验证」。</p></div><div class="trend-item anim"><h4>补丁窗口的计量单位从「周」变成「小时」，而 SLA 还写在「天」上</h4><p>Drupal 从补丁到在野利用不到 24 小时，CISA 给联邦机构 3 天；PaperCut 披露 4 天开打。企业内部的紧急补丁流程普遍以「周」为周期、以「天」为 SLA。这两组数字对不上，就是今天最大的敞口。可执行的动作只有一个：给对外系统单独开一条「公告即启动」的通道，把灰度验证压到小时级，而不是把「尽快打上」当成唯一目标。</p></div><div class="trend-item anim"><h4>授权判断的键必须细到「完整 URL + 调用者身份」</h4><p>Claude Code 那条白名单的量化对照值得抄进所有 agent 产品的设计评审：裸主机规则 20/20 放行外泄，主机加路径前缀 0/20，而合法流量通过率都是 50/50——收窄授权对正常业务没有成本。同理，AutoGPT 把运行者与作者的凭据混了，Electerm 把本地与远端页面混了。以后评审 agent 网关，第一问不是「支不支持护栏」，是「按什么键授权」。</p></div><div class="trend-item anim"><h4>「影子 AI」的盘点权正在从问卷回到端点</h4><p>BI.Zone 把「组织里有哪些 agent 在跑」做成了 EDR 查询项，给出 72% 这个数字；AWS 让未登记的 MCP server 以影子 API 自己冒出来。两条都在做同一件事：不再问客户「你用了哪些 AI」，而是从流量与端点里自己数出来。对国内厂商的含义是，AI 资产盘点不会单独成预算，但会作为既有平台的一个加钱项——先把它做进 EDR、WAF、网关里，比单独卖一个 AI-SPM 现实。</p></div></section><footer class="foot"><p>数据窗口：2026-11-23 至 2026-11-26，仅收录可核验来源。本日 12 张卡片中（含 1 张空版块说明），<b>securityweek.com</b> 直连 403、走代理 200（改用镜像与二次源）；<b>corgea.com</b> 直连不通、需代理；<b>europesays.com</b> 需代理；其余双通——不同网络环境下响应不同，浏览器均可直接打开。CVE 编号与版本区间（CVE-2026-132165 / 136716 / 133462 / 136630 / 135221）已逐条核对公告描述。分类原则：产品动态须能追溯到具名产品的具体功能或版本变化，其余归入行业动态。国内产品版块为空，已逐条说明被排除的五类稿子；奇安信「AI 安全系列产品发布周」因无法核验发布日不收，已在版块内注明。</p><p>生成于 2026-11-26 · 自动归档至 GitHub Pages</p></footer></div><script>
+(function(){
+  var els = document.querySelectorAll('.anim, .card, .trend-item');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script></body></html>
